@@ -1,0 +1,30 @@
+    <footer>
+        <p>Copyright &copy; KH Information Educational Institute E-Class </p>
+
+        <section>
+            <a href="#">프로젝트 소개</a>
+            <span>|</span>
+            <a href="#">이용약관</a>
+            <span>|</span>
+            <a href="#">개인정보 처리 방침</a>
+            <span>|</span>
+            <a href="#">고객센터</a>
+            <span>|</span>
+
+        </section>
+    </footer>
+    <%-- request에 message 가 존재할 경우 --%>
+   
+		<!-- javascript 영역에서 타임리프를 적용/ 해석 함 -->   
+    	<script th:inline="javascript">
+    		
+    		/* Natural Template */
+    		const message = /*[[${message}]]*/ "전달 받은 메세지";
+    		// 타임리프 해석  값(자료형 알아서 해석)    사라짐(설명)
+    		
+    		if(message != null) alert(message);
+    	</script>
+    	
+    	 
+    	
+    </c:if>
