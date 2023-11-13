@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+		<!-- 현재 HTML 문서에 타임리프 문법을 사용한다고 선언 -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>프로젝트</title>
+
+	
+	
+</head>
+<body>
+	<main>
+		<!-- th:block
+			- html 태그가 아닌 단순히 타임리프를 쓰기 위한 태그가 필요할 때 사용
+			- 타임리프 해석 시 다른 타임리프 수행 후 사라짐
+		
+		
+		-->
+		
+	
+		<th:block th:replace="~{common/header}"></th:block>
+        
+        <section class="content">
+            <section class="content-1">
+            
+            
+            
+            <h3>로그인된 회원 정보</h3>
+            ${sessionScope.loginMember}
+            
+            <h3>닉네임이 일치하는 회원의 전화번호 조회</h3>
+            <input type="text" id="inputNickname">
+            <button id="btn1">조회</button>
+            <h4 id="result1"></h4>
+            <hr>
+            
+            <h3>이메일을 입력받아 일치하는 회원의 정보를 조회</h3>
+            <input id="inputEmail">
+            <button id="btn2">조회</button>
+            <ul id="result2">
+            	
+            </ul>
+            
+            <h3>삼항 연산자</h3>
+            <p th:text="${name} ? ${name} : '이름 없음'"></p>
+            <p th:text="${name2} ? ${name2} : '이름 없음'"></p>
+            
+            <h3>Elvis 연산자</h3>
+            <p th:text="${name} ?: '이름 없음'"></p>
+            <p th:text="${name2} ?: '이름 없음'"></p>
+            
+            <h3>No-Operation</h3>
+            <p th:text="${name} ?:_">(태그에작성)이름 없음</p>
+            <p th:text="${name2} ?:_">(태그에작성)이름 없음</p>
+            
+            </section>
+
+            <!-- 아이디/비밀번호/로그인버튼 영역-->
+            <section class="content-2">
+            	
+            			<!-- 로그인 X -->
+            			<th:block th:unless="${session.loginMember}">
+            			
+		            		<form th:action="@{/member/login}" method="post" name="login-form" id="loginFrm">
+			                    <fieldset class="id-pw-area">
+			                        <section>
+			                            <input type="text" name="memberEmail" placeholder="이메일"
+			                            		autocomplete="off"
+			                            		value=""
+			                            		>
+			                            <input type="password" name="memberPw" placeholder="비밀번호">
+			                        </section>
+			                        <section>
+			                            <button>로그인</button>
+			                        </section>
+			                    </fieldset>
+	
+			                    <label>
+			                       
+			                        <input type="checkbox" name="saveId"> 아이디 저장
+			                        
+			                    </label>
+			                    
+			                    <!-- 회원가입/ id/pw 찾기 영역 -->
+			                    <section class="signup-find-area">
+			                        <a th:href="@{/member/signUp}">회원가입</a>
+			                        <span>|</span>
+			                        <a th:href="@{#}">ID/PW 찾기</a>
+		                    </section>
+	               	      </form>
+            			</th:block>
+            		
+            			<!-- 로그인 되었을때 -->
+            			<!-- request Scope 는 그냥 써도 인식함.
+            				session Scope는 session.loginMember 이런식으로 session.을 꼭 붙여야한다.
+            			-->
+							
+            			<th:block th:if="${session.loginMember}">
+	            			<article class="login-area">
+	            				<a th:href="@{/myPage/profile}">
+	                        	<img th:src="@{/images/user.png}" id="memberProfile">
+	            				</a>
+	            				<div class="my-info">
+	            					<div>
+	            						<a th:href="@{/myPage/info}" id="nickname">[[${session.loginMember.memberNickname}]]</a>
+	            						<a th:href="@{/member/logout}" id="logoutBtn">로그아웃</a>
+	            					</div>
+	            				</div>
+	            				
+	            			</article>
+            			</th:block>
+            	
+                
+            </section>
+        </section>
+        
+    </main>
+
+    <th:block th:replace="~{common/footer}"></th:block>
+    
+	<!-- SockJS 추가 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script> -->
+    <!-- main.js 추가 -->
+    <script th:src="@{/js/main.js}"></script>
+
+</body>
+</html>
