@@ -1,30 +1,19 @@
-    <footer>
-        <p>Copyright &copy; KH Information Educational Institute E-Class </p>
+ <link rel="stylesheet" th:href="@{/css/common/footer.css}">
+ 
+ <footer class="bottomBar">
+        <a class="footerTitle">CAMPLEX</a>
 
-        <section>
-            <a href="#">프로젝트 소개</a>
-            <span>|</span>
-            <a href="#">이용약관</a>
-            <span>|</span>
-            <a href="#">개인정보 처리 방침</a>
-            <span>|</span>
-            <a href="#">고객센터</a>
-            <span>|</span>
+        <div class="footerMenu">
+            <a href="#">ABOUT US</a> <p class="menuDiv">|</p>
+            <a href="#">AGREEMENT</a> <p class="menuDiv">|</p>
+            <a href="#">GUIDE</a>
+        </div>
 
-        </section>
+        <div class="footerContent">
+            <p>회사명 캠플렉스 주식회사</p>
+            <p>주소 서울특별시 중구 남대문로 120</p>
+            <p>본 사이트내 모든 이미지 및 컨텐츠 등은 저작권법 제4조의 의한 저작물로써</p> 
+            <p>소유권은 CAMPLEX 주식회사 에게 있으며, 무단 도용시 법적인 제재를 받을 수 있습니다.</p>
+        </div>
+
     </footer>
-    <%-- request에 message 가 존재할 경우 --%>
-   
-		<!-- javascript 영역에서 타임리프를 적용/ 해석 함 -->   
-    	<script th:inline="javascript">
-    		
-    		/* Natural Template */
-    		const message = /*[[${message}]]*/ "전달 받은 메세지";
-    		// 타임리프 해석  값(자료형 알아서 해석)    사라짐(설명)
-    		
-    		if(message != null) alert(message);
-    	</script>
-    	
-    	 
-    	
-    </c:if>
