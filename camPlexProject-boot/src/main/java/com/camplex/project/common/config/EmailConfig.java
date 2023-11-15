@@ -13,7 +13,6 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 @PropertySource("classpath:/config.properties")
 public class EmailConfig {
 	
-	// @Value : properties 파일에서 key 가 일치하는 부분의 value를 얻어와 대입
 	@Value("${spring.mail.username}")
 	private String username;
 	
@@ -43,8 +42,7 @@ public class EmailConfig {
 
 
 		
-		return mailSender; // 반환된 객체가 bean 등록됨
-		
+		return mailSender; 
 		
 		
 	}
