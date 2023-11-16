@@ -15,7 +15,7 @@
 }
 
 body{
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -34,75 +34,6 @@ hr{
 
 #mainContent{
     flex-basis: 60%;
-}
-
-/* ----------------------- header  ---------------------------------------- */
-
-.topBar{
-    width: 100%;
-    height: 200px;
-
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 25px;
-    border-radius: 0 0 10px 10px;
-
-    transition-duration: 0.3s;
-
-    position: sticky;
-    top: 0;
-    background-color: #fff;
-    opacity: 0.8;
-}
-
-.topBar:hover{
-    background-color: rgba(204, 213, 174, 0.5);
-}
-
-.topMenu{
-    width: 100%;
-
-    flex-basis: 5%;
-
-    display: flex;
-    justify-content: space-between;
-}
-
-.topMenu a{
-    color: #000;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 0.7rem;
-    opacity: 0.5;    
-}
-
-.mainTitle{
-    flex-basis: 50%;
-    align-self: center;
-    font-size: 3rem;
-    font-weight: 900;
-    opacity: 0.5; 
-
-    margin: 20px 0;
-
-    height: 60px;
-    line-height: 60px;
-    color: #333;
-    letter-spacing: 5px;
-}
-
-.bottomMenu{
-    flex-basis: 45%;
-    display: flex;
-    align-self: center;
-}
-
-.bottomMenu a {
-    color: #000;
-    text-decoration: none;
-    margin: 0 1rem;
-    font-weight: 600;
-    opacity: 0.5;
 }
 
 
@@ -552,52 +483,3 @@ li:hover > span::after {
 }
 
 
-
-/* ---------------------------------- footer --------------------------------- */
-.bottomBar { 
-    margin: 25px 0 25px 25px ;
-    font-family: 'HakgyoansimSantteutdotumL';
-    font-weight: 900;
-    line-height: 30px;
-    
-}
-
-.footerTitle {
-    flex-basis: 50%;
-    align-self: center;
-    font-size: 2rem;
-    font-weight: 1000;
-
-    height: 60px;
-    line-height: 60px;
-    color: #333;
-    letter-spacing: 3px;
-}
-
-.footerMenu {
-    display: flex;
-    flex-basis: 50%;
-    align-self: center;
-    font-size: 1rem;
-    font-weight: 900;
-
-    color: #333;
-    letter-spacing: 1px;
-}
-
-.footerMenu a {
-    text-decoration: none;
-    color: #000;
-    font-weight: 100;
-}
-
-.menuDiv {
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-.footerContent {
-    width: 100%;
-    letter-spacing: 1px;
-    font-weight: 100;
-}
