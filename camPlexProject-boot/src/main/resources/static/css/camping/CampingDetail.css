@@ -1,0 +1,603 @@
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: 1% 500%;
+    unicode-range: U+AC00-D7A3;
+}
+
+*{
+    font-family: 'HakgyoansimSantteutdotumL', 'Montserrat';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    display: flex;
+}
+
+hr{
+    margin: 10px 0;
+}
+
+#leftBlank, #rightBlank{
+    flex-basis: 20%;
+}
+
+#mainContent{
+    flex-basis: 60%;
+}
+
+/* ----------------------- header  ---------------------------------------- */
+
+.topBar{
+    width: 100%;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+    border-radius: 0 0 10px 10px;
+
+    transition-duration: 0.3s;
+
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    opacity: 0.8;
+}
+
+.topBar:hover{
+    background-color: rgba(204, 213, 174, 0.5);
+}
+
+.topMenu{
+    width: 100%;
+
+    flex-basis: 5%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.topMenu a{
+    color: #000;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.7rem;
+    opacity: 0.5;    
+}
+
+.mainTitle{
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 3rem;
+    font-weight: 900;
+    opacity: 0.5; 
+
+    margin: 20px 0;
+
+    height: 60px;
+    line-height: 60px;
+    color: #333;
+    letter-spacing: 5px;
+}
+
+.bottomMenu{
+    flex-basis: 45%;
+    display: flex;
+    align-self: center;
+}
+
+.bottomMenu a {
+    color: #000;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 600;
+    opacity: 0.5;
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.headerTitle{
+    font-size: 1.5rem;
+    color: #D4A373;
+    font-weight: lighter;
+}
+
+.headerMenu{
+    display: flex;
+    align-items: flex-end;
+}
+
+.headerMenu > button{
+    background-color: transparent;
+    border: none;
+    margin: 0 1rem;
+    font-size: 1rem;
+}   
+
+/* ------------------------------------------------------------ */
+
+.mainPicArea{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10rem;
+    margin-top: 40px;
+}
+
+.campingTitle{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.campingTitle p {
+    font-size: 2rem;
+}
+
+.starContainer{
+    display: flex;
+    align-items: flex-end;
+}
+
+.starContainer img{
+    width: 20px;
+    margin: 0 1px;
+}
+
+.pictureContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.thumbsnail{
+    flex-basis: 45%;
+    text-align: center;
+}
+
+.thumbsnailContainer{
+    width: 37rem;
+    height: 22rem;
+    margin: 5px;
+    border-radius: 7px;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.thumbsnail img {
+    height: 100%;
+}
+
+.campImg{
+    flex-basis: 55%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.campImgContainer{
+    width: 16rem;
+    height: 10rem;
+    margin: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.campImgContainer img{
+    width: 100%;
+}
+
+/* ------------------------------------------------------ */
+
+.ceoPic{
+    margin-bottom: 5rem;
+}
+
+.ceoPic p{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.ceoPicSlide{
+    display: flex;
+    justify-content: center;
+}
+
+.arrow{
+    flex-basis: 10%;
+}
+
+.arrow img{
+    width: 50px;
+    cursor: pointer;
+}
+
+.ceoPicSlide button{
+    background-color: transparent;
+    border: transparent;
+    font-size: 1rem;
+}
+
+.ceoPicture{
+    flex-basis: 80%;
+
+    display: flex;
+    overflow: hidden;
+}
+
+.ceoPictureWrapper{
+    width: 15rem;
+    height: 200px;
+    margin: 10px 20px;
+    border-radius: 5px;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.ceoPictureWrapper img{
+    height: 100%;
+}
+
+
+/* ---------------------------------------------------------------- */
+
+.introductionArea {
+    margin-bottom: 10rem;
+}
+
+.introductionArea hr{
+    width: 34rem;
+    color: #909090;
+    margin: 20px 0;
+}
+
+.introductionTitle{
+    font-size: 1.8rem;
+}
+
+.introductionContent{
+    font-size: 1.5rem;
+    
+}
+
+/* --------------------------------------------------------------------  */
+
+.detailsArea{
+    margin-bottom: 6rem;
+}
+
+.detailsArea > hr{
+    width: 34rem;
+    color: #909090;
+    margin: 20px 0;
+}
+
+.detailsTitle{
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+}
+
+.details {
+    display: flex;
+    justify-content: center;
+}
+
+.campMap{
+    flex-basis: 50%;
+    text-align: center;
+}
+
+.campMap img {
+    width: 70%;
+}
+
+.campDetails{
+    flex-basis: 50%;
+    padding-left: 40px;
+}
+
+.facilityArea, .aruondViewArea, .mannerTime{
+    display: flex;
+}
+
+.facilityArea, .aruondViewArea{
+    width: 34rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.campDetails hr{
+    width: 30rem;
+}
+
+.campDetails > div {
+    margin-top: 50px;
+}
+
+.iconWrapper{
+    width: 2rem;
+    margin: 10px 20px;
+    border-radius: 5px;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.campDetails img{
+    width: 100%;
+}
+
+.facilityIcon{
+    display: flex;
+    align-items: center;
+}
+
+.arouundViewIcon{
+    display: flex;
+    align-items: center;
+}
+
+.mannerTime{
+    display: flex;
+    align-items: center;
+}
+
+
+/* ------------------------------------------------------------------------ */
+
+.reservationArea{
+    margin-bottom: 3rem;
+}
+
+.reservationArea > hr{
+    width: 34rem;
+    color: #909090;
+    margin: 20px 0;
+}
+
+.reservationTitle{
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+}
+
+.travelDate{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.enterDate, .exitDate{
+    display: flex;
+    margin: 4rem 0;
+}
+
+.dateInput{
+    font-size: 1rem;
+}
+
+.travelDate p {
+    font-size: 1.6rem;
+    margin: 0 2rem;
+}
+
+.calender{
+    display: flex;
+    justify-content: center;
+}
+
+.calender img{
+    width: 50rem;
+}
+
+/* ---------------------------------------- */
+.campSiteFrm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.campSite{
+    background-color: #FEFAE0;
+    display: flex;
+    margin: 25px 0;
+    border-radius: 10px;
+    width: 70%;
+}
+
+.campSiteBox{
+    width: 100%;
+    display: flex;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.campSiteImgWrapper{
+    flex-basis: 30%;
+    padding: 30px;
+    width: 100%;
+}
+
+.campSiteImgWrapper img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.campSiteInfoContainer{
+    flex-basis: 70%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.campSiteInfoContainer > p{
+    font-size: 1.5rem;
+}
+
+.campSiteInfo{
+    display: flex;
+    justify-content: space-between;
+}
+
+.campSiteInfoDetail{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;
+}
+
+.campSiteInfoDetail input{
+    background-color: transparent;
+    border: none;
+    font-size: 1.3rem;
+    color: #D4A373;
+    padding: 0 10px;
+}
+
+.campSitePrice{
+    align-self: flex-end;
+    margin-right: 30px;
+    font-size: 1.5rem;
+    color: #d49673;
+}
+
+.campStieRadio{
+    display: none;
+}
+
+.campStieRadio:checked + label{
+    background-color: #FAEDCD;
+}
+
+.btnArea{
+    display: flex;
+    justify-content: flex-end;
+    align-self: flex-end;
+    margin: 50px 0;
+}
+
+.btn{
+    background-color: transparent;
+    border: none;
+    margin: 0 30px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+
+ul { list-style:none; cursor:pointer }
+li { 
+  float:left; 
+  margin-right:10px;
+  transition:all .3s ease 
+}
+li:hover {transition:all .3s ease }
+li > span { position:relative }
+
+/*밑줄넣기 부분*/
+li > span::after {
+  content: '';
+  width: 0%;
+  left: 50%;
+  height: 1px;
+  display: block;
+  position: absolute;
+  margin-top: 3px;
+  border-bottom: 2px solid; 
+  transition:all .3s ease;
+}
+li:hover > span::after {
+  content: '';
+  width: 100%;
+  left: 0px;
+  height: 1px;
+  display: block;
+  position: absolute;
+  margin-top: 3px;
+  border-bottom: 2px solid; 
+  transition:all .3s ease;
+}
+
+
+
+/* ---------------------------------- footer --------------------------------- */
+.bottomBar { 
+    margin: 25px 0 25px 25px ;
+    font-family: 'HakgyoansimSantteutdotumL';
+    font-weight: 900;
+    line-height: 30px;
+    
+}
+
+.footerTitle {
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 2rem;
+    font-weight: 1000;
+
+    height: 60px;
+    line-height: 60px;
+    color: #333;
+    letter-spacing: 3px;
+}
+
+.footerMenu {
+    display: flex;
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 900;
+
+    color: #333;
+    letter-spacing: 1px;
+}
+
+.footerMenu a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 100;
+}
+
+.menuDiv {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.footerContent {
+    width: 100%;
+    letter-spacing: 1px;
+    font-weight: 100;
+}

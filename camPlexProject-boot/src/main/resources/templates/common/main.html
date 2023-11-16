@@ -3,24 +3,353 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>프로젝트</title>
+	  <title>캠핑장 상세</title>
 
+    <link rel="stylesheet" href="/css/camping/CampingDetail.css">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap"
+        rel="stylesheet">
 
 </head>
 
 <body>
-	<main>
 
 		<th:block th:replace="~{common/header}"></th:block>
 
+	<main>
 
-		<th:block th:replace="~{common/footer}"></th:block>
+        <div id="leftBlank"></div>
+
+        <div id="mainContent">
+
+            <section class="header">
+                <p class="headerTitle">Information</p>
+                <div class="headerMenu">
+                    <button>WISH LIST</button>
+                    <button>1:1 문의</button>
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="mainPicArea">
+
+                <div class="campingTitle">
+                    <p>Catgill 캠핑장</p>
+                    <div class="starContainer">
+                        <img src="/img/star.png" alt="">
+                        <img src="/img/star.png" alt="">
+                        <img src="/img/star.png" alt="">
+                        <img src="/img/star.png" alt="">
+                        <img src="/img/star.png" alt="">
+                    </div>
+                </div>
+
+                <div class="pictureContainer">
+
+                    <div class="thumbsnail">
+                        <div class="thumbsnailContainer">
+                            <img th:src="@{/images/camping/1.PNG}" alt="">
+                        </div>
+                    </div>
+
+                    <div class="campImg">
+                        <div class="campImgContainer">
+                            <img th:src="@{/images/camping/2.PNG}" alt="">
+                        </div>
+                        <div class="campImgContainer">
+                            <img th:src="@{/images/camping/3.PNG}" alt="">
+                        </div>
+                        <div class="campImgContainer">
+                            <img th:src="@{/images/camping/4.PNG}" alt="">
+                        </div>
+                        <div class="campImgContainer">
+                            <img th:src="@{/images/camping/5.PNG}" alt="">
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="ceoPic">
+
+                <p>CEO's PIC</p>
+
+                <div class="ceoPicSlide">
+
+                    <button type="button" class="arrow">
+                        <img th:src="@{/images/camping/left.png}" alt="">
+                    </button>
+
+
+                    <div class="ceoPicture">
+
+                        <div class="ceoPictureWrapper">
+                            <img th:src="@{/images/camping/7.PNG}" alt="">
+                        </div>
+                        <div class="ceoPictureWrapper">
+                            <img th:src="@{/images/camping/8.PNG}" alt="">
+                        </div>
+                        <div class="ceoPictureWrapper">
+                            <img th:src="@{/images/camping/9.PNG}" alt="">
+                        </div>
+                        <div class="ceoPictureWrapper">
+                            <img th:src="@{/images/camping/10.PNG}" alt="">
+                        </div>
+
+                    </div>
+
+
+                    <button type="button" class="arrow">
+                        <img th:src="@{/images/camping/right.png}" alt="">
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <section class="introductionArea">
+
+                <p class="introductionTitle">Introduction</p>
+
+                <hr>
+
+                <p class="introductionContent">아담하고 깨끗한 Catgill 캠핑장입니다.<br>
+                    저녁이면 개구리 울음소리가 함께 하는 가족 운영 캠핑장 입니다.<br>
+                    부담없이 오셔서 자연 속에서 힐링 되셨으면 좋겠습니다.</p>
+
+            </section>
+
+            <section class="detailsArea">
+
+                <p class="detailsTitle">
+                    Details
+                </p>
+
+                <hr>
+
+                <div class="details">
+
+                    <div class="campMap">
+                        <img th:src="@{/images/camping/11.PNG}" alt="">
+                    </div>
+
+                    <div class="campDetails">
+
+                        <div>
+                            <p>부대시설</p>
+                            <hr>
+                            <div class="facilityArea">
+
+                                <div class="facilityIcon">
+                                    <div class="iconWrapper">
+                                        <img th:src="@{/images/camping/shower.png}" alt="">
+                                    </div>
+                                    <p>공용 샤워장</p>
+                                </div>
+
+                                <div class="facilityIcon">
+                                    <div class="iconWrapper">
+                                        <img th:src="@{/images/camping/store.png}" alt="">
+                                    </div>
+                                    <p>편의점 / 매점</p>
+                                </div>
+
+                                <div class="facilityIcon">
+                                    <div class="iconWrapper">
+                                        <img th:src="@{/images/camping/bbq.png}" alt="">
+                                    </div>
+                                    <p>바베큐 장</p>
+                                </div>
+
+                                <div class="facilityIcon">
+                                    <div class="iconWrapper">
+                                        <img th:src="@{/images/camping/restroom.png}" alt="">
+                                    </div>
+                                    <p>공용 화장실</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <p>주변 환경</p>
+                            <hr>
+                            <div class="aruondViewArea">
+                                <div class="arouundViewIcon">
+                                    <div class="iconWrapper">
+                                        <img th:src="@{/images/camping/mountain.png}" alt="">
+                                    </div>
+                                    <p>등산로</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div>
+                            <p>매너타임</p>
+                            <hr>
+                            <div class="mannerTime">
+                                <div class="iconWrapper">
+                                    <img th:src="@{/images/camping/clock.png}" alt="">
+                                </div>
+                                <p>22:00 ~ 07:00</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </section>
+
+            <section class="reservationArea">
+
+                <p class="reservationTitle">
+                    Reservation
+                </p>
+
+                <hr>
+
+                <div class="travelDate">
+
+                    <div class="enterDate">
+                        <p>입실일 :</p>
+                        <input type="date" name="" id="" class="dateInput">
+                    </div>
+                    
+                    <div class="exitDate">
+                        <p>퇴실일 : </p>
+                        <input type="date" name="" id="" class="dateInput">
+                    </div>
+
+                </div>
+
+                <div class="calender">
+
+                    <img th:src="@{/images/camping/cal.png}" alt="">
+
+                </div>
+
+            </section>
+
+            <hr>
+
+            <section>
+
+                <form action="" class="campSiteFrm"> 
+             
+                    <div class="campSite">
+
+                        <input type="radio" name="chooseCampSite" class="campStieRadio" id="campNo1"></input>
+                        <label for="campNo1" class="campSiteBox" onclick="">
+
+                            <div class="campSiteImgWrapper">
+                                <img th:src="@{/images/camping/1.PNG}" alt="">
+                            </div>
+
+                            <div class="campSiteInfoContainer">
+                                <p>글램핑 구역(B-1)</p>
+
+                                <div class="campSiteInfo">
+                                    <div class="campSiteInfoDetail">
+                                        <p>남은 자리 <input type="text" name="" id="" value="2개" disabled></p>
+                                        <p>수용 인원 <input type="text" name="" id="" value="4명" disabled></p>
+                                    </div>
+                                    <p class="campSitePrice">100,000 ~</p>
+                                </div>
+                                
+
+                            </div>
+
+                        </label>
+                    </div>
+
+                    <div class="campSite">
+
+                        <input type="radio" name="chooseCampSite" class="campStieRadio" id="campNo2"></input>
+                        <label for="campNo2" class="campSiteBox" onclick="">
+
+                            <div class="campSiteImgWrapper">
+                                <img th:src="@{/images/camping/14.PNG}" alt="">
+                            </div>
+
+                            <div class="campSiteInfoContainer">
+                                <p>글램핑 구역(B-1)</p>
+
+                                <div class="campSiteInfo">
+                                    <div class="campSiteInfoDetail">
+                                        <p>남은 자리 <input type="text" name="" id="" value="2개" disabled></p>
+                                        <p>수용 인원 <input type="text" name="" id="" value="4명" disabled></p>
+                                    </div>
+                                    <p class="campSitePrice">100,000 ~</p>
+                                </div>
+                                
+
+                            </div>
+
+                        </label>
+                    </div>
+
+                 
+                    <div class="campSite">
+
+                        <input type="radio" name="chooseCampSite" class="campStieRadio" id="campNo3"></input>
+                        <label for="campNo3" class="campSiteBox" onclick="">
+
+                            <div class="campSiteImgWrapper">
+                                <img th:src="@{/images/camping/14.PNG}" alt="">
+                            </div>
+
+                            <div class="campSiteInfoContainer">
+                                <p>글램핑 구역(B-1)</p>
+
+                                <div class="campSiteInfo">
+                                    <div class="campSiteInfoDetail">
+                                        <p>남은 자리 <input type="text" name="" id="" value="2개" disabled></p>
+                                        <p>수용 인원 <input type="text" name="" id="" value="4명" disabled></p>
+                                    </div>
+                                    <p class="campSitePrice">100,000 ~</p>
+                                </div>
+                                
+
+                            </div>
+
+                        </label>
+                    </div>
+
+                    <div class="btnArea">
+                        <!-- <div class="test">
+                            <button class="btn" id="nextBtn">다음으로</button>
+                        </div>
+                        <div class="test">
+                            <button class="btn" type="button">돌아가기</button>
+                        </div> -->
+
+                        <ul>
+                            <li><span class="btn" onclick="location.href='CampingReservation.html'">다음으로</span></li>
+                            <li><span class="btn" onclick="history.back()">돌아가기</span></li>
+                        </ul>
+                    </div>
+
+                </form>
+
+            </section>
+
+        </div>
+        <div id="rightBlank"></div>
+
 
 	</main>
 
+		<th:block th:replace="~{common/footer}"></th:block>
 
-	<script th:src="@{}"></script>
 
 </body>
 
