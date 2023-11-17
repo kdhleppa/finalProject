@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	  <title>캠핑장 상세</title>
 
-    <link rel="stylesheet" href="/css/camping/CampingDetail.css">
+    <link rel="stylesheet" th:href="@{/css/camping/CampingDetail.css}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,11 +39,11 @@
                 <div class="campingTitle">
                     <p>Catgill 캠핑장</p>
                     <div class="starContainer">
-                        <img th:src="@{/images/camping/star.png}" alt="">
-                        <img th:src="@{/images/camping/star.png}" alt="">
-                        <img th:src="@{/images/camping/star.png}" alt="">
-                        <img th:src="@{/images/camping/star.png}" alt="">
-                        <img th:src="@{/images/camping/star.png}" alt="">
+                        <img th:src="@{/images/iconImg/star.png}" alt="">
+                        <img th:src="@{/images/iconImg/star.png}" alt="">
+                        <img th:src="@{/images/iconImg/star.png}" alt="">
+                        <img th:src="@{/images/iconImg/star.png}" alt="">
+                        <img th:src="@{/images/iconImg/star.png}" alt="">
                     </div>
                 </div>
 
@@ -51,22 +51,22 @@
 
                     <div class="thumbsnail">
                         <div class="thumbsnailContainer">
-                            <img th:src="@{/images/camping/1.PNG}" alt="">
+                            <img th:src="@{/images/campingImg/1.PNG}" alt="">
                         </div>
                     </div>
 
                     <div class="campImg">
                         <div class="campImgContainer">
-                            <img th:src="@{/images/camping/2.PNG}" alt="">
+                            <img th:src="@{/images/campingImg/2.PNG}" alt="">
                         </div>
                         <div class="campImgContainer">
-                            <img th:src="@{/images/camping/3.PNG}" alt="">
+                            <img th:src="@{/images/campingImg/3.PNG}" alt="">
                         </div>
                         <div class="campImgContainer">
-                            <img th:src="@{/images/camping/4.PNG}" alt="">
+                            <img th:src="@{/images/campingImg/4.PNG}" alt="">
                         </div>
                         <div class="campImgContainer">
-                            <img th:src="@{/images/camping/5.PNG}" alt="">
+                            <img th:src="@{/images/campingImg/5.PNG}" alt="">
                         </div>
                     </div>
 
@@ -81,30 +81,31 @@
                 <div class="ceoPicSlide">
 
                     <button type="button" class="arrow">
-                        <img th:src="@{/images/camping/left.png}" alt="">
+                        <img th:src="@{/images/iconImg/left.png}" alt="">
                     </button>
 
 
                     <div class="ceoPicture">
 
                         <div class="ceoPictureWrapper">
-                            <img th:src="@{/images/camping/7.PNG}" alt="">
+                            <img th:src="@{/images/campingImg/7.PNG}" alt="">
                         </div>
                         <div class="ceoPictureWrapper">
-                            <img th:src="@{/images/camping/8.PNG}" alt="">
+                            <img th:src="@{/images/campingImg/8.PNG}" alt="">
                         </div>
                         <div class="ceoPictureWrapper">
-                            <img th:src="@{/images/camping/9.PNG}" alt="">
+                            <img th:src="@{/images/campingImg/9.PNG}" alt="">
                         </div>
                         <div class="ceoPictureWrapper">
-                            <img th:src="@{/images/camping/10.PNG}" alt="">
+                            <img th:src="@{/images/campingImg/10.PNG}" alt="">
                         </div>
+                        
 
                     </div>
 
 
                     <button type="button" class="arrow">
-                        <img th:src="@{/images/camping/right.png}" alt="">
+                        <img th:src="@{/images/iconImg/right.png}" alt="">
                     </button>
 
                 </div>
@@ -135,7 +136,7 @@
                 <div class="details">
 
                     <div class="campMap">
-                        <img th:src="@{/images/camping/11.PNG}" alt="">
+                        <img th:src="@{/images/campingImg/11.PNG}" alt="">
                     </div>
 
                     <div class="campDetails">
@@ -147,28 +148,28 @@
 
                                 <div class="facilityIcon">
                                     <div class="iconWrapper">
-                                        <img th:src="@{/images/camping/shower.png}" alt="">
+                                        <img th:src="@{/images/iconImg/shower.png}" alt="">
                                     </div>
                                     <p>공용 샤워장</p>
                                 </div>
 
                                 <div class="facilityIcon">
                                     <div class="iconWrapper">
-                                        <img th:src="@{/images/camping/store.png}" alt="">
+                                        <img th:src="@{/images/iconImg/store.png}" alt="">
                                     </div>
                                     <p>편의점 / 매점</p>
                                 </div>
 
                                 <div class="facilityIcon">
                                     <div class="iconWrapper">
-                                        <img th:src="@{/images/camping/bbq.png}" alt="">
+                                        <img th:src="@{/images/iconImg/bbq.png}" alt="">
                                     </div>
                                     <p>바베큐 장</p>
                                 </div>
 
                                 <div class="facilityIcon">
                                     <div class="iconWrapper">
-                                        <img th:src="@{/images/camping/restroom.png}" alt="">
+                                        <img th:src="@{/images/iconImg/restroom.png}" alt="">
                                     </div>
                                     <p>공용 화장실</p>
                                 </div>
@@ -183,7 +184,7 @@
                             <div class="aruondViewArea">
                                 <div class="arouundViewIcon">
                                     <div class="iconWrapper">
-                                        <img th:src="@{/images/camping/mountain.png}" alt="">
+                                        <img th:src="@{/images/iconImg/mountain.png}" alt="">
                                     </div>
                                     <p>등산로</p>
                                 </div>
@@ -197,7 +198,7 @@
                             <hr>
                             <div class="mannerTime">
                                 <div class="iconWrapper">
-                                    <img th:src="@{/images/camping/clock.png}" alt="">
+                                    <img th:src="@{/images/iconImg/clock.png}" alt="">
                                 </div>
                                 <p>22:00 ~ 07:00</p>
                             </div>
@@ -233,7 +234,7 @@
 
                 <div class="calender">
 
-                    <img th:src="@{/images/camping/cal.png}" alt="">
+                    <img th:src="@{/images/iconImg/cal.png}" alt="">
 
                 </div>
 
@@ -251,7 +252,7 @@
                         <label for="campNo1" class="campSiteBox" onclick="">
 
                             <div class="campSiteImgWrapper">
-                                <img th:src="@{/images/camping/1.PNG}" alt="">
+                                <img th:src="@{/images/campingImg/1.PNG}" alt="">
                             </div>
 
                             <div class="campSiteInfoContainer">
@@ -277,7 +278,7 @@
                         <label for="campNo2" class="campSiteBox" onclick="">
 
                             <div class="campSiteImgWrapper">
-                                <img th:src="@{/images/camping/14.PNG}" alt="">
+                                <img th:src="@{/images/campingImg/14.PNG}" alt="">
                             </div>
 
                             <div class="campSiteInfoContainer">
@@ -304,7 +305,7 @@
                         <label for="campNo3" class="campSiteBox" onclick="">
 
                             <div class="campSiteImgWrapper">
-                                <img th:src="@{/images/camping/14.PNG}" alt="">
+                                <img th:src="@{/images/campingImg/14.PNG}" alt="">
                             </div>
 
                             <div class="campSiteInfoContainer">
@@ -325,12 +326,6 @@
                     </div>
 
                     <div class="btnArea">
-                        <!-- <div class="test">
-                            <button class="btn" id="nextBtn">다음으로</button>
-                        </div>
-                        <div class="test">
-                            <button class="btn" type="button">돌아가기</button>
-                        </div> -->
 
                         <ul>
                             <li><span class="btn" onclick="location.href='CampingReservation.html'">다음으로</span></li>
