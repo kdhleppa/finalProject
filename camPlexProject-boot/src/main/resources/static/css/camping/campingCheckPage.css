@@ -1,0 +1,276 @@
+*{
+    font-family: 'HakgyoansimSantteutdotumL', 'Montserrat';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    /* border: 1px solid black; */
+}
+
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: 1% 500%;
+    unicode-range: U+AC00-D7A3;
+}
+
+
+
+/* main */
+main {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 검색 일자 검색 sec */
+.checkCalenderSec {
+    height: 10rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.checkSec {
+    flex-basis: 50%;
+    height: 100%;
+    display: flex;
+    
+}
+
+.calenderSec {
+    flex-basis: 40%;
+    height: 100%;
+    display: flex;
+    align-items: end;
+}
+
+.checkDetailSec {
+    flex-basis: 70%;
+    height: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+
+.checkBtnSec {
+    flex-basis: 30%;
+    height: 100%;
+    display: flex;
+    align-items: end;
+}
+
+.inputCheck {
+    height: 3rem;
+    width: 28rem;
+    padding-left: 1rem;
+    border: none;
+    border-radius: 20px;
+    font-size: large;
+}
+
+.inputCheck:focus {
+    outline-color: #909090;
+    
+}
+
+.submitInputCheck {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.checkBtnDiv {
+    width: 3rem;
+    height: 3rem;
+}
+
+.magnifyImg {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* 달력 sec */
+.celenderDiv {
+    width: 35rem;
+    height: 3.2rem;
+    display: flex;
+    border: 1px solid #909090;
+    border-radius: 10px;
+}
+
+.calImgSec {
+    flex-basis: 11%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputCalSec {
+    flex-basis: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tildeSec {
+    flex-basis: 9%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calenderImg {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.inputCal {
+    height: 2.5rem;
+    width: 12rem;
+    font-size: 1.3rem;
+    border: none;
+}
+
+.inputCal:focus {
+    
+    outline: none;
+}
+
+/* 정렬 선택 sec */
+.checkLineSec {
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    
+}
+
+.checkLine {
+    width: 26%;
+    height: 1px;
+    border: 1px solid #909090;
+    margin-left: 17%;
+}
+
+/* 정렬 선택 */
+.chooseClassificationSec {
+    height: 4rem;
+    width: 100%;
+    display: flex;
+}
+
+.chooseClassificationBlankSec {
+    height: 100%;
+    width: 12%;
+}
+
+.chooseClassificationDetailSec {
+    height: 100%;
+    width: 10%;
+}
+
+.classificationBtn {
+    width: 9rem;
+    height: 2.5rem;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+/* fixed map */
+.fixedDiv {
+    width: 8rem;
+    height: 8rem;
+    position: fixed;
+    top: 80%;
+    left: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mapImageSec {
+    flex-basis: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.mapImage {
+    width: 4rem;
+    height: 4rem;
+}
+
+.mapWriteSec {
+    flex-basis: 25%;
+    display: flex;
+    justify-content: center;
+}
+
+.mapWrite {
+    border-bottom: 1px solid black;
+}
+
+/* 컨텐츠 sec */
+.contentSec {
+    height: 17rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.contentDetailSec {
+    width: 26%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contentImageDiv {
+    display: flex;
+    width: 100%;
+    flex-basis: 85%;
+    align-items: end;
+    justify-content: center;
+}
+
+.contentImage {
+    width: 23rem;
+    height: 14rem;
+}
+
+.contentDetailWriteSec {
+    flex-basis: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.contentDetailWriteSecCenterSec {
+    height: 100%;
+    flex-basis: 73%;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.contentBlanksec {
+    width: 100%;
+    height: 5rem;
+}
+
+.footBlankSec {
+    width: 100%;
+    height: 15rem;
+}
+
+
+
+
+
+
+
+
+
+

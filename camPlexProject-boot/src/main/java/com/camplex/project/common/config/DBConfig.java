@@ -37,6 +37,7 @@ public class DBConfig {
 		
 	}
 	
+
 	@Bean
 	public SqlSessionFactory sessionFactory(DataSource dataSource) throws Exception{
 		
@@ -61,4 +62,5 @@ public class DBConfig {
 	public DataSourceTransactionManager dataSourceTransactionManager(DataSource dataSource) {
 		return new DataSourceTransactionManager(dataSource);
 	}
+
 }
