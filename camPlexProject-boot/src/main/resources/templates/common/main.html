@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,53 +17,57 @@
     
     <main>
 
+
+        <th:block th:replace="~{common/header}"></th:block>
+
+
         <ul id="mainImageNum">
             <li data-menumain="main1" class>
-                <a href="#main1">1</a>
+                <a th:href="@{#main1}">1</a>
             </li>
 
             <p>ㅡ</p>
 
             <li data-menumain="main2" class>
-                <a href="#main2">2</a>
+                <a th:href="@{#main2}">2</a>
             </li>
 
             <p>ㅡ</p>
 
             <li data-menumain="main3" class>
-                <a href="#main3">3</a>
+                <a th:href="@{#main3}">3</a>
             </li>
 
             <p>ㅡ</p>
 
             <li data-menumain="main4" class>
-                <a href="#main4">4</a>
+                <a th:href="@{#main4}">4</a>
             </li>
         </ul>
 
         <section class="mainImage" id="image-slider">
             
             <div id="main1">
-                <img src="/images/main1.jpg">
+                <img th:src="@{/images/main1.jpg}">
                 <p id="p1">CAMPING X RENTAL</p>
                 <p id="p2">볕 좋은 어느 겨울날의 편안한 캠핑</p>
             </div>
             
             <div id="main2">
-                <img src="/images/main2.jpg">
+                <img th:src="@{/images/main2.jpg}">
                 <p id="p1">CAMPING X RENTAL</p>
                 <p id="p2">볕 좋은 어느 겨울날의 편안한 캠핑</p>
                 <button id="mainbutton">캠핑장 보러가기</button>
             </div>
 
             <div id="main3">
-                <img src="/images/main3.jpg">
+                <img th:src="@{/images/main3.jpg}">
                 <p id="p1">CAMPING X RENTAL</p>
                 <p id="p2">볕 좋은 어느 겨울날의 편안한 캠핑</p>
             </div>
 
             <div id="main4">
-                <img src="/images/main4.jpg">
+                <img th:src="@{/images/main4.jpg}">
                 <p id="p1">CAMPING X RENTAL</p>
                 <p id="p2">볕 좋은 어느 겨울날의 편안한 캠핑</p>
             </div>
