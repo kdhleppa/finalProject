@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캠핑장 조회 페이지</title>
+    <link rel="stylesheet" th:href="@{/css/camping/campingCheckPage.css}">
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+   <th:block th:replace="~{common/header}"></th:block>
+    
+    <!-- 메인 -->
+    <main>
+        <!-- fixed map -->
+        <div class="fixedDiv">
+            <section class="mapImageSec">
+                <img class="mapImage" th:src="@{/images/camping/mapImage.png}">
+            </section>
+
+            <section class="mapWriteSec">
+                <p class="mapWrite">Map</p>
+            </section>
+        </div>
+
+        <!-- 검색 일자 검색 sec -->
+        <section class="checkCalenderSec">
+
+            <section class="checkSec">
+
+                <form class="submitInputCheck" action="#">
+
+                    <section class="checkDetailSec">
+                        <input class="inputCheck" type="text" placeholder="지역명, 캠핑장을 입력해주세요.">
+                    </section>
+
+                    <section class="checkBtnSec">
+
+                        <div class="checkBtnDiv">
+                            <img class="magnifyImg" th:src="@{/css/images/mdi_magnify.png}">
+                        </div>
+
+                    </section>
+
+                </form>
+
+            </section>
+
+            <section class="calenderSec">
+
+                <div class="celenderDiv">
+
+                    <section class="calImgSec">
+                        <img class="calenderImg" src="/images/calenderIcon.png">
+                    </section>    
+
+                    <section class="inputCalSec">
+                        <input class="inputCal" placeholder="0000-00-00 (월)">
+                    </section>    
+
+                    <section class="tildeSec">
+                        <p style="font-size: 1.5rem;">~</p>
+                    </section>    
+
+                    <section class="inputCalSec">
+                        <input class="inputCal" placeholder="0000-00-00 (월)">
+                    </section>
+
+                </div>
+
+            </section>
+
+        </section>
+
+        <!-- 검색 언더바 sec -->
+        <section class="checkLineSec">
+            <div class="checkLine"></div>
+        </section>
+
+        <!-- 정렬 선택 sec -->
+        <section class="chooseClassificationSec">
+
+            <section class="chooseClassificationBlankSec"></section>
+
+            <section class="chooseClassificationDetailSec">
+                <select class="classificationBtn" name="classification">
+                    <option selected value="current">최신순</option>
+                    <option value="recommend">추천순</option>
+                    <option value="location">거리순</option>
+                </select>
+            </section>
+
+        </section>
+
+        <!-- 컨텐츠 첫 번째 줄 -->
+        <section class="contentSec">
+
+            <section class="contentDetailSec">
+
+                <a th:href="@{/camp/detail}" class="contentImageDiv">
+                    <img class="contentImage" th:src="@{/images/campingImg/1.PNG}">
+                </a>
+
+                <a th:href="@{/camp/detail}" class="contentDetailWriteSec">
+                    <section class="contentDetailWriteSecCenterSec">
+                        제주 신라호텔 글램핑 빌리지
+                    </section>
+                </a>
+
+            </section>
+
+            <section class="contentDetailSec">
+                
+                <div class="contentImageDiv">
+                    <img class="contentImage" src="/images/camp1.png">
+                </div>
+
+                <section class="contentDetailWriteSec">
+                    <section class="contentDetailWriteSecCenterSec">
+                        제주 신라호텔 글램핑 빌리지
+                    </section>
+                </section>
+
+            </section>
+
+            <section class="contentDetailSec">
+                
+                <div class="contentImageDiv">
+                    <img class="contentImage" src="/images/camp1.png">
+                </div>
+
+                <section class="contentDetailWriteSec">
+                    <section class="contentDetailWriteSecCenterSec">
+                        제주 신라호텔 글램핑 빌리지
+                    </section>
+                </section>
+
+            </section>
+
+        </section>
+
+        <section class="contentBlanksec"></section>
+
+        <!-- 컨텐츠 두 번째 줄 -->
+        <section class="contentSec">
+
+            <section class="contentDetailSec">
+
+                <div class="contentImageDiv">
+                    <img class="contentImage" src="/images/camp2.png">
+                </div>
+
+                <section class="contentDetailWriteSec">
+                    <section class="contentDetailWriteSecCenterSec">
+                        제주 신라호텔 글램핑 빌리지
+                    </section>
+                </section>
+
+            </section>
+
+            <section class="contentDetailSec">
+                
+                <div class="contentImageDiv">
+                    <img class="contentImage" src="/images/camp2.png">
+                </div>
+
+                <section class="contentDetailWriteSec">
+
+                    <section class="contentDetailWriteSecCenterSec">
+                        제주 신라호텔 글램핑 빌리지
+                    </section>
+
+                </section>
+
+            </section>
+
+            <section class="contentDetailSec">
+                
+                <div class="contentImageDiv">
+                    <img class="contentImage" src="/images/camp2.png">
+                </div>
+
+                <section class="contentDetailWriteSec">
+
+                    <section class="contentDetailWriteSecCenterSec">
+                        제주 신라호텔 글램핑 빌리지
+                    </section>
+
+                </section>
+
+            </section>
+
+        </section>
+
+        <section class="footBlankSec"></section>
+       
+
+    </main>
+
+    <th:block th:replace="~{common/footer}"></th:block>
+
+</body>
+</html>

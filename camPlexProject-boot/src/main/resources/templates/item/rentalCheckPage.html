@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>렌탈 상품 조회 페이지</title>
+    <link rel="stylesheet" th:href="@{/css/rental/rentalCheckPage.css}">
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    
+    <th:block th:replace="~{common/header}"></th:block>
+    
+    <!-- main -->
+    <main class="main">
+
+        <!-- searchSec -->
+        <section class="searchSec">
+
+            <section class="serchCenterSec">
+
+                <div class="serchDiv">
+
+                    <section class="serchDivTopSec">
+
+                        <section class="itemNameSec">
+                            제품명
+                        </section>
+
+                        <section class="itemSecBlankSec"></section>
+
+                        <section class="itemInputSec">
+
+                            <input class="itemInput" placeholder="제품명을 입력해주세요.">
+
+                        </section>
+
+                    </section>
+
+                    <section class="serchDivBotSec">
+
+                        <section class="priceSec">
+                            가격
+                        </section>
+
+                        <section class="itemSecBlankSec"></section>
+
+                        <section class="priceInputSec">
+
+                            <div class="priceInputDiv">
+
+                                <section class="priceInputDivBlank"></section>
+
+                                <section class="priceInputDetailSec">
+                                    <input class="priceInput" placeholder="10.000">
+                                </section>
+
+                                <section class="wonImgSec">
+                                    <img src="/images/wonImage.png" class="wonImg">
+                                </section>
+
+                                <section class="tildeImgSec">
+                                    ~
+                                </section>
+
+                                <section class="priceInputDetailSec">
+                                    <input class="priceInput" placeholder="10.000">
+                                </section>
+
+                                <section class="wonImgSec">
+                                    <img src="/images/wonImage.png" class="wonImg">
+                                </section>
+
+                            </div>
+
+                        </section>
+
+                        <section class="searchInputSec">
+                            <button class="searchBtn" type="button">Search</button>
+                        </section>
+
+                    </section>        
+
+                </div>
+
+            </section>
+
+        </section>
+
+        <!-- 정렬 Sec -->
+        <section class="classificationSec">
+
+            <section class="chooseClassificationBlankSec"></section>
+
+            <section class="chooseClassificationDetailSec">
+
+                <select class="classificationBtn" name="classification">
+                    <option selected value="current">최신순</option>
+                    <option value="recommend">추천순</option>
+                    <option value="location">거리순</option>
+                </select>
+
+            </section>
+
+        </section>
+
+        <!-- 컨텐츠 Sec -->
+        <section class="contentSec">
+
+            <section class="contentDetailSec">
+
+                <section class="contentImgeSec">
+                    <img src="/images/content1.png" class="contentImg">
+                </section>
+
+                <section class="contentInfoSec">
+
+                    <section class="contentInfo" id="contentTitle">
+                        블랙테일3 (HIBROW ED)
+                    </section>
+    
+                    <section class="contentInfo" id="contentComment">
+                        A형 텐트 업그레이드 버전!
+                    </section>
+    
+                    <section class="contentInfo">
+                        <del>
+                            ￦445,000
+                        </del>
+                    </section>
+    
+                    <section class="contentInfo">
+                        ￦385,000 &ensp; <p style="color: red;">(13%↓)</p>
+                    </section>
+
+                </section>
+
+
+            </section>
+
+            <section class="contentDetailSec">
+
+            </section>
+
+            <section class="contentDetailSec">
+
+            </section>
+
+            <section class="contentDetailSec">
+
+            </section>
+
+        </section>
+
+    </main>
+    
+    <th:block th:replace="~{common/footer}"></th:block>
+
+
+</body>
+</html>

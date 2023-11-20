@@ -51,18 +51,18 @@ public class FileUploadConfig implements WebMvcConfigurer{
 	}
 
 	// 웹에서 사용하는 자원을 다루는 방법을 설정
-//	@Override
-//	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//		
-//		String webPath = "/images/**"; // /images/로 시작되는 모든 요청
-//		
-//		//실제로 자원이 저장되어 있는 로컬 경로
-//		String resourcePath = "file:///C:/uploadImages/";
-//		
-//		// /images/로 시작되는 모든 요청을 resoucePath로 연결
-//		registry.addResourceHandler(webPath).addResourceLocations(resourcePath);
-//	}
-//	
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		
+		String webPath = "/images/**"; // /images/로 시작되는 모든 요청
+		
+		//실제로 자원이 저장되어 있는 로컬 경로
+		String resourcePath = "file:///C:/camplex/finalProject/";
+		
+		// /images/로 시작되는 모든 요청을 resoucePath로 연결
+		registry.addResourceHandler(webPath).addResourceLocations(resourcePath);
+	}
+	
 	
 	
 	
