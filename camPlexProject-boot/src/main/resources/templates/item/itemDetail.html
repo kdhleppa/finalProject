@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제품상세보기에 나중에 프로덕트명같은거정해주기</title>
+    <link rel="stylesheet" th:href="@{/css/productDetail.css}">
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap}" rel="stylesheet">
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}" rel="stylesheet">
+</head>
+<body>
+    <th:block th:replace="~{common/header}"></th:block>
+
+    <div class="container">
+        <div class="emptyContainer"></div>
+
+        <div class="midContainer">
+            <div class="imgContainer">
+                <img src="/img/MILKSOFA_BL_1.jpg" alt="">
+            </div>
+            <div>
+                <form action="#" class="productContentContainer">
+                    <!-- 나중에 불러와서 넣을 값들 대체-->
+                    <h2>MILK SOFA : BLACK</h2>
+                    <p class="firstP">시크한 블랙이 매력적인 밀크 소파</p>
+                    <table class="productContent">
+                        <tr>
+                            <td>기본 렌탈가격</td>
+                            <td>:</td>
+                            <td>₩240,000</td>
+                        </tr>
+                        <tr>
+                            <td>수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;량</td>
+                            <td>:</td>
+                            <td>1&nbsp;&nbsp;<button class="qBtn">+</button>&nbsp;&nbsp;<button class="qBtn">-</button></td>
+                        </tr>
+                        <tr>
+                            <td>여행지 선택</td>
+                            <td>:</td>
+                            <td>
+                                <select name="" id="" class="selectBox">
+                                    <option value="default" class="dfText">여행지를 선택 해 주세요</option>
+                                    <option value="1">Catgill 캠핑장(2023-12-04 ~ 2023-12-07)</option>
+                                    <option value="2">다른 캠핑장(2025-12-04 ~ 2025-12-07)</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="totalPaymentContainer">
+                        <div class="totalTextContainer">
+                            <p>TOTAL</p>
+                        </div>
+                        <div class="paymentTextContainer">
+                            <p>₩240,000</p>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="rentBtn">RENT NOW</button>
+                    <div class="cartWishBtnContainer">
+                        <button class="cartBtn">ADD TO CART</button>
+                        <button class="wishBtn">WISH LIST</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="emptyContainer"></div>
+
+    </div>
+    <th:block th:replace="~{common/footer}"></th:block>
+
+</body>
+</html>
