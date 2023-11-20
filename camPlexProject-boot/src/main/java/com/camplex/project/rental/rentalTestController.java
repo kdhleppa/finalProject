@@ -11,6 +11,6 @@ public class rentalTestController {
 	@GetMapping("/search")
 	public String searchRental() {
 		
-		return "rental/rentalCheckPage";
+		return "item/rentalCheckPage";
 	}
 }

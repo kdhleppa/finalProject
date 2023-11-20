@@ -6,23 +6,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/camp")
-public class campIngCheckPageController {
+public class CampIngCheckPageController {
 	
 	@GetMapping("/search")
 	public String searchCamping() {
 		
-		return "camping/campingCheckPage";
+		return "camp/campingCheckPage";
 	}
 	
 	@GetMapping("/detail")
 	public String campDetail() {
 		
-		return "camping/campingDetail";
+		return "camp/campingDetail";
 	}
 	
 	@GetMapping("/reservation")
 	public String campReservation() {
 		
-		return "camping/campingReservation";
+		return "camp/campingReservation";
 	}
 }
