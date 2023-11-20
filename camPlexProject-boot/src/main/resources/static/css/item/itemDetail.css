@@ -1,0 +1,239 @@
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+/*텍스트 관련*/
+body {
+    font-family: 'HakgyoansimSantteutdotumL', sans-serif;
+}
+
+:lang(en) {
+    font-family: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*border: 1px solid red;*/
+}
+
+.container {
+    display: flex;
+}
+
+/*기본 간격 조절*/
+.emptyContainer {
+    width: 18.75%;
+}
+
+.midContainer {
+    width: 62.5%;
+    min-width: 1200px;
+    display: flex;
+    position: relative;
+}
+
+.midContainer, .emptyContainer {
+    margin-top: 10px;
+}
+
+.imgContainer {
+    width: 712px;
+    
+}
+
+.imgContainer img {
+    max-width:100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.productContent {
+    margin-top: 20px;
+}
+
+.productContentContainer {
+    margin-top: 20px;
+    margin-left: 81px;
+    width: 407px;
+}
+
+.totalPaymentContainer {
+    margin-top: 20px;
+}
+
+
+/*테이블 간격 조절*/
+.productContent {
+    width: 100%;
+}
+
+.productContent td {
+    height: 30px;
+}
+.productContent td:first-child {
+    width: 30%;
+}
+
+.productContent td:nth-child(2){
+    width: 5%;
+}
+.productContent td:last-child {
+    width: 55%;
+}
+
+.selectBox {
+    width: 240px;
+}
+
+.totalPaymentContainer {
+    display: flex;
+}
+
+.totalTextContainer {
+    width: 50%;
+}
+
+.paymentTextContainer {
+    width: 50%;
+}
+
+.cartWishBtnContainer {
+    display: flex;
+}
+
+
+/*+ - 버튼 사이즈*/
+.qBtn {
+    width: 20px;
+}
+
+.rentBtn {
+    margin-top: 20px;
+    width: 407px;
+    background-color: black;
+    height: 40px;
+    color: white;
+    transition-duration: 0.3s;
+    border: none;
+
+}
+
+.rentBtn:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.cartBtn, .wishBtn {
+    width: 203.5px;
+    height: 30px;
+    margin-top: 5px;
+    border-radius: 0px;
+    border: 1px solid gray;
+    transition-duration: 0.3s;
+}
+
+.cartBtn:hover {
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+.wishBtn:hover {
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+.cartBtn {
+    border-right: none;
+}
+
+/*각종 자잘설정*/
+.paymentTextContainer p {
+    text-align: right;
+}
+
+.productContentContainer {
+    position: sticky;
+    top: 200px;
+}
+
+button, a {
+    cursor: pointer;
+}
+
+/* 텍스트 크기 */
+.firstP {
+    font-size: 12px;
+}
+
+
+/*헤더바*/
+.topBar{
+    width: 100%;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+    border-radius: 0 0 10px 10px;
+
+    transition-duration: 0.3s;
+    z-index: 1;
+    position: sticky;
+    top: 0;
+}
+
+.topBar:hover{
+    background-color: rgba(204, 213, 174, 0.5);
+}
+
+.topMenu{
+    width: 100%;
+
+    flex-basis: 5%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.topMenu a{
+    color: #000;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.7rem;
+
+    
+}
+
+.mainTitle{
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 3rem;
+    font-weight: 900;
+
+    margin: 20px 0;
+
+    height: 60px;
+    line-height: 60px;
+    color: #333;
+    letter-spacing: 5px;
+}
+
+.bottomMenu{
+    flex-basis: 45%;
+    display: flex;
+    align-self: center;
+}
+
+.bottomMenu a {
+    color: #000;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 600;
+}

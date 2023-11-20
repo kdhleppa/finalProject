@@ -37,6 +37,7 @@ public class DBConfig {
 		
 	}
 	
+<<<<<<< HEAD
 //	@Bean
 //	public SqlSessionFactory sessionFactory(DataSource dataSource) throws Exception{
 //		
@@ -61,4 +62,32 @@ public class DBConfig {
 //	public DataSourceTransactionManager dataSourceTransactionManager(DataSource dataSource) {
 //		return new DataSourceTransactionManager(dataSource);
 //	}
+=======
+
+	@Bean
+	public SqlSessionFactory sessionFactory(DataSource dataSource) throws Exception{
+		
+		SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
+		sessionFactoryBean.setDataSource(dataSource);
+
+		sessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:/mappers/**.xml"));
+		
+		//sessionFactoryBean.setTypeAliasesPackage("com.camplex.project.member.model.dto");
+		
+		sessionFactoryBean.setConfigLocation(applicationContext.getResource("classpath:mybatis-config.xml"));
+		
+		return sessionFactoryBean.getObject();
+	}
+	
+	@Bean
+	public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sessionFactory) {
+		return new SqlSessionTemplate(sessionFactory);
+	}
+
+	@Bean
+	public DataSourceTransactionManager dataSourceTransactionManager(DataSource dataSource) {
+		return new DataSourceTransactionManager(dataSource);
+	}
+
+>>>>>>> aa392253cf2df9b2e110e8808b1c649bfd78972f
 }

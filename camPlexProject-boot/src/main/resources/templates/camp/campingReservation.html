@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	  <title>캠핑장 상세</title>
+
+    <link rel="stylesheet" th:href="@{/css/camping/CampingReservation.css}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+		<th:block th:replace="~{common/header}"></th:block>
+
+	<main>
+
+     
+        <div id="leftBlank"></div>
+
+        <div id="mainContent">
+
+            <section class="header">
+                <p class="headerTitle">Reservation</p>
+            </section>
+
+            <hr>
+
+            <section class="mainPicArea">
+
+                <div class="campingTitle">
+                    <p class="campingTitleName">Catgill 캠핑장</p>
+                    <p class="campSiteName">잔디구역(A-1)</p>
+                </div>
+
+                <div class="pictureContainer">
+
+                    <div class="thumbsnail">
+                        <div class="thumbsnailContainer">
+                            <img th:src="@{/images/campingImg/1.PNG}" alt="">
+                        </div>
+                    </div>
+
+                    <div class="campingInfoContainer">
+                        <p>상품정보</p>
+                        <hr>
+                        <div class="campingInfo">
+
+                            <div class="campingInfoCategory">
+                                <p>유형</p>
+                                <p>인원</p>
+                                <p>입퇴실 시간</p>
+                                <p>매너타임</p>
+                                <p>가격</p>
+                            </div>
+
+                            <div class="campingInfoDetail">
+                                <p>캠핑</p>
+                                <p>수용인원 4명 / 최대인원 4명</p>
+                                <p>입실 14:00 / 퇴실 12:00</p>
+                                <p>22:00 ~ 07:00</p>
+                                <p id="price">50,000원</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+            
+            <section class="customerArea">
+
+                <div class="customerTitle">
+                    <p>예약자 정보</p>
+                </div>
+
+                <hr>
+
+                <div class="customerInfoContainer">
+
+                    <div class="customerInfoCategory">
+                        
+                        <div>
+                            <p>이름</p>
+                            <p class="mandatory">*</p>
+                        </div>
+                        
+                        <div>
+                            <p>연락처</p>
+                            <p class="mandatory">*</p>
+                        </div>
+                        
+                        <p>숙박 인원</p>
+                        <p>예약 날짜</p>
+                        <p>이메일</p>
+                        <p>요청사항</p>
+                        
+                    </div>
+                    
+                    <div class="customerInfoInput">
+                        
+                        <input type="text" name="customerName" id="">
+                        <input type="tel" name="customerTel" id="" placeholder=" '-'제외 ">
+                        <div>
+                            <img id="adultIcon" class="adultIcon" th:src="@{/images/iconImg/adult.png}" alt="">
+                            <p>4명</p>
+                            <img class="kidIcon" th:src="@{/images/iconImg/adult.png}" alt="">
+                            <p>0명</p>
+                        </div>
+                        <div>
+                            <img class="calIcon" th:src="@{/images/iconImg/cal_icon.png}" alt="">
+                            <input type="date" name="" id="">&nbsp;~&nbsp;<input type="date" name="" id="">
+                        </div>
+                        <input type="email" name="customerEmail" id="">
+                        <textarea name="" id="" cols="50" rows="10" style="resize: none;"></textarea>
+                        
+                    </div>
+                </div>
+                    
+            </section>
+
+
+            <div class="btnArea">
+                <ul>
+                    <li><span class="btn">예약하기</span></li>
+                    <li><span class="btn" onclick="history.back()">돌아가기</span></li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <div id="rightBlank"></div>
+
+
+	</main>
+
+		<th:block th:replace="~{common/footer}"></th:block>
+
+
+</body>
+
+</html>

@@ -1,0 +1,493 @@
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: 1% 500%;
+    unicode-range: U+AC00-D7A3;
+}
+
+*{
+    font-family: 'HakgyoansimSantteutdotumL', 'Montserrat';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+main{
+    display: flex;
+}
+
+hr{
+    margin: 10px 0;
+}
+
+#leftBlank, #rightBlank{
+    flex-basis: 20%;
+}
+
+#mainContent{
+    flex-basis: 60%;
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.headerTitle{
+    font-size: 1.5rem;
+    color: #D4A373;
+    font-weight: lighter;
+}
+
+.headerMenu{
+    display: flex;
+    align-items: flex-end;
+}
+
+.headerMenu > button{
+    background-color: transparent;
+    border: none;
+    margin: 0 1rem;
+    font-size: 1rem;
+}   
+
+/* ------------------------------------------------------------ */
+
+.mainPicArea{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10rem;
+    margin-top: 40px;
+}
+
+.campingTitle{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.campingTitle p {
+    font-size: 2rem;
+}
+
+.starContainer{
+    display: flex;
+    align-items: flex-end;
+}
+
+.starContainer img{
+    width: 20px;
+    margin: 0 1px;
+}
+
+.pictureContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.thumbsnail{
+    flex-basis: 45%;
+    text-align: center;
+}
+
+.thumbsnailContainer{
+    width: 37rem;
+    height: 22rem;
+    margin: 5px;
+    border-radius: 7px;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.thumbsnail img {
+    height: 100%;
+}
+
+.campImg{
+    flex-basis: 55%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.campImgContainer{
+    width: 16rem;
+    height: 10rem;
+    margin: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.campImgContainer img{
+    width: 100%;
+}
+
+/* ------------------------------------------------------ */
+
+.ceoPic{
+    margin-bottom: 5rem;
+}
+
+.ceoPic p{
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.ceoPicSlide{
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    
+}
+
+.arrow{
+    flex-basis: 10%;
+}
+
+.arrow img{
+    width: 50px;
+    cursor: pointer;
+}
+
+.ceoPicSlide button{
+    background-color: transparent;
+    border: transparent;
+    font-size: 1rem;
+}
+
+.ceoPicture{
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.ceoPicSlideBox{
+    display: flex;
+    flex-basis: 80%;
+    transition: 0.5s;
+}
+
+.ceoPictureWrapper{
+    width: 15rem;
+    height: 200px;
+    margin: 0 20px;
+    border-radius: 5px;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ceoPictureWrapper img{
+    height: 100%;
+}
+
+#ceoPicUploadBtn{
+	display: none;
+}
+
+#ceoPicUploadBtnLabel{
+	margin : 0 20px;
+	background-color: rgb(230, 230, 230);
+	padding: 0 10px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition-duration: 0.3s;
+}
+
+#ceoPicUploadBtnLabel:hover{
+	background-color: #909090;
+}
+
+/* ---------------------------------------------------------------- */
+
+.introductionArea {
+    margin-bottom: 10rem;
+}
+
+.introductionArea hr{
+    width: 34rem;
+    color: #909090;
+    margin: 20px 0;
+}
+
+.introductionTitle{
+    font-size: 1.8rem;
+}
+
+.introductionContent{
+    font-size: 1.5rem;
+    
+}
+
+/* --------------------------------------------------------------------  */
+
+.detailsArea{
+    margin-bottom: 6rem;
+}
+
+.detailsArea > hr{
+    width: 34rem;
+    color: #909090;
+    margin: 20px 0;
+}
+
+.detailsTitle{
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+}
+
+.details {
+    display: flex;
+    justify-content: center;
+}
+
+.campMap{
+    flex-basis: 50%;
+    text-align: center;
+}
+
+.campMap img {
+    width: 70%;
+}
+
+.campDetails{
+    flex-basis: 50%;
+    padding-left: 40px;
+}
+
+.facilityArea, .aruondViewArea, .mannerTime{
+    display: flex;
+}
+
+.facilityArea, .aruondViewArea{
+    width: 34rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.campDetails hr{
+    width: 30rem;
+}
+
+.campDetails > div {
+    margin-top: 50px;
+}
+
+.iconWrapper{
+    width: 2rem;
+    margin: 10px 20px;
+    border-radius: 5px;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.campDetails img{
+    width: 100%;
+}
+
+.facilityIcon{
+    display: flex;
+    align-items: center;
+}
+
+.arouundViewIcon{
+    display: flex;
+    align-items: center;
+}
+
+.mannerTime{
+    display: flex;
+    align-items: center;
+}
+
+
+/* ------------------------------------------------------------------------ */
+
+.reservationArea{
+    margin-bottom: 3rem;
+}
+
+.reservationArea > hr{
+    width: 34rem;
+    color: #909090;
+    margin: 20px 0;
+}
+
+.reservationTitle{
+    font-size: 1.8rem;
+    margin-bottom: 3rem;
+}
+
+.travelDate{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.enterDate, .exitDate{
+    display: flex;
+    margin: 4rem 0;
+}
+
+.dateInput{
+    font-size: 1rem;
+}
+
+.travelDate p {
+    font-size: 1.6rem;
+    margin: 0 2rem;
+}
+
+.calender{
+    display: flex;
+    justify-content: center;
+}
+
+.calender img{
+    width: 50rem;
+}
+
+/* ---------------------------------------- */
+.campSiteFrm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.campSite{
+    background-color: #FEFAE0;
+    display: flex;
+    margin: 25px 0;
+    border-radius: 10px;
+    width: 70%;
+}
+
+.campSiteBox{
+    width: 100%;
+    display: flex;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.campSiteImgWrapper{
+    flex-basis: 30%;
+    padding: 30px;
+    width: 100%;
+}
+
+.campSiteImgWrapper img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.campSiteInfoContainer{
+    flex-basis: 70%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.campSiteInfoContainer > p{
+    font-size: 1.5rem;
+}
+
+.campSiteInfo{
+    display: flex;
+    justify-content: space-between;
+}
+
+.campSiteInfoDetail{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;
+}
+
+.campSiteInfoDetail input{
+    background-color: transparent;
+    border: none;
+    font-size: 1.3rem;
+    color: #D4A373;
+    padding: 0 10px;
+}
+
+.campSitePrice{
+    align-self: flex-end;
+    margin-right: 30px;
+    font-size: 1.5rem;
+    color: #d49673;
+}
+
+.campStieRadio{
+    display: none;
+}
+
+.campStieRadio:checked + label{
+    background-color: #FAEDCD;
+}
+
+.btnArea{
+    display: flex;
+    justify-content: flex-end;
+    align-self: flex-end;
+    margin: 50px 0;
+}
+
+.btn{
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+
+.btn { 
+  color: #000;
+  display:inline-block; 
+  margin: 0 30px;
+  text-transform:uppercase; 
+}
+  
+.btn:after {
+  display:block;
+  content: '';
+  border-bottom: solid 1px #000;  
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+  padding-bottom: 5px;
+}
+
+.btn:hover:after { transform: scaleX(1); }
+
+
