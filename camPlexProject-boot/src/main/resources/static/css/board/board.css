@@ -1,6 +1,6 @@
-*{
+* {
     margin: 0;
-    border-style: 2px solid black;
+    /* border: 1px solid black; */
 }
 
 button {
@@ -81,76 +81,150 @@ button {
     font-weight: 600;
 }
 
-/* 메인화면 사이드 번호 */
-
-
-#mainImageNum {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-100%);
-    left: 10px;
+/* 게시판 상단 메뉴 */
+.boardClass {
+    display: flex;
     list-style: none;
-    z-index: 1;
+    margin-top: 40px;
 }
 
-#mainImageNum p {
-    color: white;
-    font-size: 16px;
-    font-style: bolder;
-}
-
-#mainImageNum a {
-    font-family: 'HakgyoansimSantteutdotumL';
-    font-size: 28px;
-    color: white;
-    text-decoration: none;
-}
-
-/* 메인화면 이미지, 가운데 문구 & 버튼 */
-.mainImage > div {
-    height: 100vh;
-}
-
-section > div > img {
-    width: 100%;
-    height: 100%;
-}
-
-.mainImage > div {
-    position: relative;
-}
-
-#p1 {
-    font-family: 'HakgyoansimSantteutdotumL';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate( -50%, -50% );
-    color: white;
-    letter-spacing: 15px;
+.boardClass p {
+    font-size: 15px;
     font-weight: 900;
-    font-size: 25px;
+    margin-top: 4px;
 }
 
-#p2 {
+.boardClass > li > a {
     font-family: 'HakgyoansimSantteutdotumL';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate( -50%, 100% );
-    color: white;
-    font-weight: 600;
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    margin-right: 70px;
+    margin-left: 70px;
 }
 
-#mainbutton {
+.boardTitle p {
     font-family: 'HakgyoansimSantteutdotumL';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate( -50%, 210% );
-    color: white;
-    font-weight: 600;
+    font-size: 30px;
+    margin-left: 12%;
+}
+
+
+.boardTitle {
+    margin-top: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-right: 13%;
+    width: 100%;
+}
+
+/* 검색창 */
+#searchKey {
+    font-family: 'HakgyoansimSantteutdotumL';
+    width: 120px;
+    font-size: 20px;
+    height: 35px;
+}
+
+#boardSearch {
+    display: flex;
+    background-color: transparent
+}
+
+#boardSearch > :nth-child(1) {
     background-color: transparent;
+    border-style: 1px rgb(184, 174, 174);
+}
+
+#boardSearch > :nth-child(2) {
+    border-style: 1px rgb(217, 212, 212);
+    padding: 0;
+    margin-right: 150px;
+}
+
+#searchQuery {
+    margin-left: 20px;
+    border-style: none;
+    outline: none;
+    width: 350px;
+    font-size: 17px;
+    height: 25px;
+    font-family: 'HakgyoansimSantteutdotumL';
+}
+
+#searchIcon {
+    background-color: transparent;
+    border-style: none;
+}
+
+.chkradio {
+    font-family: 'HakgyoansimSantteutdotumL';
+    margin-top: 30px;
+}
+
+#chkNew {
+    margin-left: 12%;
+}
+
+.chkradio > input {
+    margin-left: 20px;
+}
+
+/* 공지사항 리스트 */
+.listWrapper {
+    font-family: 'HakgyoansimSantteutdotumL';
+    width: 100%;
+    height: 65rem;
+}
+
+table {
+    margin-left: 15%;
+    width: 70%;
+    height: 65rem;
+    border-collapse: collapse;
+}
+
+.under {
+    border-bottom: 1px solid black;
+}
+
+.under > :nth-child(1) {
+    text-align: center;
+}
+
+.under > :nth-child(2) {
+    font-size: 20px;
+}
+
+.under > :nth-child(3), .under > :nth-child(4), .under > :last-child {
+    text-align: right;
+}
+
+.btnArea {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#insertBtn {
+    font-family: 'HakgyoansimSantteutdotumL';
+    margin-right: 350px;
+    width: 8rem;
+    height: 4rem;
+    background-color: transparent;
+    border-style: none;
+    font-size: 1.5rem;
+}
+
+.paginationArea {
+    width: 100%;
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style-type: none;
 }
 
 /* footer 부분 */
