@@ -1,0 +1,233 @@
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+/*텍스트 관련*/
+body {
+    font-family: 'HakgyoansimSantteutdotumL', sans-serif;
+}
+
+:lang(en) {
+    font-family: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* border: 1px solid red; */
+}
+
+/*좌우 빈칸 여백*/
+.container {
+    display: flex;
+}
+
+.emptySpace {
+    width: 100px;
+}
+
+.midContainer {
+    width: 1720px;
+}
+
+/*표 간격 조절*/
+.reservationSite td:first-child {
+    width: 150px;
+}
+
+.reservationSite td:last-child {
+    width: 660px;
+}
+
+.reservationSite td {
+    height: 60px;
+}
+
+
+
+
+
+
+
+
+
+
+/*reservation List*/
+.reservationText p {
+    color: #D4A373;
+    font-size: 30px;
+}
+
+.reservationText {
+    
+    border-bottom: 1px solid gray;
+}
+
+
+
+
+/*camNameContainer*/
+.campNameContainer {
+    margin-top: 30px;
+    display: inline-flex;
+    border-bottom: 1px solid gray;
+    align-items: baseline;
+}
+
+.campNameContainer p {
+    margin-left: 20px;
+}
+
+/*사람 아이콘 크기 조절*/
+.adultImg {
+    width: 45px;
+    height: 45px;
+}
+.childImg {
+    width: 30px;
+    height: 30px;
+}
+
+/*페이먼트영역*/
+.payType p, .payMent p {
+    color: #D4A373;
+    font-size: 30px;
+
+}
+
+.payType, .payMent {
+    margin-top: 50px;
+    border-bottom: 1px solid gray;
+    width: 600px;
+}
+
+.payContainer {
+    display: flex;
+}
+
+.payContainer {
+    font-size: 30px;
+}
+
+.payInputContainer {
+    width: 400px;
+    display: flex;
+    align-items: center;
+}
+
+.payBy {
+    line-height: 30px;
+}
+
+.nPayLogo {
+    width: 164px;
+    height: 64px;
+}
+.kPayLogo {
+    width: 175px;
+    height: 72px;
+}
+
+/*인풋래디오크기 키우기*/
+input[type="radio"].payBy {
+    transform: scale(1.5); /* 1.5배 크기로 확대 */
+}
+
+.buttonList {
+    text-align: end;
+    margin-top: 50px;
+}
+
+.Btn {
+    margin-left: 30px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.backBtn {
+    margin-right: 20px;
+    
+}
+
+
+.Btn {
+    color: gray;
+    padding-bottom: 5px;
+    background-color: white;
+    border:none;
+    border-bottom: 1px solid gray; 
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.payContainer {
+    margin-top: 30px;
+}
+
+/*헤더바*/
+.topBar{
+    width: 100%;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+    border-radius: 0 0 10px 10px;
+
+    transition-duration: 0.3s;
+
+    position: sticky;
+    top: 0;
+}
+
+.topBar:hover{
+    background-color: rgba(204, 213, 174, 0.5);
+}
+
+.topMenu{
+    width: 100%;
+
+    flex-basis: 5%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.topMenu a{
+    color: #000;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.7rem;
+
+    
+}
+
+.mainTitle{
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 3rem;
+    font-weight: 900;
+
+    margin: 20px 0;
+
+    height: 60px;
+    line-height: 60px;
+    color: #333;
+    letter-spacing: 5px;
+}
+
+.bottomMenu{
+    flex-basis: 45%;
+    display: flex;
+    align-self: center;
+}
+
+.bottomMenu a {
+    color: #000;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 600;
+}
