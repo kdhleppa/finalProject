@@ -86,7 +86,8 @@ a {
   color: #000;
   display:inline-block; 
   margin:0;
-  text-transform:uppercase; }
+  text-transform:uppercase; 
+}
   
 a:after {
   display:block;

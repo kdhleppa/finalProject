@@ -9,6 +9,6 @@ public class MainController {
 	@RequestMapping("/")
 	public String mainForward() {
 	
-		return "camping/campingDetail";
+		return "common/main";
 	}
 }
