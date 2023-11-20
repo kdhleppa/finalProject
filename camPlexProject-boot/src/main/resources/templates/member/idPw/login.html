@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" th:href="@{/css/common/header.css}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인</title>
 
-    <link rel="stylesheet" href="/CSS/login.css">
+    <link rel="stylesheet" th:href="@{/css/member/idPw/login.css}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,32 +14,7 @@
 </head>
 <body>
     
-    <header class="topBar">
-
-        <div class="topMenu">
-
-            <div class="leftOfTopMenu">
-                <a href="#">COMMUNITY</a>
-                <a href="#">CONTACT</a>
-                <a href="#">ABOUT US</a>
-            </div>
-
-            <div class="rightOfTopMenu">
-                <a href="#">TOP</a>
-            </div>
-            
-        </div>
-        
-        <a class="mainTitle">C A M P L E X </a>
-        
-        <div class="bottomMenu">
-            <a href="#">CAMPING</a>
-            <a href="#">RENTAL</a>
-            <a href="#">BOARD</a>
-            <a href="#">ORDER</a>
-        </div>
-
-    </header>
+    <th:block th:replace="~{common/header}"></th:block>
 
     <main>
         <!-- 공백 (우) -->
@@ -64,9 +39,9 @@
                         
                         <!-- 간편로그인, 로그인버튼 -->
                         <section id="easyLoginBtn">
-                            <img src="/IMG/naverIMG.png">
-                            <img src="/IMG/kakaoIMG.png">
-                            <button class="clickBtn">로그인</button>
+                            <img th:src="@{/images/memberImg/naverIMG.png}">
+                            <img th:src="@{/images/memberImg/kakaoIMG.png}">
+                            <button id="loginBtn">로그인</button>
                         </section>
                         
                         
@@ -77,9 +52,9 @@
                         <section class="empty3"></section>
                         
                         <section id="signUpIdPwBtn">
-                            <button class="clickBtn">회원가입</button>
-                            <button class="clickBtn">ID 찾기</button>
-                            <button class="clickBtn">PW 찾기</button>
+                            <a class="clickBtn" th:href="@{/member/signUp}">회원가입</a>
+                            <a class="clickBtn" th:href="@{/member/searchId}">ID 찾기</a>
+                            <a class="clickBtn" th:href="@{/member/searchPw}">PW 찾기</a>
                         </section>
 
                         <section class="empty3"></section>
