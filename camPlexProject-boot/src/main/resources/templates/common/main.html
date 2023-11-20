@@ -1,101 +1,118 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
+<html lang="en">
 <head>
-	<meta charset="UTF-8">
-	  <title>캠핑장 상세</title>
-
-<<<<<<< HEAD
-	<link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
-    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
-    <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}" rel="stylesheet">
-
-    <link rel="stylesheet" th:href="@{/css/main.css}">
-=======
-    <link rel="stylesheet" href="/css/camping/CampingDetail.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAMPLEX메인</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap"
-        rel="stylesheet">
->>>>>>> aa392253cf2df9b2e110e8808b1c649bfd78972f
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="/css/main.css">
 </head>
-
 <body>
-<<<<<<< HEAD
-	
-	<main>
+    
+    <main>
 
-		<th:block th:replace="~{common/header}"></th:block>
+        <header class="topBar">
 
-		<ul id="mainImageNum">
+            <div class="topMenu">
+        
+                <div class="leftOfTopMenu">
+                    <a href="#">COMMUNITY</a>
+                    <a href="#">CONTACT</a>
+                    <a href="#">ABOUT US</a>
+                </div>
+        
+                <div class="rightOfTopMenu">
+                    <a href="#">TOP</a>
+                </div>
+                
+            </div>
+            
+            <a class="mainTitle">C A M P L E X </a>
+            
+            <div class="bottomMenu">
+                <a href="#">CAMPING</a>
+                <a href="#">RENTAL</a>
+                <a href="#">BOARD</a>
+                <a href="#">ORDER</a>
+            </div>
+        
+        </header>
+
+        <ul id="mainImageNum">
             <li data-menumain="main1" class>
-                <a th:href="@{#main1}">1</a>
+                <a href="#main1">1</a>
             </li>
 
             <p>ㅡ</p>
 
             <li data-menumain="main2" class>
-                <a th:href="@{#main2}">2</a>
+                <a href="#main2">2</a>
             </li>
 
             <p>ㅡ</p>
 
             <li data-menumain="main3" class>
-                <a th:href="@{#main3}">3</a>
+                <a href="#main3">3</a>
             </li>
 
             <p>ㅡ</p>
 
             <li data-menumain="main4" class>
-                <a th:href="@{#main4}">4</a>
+                <a href="#main4">4</a>
             </li>
         </ul>
 
         <section class="mainImage" id="image-slider">
             
             <div id="main1">
-                <img th:src="@{/images/main1.jpg}">
+                <img src="/images/main1.jpg">
                 <p id="p1">CAMPING X RENTAL</p>
                 <p id="p2">볕 좋은 어느 겨울날의 편안한 캠핑</p>
             </div>
             
             <div id="main2">
-                <img th:src="@{/images/main2.jpg}">
+                <img src="/images/main2.jpg">
                 <p id="p1">CAMPING X RENTAL</p>
                 <p id="p2">볕 좋은 어느 겨울날의 편안한 캠핑</p>
                 <button id="mainbutton">캠핑장 보러가기</button>
             </div>
 
             <div id="main3">
-                <img th:src="@{/images/main3.jpg}">
+                <img src="/images/main3.jpg">
                 <p id="p1">CAMPING X RENTAL</p>
                 <p id="p2">볕 좋은 어느 겨울날의 편안한 캠핑</p>
             </div>
 
             <div id="main4">
-                <img th:src="@{/images/main4.jpg}">
+                <img src="/images/main4.jpg">
                 <p id="p1">CAMPING X RENTAL</p>
                 <p id="p2">볕 좋은 어느 겨울날의 편안한 캠핑</p>
             </div>
         </section>
-=======
 
-		<th:block th:replace="~{common/header}"></th:block>
+    </main>
 
-	<main>
+    <footer class="bottomBar">
+        <a class="footerTitle">CAMPLEX</a>
 
->>>>>>> aa392253cf2df9b2e110e8808b1c649bfd78972f
+        <div class="footerMenu">
+            <a href="#">ABOUT US</a> <p class="menuDiv">|</p>
+            <a href="#">AGREEMENT</a> <p class="menuDiv">|</p>
+            <a href="#">GUIDE</a>
+        </div>
 
+        <div class="footerContent">
+            <p>회사명 캠플렉스 주식회사</p>
+            <p>주소 서울특별시 중구 남대문로 120</p>
+            <p>본 사이트내 모든 이미지 및 컨텐츠 등은 저작권법 제4조의 의한 저작물로써</p> 
+            <p>소유권은 CAMPLEX 주식회사 에게 있으며, 무단 도용시 법적인 제재를 받을 수 있습니다.</p>
+        </div>
 
-	</main>
+    </footer>
 
-<<<<<<< HEAD
-=======
-		<th:block th:replace="~{common/footer}"></th:block>
-
->>>>>>> aa392253cf2df9b2e110e8808b1c649bfd78972f
 </body>
-
 </html>
