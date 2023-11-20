@@ -75,8 +75,12 @@
             </section>
 
             <section class="ceoPic">
-
-                <p>CEO's PIC</p>
+			
+                <p>CEO's PIC 
+					<input type="file" id="ceoPicUploadBtn"><label for="ceoPicUploadBtn" id="ceoPicUploadBtnLabel">+</label>
+				</p>
+				
+				
 
                 <div class="ceoPicSlide">
 
@@ -84,25 +88,35 @@
                         <img th:src="@{/images/iconImg/left.png}" alt="">
                     </button>
 
+ 				<div class="ceoPicture">
+                        <div class="ceoPicSlideBox">
+                            
+                            <div class="ceoPicContent">
+                                <div class="ceoPictureWrapper">
+                                    <img th:src="@{/images/campingImg/7.PNG}" alt="">
+                                </div>
+                            </div>
 
-                    <div class="ceoPicture">
+                            <div class="ceoPicContent">
+                                <div class="ceoPictureWrapper">
+                                    <img th:src="@{/images/campingImg/8.PNG}" alt="">
+                                </div>
+                            </div>
 
-                        <div class="ceoPictureWrapper">
-                            <img th:src="@{/images/campingImg/7.PNG}" alt="">
-                        </div>
-                        <div class="ceoPictureWrapper">
-                            <img th:src="@{/images/campingImg/8.PNG}" alt="">
-                        </div>
-                        <div class="ceoPictureWrapper">
-                            <img th:src="@{/images/campingImg/9.PNG}" alt="">
-                        </div>
-                        <div class="ceoPictureWrapper">
-                            <img th:src="@{/images/campingImg/10.PNG}" alt="">
-                        </div>
-                        
+                            <div class="ceoPicContent">
+                                <div class="ceoPictureWrapper">
+                                    <img th:src="@{/images/campingImg/9.PNG}" alt="">
+                                </div>
+                            </div>
 
+                            <div class="ceoPicContent">
+                                <div class="ceoPictureWrapper">
+                                    <img th:src="@{/images/campingImg/10.PNG}" alt="">
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-
 
                     <button type="button" class="arrow">
                         <img th:src="@{/images/iconImg/right.png}" alt="">
@@ -244,7 +258,7 @@
 
             <section>
 
-                <form action="" class="campSiteFrm"> 
+                <form th:action="@{/camp/reservation}" class="campSiteFrm"> 
              
                     <div class="campSite">
 
@@ -327,10 +341,9 @@
 
                     <div class="btnArea">
 
-                        <ul>
-                            <li><span class="btn" onclick="location.href='CampingReservation.html'">다음으로</span></li>
-                            <li><span class="btn" onclick="history.back()">돌아가기</span></li>
-                        </ul>
+                         <button class="btn" onclick="">다음으로</button>
+                         <button type="button" class="btn" onclick="history.back()">돌아가기</button>
+                         
                     </div>
 
                 </form>

@@ -17,7 +17,6 @@
 }
 
 
-
 /* main */
 main {
     width: 100%;
@@ -245,6 +244,7 @@ main {
     width: 100%;
     display: flex;
     justify-content: center;
+    text-decoration: none;
 }
 
 .contentDetailWriteSecCenterSec {

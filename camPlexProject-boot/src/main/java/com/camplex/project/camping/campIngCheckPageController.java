@@ -13,4 +13,16 @@ public class campIngCheckPageController {
 		
 		return "camping/campingCheckPage";
 	}
+	
+	@GetMapping("/detail")
+	public String campDetail() {
+		
+		return "camping/campingDetail";
+	}
+	
+	@GetMapping("/reservation")
+	public String campReservation() {
+		
+		return "camping/campingReservation";
+	}
 }
