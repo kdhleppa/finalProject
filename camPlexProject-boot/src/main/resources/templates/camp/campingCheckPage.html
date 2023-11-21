@@ -13,7 +13,7 @@
 <body>
 
 
-   <th:block th:replace="~{common/header}"></th:block>
+   <th:block th:replace="~{common/headerForContent}"></th:block>
     
     <!-- 메인 -->
     <main>
@@ -98,100 +98,19 @@
         </section>
 
         <!-- 컨텐츠 첫 번째 줄 -->
+			
         <section class="contentSec">
 
-            <section class="contentDetailSec">
+            <section th:each="camp : ${campList}" class="contentDetailSec">
 
-                <a th:href="@{/camp/detail}" class="contentImageDiv">
+                <a th:href="@{/camp/{campNo}(campNo = ${camp.campNo})}" class="contentImageDiv">
                     <img class="contentImage" th:src="@{/images/campingImg/1.PNG}">
                 </a>
 
-                <a th:href="@{/camp/detail}" class="contentDetailWriteSec">
-                    <section class="contentDetailWriteSecCenterSec">
-                        제주 신라호텔 글램핑 빌리지
+                <a th:href="@{/camp/{campNo}(campNo = ${camp.campNo})}" class="contentDetailWriteSec">
+                    <section class="contentDetailWriteSecCenterSec" th:text="${camp.campName}">캠핑장 명
                     </section>
                 </a>
-
-            </section>
-
-            <section class="contentDetailSec">
-                
-                <div class="contentImageDiv">
-                    <img class="contentImage" src="/images/camp1.png">
-                </div>
-
-                <section class="contentDetailWriteSec">
-                    <section class="contentDetailWriteSecCenterSec">
-                        제주 신라호텔 글램핑 빌리지
-                    </section>
-                </section>
-
-            </section>
-
-            <section class="contentDetailSec">
-                
-                <div class="contentImageDiv">
-                    <img class="contentImage" src="/images/camp1.png">
-                </div>
-
-                <section class="contentDetailWriteSec">
-                    <section class="contentDetailWriteSecCenterSec">
-                        제주 신라호텔 글램핑 빌리지
-                    </section>
-                </section>
-
-            </section>
-
-        </section>
-
-        <section class="contentBlanksec"></section>
-
-        <!-- 컨텐츠 두 번째 줄 -->
-        <section class="contentSec">
-
-            <section class="contentDetailSec">
-
-                <div class="contentImageDiv">
-                    <img class="contentImage" src="/images/camp2.png">
-                </div>
-
-                <section class="contentDetailWriteSec">
-                    <section class="contentDetailWriteSecCenterSec">
-                        제주 신라호텔 글램핑 빌리지
-                    </section>
-                </section>
-
-            </section>
-
-            <section class="contentDetailSec">
-                
-                <div class="contentImageDiv">
-                    <img class="contentImage" src="/images/camp2.png">
-                </div>
-
-                <section class="contentDetailWriteSec">
-
-                    <section class="contentDetailWriteSecCenterSec">
-                        제주 신라호텔 글램핑 빌리지
-                    </section>
-
-                </section>
-
-            </section>
-
-            <section class="contentDetailSec">
-                
-                <div class="contentImageDiv">
-                    <img class="contentImage" src="/images/camp2.png">
-                </div>
-
-                <section class="contentDetailWriteSec">
-
-                    <section class="contentDetailWriteSecCenterSec">
-                        제주 신라호텔 글램핑 빌리지
-                    </section>
-
-                </section>
 
             </section>
 
