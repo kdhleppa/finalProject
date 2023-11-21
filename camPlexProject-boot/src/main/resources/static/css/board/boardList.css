@@ -1,0 +1,279 @@
+* {
+    margin: 0;
+    /* border: 1px solid black; */
+}
+
+button {
+    cursor: pointer;
+}
+
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: 1% 500%;
+    unicode-range: U+AC00-D7A3;
+}
+
+/* header 부분 */
+.topBar{
+    width: 100%;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+    border-radius: 0 0 10px 10px;
+
+    transition-duration: 0.3s;
+
+    position: sticky;
+    top: 0;
+}
+
+.topBar:hover{
+    background-color: rgba(204, 213, 174, 0.5);
+}
+
+.topMenu{
+    width: 100%;
+
+    flex-basis: 5%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.topMenu a{
+    color: #000;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.7rem;
+
+    
+}
+
+.mainTitle{
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 3rem;
+    font-weight: 900;
+
+    margin: 20px 0;
+
+    height: 60px;
+    line-height: 60px;
+    color: #333;
+    letter-spacing: 5px;
+}
+
+.bottomMenu{
+    flex-basis: 45%;
+    display: flex;
+    align-self: center;
+}
+
+.bottomMenu a {
+    color: #000;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 600;
+}
+
+/* 게시판 상단 메뉴 */
+.boardClass {
+    display: flex;
+    list-style: none;
+    margin-top: 40px;
+}
+
+.boardClass p {
+    font-size: 15px;
+    font-weight: 900;
+    margin-top: 4px;
+}
+
+.boardClass > li > a {
+    font-family: 'HakgyoansimSantteutdotumL';
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    margin-right: 70px;
+    margin-left: 70px;
+}
+
+.boardTitle p {
+    font-family: 'HakgyoansimSantteutdotumL';
+    font-size: 30px;
+    margin-left: 12%;
+}
+
+
+.boardTitle {
+    margin-top: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-right: 13%;
+    width: 100%;
+}
+
+/* 검색창 */
+#searchKey {
+    font-family: 'HakgyoansimSantteutdotumL';
+    width: 120px;
+    font-size: 20px;
+    height: 35px;
+}
+
+#boardSearch {
+    display: flex;
+    background-color: transparent
+}
+
+#boardSearch > :nth-child(1) {
+    background-color: transparent;
+    border-style: 1px rgb(184, 174, 174);
+}
+
+#boardSearch > :nth-child(2) {
+    border-style: 1px rgb(217, 212, 212);
+    padding: 0;
+    margin-right: 150px;
+}
+
+#searchQuery {
+    margin-left: 20px;
+    border-style: none;
+    outline: none;
+    width: 350px;
+    font-size: 17px;
+    height: 25px;
+    font-family: 'HakgyoansimSantteutdotumL';
+}
+
+#searchIcon {
+    background-color: transparent;
+    border-style: none;
+}
+
+.chkradio {
+    font-family: 'HakgyoansimSantteutdotumL';
+    margin-top: 30px;
+}
+
+#chkNew {
+    margin-left: 12%;
+}
+
+.chkradio > input {
+    margin-left: 20px;
+}
+
+/* 공지사항 리스트 */
+.listWrapper {
+    font-family: 'HakgyoansimSantteutdotumL';
+    width: 100%;
+    height: 65rem;
+}
+
+table {
+    margin-left: 15%;
+    width: 70%;
+    height: 65rem;
+    border-collapse: collapse;
+}
+
+.under {
+    border-bottom: 1px solid black;
+}
+
+.under > :nth-child(1) {
+    text-align: center;
+}
+
+.under > :nth-child(2) {
+    font-size: 20px;
+}
+
+.under > :nth-child(3), .under > :nth-child(4), .under > :last-child {
+    text-align: right;
+}
+
+.btnArea {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#insertBtn {
+    font-family: 'HakgyoansimSantteutdotumL';
+    margin-right: 350px;
+    width: 8rem;
+    height: 4rem;
+    background-color: transparent;
+    border-style: none;
+    font-size: 1.5rem;
+}
+
+.paginationArea {
+    width: 100%;
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style-type: none;
+}
+
+/* footer 부분 */
+.bottomBar { 
+    width: 100%;
+    margin-top: 120px;
+    margin-bottom: 120px;
+    font-family: 'HakgyoansimSantteutdotumL';
+    font-weight: 900;
+    line-height: 30px;
+    
+}
+
+.bottomBar > a, .bottomBar > div {
+    margin-left: 120px;
+}
+
+.footerTitle {
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 2rem;
+    font-weight: 1000;
+
+    height: 60px;
+    line-height: 60px;
+    color: #333;
+    letter-spacing: 3px;
+}
+
+.footerMenu {
+    display: flex;
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 900;
+
+    color: #333;
+    letter-spacing: 1px;
+}
+
+.footerMenu a {
+    text-decoration: none;
+}
+
+.menuDiv {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.footerContent {
+    letter-spacing: 1px;
+}

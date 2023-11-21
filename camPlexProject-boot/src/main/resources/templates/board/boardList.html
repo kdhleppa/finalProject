@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${boardName}">게시판이름</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/92fbd4b351.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/css/board.css">
+</head>
+<body>
+    
+    <main>
+
+        <th:block th:replace="~{common/header}"></th:block>
+
+        <ul class="boardClass">
+            <li id="allboard">
+                <a href="#">자유</a>
+            </li>
+
+            <p>|</p>
+
+            <li id="board">
+                <a href="#">질문</a>
+            </li>
+
+            <p>|</p>
+
+            <li id="checkboard">
+                <a href="#">정보공유</a>
+            </li>
+
+            <p>|</p>
+
+            <li id="eventboard">
+                <a href="#">CEO</a>
+            </li>
+        </ul>
+
+        <section class="boardTitle">
+            <p>자유게시판</p>
+
+            <!-- 검색창 -->
+            <form action="${boardCode}" method="get" id="boardSearch">
+
+                <select name="key" id="searchKey">
+                    <option value="t">제목</option>
+                    <option value="c">내용</option>
+                    <option value="tc">제목+내용</option>
+                    <option value="w">작성자</option>
+                </select>
+
+                <fieldset id="searchField">
+                    <input type="text" name="query" id="searchQuery" placeholder="검색어를 입력해주세요.">
+                    <button id="searchIcon" class="fa-solid fa-magnifying-glass"></button>
+                </fieldset>
+
+            </form>
+        </section>
+
+        <hr style="margin-top: 20px; margin-left: 8%; width: 84%; margin-right: 40%;">
+
+        <section class="chkradio">
+            <input type="radio" name="typeCheck" class="chk" id="chkNew" value="new">최신 순
+            <input type="radio" name="typeCheck" class="chk" id="chkCOunt" value="count">조회 순
+            <input type="radio" name="typeCheck" class="chk" id="chkLike" value="like">좋아요 순
+        </section>
+
+        <section class="boardList">
+            
+            <br>
+
+            <c:if test="${not empty param.query}">
+                <h3 style="margin: 100px; margin-left: 300px;">"${param.query}" 검색 결과</h3>
+            </c:if>			
+            
+            <div class="listWrapper">
+                <table class="listTable">
+                    
+                    <tbody>
+                        <c:choose>
+
+                            <c:when test="${empty boardList}">
+                                <!-- 게시글 목록 조회 결과가 비어있다면 -->
+                                    <tr>
+                                        <th colspan="6">게시글이 존재하지 않습니다.</th>
+                                    </tr>
+                            </c:when>
+                            
+                            <c:otherwise>
+                            
+                                <c:forEach items="${boardList}" var="board">
+                                    <!-- 게시글 목록 조회 결과가 있다면 -->
+                                    <tr class="under">
+                                        <td>게시판</td>
+                                        <td>게시판 제목입니다</td>
+                                        <td>좋아요 수</td>
+                                        <td>조회수</td>
+                                        <td>작성일</td>
+                                    </tr>
+
+                                    <tr class="under">
+                                        <td>게시판</td>
+                                        <td>게시판 제목입니다</td>
+                                        <td>좋아요 수</td>
+                                        <td>조회수</td>
+                                        <td>작성일</td>
+                                    </tr>
+
+                                    <tr class="under">
+                                        <td>게시판</td>
+                                        <td>게시판 제목입니다</td>
+                                        <td>좋아요 수</td>
+                                        <td>조회수</td>
+                                        <td>작성일</td>
+                                    </tr>
+
+                                    <tr class="under">
+                                        <td>게시판</td>
+                                        <td>게시판 제목입니다</td>
+                                        <td>좋아요 수</td>
+                                        <td>조회수</td>
+                                        <td>작성일</td>
+                                    </tr>
+
+                                    <tr class="under">
+                                        <td>게시판</td>
+                                        <td>게시판 제목입니다</td>
+                                        <td>좋아요 수</td>
+                                        <td>조회수</td>
+                                        <td>작성일</td>
+                                    </tr>
+
+                                    <tr class="under">
+                                        <td>게시판</td>
+                                        <td>게시판 제목입니다</td>
+                                        <td>좋아요 수</td>
+                                        <td>조회수</td>
+                                        <td>작성일</td>
+                                    </tr>
+
+                                    <tr class="under">
+                                        <td>게시판</td>
+                                        <td>게시판 제목입니다</td>
+                                        <td>좋아요 수</td>
+                                        <td>조회수</td>
+                                        <td>작성일</td>
+                                    </tr>
+
+                                    <tr class="under">
+                                        <td>게시판</td>
+                                        <td>게시판 제목입니다</td>
+                                        <td>좋아요 수</td>
+                                        <td>조회수</td>
+                                        <td>작성일</td>
+                                    </tr>
+
+                                    <tr class="under">
+                                        <td>게시판</td>
+                                        <td>게시판 제목입니다</td>
+                                        <td>좋아요 수</td>
+                                        <td>조회수</td>
+                                        <td>작성일</td>
+                                    </tr>
+
+                                    <tr class="under">
+                                        <td>게시판</td>
+                                        <td>게시판 제목입니다</td>
+                                        <td>좋아요 수</td>
+                                        <td>조회수</td>
+                                        <td>작성일</td>
+                                    </tr>
+
+
+                                </c:forEach>
+                                
+                            </c:otherwise>
+                        </c:choose>
+                    
+                    </tbody>
+                    
+                </table>
+                
+            </div>
+
+            <div class="btnArea">
+
+                <!-- 로그인 상태일 경우 글쓰기 버튼 노출 -->
+                <c:if test="${not empty loginMember}">
+                    <button id="insertBtn">글쓰기</button>                     
+                </c:if>
+
+            </div>
+
+            <div class="paginationArea">
+
+
+                <ul class="pagination">
+                
+                    <!-- 첫 페이지로 이동 -->
+                    <li><a href="/board/${boardCode}?cp=1${kq}">&lt;&lt;</a></li>
+
+                    <!-- 이전 목록 마지막 번호로 이동 -->
+                    <li><a href="/board/${boardCode}?cp=${pagination.prevPage}${kq}">&lt;</a></li>
+
+                    
+                    <!-- 특정 페이지로 이동 -->
+                    <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
+                        <c:choose>
+
+                            <c:when test="${i == pagination.currentPage}">
+                                <li><a class="current">${i}</a></li>
+                            </c:when>
+                            
+                            <c:otherwise>
+                                <li><a href="/board/${boardCode}?cp=${i}${kq}">${i}</a></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                    
+                    <!-- 다음 목록 시작 번호로 이동 -->
+                    <li><a href="/board/${boardCode}?cp=${pagination.nextPage}${kq}">&gt;</a></li>
+
+                    <!-- 끝 페이지로 이동 -->
+                    <li><a href="/board/${boardCode}?cp=${pagination.maxPage}${kq}">&gt;&gt;</a></li>
+                    
+                </ul>
+            </div>
+
+        </section>
+    </section>
+        
+    </main>
+
+    <footer class="bottomBar">
+        <a class="footerTitle">CAMPLEX</a>
+
+        <div class="footerMenu">
+            <a href="#">ABOUT US</a> <p class="menuDiv">|</p>
+            <a href="#">AGREEMENT</a> <p class="menuDiv">|</p>
+            <a href="#">GUIDE</a>
+        </div>
+
+        <div class="footerContent">
+            <p>회사명 캠플렉스 주식회사</p>
+            <p>주소 서울특별시 중구 남대문로 120</p>
+            <p>본 사이트내 모든 이미지 및 컨텐츠 등은 저작권법 제4조의 의한 저작물로써</p> 
+            <p>소유권은 CAMPLEX 주식회사 에게 있으며, 무단 도용시 법적인 제재를 받을 수 있습니다.</p>
+        </div>
+
+    </footer>
+
+
+</body>
+</html>

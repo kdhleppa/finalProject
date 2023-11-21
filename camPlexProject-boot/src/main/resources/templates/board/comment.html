@@ -1,0 +1,62 @@
+<div id="commentArea">
+    <!-- 댓글 목록 -->
+    <div class="comment-list-area">
+        
+        <ul id="commentList">
+        
+	            <!-- 부모/자식 댓글 -->
+	            <li class="comment-row"
+					th:each="comment : ${board.commentList}"
+					th:classappend="${comment.parentNo} != 0 ? child-comment"
+					th:object="${comment}"
+				>
+	                
+	                <p class="comment-writer">
+	
+	                    <!-- 프로필 이미지 -->
+						<!-- 없을 경우 기본 이미지 -->
+	                    <img th:unliss="*{profileImage}" th:src="@{/images/user.png}">
+
+						<!-- 있을 경우 프로필 이미지 -->
+						<img th:if="*{profileImage}" th:src="*{profileImage}">
+						
+	                    <!-- 닉네임 -->
+	                    <span>[[*{memberNickname}]]</span>
+	                    
+	                    <!-- 작성일 -->
+	                    <span class="comment-date" th:text="*{commentCreateDate}">작성일</span>
+	                </p>
+	                
+	                <!-- 댓글 내용 -->
+	                <p class="comment-content" th:text="*{commentContent}">내용</p>
+	
+	
+	                <!-- 버튼 영역 -->
+	                <div class="comment-btn-area">
+	                    <button th:onclick="|showInsertComment(*{commentNo}, this)|">답글</button>   
+	                        
+	                    <!-- 로그인 회원과 댓글 작성자가 같은 경우 -->  
+	                    <th:block th:if="${session.loginMember?.memberNo == comment.memberNo}">
+		                    <button th:onclick="|showUpdateComment(*{commentNo}, this)|">수정</button>     
+		                    <button th:onclick="|deleteComment(*{commentNo})|">삭제</button>
+	                    </th:block>
+	                    
+	                </div>
+	            </li>
+        	
+
+        </ul>
+    </div>
+    
+
+    <!-- 댓글 작성 부분 -->
+    <div class="comment-write-area">
+        <textarea id="commentContent"></textarea>
+        <button id="addComment">
+            댓글<br>
+            등록
+        </button>
+ 
+    </div>
+
+</div>
