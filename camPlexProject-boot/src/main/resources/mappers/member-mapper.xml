@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- namespace를 Mapper 인터페이스로 지정 -->
+<mapper namespace="com.camplex.project.member.mappers.MemberMapper">
+	
+	<resultMap type="Member" id="member_rm">
+		<id property="memberNo" column="MEMBER_NO" />
+		<result property="memberEmail" column="MEMBER_EMAIL" />
+		<result property="memberPw" column="MEMBER_PW" />
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="memberNickname" column="MEMBER_NICKNAME" />
+		<result property="memberPhone" column="MEMBER_PHONE" />
+		<result property="memberProfileImg" column="MEMBER_PROFILE_IMG" />
+		<result property="memberDelFl" column="MEMBER_DEL_FL" />
+		<result property="memberType" column="MEMBER_TYPE" />
+		<result property="enrollDate" column="ENROLL_DATE" />
+	</resultMap>
+
+	<!-- 로그인 -->
+	<select id="login" resultMap="member_rm">
+		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_PW, MEMBER_NAME, MEMBER_NICKNAME,
+		MEMBER_PHONE, MEMBER_PROFILE_IMG, MEMBER_TYPE,
+		TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DATE
+		FROM "MEMBER"
+		WHERE MEMBER_DEL_FL = 'N'
+		AND MEMBER_EMAIL = #{memberEmail}
+	</select>
+	
+	
+</mapper>

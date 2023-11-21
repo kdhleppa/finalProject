@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:href="@{/css/common/header.css}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,8 @@
 </head>
 <body>
     
-    <th:block th:replace="~{common/header}"></th:block>
+	<th:block th:replace="~{common/header}"></th:block>
+
 
     <main>
         <!-- 공백 (우) -->
@@ -22,7 +23,7 @@
         
         <section id="loginForm">
 			
-			<form>
+			<form th:action="@{/member/login}" method="post" name="login-form" id="loginFrm">
 	
 	            <section id="headerName">로그인</section>
 	            <hr id="underLine"/>
@@ -33,8 +34,8 @@
 	                <!-- 아이디, 비번 입력 -->
 	                <section id="inputIdPw">
 						
-	                    <input id="inputId" type="email" placeholder="아이디 (이메일)">
-	                    <input id="inputPw" type="password" placeholder="비밀번호">
+	                    <input id="inputId" name="memberEmail" type="email" placeholder="아이디 (이메일)">
+	                    <input id="inputPw" name="memberPw" type="password" placeholder="비밀번호">
 	
 	                    <section id="loginBtnSection">
 	                        <section class="empty3"></section>
@@ -43,7 +44,7 @@
 	                        <section id="easyLoginBtn">
 	                            <img th:src="@{/images/memberImg/naverIMG.png}">
 	                            <img th:src="@{/images/memberImg/kakaoIMG.png}">
-	                            <button id="loginBtn">로그인</button>
+	                            <button type="submit" id="loginBtn">로그인</button>
 	                        </section>
 	                        
 	                        
@@ -75,6 +76,8 @@
         <!-- 공백 (좌) -->
         <section class="empty1"></section>
     </main>
+    
+	<script th:src="@{/js/member/login.js}"></script>
 
 </body>
 </html>

@@ -24,9 +24,34 @@ a {
     text-decoration: none;
 }
 
+button { 
+  color: #000;
+  display:inline-block; 
+  margin:0;
+  text-transform:uppercase; 
+}
+  
+button:after {
+  display:block;
+  content: '';
+  border-bottom: solid 1px #000;
+  margin-top: 5px;
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+}
+
+button:hover:after { 
+	transform: scaleX(1);
+}
+
 button:hover {
     cursor: pointer;
 }
+
+input:focus {
+	outline: none;
+}
+
 
 main, div, section {
     /* border: 1px solid black; */
@@ -152,8 +177,11 @@ main {
 #inputTel::placeholder {
     font-size: 11px;
 }
+#inputAuthkey::placeholder {
+    font-size: 11px;
+}
 
-#inputName, #inputTel {
+#inputName, #inputTel, #inputAuthkey{
     height: 30px;
     border: none;
     border-bottom: 2px solid black;
@@ -163,6 +191,16 @@ main {
 
 #inputTel {
     margin-top: 50px;
+}
+
+#inputAuthkey {
+	margin-top: 30px;
+}
+
+.authkeySendMassage {
+    font-size: 13px;
+    margin-top: 5px;
+    margin-left: 8px;
 }
 
 /* ------------------------------------ */
@@ -187,6 +225,28 @@ main {
 .clickBtn {
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid black;
     font-size: 17px;
+}
+
+/* --------------------------------- */
+/* 이메일 인증, 확인 버튼 */
+#numberCheckBtnSection {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.emailCheckBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+    margin-left: 10px;
+}
+
+#sendAuthkey {
+	margin-top: 83px;
+}
+
+#checkNumber {
+    margin-top: 55px;
 }
