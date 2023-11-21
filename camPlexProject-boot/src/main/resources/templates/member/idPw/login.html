@@ -21,58 +21,59 @@
         <section class="empty1"></section>
         
         <section id="loginForm">
-
-            <section id="headerName">로그인</section>
-            <hr id="underLine"/>
-            
-            <section id="inputInfo">
-
-                <section class="empty2"></section>
-                <!-- 아이디, 비번 입력 -->
-                <section id="inputIdPw">
-
-                    <input id="inputId" type="email" placeholder="아이디 (이메일)">
-                    <input id="inputPw" type="password" placeholder="비밀번호">
-
-                    <section id="loginBtnSection">
-                        <section class="empty3"></section>
-                        
-                        <!-- 간편로그인, 로그인버튼 -->
-                        <section id="easyLoginBtn">
-                            <img th:src="@{/images/memberImg/naverIMG.png}">
-                            <img th:src="@{/images/memberImg/kakaoIMG.png}">
-                            <button id="loginBtn">로그인</button>
-                        </section>
-                        
-                        
-                        <section class="empty3"></section>
-                    </section>
-                    
-                    <section id="signUpIdPwSection">
-                        <section class="empty3"></section>
-                        
-                        <section id="signUpIdPwBtn">
-                            <a class="clickBtn" th:href="@{/member/signUp}">회원가입</a>
-                            <a class="clickBtn" th:href="@{/member/searchId}">ID 찾기</a>
-                            <a class="clickBtn" th:href="@{/member/searchPw}">PW 찾기</a>
-                        </section>
-
-                        <section class="empty3"></section>
-                    </section>
-
-                </section>
-                <section class="empty2"></section>
-                
-
-            </section>
-
-
-
+			
+			<form>
+	
+	            <section id="headerName">로그인</section>
+	            <hr id="underLine"/>
+	            
+	            <section id="inputInfo">
+	
+	                <section class="empty2"></section>
+	                <!-- 아이디, 비번 입력 -->
+	                <section id="inputIdPw">
+						
+	                    <input id="inputId" type="email" placeholder="아이디 (이메일)">
+	                    <input id="inputPw" type="password" placeholder="비밀번호">
+	
+	                    <section id="loginBtnSection">
+	                        <section class="empty3"></section>
+	                        
+	                        <!-- 간편로그인, 로그인버튼 -->
+	                        <section id="easyLoginBtn">
+	                            <img th:src="@{/images/memberImg/naverIMG.png}">
+	                            <img th:src="@{/images/memberImg/kakaoIMG.png}">
+	                            <button id="loginBtn">로그인</button>
+	                        </section>
+	                        
+	                        
+	                        <section class="empty3"></section>
+	                    </section>
+	                    
+	                    <section id="signUpIdPwSection">
+	                        <section class="empty3"></section>
+	                        
+	                        <section id="signUpIdPwBtn">
+	                            <a class="clickBtn" th:href="@{/member/signUp}">회원가입</a>
+	                            <a class="clickBtn" th:href="@{/member/searchId}">ID 찾기</a>
+	                            <a class="clickBtn" th:href="@{/member/searchPw}">PW 찾기</a>
+	                        </section>
+	
+	                        <section class="empty3"></section>
+	                    </section>
+	
+	                </section>
+	                <section class="empty2"></section>
+	                
+	
+	            </section>
+	
+			</form>
+			
         </section>
         
         <!-- 공백 (좌) -->
         <section class="empty1"></section>
-
     </main>
 
 </body>
