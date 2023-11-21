@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" th:href="@{/css/common/header.css}">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,8 +58,9 @@
                 <section id="inputEmailAuthekey">
 
                     <input id="inputEmail" type="email" placeholder="이메일">
-                    <p id="authkeySendMassage">인증번호가 발송되었습니다.</p>
+                    <p class="authkeySendMassage">인증번호가 발송되었습니다.</p>
                     <input id="inputAuthkey" type="text" placeholder="인증번호">
+                    <p class="authkeySendMassage">인증 되었습니다.</p>
 
                     <section id="searchIdBtnSection">
                         <section class="empty3"></section>
@@ -75,7 +76,7 @@
 
                 </section>
                 <section class="empty2" id="emailCheckBtnSection">
-                    <button class="emailCheckBtn">인증</button>
+                    <button class="emailCheckBtn" id="sendAuthkey">인증</button>
                     <button class="emailCheckBtn" id="checkEmail">확인</button>
                 </section>
 
