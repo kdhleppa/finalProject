@@ -5,13 +5,13 @@
 	<meta charset="UTF-8">
 	  <title>캠핑장 상세</title>
 
-    <link rel="stylesheet" th:href="@{/css/camping/CampingDetail.css}">
+    <link rel="stylesheet" th:href="@{/css/camp/CampingDetail.css}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap"
         rel="stylesheet">
-
+	<link rel="icon" th:href="@{/images/iconImg/favicon.png}">
 </head>
 
 <body>
@@ -27,8 +27,8 @@
             <section class="header">
                 <p class="headerTitle">Information</p>
                 <div class="headerMenu">
-                    <button>WISH LIST</button>
-                    <button>1:1 문의</button>
+                    <a>WISH LIST</a>
+                    <a>1:1 문의</a>
                 </div>
             </section>
 
@@ -84,7 +84,7 @@
 
                 <div class="ceoPicSlide">
 
-                    <button type="button" class="arrow">
+                    <button type="button" class="arrow" id="left">
                         <img th:src="@{/images/iconImg/left.png}" alt="">
                     </button>
 
@@ -95,30 +95,55 @@
                                 <div class="ceoPictureWrapper">
                                     <img th:src="@{/images/campingImg/7.PNG}" alt="">
                                 </div>
+                                <button type="button" id="ceoPicDeleteBtn">삭제</button>	
                             </div>
 
                             <div class="ceoPicContent">
                                 <div class="ceoPictureWrapper">
                                     <img th:src="@{/images/campingImg/8.PNG}" alt="">
                                 </div>
+                                 <button type="button" id="ceoPicDeleteBtn">삭제</button>
                             </div>
 
                             <div class="ceoPicContent">
                                 <div class="ceoPictureWrapper">
                                     <img th:src="@{/images/campingImg/9.PNG}" alt="">
                                 </div>
+                                 <button type="button" id="ceoPicDeleteBtn">삭제</button>
                             </div>
 
                             <div class="ceoPicContent">
                                 <div class="ceoPictureWrapper">
                                     <img th:src="@{/images/campingImg/10.PNG}" alt="">
                                 </div>
+                                 <button type="button" id="ceoPicDeleteBtn">삭제</button>
+                            </div>
+
+                            <div class="ceoPicContent">
+                                <div class="ceoPictureWrapper">
+                                    <img th:src="@{/images/campingImg/10.PNG}" alt="">
+                                </div>
+                                 <button type="button" id="ceoPicDeleteBtn">삭제</button>
+                            </div>
+
+                            <div class="ceoPicContent">
+                                <div class="ceoPictureWrapper">
+                                    <img th:src="@{/images/campingImg/10.PNG}" alt="">
+                                </div>
+                                 <button type="button" id="ceoPicDeleteBtn">삭제</button>
+                            </div>
+
+                            <div class="ceoPicContent">
+                                <div class="ceoPictureWrapper">
+                                    <img th:src="@{/images/campingImg/10.PNG}" alt="">
+                                </div>
+                                 <button type="button" id="ceoPicDeleteBtn">삭제</button>
                             </div>
 
                         </div>
                     </div>
 
-                    <button type="button" class="arrow">
+                    <button type="button" class="arrow" id="right">
                         <img th:src="@{/images/iconImg/right.png}" alt="">
                     </button>
 
@@ -358,7 +383,7 @@
 
 		<th:block th:replace="~{common/footer}"></th:block>
 
-
+		<script th:src="@{/js/camp/CampingDetail.js}"></script>
 </body>
 
 </html>
