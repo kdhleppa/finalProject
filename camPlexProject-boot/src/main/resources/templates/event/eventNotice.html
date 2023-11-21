@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트공지내용</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/92fbd4b351.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="/css/event/eventNotice.css">
+</head>
+<body>
+    
+    <main>
+
+        <header class="topBar">
+
+            <div class="topMenu">
+        
+                <div class="leftOfTopMenu">
+                    <a href="#">COMMUNITY</a>
+                    <a href="#">CONTACT</a>
+                    <a href="#">ABOUT US</a>
+                </div>
+        
+                <div class="rightOfTopMenu">
+                    <a href="#">TOP</a>
+                </div>
+                
+            </div>
+            
+            <a class="mainTitle">C A M P L E X </a>
+            
+            <div class="bottomMenu">
+                <a href="#">CAMPING</a>
+                <a href="#">RENTAL</a>
+                <a href="#">BOARD</a>
+                <a href="#">ORDER</a>
+            </div>
+        
+        </header>
+
+        <ul class="eventClass">
+            <li id="allevent">
+                <a href="#">전체</a>
+            </li>
+
+            <p>|</p>
+
+            <li id="event">
+                <a href="#">공지</a>
+            </li>
+
+            <p>|</p>
+
+            <li id="checkevent">
+                <a href="#">점검</a>
+            </li>
+
+            <p>|</p>
+
+            <li id="eventevent">
+                <a href="#">이벤트</a>
+            </li>
+        </ul>
+
+        <section class="eventTitle">
+            <p>공지사항</p>
+
+        </section>
+
+        <hr style="margin-top: 20px; margin-left: 8%; width: 84%; margin-right: 40%;">
+
+        <section class="eventNotice">
+            
+            <div class="eventDeLeft">
+                <p>이벤트</p>
+            </div>
+
+            <div class="eventDeTitle">
+                <p>신규 이벤트 행운의 룰렛 안내</p>
+                <p id="createDate">2023.11.08</p>
+                <hr style="margin-top: 20px; width: 65rem;">
+                
+                <div class="eventContent">
+                    <br>
+                    <p>안녕하세요, CAMPLEX입니다.<br><br>
+                        11월 8일(목) 부터 행운의 룰렛 이벤트가 진행됩니다.<br>
+                        많은 관심과 참여 부탁드립니다.<br><br><br>
+                    
+                    
+                        [이벤트 기간]
+                        2023-11-08(수) 06:00 ~ 2023-11-18(수) 10:00<br><br>
+                        
+                        [이벤트 내용]<br>
+                        룰렛을 돌려서 쿠폰 획득<br>
+                        로그인된 회원 기준 하루에 1회 참여 가능<br><br>
+                        
+                        [주의사항]<br>
+                        이벤트가 진행되는 동안 획득하는 쿠폰은 안내된 유효 기간 내에 사용이 가능합니다.<br><br>
+                    
+                        [쿠폰 유효기간]<br>
+                        2023-12-22(금) 00:00 까지</p>
+                </div>
+            </div>
+
+            <div class="eventDeRight">
+                <p>조회수</p>
+                <button id="listBtn">목록으로</button>
+            </div>
+
+        </section>
+
+            <hr style="margin-top: 20px; margin-left: 8%; width: 84%; margin-right: 40%;">
+
+            <div class="btnArea">
+
+                <!-- 로그인한 회원과 게시글 작성자 번호가 같은 경우 -->
+                <c:if test="${loginMember.memberNo == board.memberNo}">
+                    <button id="deleteBtn">삭제하기</button>                     
+                </c:if>
+
+                <c:if test="${loginMember.memberNo == board.memberNo}">
+                    <button id="updateBtn">수정하기</button>                     
+                </c:if>
+
+            </div>
+
+        
+    </main>
+
+    <footer class="bottomBar">
+        <a class="footerTitle">CAMPLEX</a>
+
+        <div class="footerMenu">
+            <a href="#">ABOUT US</a> <p class="menuDiv">|</p>
+            <a href="#">AGREEMENT</a> <p class="menuDiv">|</p>
+            <a href="#">GUIDE</a>
+        </div>
+
+        <div class="footerContent">
+            <p>회사명 캠플렉스 주식회사</p>
+            <p>주소 서울특별시 중구 남대문로 120</p>
+            <p>본 사이트내 모든 이미지 및 컨텐츠 등은 저작권법 제4조의 의한 저작물로써</p> 
+            <p>소유권은 CAMPLEX 주식회사 에게 있으며, 무단 도용시 법적인 제재를 받을 수 있습니다.</p>
+        </div>
+
+    </footer>
+
+
+</body>
+</html>
