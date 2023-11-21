@@ -20,9 +20,7 @@
 
         <ul id="mainImageNum">
             <li data-menumain="main1" class>
-
                 <a th:href="@{main1}">1</a>
-
             </li>
 
             <p>ㅡ</p>
@@ -42,40 +40,52 @@
             <li data-menumain="main4" class>
                 <a th:href="@{main4}">4</a>
             </li>
+            
         </ul>
 
         <section class="mainImage" id="image-slider">
             
             <div class="mainContent" id="main1">
                 <img th:src="@{/images/campingImg/main.jpg}">
-                <p id="p1">CAMPING X RENTAL</p>
-                <p id="p2">볕 좋은 어느 겨울날의 편안한 캠핑</p>
+                <p id="p1">CAMPING X RENTAL <br>
+                	<p id="p2">별 좋은 어느 겨울날의 편안한 캠핑</p>
+                	<button id="mainbutton">캠핑장 보러가기</button>
+                </p>
             </div>
             
             <div class="mainContent" id="main2">
                 <img th:src="@{/images/campingImg/main2.jpg}">
-                <p id="p1">CAMPING X RENTAL</p>
-                <p id="p2">볕 좋은 어느 겨울날의 편안한 캠핑</p>
-                <button id="mainbutton">캠핑장 보러가기</button>
+                <p id="p1">CAMPING X RENTAL <br>
+                	<p id="p2">별 좋은 어느 겨울날의 편안한 캠핑</p>
+                	<button id="mainbutton">캠핑장 보러가기</button>
+                </p>
             </div>
 
             <div class="mainContent" id="main3">
                 <img th:src="@{/images/campingImg/main3.jpg}">
-                <p id="p1">CAMPING X RENTAL</p>
-                <p id="p2">볕 좋은 어느 겨울날의 편안한 캠핑</p>
+                <p id="p1">CAMPING X RENTAL <br>
+                	<p id="p2">별 좋은 어느 겨울날의 편안한 캠핑</p>
+                	<button id="mainbutton">캠핑장 보러가기</button>
+                </p>
             </div>
 
             <div class="mainContent" id="main4">
                 <img th:src="@{/images/campingImg/main4.jpg}">
-                <p id="p1">CAMPING X RENTAL</p>
-                <p id="p2">볕 좋은 어느 겨울날의 편안한 캠핑</p>
+                <p id="p1">CAMPING X RENTAL <br>
+                	<p id="p2">별 좋은 어느 겨울날의 편안한 캠핑</p>
+                	<button id="mainbutton">캠핑장 보러가기</button>
+                </p>
             </div>
+            
+            <div class="mainContent" id="mainFooter">
+            	<th:block th:replace="~{common/footer}"></th:block>
+            </div>
+            
         </section>
 
     </main>
+    
 
-  <th:block th:replace="~{common/footer}"></th:block>
-	
   <script th:src="@{/js/main.js}"></script>
 
 </body>
