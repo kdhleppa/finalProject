@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>제품상세보기에 나중에 프로덕트명같은거정해주기</title>
-    <link rel="stylesheet" th:href="@{/css/productDetail.css}">
+    <link rel="stylesheet" th:href="@{/css/item/itemDetail.css}">
     <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
     <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
     <link th:href="@{https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap}" rel="stylesheet">
@@ -20,10 +20,11 @@
 
         <div class="midContainer">
             <div class="imgContainer">
-                <img src="/img/MILKSOFA_BL_1.jpg" alt="">
+				<img th:src="@{/images/itemImg/0340020000042.jpg}">
+                <img th:src="@{/images/itemImg/MILKSOFA_BL_1.jpg}" alt="">
             </div>
             <div>
-                <form action="#" class="productContentContainer">
+                <form th:action="@{/paysys/rentalPay}" class="productContentContainer">
                     <!-- 나중에 불러와서 넣을 값들 대체-->
                     <h2>MILK SOFA : BLACK</h2>
                     <p class="firstP">시크한 블랙이 매력적인 밀크 소파</p>
@@ -36,7 +37,8 @@
                         <tr>
                             <td>수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;량</td>
                             <td>:</td>
-                            <td>1&nbsp;&nbsp;<button class="qBtn">+</button>&nbsp;&nbsp;<button class="qBtn">-</button></td>
+                            <td><input type="number" id="quantity" name="quantity" value="1" min="0" hidden>
+                                <span id="quantityDisplay">1</span>&nbsp;&nbsp;<button type="button" class="qBtn" id="plusBtn">+</button>&nbsp;&nbsp;<button type="button" class="qBtn" id="minusBtn">-</button></td>
                         </tr>
                         <tr>
                             <td>여행지 선택</td>
@@ -73,6 +75,7 @@
 
     </div>
     <th:block th:replace="~{common/footer}"></th:block>
+    <script th:src="@{/js/item/itemDetail.js}"></script>
 
 </body>
 </html>
