@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>렌탈 상품 CRUD</title>
+    <link rel="stylesheet" href="/uploadRentalPage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <!-- 헤더 -->
+    <header class="topBar">
+
+        <div class="topMenu">
+
+            <div class="leftOfTopMenu">
+                <a href="#">COMMUNITY</a>
+                <a href="#">CONTACT</a>
+                <a href="#">ABOUT US</a>
+            </div>
+
+            <div class="rightOfTopMenu">
+                <a href="#">TOP</a>
+            </div>
+            
+        </div>
+        
+        <a class="mainTitle">C A M P L E X </a>
+        
+        <div class="bottomMenu">
+            <a href="#">CAMPING</a>
+            <a href="#">RENTAL</a>
+            <a href="#">BOARD</a>
+            <a href="#">ORDER</a>
+        </div>
+
+    </header>
+
+    <!-- 메인 -->
+    <main class="rentalCRUDMain">
+
+        <!-- 상단 페이지 표시 -->
+        <section class="rentalCRUDTitleSec">
+            
+            <div class="rentalTitle">
+                Rental Upload
+            </div>
+
+        </section>
+
+        <!-- 렌탈 업로드 상세 -->
+        <section class="rentalTotalSec">
+
+            <!-- 렌탈 업로드 이미지 Sec -->
+            <section class="rentalImgInputSec">
+
+                <button class="thumbnailBtn" type="button">
+                    +
+                </button>
+
+                <button class="detailBtn" type="button">
+                    +
+                </button>
+
+            </section>
+
+            <!-- 렌탈 업로드 인풋 Sec -->
+            <section class="rentalInputSec">
+
+                <section class="rentalInputSecBlankSec">
+
+                </section>
+
+                <section class="inputDetailSec">
+
+                    <section class="rentalDetailTitleSec">
+
+                        상품명
+
+                    </section>
+
+                    <section class="rentalDetailInputSec">
+
+                        <input class="inputDetail" type="text">
+
+                    </section>
+
+                </section>
+
+                <section class="inputDetailSec">
+
+                    <section class="rentalDetailTitleSec">
+                        상품 간단설명
+                    </section>
+
+                    <section class="rentalDetailInputSec">
+
+                        <input class="inputDetail" type="text">
+
+                    </section>
+
+                </section>
+
+                <section class="inputDetailSec">
+
+                    <section class="rentalDetailTitleSec">
+                        가격
+                    </section>
+
+                    <section class="rentalDetailInputSec">
+
+                        <input class="inputDetailSmall">
+                        <img class="inputWonImage" src="/images/wonImage.png">
+
+                    </section>
+
+                </section>
+
+                <section class="inputDetailSec">
+
+                    <section class="rentalDetailTitleSec">
+                        할인률
+                    </section>
+
+                    <section class="rentalDetailInputSec">
+
+                        <input class="inputDetailSmall">
+                        <span class="discountWord">%</span>
+
+                    </section>
+
+                </section>
+
+                <section class="inputDetailSec">
+
+                    <section class="rentalDetailTitleSec">
+                        브랜드명
+                    </section>
+
+                    <section class="rentalDetailInputSec">
+
+                        <input class="inputDetailSmall">
+
+                    </section>
+
+                </section>
+
+                <section class="inputDetailSec">
+
+                    <section class="rentalDetailTitleSec">
+                        재고 수량
+                    </section>
+
+                    <section class="rentalDetailInputSec">
+
+                        <input class="inputDetailSmall">
+                        <span class="countWord">개</span>
+
+                    </section>
+
+                </section>
+
+                <section class="inputDetailSec">
+
+                    <section class="rentalDetailTitleSec">
+                        카테고리
+                    </section>
+
+                    <section class="rentalDetailInputSec">
+
+                        <select class="category">
+                            <option selected>선택</option>
+                        </select>
+
+                    </section>
+
+                </section>
+
+                <section class="uploadSec">
+                    <button class="uploadBtn" type="button">업로드</button>
+                </section>
+
+
+            </section>
+
+        </section>
+
+    </main>
+
+</body>
+</html>
