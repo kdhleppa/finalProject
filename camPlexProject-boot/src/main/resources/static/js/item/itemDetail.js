@@ -17,14 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-document.getElementById('cartBtn').addEventListener('click', function () {
-    var formData = new FormData(document.querySelector('.productContentContainer'));
-    // AJAX 요청을 이용하여 formData를 서버에 전송
-    // 예: axios.post('/cart/add', formData);
-});
-
-document.getElementById('wishBtn').addEventListener('click', function () {
-    var formData = new FormData(document.querySelector('.productContentContainer'));
-    // AJAX 요청을 이용하여 formData를 서버에 전송
-    // 예: axios.post('/wishlist/add', formData);
-});
+function submitForm(action) {
+	document.getElementById('payFrm').action = action;
+	document.getElementById('payFrm').submit();
+}

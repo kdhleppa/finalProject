@@ -12,7 +12,7 @@
     <link rel="stylesheet" th:href="@{/css/common/main.css}">
     <link rel="icon" th:href="@{/images/iconImg/favicon.png}">
 </head>
-<body>
+<body style="overflow-x: hidden;">
     
      <th:block th:replace="~{common/header}"></th:block>
     
@@ -44,27 +44,27 @@
 
         <section class="mainImage" id="image-slider">
             
-            <div id="main1">
-                <img th:src="@{/images/main1.jpg}">
+            <div class="mainContent" id="main1">
+                <img th:src="@{/images/campingImg/main.jpg}">
                 <p id="p1">CAMPING X RENTAL</p>
                 <p id="p2">볕 좋은 어느 겨울날의 편안한 캠핑</p>
             </div>
             
-            <div id="main2">
-                <img th:src="@{/images/main2.jpg}">
+            <div class="mainContent" id="main2">
+                <img th:src="@{/images/campingImg/main2.jpg}">
                 <p id="p1">CAMPING X RENTAL</p>
                 <p id="p2">볕 좋은 어느 겨울날의 편안한 캠핑</p>
                 <button id="mainbutton">캠핑장 보러가기</button>
             </div>
 
-            <div id="main3">
-                <img th:src="@{/images/main3.jpg}">
+            <div class="mainContent" id="main3">
+                <img th:src="@{/images/campingImg/main3.jpg}">
                 <p id="p1">CAMPING X RENTAL</p>
                 <p id="p2">볕 좋은 어느 겨울날의 편안한 캠핑</p>
             </div>
 
-            <div id="main4">
-                <img th:src="@{/images/main4.jpg}">
+            <div class="mainContent" id="main4">
+                <img th:src="@{/images/campingImg/main4.jpg}">
                 <p id="p1">CAMPING X RENTAL</p>
                 <p id="p2">볕 좋은 어느 겨울날의 편안한 캠핑</p>
             </div>
@@ -73,6 +73,8 @@
     </main>
 
   <th:block th:replace="~{common/footer}"></th:block>
+	
+  <script th:src="@{/js/main.js}"></script>
 
 </body>
 </html>
