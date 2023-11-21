@@ -16,7 +16,7 @@
 
 <body>
 
-		<th:block th:replace="~{common/header}"></th:block>
+		<th:block th:replace="~{common/headerForContent}"></th:block>
 
 	<main>
 
@@ -37,7 +37,7 @@
             <section class="mainPicArea">
 
                 <div class="campingTitle">
-                    <p>Catgill 캠핑장</p>
+                    <p th:text="${camp.campName}">캠핑장 명</p>
                     <div class="starContainer">
                         <img th:src="@{/images/iconImg/star.png}" alt="">
                         <img th:src="@{/images/iconImg/star.png}" alt="">
@@ -158,9 +158,7 @@
 
                 <hr>
 
-                <p class="introductionContent">아담하고 깨끗한 Catgill 캠핑장입니다.<br>
-                    저녁이면 개구리 울음소리가 함께 하는 가족 운영 캠핑장 입니다.<br>
-                    부담없이 오셔서 자연 속에서 힐링 되셨으면 좋겠습니다.</p>
+                <p class="introductionContent" th:text="${camp.campInfo}">캠핑장 정보</p>
 
             </section>
 
@@ -285,24 +283,23 @@
 
                 <form th:action="@{/camp/reservation}" class="campSiteFrm"> 
              
-                    <div class="campSite">
+                    <div class="campSite" th:each="campDetail : ${camp.campDetailList}">
 
-                        <input type="radio" name="chooseCampSite" class="campStieRadio" id="campNo1"></input>
-                        <label for="campNo1" class="campSiteBox" onclick="">
+                        <input type="radio" name="chooseCampSite" class="campStieRadio" th:id="campNo+${campDetail.campDeNo}"></input>
+                        <label th:for="campNo+${campDetail.campDeNo}" class="campSiteBox" onclick="">
 
                             <div class="campSiteImgWrapper">
                                 <img th:src="@{/images/campingImg/1.PNG}" alt="">
                             </div>
 
                             <div class="campSiteInfoContainer">
-                                <p>글램핑 구역(B-1)</p>
+                                <p th:text="${campDetail.campDeName}"></p>
 
                                 <div class="campSiteInfo">
                                     <div class="campSiteInfoDetail">
-                                        <p>남은 자리 <input type="text" name="" id="" value="2개" disabled></p>
-                                        <p>수용 인원 <input type="text" name="" id="" value="4명" disabled></p>
+                                        <p>수용 인원 <input type="text" name="" id="" th:value="${campDetail.capacity}+명" disabled></p>
                                     </div>
-                                    <p class="campSitePrice">100,000 ~</p>
+                                    <p class="campSitePrice" th:text="${campDetail.campDePrice}">가격</p>
                                 </div>
                                 
 
@@ -311,58 +308,6 @@
                         </label>
                     </div>
 
-                    <div class="campSite">
-
-                        <input type="radio" name="chooseCampSite" class="campStieRadio" id="campNo2"></input>
-                        <label for="campNo2" class="campSiteBox" onclick="">
-
-                            <div class="campSiteImgWrapper">
-                                <img th:src="@{/images/campingImg/14.PNG}" alt="">
-                            </div>
-
-                            <div class="campSiteInfoContainer">
-                                <p>글램핑 구역(B-1)</p>
-
-                                <div class="campSiteInfo">
-                                    <div class="campSiteInfoDetail">
-                                        <p>남은 자리 <input type="text" name="" id="" value="2개" disabled></p>
-                                        <p>수용 인원 <input type="text" name="" id="" value="4명" disabled></p>
-                                    </div>
-                                    <p class="campSitePrice">100,000 ~</p>
-                                </div>
-                                
-
-                            </div>
-
-                        </label>
-                    </div>
-
-                 
-                    <div class="campSite">
-
-                        <input type="radio" name="chooseCampSite" class="campStieRadio" id="campNo3"></input>
-                        <label for="campNo3" class="campSiteBox" onclick="">
-
-                            <div class="campSiteImgWrapper">
-                                <img th:src="@{/images/campingImg/14.PNG}" alt="">
-                            </div>
-
-                            <div class="campSiteInfoContainer">
-                                <p>글램핑 구역(B-1)</p>
-
-                                <div class="campSiteInfo">
-                                    <div class="campSiteInfoDetail">
-                                        <p>남은 자리 <input type="text" name="" id="" value="2개" disabled></p>
-                                        <p>수용 인원 <input type="text" name="" id="" value="4명" disabled></p>
-                                    </div>
-                                    <p class="campSitePrice">100,000 ~</p>
-                                </div>
-                                
-
-                            </div>
-
-                        </label>
-                    </div>
 
                     <div class="btnArea">
 

@@ -1,5 +1,7 @@
 package com.camplex.project.camping.model.dto;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,7 +11,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class camp {
+public class Camp {
 
 	private int campNo;
 	private int memberNo;
@@ -21,4 +23,8 @@ public class camp {
 	private String campMap;
 	private String mannerTime;
 	private String category;
+	private char campDeleteFlag;
+	private String campInfo;
+	
+	private List<CampDetail> campDetailList;
 }
