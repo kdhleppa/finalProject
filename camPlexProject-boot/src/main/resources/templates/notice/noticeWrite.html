@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이벤트</title>
+    <title>공지사항작성</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/92fbd4b351.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="/css/eventDetail.css">
+    <link rel="stylesheet" href="/css/notice/noticeWrite.css">
 </head>
 <body>
     
@@ -43,72 +43,58 @@
         
         </header>
 
-        <ul class="eventClass">
-            <li id="allevent">
+        <ul class="noticeClass">
+            <li id="allNotice">
                 <a href="#">전체</a>
             </li>
 
             <p>|</p>
 
-            <li id="event">
+            <li id="notice">
                 <a href="#">공지</a>
             </li>
 
             <p>|</p>
 
-            <li id="checkevent">
+            <li id="checkNotice">
                 <a href="#">점검</a>
             </li>
 
             <p>|</p>
 
-            <li id="eventevent">
+            <li id="eventNotice">
                 <a href="#">이벤트</a>
             </li>
         </ul>
 
-        <section class="eventTitle">
+        <section class="noticeTitle">
             <p>공지사항</p>
-
         </section>
 
         <hr style="margin-top: 20px; margin-left: 8%; width: 84%; margin-right: 40%;">
 
-        <section class="eventDetail">
+        <section class="noticeWrite">
             
-            <div class="eventDeLeft">
-                <p>이벤트</p>
+            <div class="notiDeLeft">
+                <select name="type" id="notiType">
+                    <option value="n">공지</option>
+                    <option value="c">점검</option>
+                    <option value="e">이벤트</option>
+                </select>
             </div>
 
-            <div class="eventDeTitle">
-                <p>신규 이벤트 행운의 룰렛 안내</p>
-                <p id="createDate">2023.11.08</p>
+            <div class="notiDeTitle">
+                    <textarea id="textTitle" placeholder="제목을 입력해주세요"></textarea>
+                   
                 <hr style="margin-top: 20px; width: 65rem;">
                 
-                <div class="eventContent">
+                <div class="notiContent">
                     <br>
-                    <p>안녕하세요, CAMPLEX입니다.<br><br>
-                        11월 8일(목) 부터 행운의 룰렛 이벤트가 진행됩니다.<br>
-                        많은 관심과 참여 부탁드립니다.<br><br><br>
-                    
-                    
-                        [이벤트 기간]
-                        2023-11-08(수) 06:00 ~ 2023-11-18(수) 10:00<br><br>
-                        
-                        [이벤트 내용]<br>
-                        룰렛을 돌려서 쿠폰 획득<br>
-                        로그인된 회원 기준 하루에 1회 참여 가능<br><br>
-                        
-                        [주의사항]<br>
-                        이벤트가 진행되는 동안 획득하는 쿠폰은 안내된 유효 기간 내에 사용이 가능합니다.<br><br>
-                    
-                        [쿠폰 유효기간]<br>
-                        2023-12-22(금) 00:00 까지</p>
+                    <p>Quill로 게시글 작성 글꼴변경, 이미지 등록 등 해보기</p>
                 </div>
             </div>
 
-            <div class="eventDeRight">
-                <p>조회수</p>
+            <div class="notiDeRight">
                 <button id="listBtn">목록으로</button>
             </div>
 
@@ -120,11 +106,11 @@
 
                 <!-- 로그인한 회원과 게시글 작성자 번호가 같은 경우 -->
                 <c:if test="${loginMember.memberNo == board.memberNo}">
-                    <button id="deleteBtn">삭제하기</button>                     
+                    <button id="cancelBtn">취소하기</button>                     
                 </c:if>
 
                 <c:if test="${loginMember.memberNo == board.memberNo}">
-                    <button id="updateBtn">수정하기</button>                     
+                    <button id="enterBtn">등록하기</button>                     
                 </c:if>
 
             </div>
