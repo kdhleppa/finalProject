@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/camp")
-public class campIngCheckPageController {
+public class CampIngCheckPageController {
 	
 	@GetMapping("/search")
 	public String searchCamping() {
