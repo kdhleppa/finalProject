@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*
  * package com.camplex.project.board.controller;
  * 
@@ -224,7 +223,6 @@
  * 
  * }
  */
-=======
 //package com.camplex.project.board.controller;
 //
 //import java.text.ParseException;
@@ -491,4 +489,3 @@
 //	
 //	
 //}
->>>>>>> 45902ecca7c166f3febdb0a9865616351e8cef3d
