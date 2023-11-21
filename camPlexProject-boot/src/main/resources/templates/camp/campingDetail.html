@@ -7,9 +7,9 @@
 
     <link rel="stylesheet" th:href="@{/css/camp/CampingDetail.css}">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap"
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}"
         rel="stylesheet">
 	<link rel="icon" th:href="@{/images/iconImg/favicon.png}">
 </head>
@@ -158,7 +158,7 @@
 
                 <hr>
 
-                <p class="introductionContent" th:text="${camp.campInfo}">캠핑장 정보</p>
+                <p class="introductionContent" th:utext="${camp.campInfo}">캠핑장 정보</p>
 
             </section>
 
@@ -173,7 +173,8 @@
                 <div class="details">
 
                     <div class="campMap">
-                        <img th:src="@{/images/campingImg/11.PNG}" alt="">
+                        <img th:if="${camp.campMap}" th:src="${camp.campMap}" alt="">
+                        <img th:unless="${camp.campMap}" th:src="@{/images/iconImg/noImage.png}" alt="">
                     </div>
 
                     <div class="campDetails">
@@ -183,32 +184,11 @@
                             <hr>
                             <div class="facilityArea">
 
-                                <div class="facilityIcon">
+                                <div th:each="option : ${option}" class="facilityIcon">
                                     <div class="iconWrapper">
-                                        <img th:src="@{/images/iconImg/shower.png}" alt="">
+                                        <img th:src="@{/images/iconImg/}+${option.key}+.png" alt="">
                                     </div>
-                                    <p>공용 샤워장</p>
-                                </div>
-
-                                <div class="facilityIcon">
-                                    <div class="iconWrapper">
-                                        <img th:src="@{/images/iconImg/store.png}" alt="">
-                                    </div>
-                                    <p>편의점 / 매점</p>
-                                </div>
-
-                                <div class="facilityIcon">
-                                    <div class="iconWrapper">
-                                        <img th:src="@{/images/iconImg/bbq.png}" alt="">
-                                    </div>
-                                    <p>바베큐 장</p>
-                                </div>
-
-                                <div class="facilityIcon">
-                                    <div class="iconWrapper">
-                                        <img th:src="@{/images/iconImg/restroom.png}" alt="">
-                                    </div>
-                                    <p>공용 화장실</p>
+                                    <p th:text="${option.value}">부대시설 명</p>
                                 </div>
 
                             </div>
@@ -219,11 +199,11 @@
                             <p>주변 환경</p>
                             <hr>
                             <div class="aruondViewArea">
-                                <div class="arouundViewIcon">
+                                <div th:each="aroundView : ${aroundView}" class="arouundViewIcon">
                                     <div class="iconWrapper">
-                                        <img th:src="@{/images/iconImg/mountain.png}" alt="">
+                                        <img th:src="@{/images/iconImg/}+${aroundView.key}+.png" alt="">
                                     </div>
-                                    <p>등산로</p>
+                                    <p th:text="${aroundView.value}">주변 환경 명</p>
                                 </div>
                             </div>
 
@@ -237,7 +217,7 @@
                                 <div class="iconWrapper">
                                     <img th:src="@{/images/iconImg/clock.png}" alt="">
                                 </div>
-                                <p>22:00 ~ 07:00</p>
+                                <p th:text="${camp.mannerTime}">22:00 ~ 07:00</p>
                             </div>
                         </div>
                     </div>
