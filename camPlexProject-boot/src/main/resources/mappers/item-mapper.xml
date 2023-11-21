@@ -28,7 +28,7 @@
 	
 	
 	
-	<resultMap type="ItemImg" id="ItemImg_rm">
+	<resultMap type="ItemImg" id="itemImg_rm">
 		<id property="itemImgNo" column="ITEM_IMG_NO"/>
 		
 		<result property="itemNo" column="ITEM_NO" />
@@ -40,185 +40,35 @@
 	</resultMap>
 	
 	
-	<!-- 물건 삽입 -->
-	<insert id="roomUp" parameterType="Product" useGeneratedKeys="true">
-  	 	<selectKey order="BEFORE" resultType="_int" keyProperty="productNo">
-  	 		SELECT SEQ_PRODUCT_NO.NEXTVAL FROM DUAL
-  	 	</selectKey>
-  	 	INSERT INTO "PRODUCT" 
-		VALUES (#{productNo}, #{memberNo},
-		#{productAddress},#{productAddressHo},
-		#{productTitle}, #{productContent},
-		#{roomType}, #{roomSize},
-		#{productDeposit},
-		#{productMonthlyRent},			
-		#{productRentType},#{productMaintenace},
-		<choose>
-			<when test='enterDate != "Y"'>
-				TO_DATE(#{enterDate}, 'YYYY-MM-DD'),			
-			</when>
-			<when test='enterDate == "Y"'>
-				DEFAULT,
-			</when>
-		</choose>
-		#{enterDateNego},
-		#{heatType}, #{parking}, #{airCon},#{fridge}, #{washer},
-		#{cctv}, #{doorlock}, #{stove}, #{microwave}, #{elevator},
-		DEFAULT, DEFAULT)
-  	</insert>
-  	 
-  	 
-	<!-- 이미지 리스트(여러개)삽입 -->
-  	  <insert id ="insertImageList" parameterType="list">
-  	  	INSERT INTO "ROOM_IMG"
-  	  	SELECT SEQ_IMG_NO.NEXTVAL, A.*
-  	  	FROM (
-  	  		<foreach collection="list" item="img" separator=" UNION ALL ">
-  	  			SELECT #{img.productNo} PRODUCT_NO, 
-  	  				#{img.imgPath} IMG_PATH,
-  	  				#{img.imgRename} IMG_RENAME,
-  	  				#{img.imgOriginal} IMG_ORIGINAL,
-  	  				#{img.imgOrder} IMG_ORDER
-  	  			FROM DUAL
-  	  		</foreach>
-  	  	) A
-  	  </insert>
-  	  
-  	  <!-- 내가올린물건 리스트 -->
-  	  <select id="membersProduct" resultMap="product_rm">
-			SELECT P.*, 
-			(SELECT IMG_PATH || IMG_RENAME FROM ROOM_IMG I
-					WHERE I.PRODUCT_NO = P.PRODUCT_NO
-					AND IMG_ORDER = 0) THUMBNAIL
-		    FROM PRODUCT P
-		    WHERE P.PRODUCT_HIDE = 'N'
-		    AND P.MEMBER_NO = #{memberNo}
-		    ORDER BY P.PRODUCT_NO
-		</select>
-		
-		<!-- 상세보기 -->
-		<!--  
-		<select id="selectProduct" resultMap="product_rm">
-		 	SELECT *
-		 	FROM PRODUCT
-		 	WHERE PRODUCT_NO = #{productNo}
-		</select>
-		 -->
-		  
-		 <select id="selectProduct" resultMap="product_rm">
-		    SELECT 
-		        PRODUCT_NO,
-		        MEMBER_NO,
-		        PRODUCT_ADDRESS,
-		        PRODUCT_ADDRESS_HO,
-		        PRODUCT_TITLE,
-		        PRODUCT_CONTENT,
-		        ROOM_TYPE,
-		        ROOM_SIZE,
-		        PRODUCT_DEPOSIT,
-		        PRODUCT_MONTHLY_RENT,
-		        PRODUCT_RENTTYPE,
-		        PRODUCT_MAINTENACE,
-		        TO_CHAR(ENTER_DATE, 'YYYY-MM-DD') AS ENTER_DATE,
-		        ENTER_DATE_NEGO,
-		        HEAT_TYPE,
-		        PARKING,
-		        AIR_CON,
-		        FRIDGE,
-		        WASHER,
-		        CCTV,
-		        DOORLOCK,
-		        STOVE,
-		        MICROWAVE,
-		        ELEVATOR,
-		        TO_CHAR(REGISTRATION_DATE, 'YYYY-MM-DD') AS REGISTRATION_DATE,
-		        PRODUCT_HIDE
-		    FROM PRODUCT
-		    WHERE PRODUCT_NO = #{productNo}
-		    AND PRODUCT_HIDE = 'N'
-		</select>
-		 
-		 
+	
+  	
+		<!-- 상품 상세조회 -->	
+		<select id="selectDetail" resultMap="item_rm">
+			SELECT *
+			FROM ITEM
+			WHERE ITEM_NO = #{itemNo}
+		</select> 
 		
 		 
 		<!-- 상세보기 사진선택 -->
-		<select id="selectImageList" resultMap="roomImg_rm">
+		<select id="selectImageList" resultMap="itemImg_rm">
 			SELECT * 
-			FROM ROOM_IMG
-		 	WHERE PRODUCT_NO = #{productNo}
-		 	ORDER BY IMG_ORDER
+			FROM ITEM_IMG
+		 	WHERE ITEM_NO = #{itemNo}
+		 	ORDER BY ITEM_IMG_ORDER
 		</select>
 		
-		<update id="productDelete">
-			UPDATE "PRODUCT" SET
-			PRODUCT_HIDE = 'Y'
-			WHERE PRODUCT_NO = #{productNo}
-		</update>
 		
-		<!-- 물건 수정 -->
-		<update id="productUpdate">
-			UPDATE "PRODUCT" SET
-			PRODUCT_ADDRESS = #{productAddress},
-  	  		PRODUCT_ADDRESS_HO = #{productAddressHo},
-  	  		PRODUCT_TITLE = #{productTitle},
-  	  		PRODUCT_CONTENT = #{productContent},
-  	  		ROOM_TYPE = #{roomType},
-  	  		ROOM_SIZE = #{roomSize},
-  	  		PRODUCT_DEPOSIT = #{productDeposit},
-  	  		PRODUCT_MONTHLY_RENT = #{productMonthlyRent},
-  	  		PRODUCT_RENTTYPE = #{productRentType},
-	        PRODUCT_MAINTENACE = #{productMaintenace},
-	        <choose>
-			<when test='enterDate != "Y"'>
-				ENTER_DATE = TO_DATE(#{enterDate}, 'YYYY-MM-DD'),			
-			</when>
-			<when test='enterDate == "Y"'>
-				ENTER_DATE = DEFAULT,
-			</when>
-			</choose>
-	        ENTER_DATE_NEGO = #{enterDateNego},
-	        HEAT_TYPE = #{heatType},
-	        PARKING = #{parking},
-	        AIR_CON = #{airCon},
-	        FRIDGE = #{fridge},
-	        WASHER = #{washer},
-	        CCTV = #{cctv},
-	        DOORLOCK = #{doorlock},
-	        STOVE = #{stove},
-	        MICROWAVE = #{microwave},
-	        ELEVATOR = #{elevator},
-	        REGISTRATION_DATE = DEFAULT
-  	  		WHERE PRODUCT_NO = #{productNo}
-		</update>
-		
-		<!-- 이미지 삭제 -->
-		<delete id="imageDelete">
-			DELETE FROM "ROOM_IMG"
-			WHERE PRODUCT_NO = #{productNo}
-			AND IMG_ORDER IN (${deleteList})
-		</delete>
-		
-		<!-- 이미지 수정 -->
-  	  	<update id="imageUpdate">
-			UPDATE "ROOM_IMG" SET
-			IMG_PATH = #{imgPath},
-			IMG_ORIGINAL = #{imgOriginal},
-			IMG_RENAME = #{imgRename}
-			WHERE PRODUCT_NO = #{productNo}
-			AND IMG_ORDER = #{imgOrder}
-	  	</update>
-	  	
-	  	<!-- 이미지 삽입 -->
-		<insert id="imageInsert">
-			INSERT INTO "ROOM_IMG"
-			VALUES(SEQ_IMG_NO.NEXTVAL, #{productNo}, #{imgPath}, #{imgRename},
-				#{imgOriginal}, #{imgOrder}
-			)
-		</insert>
-		
-		<!-- db 이미지 목록 조회 -->
-		<select id="selectImageListAll" resultType="string">
-			SELECT IMG_RENAME FROM ROOM_IMG
+		<!-- 멤버 예약목록 조회(캠핑장명, 날짜만) -->
+		<select id="membersRsvInfo" resultType="com.camplex.project.item.model.dto.MembersReservationDate">
+			SELECT r.RESERVATION_NO, cs.CAMP_NAME, r.CAMP_ENTDATE, r.CAMP_OUTDATE
+	        FROM RESERVATIONS r
+	        JOIN CAMPING_SITE cs ON r.CAMP_NO = cs.CAMP_NO
+	        WHERE r.MEMBER_NO = #{memberNo}
+	        AND r.CAMP_ENTDATE > CURRENT_DATE
 		</select>
+	
+	
+	
 	  	
 </mapper>
