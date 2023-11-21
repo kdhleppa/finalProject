@@ -234,6 +234,10 @@ main {
     justify-content: center;
 }
 
+.contentImageDiv img{
+    border-radius: 10px;
+}
+
 .contentImage {
     width: 23rem;
     height: 14rem;
@@ -253,6 +257,7 @@ main {
     display: flex;
     align-items: center;
     font-size: 1.2rem;
+    color: #000;
 }
 
 .contentBlanksec {

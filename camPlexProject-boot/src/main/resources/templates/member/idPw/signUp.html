@@ -14,32 +14,8 @@
 </head>
 <body>
 
-    <header class="topBar">
+    <th:block th:replace="~{common/header}"></th:block>
 
-        <div class="topMenu">
-
-            <div class="leftOfTopMenu">
-                <a href="#">COMMUNITY</a>
-                <a href="#">CONTACT</a>
-                <a href="#">ABOUT US</a>
-            </div>
-
-            <div class="rightOfTopMenu">
-                <a href="#">TOP</a>
-            </div>
-            
-        </div>
-        
-        <a class="mainTitle">C A M P L E X </a>
-        
-        <div class="bottomMenu">
-            <a href="#">CAMPING</a>
-            <a href="#">RENTAL</a>
-            <a href="#">BOARD</a>
-            <a href="#">ORDER</a>
-        </div>
-
-    </header>
 
     <main>
         <!-- 공백 (우) -->
@@ -81,13 +57,16 @@
                         <section id="emptyWidth1"></section>
 
                         <section id="inputProfileImg">
+							
+							<section id="imgSection">
+	                            <img id="profileImg" th:src="@{/images/memberImg/gg_profile.png}">
+							</section>
 
-                            <img id="profileImg" src="/IMG/gg_profile.png">
                             
                             <section id="emptyWidth2"></section>
 
                             <section id="uploadImgBtn">
-                                <label for="uploadProfileImg">프로필 이미지 선택</label>
+                                <label for="uploadProfileImg" id="selectImg">프로필 이미지 선택</label>
                                 <input type="file" id="uploadProfileImg">
                                 <label id="deleteProfileImg">프로필 이미지 삭제</label>
                             </section>
@@ -103,7 +82,7 @@
                         <!-- 회원가입, 이전 페이지로 이동 버튼 -->
                         <section id="changePwBtn">
                             <button class="clickBtn">가입하기</button>
-                            <button class="clickBtn">이전으로</button>
+                            <button class="clickBtn" th:onclick="|location.href='@{/member/login}'|">이전으로</button>
                         </section>
                         
                         <section class="empty3"></section>
