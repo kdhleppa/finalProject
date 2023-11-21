@@ -1,20 +1,36 @@
 const wrap = document.getElementsByClassName('mainImage')[0]; // 보일 영역
 const container = document.getElementsByClassName('mainContent');
 let page = 0; // 영역 포지션 초기값
-const lastPage = container.length ; // 마지막 페이지
+const lastPage = container.length -1; // 마지막 페이지
+let isScrolling = false;
 
 window.addEventListener('wheel',(e)=>{
     e.preventDefault();
-    if(e.deltaY > 0){
-        page++;
-    }else if(e.deltaY < 0){
-        page--;
+    
+    if (!isScrolling) {
+        if (e.deltaY > 0) {
+            page++;
+        } else if (e.deltaY < 0) {
+            page--;
+        }
+
+        if (page < 0) {
+            page = 0;
+        } else if (page > lastPage) {
+            page = lastPage;
+        }
+
+        // 섹션 스크롤
+        wrap.style.top = page * -100 + 'vh';
+
+        // 스크롤 플래그 설정
+        isScrolling = true;
+
+        // 일정 시간이 지난 후 스크롤 플래그 초기화
+        setTimeout(() => {
+            isScrolling = false;
+        }, 800); // 800 밀리초 (0.8초) 후 스크롤 플래그 초기화
+        
     }
-    if(page < 0){
-        page=0;
-    }else if(page > lastPage){
-        page = lastPage;
-    }
-    console.log(e.deltaY)
-    wrap.style.top = page * -100 + 'vh';
-},{passive:false}); // 디폴트 기능 제거 - 스크롤
+}, { passive: false });
+	

@@ -1,5 +1,7 @@
 package com.camplex.project.item.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.camplex.project.item.model.dto.Item;
+import com.camplex.project.item.model.dto.MembersReservationDate;
 import com.camplex.project.item.model.service.ItemService;
 import com.camplex.project.member.model.dto.Member;
 
@@ -29,9 +32,14 @@ public class ItemController {
 			) {
 			
 		Item item= service.selectDetail(itemNo);
+		int memberNo = loginMember.getMemberNo();
+		
+		
+		List<MembersReservationDate> rsvInfo;
+		rsvInfo = service.membersRsvInfo(memberNo);
 		
 		model.addAttribute("item", item);
-		
+		model.addAttribute("rsvInfo", rsvInfo);
 		return "/item/itemDetail";
 	}
 	
