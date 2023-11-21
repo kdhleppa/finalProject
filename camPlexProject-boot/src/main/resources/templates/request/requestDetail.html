@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/92fbd4b351.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="/css/requestDetail.css">
+    <link rel="stylesheet" href="/css/request/requestDetail.css">
 </head>
 <body>
     
@@ -37,7 +37,7 @@
             <div class="bottomMenu">
                 <a href="#">CAMPING</a>
                 <a href="#">RENTAL</a>
-                <a href="#">request</a>
+                <a href="#">BOARD</a>
                 <a href="#">ORDER</a>
             </div>
         
@@ -57,43 +57,37 @@
             </div>
 
             <div class="requestDeTitle">
-                <p>결제 시스템 개편 건의</p>
+                <p>OO캠핑장 사진 수정 요청합니다</p>
                 <p id="createDate">2023.11.08</p>
                 <hr style="margin-top: 20px; width: 65rem;">
                 
                 <div class="requestContent">
 
                     <!-- fn:length(request.imageList) : imageList의 길이 반환 -->
-                <!-- 일반 이미지가 있는 경우 -->
-                <c:if test="${fn:length(request.imageList) > start}">
-                
-                    <!-- 업로드 이미지 영역 -->
-                    <h5>업로드 이미지</h5>
-                    <div class="img-box">
+                    <!-- 일반 이미지가 있는 경우 -->
+                    <c:if test="${fn:length(request.imageList) > start}">
                     
-                        <c:forEach var="i" begin="${start}" end="${fn:length(request.imageList) - 1}">
-                            <div class="requestImg">
-                            
-                                <c:set var="path" 
-                                    value="${request.imageList[i].imagePath}${request.imageList[i].imageReName}" />
-                                
-                                
-                                <img src="${path}">
-                                <a href="${path}" download="${request.imageList[i].imageOriginal}">다운로드</a>                
-                            </div>
-                        </c:forEach>
+                        <!-- 업로드 이미지 영역 -->
+                        <h5>업로드 이미지</h5>
+                        <div class="img-box">
                         
+                            <c:forEach var="i" begin="${start}" end="${fn:length(request.imageList) - 1}">
+                                <div class="requestImg">
+                                
+                                    <c:set var="path" 
+                                        value="${request.imageList[i].imagePath}${request.imageList[i].imageReName}" />
+                                    
+                                    
+                                    <img src="${path}">
+                                    <a href="${path}" download="${request.imageList[i].imageOriginal}">다운로드</a>                
+                                </div>
+                            </c:forEach>
+                            
+                        
+                        </div>
                     
-                    </div>
-                
-                </c:if>
+                    </c:if>
 
-                    <br>
-                    <p>카드결제 종류 추가<br>
-                    결제 현금 영수증 발행<br>
-                    결제 안내 페이지 깔끔하게<br><br>
-
-                    건의합니다</p>
                 </div>
             </div>
 
@@ -116,24 +110,6 @@
                     <!-- <span>${request.memberNickname}</span>-->
                     <p>닉네임</p><br><br>
 
-                    <!-- 좋아요 하트 -->
-                    <!-- <span class="like-area">
-                    
-                    	<%-- 좋아요 누른적이 없다, 로그인 하지 않았다 --%>
-                    	<c:if test="${empty likeCheck}">
-	                        <i class="fa-regular fa-heart" id="requestLike"></i>
-                    	</c:if>
-                    
-                    	<%-- 좋아요 누른적이 있다 --%>
-                    	<c:if test="${not empty likeCheck}">
-	                        <i class="fa-solid fa-heart" id="requestLike"></i>
-                    	</c:if>
-                    
-
-                        <span>${request.likeCount}</span>
-                    </span> -->
-                    <p>좋아요</p><br><br>
-                    <p>조회수</p>
                 </div>
 
                 <div>
@@ -158,66 +134,6 @@
             </c:if>
 
         </div>
-
-        <div id="commentArea">
-            <!-- 댓글 목록 -->
-            <div class="comment-list-area">
-                
-                <ul id="commentList">
-                
-                    <c:forEach items="${request.commentList}" var="comment">
-                        <!-- 부모/자식 댓글 -->
-                        <li class="comment-row <c:if test='${comment.parentNo != 0}'>child-comment</c:if>">
-                            
-                            <p class="comment-writer">
-            
-                                <!-- 프로필 이미지 -->
-                                <c:if test="${empty comment.profileImage}">
-                                    <img src="/resources/images/user.png">
-                                </c:if>
-                                
-                                <c:if test="${not empty comment.profileImage}">
-                                    <img src="${comment.profileImage}">
-                                </c:if>
-                                
-                                <!-- 닉네임 -->
-                                <span>닉네임</span>
-                                
-                                <!-- 작성일 -->
-                                <span class="comment-date">댓글작성날짜</span>
-                            </p>
-                            
-                            <!-- 댓글 내용 -->
-                            <p class="comment-content">댓글내용</p>
-            
-            
-                            <!-- 버튼 영역 -->
-                            <div class="comment-btn-area">
-                                <button onclick="showInsertComment(${comment.commentNo}, this)">답글</button>   
-                                    
-                                <!-- 로그인 회원과 댓글 작성자가 같은 경우 -->  
-                                <c:if test="${loginMember.memberNo == comment.memberNo}">
-                                    <button onclick="showUpdateComment(${comment.commentNo}, this)">수정</button>     
-                                    <button onclick="deleteComment(${comment.commentNo})">삭제</button>
-                                </c:if>
-                                
-                            </div>
-                        </li>
-                    
-                    </c:forEach>
-        
-                </ul>
-            </div>
-            
-        
-            <!-- 댓글 작성 부분 -->
-            <div class="comment-write-area">
-                <textarea id="commentContent">댓글 내용 입력</textarea>
-                <button id="addComment">
-                    댓글등록
-                </button>
-            
-            </div>
         
     </main>
 
