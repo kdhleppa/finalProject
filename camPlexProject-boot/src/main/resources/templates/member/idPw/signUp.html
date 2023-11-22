@@ -23,7 +23,7 @@
         
         <section id="signUpForm">
 
-		<form>
+		<form th:action="@{/member/signUp}" method="POST" name="signUpFrm" id="signUpFrm">
 		
 	            <!-- 대제목 -->
 	            <section id="headerName">회원가입</section>
@@ -36,17 +36,18 @@
 	                <section id="inputSignUpForm">
 	
 	                    <input class="inputSignUpInfo" id="inputEmail" type="email" placeholder="이메일 (아이디)">
-	                    <p class="sendMassage">사용 가능한 아이디입니다.</p>
+	                    <p class="sendMassage" id="emailMessage"></p>
 	                    
 	                    <input class="inputSignUpInfo" id="inputPw" type="password" placeholder="비밀번호">
 	                    
 	                    <input class="inputSignUpInfo" id="inputPwRe" type="password" placeholder="비밀번호 확인">
-	                    <p class="sendMassage">사용 가능한 비밀번호입니다.</p>
+	                    <p class="sendMassage" id="pwMessage">영어,숫자,특수문자(!,@,#,-,_) 6~20글자</p>
 	                    
 	                    <input class="inputSignUpInfo" id="inputName" type="text" placeholder="이름">
+	                    <p class="sendMassage" id="nameMessage">한글, 영어 2~10글자</p>
 	                    
 	                    <input class="inputSignUpInfo" id="inputNickname" type="text" placeholder="닉네임">
-	                    <p class="sendMassage">사용 가능한 닉네임입니다.</p>
+	                    <p class="sendMassage" id="nickMessage">한글, 영어, 숫자 2~10글자</p>
 	                    
 	                    <input class="inputSignUpInfo" id="inputTel" type="tel" placeholder="휴대전화">
 	                    <p class="sendMassage">인증번호가 발송되었습니다.</p>
@@ -108,7 +109,10 @@
 
     </main>
 
-    <footer></footer>
+	<th:block th:replace="~{common/footer}"></th:block>
+	
+	<script th:src="@{/js/member/signUp.js}"></script>
+
     
 </body>
 </html>

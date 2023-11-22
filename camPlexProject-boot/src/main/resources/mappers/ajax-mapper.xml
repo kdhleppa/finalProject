@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.camplex.project.member.mappers.AjexMapper">
+
+	<!-- 이메일 중복 검사 -->
+	<select id="checkEmail" resultType="_int">
+		SELECT COUNT(*) FROM "MEMBER"
+		WHERE MEMBER_EMAIL = #{email}
+		AND MEMBER_DEL_FL = 'N'
+	</select>
+		
+	<!-- 닉네임 중복 검사 -->
+	<select id="checkNickname" resultType="_int">
+		SELECT COUNT(*) FROM "MEMBER"
+		WHERE MEMBER_NICKNAME = #{nickname}
+		AND MEMBER_DEL_FL = 'N'
+	</select>
+	
+	
+
+</mapper>
