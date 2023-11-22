@@ -16,7 +16,7 @@ import com.camplex.project.camping.model.service.CampService;
 
 @Controller
 @RequestMapping("/camp")
-public class CampIngCheckPageController {
+public class CampController {
 	
 	@Autowired
 	private CampService service;
