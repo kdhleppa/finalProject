@@ -212,6 +212,7 @@ label:hover {
     display: flex;
     justify-content: space-around;
     height: 30px;
+    margin-bottom: 100px;
 }
 
 #changePwBtn button {
@@ -264,6 +265,9 @@ label:hover {
     margin-bottom: 65px;
 }
 
+/* 메세지 색상 지정 */
+.confirm{ color : green; }
+.error{ color : red; }
 
 /* --------------------- */
 /* 풋터 마진 */
