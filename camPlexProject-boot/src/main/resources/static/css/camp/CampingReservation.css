@@ -27,75 +27,6 @@ main{
 }
 
 
-/* ---------------------------- topBar ------------------------------------------------------ */
-
-.topBar{
-    width: 100%;
-    height: 200px;
-
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 25px;
-    border-radius: 0 0 10px 10px;
-
-    transition-duration: 0.3s;
-
-    position: sticky;
-    top: 0;
-    background-color: #fff;
-    opacity: 0.8;
-}
-
-.topBar:hover{
-    background-color: rgba(204, 213, 174, 0.5);
-}
-
-.topMenu{
-    width: 100%;
-
-    flex-basis: 5%;
-
-    display: flex;
-    justify-content: space-between;
-}
-
-.topMenu a{
-    color: #000;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 0.7rem;
-    opacity: 0.5;    
-}
-
-.mainTitle{
-    flex-basis: 50%;
-    align-self: center;
-    font-size: 3rem;
-    font-weight: 900;
-    opacity: 0.5; 
-
-    margin: 20px 0;
-
-    height: 60px;
-    line-height: 60px;
-    color: #333;
-    letter-spacing: 5px;
-}
-
-.bottomMenu{
-    flex-basis: 45%;
-    display: flex;
-    align-self: center;
-}
-
-.bottomMenu a {
-    color: #000;
-    text-decoration: none;
-    margin: 0 1rem;
-    font-weight: 600;
-    opacity: 0.5;
-}
-
 /* ---------------------------------------------------------------------- */
 
 
@@ -141,21 +72,45 @@ main{
     align-items: center;
 }
 
+.arrow{
+    background-color: transparent;
+    border: transparent;
+    font-size: 1rem;
+}
+
+.arrow img{
+    width: 20px;
+    cursor: pointer;
+}
+
+
 .pictureContainer{
     display: flex;
+    justify-content:space-around;
     align-items: center;
-}
-
-.thumbsnail{
-    width: 40%;
     text-align: center;
+    overflow: hidden;
 }
 
-.thumbsnailContainer{
-    width: 100%;
-    height: 300px;
-    margin: 5px;
-    border-radius: 7px;
+.detailPicture{
+	display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.detailImgSlideBox{
+	 display: flex;
+    flex-basis: 80%;
+    transition: 0.5s;
+    max-width: 22rem;
+}
+
+
+.detailImgWrapper{
+	width: 20rem;
+    height: 22rem;
+    margin: 0 20px;
+    border-radius: 5px;
     overflow: hidden;
 
     display: flex;
@@ -163,9 +118,14 @@ main{
     align-items: center;
 }
 
-.thumbsnail img {
+.detailImgWrapper img {
     height: 100%;
+    border-radius: 5px;
 }
+
+
+/**********************************************/
+
 
 .campingInfoContainer{
     width: 60%;
@@ -192,8 +152,14 @@ main{
     margin: 0 20px;
 }
 
+.campingInfoCategory, .campingInfoDetail{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
 .campingInfoCategory > p, .campingInfoDetail > p{
-    margin: 25px 0;
+    margin: 18px 0;
     font-size: 1.1rem;
 }
 

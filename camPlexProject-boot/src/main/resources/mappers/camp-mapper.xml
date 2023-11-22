@@ -46,6 +46,15 @@
 		<result property="campDeName" column="CAMP_DE_NAME" />
 		<result property="campDePrice" column="CAMP_DE_PRICE" />
 		<result property="capacity" column="CAPACITY" />
+		<result property="campDeThumbnail" column="CAMP_DETAIL_THUMBNAIL" />
+		<result property="campName" column="CAMP_NAME" />
+		
+		<collection property="campDetailImageList"
+				select="selectCampDetailImageList"
+				column="CAMP_DE_NO"
+				javaType="java.util.ArrayList"
+				ofType="CampDetailImage"
+		/>
 	</resultMap>
 	
 	<resultMap type="CampSiteImage" id="camp_image_rm">
@@ -66,25 +75,36 @@
 		<result property="campCeoImageOrder" column="CAMP_CE0_IMG_ORDER" />
 	</resultMap>
 	
-		<!-- 캠핑장 조회에 포함된 collection 중 호실 정보 조회 -->
+	<!-- collection 중 호실 정보 조회 -->
 	<select id="selectCampDetailList" resultMap="camp_detail_rm">
-		SELECT CAMP_DE_NO, CAMP_NO, CAMP_DE_NAME, CAMP_DE_PRICE, CAPACITY
-		FROM "CAMPING_DETAIL"
+		SELECT CAMP_DE_NO, CAMP_NO, CAMP_DE_NAME, CAMP_DE_PRICE, CAPACITY, 
+			(SELECT (CAMP_DE_IMG_PATH || CAMP_DE_IMG_RENAME) 
+			 FROM CAMPING_DETAIL_IMG B
+			 WHERE  A.CAMP_DE_NO = B.CAMP_DE_NO 
+			 AND CAMP_DE_IMG_ORDER = 0) CAMP_DETAIL_THUMBNAIL
+		FROM "CAMPING_DETAIL" A
 		WHERE CAMP_NO = #{campNo}
 	</select>
 	
-	<!-- 캠핑장 조회에 포함된 collection 중 이미지 리스트 조회 -->
+	<!-- collection 중 이미지 리스트 조회 -->
 	<select id="selectCampSiteImageList" resultMap="camp_image_rm">
 		SELECT CAMP_IMG_NO, CAMP_NO, CAMP_IMG_PATH, CAMP_IMG_RENAME, CAMP_IMG_ORIGINAL, CAMP_IMG_ORDER
 		FROM "CAMPING_SITE_IMG"
 		WHERE CAMP_NO = #{campNo}
 	</select>
 	
-	<!-- 캠핑장 조회에 포함된 collection 중 CEO 이미지 리스트 조회 -->
+	<!-- collection 중 CEO 이미지 리스트 조회 -->
 	<select id="selectCampCeoImageList" resultMap="camp_ceoImage_rm">
 		SELECT CAMP_CEO_IMG_NO, CAMP_NO, CAMP_CEO_IMG_PATH, CAMP_CEO_IMG_RENAME, CAMP_CEO_IMG_ORIGINAL, CAMP_IMG_ORDER
 		FROM "CAMPING_CEO_IMG"
 		WHERE CAMP_NO = #{campNo}
+	</select>
+	
+	<!-- collection 중 호실 이미지 리스트 조회 -->
+	<select id="selectCampDetailImageList" resultMap="camp_detail_rm">
+		SELECT CAMP_DE_IMG_NO, CAMP_DE_NO, CAMP_DE_IMG_PATH, CAMP_DE_IMG_RENAME, CAMP_DE_IMG_ORIGINAL, CAMP_DE_IMG_ORDER
+		FROM "CAMPING_DETAIL_IMG"
+		WHERE CAMP_DE_NO = #{campDeNo}
 	</select>
 	
 	
@@ -111,6 +131,16 @@
 		AND CAMP_DEL_FL = 'N'
 		AND CAMP_IMG_ORDER = 0
 	</select>
+	
+	<!-- 캠핑장 예약 이동하면서 보여줄 정보 조회 -->
+	<select id="selectCampDetail" resultMap="camp_detail_rm">
+		SELECT CAMP_NO, CAMP_NAME, CAMP_DE_NAME, CAMP_DE_PRICE, CAPACITY
+		FROM "CAMPING_DETAIL"
+		JOIN CAMPING_SITE USING(CAMP_NO)
+		WHERE CAMP_DE_NO = #{campDeNo}
+	</select>
+	
+	
 	
 	
 </mapper>

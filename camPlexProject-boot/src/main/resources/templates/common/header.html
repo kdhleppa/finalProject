@@ -13,6 +13,8 @@
             <div class="rightOfTopMenu">
                 <a th:unless="${session.loginMember}" th:href="@{/member/login}">LOGIN</a>
 				    <th:block th:if="${session.loginMember}">
+					<a th:href="@{/}">CART</a>
+	                <a th:href="@{/member/wishlist}">WISH LIST</a>
 	                <a th:href="@{/member/myPage}">MY PAGE</a>
 	                <a th:href="@{/member/logout}">LOGOUT</a>
 				    </th:block>
@@ -26,7 +28,7 @@
         <div class="bottomMenu">
             <a th:href="@{/camp/search}">CAMPING</a>
             <a th:href="@{/rental/search}">RENTAL</a>
-            <a href="#">BOARD</a>
+            <a th:href="@{/board/{boardType}(boardType=B)}">BOARD</a>
             <a href="#">EVENT</a>
         </div>
 

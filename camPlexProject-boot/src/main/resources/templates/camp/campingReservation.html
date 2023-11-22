@@ -3,20 +3,20 @@
 
 <head>
 	<meta charset="UTF-8">
-	  <title>캠핑장 상세</title>
+	 <title></title>
 
     <link rel="stylesheet" th:href="@{/css/camp/CampingReservation.css}">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap"
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}"
         rel="stylesheet">
 
 </head>
 
 <body>
 
-		<th:block th:replace="~{common/header}"></th:block>
+		<th:block th:replace="~{common/headerForContent}"></th:block>
 
 	<main>
 
@@ -40,11 +40,45 @@
 
                 <div class="pictureContainer">
 
-                    <div class="thumbsnail">
-                        <div class="thumbsnailContainer">
-                            <img th:src="@{/images/campingImg/1.PNG}" alt="">
-                        </div>
+
+
+					<button type="button" class="arrow" id="left">
+						<img th:src="@{/images/iconImg/left.png}">
+					</button>
+  				
+  					<div class="detailPicture">
+
+						<div class="detailImgSlideBox">
+							
+	                    	<div class="detailImgContainer">
+	                       	 	<div class="detailImgWrapper">
+	                            	<img th:src="@{/images/campingImg/7.PNG}" alt="">
+	                        	</div>
+	                    	</div>
+	                    	
+	                    	<div class="detailImgContainer">
+	                       	 	<div class="detailImgWrapper">
+	                            	<img th:src="@{/images/campingImg/7.PNG}" alt="">
+	                        	</div>
+	                    	</div>
+	                    	
+	                    	<div class="detailImgContainer">
+	                       	 	<div class="detailImgWrapper">
+	                            	<img th:src="@{/images/campingImg/7.PNG}" alt="">
+	                        	</div>
+	                    	</div>
+	                    	
+	                    </div>
+	                    
+	                    
                     </div>
+                    
+                    
+                    <button type="button" class="arrow" id="right">
+						<img th:src="@{/images/iconImg/right.png}">
+					</button>
+
+
 
                     <div class="campingInfoContainer">
                         <p>상품정보</p>
@@ -61,7 +95,7 @@
 
                             <div class="campingInfoDetail">
                                 <p>캠핑</p>
-                                <p>수용인원 4명 / 최대인원 4명</p>
+                                <p>수용인원 4명</p>
                                 <p>입실 14:00 / 퇴실 12:00</p>
                                 <p>22:00 ~ 07:00</p>
                                 <p id="price">50,000원</p>
@@ -144,7 +178,7 @@
 
 		<th:block th:replace="~{common/footer}"></th:block>
 
-
+		<script th:src="@{/js/camp/CampingReservation.js}"></script>
 </body>
 
 </html>
