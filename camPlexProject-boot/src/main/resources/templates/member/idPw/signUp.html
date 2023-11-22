@@ -50,10 +50,10 @@
 	                    <p class="sendMassage" id="nickMessage">한글, 영어, 숫자 2~10글자</p>
 	                    
 	                    <input class="inputSignUpInfo" id="inputTel" type="tel" placeholder="휴대전화">
-	                    <p class="sendMassage">인증번호가 발송되었습니다.</p>
+	                    <p class="sendMassage" id="telMessage">인증번호가 발송되었습니다.</p>
 	                    
 	                    <input class="inputSignUpInfo" id="inputAuthkey" type="text" placeholder="인증번호">
-	                    <p class="sendMassage">인증되었습니다.</p>
+	                    <p class="sendMassage" id="authkeyMessage">인증되었습니다.</p>
 	
 	                    <!-- 프로필 이미지 입력 -->
 	                    <section id="profileImgSection">
@@ -112,6 +112,7 @@
 	<th:block th:replace="~{common/footer}"></th:block>
 	
 	<script th:src="@{/js/member/signUp.js}"></script>
+	<script th:src="@{/js/member/sms.js}"></script>
 
     
 </body>
