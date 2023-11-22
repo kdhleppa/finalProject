@@ -9,7 +9,7 @@ import com.camplex.project.camping.mappers.CampMapper;
 import com.camplex.project.camping.model.dto.Camp;
 
 @Service
-public class campServiceImpl implements campService {
+public class CampServiceImpl implements CampService {
 
 	@Autowired
 	private CampMapper mapper;

@@ -26,5 +26,10 @@ public class Camp {
 	private char campDeleteFlag;
 	private String campInfo;
 	
+	private String thumbnail;
+	
 	private List<CampDetail> campDetailList;
+	
+	private List<CampSiteImage> campSiteImageList;
+	private List<CampCeoImage> campCeoImageList;
 }
