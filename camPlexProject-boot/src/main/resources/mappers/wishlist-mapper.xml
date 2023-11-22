@@ -31,7 +31,7 @@
 	</select>
 	
 	<!-- 위시리스트에 들어갈 캠핑장 정보 -->
-	<select id="selectCampWish" resultMap="item_rm">
+	<select id="selectCampWish">
 			SELECT c.*
 			FROM CAMPING_SITE c
 			INNER JOIN WISH_LIST w ON c.CAMP_NO = w.CAMP_NO

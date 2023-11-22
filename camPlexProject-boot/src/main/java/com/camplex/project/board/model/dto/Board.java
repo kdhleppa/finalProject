@@ -21,6 +21,7 @@ public class Board {
     private String boardType;
     private String boardCreateDate;
     private String boardDetailType;
+    
     private String boardTypeName;
     
     // 서브쿼리

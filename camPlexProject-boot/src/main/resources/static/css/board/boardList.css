@@ -19,25 +19,27 @@ button {
 
 /* 게시판 상단 메뉴 */
 .boardDetail {
-    display: flex;
+	display: flex;
+	font-family: 'HakgyoansimSantteutdotumL';
     list-style: none;
-    margin-top: 100px;
+    font-size: 20px;
+    margin-left: 10rem;
+}
+
+.boardDetail > li > a {
+	text-decoration: none;
+	color: black;
+	margin-top: 3.8rem;
 }
 
 .boardDetail p {
-    font-size: 15px;
-    font-weight: 900;
-    margin-top: 4px;
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 4rem;
+    margin-right: 5rem;
+    margin-left: 5rem;
 }
 
-#boardDetailType {
-    font-family: 'HakgyoansimSantteutdotumL';
-    color: black;
-    text-decoration: none;
-    font-size: 20px;
-    margin-right: 70px;
-    margin-left: 70px;
-}
 
 #boardSearch {
     margin-top: 120px;
@@ -45,16 +47,24 @@ button {
     justify-content: end;
 }
 
-.boardTypeName {
+.boardTitle {
+	display: flex;
+	justify-content: space-between;
+}
+
+#boardTypeName {
+	width: 200px;
+	margin-left: 10rem;
+	margin-top: 7rem;
     font-family: 'HakgyoansimSantteutdotumL';
     font-size: 30px;
-    margin-left: 12%;
+    color: black;
 }
 
 /* 검색창 */
 #searchKey {
     font-family: 'HakgyoansimSantteutdotumL';
-    width: 120px;
+    width: 90px;
     font-size: 20px;
     height: 35px;
 }
@@ -66,23 +76,22 @@ button {
 
 #boardSearch > :nth-child(1) {
     background-color: transparent;
-    border-style: 1px rgb(184, 174, 174);
+    border-style: 1px rgb(217, 212, 212);
 }
 
 #boardSearch > :nth-child(2) {
     border-style: 1px rgb(217, 212, 212);
-    padding: 0;
-    margin-right: 150px;
+    margin-right: 152px;
 }
 
 #searchQuery {
-	margin-top: 1px;
+	margin-top: 2px;
     margin-left: 20px;
     border-style: none;
     outline: none;
     width: 350px;
     font-size: 18px;
-    height: 25px;
+    height: 22px;
     font-family: 'HakgyoansimSantteutdotumL';
 }
 
@@ -109,48 +118,48 @@ button {
 .listWrapper {
     font-family: 'HakgyoansimSantteutdotumL';
     width: 100%;
-    height: 65rem;
+    height: 100%;
 }
 
 table {
 	margin-top: 3rem;
-    margin-left: 15%;
-    width: 70%;
+    margin-left: 13%;
+    width: 75%;
     border-collapse: collapse;
-}
-
-.boardList {
-	margin-bottom: 20%;
 }
 
 #tableTr {
 	height: 8rem;
-    border-bottom: 1px solid black;
+    border-bottom: 3px solid rgb(206, 206, 206);
     text-align: center;
-    font-size: 20px;
+    font-size: 17px;
     font-style: black;
 }
 
-.btnArea {
-    display: flex;
-    flex-direction: row-reverse;
+#tableTr > td > a {
+	text-decoration: none;
+	color: black;
 }
 
 #insertBtn {
+	position: relative;
     font-family: 'HakgyoansimSantteutdotumL';
-    margin-right: 350px;
+    margin-left: 92rem;
     width: 8rem;
     height: 4rem;
     background-color: transparent;
     border-style: none;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    padding: 0;
 }
 
 .pagination {
     list-style: none;
     display: flex;
     justify-content: center;
-    padding: 0;
+    
+    margin-top: 3rem;
+    margin-bottom: 5rem;
 }
 
 .pagination li {
@@ -163,4 +172,11 @@ table {
     display: block;
     width: 100%;
     height: 100%;
+    text-decoration: none;
+    color: rgb(0, 0, 255);
+}
+
+#currentPa {
+	color: black;
+	text-decoration: overline;
 }
