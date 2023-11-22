@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캠핑장 상세 업로드</title>
+    <link rel="stylesheet" th:href="@{/css/camp/campingDetailUpload.css}">
+
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <th:block th:replace="~{common/headerForContent}"></th:block>
+
+    <!-- 메인 -->
+    <main class="campingDetailUploadMain">
+
+		<!-- Information -->
+        <section class="informationSec">
+
+            <div class="informationDiv">
+                Information
+            </div>
+
+        </section>
+
+        <section class="inputCampingNameSec">
+			
+            <input class="inputCampingName" type="text" placeholder="캠핑장 명을 입력해주세요." name="campName">
+            <input class="inputCampingName" type="text" placeholder="캠핑장 주소를 입력해주세요." name="campAddress">
+            <input class="inputCampingName" type="tel" placeholder="캠핑장 전화번호를 입력해주세요." name="campPhone">
+            
+        </section>
+
+        <section class="inputThumbnailEtcImgSec">
+
+            <section class="thumbnailImgSec">
+
+                <button class="thumbnailInput">+</button>
+
+            </section>
+
+            <section class="etcImgSec">
+
+                <section class="etcImgTopBottomSec">
+
+                    <button class="inputEtcImgBtn">
+                        +
+                    </button>
+
+                    <button class="inputEtcImgBtn">
+                        +
+                    </button>
+
+                </section>
+
+                <section class="etcImgTopBottomSec">
+
+                    <button class="inputEtcImgBtn">
+                        +
+                    </button>
+
+                    <button class="inputEtcImgBtn">
+                        +
+                    </button>
+
+
+                </section>
+
+            </section>
+
+        </section>
+
+		<!-- ceo's pic -->
+        <section class="ceosPicSec">
+
+            <section class="ceosPicTitleSec">
+
+                <div class="ceosPicTitleDiv">
+                    CEO's Pic
+                </div>
+
+            </section>
+
+            <section class="ceosPicImgSec">
+
+                <section class="arrowSec1">
+                    <img class="arrowImg" th:src="@{/images/iconImg/arrowleft.png}">
+                </section>
+
+                <section class="ceosPicImgDetailSec">
+
+                    <div class="ceosPicImgDetailDiv"></div>
+
+                </section>
+
+                <section class="arrowSec2">
+                    <img class="arrowImg" th:src="@{/images/iconImg/arrowRight.png}">
+                </section>
+
+            </section>
+
+        </section>
+
+		<!-- Introduction -->
+        <section class="introductionTitleSec">
+
+            <div class="introductionTitleDiv">
+                Introduction
+            </div>
+
+        </section>
+
+        <section class="introductionInputSec">
+
+            <textarea class="introduceTextArea" placeholder="캠핑장에 대한 설명을 입력하세요."></textarea>
+
+        </section>
+
+        <section class="detailsUploadSec">
+
+            <section class="detailsUploadTitleSec">
+
+                <div class="detailsUploadTitleDiv">
+                    Details
+                </div>
+
+            </section>
+
+            <section class="detailsInputSec">
+
+                <section class="detailsInputLeftRightSec" id="detailsInputLeftSec">
+                    <button class="detailsImgBtn">+</button>
+                </section>
+
+                <section class="detailsInputLeftRightSec" id="detailsInputRightSec">
+
+                    <section class="additionalFacilitiesTitleSec">
+
+                        <div class="additionalFacilitiesTitleDiv">
+                            부대 시설
+                        </div>
+
+                    </section>
+
+                    <section class="additionalFacilitiesInputSec">
+
+                        <section class="additionalFacilitiesInputLSec">
+
+                            <section class="additionalFacilitiesSec">
+                                <input type="checkbox">&nbsp; 공용 샤워실
+                            </section>
+
+                            <section class="additionalFacilitiesSec">
+                                <input type="checkbox">&nbsp; 편의점 / 매점
+                            </section>
+
+                            <section class="additionalFacilitiesSec">
+                                <input type="checkbox">&nbsp; 바베큐장
+                            </section>
+
+                            <section class="additionalFacilitiesSec">
+                                <input type="checkbox">&nbsp; 공용 화장실
+                            </section>
+
+                            <section class="additionalFacilitiesSec">
+                                <input type="checkbox">&nbsp; 공용 주차장
+                            </section>
+
+                        </section>
+
+                        <section class="additionalFacilitiesInputRSec">
+
+                            <section class="additionalFacilitiesSec">
+                                <input type="checkbox">&nbsp; 수영장
+                            </section>
+
+                            <section class="additionalFacilitiesSec">
+                                <input type="checkbox">&nbsp; Wi-Fi
+                            </section>
+
+                            <section class="additionalFacilitiesSec">
+                                <input type="checkbox">&nbsp; 노래방
+                            </section>
+
+                            <section class="additionalFacilitiesSec">
+                                <input type="checkbox">&nbsp; 카페
+                            </section>    
+
+                        </section>
+
+                    </section>
+
+                    <section class="macroEnvironmentTitleSec">
+
+                        <div class="macroEnvironmentTitleDiv">
+                            주변 환경
+                        </div>
+
+                    </section>
+
+                    <section class="macroEnvironmentInputSec">
+
+                        <section class="macroEnvironmentInputLRSec">
+
+                            <section class="macroEnvironmentInputDetailSec">
+                                <input type="checkbox">&nbsp; 등산로
+                            </section>
+
+                            <section class="macroEnvironmentInputDetailSec">
+                                <input type="checkbox">&nbsp; 계곡
+                            </section>
+
+                            <section class="macroEnvironmentInputDetailSec">
+                                <input type="checkbox">&nbsp; 산 / 숲
+                            </section>
+
+                        </section>
+
+                        <section class="macroEnvironmentInputLRSec">
+
+                            <section class="macroEnvironmentInputDetailSec">
+                                <input type="checkbox">&nbsp; 바다
+                            </section>
+
+                            <section class="macroEnvironmentInputDetailSec">
+                                <input type="checkbox">&nbsp; 강 / 호수
+                            </section>
+
+                            <section class="macroEnvironmentInputDetailSec">
+                                <input type="checkbox">&nbsp; 도심
+                            </section>
+
+                        </section>
+
+
+                    </section>
+
+                    <section class="mannerTimeTitleSec">
+
+                        <div class="mannerTimeTitleDiv">
+                            매너 타임
+                        </div>
+
+                    </section>
+
+                    <section class="mannertimeInputSec">
+
+                        <section class="mannerTimeImgSec">
+                            <img class="mannerTimeImg" th:src="@{/images/iconImg/clock.png}">
+                        </section>
+
+                        <section class="mannerTimeInputDetailSec">
+                            <input class="mannerTimeInput" type="text" placeholder="매너타임 시간을 입력하세요.">
+                        </section>
+
+                    </section>
+
+                </section>
+
+
+            </section>
+
+        </section>
+
+        <section class="enrollSiteTitleSec">
+
+            <div class="enrollSiteTitleDiv">
+                Enroll Site
+            </div>
+
+        </section>
+
+        <section class="enrollSiteSec">
+
+            <button class="enrollSiteBtn">+</button>
+
+        </section>
+
+		<th:block th:replace="~{common/footer}"></th:block>
+
+    </main>
+</body>
+</html>

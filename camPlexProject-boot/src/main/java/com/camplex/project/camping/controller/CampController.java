@@ -94,4 +94,10 @@ public class CampController {
 		
 		return "camp/campingReservation";
 	}
+	
+	@GetMapping("/uploadCamp")
+	public String uploadCamp() {
+		
+		return "camp/campingDetailUpload";
+	}
 }
