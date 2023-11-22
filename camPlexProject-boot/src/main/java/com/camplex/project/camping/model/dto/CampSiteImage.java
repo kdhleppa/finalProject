@@ -11,15 +11,13 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class CampDetail {
+public class CampSiteImage {
 
-	private int campDeNo;
+	private int campImageNo;
 	private int campNo;
-	private String campDeName;
-	private int campDePrice;
-	private int capacity;
+	private String campImagePath;
+	private String campImageReName;
+	private String campImageOriginal;
+	private int campImageOrder;
 	
-	private String thumbnail;
-	
-	private List<CampDetailImage> campDetailImageList;
 }

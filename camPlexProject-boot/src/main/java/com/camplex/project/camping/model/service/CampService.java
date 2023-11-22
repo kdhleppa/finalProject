@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.camplex.project.camping.model.dto.Camp;
 
-public interface campService {
+public interface CampService {
 
 	/** 캠프장 목록 조회
 	 * @return

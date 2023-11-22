@@ -11,8 +11,12 @@
             </div>
 
             <div class="rightOfTopMenu">
-                <a th:unless="@{session.loginMember}" th:href="@{/member/login}">LOGIN</a>
-				    <th:block th:if="@{session.loginMember}">
+                <a th:unless="${session.loginMember}" th:href="@{/member/login}">LOGIN</a>
+<<<<<<< HEAD
+				<th:block th:if="${session.loginMember}">
+=======
+				    <th:block th:if="${session.loginMember}">
+>>>>>>> 9a2f2f24cf17bb1fb616a26b9fcfd2a48e05235e
 	                <a th:href="@{/member/myPage}">MY PAGE</a>
 	                <a th:href="@{/member/logout}">LOGOUT</a>
 				    </th:block>

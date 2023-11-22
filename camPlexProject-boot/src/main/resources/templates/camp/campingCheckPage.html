@@ -117,9 +117,9 @@
 
             <section th:each="camp : ${campList}" class="contentDetailSec">
 
-                <a th:href="@{/camp/{campNo}(campNo = ${camp.campNo})}" class="contentImageDiv">
-                    <img class="contentImage" th:src="@{/images/campingImg/1.PNG}">
-                </a>
+                <div class="contentImageDiv">
+                    <img class="contentImage" th:src="${camp.thumbnail}" th:onclick="|location.href = '@{/camp/{campNo}(campNo = ${camp.campNo})}'|">
+                </div>
 
                 <a th:href="@{/camp/{campNo}(campNo = ${camp.campNo})}" class="contentDetailWriteSec">
                     <section class="contentDetailWriteSecCenterSec" th:text="${camp.campName}">

@@ -16,4 +16,11 @@
             <p>소유권은 CAMPLEX 주식회사 에게 있으며, 무단 도용시 법적인 제재를 받을 수 있습니다.</p>
         </div>
 
-    </footer>
+</footer>
+    
+<script th:inline="javascript">
+	
+	const message = /*[[${message}]]*/ "전달받은 메세지(보통은 에러메세지)";
+	if(message != null) alert(message);
+	
+</script> 

@@ -276,6 +276,7 @@ main {
 .contentImage {
     width: 23rem;
     height: 14rem;
+    cursor: pointer;
 }
 
 .contentDetailWriteSec {

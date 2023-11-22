@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.camplex.project.camping.model.dto.Camp;
-import com.camplex.project.camping.model.service.campService;
+import com.camplex.project.camping.model.service.CampService;
 
 @Controller
 @RequestMapping("/camp")
-public class CampIngCheckPageController {
+public class CampController {
 	
 	@Autowired
-	private campService service;
+	private CampService service;
 	
 	
 	/** 캠핑장 목록 조회
