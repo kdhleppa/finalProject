@@ -26,6 +26,14 @@
 	    
 	</resultMap>
 	
+	<resultMap id="rsvInfo_rm" type="MembersReservationDate">
+		<id property="reservationNo" column="RESERVATION_NO"/>
+		<result property="campName" column="CAMP_NAME"/>
+		<result property="campEntDate" column="CAMP_ENTDATE"/>
+		<result property="campOutDate" column="CAMP_OUTDATE"/>
+		
+	</resultMap>
+	
 	
 	
 	<resultMap type="ItemImg" id="itemImg_rm">
@@ -60,12 +68,14 @@
 		
 		
 		<!-- 멤버 예약목록 조회(캠핑장명, 날짜만) -->
-		<select id="membersRsvInfo" resultType="com.camplex.project.item.model.dto.MembersReservationDate">
+		<select id="membersRsvInfo" resultMap="rsvInfo_rm">
 			SELECT r.RESERVATION_NO, cs.CAMP_NAME, r.CAMP_ENTDATE, r.CAMP_OUTDATE
 	        FROM RESERVATIONS r
 	        JOIN CAMPING_SITE cs ON r.CAMP_NO = cs.CAMP_NO
 	        WHERE r.MEMBER_NO = #{memberNo}
+	        <![CDATA[
 	        AND r.CAMP_ENTDATE > CURRENT_DATE
+	        ]]>
 		</select>
 	
 	
