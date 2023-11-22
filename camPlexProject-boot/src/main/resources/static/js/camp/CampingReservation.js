@@ -1,12 +1,12 @@
 const prev = document.getElementById('left');
 const next = document.getElementById('right');
-const slideBox = document.querySelector('.ceoPicSlideBox');
-const slide = document.querySelectorAll('.ceoPicContent');
+const slideBox = document.querySelector('.detailImgSlideBox');
+const slide = document.querySelectorAll('.detailImgContainer');
 const slideLength = slide.length
 let currentIndex = 0;
 
 const moveSlide = function (num) {
-  slideBox.style.transform = `translateX(${-num * 250}px)`;
+  slideBox.style.transform = `translateX(${-num * 360}px)`;
   currentIndex = num;
 }
 
@@ -17,7 +17,8 @@ prev.addEventListener('click', () => {
 })
 
 next.addEventListener('click', () => {
-  if (currentIndex !== slideLength - 4) {
+	console.log(slideLength)
+  if (currentIndex !== slideLength-1) {
     moveSlide(currentIndex + 1)
   }
 

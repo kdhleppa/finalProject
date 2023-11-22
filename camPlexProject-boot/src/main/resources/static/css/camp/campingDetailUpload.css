@@ -12,98 +12,14 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
-/* 헤더 */
-.topBar{
-    width: 100%;
-    height: 170px;
-
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 10px;
-
+button:hover {
     transition-duration: 0.3s;
-    position: fixed;
-    top: 0;
-    z-index: 100;
+    background-color: #909090;
 }
 
-.topBar:hover {
-    background-color: rgb(239, 248, 242);
-    opacity: 0.7;
-}
-
-.topBar:hover a{
-	color: #000;
-} 
-
-.topMenu{
-    width: 100%;
-
-    flex-basis: 5%;
-
-    display: flex;
-    justify-content: space-between;
-}
-
-.topMenu a{
-    color: #fff;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 0.7rem;
-}
-
-.mainTitle{
-    flex-basis: 50%;
-    align-self: center;
-    font-size: 2rem;
-    font-weight: 900;
-    text-decoration: none;
-    margin: 20px 0;
-
-    height: 60px;
-    line-height: 60px;
-    color: #fff;
-    letter-spacing: 5px;
-}
-
-.bottomMenu{
-    flex-basis: 45%;
-    display: flex;
-    align-self: center;
-}
-
-.bottomMenu a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 1rem;
-    font-weight: 600;
-    font-size: 0.7rem;
-     position: sticky;
-    top: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-a { 
-  color: #fff;
-  display:inline-block; 
-  margin:0;
-  text-transform:uppercase; 
-}
-  
-a:after {
-  display:block;
-  content: '';
-  border-bottom: solid 1px #000;  
-  transform: scaleX(0);  
-  transition: transform 250ms ease-in-out;
-}
-a:hover:after { transform: scaleX(1); }
 
 
 /* 메인 */
@@ -134,15 +50,16 @@ a:hover:after { transform: scaleX(1); }
 
 .inputCampingNameSec {
     width: 100%;
-    height: 7rem;
+    height: 13rem;
     display: flex;
-    align-items: end;
+    flex-direction: column;
 }
 
 .inputCampingName {
     width: 32rem;
     height: 3.3rem;
     margin-left: 12rem;
+    margin-top: 1rem;
     border-radius: 10px;
     border: 1px solid #909090;
     padding-left: 1rem;
@@ -299,5 +216,225 @@ a:hover:after { transform: scaleX(1); }
 
 .detailsUploadSec {
     width: 100%;
-    height: 50rem;
+    height: 52rem;
+    display: flex;
+    flex-direction: column;
 }
+
+.detailsUploadTitleSec {
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    align-items: end;
+}
+
+.detailsUploadTitleDiv {
+    width: 37rem;
+    height: 5rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    margin-left: 15rem;
+    border-bottom: 1px solid #909090;
+}
+
+.detailsInputSec {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.detailsInputLeftRightSec {
+    height: 100%;
+    width: 50%;
+    display: flex;
+}
+
+#detailsInputLeftSec {
+    align-items: center;
+    justify-content: center;
+}
+
+.detailsImgBtn {
+    width: 32rem;
+    height: 38rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 3rem;
+    margin-left: 10rem;
+    cursor: pointer;
+}
+
+#detailsInputRightSec {
+    flex-direction: column;
+}
+
+.additionalFacilitiesTitleSec {
+    width: 100%;
+    height: 3.5rem;
+    display: flex;
+    align-items: end;
+}
+
+.additionalFacilitiesTitleDiv {
+    width: 35rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    border-bottom: 1px solid #909090;
+}
+
+.additionalFacilitiesInputSec {
+    width: 100%;
+    height: 15rem;
+    display: flex;
+}
+
+.additionalFacilitiesInputLSec {
+    height: 100%;
+    width: 12rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.additionalFacilitiesInputRSec {
+    height: 100%;
+    width: 12rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.additionalFacilitiesSec {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+.macroEnvironmentTitleSec {
+    width: 100%;
+    height: 3.5rem;
+    display: flex;
+    align-items: end;
+}
+
+.macroEnvironmentTitleDiv {
+    width: 35rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    border-bottom: 1px solid #909090;
+}
+
+.macroEnvironmentInputSec {
+    width: 100%;
+    height: 9rem;
+    display: flex;
+}
+
+.macroEnvironmentInputLRSec {
+    height: 100%;
+    width: 12rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.macroEnvironmentInputDetailSec {
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+.mannerTimeTitleSec {
+    width: 100%;
+    height: 7rem;
+    display: flex;
+    align-items: end;
+}
+
+.mannerTimeTitleDiv {
+    width: 35rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    border-bottom: 1px solid #909090;
+}
+
+.mannertimeInputSec {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+}
+
+.mannerTimeImgSec {
+    height: 100%;
+    width: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mannerTimeImg {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.mannerTimeInputDetailSec {
+    width: 40rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.mannerTimeInput {
+    width: 30rem;
+    height: 3.5rem;
+    border-radius: 10px;
+    padding: 1rem;
+    font-size: 1.3rem;
+    border: 1px solid #909090;
+    outline: none;
+}
+
+.enrollSiteTitleSec {
+    width: 100%;
+    height: 15rem;
+    display: flex;
+    align-items: end;
+}
+
+.enrollSiteTitleDiv {
+    width: 37rem;
+    height: 5rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    margin-left: 15rem;
+    border-bottom: 1px solid #909090;
+}
+
+.enrollSiteSec {
+    width: 100%;
+    height: 25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.enrollSiteBtn {
+    width: 70rem;
+    height: 18rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+
+
