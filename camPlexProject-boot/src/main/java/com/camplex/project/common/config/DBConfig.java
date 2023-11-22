@@ -45,13 +45,6 @@ public class DBConfig {
 		sessionFactoryBean.setDataSource(dataSource);
 
 		sessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:/mappers/**.xml"));
-<<<<<<< HEAD
-		
-
-		// 멤버 dto
-		sessionFactoryBean.setTypeAliasesPackage("com.camplex.project.member.model.dto, com.camplex.project.item.model.dto, com.camplex.project.camping.model.dto");
-=======
->>>>>>> 45902ecca7c166f3febdb0a9865616351e8cef3d
 
 		sessionFactoryBean.setTypeAliasesPackage("com.camplex.project.member.model.dto, com.camplex.project.item.model.dto, com.camplex.project.camping.model.dto");
 		
