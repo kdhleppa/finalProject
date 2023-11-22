@@ -19,7 +19,9 @@ public class CampDetail {
 	private int campDePrice;
 	private int capacity;
 	
-	private String thumbnail;
+	private String campDeThumbnail;
 	
 	private List<CampDetailImage> campDetailImageList;
+	
+	private String campName;
 }

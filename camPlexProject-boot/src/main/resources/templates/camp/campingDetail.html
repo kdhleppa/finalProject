@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>캠핑장 상세</title>
+	<title></title>
 
 	<link rel="stylesheet" th:href="@{/css/camp/CampingDetail.css}">
 
@@ -250,16 +250,17 @@
 
 			<section>
 
-				<form th:action="@{/camp/reservation}" class="campSiteFrm">
+				<form th:action="@{reservation}" class="campSiteFrm">
 
 					<div class="campSite" th:each="campDetail : ${camp.campDetailList}">
 
-						<input type="radio" name="chooseCampSite" class="campStieRadio"
-							th:id="campNo+${campDetail.campDeNo}"></input>
+						<input type="radio" name="campDeNo" class="campStieRadio"
+							th:id="campNo+${campDetail.campDeNo}" th:value="${campDetail.campDeNo}">
+						</input>
 						<label th:for="campNo+${campDetail.campDeNo}" class="campSiteBox" onclick="">
 
 							<div class="campSiteImgWrapper">
-								<img th:src="@{/images/campingImg/1.PNG}" alt="">
+								<img th:src="${campDetail.campDeThumbnail}" alt="">
 							</div>
 
 							<div class="campSiteInfoContainer">
@@ -270,7 +271,7 @@
 										<p>수용 인원 <input type="text" name="" id="" th:value="${campDetail.capacity}+명"
 												disabled></p>
 									</div>
-									<p class="campSitePrice" th:text="${campDetail.campDePrice}">가격</p>
+									<p class="campSitePrice" th:text="${campDetail.campDePrice}+원">가격</p>
 								</div>
 
 
@@ -282,8 +283,8 @@
 
 					<div class="btnArea">
 
-						<button class="btn" onclick="">다음으로</button>
-						<button type="button" class="btn" onclick="history.back()">돌아가기</button>
+						<button class="btn">다음으로</button>
+						<button type="button" class="btn" onclick="history.back()">목록으로</button>
 
 					</div>
 

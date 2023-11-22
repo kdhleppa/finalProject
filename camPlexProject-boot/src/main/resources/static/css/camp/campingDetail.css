@@ -111,7 +111,7 @@ hr{
 }
 
 .thumbsnailContainer{
-    width: 37rem;
+    width: 35rem;
     height: 22rem;
     margin: 5px;
     border-radius: 7px;
@@ -136,7 +136,7 @@ hr{
 }
 
 .campImgContainer{
-    width: 16rem;
+    width: 15rem;
     height: 10rem;
     margin: 5px;
     border-radius: 5px;
@@ -175,17 +175,14 @@ hr{
 
 .arrow{
     flex-basis: 10%;
+    background-color: transparent;
+    border: transparent;
+    font-size: 1rem;
 }
 
 .arrow img{
     width: 50px;
     cursor: pointer;
-}
-
-.ceoPicSlide button{
-    background-color: transparent;
-    border: transparent;
-    font-size: 1rem;
 }
 
 .ceoPicture{
