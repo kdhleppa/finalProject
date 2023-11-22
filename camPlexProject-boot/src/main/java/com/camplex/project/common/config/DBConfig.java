@@ -45,7 +45,7 @@ public class DBConfig {
 		sessionFactoryBean.setDataSource(dataSource);
 
 		sessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:/mappers/**.xml"));
-	
+
 		sessionFactoryBean.setTypeAliasesPackage("com.camplex.project.member.model.dto, com.camplex.project.item.model.dto, com.camplex.project.camping.model.dto");
 		
 		sessionFactoryBean.setConfigLocation(applicationContext.getResource("classpath:mybatis-config.xml"));
