@@ -78,7 +78,14 @@
 	        ]]>
 		</select>
 	
-	
+		<!-- 위시리스트에 들어갈 아이템 목록정보 -->
+		<select id="selectItemWish" resultMap="item_rm">
+			SELECT i.*
+			FROM ITEM i
+			INNER JOIN WISH_LIST w ON i.ITEM_NO = w.ITEM_NO
+			WHERE w.MEMBER_NO = #{memberNo}
+			ORDER BY w.WISHLIST_NO
+		</select>
 	
 	  	
 </mapper>

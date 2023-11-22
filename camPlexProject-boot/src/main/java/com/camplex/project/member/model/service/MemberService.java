@@ -10,4 +10,6 @@ public interface MemberService {
 	 */
 	Member loginMember(Member inputMember);
 
+	
+
 }

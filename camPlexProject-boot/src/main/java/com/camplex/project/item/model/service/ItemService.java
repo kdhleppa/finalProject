@@ -11,4 +11,8 @@ public interface ItemService {
 
 	List<MembersReservationDate> membersRsvInfo(int memberNo);
 
+	List<Item> selectItemWish(int memberNo);
+
+	
+
 }
