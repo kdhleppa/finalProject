@@ -34,6 +34,11 @@ public class ItemServiceImpl implements ItemService {
 		// TODO Auto-generated method stub
 		return mapper.membersRsvInfo(memberNo);
 	}
+
+	@Override
+	public List<Item> selectItemWish(int memberNo) {
+		return mapper.selectItemWish(memberNo);
+	}
 	
 	
 	

@@ -15,6 +15,8 @@ public interface ItemMapper {
 	public Item selectDetail(int itemNo);
 
 	public List<MembersReservationDate> membersRsvInfo(int memberNo);
+
+	public List<Item> selectItemWish(int memberNo);
 	
 	
 }

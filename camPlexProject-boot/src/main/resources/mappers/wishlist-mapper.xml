@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.camplex.project.member.mappers.WishlistMapper">
+
+
+	<resultMap type="Wishlist" id="wishlist_rm">
+	  	
+	  	<id property="wishlistNo" column="WISHLIST_NO"/>
+	  	  	
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="campNo" column="CAMP_NO"/>
+		<result property="itemNo" column="ITEM_NO"/>
+	    
+	      
+	</resultMap>
+	
+	<!-- 위시리스트 인서트 -->	
+	<insert id="wishlistInsert" parameterType="Wishlist" useGeneratedKeys="true">
+		<selectKey order="BEFORE" resultType="_int" keyProperty="wishlistNo">
+			SELECT SEQ_WISHLIST_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO "WISH_LIST"
+		VALUES (#{wishlistNo}, #{memberNo}, NULL, #{itemNo})
+	</insert> 
+		
+	<!-- 이미 있는 위시리스트인가 -->	 
+	<select id="searchWishlist" resultType="_int">
+		SELECT COUNT(*) FROM WISH_LIST
+		WHERE MEMBER_NO = #{memberNo}
+		AND ITEM_NO = #{itemNo}
+	</select>
+	
+	<!-- 위시리스트에 들어갈 캠핑장 정보 -->
+	<select id="selectCampWish" resultMap="item_rm">
+			SELECT c.*
+			FROM CAMPING_SITE c
+			INNER JOIN WISH_LIST w ON c.CAMP_NO = w.CAMP_NO
+			WHERE w.MEMBER_NO = #{memberNo}
+			ORDER BY w.WISHLIST_NO
+		</select>
+	
+	
+	  	
+</mapper>

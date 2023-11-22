@@ -24,7 +24,7 @@
                 <img th:src="@{/images/itemImg/MILKSOFA_BL_1.jpg}" alt="">
             </div>
             <div>
-                <form id="payFrm" th:action="@{/paysys/rentalPay}" method="post" class="productContentContainer" th:object="${item}">
+                <form id="payFrm" th:action="@{/paysys/rentalPay/now}" method="post" class="productContentContainer" th:object="${item}">
                     <!-- 나중에 불러와서 넣을 값들 대체-->
                     <h2 th:text="*{itemName}">아이템 이름</h2>
                     <p class="firstP" th:text="*{itemDescription}">아이템 설명</p>
@@ -72,8 +72,8 @@
 					
                     <button type="submit" class="rentBtn">RENT NOW</button>
                     <div class="cartWishBtnContainer">
-                        <button type="submit" class="cartBtn" onclick="submitForm('@{/paysys/rentCart}')">ADD TO CART</button>
-                        <button type="submit" class="wishBtn" onclick="submitForm('@{/member/myPage/wishList}')">WISH LIST</button>
+                        <button type="submit" class="cartBtn" onclick="submitForm('@{/paysys/rentCart/insert}')">ADD TO CART</button>
+                        <button type="submit" class="wishBtn" onclick="submitForm('@{/member/wishlist/insert}')">WISH LIST</button>
                     </div>
                     
                 </form>

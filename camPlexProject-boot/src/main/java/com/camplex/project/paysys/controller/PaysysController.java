@@ -37,8 +37,8 @@ public class PaysysController {
 	@Autowired
 	private CampService campService;
 	
-	@PostMapping("/rentalPay")
-	public String rentalPay(
+	@PostMapping("/rentalPay/now")
+	public String rentalPayNow(
 			@SessionAttribute(value="loginMember", required = false)Member loginMember,
 			RedirectAttributes ra,
 			Model model,
@@ -54,8 +54,19 @@ public class PaysysController {
 			List<Camp> camp;
 			List<Reservations> rsv;
 			
+			
 			return "/paysys/rentalPay";
 		}
+	}
+	
+	@PostMapping("/rentCart/insert")
+	public String rentCartInsert(int itemNo, int reservationNo, int quantity,
+			@SessionAttribute(value="loginMember", required = false)Member loginMember
+			 
+			) {
+		
+		
+		return null;
 	}
 
 }
