@@ -25,6 +25,8 @@ public class Camp {
 	private String category;
 	private char campDeleteFlag;
 	private String campInfo;
+	private String checkIn;
+	private String checkOut;
 	
 	private String thumbnail;
 	

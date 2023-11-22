@@ -34,8 +34,8 @@
             <section class="mainPicArea">
 
                 <div class="campingTitle">
-                    <p class="campingTitleName">Catgill 캠핑장</p>
-                    <p class="campSiteName">잔디구역(A-1)</p>
+                    <p class="campingTitleName" th:text="${campDetail.campDeName}">호실 명</p>
+                    <p class="campSiteName" th:text="|(${campDetail.campName})|">캠핑장명</p>
                 </div>
 
                 <div class="pictureContainer">
@@ -50,21 +50,9 @@
 
 						<div class="detailImgSlideBox">
 							
-	                    	<div class="detailImgContainer">
+	                    	<div class="detailImgContainer" th:each="img : ${campDetailImages}">
 	                       	 	<div class="detailImgWrapper">
-	                            	<img th:src="@{/images/campingImg/7.PNG}" alt="">
-	                        	</div>
-	                    	</div>
-	                    	
-	                    	<div class="detailImgContainer">
-	                       	 	<div class="detailImgWrapper">
-	                            	<img th:src="@{/images/campingImg/7.PNG}" alt="">
-	                        	</div>
-	                    	</div>
-	                    	
-	                    	<div class="detailImgContainer">
-	                       	 	<div class="detailImgWrapper">
-	                            	<img th:src="@{/images/campingImg/7.PNG}" alt="">
+	                            	<img th:src="|${img.campDeImagePath}${img.campDeImageReName}|" alt="">
 	                        	</div>
 	                    	</div>
 	                    	
@@ -95,10 +83,10 @@
 
                             <div class="campingInfoDetail">
                                 <p>캠핑</p>
-                                <p>수용인원 4명</p>
-                                <p>입실 14:00 / 퇴실 12:00</p>
-                                <p>22:00 ~ 07:00</p>
-                                <p id="price">50,000원</p>
+                                <p th:text="|수용인원 ${campDetail.capacity}명|">수용인원</p>
+                                <p th:text="|입실 : ${campDetail.checkIn}  /  퇴실 : ${campDetail.checkOut}|">입실/ 퇴실 </p>
+                                <p th:text="${campDetail.mannerTime}">매너타임</p>
+                                <p id="price" th:text="|${#numbers.formatInteger(campDetail.campDePrice, 3, 'COMMA')}원|">가격</p>
                             </div>
 
                         </div>
