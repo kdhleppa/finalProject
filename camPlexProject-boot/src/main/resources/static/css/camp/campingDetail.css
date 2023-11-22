@@ -124,6 +124,7 @@ hr{
 
 .thumbsnail img {
     height: 100%;
+    border-radius: 7px;
 }
 
 .campImg{
@@ -148,7 +149,8 @@ hr{
 }
 
 .campImgContainer img{
-    width: 100%;
+    height: 100%;
+    border-radius: 5px;
 }
 
 /* ------------------------------------------------------ */
@@ -213,6 +215,7 @@ hr{
 
 .ceoPictureWrapper img{
     height: 100%;
+    border-radius: 5px;
 }
 
 
