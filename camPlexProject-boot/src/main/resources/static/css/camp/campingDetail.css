@@ -308,7 +308,7 @@ hr{
 }
 
 .facilityArea, .aruondViewArea{
-    width: 34rem;
+    width: 33rem;
     display: flex;
     flex-wrap: wrap;
 }
