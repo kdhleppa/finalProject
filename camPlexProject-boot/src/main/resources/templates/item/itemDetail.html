@@ -50,7 +50,7 @@
 									<!--예약목록을가져와야하는데 캠핑장명, 날짜 알아야함 여행 출발일의 전날까지만 나오게해야함-->
 									<option value="default" class="dfText">여행지를 선택 해 주세요</option>
                                     <th:block th:each="rsvInfo : ${rsvInfo}">
-        								<option th:value="${rsvInfo.reservationNo}" th:text="${rsvInfo.campName} + ' (' + ${rsvInfo.campEntDate} + ' ~ ' + ${rsvInfo.campOutDate} + ')'"></option>
+        								<option name="reservationNo" th:value="${rsvInfo.reservationNo}" th:text="${rsvInfo.campName} + ' (' + ${rsvInfo.campEntDate} + ' ~ ' + ${rsvInfo.campOutDate} + ')'"></option>
     								</th:block>
                                 </select>
 
@@ -60,7 +60,7 @@
                             </td>
                         </tr>
                     </table>
-
+					<input type="hidden" name="itemNo" value="*{itemNo}">
                     <div class="totalPaymentContainer">
                         <div class="totalTextContainer">
                             <p>TOTAL</p>
@@ -69,12 +69,13 @@
                             <p></p>
                         </div>
                     </div>
-
+					
                     <button type="submit" class="rentBtn">RENT NOW</button>
                     <div class="cartWishBtnContainer">
                         <button type="submit" class="cartBtn" onclick="submitForm('@{/paysys/rentCart}')">ADD TO CART</button>
                         <button type="submit" class="wishBtn" onclick="submitForm('@{/member/myPage/wishList}')">WISH LIST</button>
                     </div>
+                    
                 </form>
             </div>
         </div>

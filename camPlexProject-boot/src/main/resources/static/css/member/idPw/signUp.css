@@ -149,10 +149,16 @@ main {
 	flex-basis: 30%;
 	display: flex;
 	justify-content: center;
+	width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 #profileImg {
-    width: 100px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 #uploadImgBtn {
@@ -206,6 +212,7 @@ label:hover {
     display: flex;
     justify-content: space-around;
     height: 30px;
+    margin-bottom: 100px;
 }
 
 #changePwBtn button {
@@ -251,13 +258,16 @@ label:hover {
 }
 
 #checkTel {
-    margin-bottom: 242px;
+    margin-bottom: 342px;
 }
 
 #checkTelAuthkey {
     margin-bottom: 65px;
 }
 
+/* 메세지 색상 지정 */
+.confirm{ color : green; }
+.error{ color : red; }
 
 /* --------------------- */
 /* 풋터 마진 */

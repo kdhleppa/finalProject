@@ -90,6 +90,7 @@ main {
 .magnifyImg {
     width: 3rem;
     height: 3rem;
+    cursor: pointer;
 }
 
 /* 달력 sec */
@@ -154,6 +155,33 @@ main {
     margin-left: 17%;
 }
 
+.campUploadBtnSec {
+	height: 100%;
+	width: 40%;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+}
+
+.campUploadBtn {
+	height: 3rem;
+	width: 12rem;
+	border-radius: 10px;
+	background-color: transparent;
+	cursor: pointer;
+	font-size: 1.2rem;
+	border: 1px solid #909090;
+	color: #000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.campUploadBtn:hover {
+	background-color: #000;
+	color: white;
+}
+
 /* 정렬 선택 */
 .chooseClassificationSec {
     height: 4rem;
@@ -180,6 +208,10 @@ main {
 }
 
 /* fixed map */
+.fixedMapA {
+    cursor: pointer;
+}
+
 .fixedDiv {
     width: 8rem;
     height: 8rem;
@@ -209,11 +241,12 @@ main {
 
 .mapWrite {
     border-bottom: 1px solid black;
+    color: black;
 }
 
 /* 컨텐츠 sec */
 .contentSec {
-    height: 17rem;
+    height: auto;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -223,7 +256,7 @@ main {
 
 .contentDetailSec {
     width: 26%;
-    height: 100%;
+    height: 22rem;
     display: flex;
     flex-direction: column;
 }
@@ -243,6 +276,7 @@ main {
 .contentImage {
     width: 23rem;
     height: 14rem;
+    cursor: pointer;
 }
 
 .contentDetailWriteSec {

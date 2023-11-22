@@ -1,5 +1,7 @@
 package com.camplex.project.camping.model.dto;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,4 +18,10 @@ public class CampDetail {
 	private String campDeName;
 	private int campDePrice;
 	private int capacity;
+	
+	private String campDeThumbnail;
+	
+	private List<CampDetailImage> campDetailImageList;
+	
+	private String campName;
 }

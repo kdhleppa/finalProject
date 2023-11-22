@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.camplex.project.camping.mappers.CampMapper;
 import com.camplex.project.camping.model.dto.Camp;
+import com.camplex.project.camping.model.dto.CampDetail;
 
 @Service
-public class campServiceImpl implements campService {
+public class CampServiceImpl implements CampService {
 
 	@Autowired
 	private CampMapper mapper;
@@ -30,6 +31,15 @@ public class campServiceImpl implements campService {
 	public Camp selectCampOne(int campNo) {
 		
 		return mapper.selectCampOne(campNo);
+	}
+
+	/** 캠핑장 예약 이동
+	 *
+	 */
+	@Override
+	public CampDetail selectCampDetail(int campDeNo) {
+		
+		return mapper.selectCampDetail(campDeNo);
 	}
 
 }

@@ -1,4 +1,3 @@
-// 좋아요 슬라이드
 const prev = document.getElementById('left');
 const next = document.getElementById('right');
 const slideBox = document.querySelector('.ceoPicSlideBox');
