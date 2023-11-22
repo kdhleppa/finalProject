@@ -96,11 +96,11 @@ a {
   text-transform:uppercase; 
 }
   
-a:after {
+a:after :not(.itemUploadDiv) {
   display:block;
   content: '';
   border-bottom: solid 1px #000;  
   transform: scaleX(0);  
   transition: transform 250ms ease-in-out;
 }
-a:hover:after { transform: scaleX(1); }
+a:hover:after  { transform: scaleX(1); }
