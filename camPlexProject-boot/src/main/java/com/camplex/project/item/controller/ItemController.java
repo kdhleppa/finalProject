@@ -56,6 +56,12 @@ public class ItemController {
 		}
 	}
 	
+	@GetMapping("/itemUpload")
+	public String itemUpload() {
+		
+		return "item/uploadRentalPage";
+	}
+	
 	
 	
 }

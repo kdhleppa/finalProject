@@ -72,6 +72,38 @@
     height: 100%;
 }
 
+.itemUploadSec {
+	flex-basis: 20%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.itemUploadA {
+	text-decoration: none;
+}
+
+.itemUploadDiv {
+	width: 10rem;
+	height: 3rem;
+	border-radius: 20px;
+	border: 1px solid #909090;
+	color: black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	cursor: pointer;
+	transition-duration: 0.5s;
+}
+
+.itemUploadDiv:hover {
+	background-color: black;
+	color: white;
+}
+
+
 .itemSecBlankSec {
     flex-basis: 2rem;
     height: 2.8rem;
@@ -164,6 +196,13 @@
     border: 1px solid #909090;
     background-color: transparent;
     font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.searchBtn:hover {
+	background-color: #909090;
+	color: white;
+	transition-duration: 0.5s;
 }
 
 .classificationSec {
