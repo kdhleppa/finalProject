@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.camplex.project.camping.model.dto.Camp;
+import com.camplex.project.camping.model.dto.CampDetail;
 import com.camplex.project.camping.model.service.CampService;
 
 @Controller
@@ -90,7 +91,11 @@ public class CampController {
 	}
 	
 	@GetMapping("/reservation")
-	public String campReservation() {
+	public String campReservation(int campDeNo) {
+		
+		CampDetail campDetail = service.selectCampDetail(campDeNo);
+		
+		System.out.println(campDetail);
 		
 		return "camp/campingReservation";
 	}

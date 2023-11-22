@@ -94,11 +94,11 @@ a {
   text-transform:uppercase; 
 }
   
-a:after {
+.topBar a:after {
   display:block;
   content: '';
   border-bottom: solid 1px #000;  
   transform: scaleX(0);  
   transition: transform 250ms ease-in-out;
 }
-a:hover:after { transform: scaleX(1); }
+.topBar a:hover:after { transform: scaleX(1); }
