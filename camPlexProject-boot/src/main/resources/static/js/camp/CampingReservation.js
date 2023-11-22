@@ -17,7 +17,6 @@ prev.addEventListener('click', () => {
 })
 
 next.addEventListener('click', () => {
-	console.log(slideLength)
   if (currentIndex !== slideLength-1) {
     moveSlide(currentIndex + 1)
   }
