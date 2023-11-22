@@ -7,12 +7,12 @@
     <link rel="stylesheet" th:href="@{/css/paysys/rentalCheckPage.css}">
     <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
     <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}" rel="stylesheet">
 
 </head>
 <body>
     
-    <th:block th:replace="~{common/header}"></th:block>
+    <th:block th:replace="~{common/headerForContent}"></th:block>
     
     <!-- main -->
     <main class="main">
@@ -59,7 +59,7 @@
                                 </section>
 
                                 <section class="wonImgSec">
-                                    <img src="/images/wonImage.png" class="wonImg">
+                                    <img th:src="@{/images/iconImg/wonImage.png}" class="wonImg">
                                 </section>
 
                                 <section class="tildeImgSec">
@@ -71,7 +71,7 @@
                                 </section>
 
                                 <section class="wonImgSec">
-                                    <img src="/images/wonImage.png" class="wonImg">
+                                    <img th:src="@{/images/iconImg/wonImage.png}" class="wonImg">
                                 </section>
 
                             </div>
