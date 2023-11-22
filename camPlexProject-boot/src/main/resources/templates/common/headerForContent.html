@@ -11,7 +11,11 @@
             </div>
 
             <div class="rightOfTopMenu">
-                <a th:href="@{/member/login}">LOGIN</a>
+                <a th:unless="@{session.loginMember}" th:href="@{/member/login}">LOGIN</a>
+				    <th:block th:if="@{session.loginMember}">
+	                <a th:href="@{/member/myPage}">MY PAGE</a>
+	                <a th:href="@{/member/logout}">LOGOUT</a>
+				    </th:block>
                 <a href="#">TOP</a>
             </div>
 

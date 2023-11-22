@@ -168,8 +168,17 @@ main {
     flex-basis: 5%;
 }
 
+#profileImgSection {
+	width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
 #profileImg {
-    width: 130px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 #nameTel, #nicknameEmail {
