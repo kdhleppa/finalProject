@@ -233,4 +233,25 @@ public class MemberController {
 		
 	}
 	
+	
+	@ResponseBody
+	@DeleteMapping("/deleteItemWish/{itemNo}")
+	public ResponseEntity<?> deleteItemWish(
+			@PathVariable("itemNo") int itemNo,
+			@SessionAttribute(value="loginMember", required = false)Member loginMember
+			){
+		int memberNo = loginMember.getMemberNo();
+		
+		
+		try {
+			wishlistService.deleteItemWish(memberNo, itemNo);
+			return ResponseEntity.ok().body(new ResponseMessage("삭제 성공"));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseMessage("삭제 실패"));
+		}
+		
+		
+		
+	}
+	
 }

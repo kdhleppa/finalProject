@@ -62,6 +62,6 @@ public class ItemController {
 		return "item/uploadRentalPage";
 	}
 	
-	
+
 	
 }

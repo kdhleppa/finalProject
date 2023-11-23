@@ -23,13 +23,13 @@
         <!--메인공간-->
         <div class="midContainer">
             
-            <h2 class="heading">CAMPING CART</h2>
+            <h2 class="heading">CAMPING WISHLIST</h2>
 
             <table class="campingListTB">
                 <tr>
                     <!-- 전체선택체크박스 js구현하기-->
                     <!-- th 위 진한선 아래 연한선주고 추가되는 상품의 밑 마다 선주기-->
-                    <th><input type="checkbox" class=""></th>
+                    <th><input type="checkbox" id="selectAllCamp" th:onclick="selectAllCamp(group1)"></th>
                     <th>번호</th>
                     <th>사진</th>
                     <th>캠핑장 명</th>
@@ -39,8 +39,17 @@
                 </tr>
                 <!-- tr 추가되는식으로 상품추가-->
                 <!-- 없으면 없다고 표시하자!!-->
-                <th:block th:each="camp, iterStat : ${camp}">
-	                <tr th:id="'tr'+${camp.campNo}">
+                <tr th:if="${camp == null || camp.empty}">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>등록된 캠핑장이 없습니다.</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+                <th:block th:unless="${camp == null}" th:each="camp, iterStat : ${camp}">
+	                <tr th:id="'tr'+${camp.campNo}" class="campTr" th:data-ccn="'ccn'+${iterStat.count}">
 	                    <!-- 개별선택체크박스-->
 	                    <td><input type="checkbox" class=""></td>
 	                    <td th:text="${iterStat.count}">넘버</td>
@@ -62,35 +71,38 @@
                     <th>번호</th>
                     <th>사진</th>
                     <th>상품명</th>
-                    <th>재고</th>
+                    <th></th>
                     <th>금액</th>
                     <th>취소</th>
                 </tr>
                 <!-- 위와 같은 참고사항 지킬것-->
-                <tr>
-                    <td><input type="checkbox" class=""></td>
-                    <td>1</td>
-                    <td><img src="/images/itemImg/0340020000042.jpg"></td>
-                    <td>밀크 소파 : 블랙</td>
-                    <td>있음</td>
-                    <td>100원</td>
-                    <td><button href="#" class = "grayBtn">DELETE</button></td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class=""></td>
-                    <td>2</td>
-                    <td><img src="/images/itemImg/0340020000042.jpg"></td>
-                    <td>밀크 소파 : 블랙</td>
-                    <td>있음</td>
-                    <td>100원</td>
-                    <td><button href="#" class ="grayBtn">DELETE</button></td>
-                </tr>
-
+                   <tr th:if="${item == null || item.empty}">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>등록된 상품이 없습니다.</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+                <th:block th:unless="${item == null}" th:each="item, iterStat : ${item}">
+	                <tr th:id="'tr'+${item.itemNo}">
+	                    <!-- 개별선택체크박스-->
+	                    <td><input type="checkbox" class=""></td>
+	                    <td th:text="${iterStat.count}">넘버</td>
+	                    <td><img th:src="@{/images/itemImg/0340020000042.jpg}" alt="수정전"></td>
+	                    <td>[[${item.itemName}]]</td>
+	                    <td></td>
+	                    <td>[[${item.itemPrice}]]</td>
+	                    <td><button class="grayBtn" th:onclick="'deleteItemWish(' + ${item.itemNo} + ');'" th:text="DELETE">DELETE</button></td>
+	                </tr>
+                </th:block>
+               
             </table>
             <div class="buttonList">
                 <button class="Btn">선택삭제</button>
-                <a href="#" class="Btn">장바구니</a>
-                <a href="#" class="Btn backBtn">돌아가기</a>
+                <a th:href="@{/paysys/rentCart}" class="Btn">장바구니</a>
+                <a href="javascript:history.back()" class="Btn backBtn">돌아가기</a>
             </div>
         </div>
         

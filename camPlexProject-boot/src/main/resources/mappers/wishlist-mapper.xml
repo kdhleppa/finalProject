@@ -32,13 +32,11 @@
 
 	</resultMap>
 	
+	
 	<!-- 위시리스트 인서트 -->	
-	<insert id="wishlistInsert" parameterType="Wishlist" useGeneratedKeys="true">
-		<selectKey order="BEFORE" resultType="_int" keyProperty="wishlistNo">
-			SELECT SEQ_WISHLIST_NO.NEXTVAL FROM DUAL
-		</selectKey>
-		INSERT INTO "WISH_LIST"
-		VALUES (#{wishlistNo}, #{memberNo}, NULL, #{itemNo})
+	<insert id="wishlistInsert">		
+	INSERT INTO "WISH_LIST"
+	VALUES (SEQ_WISH_NO.NEXTVAL, #{memberNo}, NULL, #{itemNo})
 	</insert> 
 		
 	<!-- 이미 있는 위시리스트인가 -->	 
@@ -58,9 +56,17 @@
 			ORDER BY w.WISHLIST_NO
 	</select>
 	
+	<!-- 위시리스트에서 캠핑장 삭제-->
 	<delete id="deleteCampWish">
     DELETE FROM WISH_LIST
     WHERE CAMP_NO = #{campNo}
+    AND MEMBER_NO = #{memberNo}
+	</delete>
+
+	<!-- 위시리스트에서 아이템 삭제-->
+	<delete id="deleteItemWish">
+    DELETE FROM WISH_LIST
+    WHERE ITEM_NO = #{itemNo}
     AND MEMBER_NO = #{memberNo}
 	</delete>
 	
