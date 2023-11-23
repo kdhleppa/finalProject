@@ -1,7 +1,13 @@
 package com.camplex.project.member.model.service;
 
-public interface SmsService {
+import java.util.HashMap;
+import java.util.Random;
 
-	String memberTelCheck(String to);
+import org.springframework.stereotype.Service;
+
+import net.nurigo.sdk.message.model.Message;
+
+@Service
+public class SmsService {
 
 }

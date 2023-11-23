@@ -3,7 +3,7 @@ package com.camplex.project.member.mappers;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface AjexMapper {
+public interface AjaxMapper {
 
 	// 이메일 중복 검사
 	int checkEmail(String email);

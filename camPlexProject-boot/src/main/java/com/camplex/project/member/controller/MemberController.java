@@ -80,20 +80,45 @@ public class MemberController {
 	}
 	
 	@GetMapping("/signUp")
-	public String signUp(Member inputMember,
-						RedirectAttributes ra
-						/*@RequestParam("profileImage") MultipartFile profileImage*/
-						) {
-		
-		
+	public String signUp() {
 		
 		return "member/idPw/signUp";
 	}
 	
+	// 회원 가입 진행
 	@PostMapping("/signUp")
-	public String signUp() {
-		return null;
+	public String signUp(Member inputMember,
+						@RequestParam("uploadProfileImg") MultipartFile profileImg,
+						RedirectAttributes ra ) throws Exception {	
+		System.out.println(inputMember);
+		int result = service.signUp(profileImg, inputMember);
+		
+		
+		String path = "redirect:";
+		String message = null;
+		
+		if(result > 0) { // 가입 성공
+			path += "/"; // 메인페이지로
+			
+			message = inputMember.getMemberNickname() + "님의 가입을 환영합니다";
+			
+		}else { // 가입 실패
+			
+			// 회원 가입 페이지
+			//path += "/member/signUp"; // 절대경로
+			path += "signUp"; // 상대 경로
+			
+			message = "회원 가입 실패";
+			
+		}
+		
+		// 리다이렉트 시 session에 잠깐 올라갔다 request로 복귀하도록 세팅
+		ra.addFlashAttribute("message", message);
+		
+		return path;
 	}
+	
+	
 	
 	@GetMapping("/searchId")
 	public String searchId() {

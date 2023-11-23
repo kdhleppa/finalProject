@@ -1,6 +1,6 @@
 package com.camplex.project.member.model.service;
 
-public interface AjexService {
+public interface AjaxService {
 
 	// 이메일 중복 검사
 	int checkEmail(String email);
