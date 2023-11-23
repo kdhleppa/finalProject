@@ -13,6 +13,9 @@ public interface ItemService {
 
 	List<Item> selectItemWish(int memberNo);
 
+
+
+
 	
 
 }
