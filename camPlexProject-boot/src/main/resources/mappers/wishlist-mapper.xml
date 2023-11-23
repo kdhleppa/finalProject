@@ -11,6 +11,7 @@
 		<result property="campNo" column="CAMP_NO"/>
 		<result property="itemNo" column="ITEM_NO"/>
 	    
+<<<<<<< HEAD
 	</resultMap>
 	
 	<resultMap type="Camp" id="camp_rm">
@@ -28,6 +29,8 @@
 		<result property="campInfo" column="CAMP_INFO" />
 		<result property="thumbnail" column="THUMBNAIL" />
 		
+=======
+>>>>>>> 5f8b14e2d1ab1ec344e02412f234a09b3bd964f9
 	</resultMap>
 	
 	<!-- 위시리스트 인서트 -->	
@@ -48,7 +51,11 @@
 	
 	<!-- 위시리스트에 들어갈 캠핑장 정보 -->
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<select id="selectCampWish" resultMap="camp_rm">
+=======
+	<select id="selectCampWish">
+>>>>>>> 5f8b14e2d1ab1ec344e02412f234a09b3bd964f9
 =======
 	<select id="selectCampWish">
 >>>>>>> 5f8b14e2d1ab1ec344e02412f234a09b3bd964f9
