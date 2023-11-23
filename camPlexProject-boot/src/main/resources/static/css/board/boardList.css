@@ -18,7 +18,7 @@ button {
 
 
 /* 게시판 상단 메뉴 */
-.boardDetail {
+.boardTypeList {
 	display: flex;
 	font-family: 'HakgyoansimSantteutdotumL';
     list-style: none;
@@ -26,13 +26,13 @@ button {
     margin-left: 10rem;
 }
 
-.boardDetail > li > a {
+.boardTypeList > li > a {
 	text-decoration: none;
 	color: black;
 	margin-top: 3.8rem;
 }
 
-.boardDetail p {
+.boardTypeList p {
     font-size: 17px;
     font-weight: 600;
     margin-top: 4rem;
@@ -47,7 +47,7 @@ button {
     justify-content: end;
 }
 
-.boardTitle {
+.boardHead {
 	display: flex;
 	justify-content: space-between;
 }
@@ -144,13 +144,11 @@ table {
 #insertBtn {
 	position: relative;
     font-family: 'HakgyoansimSantteutdotumL';
-    margin-left: 92rem;
-    width: 8rem;
-    height: 4rem;
-    background-color: transparent;
-    border-style: none;
+    margin-top: 1rem;
+    margin-left: 96rem;
+    text-decoration: none;
+    color: black;
     font-size: 1.3rem;
-    padding: 0;
 }
 
 .pagination {

@@ -18,7 +18,7 @@
     
     <main th:with="pagination=${map.pagination}, boardList=${map.boardList}">
 
-	<ul class="boardDetail">
+		<ul class="boardTypeList">
             <li>
                 <a th:href="@{/board/{boardType}(boardType=B)}">자유</a>
             </li>
@@ -43,7 +43,7 @@
         </ul>
 	
 
-        <section class="boardTitle">
+        <section class="boardHead">
 			
 			<div id="boardTypeName">
             	<p>자유게시판</p>
@@ -72,7 +72,7 @@
 
         <section class="chkRadio">
             <input type="radio" name="typeCheck" class="chk" id="chkNew" value="new">최신 순
-            <input type="radio" name="typeCheck" class="chk" id="chkCOunt" value="count">조회 순
+            <input type="radio" name="typeCheck" class="chk" id="chkCount" value="count">조회 순
             <input type="radio" name="typeCheck" class="chk" id="chkLike" value="like">좋아요 순
         </section>
 
@@ -142,7 +142,7 @@
                 
                 <div class="btnArea">
 				<!-- 로그인 상태일 경우 글쓰기 버튼 노출 -->
-	                <button th:if="${session.loginMember}" id="insertBtn">글쓰기</button>
+	                <a th:if="${session.loginMember}" id="insertBtn" th:href="@{/board/B/insert}">글쓰기</a>
             	</div>
             	
             </div>

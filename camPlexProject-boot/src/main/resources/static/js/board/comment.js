@@ -37,12 +37,12 @@ function selectCommentList(){
             commentWriter.classList.add("comment-writer");
 
             // 프로필 이미지
-            const profileImage = document.createElement("img");
+            const memberProfileImg = document.createElement("img");
 
-            if( comment.profileImage != null ){ // 프로필 이미지가 있을 경우
-                profileImage.setAttribute("src", comment.profileImage);
+            if( comment.memberProfileImg != null ){ // 프로필 이미지가 있을 경우
+                memberProfileImg.setAttribute("src", comment.memberProfileImg);
             }else{ // 없을 경우 == 기본이미지
-                profileImage.setAttribute("src", "/resources/images/user.png");
+                memberProfileImg.setAttribute("src", "/images/user.png");
             }
 
             // 작성자 닉네임
@@ -55,7 +55,7 @@ function selectCommentList(){
             commentDate.innerText =  "(" + comment.commentCreateDate + ")";
 
             // 작성자 영역(p)에 프로필,닉네임,작성일 마지막 자식으로(append) 추가
-            commentWriter.append(profileImage , memberNickname , commentDate);
+            commentWriter.append(memberProfileImg , memberNickname , commentDate);
 
             
 
@@ -172,8 +172,6 @@ addComment.addEventListener("click", e => { // 댓글 등록 버튼이 클릭이
         }
     })
     .catch(err => console.log(err));
-});
-/*
     fetch("/comment/insert?boardNo=" + boardNo + "&commentContent=" + commentContent.value)
     .then(response => response.text())
     .then(result => {
@@ -192,7 +190,6 @@ addComment.addEventListener("click", e => { // 댓글 등록 버튼이 클릭이
     })
     .catch(err => console.log(err));
 });
-*/
 
 // -----------------------------------------------------------------------------------
 // 댓글 삭제

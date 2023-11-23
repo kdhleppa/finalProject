@@ -55,50 +55,50 @@ public class BoardServiceImpl implements BoardService {
 		return map;
 	}
 
-//	// 게시글 상세 조회
-//	@Override
-//	public Board selectBoard(Map<String, Object> map) {
-//		return mapper.selectBoard(map);
-//	}
-//
-//	// 좋아요 여부 확인 서비스
-//	@Override
-//	public int boardLikeCheck(Map<String, Object> map) {
-//		return mapper.boardLikeCheck(map);
-//	}
-//
-//	// 조회수 증가 서비스
-//	@Transactional(rollbackFor = Exception.class)
-//	@Override
-//	public int updateReadCount(int boardNo) {
-//		return mapper.updateReadCount(boardNo);
-//	}
-//
-//	// 좋아요 처리 서비스
-//	@Transactional(rollbackFor = Exception.class)
-//	@Override
-//	public int like(Map<String, Integer> paramMap) {
-//		
-//		// check == 0 / 1
-//		// check 값이 무엇이냐에 따라서 BOARD_LIKE 테이블 INSERT / DELETE 
-//		int result = 0;
-//		
-//		if(paramMap.get("check") == 0) { // 좋아요 상태 X
-//			// BOARD_LIKE 테이블 INSERT ( dao.insertBoardLike() )
-//			result = mapper.insertBoardLike(paramMap);
-//			
-//		} else { // 좋아요 상태 O
-//			// BOARD_LIKE 테이블 DELETE ( dao.deleteBoardLike() )
-//			result = mapper.deleteBoardLike(paramMap);
-//		}
-//		
-//		if(result == 0) return -1;
-//		
-//		// 현재 게시글의 좋아요 개수 조회
-//		int count = mapper.countBoardLike(paramMap.get("boardNo"));
-//		
-//		return count;
-//	}
+	// 게시글 상세 조회
+	@Override
+	public Board selectBoard(Map<String, Object> map) {
+		return mapper.selectBoard(map);
+	}
+
+	// 좋아요 여부 확인 서비스
+	@Override
+	public int boardLikeCheck(Map<String, Object> map) {
+		return mapper.boardLikeCheck(map);
+	}
+
+	// 조회수 증가 서비스
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int updateReadCount(int boardNo) {
+		return mapper.updateReadCount(boardNo);
+	}
+
+	// 좋아요 처리 서비스
+	@Transactional(rollbackFor = Exception.class)
+	@Override
+	public int like(Map<String, Integer> paramMap) {
+		
+		// check == 0 / 1
+		// check 값이 무엇이냐에 따라서 BOARD_LIKE 테이블 INSERT / DELETE 
+		int result = 0;
+		
+		if(paramMap.get("check") == 0) { // 좋아요 상태 X
+			// BOARD_LIKE 테이블 INSERT ( dao.insertBoardLike() )
+			result = mapper.insertBoardLike(paramMap);
+			
+		} else { // 좋아요 상태 O
+			// BOARD_LIKE 테이블 DELETE ( dao.deleteBoardLike() )
+			result = mapper.deleteBoardLike(paramMap);
+		}
+		
+		if(result == 0) return -1;
+		
+		// 현재 게시글의 좋아요 개수 조회
+		int count = mapper.countBoardLike(paramMap.get("boardNo"));
+		
+		return count;
+	}
 
 	// 게시글 목록 조회(검색)
 	@Override
@@ -132,11 +132,11 @@ public class BoardServiceImpl implements BoardService {
 		
 		return map;
 	}
-//
-//	// DB 이미지 파일 목록 조회
-//	@Override
-//	public List<String> selectImageList() {
-//		return mapper.selectImageList();
-//	}
-//
+
+	// DB 이미지 파일 목록 조회
+	@Override
+	public List<String> selectImageList() {
+		return mapper.selectImageList();
+	}
+
 }

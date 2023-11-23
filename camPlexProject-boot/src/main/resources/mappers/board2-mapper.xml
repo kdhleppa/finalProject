@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.camplex.project.board.mappers.BoardMapper2">
+	
+  	
+  	<!-- 게시글 삽입 -->
+  	<!-- 
+  		동적 SQL
+  		- 프로그램 수행 중 SQL을 변경하는 기능
+  		
+  		<selectKey> 태그 : INSERT/UPDATE 시 사용할 키(시퀀스)를
+  					조회해서 파라미터의 지정된 필드 대입
+  	
+  		useGeneratedKeys : DB 내부적으로 생성한키 (시퀀스) 를
+  					전달된 파라미터의 필드로 대입 가능 여부 지정
+  	
+  		order="BEFORE" : 메인 SQL이 수행되기 전에 selectKey가 수행되도록 지정
+  		
+  		keyProperty : selectKey 조회 결과를 저장할 파라미터의 필드
+  					Board의 boardNo 필드에다가 조회 결과를 저장하겠다.
+  	
+  	 -->
+  	
+  	<insert id="boardInsert" parameterType="Board" useGeneratedKeys="true">
+  	
+  		<selectKey order="BEFORE" resultType="_int" keyProperty="boardNo">
+  			SELECT SEQ_BOARD_NO.NEXTVAL FROM DUAL
+  		</selectKey>
+  	
+  			INSERT INTO BOARD
+  			VALUES( #{boardNo},
+  					#{boardTitle},
+  					#{boardContent},
+  					DEFAULT, DEFAULT, DEFAULT, DEFAULT,
+  					#{memberNo},
+  					#{boardType}  )
+  	</insert>
+  	
+  	
+  	<!-- 
+  	 	동적 SQL 중 <foreach>
+  	 	- 특정 sql 구문을 반복할 때 사용
+  	 	- 반복되는 사이에 구분자를 추가할 수 있음.
+  	
+  	 -->
+  	
+  	<!-- 이미지 리스트(여러개)삽입 -->
+  	<insert id="insertImageList" parameterType="list">
+  		INSERT INTO "BOARD_IMG"
+  		SELECT SEQ_IMG_NO.NEXTVAL, A.*
+  		FROM (
+  			
+  			<foreach collection="list" item="img" separator=" UNION ALL ">
+  				SELECT #{img.boardImagePath} BOARD_IMG_PATH,
+  					#{img.boardImageReName} BOARD_IMG_RENAME,
+  					#{img.boardImageOriginal} BOARD_IMG_ORIGINAL,
+  					#{img.boardImageOrder} BOARD_IMG_ORDER,
+  					#{img.boardNo} BOARD_NO
+  				FROM DUAL
+  			</foreach>
+  		) A
+  	</insert>
+  	
+  	
+  	<!-- 게시글 수정 -->
+  	<update id="boardUpdate">
+  		UPDATE "BOARD" SET
+  		BOARD_TITLE = #{boardTitle},
+  		BOARD_CONTENT = #{boardContent}
+  		WHERE BOARD_TYPE = #{boardType}
+  		AND BOARD_NO = #{boardNo}
+  	</update>
+  	
+  	
+  	<!-- 이미지 삭제 -->
+  	<delete id="imageDelete">
+  		DELETE FROM "BOARD_IMG"
+  		WHERE BOARD_NO = #{boardNo}
+  		AND BOARD_IMG_ORDER IN ( ${deleteList} )
+  	</delete>
+  	
+  	
+  	<!-- 이미지 수정 -->
+	<update id="imageUpdate">
+		UPDATE "BOARD_IMG" SET
+		BOARD_IMG_PATH = #{boardImagePath},
+		BOARD_IMG_ORIGINAL = #{boardImageOriginal},
+		BOARD_IMG_RENAME = #{boardImageReName}
+		WHERE BOARD_NO = #{boardNo}
+		AND BOARD_IMG_ORDER = #{boardImageOrder}
+	</update>
+  	
+  	<!-- 이미지 삽입 -->
+	<insert id="imageInsert">
+		INSERT INTO "BOARD_IMG"
+		VALUES(SEQ_IMG_NO.NEXTVAL, #{boardImagePath}, #{boardImageReName},
+			#{boardImageOriginal}, #{boardImageOrder}, #{boardNo}
+		)
+	</insert>
+  	
+  	
+  	<!-- 게시글 삭제 -->
+ 	<update id="boardDelete">
+		UPDATE "BOARD" SET
+		BOARD_DEL_FL = 'Y'
+		WHERE BOARD_TYPE = #{boardType}
+		AND BOARD_NO = #{boardNo}
+	</update>
+	
+  	
+</mapper>

@@ -31,7 +31,7 @@ public class Board {
     // 회원 join
     private String memberNickname;
     private int memberNo;
-    private String profileImage;
+    private String memberProfileImg;
     
     // BOARD_IMG 테이블 join
     private String thumbnail;
