@@ -41,80 +41,99 @@
                 <a href="#">CEO</a>
             </li>
         </ul>
-
+        
+        <section class="boardHead">
+			
+			<div id="boardTypeName">
+            	<p>자유게시판</p>
+			</div>
+			
+        </section>
+        
+        <hr style="height: 0.2rem; background-color:black; margin-top: 1rem; margin-left: 8%; width: 84%; margin-right: 40%;">
+        
         <form th:action="@{insert}" method="POST" class="board-write" id="boardWriteFrm"
-        			enctype="multipart/form-data">  
-            <h1 class="board-name" th:text="${boardName}">게시판 이름</h1>
+        			enctype="multipart/form-data">
+        			
 
             <!-- 제목 -->
             <h1 class="board-title">
-                <input type="text" name="boardTitle" placeholder="제목" th:value="${board.boardTitle}">
+                <input type="text" name="boardTitle" placeholder="제목을 입력해 주세요" th:value="${boardTitle}">
             </h1>
 
-
-            <!-- 썸네일 영역 -->
-            <h5>썸네일</h5>
-            <div class="img-box">
-                <div class="boardImg thumbnail">
-                    <label for="img0">
-                        <img class="preview">
-                    </label>
-                    <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
-                    <span class="delete-image">&times;</span>
-                </div>
-            </div>
-
-
-            <!-- 업로드 이미지 영역 -->
-            <h5>업로드 이미지</h5>
-            <div class="img-box">
-
-                <div class="boardImg">
-                    <label for="img1">
-                        <img class="preview">
-                    </label>
-                    <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
-                    <span class="delete-image">&times;</span>
-                </div>
-
-                <div class="boardImg">
-                    <label for="img2">
-                        <img class="preview">
-                    </label>
-                    <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
-                    <span class="delete-image">&times;</span>
-                </div>
-
-                <div class="boardImg">
-                    <label for="img3">
-                        <img class="preview">
-                    </label>
-                    <input type="file" name="images" class="inputImage" id="img3" accept="image/*">
-                    <span class="delete-image">&times;</span>
-                </div>
-
-                <div class="boardImg">
-                    <label for="img4">
-                        <img class="preview">
-                    </label>
-                    <input type="file" name="images" class="inputImage" id="img4" accept="image/*">
-                    <span class="delete-image">&times;</span>
-                </div>
-            </div>
-
+			<div class="imgInput">
+				
+				<!-- 썸네일 영역 -->
+	            <div class="img-box">
+					<h5>썸네일</h5>
+	                <div class="boardImg thumbnail">
+	                    <label for="img0">
+	                        <img class="preview">
+	                    </label>
+	                    <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+	                    <span class="delete-image">&times;</span>
+	                </div>
+	            </div>
+	
+				<!-- 업로드 이미지 영역 -->
+	            <div class="img-box">
+	                <h5>업로드 이미지</h5>
+	                <div class="boardImg">
+	                    <label for="img1">
+	                        <img class="preview">
+	                    </label>
+	                    <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
+	                    <span class="delete-image">&times;</span>
+	                </div>
+	
+	                <div class="boardImg">
+	                    <label for="img2">
+	                        <img class="preview">
+	                    </label>
+	                    <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
+	                    <span class="delete-image">&times;</span>
+	                </div>
+	
+	                <div class="boardImg">
+	                    <label for="img3">
+	                        <img class="preview">
+	                    </label>
+	                    <input type="file" name="images" class="inputImage" id="img3" accept="image/*">
+	                    <span class="delete-image">&times;</span>
+	                </div>
+	
+	                <div class="boardImg">
+	                    <label for="img4">
+	                        <img class="preview">
+	                    </label>
+	                    <input type="file" name="images" class="inputImage" id="img4" accept="image/*">
+	                    <span class="delete-image">&times;</span>
+	                </div>
+	                
+	            </div>
+			</div>
+			
             <!-- 내용 -->
             <div class="board-content">
-                <textarea name="boardContent" th:text="${board.boardContent}">내용</textarea>
+                <textarea name="boardContent" th:text="${boardContent}" placeholder="내용을 입력해 주세요">내용</textarea>
             </div>
 
 
-             <!-- 버튼 영역 -->
-            <div class="board-btn-area">
-                <button type="submit" id="writebtn">등록</button>
-            </div>
-
-            
         </form>
+        
+        <!-- 버튼 영역 -->
+        <div class="btnArea"> 
+        	<button id="listBtn">목록으로</button>
+		</div>
+        <hr style="margin-top: 20px; margin-left: 8%; width: 84%; margin-right: 40%;">
+
+        <div class="btnArea">
+			
+			<button id="cancelBtn">취소하기</button>                 
+                
+            <button id="enterBtn">등록하기</button>   
+                     
+        </div>
 
         
     </main>
