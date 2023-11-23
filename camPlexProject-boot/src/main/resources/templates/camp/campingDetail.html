@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<title></title>
 
-	<link rel="stylesheet" th:href="@{/css/camp/CampingDetail.css}">
+	<link rel="stylesheet" th:href="@{/css/camp/campingDetail.css}">
 
 	<link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
 	<link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
@@ -28,7 +28,7 @@
 			<section class="header">
 				<p class="headerTitle">Information</p>
 				<div class="headerMenu">
-					<a>WISH LIST</a>
+					<a th:href="|/camp/wishlist?campNo=${camp.campNo}|">WISH LIST</a>
 					<a>1:1 문의</a>
 				</div>
 			</section>
@@ -69,11 +69,13 @@
 
 
 			<!-- 로그인 멤버가 관리자나 ceo일 때 -->
-			<section th:if="${session.loginMember}" class="ceoPic">
+			<section class="ceoPic">
 
 				<p>CEO's PIC
-					<input type="file" id="ceoPicUploadBtn">
-					<label for="ceoPicUploadBtn" id="ceoPicUploadBtnLabel">+</label>
+					<button type="button" id="ceoPicUploadBtn"></button>
+					<th:block th:if="${session.loginMember?.memberType == 'C'} or ${session.loginMember?.memberType == 'M'}">
+						<label for="ceoPicUploadBtn" id="ceoPicUploadBtnLabel">+</label>
+					</th:block>
 				</p>
 
 				<div class="ceoPicSlide">
@@ -85,11 +87,14 @@
 					<div class="ceoPicture">
 						<div class="ceoPicSlideBox">
 
-							<div class="ceoPicContent" th:each="i : ${#numbers.sequence(0, #lists.size(camp.campCeoImageList)-1, 1)}">
+							<div class="ceoPicContent" th:id="|img${camp.campCeoImageList[i].campCeoImageNo}|" th:each="i : ${#numbers.sequence(0, #lists.size(camp.campCeoImageList)-1, 1)}">
+								<input type="hidden" class="imgNo" th:value="${camp.campCeoImageList[i].campCeoImageNo}">
 								<div class="ceoPictureWrapper">
 									<img th:src="|${camp.campCeoImageList[i].campCeoImagePath}${camp.campCeoImageList[i].campCeoImageReName}|">
 								</div>
-								<button type="button" id="ceoPicDeleteBtn">삭제</button>
+								<th:block th:if="${session.loginMember?.memberType == 'C'} or ${session.loginMember?.memberType == 'M'}">
+									<button type="button" class="ceoPicDeleteBtn">삭제</button>
+								</th:block>
 							</div>
 
 
@@ -102,43 +107,7 @@
 
 				</div>
 
-			</section>
-			
-			
-			<!-- 로그인 멤버 없을 때, 혹은 관리자나 ceo 아닐때 -->
-			<section th:unless="${session.loginMember}" class="ceoPic">
-
-				<p>CEO's PIC
-					<input type="file" id="ceoPicUploadBtn">
-				</p>
-
-				<div class="ceoPicSlide">
-
-					<button type="button" class="arrow" id="left">
-						<img th:src="@{/images/iconImg/left.png}">
-					</button>
-
-					<div class="ceoPicture">
-						<div class="ceoPicSlideBox">
-
-							<div class="ceoPicContent" th:each="i : ${#numbers.sequence(0, #lists.size(camp.campCeoImageList)-1, 1)}">
-								<div class="ceoPictureWrapper">
-									<img th:src="|${camp.campCeoImageList[i].campCeoImagePath}${camp.campCeoImageList[i].campCeoImageReName}|">
-								</div>
-							</div>
-
-
-						</div>
-					</div>
-
-					<button type="button" class="arrow" id="right">
-						<img th:src="@{/images/iconImg/right.png}">
-					</button>
-
-				</div>
-
-			</section>
-			
+			</section>		
 
 
 			<section class="introductionArea">
@@ -250,7 +219,7 @@
 
 			<section>
 
-				<form th:action="@{reservation}" class="campSiteFrm">
+				<form th:action="@{reservation}" class="campSiteFrm" id="reservationFrm">
 
 					<div class="campSite" th:each="campDetail : ${camp.campDetailList}">
 
@@ -271,7 +240,7 @@
 										<p>수용 인원 <input type="text" name="" id="" th:value="${campDetail.capacity}+명"
 												disabled></p>
 									</div>
-									<p class="campSitePrice" th:text="${campDetail.campDePrice}+원">가격</p>
+									<p class="campSitePrice" th:text="|${#numbers.formatInteger(campDetail.campDePrice, 3, 'COMMA')}원|">가격</p>
 								</div>
 
 
@@ -298,6 +267,13 @@
 
 	</main>
 
+	<script th:inline="javascript">
+
+		const campNo = /*[[${camp.campNo}]]*/ "캠핑장 번호";
+
+	</script>
+
+	<th:block th:replace="~{camp/ceoPicUpload}"></th:block>
 	<th:block th:replace="~{common/footer}"></th:block>
 
 	<script th:src="@{/js/camp/CampingDetail.js}"></script>

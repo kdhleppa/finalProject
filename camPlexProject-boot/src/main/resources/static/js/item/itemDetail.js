@@ -38,9 +38,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-function submitForm(action) {
-	document.getElementById('payFrm').action = action;
-	document.getElementById('payFrm').submit();
-}
-
 

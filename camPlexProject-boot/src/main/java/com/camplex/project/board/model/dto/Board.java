@@ -21,6 +21,7 @@ public class Board {
     private String boardType;
     private String boardCreateDate;
     private String boardDetailType;
+    
     private String boardTypeName;
     
     // 서브쿼리
@@ -30,7 +31,7 @@ public class Board {
     // 회원 join
     private String memberNickname;
     private int memberNo;
-    private String profileImage;
+    private String memberProfileImg;
     
     // BOARD_IMG 테이블 join
     private String thumbnail;

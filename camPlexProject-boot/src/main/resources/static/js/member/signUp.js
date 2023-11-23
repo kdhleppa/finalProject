@@ -250,3 +250,89 @@ inputNickname.addEventListener("input", ()=>{
     }
 
 });
+
+// 프로필 이미지 추가/변경/삭제
+const profileImg = document.getElementById("profileImg"); // img 태그
+const uploadProfileImg = document.getElementById("uploadProfileImg"); // input 태그
+
+
+let initCheck;
+
+
+if(uploadProfileImg != null){
+
+    uploadProfileImg.addEventListener("change", e => {
+
+        const maxSize = 1 * 1024 * 1024 * 5;
+
+
+        const file = e.target.files[0];
+
+        if(file == undefined){ 
+			console.log("파일 선택이 취소됨");
+			
+            return;
+        }
+
+        if( file.size > maxSize){
+            alert("5MB 이하의 이미지를 선택해주세요.");
+            uploadProfileImg.value = ""; 
+            return;
+        }
+
+        const reader = new FileReader();
+
+        reader.readAsDataURL(file);
+
+        reader.onload = e => {
+			
+
+            const url = e.target.result;
+
+            profileImg.setAttribute("src", url);
+
+        }
+    });
+    
+    // 이미지 삭제 버튼 클릭 시
+    deleteProfileImg.addEventListener('click', () => {
+        uploadProfileImg.value = "";
+
+        profileImg.setAttribute("src", "/images/memberImg/gg_profile.png");
+		
+    });
+
+}
+
+
+// 회원 가입 form태그가 제출 되었을 때
+document.getElementById("signUpFrm").addEventListener("submit", e=>{
+
+    for(let key in checkObj){
+
+        if(!checkObj[key]){ 
+
+            switch(key){
+            case "inputEmail": 
+                alert("이메일이 유효하지 않습니다"); break;
+
+            case "inputPw": 
+                alert("비밀번호가 유효하지 않습니다"); break;
+
+            case "inputPwRe":
+                alert("비밀번호가 확인되지 않았습니다"); break;
+                
+            case "inputName":
+                alert("이름이 유효하지 않았습니다"); break;
+            
+            case "inputNickname" : 
+                alert("닉네임이 유효하지 않습니다"); break;
+            }
+
+            document.getElementById(key).focus();
+
+            e.preventDefault();
+            return;
+        }
+    }
+});

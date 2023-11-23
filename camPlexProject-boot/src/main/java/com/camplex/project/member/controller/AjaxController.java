@@ -5,13 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.camplex.project.member.model.service.AjexService;
+import com.camplex.project.member.model.service.AjaxService;
 
 @Controller
 public class AjaxController {
 
 	@Autowired
-	private AjexService service;
+	private AjaxService service;
 	
 	@GetMapping("/dupCheck/email")
 	@ResponseBody

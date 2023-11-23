@@ -13,5 +13,11 @@ public interface WishlistService {
 
 	List<Camp> selectCampWish(int memberNo);
 
+	void deleteCampWish(int memberNo, int campNo);
+
+	void deleteItemWish(int memberNo, int itemNo);
+
+	
+
 	
 }

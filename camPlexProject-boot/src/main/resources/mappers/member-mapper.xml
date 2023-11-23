@@ -27,4 +27,18 @@
 	</select>
 	
 	
+	<!-- 회원가입 -->
+	<!-- 전화번호 입력 예정 -->
+	<insert id="signUp">
+		INSERT INTO "MEMBER"
+		VALUES(SEQ_MEMBER_NO.NEXTVAL
+		, #{memberEmail}
+		, #{memberPw}
+		, #{memberName}
+		, #{memberNickname}
+		, NULL
+		, #{memberProfileImg}
+		, DEFAULT, DEFAULT, DEFAULT)
+	</insert>
+	
 </mapper>

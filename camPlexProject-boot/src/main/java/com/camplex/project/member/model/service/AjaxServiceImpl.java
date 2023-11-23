@@ -3,13 +3,13 @@ package com.camplex.project.member.model.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.camplex.project.member.mappers.AjexMapper;
+import com.camplex.project.member.mappers.AjaxMapper;
 
 @Service
-public class AjexServiceImpl implements AjexService {
+public class AjaxServiceImpl implements AjaxService {
 
 	@Autowired
-	private AjexMapper mapper;
+	private AjaxMapper mapper;
 
 	// 이메일 중복 검사
 	@Override
