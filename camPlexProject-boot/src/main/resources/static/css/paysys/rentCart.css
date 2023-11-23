@@ -1,0 +1,374 @@
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+/*텍스트 관련*/
+body {
+    font-family: 'HakgyoansimSantteutdotumL', sans-serif;
+}
+
+:lang(en) {
+    font-family: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /*border: 1px solid red;*/
+}
+
+.mainContainer {
+    height: 100%;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 130px;
+}
+
+.heading::after {
+    content: ''; /* 가상 요소의 내용을 비워두어 실제 텍스트는 표시되지 않도록 합니다. */
+    display: block; /* 요소를 블록 레벨로 만들어 줄바꿈이 일어나도록 합니다. */
+    margin: 5px auto; /* 위쪽의 여백과 수평 중앙 정렬 */
+    width: 3%; /* 가상 요소의 너비를 조정하여 밑줄의 길이를 결정합니다. */
+    border-bottom: 1px solid black;
+}
+
+
+
+.Btn {
+    
+    border-bottom: 1px solid gray; 
+    text-decoration: none;
+}
+
+/*표 라인그리기*/
+table {
+    border-collapse: collapse;
+}
+
+.shoppingCartTB th {
+    border-top: 2px solid black;
+    border-bottom: 1px solid lightgray;
+    height: 50px;
+        
+}
+.shoppingCartTB td {
+    border-bottom:  2px solid lightgray;
+}
+
+.wishListTB th {
+    border-top: 2px solid black;
+    border-bottom: 1px solid lightgray;
+    height: 50px;
+}
+
+.wishListTB td {
+    border-bottom: 2px solid lightgray;
+}
+
+
+
+/* 쇼핑카트 표 조절*/
+.shoppingCartTB {
+    margin-top: 0;
+    width: 100%;
+}
+
+.shoppingCartTB th:first-child {
+    width: 8%;
+}
+
+.shoppingCartTB th:nth-child(2) {
+    width: 8%;
+}
+
+.shoppingCartTB th:nth-child(3) {
+    width:10%
+}
+.shoppingCartTB th:nth-child(4) {
+    width: 15%;
+}
+
+.shoppingCartTB th:nth-child(5) {
+    width: auto;
+
+}
+.shoppingCartTB th:nth-child(6) {
+
+    width: 8%;
+}
+.shoppingCartTB th:nth-child(7) {
+
+    width: 8%;
+}
+.shoppingCartTB th:last-child {
+
+    width: 8%;
+}
+
+
+td {
+    height: 140px;
+    text-align: center;
+}
+
+/*총 금액칸만 높이 조절*/
+.shoppingCartTB tr:last-child td {
+    height: 40px;
+}
+
+/* 아이템 위시 리스트 표 좌우 조절*/
+.wishListTB {
+    width: 100%;
+
+}
+
+.wishListTB th:first-child {
+    width: 8%;
+}
+
+.wishListTB th:nth-child(2){
+    width: 8%;
+}
+.wishListTB th:nth-child(3){
+    width: 10%;
+}
+.wishListTB th:nth-child(4){
+    width: 15%;
+}
+.wishListTB th:nth-child(5){
+    width: auto;
+}
+.wishListTB th:nth-child(6){
+    width: 8%;
+}
+.wishListTB th:nth-child(7){
+    width: 8%;
+}
+.wishListTB th:last-child {
+    width: 8%;
+}
+
+
+
+img {
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+.mainContainer {
+    display: flex;
+       
+}
+
+.midContainer {
+    width: 90%;
+    height: auto;
+}
+
+.campSelect {
+    width: 400px;
+    height: 25px;
+}
+
+/*좌우 빈공간*/
+.emptyContainer {
+    width : 5%;
+}
+
+.orderEmpty {
+    width : 26%;
+}
+
+.orderBtncontainer {
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+    
+}
+
+.orderBtnSpace {
+    width: 920px;
+    min-width: 920px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*+-버튼 사이즈*/
+.qBtn {
+    width: 20px;
+}
+
+/*a테그 to 네모버튼*/
+.grayBtn {
+    display: inline-block;
+    color: gray;
+    text-decoration: none;
+    border: 1px solid gray;
+    width: 104px;
+    background-color: white;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    
+}
+
+.grayBtn:hover {
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+.blackBtn {
+    color:white;
+    background-color: black;
+    border: 1px solid white;
+    cursor: pointer;
+    width: 215px;
+    height: 45px;
+    font-size: 16px;
+    transition-duration: 0.3s;
+}
+
+.blackBtn:hover {
+    color: black;
+    background-color: white;
+    border: 1px solid gray;
+
+}
+
+.whiteBtn {
+    display: inline-block;
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    border: 1px solid gray;
+    font-size: 16px;
+    height: 45px;
+    width: 215px;
+    transition-duration: 0.3s;
+    text-align: center;
+    line-height: 45px;
+}
+
+
+.whiteBtn:hover {
+    background-color: black;
+    color: white;
+    border: none;
+}
+
+
+
+
+/*예약하기 버튼 왼쪽 마진 */
+.rsvBtn {
+    margin-left: 20px;
+}
+
+
+.Btn {
+    display: inline-block;
+    border: 1px solid gray;
+    color: gray;
+    text-align: center;
+    line-height: 50px;
+    width: 250px;
+    height: 50px;
+    transition-duration: 0.3s;
+}
+
+.Btn:hover {
+    background-color: black;
+    border: none;
+    color: white;
+}
+
+
+/*선택삭제~돌아가기 우로정렬 마진 */
+.buttonList {
+    text-align: end;
+    margin-top: 50px;
+}
+
+.Btn {
+    margin-left: 30px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.backBtn {
+    margin-right: 20px;
+    
+}
+
+
+/*헤더바*/
+.topBar{
+    width: 100%;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+    border-radius: 0 0 10px 10px;
+
+    transition-duration: 0.3s;
+
+    position: sticky;
+    top: 0;
+}
+
+.topBar:hover{
+    background-color: rgba(204, 213, 174, 0.5);
+}
+
+.topMenu{
+    width: 100%;
+
+    flex-basis: 5%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.topMenu a{
+    color: #000;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.7rem;
+
+    
+}
+
+.mainTitle{
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 3rem;
+    font-weight: 900;
+
+    margin: 20px 0;
+
+    height: 60px;
+    line-height: 60px;
+    color: #333;
+    letter-spacing: 5px;
+}
+
+.bottomMenu{
+    flex-basis: 45%;
+    display: flex;
+    align-self: center;
+}
+
+.bottomMenu a {
+    color: #000;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 600;
+}

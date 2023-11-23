@@ -20,7 +20,9 @@ public interface WishlistMapper {
 
 	public List<Camp> selectCampWish(int memberNo);
 
-	public void deleteCampWish(@Param("memberNo")int memberNo, @Param("campNo")int campNo);
+	public void deleteCampWish(@Param("memberNo") int memberNo, @Param("campNo") int campNo);
+
+	public void deleteItemWish(@Param("memberNo") int memberNo, @Param("itemNo") int itemNo);
 
 
 

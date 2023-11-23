@@ -70,7 +70,6 @@
 		<result property="campCeoImagePath" column="CAMP_CEO_IMG_PATH" />
 		<result property="campCeoImageReName" column="CAMP_CEO_IMG_RENAME" />
 		<result property="campCeoImageOriginal" column="CAMP_CEO_IMG_ORIGINAL" />
-		<result property="campCeoImageOrder" column="CAMP_CE0_IMG_ORDER" />
 	</resultMap>
 	
 	<resultMap type="CampDetailImage" id="camp_detailImage_rm">
@@ -102,7 +101,7 @@
 	
 	<!-- collection 중 CEO 이미지 리스트 조회 -->
 	<select id="selectCampCeoImageList" resultMap="camp_ceoImage_rm">
-		SELECT CAMP_CEO_IMG_NO, CAMP_NO, CAMP_CEO_IMG_PATH, CAMP_CEO_IMG_RENAME, CAMP_CEO_IMG_ORIGINAL, CAMP_IMG_ORDER
+		SELECT CAMP_CEO_IMG_NO, CAMP_NO, CAMP_CEO_IMG_PATH, CAMP_CEO_IMG_RENAME, CAMP_CEO_IMG_ORIGINAL
 		FROM "CAMPING_CEO_IMG"
 		WHERE CAMP_NO = #{campNo}
 	</select>
