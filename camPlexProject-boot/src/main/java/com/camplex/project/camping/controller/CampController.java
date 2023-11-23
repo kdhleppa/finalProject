@@ -10,10 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.camplex.project.camping.model.dto.Camp;
@@ -52,7 +55,7 @@ public class CampController {
 	 */
 	@GetMapping("/{campNo}")
 	public String campDetail( @PathVariable("campNo") int campNo,
-							  Model model			
+							  Model model
 							) {
 		
 		Camp camp = service.selectCampOne(campNo);
@@ -104,16 +107,35 @@ public class CampController {
 	 * @return
 	 */
 	@GetMapping("/reservation")
-	public String campReservation(int campDeNo, Model model) {
+	public String campReservation(int campDeNo, 
+								  Model model,
+								  @SessionAttribute(required=false) Member loginMember,
+								  RedirectAttributes ra,
+								  @RequestHeader("referer") String referer
+			) {
 		
-		CampDetail campDetail = service.selectCampDetail(campDeNo);
+		 String path = "";
+			 
+		 
+		if(loginMember == null) {
+			
+			ra.addFlashAttribute("message", "로그인 후 이용해주세요.");
+			path = "redirect:" + referer;
+			
+		} else {
+			
+			CampDetail campDetail = service.selectCampDetail(campDeNo);
+			
+			List<CampDetailImage> campDetailImages = service.selectCampDetailImageList(campDeNo);
+			
+			model.addAttribute("campDetail", campDetail);
+			model.addAttribute("campDetailImages", campDetailImages);
+			
+			path = "camp/campingReservation";
+			
+		}
 		
-		List<CampDetailImage> campDetailImages = service.selectCampDetailImageList(campDeNo);
-		
-		model.addAttribute("campDetail", campDetail);
-		model.addAttribute("campDetailImages", campDetailImages);
-		
-		return "camp/campingReservation";
+		return path;
 	}
 	
 	/** 위시리스트 추가
@@ -125,7 +147,7 @@ public class CampController {
 						   @RequestHeader("referer") String referer,
 						   int campNo
 			) {
-		
+			
 		
 		if(loginMember != null) {
 
@@ -169,5 +191,45 @@ public class CampController {
 		return "redirect:"+ referer;
 	}
 	
+	/** ceo 사진 업로드
+	 * @param images
+	 * @param ra
+	 * @param campNo
+	 * @param referer
+	 * @return
+	 * @throws Exception
+	 */
+	@PostMapping("/ceoPicUpload")
+	public String ceoPicUpload(@RequestParam(value = "images", required = false) List<MultipartFile> images,
+			  				   RedirectAttributes ra,
+			  				   int campNo,
+			  				   @RequestHeader("referer") String referer
+							   ) throws Exception {
+		
+		int result = service.insertCeoPic(campNo, images);
+		
+		if(result > 0) {
+			
+			ra.addFlashAttribute("message", "업로드 성공");
+			
+		} else {
+			
+			ra.addFlashAttribute("message", "업로드 실패");
+
+		}
+		
+		
+		return "redirect:" + referer;
+	}
+	
+	@GetMapping("/ceoPicDelete")
+	public int ceoPicDelete() {
+		
+		int result = 0;
+		
+	
+		
+		return result;
+	}
 	
 }

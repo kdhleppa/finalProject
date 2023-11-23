@@ -16,6 +16,5 @@ public class CampCeoImage {
 	private String campCeoImagePath;
 	private String campCeoImageReName;
 	private String campCeoImageOriginal;
-	private int campCeoImageOrder;
 	
 }
