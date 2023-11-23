@@ -81,52 +81,55 @@ button {
     font-weight: 600;
 }
 
-/* 게시판 상단 메뉴 */
-.boardTypeList {
-	display: flex;
-	font-family: 'HakgyoansimSantteutdotumL';
-    list-style: none;
-    font-size: 20px;
-    margin-left: 10rem;
-}
-
-.boardTypeList > li > a {
-	text-decoration: none;
-	color: black;
-	margin-top: 3.8rem;
-}
-
-.boardTypeList p {
-    font-size: 17px;
-    font-weight: 600;
-    margin-top: 4rem;
-    margin-right: 5rem;
-    margin-left: 5rem;
-}
-
-
-#boardSearch {
-    margin-top: 120px;
+/* 공지 상단 메뉴 */
+.boardClass {
     display: flex;
-    justify-content: end;
+    list-style: none;
+    margin-top: 40px;
 }
 
-.boardHead {
-	display: flex;
-	justify-content: space-between;
+.boardClass p {
+    font-size: 15px;
+    font-weight: 900;
+    margin-top: 4px;
 }
 
-#boardTypeName {
-	width: 200px;
-	margin-left: 10rem;
-	margin-top: 7rem;
+.boardClass > li > a {
+    font-family: 'HakgyoansimSantteutdotumL';
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    margin-right: 70px;
+    margin-left: 70px;
+}
+
+.boardTitle p {
     font-family: 'HakgyoansimSantteutdotumL';
     font-size: 30px;
-    color: black;
+    margin-left: 12%;
 }
 
-/* 게시판 세부 내용 */
-.boardDetail {
+.boardTitle {
+    margin-top: 120px;
+    margin-right: 13%;
+    width: 100%;
+}
+
+/* 공지 세부 내용 */
+.notiDeLeft {
+    width: 5rem;
+    height: 2rem;
+}
+
+#boardType {
+    margin-left: 1.2rem;
+    font-family: 'HakgyoansimSantteutdotumL';
+    width: 120px;
+    font-size: 20px;
+    height: 35px;
+}
+
+.boardWrite {
     font-family: 'HakgyoansimSantteutdotumL';
     margin-top: 20px;
     display: flex;
@@ -134,34 +137,25 @@ button {
     height: 50rem;
 }
 
-.boardDeLeft {
-    margin-top: 30px;
-    margin-left: 2rem;
-    /* border: 1px solid rgb(161, 161, 161); */
-    border-radius: 20px;
-    font-size: 22px;
-    width: 5rem;
-    height: 2rem;
-    text-align: center;
-}
-
-.boardDeTitle {
+.notiDeTitle {
     margin-left: -20rem;
-    font-size: 25px;
-
 }
 
-.boardDeRight {
+#textTitle {
+    border-radius: 10px;
+	width: 60rem;
+    height: 2rem;
+    margin-right: 10px;
+    font-size: 18px;
+	resize: none;
+}
+
+.notiDeRight {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     margin-top : 40px;
     margin-left: -20rem;
-}
-
-#createDate {
-    margin-top: 30px;
-    font-size: 22px;
 }
 
 .boardContent {
@@ -171,30 +165,29 @@ button {
 }
 
 
-
-/* 수정 삭제 버튼 부분 */
+/* 등록 취소 버튼 부분 */
 .btnArea {
     display: flex;
     flex-direction: row-reverse;
 }
 
-#deleteBtn {
+#cancelBtn {
     font-family: 'HakgyoansimSantteutdotumL';
     margin-right: 150px;
     width: 8rem;
     height: 4rem;
     background-color: transparent;
     border-style: none;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
-#updateBtn {
+#enterBtn {
     font-family: 'HakgyoansimSantteutdotumL';
     width: 8rem;
     height: 4rem;
     background-color: transparent;
     border-style: none;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 #listBtn {
@@ -203,125 +196,7 @@ button {
     height: 4rem;
     background-color: transparent;
     border-style: none;
-    font-size: 1.2rem;
-}
-
-
-/* 댓글 부분 */
-#commentArea {
-	margin-left: 10rem;
-}
-
-.comment-write-area {
-	margin: 30px 20rem;
-}
-
-.comment-write-area > textarea{
-    border-radius: 10px;
-	width: 60rem;
-    margin-top: -15px;
-    min-height: 100px;
-    margin-right: 10px;
-	resize: none;
-}
-
-.comment-write-area > button{
-    margin-left: 53.5rem;
-    background-color: transparent;
-    font-family: 'HakgyoansimSantteutdotumL';
-    width: 8rem;
-    height: 4rem;
-    border-style: none;
     font-size: 1.5rem;
-}
-
-#commentList{
-    margin-left: 20rem;
-    margin-top: 2rem;
-	padding: 0;
-	list-style: none;
-}
-
-.comment-writer {
-	display: flex;
-	align-items: center;
-}
-
-.comment-writer > img{
-	width: 40px;
-    height: 40px
-}
-
-.comment-writer > span{
-    font-weight: bold;
-    margin-left : 10px;
-}
-
-.comment-date{
-	font-size: 0.8em;
-	color: #aaa;
-}
-
-/* 버튼 */
-.comment-btn-area {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 28rem;
-}
-
-.comment-btn-area button{
-    font-family: 'HakgyoansimSantteutdotumL';
-    width: 5rem;
-    height: 4rem;
-    background-color: transparent;
-    border-style: none;
-    font-size: 1.2rem;
-}
-
-.update-textarea{
-	width: 100%;
-    height: 90px;
-    resize: none;
-}
-
-.comment-row{
-	padding : 15px 0;
-}
-
-
-.child-comment{
-	padding-left : 50px;
-	position: relative;
-}
-
-
-.child-comment:before {
-	content: "\f0a4";
-	font-family: "FontAwesome";
-	
-	position : absolute;
-	left : 0;
-	top : 35px;
-}
-
-
-/* 답글 */
-#answerBtn {
-	width: 50px;
-    height: 40px;
-    margin-top : -20px;
-    font-size: 16px;
-}
-
-
-/* 댓글 내용 */
-.comment-content {
-	white-space: pre-wrap;
-	margin-top: 10px;
-}
-
-#addComment {
-	font-size: 1.2rem;
 }
 
 

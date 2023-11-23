@@ -16,5 +16,5 @@ public class Comment {
     private String commentDeleteFlag;
     private int parentNo;
     private String memberNickname;
-    private String profileImage;
+    private String memberProfileImg;
 }

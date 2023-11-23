@@ -27,30 +27,30 @@ public interface BoardService {
 	 */
 	Map<String, Object> selectBoardList(Map<String, Object> paramMap, int cp);
 
-//	/** 게시글 상세 조회
-//	 * @param map
-//	 * @return board
-//	 */
-//	Board selectBoard(Map<String, Object> map);
-//
-//	/** 좋아요 여부 확인 서비스
-//	 * @param map
-//	 * @return result
-//	 */
-//	int boardLikeCheck(Map<String, Object> map);
-//
-//	/** 조회수 증가 서비스
-//	 * @param boardNo
-//	 * @return
-//	 */
-//	int updateReadCount(int boardNo);
-//
-//	int like(Map<String, Integer> paramMap);
-//
-//	/** DB 이미지(파일) 목록 조회
-//	 * @return
-//	 */
-//	List<String> selectImageList();
+	/** 게시글 상세 조회
+	 * @param map
+	 * @return board
+	 */
+	Board selectBoard(Map<String, Object> map);
+
+	/** 좋아요 여부 확인 서비스
+	 * @param map
+	 * @return result
+	 */
+	int boardLikeCheck(Map<String, Object> map);
+
+	/** 조회수 증가 서비스
+	 * @param boardNo
+	 * @return
+	 */
+	int updateReadCount(int boardNo);
+
+	int like(Map<String, Integer> paramMap);
+
+	/** DB 이미지(파일) 목록 조회
+	 * @return
+	 */
+	List<String> selectImageList();
 
 	
 }
