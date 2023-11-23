@@ -14,6 +14,7 @@ public class ItemImg {
 	private int itemImgNo;
 	private int itemNo;
 	private String itemImgPath;
+	private String itemImgRename;
 	private String itemImgOriginal;
 	private int itemImgOrder;
 
