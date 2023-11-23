@@ -62,6 +62,8 @@ hr{
     border: none;
     margin: 0 1rem;
     font-size: 1rem;
+    text-decoration: none;
+    color: #000;
 }   
 
 .headerMenu > a:hover{

@@ -39,26 +39,19 @@
                 </tr>
                 <!-- tr 추가되는식으로 상품추가-->
                 <!-- 없으면 없다고 표시하자!!-->
-                <tr>
-                    <!-- 개별선택체크박스-->
-                    <td><input type="checkbox" class=""></td>
-                    <td>1</td>
-                    <td><img src="/img/0340020000042.jpg" alt=""></td>
-                    <td>Catgill 캠핑장<button href="#" class = "grayBtn rsvBtn">예약하기</button></td>
-                    <td></td>
-                    <td></td>
-                    <td><button href="#" class="grayBtn">DELETE</button></td>
-                </tr>
-                <tr>
-                    <!-- 개별선택체크박스-->
-                    <td><input type="checkbox" class=""></td>
-                    <td>1</td>
-                    <td><img src="/img/0340020000042.jpg" alt=""></td>
-                    <td>Catgill 캠핑장<button href="#" class = "grayBtn rsvBtn">예약하기</button></td>
-                    <td></td>
-                    <td></td>
-                    <td><button href="#" class="grayBtn">DELETE</button></td>
-                </tr>
+                <th:block th:each="camp, iterStat : ${camp}">
+	                <tr th:id="'tr'+${camp.campNo}">
+	                    <!-- 개별선택체크박스-->
+	                    <td><input type="checkbox" class=""></td>
+	                    <td th:text="${iterStat.count}">넘버</td>
+	                    <td><img th:src="@{/images/itemImg/0340020000042.jpg}" alt="수정전"></td>
+	                    <td>[[${camp.campName}]]<a th:href="@{/camp/${camp.campNo}}" class = "grayBtn rsvBtn" th:text="예약하기">예약하기</a></td>
+	                    <td></td>
+	                    <td></td>
+	                    <td><button class="grayBtn" th:onclick="'deleteCampWish(' + ${camp.campNo} + ');'" th:text="DELETE">DELETE</button></td>
+	                </tr>
+                </th:block>
+               
             </table>
 
             <h2 class="heading">ITEM LIST</h2>
@@ -77,7 +70,7 @@
                 <tr>
                     <td><input type="checkbox" class=""></td>
                     <td>1</td>
-                    <td><img src="/img/0340020000042.jpg"></td>
+                    <td><img src="/images/itemImg/0340020000042.jpg"></td>
                     <td>밀크 소파 : 블랙</td>
                     <td>있음</td>
                     <td>100원</td>
@@ -86,7 +79,7 @@
                 <tr>
                     <td><input type="checkbox" class=""></td>
                     <td>2</td>
-                    <td><img src="/img/0340020000042.jpg"></td>
+                    <td><img src="/images/itemImg/0340020000042.jpg"></td>
                     <td>밀크 소파 : 블랙</td>
                     <td>있음</td>
                     <td>100원</td>
@@ -106,6 +99,7 @@
     </div>
 
     <th:block th:replace="~{common/footer}"></th:block>
+    <script th:src="@{/js/member/wishlist.js}"></script>
 
 </body>
 </html>

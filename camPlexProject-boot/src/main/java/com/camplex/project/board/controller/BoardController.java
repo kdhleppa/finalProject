@@ -49,9 +49,6 @@ public class BoardController {
 			) {
 		
 		
-		// boardCode 확인
-		//System.out.println("boardCode : " + boardCode);
-		
 		if( paramMap.get("key") == null ) { // 검색어가 없을 때 (검색 X)
 			
 			// 게시글 목록 조회 서비스 호출

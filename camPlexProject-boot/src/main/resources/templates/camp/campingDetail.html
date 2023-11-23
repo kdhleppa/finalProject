@@ -28,7 +28,7 @@
 			<section class="header">
 				<p class="headerTitle">Information</p>
 				<div class="headerMenu">
-					<a>WISH LIST</a>
+					<a th:href="|/camp/wishlist?campNo=${camp.campNo}|">WISH LIST</a>
 					<a>1:1 문의</a>
 				</div>
 			</section>
@@ -271,7 +271,7 @@
 										<p>수용 인원 <input type="text" name="" id="" th:value="${campDetail.capacity}+명"
 												disabled></p>
 									</div>
-									<p class="campSitePrice" th:text="${campDetail.campDePrice}+원">가격</p>
+									<p class="campSitePrice" th:text="|${#numbers.formatInteger(campDetail.campDePrice, 3, 'COMMA')}원|">가격</p>
 								</div>
 
 
