@@ -146,8 +146,8 @@ table {
     font-family: 'HakgyoansimSantteutdotumL';
     margin-top: 1rem;
     margin-left: 96rem;
-    text-decoration: none;
-    color: black;
+    background-color: transparent;
+    border-style: none;
     font-size: 1.3rem;
 }
 
