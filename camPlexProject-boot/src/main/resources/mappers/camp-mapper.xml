@@ -70,7 +70,6 @@
 		<result property="campCeoImagePath" column="CAMP_CEO_IMG_PATH" />
 		<result property="campCeoImageReName" column="CAMP_CEO_IMG_RENAME" />
 		<result property="campCeoImageOriginal" column="CAMP_CEO_IMG_ORIGINAL" />
-		<result property="campCeoImageOrder" column="CAMP_CE0_IMG_ORDER" />
 	</resultMap>
 	
 	<resultMap type="CampDetailImage" id="camp_detailImage_rm">
@@ -102,7 +101,7 @@
 	
 	<!-- collection 중 CEO 이미지 리스트 조회 -->
 	<select id="selectCampCeoImageList" resultMap="camp_ceoImage_rm">
-		SELECT CAMP_CEO_IMG_NO, CAMP_NO, CAMP_CEO_IMG_PATH, CAMP_CEO_IMG_RENAME, CAMP_CEO_IMG_ORIGINAL, CAMP_IMG_ORDER
+		SELECT CAMP_CEO_IMG_NO, CAMP_NO, CAMP_CEO_IMG_PATH, CAMP_CEO_IMG_RENAME, CAMP_CEO_IMG_ORIGINAL
 		FROM "CAMPING_CEO_IMG"
 		WHERE CAMP_NO = #{campNo}
 	</select>
@@ -154,11 +153,25 @@
 		AND MEMBER_NO = #{memberNo}
 	</select>
 	
-	
-	<!-- 캠핑장 예약 이동하면서 보여줄 이미지 정보 조회 -->
+	<!-- 위시리스트 입력 -->
 	<insert id="insertWishlist">
 		INSERT INTO WISH_LIST 
 		VALUES(SEQ_WISH_NO.NEXTVAL, #{memberNo}, #{campNo}, NULL)
+	</insert>
+	
+	<!-- ceo사진 업로드 -->
+	<insert id="insertImages" parameterType="list">
+		INSERT INTO "CAMPING_CEO_IMG"
+		SELECT SEQ_CAMP_CEO_IMG_NO.NEXTVAL, A.*
+		FROM(
+			<foreach collection="list" item="img" separator=" UNION ALL ">
+				SELECT #{img.campNo} CAMP_NO,
+					   #{img.campCeoImagePath} CAMP_CEO_IMG_PATH,
+					   #{img.campCeoImageReName} CAMP_CEO_IMG_RENAME,
+					   #{img.campCeoImageOriginal} CAMP_CEO_IMG_ORIGINAL
+				FROM DUAL
+			</foreach>	
+		) A
 	</insert>
 	
 	

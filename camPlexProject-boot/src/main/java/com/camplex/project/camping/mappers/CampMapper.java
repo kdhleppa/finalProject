@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.camplex.project.camping.model.dto.Camp;
+import com.camplex.project.camping.model.dto.CampCeoImage;
 import com.camplex.project.camping.model.dto.CampDetail;
 import com.camplex.project.camping.model.dto.CampDetailImage;
 
@@ -47,6 +48,12 @@ public interface CampMapper {
 	 * @return
 	 */
 	int insertWishlist(Map<String, Object> map);
+
+	/** ceo사진 업로드
+	 * @param uploadList
+	 * @return
+	 */
+	int insertImages(List<CampCeoImage> uploadList);
 
 
 

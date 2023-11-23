@@ -3,6 +3,8 @@ package com.camplex.project.camping.model.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.camplex.project.camping.model.dto.Camp;
 import com.camplex.project.camping.model.dto.CampDetail;
 import com.camplex.project.camping.model.dto.CampDetailImage;
@@ -44,6 +46,14 @@ public interface CampService {
 	 * @return
 	 */
 	int insertWishlist(Map<String, Object> map);
+
+	/** ceo사진 업로드
+	 * @param campNo
+	 * @param images
+	 * @return
+	 * @throws Exception 
+	 */
+	int insertCeoPic(int campNo, List<MultipartFile> images) throws Exception;
 
 	
 

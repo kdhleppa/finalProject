@@ -197,7 +197,7 @@ hr{
     display: flex;
     flex-basis: 80%;
     transition: 0.5s;
-    max-width: 1100px;
+   	width: 1100px;
 }
 
 .ceoPictureWrapper{
@@ -218,16 +218,17 @@ hr{
 }
 
 
-#ceoPicDeleteBtn{
+.ceoPicDeleteBtn{
 	margin: 5px 0;
 	cursor: pointer;
 	padding: 3px 10px;
-	border-radius: 10px;
 	font-size: 15px;
 	transition-duration: 0.3s;
+	background-color: transparent;
+	border: none;
 }
 
-#ceoPicDeleteBtn:hover{
+.ceoPicDeleteBtn:hover{
 	color: rgb(255, 83, 83);
 }
 

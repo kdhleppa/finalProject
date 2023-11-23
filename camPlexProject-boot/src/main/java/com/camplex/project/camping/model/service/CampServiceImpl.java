@@ -1,28 +1,41 @@
 package com.camplex.project.camping.model.service;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.camplex.project.camping.mappers.CampMapper;
 import com.camplex.project.camping.model.dto.Camp;
+import com.camplex.project.camping.model.dto.CampCeoImage;
 import com.camplex.project.camping.model.dto.CampDetail;
 import com.camplex.project.camping.model.dto.CampDetailImage;
+import com.camplex.project.common.utility.Util;
 
 @Service
 public class CampServiceImpl implements CampService {
 
 	@Autowired
 	private CampMapper mapper;
-	
+
+	@Value("${camplex.camping.webpath}")
+	private String webPath;
+
+	@Value("${camplex.camping.location}")
+	private String filePath;
+
+
 	/** 캠프장 목록 조회
 	 *
 	 */
 	@Override
 	public List<Camp> selectCampList() {
-		
+
 		return mapper.selectCampList();
 	}
 
@@ -31,7 +44,7 @@ public class CampServiceImpl implements CampService {
 	 */
 	@Override
 	public Camp selectCampOne(int campNo) {
-		
+
 		return mapper.selectCampOne(campNo);
 	}
 
@@ -40,7 +53,7 @@ public class CampServiceImpl implements CampService {
 	 */
 	@Override
 	public CampDetail selectCampDetail(int campDeNo) {
-		
+
 		return mapper.selectCampDetail(campDeNo);
 	}
 
@@ -49,7 +62,7 @@ public class CampServiceImpl implements CampService {
 	 */
 	@Override
 	public List<CampDetailImage> selectCampDetailImageList(int campDeNo) {
-		
+
 		return mapper.selectCampDetailImageList(campDeNo);
 	}
 
@@ -61,7 +74,7 @@ public class CampServiceImpl implements CampService {
 
 		return mapper.checkDupCampWish(map);
 	}
-	
+
 	/** 위시리스트에 캠핑장 추가
 	 *
 	 */
@@ -71,6 +84,56 @@ public class CampServiceImpl implements CampService {
 		return mapper.insertWishlist(map);
 	}
 
-	
+	/** ceo 사진 업로드
+	 * 
+	 */
+	@Override
+	public int insertCeoPic(int campNo, List<MultipartFile> images) throws Exception{
+
+		List<CampCeoImage> uploadList = new ArrayList<CampCeoImage>();
+
+		for(int i = 0 ; i < images.size() ; i++ ) {
+
+			if(images.get(i).getSize() > 0 ) {
+
+				CampCeoImage img = new CampCeoImage();
+				img.setCampCeoImagePath(webPath);
+				img.setCampNo(campNo);
+				
+				String fileName = images.get(i).getOriginalFilename();
+				img.setCampCeoImageOriginal(fileName);
+				img.setCampCeoImageReName(Util.fileRename(fileName) );
+
+
+				uploadList.add(img);
+			}
+
+		}
+		
+		
+		int result = 0;
+
+		if(!uploadList.isEmpty()) {
+
+			result = mapper.insertImages(uploadList);
+
+			if(uploadList.size() == result) {
+
+				for(int i = 0 ; i < uploadList.size() ; i++) {
+
+					String rename = uploadList.get(i).getCampCeoImageReName();
+
+					images.get(i).transferTo( new File(filePath + rename));
+					
+				}
+
+			}
+
+		}
+
+		return result;
+	}
+
+
 
 }
