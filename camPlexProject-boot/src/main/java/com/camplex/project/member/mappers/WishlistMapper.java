@@ -2,14 +2,22 @@ package com.camplex.project.member.mappers;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
 import com.camplex.project.camping.model.dto.Camp;
 
+@Mapper
 public interface WishlistMapper {
 
-	int wishlistInsert(int memberNo, int itemNo);
+	public int wishlistInsert(@Param("memberNo") int memberNo, @Param("itemNo") int itemNo);
 
-	int searchWishlist(int memberNo, int itemNo);
+	public int searchWishlist(@Param("memberNo") int memberNo, @Param("itemNo") int itemNo);
 
-	List<Camp> selectCampWish(int memberNo);
+	public List<Camp> selectCampWish(int memberNo);
+
+	public void deleteCampWish(@Param("memberNo")int memberNo, @Param("campNo")int campNo);
+
+
 
 }

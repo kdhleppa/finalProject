@@ -38,7 +38,7 @@
                             <td>수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;량</td>
                             <td>:</td>
                             <td>
-								<input type="number" id="quantity" name="quantity" value="1" min="0" hidden>
+								<input type="number" id="quantity" name="quantity" th:value="1" min="0" hidden>
 								<span id="quantityDisplay">1</span>&nbsp;&nbsp;<button type="button" class="qBtn" id="plusBtn">+</button>&nbsp;&nbsp;<button type="button" class="qBtn" id="minusBtn">-</button>
 							</td>
                         </tr>
@@ -60,7 +60,7 @@
                             </td>
                         </tr>
                     </table>
-					<input type="hidden" name="itemNo" value="*{itemNo}">
+					<input type="hidden" name="itemNo" th:value="*{itemNo}">
                     <div class="totalPaymentContainer">
                         <div class="totalTextContainer">
                             <p>TOTAL</p>
@@ -72,8 +72,8 @@
 					
                     <button type="submit" class="rentBtn">RENT NOW</button>
                     <div class="cartWishBtnContainer">
-                        <button type="submit" class="cartBtn" onclick="submitForm('@{/paysys/rentCart/insert}')">ADD TO CART</button>
-                        <button type="submit" class="wishBtn" onclick="submitForm('@{/member/wishlist/insert}')">WISH LIST</button>
+                        <button type="submit" class="cartBtn" formaction="@{/paysys/rentCart/insert}">ADD TO CART</button>
+                        <button type="submit" class="wishBtn" th:formaction="@{/member/wishlist/insert}">WISH LIST</button>
                     </div>
                     
                 </form>

@@ -76,8 +76,14 @@
         <!-- 공백 (좌) -->
         <section class="empty1"></section>
     </main>
-    
+    <script th:inline="javascript">
+	
+	const message = /*[[${message}]]*/ "전달받은 메세지(보통은 에러메세지)";
+	if(message != null) alert(message);
+	
+	</script> 
 	<script th:src="@{/js/member/login.js}"></script>
+	
 
 </body>
 </html>
