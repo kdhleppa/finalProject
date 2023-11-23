@@ -11,7 +11,6 @@
 		<result property="campNo" column="CAMP_NO"/>
 		<result property="itemNo" column="ITEM_NO"/>
 	    
-	      
 	</resultMap>
 	
 	<resultMap type="Camp" id="camp_rm">
@@ -48,13 +47,17 @@
 	</select>
 	
 	<!-- 위시리스트에 들어갈 캠핑장 정보 -->
+<<<<<<< HEAD
 	<select id="selectCampWish" resultMap="camp_rm">
+=======
+	<select id="selectCampWish">
+>>>>>>> 5f8b14e2d1ab1ec344e02412f234a09b3bd964f9
 			SELECT c.*
 			FROM CAMPING_SITE c
 			INNER JOIN WISH_LIST w ON c.CAMP_NO = w.CAMP_NO
 			WHERE w.MEMBER_NO = #{memberNo}
 			ORDER BY w.WISHLIST_NO
-		</select>
+	</select>
 	
 	<delete id="deleteCampWish">
     DELETE FROM WISH_LIST

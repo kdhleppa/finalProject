@@ -59,14 +59,15 @@ main{
 .campingTitle{
     display: flex;
     margin-bottom: 20px;
+    margin-left: 20px;
 }
 
 .campingTitleName{
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 .campSiteName{
-    font-size: 1rem;
+    font-size: 1.5rem;
     margin-left: 30px;
     display: flex;
     align-items: center;
@@ -138,6 +139,7 @@ main{
 
 .campingInfoContainer > p{
     font-size: 1.5rem;
+    align-self: flex-start;
 }
 
 .campingInfoContainer > hr{

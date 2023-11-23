@@ -18,10 +18,14 @@ public class CampDetail {
 	private String campDeName;
 	private int campDePrice;
 	private int capacity;
+	private String checkIn;
+	private String checkOut;
+	
 	
 	private String campDeThumbnail;
 	
 	private List<CampDetailImage> campDetailImageList;
 	
 	private String campName;
+	private String mannerTime;
 }

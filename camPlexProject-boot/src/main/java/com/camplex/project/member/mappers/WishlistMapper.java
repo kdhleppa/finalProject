@@ -3,7 +3,10 @@ package com.camplex.project.member.mappers;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+<<<<<<< HEAD
 import org.apache.ibatis.annotations.Param;
+=======
+>>>>>>> 5f8b14e2d1ab1ec344e02412f234a09b3bd964f9
 
 import com.camplex.project.camping.model.dto.Camp;
 

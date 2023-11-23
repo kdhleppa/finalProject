@@ -1,5 +1,6 @@
 package com.camplex.project.camping.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,14 +10,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.camplex.project.camping.model.dto.Camp;
 import com.camplex.project.camping.model.dto.CampDetail;
+import com.camplex.project.camping.model.dto.CampDetailImage;
 import com.camplex.project.camping.model.service.CampService;
+import com.camplex.project.member.model.dto.Member;
 
 @Controller
 @RequestMapping("/camp")
+@SessionAttributes({"loginMember"})
 public class CampController {
 	
 	@Autowired
@@ -90,19 +98,76 @@ public class CampController {
 		return "camp/campingDetail";
 	}
 	
+	/** 예약 이동
+	 * @param campDeNo
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/reservation")
-	public String campReservation(int campDeNo) {
+	public String campReservation(int campDeNo, Model model) {
 		
 		CampDetail campDetail = service.selectCampDetail(campDeNo);
 		
-		System.out.println(campDetail);
+		List<CampDetailImage> campDetailImages = service.selectCampDetailImageList(campDeNo);
+		
+		model.addAttribute("campDetail", campDetail);
+		model.addAttribute("campDetailImages", campDetailImages);
 		
 		return "camp/campingReservation";
 	}
 	
-	@GetMapping("/uploadCamp")
-	public String uploadCamp() {
+	/** 위시리스트 추가
+	 * @return
+	 */
+	@GetMapping("/wishlist")
+	public String wishList(RedirectAttributes ra,
+						   @SessionAttribute(value="loginMember", required=false) Member loginMember,
+						   @RequestHeader("referer") String referer,
+						   int campNo
+			) {
 		
-		return "camp/campingDetailUpload";
+		
+		if(loginMember != null) {
+
+			int result = 0;
+			int memberNo = loginMember.getMemberNo();
+			
+			Map<String, Object> map = new HashMap<>();
+			
+			map.put("campNo", campNo);
+			map.put("memberNo", memberNo);
+			
+			// 위시리스트에 있는지 먼저 중복 검사
+			int count = service.checkDupCampWish(map);
+			
+			if(count > 0) {
+				
+				ra.addFlashAttribute("message", "이미 등록된 캠핑장입니다.");
+				
+			} else {
+				
+				result = service.insertWishlist(map);
+				
+				if(result > 0) {
+					
+					ra.addFlashAttribute("message", "위시리스트에 등록되었습니다.");
+					
+				} else {
+					
+					ra.addFlashAttribute("message", "위시리스트 등록에 실패하였습니다.");
+				}
+				
+			}
+			
+		} else {
+			
+			ra.addFlashAttribute("message", "로그인 후 이용해주세요");
+			
+		}
+		
+		
+		return "redirect:"+ referer;
 	}
+	
+	
 }
