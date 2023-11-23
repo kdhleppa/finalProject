@@ -3,26 +3,32 @@ package com.camplex.project.member.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.camplex.project.camping.model.dto.Camp;
+import com.camplex.project.common.etc.ResponseMessage;
 import com.camplex.project.item.model.dto.Item;
 import com.camplex.project.item.model.service.ItemService;
 import com.camplex.project.member.model.dto.Member;
 import com.camplex.project.member.model.service.MemberService;
 import com.camplex.project.member.model.service.WishlistService;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
@@ -117,44 +123,48 @@ public class MemberController {
 			@SessionAttribute(value="loginMember", required = false)Member loginMember,
 			RedirectAttributes ra,
 			Model model,
-			int itemNo
+			@RequestParam("itemNo") int itemNo,
+			HttpServletRequest request
 			) {
 		
 		int result = 0;
 		int searchResult = 0;
-
-
+		String referer = request.getHeader("Referer");
+		String path = "redirect:";
 		
 		
 		if(loginMember != null) {
 			
 			int memberNo = loginMember.getMemberNo();
+			System.out.println(memberNo);
 			searchResult = wishlistService.searchWishlist(memberNo, itemNo);
 			
 			if (searchResult > 0) {
 				
 				ra.addFlashAttribute("message", "위시리스트에 추가된 상품 입니다.");
-				
-				return "redirect:/";
+				path += referer;
+				return path;
 				
 			} else {
-				
 				result = wishlistService.wishlistInsert(memberNo, itemNo);
 				
 				if (result > 0) {
 				
 					ra.addFlashAttribute("message", "상품이 위시리스트에 추가되었습니다.");
-					return "redirect:/";
+					path += referer;
+					return path;
 					
 				} else {
 					ra.addFlashAttribute("message", "위시리스트 등록에 실패하였습니다.");
-					return "redirect:/";
+					path += referer;
+					return path;
 				}
 				
 			}
 		} else {
 			ra.addFlashAttribute("message", "로그인 후 이용해 주세요.");
-			return "/member/idPw/login";
+			path += "/member/login";
+			return path;
 		}
 		
 	}
@@ -175,6 +185,26 @@ public class MemberController {
 		model.addAttribute("item", item);
 		
 		return "/member/myPage/wishList";
+		
+	}
+	
+	@ResponseBody
+	@DeleteMapping("/deleteCampWish/{campNo}")
+	public ResponseEntity<?> deleteCampWish(
+			@PathVariable("campNo") int campNo,
+			@SessionAttribute(value="loginMember", required = false)Member loginMember
+			){
+		int memberNo = loginMember.getMemberNo();
+		
+		
+		try {
+            wishlistService.deleteCampWish(memberNo, campNo);
+            return ResponseEntity.ok().body(new ResponseMessage("삭제 성공"));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseMessage("삭제 실패"));
+        }
+		
+		
 		
 	}
 	

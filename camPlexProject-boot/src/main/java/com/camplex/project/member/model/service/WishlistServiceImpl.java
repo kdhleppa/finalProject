@@ -21,7 +21,8 @@ public class WishlistServiceImpl implements WishlistService{
 	@Transactional
 	@Override
 	public int wishlistInsert(int memberNo, int itemNo) {
-
+		System.out.println("implemm:"+ memberNo);
+		System.out.println("시부랄");
 		return mapper.wishlistInsert(memberNo, itemNo);
 	}
 
@@ -30,6 +31,7 @@ public class WishlistServiceImpl implements WishlistService{
 	 */
 	@Override
 	public int searchWishlist(int memberNo, int itemNo) {
+		System.out.println("개같네:" + itemNo);
 		int searchResult = mapper.searchWishlist(memberNo, itemNo);
 		return searchResult;
 	}
@@ -38,4 +40,12 @@ public class WishlistServiceImpl implements WishlistService{
 	public List<Camp> selectCampWish(int memberNo) {
 		return mapper.selectCampWish(memberNo);
 	}
+
+	@Transactional
+	@Override
+	public void deleteCampWish(int memberNo, int campNo) {
+		mapper.deleteCampWish(memberNo, campNo);
+	}
+
+	
 }
