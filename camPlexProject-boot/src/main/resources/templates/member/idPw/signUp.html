@@ -23,7 +23,7 @@
         
         <section id="signUpForm">
 
-		<form th:action="@{/member/signUp}" method="POST" name="signUpFrm" id="signUpFrm">
+		<form th:action="@{/member/signUp}" method="POST" name="signUpFrm" id="signUpFrm" enctype="multipart/form-data">
 		
 	            <!-- 대제목 -->
 	            <section id="headerName">회원가입</section>
@@ -35,25 +35,25 @@
 	                <!-- 회원가입 정보 입력 -->
 	                <section id="inputSignUpForm">
 	
-	                    <input class="inputSignUpInfo" id="inputEmail" type="email" placeholder="이메일 (아이디)">
+	                    <input class="inputSignUpInfo" id="inputEmail" name="memberEmail" type="email" placeholder="이메일 (아이디)">
 	                    <p class="sendMassage" id="emailMessage"></p>
 	                    
-	                    <input class="inputSignUpInfo" id="inputPw" type="password" placeholder="비밀번호">
+	                    <input class="inputSignUpInfo" id="inputPw" name="memberPw" type="password" placeholder="비밀번호">
 	                    
 	                    <input class="inputSignUpInfo" id="inputPwRe" type="password" placeholder="비밀번호 확인">
 	                    <p class="sendMassage" id="pwMessage">영어,숫자,특수문자(!,@,#,-,_) 6~20글자</p>
 	                    
-	                    <input class="inputSignUpInfo" id="inputName" type="text" placeholder="이름">
+	                    <input class="inputSignUpInfo" id="inputName" name="memberName" type="text" placeholder="이름">
 	                    <p class="sendMassage" id="nameMessage">한글, 영어 2~10글자</p>
 	                    
-	                    <input class="inputSignUpInfo" id="inputNickname" type="text" placeholder="닉네임">
+	                    <input class="inputSignUpInfo" id="inputNickname" name="memberNickname" type="text" placeholder="닉네임">
 	                    <p class="sendMassage" id="nickMessage">한글, 영어, 숫자 2~10글자</p>
 	                    
-	                    <input class="inputSignUpInfo" id="inputTel" type="tel" placeholder="휴대전화">
-	                    <p class="sendMassage" id="telMessage">인증번호가 발송되었습니다.</p>
+	                    <!--<input class="inputSignUpInfo" id="inputTel" type="tel" placeholder="휴대전화" maxlength="11">
+	                    <p class="sendMassage" id="telMessage">- 제외</p>
 	                    
 	                    <input class="inputSignUpInfo" id="inputAuthkey" type="text" placeholder="인증번호">
-	                    <p class="sendMassage" id="authkeyMessage">인증되었습니다.</p>
+	                    <p class="sendMassage" id="authkeyMessage"></p>-->
 	
 	                    <!-- 프로필 이미지 입력 -->
 	                    <section id="profileImgSection">
@@ -70,7 +70,7 @@
 	
 	                            <section id="uploadImgBtn">
 	                                <label for="uploadProfileImg" id="selectImg">프로필 이미지 선택</label>
-	                                <input type="file" id="uploadProfileImg">
+	                                <input type="file" id="uploadProfileImg" name="memberProfileImg">
 	                                <label id="deleteProfileImg">프로필 이미지 삭제</label>
 	                            </section>
 	                            
@@ -84,7 +84,7 @@
 	                        
 	                        <!-- 회원가입, 이전 페이지로 이동 버튼 -->
 	                        <section id="changePwBtn">
-	                            <button>가입하기</button>
+	                            <button type="submit" id="signUpFrm">가입하기</button>
 	                            <a class="clickBtn" th:onclick="|location.href='@{/member/login}'|">이전으로</a>
 	                        </section>
 	                        
@@ -94,8 +94,8 @@
 	                </section>
 	
 	                <section class="empty2" id="telCheckBtnSection">
-	                    <button class="telCheckBtn" id="checkTel">확인</button>
-	                    <button class="telCheckBtn" id="checkTelAuthkey">인증</button>
+	                    <!--<button class="telCheckBtn" id="checkTelAuthkey" type="button">인증</button>
+	                    <button class="telCheckBtn" id="checkTel">인증번호 전송</button>-->
 	                </section>
 	
 	            </section>
@@ -112,7 +112,7 @@
 	<th:block th:replace="~{common/footer}"></th:block>
 	
 	<script th:src="@{/js/member/signUp.js}"></script>
-	<script th:src="@{/js/member/sms.js}"></script>
+	<!--<script th:src="@{/js/member/sms.js}"></script>-->
 
     
 </body>
