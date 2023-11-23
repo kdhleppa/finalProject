@@ -39,6 +39,8 @@ public class ItemServiceImpl implements ItemService {
 	public List<Item> selectItemWish(int memberNo) {
 		return mapper.selectItemWish(memberNo);
 	}
+
+	
 	
 	
 	

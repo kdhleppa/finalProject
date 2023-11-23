@@ -1,5 +1,6 @@
 package com.camplex.project.item.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,11 +57,7 @@ public class ItemController {
 		}
 	}
 	
-	@GetMapping("/itemUpload")
-	public String itemUpload() {
-		
-		return "item/uploadRentalPage";
-	}
+	
 	
 	
 	

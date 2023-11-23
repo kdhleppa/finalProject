@@ -8,7 +8,7 @@
     <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
     <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
     <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}" rel="stylesheet">
-
+	<link rel="icon" th:href="@{/images/iconImg/favicon.png}">
 </head>
 <body>
     
@@ -121,49 +121,68 @@
 
         <!-- 컨텐츠 Sec -->
         <section class="contentSec">
-
-            <section class="contentDetailSec">
-
-                <section class="contentImgeSec">
-                    <img src="/images/content1.png" class="contentImg">
-                </section>
-
-                <section class="contentInfoSec">
-
-                    <section class="contentInfo" id="contentTitle">
-                        <a th:href="@{/item/itemDetail/1}">블랙테일3 (HIBROW ED)</a>
-                    </section>
-    
-                    <section class="contentInfo" id="contentComment">
-                        A형 텐트 업그레이드 버전!
-                    </section>
-    
-                    <section class="contentInfo">
-                        <del>
-                            ￦445,000
-                        </del>
-                    </section>
-    
-                    <section class="contentInfo">
-                        ￦385,000 &ensp; <p style="color: red;">(13%↓)</p>
-                    </section>
-
-                </section>
-
-
-            </section>
-
-            <section class="contentDetailSec">
-
-            </section>
-
-            <section class="contentDetailSec">
-
-            </section>
-
-            <section class="contentDetailSec">
-
-            </section>
+			
+			<section class="contentSecCenterSec">
+				
+				<section th:each="Item : ${searchList}" class="contentDetailSec">
+					
+					 <section class="contentImgeSec">
+						 
+						 <a th:href="@{/item/itemDetail/{itemNo}(itemNo = ${Item.itemNo})}">							 
+		                    <img th:src="${Item.thumbnail}" class="contentImg">
+						 </a>
+	                    
+	                </section>
+	
+	                <section class="contentInfoSec">
+						
+						<a th:href="@{/item/itemDetail/{itemNo}(itemNo = ${Item.itemNo})}" class="contentNameA">							 
+		                    
+		                    <section class="contentInfo" id="contentTitle" th:text="${Item.itemName}">
+		                        상품명
+		                    </section>
+		                    
+						</a>
+						
+	    
+	                    <section class="contentInfo" id="contentComment" th:text="${Item.itemDescription}">
+	                        상품 간단 설명
+	                    </section>
+	    
+	                    <section class="contentInfo">
+							
+							<th:block th:if="${Item.discountRate} != 0">
+								
+		                        <del th:text="${Item.itemPrice}">
+		                            상품 가격
+		                        </del>
+		                        
+							</th:block>
+							
+							<th:block th:if="${Item.discountRate} == 0">
+								
+								<p th:text="${Item.itemPrice}">
+		                            상품 가격
+		                        </p>
+								
+							</th:block>
+							
+	                        
+	                    </section>
+	    
+	    				<th:block th:if="${Item.discountRate} != 0">
+													
+		                    <section class="contentInfo">
+		                        ￦385,000 &ensp; <p style="color: red;">(13%↓)</p>
+		                    </section>
+		                    
+						</th:block>
+	
+	                </section>
+					
+				</section>
+				
+			</section>
 
         </section>
 
