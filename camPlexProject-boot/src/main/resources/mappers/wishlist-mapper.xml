@@ -47,8 +47,6 @@
 	</select>
 	
 	<!-- 위시리스트에 들어갈 캠핑장 정보 -->
-
-
 	<select id="selectCampWish" resultMap="camp_rm">
 
 			SELECT c.*

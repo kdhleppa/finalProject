@@ -122,7 +122,8 @@
 	<select id="selectCampOne" resultMap="camp_rm">
 		SELECT CAMP_NO, MEMBER_NO, CAMP_ADDRESS, CAMP_PHONE,
 		CAMP_NAME, CAMP_OPTION, CAMP_AROUND_VIEW, CAMP_MAP,
-		MANNER_TIME,CATEGORY, CAMP_INFO, (CAMP_IMG_PATH || CAMP_IMG_RENAME) THUMBNAIL
+		MANNER_TIME,CATEGORY, CAMP_INFO, (CAMP_IMG_PATH || CAMP_IMG_RENAME) THUMBNAIL, 
+		CHECK_IN, CHECK_OUT
 		FROM "CAMPING_SITE"
 		JOIN CAMPING_SITE_IMG USING(CAMP_NO)
 		WHERE CAMP_NO = #{campNo}
@@ -132,7 +133,8 @@
 	
 	<!-- 캠핑장 예약 이동하면서 보여줄 정보 조회 -->
 	<select id="selectCampDetail" resultMap="camp_detail_rm">
-		SELECT CAMP_NO, CAMP_NAME, CAMP_DE_NAME, CAMP_DE_PRICE, CAPACITY, MANNER_TIME, CHECK_IN, CHECK_OUT
+		SELECT CAMP_NO, CAMP_NAME, CAMP_DE_NAME, CAMP_DE_PRICE, CAPACITY, MANNER_TIME, 
+		CHECK_IN, CHECK_OUT
 		FROM "CAMPING_DETAIL"
 		JOIN CAMPING_SITE USING(CAMP_NO)
 		WHERE CAMP_DE_NO = #{campDeNo}
@@ -140,7 +142,8 @@
 	
 	<!-- 캠핑장 예약 이동하면서 보여줄 이미지 정보 조회 -->
 	<select id="selectCampDetailImageList" resultMap="camp_detailImage_rm">
-		SELECT CAMP_DE_IMG_NO, CAMP_DE_NO, CAMP_DE_IMG_PATH, CAMP_DE_IMG_RENAME, CAMP_DE_IMG_ORIGINAL, CAMP_DE_IMG_ORDER
+		SELECT CAMP_DE_IMG_NO, CAMP_DE_NO, CAMP_DE_IMG_PATH, CAMP_DE_IMG_RENAME, 
+		CAMP_DE_IMG_ORIGINAL, CAMP_DE_IMG_ORDER
 		FROM "CAMPING_DETAIL_IMG"
 		WHERE CAMP_DE_NO = #{campDeNo}
 	</select>
@@ -173,6 +176,28 @@
 			</foreach>	
 		) A
 	</insert>
+	
+	<!-- ceo사진 지우기 -->
+	<delete id="ceoPicDelete">
+		DELETE FROM CAMPING_CEO_IMG
+		WHERE CAMP_CEO_IMG_NO = #{imgNo}
+	</delete>
+	
+	<!-- 예약안된 호실 정보 조회 -->
+	<select id="selectCampDetailListNotRes" resultMap="camp_detail_rm">
+		SELECT CAMP_DE_NO, CAMP_NO, CAMP_DE_NAME, CAMP_DE_PRICE, CAPACITY, 
+      		   (SELECT (CAMP_DE_IMG_PATH || CAMP_DE_IMG_RENAME) 
+       			FROM CAMPING_DETAIL_IMG B
+        		WHERE A.CAMP_DE_NO = B.CAMP_DE_NO 
+       			AND CAMP_DE_IMG_ORDER = 0) AS CAMP_DETAIL_THUMBNAIL
+		FROM "CAMPING_DETAIL" A
+		WHERE CAMP_NO = 1
+		AND CAMP_DE_NO NOT IN (
+		    SELECT CAMP_DE_NO 
+		    FROM RESERVATIONS
+		    WHERE CAMP_ENTDATE &lt; TO_DATE(#{outDate}, 'YYYY-MM-DD')
+		    AND CAMP_OUTDATE &gt; TO_DATE(#{entDate}, 'YYYY-MM-DD'))
+	</select>
 	
 	
 </mapper>
