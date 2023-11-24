@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>게시판작성</title>
+    <title>게시판수정</title>
 
     <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
     <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
     <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}" rel="stylesheet">
     <script th:src="@{https://kit.fontawesome.com/92fbd4b351.js}" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" th:href="@{/css/board/boardWrite.css}">
+    <link rel="stylesheet" th:href="@{/css/board/boardUpdate.css}">
 </head>
 <body>
     
@@ -52,12 +52,12 @@
         
         <hr style="height: 0.2rem; background-color:black; margin-top: 1rem; margin-left: 8%; width: 84%; margin-right: 40%;">
         
-        <form th:action="@{insert}" method="POST" class="board-write" id="boardWriteFrm"
+        <form th:action="@{update}" method="POST" class="board-update" id="boardUpdateFrm"
         			enctype="multipart/form-data">
         			
             <!-- 제목 -->
             <h1 class="board-title">
-                <input type="text" name="boardTitle" placeholder="제목을 입력해 주세요" th:value="${boardTitle}">
+                <input type="text" name="boardTitle" placeholder="제목" th:value="${board.boardTitle}">
             </h1>
 
 			<div class="imgInput">
@@ -114,7 +114,7 @@
 			
             <!-- 내용 -->
             <div class="board-content">
-                <textarea name="boardContent" th:text="${boardContent}" placeholder="내용을 입력해 주세요">내용</textarea>
+                <textarea name="boardContent" th:text="${board.boardContent}">내용</textarea>
             </div>
 
         
@@ -125,9 +125,15 @@
 			
 			<button id="cancelBtn">취소하기</button>                 
                 
-            <button type="submit" id="writeBtn">등록하기</button>   
+            <button type="submit" id="UpdateBtn">수정하기</button>   
                      
         </div>
+
+			<!-- 기존 이미지가 있다가 삭제된 이미지의 순서를 기록-->
+            <input type="hidden" name="deleteList" value="">
+
+        	<!-- 수정 성공 시 주소(쿼리스트링) 유지용도 -->
+            <input type="hidden" name="cp" th:value="${param.cp}">
 
 		</form>
         
@@ -135,7 +141,7 @@
 
     <th:block th:replace="~{common/footer}"></th:block>
     
-    <script th:src="@{/js/board/boardWrite.js}"></script>
+    <script th:src="@{/js/board/boardUpdate.js}"></script>
 
 
 </body>

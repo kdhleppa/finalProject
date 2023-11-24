@@ -60,7 +60,7 @@ button {
     color: black;
 }
 
-.board-write {
+.board-update {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
@@ -152,7 +152,7 @@ button {
     font-size: 1.3rem;
 }
 
-#writeBtn {
+#UpdateBtn {
     font-family: 'HakgyoansimSantteutdotumL';
     width: 8rem;
     height: 4rem;

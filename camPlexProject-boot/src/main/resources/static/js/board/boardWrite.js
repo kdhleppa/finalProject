@@ -1,3 +1,8 @@
+// 취소하기
+document.getElementById('cancelBtn').addEventListener('click', function() {
+    window.history.back();
+  });
+
 // 미리보기 관련 요소 모두 얻어오기
 
 // img 5개

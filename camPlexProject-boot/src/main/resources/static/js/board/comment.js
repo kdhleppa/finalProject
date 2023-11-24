@@ -1,7 +1,4 @@
 // 댓글 목록 조회
-document.addEventListener("DOMContentLoaded", function() {
-    selectCommentList();
-});
 function selectCommentList(){
     
     // REST(REpresentational State Transfer) API
