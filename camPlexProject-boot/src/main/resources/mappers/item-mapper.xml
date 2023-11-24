@@ -47,25 +47,23 @@
 	
 	</resultMap>
 	
+	<select id="selectImageList" resultMap="itemImg_rm">
+		SELECT ITEM_IMG_NO, ITEM_NO, ITEM_IMG_PATH
+		FROM ITEM_IMG
+	 	WHERE ITEM_NO = #{itemNo}
+	</select>
 	
 	
   	
 		<!-- 상품 상세조회 -->	
 		<select id="selectDetail" resultMap="item_rm">
-			SELECT *
-			FROM ITEM
+			SELECT ITEM_NO, ITEM_TYPE, ITEM_PRICE, ITEM_NAME, ITEM_DESCRIPTION, 
+			ITEM_STATUS, DISCOUNT_RATE, ITEM_IMG_NO, (ITEM_IMG_PATH || ITEM_IMG_RENAME) THUMBNAIL, ITEM_IMG_ORDER
+			FROM "ITEM"
+			JOIN "ITEM_IMG" USING(ITEM_NO)
 			WHERE ITEM_NO = #{itemNo}
 		</select> 
-		
 		 
-		<!-- 상세보기 사진선택 -->
-		<select id="selectImageList" resultMap="itemImg_rm">
-			SELECT * 
-			FROM ITEM_IMG
-		 	WHERE ITEM_NO = #{itemNo}
-		 	ORDER BY ITEM_IMG_ORDER
-		</select>
-		
 		
 		<!-- 멤버 예약목록 조회(캠핑장명, 날짜만) -->
 		<select id="membersRsvInfo" resultMap="rsvInfo_rm">
@@ -80,11 +78,29 @@
 	
 		<!-- 위시리스트에 들어갈 아이템 목록정보 -->
 		<select id="selectItemWish" resultMap="item_rm">
-			SELECT i.*
-			FROM ITEM i
-			INNER JOIN WISH_LIST w ON i.ITEM_NO = w.ITEM_NO
-			WHERE w.MEMBER_NO = #{memberNo}
-			ORDER BY w.WISHLIST_NO
+			SELECT 
+			    i.ITEM_NO, 
+			    i.ITEM_TYPE, 
+			    i.ITEM_PRICE, 
+			    i.ITEM_NAME, 
+			    i.ITEM_DESCRIPTION, 
+			    i.ITEM_STATUS, 
+			    i.DISCOUNT_RATE, 
+			    ii.ITEM_IMG_NO, 
+			    (ii.ITEM_IMG_PATH || ii.ITEM_IMG_RENAME) AS THUMBNAIL, 
+			    ii.ITEM_IMG_ORDER
+			FROM 
+			    "ITEM" i
+			JOIN 
+			    "ITEM_IMG" ii
+			    ON i.ITEM_NO = ii.ITEM_NO
+			JOIN 
+			    WISH_LIST w
+			    ON i.ITEM_NO = w.ITEM_NO
+			WHERE 
+			    w.MEMBER_NO = #{memberNo}
+			ORDER BY 
+			    w.WISHLIST_NO
 		</select>
 	
 	  	

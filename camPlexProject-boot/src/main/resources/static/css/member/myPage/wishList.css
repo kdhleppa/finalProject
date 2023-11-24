@@ -148,8 +148,8 @@ td {
 
 
 img {
-    max-height: 100%;
-    width: auto;
+    max-height: 90%;
+    max-width: 90%;
     object-fit: contain;
 }
 
@@ -279,4 +279,10 @@ img {
     text-decoration: none;
     margin: 0 1rem;
     font-weight: 600;
+}
+
+
+.nameAtag {
+	color: black;
+	text-decoration: none;
 }
