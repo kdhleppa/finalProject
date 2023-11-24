@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
@@ -222,14 +223,50 @@ public class CampController {
 		return "redirect:" + referer;
 	}
 	
+	/** ceo 사진 지우기
+	 * @param imgNo
+	 * @param ra
+	 * @return
+	 */
 	@GetMapping("/ceoPicDelete")
-	public int ceoPicDelete() {
+	@ResponseBody
+	public int ceoPicDelete(int imgNo, RedirectAttributes ra) {
 		
 		int result = 0;
 		
+		result = service.ceoPicDelete(imgNo);
 	
+		if(result > 0) {
+			ra.addFlashAttribute("message", "사진이 삭제되었습니다.");
+		} else {
+			ra.addFlashAttribute("message", "삭제 실패");
+		}
+		
+		System.out.println(result);
 		
 		return result;
 	}
+	
+	/** 날짜 선택시 캠핑장 비동기 보여주기 
+	 * @param entDate
+	 * @param outDate
+	 * @param campNo
+	 * @return
+	 */
+	@GetMapping("/showCampDe")
+	@ResponseBody
+	public List<CampDetail> showCampDe(String entDate, String outDate, int campNo){
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("entDate", entDate);
+		map.put("outDate", outDate);
+		map.put("campNo", campNo);
+		
+		List<CampDetail> list = service.selectCampDetailListNotRes(map);
+		
+		return list;
+	}
+	
 	
 }

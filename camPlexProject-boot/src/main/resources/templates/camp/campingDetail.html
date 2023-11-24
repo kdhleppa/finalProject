@@ -87,7 +87,7 @@
 					<div class="ceoPicture">
 						<div class="ceoPicSlideBox">
 
-							<div class="ceoPicContent" th:id="|img${camp.campCeoImageList[i].campCeoImageNo}|" th:each="i : ${#numbers.sequence(0, #lists.size(camp.campCeoImageList)-1, 1)}">
+							<div class="ceoPicContent" th:id="|img[${camp.campCeoImageList[i].campCeoImageNo}]|" th:each="i : ${#numbers.sequence(0, #lists.size(camp.campCeoImageList)-1, 1)}">
 								<input type="hidden" class="imgNo" th:value="${camp.campCeoImageList[i].campCeoImageNo}">
 								<div class="ceoPictureWrapper">
 									<img th:src="|${camp.campCeoImageList[i].campCeoImagePath}${camp.campCeoImageList[i].campCeoImageReName}|">
@@ -193,25 +193,40 @@
 
 				<hr>
 
-				<div class="travelDate">
+				
 
+				<!--*********************************** 달력 ************************************************-->
+				<div class="calenderWrapper">
+				  <div class="calendar-container">
+			        <button id="prev-month"><</button>
+			        <div class="calendar" id="calendar-next"></div> 
+			        <button id="next-month">></button>
+    			</div>
+    			
+    			<div class="travelDate">
+
+					<div id="stayDate">
+							<input type="radio" name="stayDate" id="oneDay" value="1" checked>
+								<label class="dayBtn"  for="oneDay">1박</label>
+							<input type="radio" name="stayDate"  id="twoDay" value="2" >
+								<label class="dayBtn"  for="twoDay">2박</label>
+							<input type="radio" name="stayDate" id="threeDay" value="3">
+								<label class="dayBtn"  for="threeDay" >3박</label>
+					</div>
 					<div class="enterDate">
 						<p>입실일 :</p>
-						<input type="date" name="" id="" class="dateInput">
+						<span id="checkInDate" class="date"></span>
 					</div>
-
 					<div class="exitDate">
 						<p>퇴실일 : </p>
-						<input type="date" name="" id="" class="dateInput">
+						<span id="checkOutDate" class="date"></span>
 					</div>
 
 				</div>
-
-				<div class="calender">
-
-					<img th:src="@{/images/iconImg/cal.png}" alt="">
-
 				</div>
+				
+				
+				<!--*********************************** 달력 끝************************************************-->
 
 			</section>
 
@@ -221,9 +236,11 @@
 
 				<form th:action="@{reservation}" class="campSiteFrm" id="reservationFrm">
 
-					<div class="campSite" th:each="campDetail : ${camp.campDetailList}">
-
-						<input type="radio" name="campDeNo" class="campStieRadio"
+					<div id="campDetailContainer">
+						
+						<div class="campSite" th:each="campDetail : ${camp.campDetailList}">
+							
+							<input type="radio" name="campDeNo" class="campStieRadio"
 							th:id="campNo+${campDetail.campDeNo}" th:value="${campDetail.campDeNo}">
 						</input>
 						<label th:for="campNo+${campDetail.campDeNo}" class="campSiteBox" onclick="">
@@ -231,25 +248,26 @@
 							<div class="campSiteImgWrapper">
 								<img th:src="${campDetail.campDeThumbnail}" alt="">
 							</div>
-
+							
 							<div class="campSiteInfoContainer">
 								<p th:text="${campDetail.campDeName}"></p>
-
+								
 								<div class="campSiteInfo">
 									<div class="campSiteInfoDetail">
 										<p>수용 인원 <input type="text" name="" id="" th:value="${campDetail.capacity}+명"
-												disabled></p>
+											disabled></p>
+										</div>
+										<p class="campSitePrice" th:text="|${#numbers.formatInteger(campDetail.campDePrice, 3, 'COMMA')}원|">가격</p>
 									</div>
-									<p class="campSitePrice" th:text="|${#numbers.formatInteger(campDetail.campDePrice, 3, 'COMMA')}원|">가격</p>
+									
+									
 								</div>
-
-
-							</div>
-
-						</label>
+								
+							</label>
+						</div>
+						
 					</div>
-
-
+						
 					<div class="btnArea">
 
 						<button class="btn">다음으로</button>
@@ -270,7 +288,9 @@
 	<script th:inline="javascript">
 
 		const campNo = /*[[${camp.campNo}]]*/ "캠핑장 번호";
-
+		const checkIn = /*[[${camp.checkIn}]]*/ "체크인 시간";
+		const checkOut = /*[[${camp.checkOut}]]*/ "체크아웃 시간";
+		
 	</script>
 
 	<th:block th:replace="~{camp/ceoPicUpload}"></th:block>

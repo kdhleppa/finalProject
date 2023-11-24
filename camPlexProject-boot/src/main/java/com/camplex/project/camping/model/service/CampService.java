@@ -55,6 +55,18 @@ public interface CampService {
 	 */
 	int insertCeoPic(int campNo, List<MultipartFile> images) throws Exception;
 
+	/** ceo사진 지우기
+	 * @param imgNo
+	 * @return
+	 */
+	int ceoPicDelete(int imgNo);
+
+	/** 예약 안된 캠프 호실 조회
+	 * @param map
+	 * @return
+	 */
+	List<CampDetail> selectCampDetailListNotRes(Map<String, Object> map);
+
 	
 
 }

@@ -14,7 +14,7 @@
 </head>
 <body>
     
-    <th:block th:replace="~{common/header}"></th:block>
+    <th:block th:replace="~{common/headerForContent}"></th:block>
     
     <div class="mainContainer">
         <!--레프트빈공간-->
@@ -54,7 +54,7 @@
 	                    <td><input type="checkbox" class=""></td>
 	                    <td th:text="${iterStat.count}">넘버</td>
 	                    <td><img th:src="@{/images/itemImg/0340020000042.jpg}" alt="수정전"></td>
-	                    <td>[[${camp.campName}]]<a th:href="@{/camp/${camp.campNo}}" class = "grayBtn rsvBtn" th:text="예약하기">예약하기</a></td>
+	                    <td>[[${camp.campName}]]<a th:href="|/camp/${camp.campNo}|" class = "grayBtn rsvBtn" th:text="예약하기">예약하기</a></td>
 	                    <td></td>
 	                    <td></td>
 	                    <td><button class="grayBtn" th:onclick="'deleteCampWish(' + ${camp.campNo} + ');'" th:text="DELETE">DELETE</button></td>
