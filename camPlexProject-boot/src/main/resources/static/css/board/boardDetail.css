@@ -61,12 +61,17 @@ button {
 }
 
 /* 게시판 세부 내용 */
+img {
+	width: 16rem;
+	height: 16rem;
+}
+
 .boardDetail {
     font-family: 'HakgyoansimSantteutdotumL';
     margin-top: 20px;
     display: flex;
     justify-content: space-around;
-    height: 50rem;
+    height: 100%;
 }
 
 .boardDeLeft {
@@ -83,7 +88,13 @@ button {
 .boardDeTitle {
     margin-left: -20rem;
     font-size: 25px;
+	height: 100%;
+}
 
+.boardImg {
+	display: flex;
+	margin-top: 2rem;
+	width: 30rem;
 }
 
 .boardDeRight {
@@ -94,22 +105,60 @@ button {
     margin-left: -20rem;
 }
 
+.boardDeRight > span {
+	margin-top: -40rem;
+}
+
+#readCount {
+	margin-top: -40rem;
+	margin-left: 2rem;
+}
+
 #createDate {
     margin-top: 30px;
     font-size: 22px;
 }
 
 .boardContent {
-    margin-left: 0rem;
     width: 80%;
     font-size: 22px;
+    margin-bottom: 9rem;
 }
+
+#imgDown {
+	font-size: 16px;
+	height: 1.3rem;
+	text-decoration: none;
+	color: rgb(0, 128, 0);
+}
+
+.img-box {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	margin-bottom: 10rem;
+}
+
+.img-box > div {
+	margin-left: 1rem;
+}
+
 
 .thumbnail{
-    width: 150px;   
-    height:150px;
+	display: flex;
+	flex-wrap: wrap;
+    width: 19rem;
+    height: 19rem;
 }
 
+.thumbnail > img {
+	width: 19rem;
+	height: 19rem;
+}
+
+#proImg {
+	width: 100px;
+}
 
 /* 수정 삭제 버튼 부분 */
 .btnArea {
@@ -147,31 +196,30 @@ button {
 
 
 /* 댓글 부분 */
-#commentArea {
-	margin-left: 10rem;
-}
 
 .comment-write-area {
-	margin: 30px 20rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 2rem;
 }
 
 .comment-write-area > textarea{
     border-radius: 10px;
 	width: 60rem;
-    margin-top: -15px;
     min-height: 100px;
-    margin-right: 10px;
 	resize: none;
+	margin-left: 5rem;
 }
 
 .comment-write-area > button{
-    margin-left: 53.5rem;
     background-color: transparent;
     font-family: 'HakgyoansimSantteutdotumL';
-    width: 8rem;
-    height: 4rem;
+    width: 5rem;
+    height: 2rem;
     border-style: none;
     font-size: 1.5rem;
+    margin-left: 1rem;
 }
 
 #commentList{
@@ -268,5 +316,16 @@ button {
 
 #addComment {
 	font-size: 1.2rem;
+}
+
+/* 좋아요 */
+.like-area{
+    margin-left: 30px;
+}
+
+#boardLike{
+    font-size: 1.2rem;
+    color: red;
+    cursor: pointer;
 }
 

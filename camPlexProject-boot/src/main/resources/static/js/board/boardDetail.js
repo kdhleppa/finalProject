@@ -79,6 +79,12 @@ document.getElementById("deleteBtn").addEventListener("click", ()=>{
 		= location.pathname.replace("board", "board2")
 		+ "/delete"
 		
+		// /board2/2/2006/delete (get)
 
 });
-// /board2/2/2006/delete (get)
+
+
+// 목록으로 돌아가기
+document.getElementById('listBtn').addEventListener('click', function() {
+    window.history.back();
+  });
