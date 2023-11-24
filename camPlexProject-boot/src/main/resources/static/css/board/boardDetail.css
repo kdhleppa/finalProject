@@ -16,71 +16,6 @@ button {
     unicode-range: U+AC00-D7A3;
 }
 
-/* header 부분 */
-.topBar{
-    width: 100%;
-    height: 200px;
-
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 25px;
-    border-radius: 0 0 10px 10px;
-
-    transition-duration: 0.3s;
-
-    position: sticky;
-    top: 0;
-}
-
-.topBar:hover{
-    background-color: rgba(204, 213, 174, 0.5);
-}
-
-.topMenu{
-    width: 100%;
-
-    flex-basis: 5%;
-
-    display: flex;
-    justify-content: space-between;
-}
-
-.topMenu a{
-    color: #000;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 0.7rem;
-
-    
-}
-
-.mainTitle{
-    flex-basis: 50%;
-    align-self: center;
-    font-size: 3rem;
-    font-weight: 900;
-
-    margin: 20px 0;
-
-    height: 60px;
-    line-height: 60px;
-    color: #333;
-    letter-spacing: 5px;
-}
-
-.bottomMenu{
-    flex-basis: 45%;
-    display: flex;
-    align-self: center;
-}
-
-.bottomMenu a {
-    color: #000;
-    text-decoration: none;
-    margin: 0 1rem;
-    font-weight: 600;
-}
-
 /* 게시판 상단 메뉴 */
 .boardTypeList {
 	display: flex;
@@ -170,6 +105,10 @@ button {
     font-size: 22px;
 }
 
+.thumbnail{
+    width: 150px;   
+    height:150px;
+}
 
 
 /* 수정 삭제 버튼 부분 */
@@ -320,58 +259,14 @@ button {
 	margin-top: 10px;
 }
 
+.commentInsertContent{
+	width: 66%;
+    height: 90px;
+    resize: none;
+    margin-top : 20px;
+}
+
 #addComment {
 	font-size: 1.2rem;
 }
 
-
-/* footer 부분 */
-.bottomBar { 
-    width: 100%;
-    margin-top: 120px;
-    margin-bottom: 120px;
-    font-family: 'HakgyoansimSantteutdotumL';
-    font-weight: 900;
-    line-height: 30px;
-    
-}
-
-.bottomBar > a, .bottomBar > div {
-    margin-left: 120px;
-}
-
-.footerTitle {
-    flex-basis: 50%;
-    align-self: center;
-    font-size: 2rem;
-    font-weight: 1000;
-
-    height: 60px;
-    line-height: 60px;
-    color: #333;
-    letter-spacing: 3px;
-}
-
-.footerMenu {
-    display: flex;
-    flex-basis: 50%;
-    align-self: center;
-    font-size: 1rem;
-    font-weight: 900;
-
-    color: #333;
-    letter-spacing: 1px;
-}
-
-.footerMenu a {
-    text-decoration: none;
-}
-
-.menuDiv {
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-.footerContent {
-    letter-spacing: 1px;
-}

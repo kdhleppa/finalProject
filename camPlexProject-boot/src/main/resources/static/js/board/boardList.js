@@ -8,6 +8,7 @@ if(insertBtn != null) { // 로그인 여부에 따라 insertBtn에 있는가 없
 		// location.href="주소"
 		// 해당 주소로 요청(GET방식)
 		location.href = `/board2/${location.pathname.split("/")[2]}/insert`;
+		//  /board2/B/insert
 	});
 }
 

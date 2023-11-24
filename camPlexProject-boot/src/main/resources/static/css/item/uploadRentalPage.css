@@ -17,70 +17,6 @@
     unicode-range: U+AC00-D7A3;
 }
 
-/* 헤더 */
-.topBar{
-    width: 100%;
-    height: 200px;
-
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 25px;
-    border-radius: 0 0 10px 10px;
-
-    transition-duration: 0.3s;
-
-    position: sticky;
-    top: 0;
-}
-
-.topBar:hover{
-    background-color: rgba(204, 213, 174, 0.5);
-}
-
-.topMenu{
-    width: 100%;
-
-    flex-basis: 5%;
-
-    display: flex;
-    justify-content: space-between;
-}
-
-.topMenu a{
-    color: #000;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 0.7rem;
-
-    
-}
-
-.mainTitle{
-    flex-basis: 50%;
-    align-self: center;
-    font-size: 3rem;
-    font-weight: 900;
-
-    margin: 20px 0;
-
-    height: 60px;
-    line-height: 60px;
-    color: #333;
-    letter-spacing: 5px;
-}
-
-.bottomMenu{
-    flex-basis: 45%;
-    display: flex;
-    align-self: center;
-}
-
-.bottomMenu a {
-    color: #000;
-    text-decoration: none;
-    margin: 0 1rem;
-    font-weight: 600;
-}
 
 .rentalCRUDMain {
     width: 100%;
@@ -105,6 +41,13 @@
     display: flex;
     align-items: center;
     border-bottom: 1px solid #909090;
+}
+
+.rentalUploadForm {
+	width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .rentalTotalSec {
@@ -231,7 +174,20 @@
     font-size: 1.3rem;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid black;
     margin-right: 10rem;
+    text-transform:uppercase;
     cursor: pointer;
+    display: inline-block;
 }
+
+.uploadBtn:after {
+	margin-top: 0.5rem;
+    display:block;
+    content: '';
+    border-bottom: solid 1px #909090;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+}
+
+.uploadBtn:hover:after { transform: scaleX(1); }
+

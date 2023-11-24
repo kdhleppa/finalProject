@@ -34,7 +34,7 @@
 		
 		<result property="itemNo" column="ITEM_NO" />
 		<result property="itemImgPath" column="ITEM_IMG_PATH" />
-		<result property="itemimgRename" column="ITEM_IMG_RENAME" />
+		<result property="itemImgRename" column="ITEM_IMG_RENAME" />
 		<result property="itemImgOriginal" column="ITEM_IMG_ORIGINAL"/>
 		<result property="itemImgOrder" column="ITEM_IMG_ORDER" />
 	

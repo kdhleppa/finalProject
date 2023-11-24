@@ -35,4 +35,10 @@ public class ItemController2 {
 		
 		return "item/rentalCheckPage";
 	}
+	
+	@GetMapping("/upload")
+	public String itemUpload() {
+		
+		return "item/uploadRentalPage";
+	}
 }
