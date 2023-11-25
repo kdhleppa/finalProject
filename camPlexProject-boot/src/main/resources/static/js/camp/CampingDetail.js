@@ -308,12 +308,12 @@ document.addEventListener('DOMContentLoaded', function() {
 										 + "&outDate=" + tempEDate 
 										 + "&campNo=" + campNo)
 					.then(resp => resp.json())
-					.then(list => {
+					.then(data => {
 						
 						const campDetailContainer = document.getElementById('campDetailContainer');
 						campDetailContainer.innerHTML = '';
 
-						for(var campDe in list ){
+						for(var campDe of data){
 						
 							const campSite = document.createElement('div');
 							campSite.classList.add("campSite");
@@ -321,7 +321,7 @@ document.addEventListener('DOMContentLoaded', function() {
 							const campStieRadio = document.createElement("input");
 							campStieRadio.classList.add("campStieRadio");
 							campStieRadio.setAttribute("type", "radio");
-							campStieRadio.setAttribute("name", "campNo");
+							campStieRadio.setAttribute("name", "campDeNo");
 							campStieRadio.setAttribute("id", `campNo${campDe.campDeNo}`);
 							campStieRadio.setAttribute("value", `${campDe.campDeNo}`);
 
@@ -329,7 +329,51 @@ document.addEventListener('DOMContentLoaded', function() {
 							campSiteBox.classList.add('campSiteBox');
 							campSiteBox.setAttribute("for", `campNo${campDe.campDeNo}`);
 
-						
+							const campSiteImgWrapper = document.createElement('div');
+							campSiteImgWrapper.classList.add('campSiteImgWrapper');
+
+							const campSiteImg = document.createElement('img');
+							campSiteImg.setAttribute('src', `${campDe.campDeThumbnail}`)
+
+							campSiteImgWrapper.append(campSiteImg);
+
+							const campSiteInfoContainer = document.createElement('div')
+							campSiteInfoContainer.classList.add('campSiteInfoContainer')
+
+							const campDeName = document.createElement('p');
+							campDeName.innerText = `${campDe.campDeName}`;
+
+							const campSiteInfo = document.createElement('div');
+							campSiteInfo.classList.add('campSiteInfo');
+
+							const campSiteInfoDetail = document.createElement('div');
+							campSiteInfoDetail.classList.add('campSiteInfoDetail');
+
+							const count = document.createElement('p');
+							count.innerText = '수용 인원 ';
+							
+							const capacity = document.createElement('input');
+							capacity.setAttribute('type', 'text')
+							capacity.setAttribute('value', `${campDe.capacity}명`);
+							capacity.setAttribute('disabled', 'ture');
+
+							const campSitePrice = document.createElement('p');
+							campSitePrice.classList.add('campSitePrice');
+							campSitePrice.innerText = `${(campDe.campDePrice*stayDate).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`
+
+							count.append(capacity);
+
+							campSiteInfoDetail.append(count);
+
+							campSiteInfo.append(campSiteInfoDetail, campSitePrice);
+
+							campSiteInfoContainer.append(campDeName, campSiteInfo);
+
+							campSiteBox.append(campSiteImgWrapper, campSiteInfoContainer);
+
+							campSite.append(campStieRadio, campSiteBox);
+
+							campDetailContainer.append(campSite);
 						}
 						
 					})
