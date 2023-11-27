@@ -14,5 +14,6 @@ public class MembersReservationDate {
 	public String campName;
 	public String campEntDate;
 	public String campOutDate;
+	
 
 }

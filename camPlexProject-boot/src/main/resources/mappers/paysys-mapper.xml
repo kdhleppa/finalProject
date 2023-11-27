@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.camplex.project.paysys.mappers.PaysysMapper">
 
-	<resultMap id="cart_rm" type="Cart">
+	<resultMap type="Cart" id="cart_rm">
 		<id property="cartNo" column="CART_NO"/>
 		<result property="memberNo" column="MEMBER_NO"/>
 		
 	</resultMap>
 	
-	<resultMap id="cartItem_rm" type="CartItem">
+	<resultMap type="CartItem" id="cartItem_rm">
 		<id property="cartItemNo" column="CART_ITEM_NO"/>
 		<result property="cartNo" column="CART_NO"/>
 		<result property="itemNo" column="ITEM_NO"/>
@@ -28,23 +28,21 @@
 		VALUES (SEQ_CART_NO.NEXTVAL, #{memberNo})
 	</insert>
 	
-	<select id="searchCartItem">
+	<select id="searchCartItem" resultType="_int">
 		SELECT COUNT(*) FROM CART_ITEM
 		WHERE CART_NO = #{cartNo}
 		AND ITEM_NO = #{itemNo}
+		AND RESERVATION_NO = #{reservationNo}
 	</select>
 	  	
 	<!-- 회원의 카트 넘버 조회-->  	
-	<select id="searchMembersCartNo" resultMap="cart_rm">
+	<select id="searchMembersCartNo" resultType="java.lang.Integer">
 		SELECT CART_NO
 		FROM CART
 		WHERE MEMBER_NO = #{memberNo}
 	</select>  	
 	
-	<!-- 회원카트 존재여부 조회 -->
-	<select id="searchCartNo" resultType="_int">
-		SELECT COUNT(*) FROM CART
-		WHERE MEMBER_NO = #{memberNo}
-	</select>
+	
+	
 	
 </mapper>

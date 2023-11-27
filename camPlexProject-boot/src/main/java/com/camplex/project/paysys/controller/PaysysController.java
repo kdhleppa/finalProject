@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.camplex.project.camping.model.dto.Camp;
 import com.camplex.project.camping.model.dto.CampDetail;
 import com.camplex.project.camping.model.service.CampService;
+import com.camplex.project.item.model.dto.FindCartItem;
 import com.camplex.project.item.model.dto.Item;
 import com.camplex.project.item.model.dto.MembersReservationDate;
 import com.camplex.project.item.model.service.ItemService;
@@ -72,7 +73,7 @@ public class PaysysController {
 			RedirectAttributes ra, HttpServletRequest request
 			) {
 		System.out.println(reservationNo); 
-		int cartNo = 0;
+		Integer cartNo = 0;
 		int result = 0;
 		int searchResult = 0;
 		int searchCartNo = 0;
@@ -81,17 +82,17 @@ public class PaysysController {
 		
 		if(loginMember != null) {
 			int memberNo = loginMember.getMemberNo();
-			searchCartNo = payService.searchCartNo(memberNo);
-		
-			if(searchCartNo > 0) {
-				
-				cartNo = payService.searchMembersCartNo(memberNo);
-				System.out.println("이미만들어진카트넘버:"+cartNo);
-			} else {
+			cartNo = payService.searchMembersCartNo(memberNo);
+			System.out.println("카트정보검색" + cartNo);
+			if(cartNo == null) {
 				payService.createCart(memberNo);
 				cartNo = payService.searchMembersCartNo(memberNo);
-				System.out.println("새로만든카트넘버" + cartNo);
-			}
+				System.out.println("새로만든 카트넘버:"+cartNo);
+			} 
+				
+				
+				
+			System.out.println("있는 카트넘버" + cartNo);
 			
 			
 			
@@ -105,7 +106,7 @@ public class PaysysController {
 			searchResult = payService.searchCartItem(map);
 			
 			if (searchResult > 0) {
-				ra.addFlashAttribute("message", "카트에 추가된 상품 입니다. 카트에서 수량조정을 해주세요.");
+				ra.addFlashAttribute("message", "해당 예약캠핑장카트에 추가된 상품 입니다.\n카트에서 수량조정을 해주세요.");
 				path += referer;
 				return path;
 				
@@ -139,17 +140,33 @@ public class PaysysController {
 	@GetMapping("/rentCart")
 	public String rentCartFoword(
 			@SessionAttribute(value="loginMember", required = false)Member loginMember,
-			Model model
+			Model model,
+			RedirectAttributes ra
 			) {
+		
+		
+		if (loginMember == null) {
+			ra.addFlashAttribute("message", "로그인 후 이용해 주세요.");
+			return "redirect:/member/login";
+		}
+		
+		
 		int memberNo = loginMember.getMemberNo();
-		
-		List<Item> item = itemService.selectItemWish(memberNo);
 		List<MembersReservationDate> rsvInfo = itemService.membersRsvInfo(memberNo);
-		
-		
-		
+		List<MembersReservationDate> rsvInfo2 = itemService.membersRsvInfo(memberNo);
+		List<FindCartItem> cartItem = itemService.membersCartItem(memberNo);
+		model.addAttribute("cartItem", cartItem);
+		model.addAttribute("rsvInfo", rsvInfo);
+		model.addAttribute("rsvInfo2", rsvInfo2);
 		
 		return "/paysys/rentCart";
+	}
+	
+	@PostMapping("/quantityUpdateCart")
+	public int quantityUadateCart() {
+		
+		
+		return 0;
 	}
 
 }

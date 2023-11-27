@@ -7,6 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import com.camplex.project.item.mappers.ItemMapper;
+import com.camplex.project.item.model.dto.FindCartItem;
 import com.camplex.project.item.model.dto.Item;
 import com.camplex.project.item.model.dto.MembersReservationDate;
 
@@ -38,6 +39,11 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public List<Item> selectItemWish(int memberNo) {
 		return mapper.selectItemWish(memberNo);
+	}
+
+	@Override
+	public List<FindCartItem> membersCartItem(int memberNo) {
+		return mapper.membersCartItem(memberNo);
 	}
 
 	

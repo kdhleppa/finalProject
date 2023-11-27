@@ -27,7 +27,7 @@ body {
 h2 {
     text-align: center;
     margin-bottom: 40px;
-    margin-top: 130px;
+    margin-top: 80px;
 }
 
 .heading::after {
@@ -84,18 +84,18 @@ table {
 }
 
 .shoppingCartTB th:nth-child(2) {
-    width: 8%;
+    width: 10%;
 }
 
 .shoppingCartTB th:nth-child(3) {
-    width:10%
+    width:15%
 }
 .shoppingCartTB th:nth-child(4) {
-    width: 15%;
+    width: auto;
 }
 
 .shoppingCartTB th:nth-child(5) {
-    width: auto;
+    width: 8%;
 
 }
 .shoppingCartTB th:nth-child(6) {
@@ -198,6 +198,7 @@ img {
     min-width: 920px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 50px;
 }
 
 /*+-버튼 사이즈*/

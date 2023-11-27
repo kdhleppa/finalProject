@@ -14,7 +14,7 @@
 </head>
 <body>
 
-    <th:block th:replace="~{common/header}"></th:block>
+    <th:block th:replace="~{common/headerForContent}"></th:block>
     
     <div class="mainContainer">
         <!--레프트빈공간-->
@@ -24,57 +24,74 @@
         <div class="midContainer">
             
             <h2 class="heading">SHOPPING LIST</h2>
-
-            <p>Catgill 캠핑장 2023-11-4(화) ~ 2023-11-15(수)</p>
             <form action="" class="">
-                <table class="shoppingCartTB">
-                    <tr>
-                        <!-- 전체선택체크박스 js구현하기-->
-                        <!-- th 위 진한선 아래 연한선주고 추가되는 상품의 밑 마다 선주기-->
-                        <th><input type="checkbox" class=""></th>
-                        <th>번호</th>
-                        <th>사진</th>
-                        <th>상품명</th>
-                        <th>캠핑장 선택</th>
-                        <th>수량</th>
-                        <th>금액</th>
-                        <th>취소</th>
-                    </tr>
-                
-                    <!-- tr 추가되는식으로 상품추가-->
-                    <!-- 없으면 없다고 표시하자!!-->
-                    <tr>
-                        <!-- 개별선택체크박스-->
-                        <td><input type="checkbox" class=""></td>
-                        <td>1</td>
-                        <td><img src="/images/itemImg/0340020000042.jpg" alt=""></td>
-                        <td>밀크 소파 : 블랙</td>
-                        <td>
-                            <select name="" id="" class="campSelect">
-                                <option value="default" class="">제품을 이동시킬 캠핑장을 선택해 주세요.</option>
-                                <option value="" class="">다른 캠핑장(25-01-01 ~ 25-01-02)</option>
-                            </select>
-                            <button href="#" class="grayBtn">MOVE</button>
-                        </td>
-                        <td><button class="qBtn">-</button>&nbsp;&nbsp;1&nbsp;&nbsp;<button class="qBtn">+</button></td>
-                        <td>100원</td>
-                        <td>
-                            <button href="#" class="grayBtn">WISH LIST</button>
-                            <div>&nbsp;</div>
-                            <button href="#" class="grayBtn">DELETE</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td>총 금액</td>
-                        <td>200원</td>
-                        <td></td>
-                    </tr>
+				<th:block th:each="rsvInfo : ${rsvInfo}">
+	          		<p th:text="${rsvInfo.campName} + ' (' + ${rsvInfo.campEntDate} + ' ~ ' + ${rsvInfo.campOutDate} + ')'"></p>
+	                <table class="shoppingCartTB">
+	                    <tr>
+	                        <!-- 전체선택체크박스 js구현하기-->
+	                        <!-- th 위 진한선 아래 연한선주고 추가되는 상품의 밑 마다 선주기-->
+	                        <th><input type="checkbox" class=""></th>
+	                        <th>사진</th>
+	                        <th>상품명</th>
+	                        <th>캠핑장 선택</th>
+	                        <th>수량</th>
+	                        <th>금액</th>
+	                        <th>취소</th>
+	                    </tr>
+	                
+	                    <!-- tr 추가되는식으로 상품추가-->
+	                    <!-- 없으면 없다고 표시하자!!-->
+	                    <th:block th:each = "cartItem, iterStat : ${cartItem}">
+			                    
+			                    <tr th:if="${cartItem.reservationNo == rsvInfo.reservationNo}">
+			                        <!-- 개별선택체크박스-->
+			                        <td>
+										<input type="checkbox" class="">
+										<input type="hidden" th:id="'itemPrice'+${iterStat.index}" th:value="${cartItem.itemPrice}">
+										<input type="hidden" th:id="'cartItemNo'+${iterStat.index}" th:value="${cartItem.cartItemNo}">	
+									</td>
+			                        <td><img th:src="${cartItem.thumbnail}" th:onclick-"|location.href = '@{/item/itemDetail/{itemNo}(itemNo = ${cartItem.itemNo})}'|"></td>
+			                        <td>[[${cartItem.itemName}]]</td>
+			                        <td>
+			                            <select name="" id="" class="campSelect">
+			                                <option value="default" class="">제품을 이동시킬 캠핑장을 선택해 주세요.</option>
+			                                <th:block th:each="rsvInfo2 : ${rsvInfo2}">
+												<option th:value="${rsvInfo2.reservationNo}" th:text="${rsvInfo2.campName} + ' (' + ${rsvInfo2.campEntDate} + ' ~ ' + ${rsvInfo2.campOutDate} + ')'"></option>
+											</th:block>
+			                            </select>
+			                            <button href="#" class="grayBtn">MOVE</button>
+			                        </td>
+			                        <td>
+										<button class="qBtn" th:id="'minusBtn'+${iterStat.index}">-</button>
+			                        	&nbsp;&nbsp;<span th:id="'quantityDisplay'+${iterStat.index}">1</span>&nbsp;&nbsp;
+			                        	<button class="qBtn" th:id="'plusBtn'+${iterStat.index}">+</butto>
+			                        </td>
+			                        <td class="paymentTextContainer"><p></p></td>
+			                        <td>
+			                            <button href="#" class="grayBtn">WISH LIST</button>
+			                            <div>&nbsp;</div>
+			                            <button href="#" class="grayBtn">DELETE</button>
+			                        </td>
+			                    </tr>
+			            
+                    	</th:block>
+                    	<tr>
+						    <td></td>
+	                        <td></td>
+	                        <td></td>
+	                        <td></td>
+	                        <td></td>
+	                        <td></td>
+	                        <td></td>
+                    	</tr>
+                    	
                 </table>
+            </th:block>
+                
+                
+                
+                
                 <div class="orderBtncontainer">
                     <div class="orderEmpty"></div>
                     <div class="orderBtnSpace">
@@ -85,6 +102,8 @@
                     </div>
                     <div class="orderEmpty"></div>
                 </div>
+                
+                
             </form>
             <h2 class="heading">WISH LIST</h2>
 
@@ -135,7 +154,7 @@
 
             </table>
             <div class="buttonList">
-                <a th:href="@{/member/wishlist" class="Btn">CAMP WISH LIST</a>
+                <a th:href="@{/member/wishlist}" class="Btn">CAMP WISH LIST</a>
                 
             </div>
         </div>
@@ -145,5 +164,8 @@
     </div>
     
     <th:block th:replace="~{common/footer}"></th:block>
+    
+    
+    <script th:src="@{/js/paysys/rentCart.js}"></script>
 </body>
 </html>

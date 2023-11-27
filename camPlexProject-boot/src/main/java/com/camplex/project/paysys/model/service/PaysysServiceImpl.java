@@ -21,13 +21,6 @@ public class PaysysServiceImpl implements PaysysService{
 		mapper.createCart(memberNo);
 	}
 
-
-	@Override
-	public int searchMembersCartNo(int memberNo) {
-		return mapper.searchMembersCartNo(memberNo);
-	}
-
-
 	@Override
 	public int insertCart(Map<String, Object> map) {
 		return mapper.insertCart(map);
@@ -39,10 +32,10 @@ public class PaysysServiceImpl implements PaysysService{
 		return mapper.searchCartItem(map);
 	}
 
-
 	@Override
-	public int searchCartNo(int memberNo) {
-		return mapper.searchCartNo(memberNo);
+	public Integer searchMembersCartNo(int memberNo) {
+		return mapper.searchMembersCartNo(memberNo);
 	}
+
 
 }
