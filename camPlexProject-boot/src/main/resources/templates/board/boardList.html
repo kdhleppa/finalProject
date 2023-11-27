@@ -117,14 +117,14 @@
                                     
                                         <!-- 썸네일이 있을 경우 -->
                                             <img th:if="${board.thumbnail}" class="list-thumbnail" th:src="${board.thumbnail}">
-        
+      									
                                         <!-- ${boardType} : @Pathvariable 로 request scope에 추가된 값 -->
                                         <!--<a th:href="/board/${boardType}/${board.boardNo}?cp=${pagination.currentPage}">${board.boardTitle}</a>-->   
                                         <!-- 검색 X -->
-                                        <a th:unless="${param.query}" th:href="@{/board/{boardType}/{boardNo}(boardType=${boardType}, boardNo=${board.boardNo}, cp=${pagination.currentPage})}" th:text="${board.boardTitle}">게시글 제목</a>
+                                        <a th:id="listTitle" th:unless="${param.query}" th:href="@{/board/{boardType}/{boardNo}(boardType=${boardType}, boardNo=${board.boardNo}, cp=${pagination.currentPage})}" th:text="${board.boardTitle}">게시글 제목</a>
                                         
                                         <!-- 검색 O -->
-                                        <a th:if="${param.query}" th:href="@{/board/{boardType}/{boardNo}(boardType=${boardType}, boardNo=${board.boardNo}, cp=${pagination.currentPage}, key=${param.key}, query=${param.query})}" th:text="${board.boardTitle}">게시글 제목</a>
+                                        <a th:id="listTitle" th:if="${param.query}" th:href="@{/board/{boardType}/{boardNo}(boardType=${boardType}, boardNo=${board.boardNo}, cp=${pagination.currentPage}, key=${param.key}, query=${param.query})}" th:text="${board.boardTitle}">게시글 제목</a>
                                         
                                         <th:block th:text="|[${board.commentCount}]|">댓글 수</th:block>
                                                                
@@ -132,7 +132,7 @@
                                     <td>[[${board.memberNickname}]]</td>
                                     <td>[[${board.boardCreateDate}]]</td>
                                     <td> <i class="fa-solid fa-eye"></i> [[${board.boardReadCount}]]</td>
-                                    <td> <i class="fa-solid fa-heart"></i> [[${board.likeCount}]]</td>
+                                    <td> <i id="boardLike" class="fa-solid fa-heart"></i> [[${board.likeCount}]]</td>
                                 </tr>
                                 
                         </th:block>

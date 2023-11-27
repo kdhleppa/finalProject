@@ -114,7 +114,7 @@ button {
     margin-left: 20px;
 }
 
-/* 공지사항 리스트 */
+/* 게시판 리스트 */
 .listWrapper {
     font-family: 'HakgyoansimSantteutdotumL';
     width: 100%;
@@ -133,10 +133,14 @@ table {
     border-bottom: 3px solid rgb(206, 206, 206);
     text-align: center;
     font-size: 17px;
-    font-style: black;
 }
 
-#tableTr > td > a {
+.list-thumbnail {
+	width: 100px;
+	vertical-align: middle;
+}
+
+#listTitle {
 	text-decoration: none;
 	color: black;
 }
@@ -171,10 +175,20 @@ table {
     width: 100%;
     height: 100%;
     text-decoration: none;
-    color: rgb(0, 0, 255);
+    color: black;
 }
 
 #currentPa {
-	color: black;
+	color: limegreen;
 	text-decoration: overline;
+}
+
+/* 좋아요 */
+.like-area{
+    margin-left: 30px;
+}
+
+#boardLike{
+    font-size: 1.2rem;
+    color: red;
 }

@@ -15,16 +15,20 @@
     /* border: 1px solid black; */
 }
 
-button:hover {
-    transition-duration: 0.3s;
-    background-color: #909090;
-}
+
 
 
 
 /* 메인 */
 .campingDetailUploadMain {
     width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.campingDetailUploadMain {
+	width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -81,15 +85,73 @@ button:hover {
     justify-content: center;
 }
 
+
+
+
+
+
+
 .thumbnailInput {
     width: 40rem;
     height: 28rem;
     font-size: 3rem;
     border-radius: 10px;
     border: none;
-    cursor: pointer;
     margin-left: 20%;
+    display: flex;
+    background-color: #EAEAEA;
 }
+
+.thumbnailInput:hover {
+	background-color: #909090;
+}
+
+
+
+
+#inputEtcImgBtnDiv {
+	width: 10rem;
+	height: 3rem;
+}
+
+.deleteImgDiv {
+	width: 2rem;
+	height: 2rem;
+	cursor: pointer;
+}
+
+.deleteImgBtn {
+	width: 2rem;
+	height: 2rem;
+}
+
+.thumbnailInput > label{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputEtcImgBtn > label{
+	width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preview {
+	max-width: 100%;
+    max-height: 100%;
+}
+
+
+
+.inputImage {
+	display: none;
+}
+
 
 .etcImgSec {
     height: 100%;
@@ -103,16 +165,74 @@ button:hover {
     height: 50%;
     display: flex;
     align-items: center;
+    flex-direction: column;
+}
+
+
+
+
+
+.etcImgTopBottomSecImgSec {
+	height: 15rem;
+	width: 100%;
+	display: flex;
+}
+
+.etcImgTopBottomSecImgSecLeft {
+	height: 100%;
+	width: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.etcImgTopBottomSecImgSectRight {
+	height: 100%;
+	width: 50%;
+	display: flex;
+	align-items: center;
+}
+
+.deleteBtnSec {
+	display: flex;
+	align-items: center;
+	width: 1.5rem;
+	height: 100%;
+}
+
+.deleteImg {
+	width: 1.5rem;
+	height: 1.5rem;
 }
 
 .inputEtcImgBtn {
     width: 20rem;
     height: 13rem;
     border-radius: 10px;
-    margin-left: 3rem;
     font-size: 3rem;
     cursor: pointer;
     border: none;
+    background-color: #EAEAEA;
+}
+
+.inputEtcImgBtn > label{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label > img {
+	width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.inputEtcImgBtn:hover {
+	background-color: #909090;
 }
 
 .ceosPicSec {
@@ -186,13 +306,13 @@ button:hover {
     align-items: end;
 }
 
-.introductionTitleDiv {
-    width: 37rem;
-    height: 5rem;
+#introductionTitleDiv {
+    width: 32rem;
+    height: 39rem;
     font-size: 2rem;
     display: flex;
     align-items: center;
-    margin-left: 15rem;
+    margin-left: 5rem;
     border-bottom: 1px solid #909090;
 }
 
@@ -435,6 +555,62 @@ button:hover {
     cursor: pointer;
     font-size: 2rem;
 }
+
+.enrollOrBackSec {
+	width: 100%;
+	height: 8rem;
+	display: flex;
+	align-items: end;
+	justify-content: end;
+}
+
+.campingUploadBtn {
+	width: 7rem;
+	height: 3rem;
+	font-size: 1.4rem;
+	margin-right: 3rem;
+	background-color: transparent;
+	outline: none;
+	border: none;
+	font-weight: bold;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.backBtn {
+	font-size: 1.4rem;
+	color: black;
+	text-decoration: none;
+	margin-bottom: 0.3rem;
+	margin-right: 15rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.backBtn:after {
+	margin-top: 0.5rem;
+	display:block;
+    content: '';
+    border-bottom: solid 1px #909090;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+}
+
+.backBtn:hover:after { transform: scaleX(1); }
+
+.campingUploadBtn:after {
+	margin-top: 0.5rem;
+	display:block;
+    content: '';
+    border-bottom: solid 1px #909090;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+}
+
+.campingUploadBtn:hover:after { transform: scaleX(1); }
+
+
 
 
 

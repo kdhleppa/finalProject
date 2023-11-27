@@ -14,8 +14,10 @@
 		<result property="boardType" column="BOARD_TYPE"/>
 		<result property="boardCreateDate" column="B_CREATE_DATE"/>
 		<result property="boardDetailType" column="B_DETAIL_TYPE"/>
-		
 		<result property="boardTypeName" column="BOARD_TYPE_NAME"/>
+		
+		<result property="commentCount" column="COMMENT_COUNT"/>
+		<result property="likeCount" column="LIKE_COUNT"/>
 		
 		<result property="memberNickname" column="MEMBER_NICKNAME"/>
 		<result property="memberNo" column="MEMBER_NO"/>

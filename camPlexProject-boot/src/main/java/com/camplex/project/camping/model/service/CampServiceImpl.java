@@ -134,6 +134,24 @@ public class CampServiceImpl implements CampService {
 		return result;
 	}
 
+	/** ceo 사진 지우기
+	 *
+	 */
+	@Override
+	public int ceoPicDelete(int imgNo) {
+
+		return mapper.ceoPicDelete(imgNo);
+	}
+
+	/** 예약 안된 캠핑장 호실 조회
+	 *
+	 */
+	@Override
+	public List<CampDetail> selectCampDetailListNotRes(Map<String, Object> map) {
+
+		return mapper.selectCampDetailListNotRes(map);
+	}
+
 
 
 }

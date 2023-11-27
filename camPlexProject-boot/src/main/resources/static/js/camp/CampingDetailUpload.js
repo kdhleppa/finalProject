@@ -1,8 +1,3 @@
-// 취소하기
-document.getElementById('cancelBtn').addEventListener('click', function() {
-    window.history.back();
-  });
-
 // 미리보기 관련 요소 모두 얻어오기
 
 // img 5개
@@ -12,7 +7,7 @@ const preview = document.getElementsByClassName("preview");
 const inputImage = document.getElementsByClassName("inputImage"); 
 
 // x버튼 5개
-const deleteImage = document.getElementsByClassName("delete-image"); 
+const deleteImage = document.getElementsByClassName("deleteImgDiv"); 
 
 // -> 위에 얻어온 요소들의 개수가 같음 == 인덱스가 일치함
 
@@ -58,32 +53,3 @@ for(let i=0 ; i< inputImage.length ; i++){
 
     });
 }
-
-
-// 게시글 등록 시 제목, 내용 작성 여부 검사
-const boardWriteFrm = document.querySelector("#boardWriteFrm");
-const boardTitle = document.querySelector("[name='boardTitle']");
-const boardContent = document.querySelector("[name='boardContent']");
-
-
-boardWriteFrm.addEventListener('submit', e => {
-
-    if(boardTitle.value.trim().length == 0){
-        alert("제목을 입력해주세요")
-        boardTitle.value = "";
-        boardTitle.focus();
-        e.preventDefault(); // form 기본 이벤트 제거
-        return;
-    }
-
-    if(boardContent.value.trim().length == 0){
-        alert("내용을 입력해주세요")
-        boardContent.value = "";
-        boardContent.focus();
-        e.preventDefault(); // form 기본 이벤트 제거
-        return;
-    }
-
-
-
-});

@@ -24,11 +24,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // 선택된 값에 따라 최신순 정렬 수행
             if (selectedValue === 'new') {
-                // 여기에 최신순 정렬을 위한 로직을 추가하세요.
-                // 예를 들어, Ajax 호출을 통해 서버에 최신순으로 정렬된 목록을 요청할 수 있습니다.
-                // 그 후, 반환된 데이터로 화면을 갱신합니다.
-                console.log("최신순 정렬 수행");
+                
+				fetch("/board/{boardType}(boardType=B)")
+                    .then(response => response.json())
+                    .then(data => {
+                        // 서버에서 받은 데이터로 화면을 갱신
+                        updateUIWithData(data);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data:', error);
+                    });
             }
         });
     });
+
+    // 화면을 받은 데이터로 갱신하는 함수
+    function updateUIWithData(data) {
+        
+        console.log("최신순으로 정렬된 목록을 받아와서 화면을 갱신합니다.", data);
+
+        // 예시: 결과를 result 엘리먼트에 표시
+        var resultElement = document.getElementById('result');
+        resultElement.innerHTML = '최신순으로 정렬된 결과를 표시합니다.';
+    }
 });
