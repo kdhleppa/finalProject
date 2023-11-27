@@ -108,7 +108,10 @@ public class CampController {
 	 * @return
 	 */
 	@GetMapping("/reservation")
-	public String campReservation(int campDeNo, 
+	public String campReservation(int campDeNo,
+								  String entDate,
+								  String outDate,
+								  int stayDay,
 								  Model model,
 								  @SessionAttribute(required=false) Member loginMember,
 								  RedirectAttributes ra,
@@ -116,8 +119,8 @@ public class CampController {
 			) {
 		
 		 String path = "";
-			 
 		 
+
 		if(loginMember == null) {
 			
 			ra.addFlashAttribute("message", "로그인 후 이용해주세요.");
@@ -126,7 +129,6 @@ public class CampController {
 		} else {
 			
 			CampDetail campDetail = service.selectCampDetail(campDeNo);
-			
 			List<CampDetailImage> campDetailImages = service.selectCampDetailImageList(campDeNo);
 			
 			model.addAttribute("campDetail", campDetail);
