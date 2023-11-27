@@ -1,4 +1,4 @@
-<div id="commentArea">
+<div id="commentArea" th:object="${member}">
     <!-- 댓글 목록 -->
     <div class="comment-list-area">
         
@@ -46,15 +46,14 @@
 	                </div>
 	            </li>
         	
-
         </ul>
     </div>
     
-
+    
     <!-- 댓글 작성 부분 -->
     <div class="comment-write-area">
         <textarea id="commentContent"></textarea>
-        <button id="addComment">
+        <button type="button" id="addComment">
             댓글등록
         </button>
  

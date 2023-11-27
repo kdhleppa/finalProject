@@ -4,7 +4,7 @@ const boardLike = document.getElementById("boardLike");
 boardLike.addEventListener("click", e => {
 
     // 로그인 여부 검사
-    if(loginMemberNo == ""){
+    if(loginMember.isEmpty){
         alert("로그인 후 이용해주세요")
         return;
     }
@@ -69,22 +69,24 @@ document.getElementById("updateBtn").addEventListener("click", () => {
 			
 		// /board2/2/2006/update?cd=1 (GET)
 
-
-
 });
 
 // 게시글 삭제 버튼이 클릭되었을 때
-document.getElementById("deleteBtn").addEventListener("click", ()=>{
+document.getElementById("deleteBtn").addEventListener("click", function() {
+    var confirmation = confirm('정말로 삭제 하시겠습니까?'); // 메시지 출력
+
+    if (confirmation) {
 	location.href
 		= location.pathname.replace("board", "board2")
 		+ "/delete"
-		
+		} else {
+			
+		}
 		// /board2/2/2006/delete (get)
 
 });
 
-
 // 목록으로 돌아가기
-document.getElementById('listBtn').addEventListener('click', function() {
+document.getElementById("listBtn").addEventListener("click", () => {
     window.history.back();
-  });
+});

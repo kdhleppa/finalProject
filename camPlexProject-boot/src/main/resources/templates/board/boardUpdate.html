@@ -17,35 +17,28 @@
     <th:block th:replace="~{common/headerForContent}"></th:block>
     
     <main>
-
-        <ul class="boardTypeList">
+		<ul class="boardTypeList">
             <li>
-                <a th:href="@{/board/{boardType}(boardType=B)}">자유</a>
+                <a th:href="@{/board/{boardType}(boardType=B)}">게시판</a>
             </li>
 
             <p>|</p>
 
             <li id="board">
-                <a href="#">질문</a>
+                <a th:href="@{/board/{boardType}(boardType=N)}">공지사항</a>
             </li>
 
             <p>|</p>
 
-            <li id="checkboard">
-                <a href="#">정보공유</a>
-            </li>
-
-            <p>|</p>
-
-            <li id="eventboard">
-                <a href="#">CEO</a>
+            <li id="ceo">
+                <a a th:href="@{/board/{boardType}(boardType=C)}">CEO게시판</a>
             </li>
         </ul>
-        
+
         <section class="boardHead">
 			
-			<div id="boardTypeName">
-            	<p>자유게시판</p>
+			<div id="boardTypeName" th:text="${boardTypeName}">
+            	<p>게시판이름</p>
 			</div>
 			
         </section>
@@ -59,7 +52,9 @@
             <h1 class="board-title">
                 <input type="text" name="boardTitle" placeholder="제목" th:value="${board.boardTitle}">
             </h1>
-
+			
+			<hr style="margin-top: 35px; width: 55rem;">
+			
 			<div class="imgInput">
 				
 				<!-- 썸네일 영역 -->
@@ -112,6 +107,8 @@
 	            </div>
 			</div>
 			
+			<hr style="margin-top: 35px; margin-bottom: 25px; width: 55rem;">
+			
             <!-- 내용 -->
             <div class="board-content">
                 <textarea name="boardContent" th:text="${board.boardContent}">내용</textarea>
@@ -121,14 +118,14 @@
         
         <hr style="margin-top: 20px; margin-left: 8%; width: 84%; margin-right: 8%;">
 
-        <div class="btnArea">
-			
-			<button id="cancelBtn">취소하기</button>                 
-                
-            <button type="submit" id="UpdateBtn">수정하기</button>   
-                     
-        </div>
+			<div class="btnArea">
 
+            	<button type="submit" id="updateBtn">수정하기</button>   
+                   
+				<button type="button" id="cancelBtn">취소하기</button>
+			
+			</div>
+			
 			<!-- 기존 이미지가 있다가 삭제된 이미지의 순서를 기록-->
             <input type="hidden" name="deleteList" value="">
 
@@ -136,6 +133,8 @@
             <input type="hidden" name="cp" th:value="${param.cp}">
 
 		</form>
+		
+			
         
     </main>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="${boardType}">게시판이름</title>
+    <title th:text="${boardTypeName}">게시판이름</title>
 
     <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
     <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
@@ -17,36 +17,28 @@
     <th:block th:replace="~{common/headerForContent}"></th:block>
     
     <main th:with="pagination=${map.pagination}, boardList=${map.boardList}">
-
 		<ul class="boardTypeList">
             <li>
-                <a th:href="@{/board/{boardType}(boardType=B)}">자유</a>
+                <a th:href="@{/board/{boardType}(boardType=B)}">게시판</a>
             </li>
 
             <p>|</p>
 
-            <li>
-                <a href="#">질문</a>
+            <li id="board">
+                <a th:href="@{/board/{boardType}(boardType=N)}">공지사항</a>
             </li>
 
             <p>|</p>
 
-            <li>
-                <a href="#">정보공유</a>
-            </li>
-
-            <p>|</p>
-
-            <li>
-                <a href="#">CEO</a>
+            <li id="ceo">
+                <a a th:href="@{/board/{boardType}(boardType=C)}">CEO게시판</a>
             </li>
         </ul>
-	
 
         <section class="boardHead">
 			
-			<div id="boardTypeName">
-            	<p>자유게시판</p>
+			<div id="boardTypeName" th:text="${boardTypeName}">
+            	<p>게시판이름</p>
 			</div>
 			
             <!-- 검색창 -->

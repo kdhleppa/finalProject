@@ -134,22 +134,22 @@ button {
 
 
 /* 버튼 부분 */
+
 .btnArea {
-    display: flex;
-    flex-direction: row-reverse;
-    margin-left: 11rem;
-    margin-top: 2rem;
-    margin-bottom: 8rem;
+	display: flex;
+	justify-content: center;
+	width: 16rem;
+	
 }
 
 #cancelBtn {
     font-family: 'HakgyoansimSantteutdotumL';
-    margin-right: 11rem;
     width: 8rem;
     height: 4rem;
     background-color: transparent;
     border-style: none;
     font-size: 1.3rem;
+    cursor: pointer;
 }
 
 #writeBtn {
