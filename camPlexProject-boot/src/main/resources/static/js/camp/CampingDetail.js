@@ -5,6 +5,8 @@ const slide = document.querySelectorAll('.ceoPicContent');
 const slideLength = slide.length
 let currentIndex = 0;
 
+
+// ceo 사진 이동
 const moveSlide = function(num) {
 	slideBox.style.transform = `translateX(${-num * 250}px)`;
 	currentIndex = num;
@@ -27,30 +29,6 @@ next.addEventListener('click', () => {
 
 })
 
-const reservationFrm = document.getElementById("reservationFrm");
-const campDeNo = document.getElementsByName("campDeNo");
-
-reservationFrm.addEventListener("submit", e => {
-
-	var isChecked = false;
-
-	for (var i = 0; i < campDeNo.length; i++) {
-		if (campDeNo[i].checked) {
-			isChecked = true;
-			break;
-		}
-	}
-
-	if (!isChecked) {
-		alert("캠핑장을 선택해주세요.");
-		e.preventDefault();
-		return false;
-	}
-
-	return true;
-
-})
-
 const ceoPicUploadBtn = document.getElementById("ceoPicUploadBtn");
 const modalContainerPopup = document.getElementById('modalContainerPopup');
 const closeBtnPopup = document.getElementById('closeBtnPopup');
@@ -68,8 +46,6 @@ closeBtnPopup.addEventListener('click', () => {
 
 	modalContainerPopup.classList.add('hidden');
 });
-
-
 
 const preview = document.getElementsByClassName("preview");
 const inputImage = document.getElementsByClassName("inputImage");
@@ -153,6 +129,42 @@ for (var i = 0; i < ceoPicDeleteBtn.length; i++) {
 		}
 	})
 }
+
+
+
+const reservationFrm = document.getElementById("reservationFrm");
+const campDeNo = document.getElementsByName("campDeNo");
+
+
+reservationFrm.addEventListener("submit", e => {
+
+	var isChecked = false;
+
+	for (var i = 0; i < campDeNo.length; i++) {
+		if (campDeNo[i].checked) {
+			isChecked = true;
+			break;
+		}
+	}
+
+	if (!isChecked) {
+		alert("캠핑장을 선택해주세요.");
+		e.preventDefault();
+		return ;
+	} 
+	if (checkInDate.innerText == "") {
+		alert("날짜를 선택해주세요.");
+		e.preventDefault();
+		return ;
+	}
+	
+
+	return true;
+
+})
+
+
+
 
 //----------------------------- 달력 --------------------------------------------------
 let checkInDate = document.getElementById('checkInDate')
@@ -290,9 +302,6 @@ document.addEventListener('DOMContentLoaded', function() {
 					
 					// ajax로 예약 가능한 숙소 보여주기
 					
-					console.log(startDate);
-					console.log(exitDate);					
-					
 					var tempSDate = new Date;
 					var tempEDate = new Date;
 					
@@ -312,6 +321,22 @@ document.addEventListener('DOMContentLoaded', function() {
 						
 						const campDetailContainer = document.getElementById('campDetailContainer');
 						campDetailContainer.innerHTML = '';
+						
+						const entDate = document.createElement('input');
+						entDate.setAttribute("type", "hidden");
+						entDate.setAttribute("name", "entDate");
+						entDate.setAttribute("id", "entDate");
+						entDate.setAttribute("value", tempSDate);
+						
+						const outDate = document.createElement('input');
+						outDate.setAttribute("type", "hidden");
+						outDate.setAttribute("name", "outDate");
+						outDate.setAttribute("value", tempEDate);
+						
+						const stayDay = document.createElement('input')
+						stayDay.setAttribute('name', 'stayDay');
+						stayDay.setAttribute('type', 'hidden');
+						stayDay.setAttribute('value', stayDate)
 
 						for(var campDe of data){
 						
@@ -357,9 +382,10 @@ document.addEventListener('DOMContentLoaded', function() {
 							capacity.setAttribute('value', `${campDe.capacity}명`);
 							capacity.setAttribute('disabled', 'ture');
 
-							const campSitePrice = document.createElement('p');
+							const campSitePrice = document.createElement('input');
 							campSitePrice.classList.add('campSitePrice');
-							campSitePrice.innerText = `${(campDe.campDePrice*stayDate).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`
+							campSitePrice.setAttribute('disabled' ,'true');
+							campSitePrice.setAttribute('value', `${(campDe.campDePrice*stayDate).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원 (${stayDate}박)`) 
 
 							count.append(capacity);
 
@@ -369,12 +395,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 							campSiteInfoContainer.append(campDeName, campSiteInfo);
 
+							
 							campSiteBox.append(campSiteImgWrapper, campSiteInfoContainer);
 
 							campSite.append(campStieRadio, campSiteBox);
 
 							campDetailContainer.append(campSite);
 						}
+							campDetailContainer.append(entDate, outDate, stayDay);
 						
 					})
 					
@@ -422,6 +450,4 @@ document.addEventListener('DOMContentLoaded', function() {
 	
 
 });
-
-
 

@@ -237,7 +237,12 @@
 				<form th:action="@{reservation}" class="campSiteFrm" id="reservationFrm">
 
 					<div id="campDetailContainer">
+					
+						<input type="hidden" name="entDate" id="entDate">
+						<input type="hidden" name="outDate">
+						<input type="hidden" name="stayDay">
 						
+
 						<div class="campSite" th:each="campDetail : ${camp.campDetailList}">
 							
 							<input type="radio" name="campDeNo" class="campStieRadio"
@@ -255,16 +260,17 @@
 									<div class="campSiteInfo">
 										<div class="campSiteInfoDetail">
 											<p>수용 인원 
-												<input type="text" name="" id="" th:value="${campDetail.capacity}+명" disabled class="capacity">
+												<input type="text" th:value="${campDetail.capacity}+명" disabled class="capacity">
 											</p>
 										</div>
-										<p class="campSitePrice" th:text="|${#numbers.formatInteger(campDetail.campDePrice, 3, 'COMMA')}원|">가격</p>
+										<input class="campSitePrice" th:value="|${#numbers.formatInteger(campDetail.campDePrice, 3, 'COMMA')}원 (1박)|" disabled></input>
 									</div>
 											
 								</div>
 								
 							</label>
 						</div>
+						
 						
 					</div>
 						

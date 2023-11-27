@@ -510,8 +510,11 @@ hr {
 .campSitePrice {
 	align-self: flex-end;
 	margin-right: 30px;
-	font-size: 1.5rem;
+	font-size: 1.3rem;
 	color: #d49673;
+	background-color: transparent;
+	border: none;
+	width: 11rem;
 }
 
 .campStieRadio {
