@@ -20,8 +20,12 @@
 
         <div class="midContainer">
             <div class="imgContainer">
-				<img th:src="@{/images/itemImg/0340020000042.jpg}">
-                <img th:src="@{/images/itemImg/MILKSOFA_BL_1.jpg}" alt="">
+				<img th:src="${item.thumbnail}">
+				
+				<th:block th:each="i : ${#numbers.sequence(1, #lists.size(item.imageList)-1, 1)}">>
+	                <img th:src="|${item.imageList[i].itemImagePath}${item.imageList[i].itemImageReName}|">
+				</th:block>
+				
             </div>
             <div>
                 <form id="payFrm" th:action="@{/paysys/rentalPay/now}" method="post" class="productContentContainer" th:object="${item}">
@@ -46,16 +50,16 @@
                             <td>여행지 선택</td>
                             <td>:</td>
                             <td>
-                                <select name="" id="" class="selectBox" th:if="${session.loginMember}">
+                                <select name="reservationNo" id="defaultOpt" class="selectBox" th:if="${session.loginMember}">
 									<!--예약목록을가져와야하는데 캠핑장명, 날짜 알아야함 여행 출발일의 전날까지만 나오게해야함-->
-									<option value="default" class="dfText">여행지를 선택 해 주세요</option>
+									<option id="" value="default" class="dfText">여행지를 선택 해 주세요</option>
                                     <th:block th:each="rsvInfo : ${rsvInfo}">
-        								<option name="reservationNo" th:value="${rsvInfo.reservationNo}" th:text="${rsvInfo.campName} + ' (' + ${rsvInfo.campEntDate} + ' ~ ' + ${rsvInfo.campOutDate} + ')'"></option>
+        								<option th:value="${rsvInfo.reservationNo}" th:text="${rsvInfo.campName} + ' (' + ${rsvInfo.campEntDate} + ' ~ ' + ${rsvInfo.campOutDate} + ')'"></option>
     								</th:block>
                                 </select>
 
-                                <select name="" id="" class="selectBox" th:unless="${session.loginMember}">
-									<option value="default">로그인을 해주세요</option>
+                                <select name="reservationNo" id="defaultOpt" class="selectBox" th:unless="${session.loginMember}">
+									<option id="" value="0">로그인을 해주세요</option>
                                 </select>
                             </td>
                         </tr>

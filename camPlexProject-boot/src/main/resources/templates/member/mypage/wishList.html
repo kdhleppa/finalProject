@@ -53,8 +53,13 @@
 	                    <!-- 개별선택체크박스-->
 	                    <td><input type="checkbox" class="campcb-item" th:data-ccn="${camp.campNo}"></td>
 	                    <td th:text="${iterStat.count}">넘버</td>
+<<<<<<< HEAD
+	                    <td><img th:src="${camp.thumbnail}" th:onclick="|location.href = '@{/camp/{campNo}(campNo = ${camp.campNo})}'|"></td>
+	                    <td>[[${camp.campName}]]<a th:href="@{/camp/${camp.campNo}}" class = "grayBtn rsvBtn" th:text="예약하기">예약하기</a></td>
+=======
 	                    <td><img th:src="@{/images/itemImg/0340020000042.jpg}" alt="수정전"></td>
 	                    <td>[[${camp.campName}]]<a th:href="|/camp/${camp.campNo}|" class = "grayBtn rsvBtn" th:text="예약하기">예약하기</a></td>
+>>>>>>> b5ebe0f7d335c71997cd01e03446026524c3af0f
 	                    <td></td>
 	                    <td></td>
 	                    <td><button class="grayBtn" th:onclick="'deleteCampWish(' + ${camp.campNo} + ');'" th:text="DELETE">DELETE</button></td>
@@ -63,7 +68,7 @@
                
             </table>
 
-            <h2 class="heading">ITEM LIST</h2>
+            <h2 class="heading">ITEM WISHLIST</h2>
 
             <table class="itemListTB">
                 <tr>
@@ -90,8 +95,12 @@
 	                    <!-- 개별선택체크박스-->
 	                    <td><input type="checkbox" class="itemcb-item" th:data-icn="${item.itemNo}"></td>
 	                    <td th:text="${iterStat.count}">넘버</td>
-	                    <td><img th:src="@{/images/itemImg/0340020000042.jpg}" alt="수정전"></td>
-	                    <td>[[${item.itemName}]]</td>
+	                    <td>
+							<a th:href="@{/item/itemDetail/{itemNo}(itemNo = ${item.itemNo})}">							 
+		                    	<img th:src="${item.thumbnail}">
+						 	</a>
+						 </td>
+	                    <td><a class="nameAtag" th:href="@{/item/itemDetail/{itemNo}(itemNo = ${item.itemNo})}">[[${item.itemName}]]</a></td>
 	                    <td></td>
 	                    <td>[[${item.itemPrice}]]</td>
 	                    <td><button class="grayBtn" th:onclick="'deleteItemWish(' + ${item.itemNo} + ');'" th:text="DELETE">DELETE</button></td>

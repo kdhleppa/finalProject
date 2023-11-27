@@ -1,6 +1,8 @@
 package com.camplex.project.paysys.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,11 +17,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.camplex.project.camping.model.dto.Camp;
 import com.camplex.project.camping.model.dto.CampDetail;
 import com.camplex.project.camping.model.service.CampService;
+import com.camplex.project.item.model.dto.Item;
+import com.camplex.project.item.model.dto.MembersReservationDate;
 import com.camplex.project.item.model.service.ItemService;
 import com.camplex.project.member.model.dto.Member;
 import com.camplex.project.paysys.model.dto.Reservations;
 import com.camplex.project.paysys.model.service.PaysysService;
 import com.camplex.project.paysys.model.service.ReservationsService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/paysys")
@@ -62,17 +68,86 @@ public class PaysysController {
 	
 	@PostMapping("/rentCart/insert")
 	public String rentCartInsert(int itemNo, int reservationNo, int quantity,
-			@SessionAttribute(value="loginMember", required = false)Member loginMember
-			 
+			@SessionAttribute(value="loginMember", required = false)Member loginMember,
+			RedirectAttributes ra, HttpServletRequest request
 			) {
+		System.out.println(reservationNo); 
+		int cartNo = 0;
+		int result = 0;
+		int searchResult = 0;
+		int searchCartNo = 0;
+		String referer = request.getHeader("Referer");
+		String path = "redirect:";
 		
+		if(loginMember != null) {
+			int memberNo = loginMember.getMemberNo();
+			searchCartNo = payService.searchCartNo(memberNo);
 		
-		return null;
+			if(searchCartNo > 0) {
+				
+				cartNo = payService.searchMembersCartNo(memberNo);
+				System.out.println("이미만들어진카트넘버:"+cartNo);
+			} else {
+				payService.createCart(memberNo);
+				cartNo = payService.searchMembersCartNo(memberNo);
+				System.out.println("새로만든카트넘버" + cartNo);
+			}
+			
+			
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("itemNo", itemNo);
+			map.put("reservationNo", reservationNo);
+			map.put("itemQuantity", quantity);
+			map.put("cartNo", cartNo);
+			map.put("memberNo", memberNo);
+			
+			searchResult = payService.searchCartItem(map);
+			
+			if (searchResult > 0) {
+				ra.addFlashAttribute("message", "카트에 추가된 상품 입니다. 카트에서 수량조정을 해주세요.");
+				path += referer;
+				return path;
+				
+			} else {
+				result = payService.insertCart(map);
+				
+				if (result > 0) {
+					ra.addFlashAttribute("message", "상품이 카트에 추가되었습니다.");
+					path += referer;
+					return path;
+				} else {
+					ra.addFlashAttribute("message", "카트 등록에 실패하였습니다.");
+					path += referer;
+					return path;
+					
+				}
+				
+				
+			}
+			
+			
+		} else {
+			ra.addFlashAttribute("message", "로그인 후 이용해 주세요.");
+			path += "/member/login";
+			return path;
+		}
+		
 	}
 	
 	
 	@GetMapping("/rentCart")
-	public String rentCartFoword() {
+	public String rentCartFoword(
+			@SessionAttribute(value="loginMember", required = false)Member loginMember,
+			Model model
+			) {
+		int memberNo = loginMember.getMemberNo();
+		
+		List<Item> item = itemService.selectItemWish(memberNo);
+		List<MembersReservationDate> rsvInfo = itemService.membersRsvInfo(memberNo);
+		
+		
+		
 		
 		return "/paysys/rentCart";
 	}

@@ -28,9 +28,35 @@
 		<result property="campDeleteFlag" column="CAMP_DEL_FL" />
 		<result property="campInfo" column="CAMP_INFO" />
 		<result property="thumbnail" column="THUMBNAIL" />
+		<result property="checkIn" column="CHECK_IN" />
+		<result property="checkOut" column="CHECK_OUT" />
+		
+		
+		<collection property="campSiteImageList"
+				select="selectCampSiteImageList"
+				column="CAMP_NO"
+				javaType="java.util.ArrayList"
+				ofType="CampSiteImage"
+		/>
 		
 
 	</resultMap>
+	
+	<resultMap type="CampSiteImage" id="camp_image_rm">
+		<id property="campImageNo" column="CAMP_IMG_NO" />
+		<result property="campNo" column="CAMP_NO" />
+		<result property="campImagePath" column="CAMP_IMG_PATH" />
+		<result property="campImageReName" column="CAMP_IMG_RENAME" />
+		<result property="campImageOriginal" column="CAMP_IMG_ORIGINAL" />
+		<result property="campImageOrder" column="CAMP_IMG_ORDER" />
+	</resultMap>
+	
+	<!-- collection 중 이미지 리스트 조회 -->
+	<select id="selectCampSiteImageList" resultMap="camp_image_rm">
+		SELECT CAMP_IMG_NO, CAMP_NO, CAMP_IMG_PATH, CAMP_IMG_RENAME, CAMP_IMG_ORIGINAL, CAMP_IMG_ORDER
+		FROM "CAMPING_SITE_IMG"
+		WHERE CAMP_NO = #{campNo}
+	</select>
 	
 	
 	<!-- 위시리스트 인서트 -->	
@@ -48,12 +74,24 @@
 	
 	<!-- 위시리스트에 들어갈 캠핑장 정보 -->
 	<select id="selectCampWish" resultMap="camp_rm">
-
-			SELECT c.*
-			FROM CAMPING_SITE c
-			INNER JOIN WISH_LIST w ON c.CAMP_NO = w.CAMP_NO
-			WHERE w.MEMBER_NO = #{memberNo}
-			ORDER BY w.WISHLIST_NO
+			SELECT 
+		        cs.CAMP_NO, cs.MEMBER_NO, cs.CAMP_ADDRESS, cs.CAMP_PHONE,
+		        cs.CAMP_NAME, cs.CAMP_OPTION, cs.CAMP_AROUND_VIEW, cs.CAMP_MAP,
+		        cs.MANNER_TIME, cs.CATEGORY, cs.CAMP_INFO, 
+		        (csi.CAMP_IMG_PATH || csi.CAMP_IMG_RENAME) AS THUMBNAIL
+		    FROM 
+		        "CAMPING_SITE" cs
+		    JOIN 
+		        CAMPING_SITE_IMG csi
+		        ON cs.CAMP_NO = csi.CAMP_NO
+		    JOIN 
+		        WISH_LIST w
+		        ON cs.CAMP_NO = w.CAMP_NO
+		    WHERE 
+		        cs.CAMP_DEL_FL = 'N' AND csi.CAMP_IMG_ORDER = 0
+		        AND w.MEMBER_NO = #{memberNo}
+		    ORDER BY 
+		        cs.CAMP_NO
 	</select>
 	
 	<!-- 위시리스트에서 캠핑장 삭제-->
