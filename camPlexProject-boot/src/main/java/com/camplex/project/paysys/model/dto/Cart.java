@@ -11,7 +11,7 @@ import lombok.ToString;
 @ToString
 public class Cart {
 	
-	private int cartNo;
+	private Integer cartNo;
 	private int memberNo;
 	
 

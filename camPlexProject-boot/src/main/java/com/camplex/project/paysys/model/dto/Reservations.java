@@ -15,7 +15,7 @@ public class Reservations {
 	private int paymentNo;
 	private int memberNo;
 	private int campNo;
-	private int campDeNum;
+	private int campDeNo;
 	private String campEntDate;
 	private String campOutDate;
 	

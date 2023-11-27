@@ -25,12 +25,37 @@
 		 />
 	    
 	</resultMap>
+
+
+	<resultMap type="FindCartItem" id="findCart_rm">
+	  	
+	  	<id property="itemNo" column="ITEM_NO"/>
+	  	  	
+		<result property="itemType" column="ITEM_TYPE"/>
+		<result property="inStoreCount" column="IN_STORE_COUNT"/>
+		<result property="loanCount" column="LOAN_COUNT"/>
+		<result property="itemPrice" column="ITEM_PRICE"/>
+		<result property="itemName" column="ITEM_NAME"/>
+		<result property="itemDescription" column="ITEM_DESCRIPTION"/>
+		<result property="itemStatus" column="ITEM_STATUS"/>
+		<result property="discountRate" column="DISCOUNT_RATE"/>
+	    <result property="reservationNo" column="RESERVATION_NO"/>
+	    
+	    <collection property="imageList"
+					select="selectImageList"
+					column="ITEM_NO"
+					javaType="java.util.ArrayList"
+					ofType="ItemImg"
+		 />
+	    
+	</resultMap>
 	
 	<resultMap id="rsvInfo_rm" type="MembersReservationDate">
 		<id property="reservationNo" column="RESERVATION_NO"/>
 		<result property="campName" column="CAMP_NAME"/>
 		<result property="campEntDate" column="CAMP_ENTDATE"/>
 		<result property="campOutDate" column="CAMP_OUTDATE"/>
+		
 		
 	</resultMap>
 	
@@ -103,5 +128,26 @@
 			    w.WISHLIST_NO
 		</select>
 	
+		<select id="membersCartItem" resultMap="findCart_rm"> 
+			SELECT i.ITEM_NO, 
+			    i.ITEM_TYPE, 
+			    i.ITEM_PRICE, 
+			    i.ITEM_NAME, 
+			    i.ITEM_DESCRIPTION, 
+			    i.ITEM_STATUS, 
+			    i.DISCOUNT_RATE, 
+			    ci.RESERVATION_NO,
+			    ii.ITEM_IMG_NO,
+			    (ii.ITEM_IMG_PATH || ii.ITEM_IMG_RENAME) AS THUMBNAIL, 
+			    ii.ITEM_IMG_ORDER
+			FROM "ITEM" i
+			JOIN 
+			    "ITEM_IMG" ii
+			    ON i.ITEM_NO = ii.ITEM_NO
+			INNER JOIN CART_ITEM ci ON i.ITEM_NO = ci.ITEM_NO
+			INNER JOIN CART c ON ci.CART_NO = c.CART_NO
+			WHERE c.MEMBER_NO = #{memberNo}
+	</select>
+
 	  	
 </mapper>
