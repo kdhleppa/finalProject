@@ -12,7 +12,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    /* border: 1px solid black; */
+    /*border: 1px solid black;*/
 }
 
 
@@ -36,7 +36,7 @@
 
 .informationSec {
     width: 100%;
-    height: 17rem;
+    height: 7rem;
     display: flex;
     align-items: end;
     justify-content: center;
@@ -54,7 +54,7 @@
 
 .inputCampingNameSec {
     width: 100%;
-    height: 13rem;
+    height: 8rem;
     display: flex;
     flex-direction: column;
 }
@@ -306,13 +306,13 @@ label > img {
     align-items: end;
 }
 
-#introductionTitleDiv {
-    width: 32rem;
-    height: 39rem;
+.introductionTitleDiv {
+    width: 37rem;
+    height: 5rem;
     font-size: 2rem;
     display: flex;
     align-items: center;
-    margin-left: 5rem;
+    margin-left: 15rem;
     border-bottom: 1px solid #909090;
 }
 
@@ -373,6 +373,12 @@ label > img {
 #detailsInputLeftSec {
     align-items: center;
     justify-content: center;
+}
+
+#iputImgOfDetailMap {
+	height: 40rem;
+	width: 30rem;
+	margin-left: 10rem;
 }
 
 .detailsImgBtn {
@@ -470,6 +476,7 @@ label > img {
     font-size: 1.3rem;
 }
 
+/* 매너타임 Sec*/
 .mannerTimeTitleSec {
     width: 100%;
     height: 7rem;
@@ -522,6 +529,107 @@ label > img {
     outline: none;
 }
 
+/* Etc Info Sec*/
+.etcInfoTitleSec {
+	width: 100%;
+	height: 7rem;
+	display: flex;
+	justify-content: center;
+}
+
+.etcInfoTitleLocationSec {
+	flex-basis: 75%;
+	height: 100%;
+	display: flex;
+}
+
+.etcInfoTitleDiv {
+	width: 37rem;
+    height: 5rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #909090;
+}
+
+/* Etc Info Input Sec */
+.etcInfoInputSec {
+	width: 100%;
+	height: 35rem;
+	display: flex;
+	justify-content: center;
+}
+
+.etcInfoInputLocationSec {
+	flex-basis: 75%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.etcInfoInputOneLineSec {
+	width: 80rem;
+	height: 6rem;
+	display: flex;
+}
+
+.etcInfoInputImgSec {
+	height: 100%;
+	width: 6rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.etcInfoInputBlankSec {
+	height: 100%;
+	width: 2rem;
+}
+
+.etcInfoInputNameSec {
+	height: 100%;
+	width: 11rem;
+	display: flex;
+	align-items: center;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.etcInfoInputInfoSec {
+	height: 100%;
+	width: 55rem;
+	display: flex;
+	align-items: center;
+}
+
+.categorySelect {
+	width: 12rem;
+	height: 3rem;
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.2rem;
+	border-radius: 10px;
+}
+
+.etcInfoInputImg {
+	height: 4rem;
+	width: 4rem;
+}
+
+.etcInfoInput {
+	height: 3rem;
+	width: 28rem;
+	font-size: 1.3rem;
+	outline: none;
+	border: none;
+	border-bottom: 1px solid #909090;
+}
+
+#campingAddress {
+	width: 50rem;
+}
+
+/* enroll Sec*/
 .enrollSiteTitleSec {
     width: 100%;
     height: 15rem;

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.camplex.project.camping.mappers.CampMapper2">
+	
+	<resultMap type="Camp" id="camp_rm">
+		<id property="campNo" column="CAMP_NO" />
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="campAddress" column="CAMP_ADDRESS" />
+		<result property="campPhone" column="CAMP_PHONE" />
+		<result property="campName" column="CAMP_NAME" />
+		<result property="campOption" column="CAMP_OPTION" />
+		<result property="campAroundView" column="CAMP_AROUND_VIEW" />
+		<result property="campMap" column="CAMP_MAP" />
+		<result property="mannerTime" column="MANNER_TIME" />
+		<result property="category" column="CATEGORY" />
+		<result property="campDeleteFlag" column="CAMP_DEL_FL" />
+		<result property="campInfo" column="CAMP_INFO" />
+		<result property="thumbnail" column="THUMBNAIL" />
+		<result property="checkIn" column="CHECK_IN" />
+		<result property="checkOut" column="CHECK_OUT" />
+	
+		<collection property="campDetailList"
+				select="selectCampDetailList"
+				column="CAMP_NO"
+				javaType="java.util.ArrayList"
+				ofType="CampDetail"
+		/>
+		
+		<collection property="campSiteImageList"
+				select="selectCampSiteImageList"
+				column="CAMP_NO"
+				javaType="java.util.ArrayList"
+				ofType="CampSiteImage"
+		/>
+		
+		<collection property="campCeoImageList"
+				select="selectCampCeoImageList"
+				column="CAMP_NO"
+				javaType="java.util.ArrayList"
+				ofType="CampCeoImage"
+		/>
+	
+	</resultMap>
+	
+	<resultMap type="CampDetail" id="camp_detail_rm">
+		<id property="campDeNo" column="CAMP_DE_NO" />
+		<result property="campNo" column="CAMP_NO" />
+		<result property="campDeName" column="CAMP_DE_NAME" />
+		<result property="campDePrice" column="CAMP_DE_PRICE" />
+		<result property="capacity" column="CAPACITY" />
+		<result property="campDeThumbnail" column="CAMP_DETAIL_THUMBNAIL" />
+		<result property="campName" column="CAMP_NAME" />
+		<result property="mannerTime" column="MANNER_TIME" />
+		<result property="checkIn" column="CHECK_IN" />
+		<result property="checkOut" column="CHECK_OUT" />
+	</resultMap>
+	
+	<resultMap type="CampSiteImage" id="camp_image_rm">
+		<id property="campImageNo" column="CAMP_IMG_NO" />
+		<result property="campNo" column="CAMP_NO" />
+		<result property="campImagePath" column="CAMP_IMG_PATH" />
+		<result property="campImageReName" column="CAMP_IMG_RENAME" />
+		<result property="campImageOriginal" column="CAMP_IMG_ORIGINAL" />
+		<result property="campImageOrder" column="CAMP_IMG_ORDER" />
+	</resultMap>
+	
+	<resultMap type="CampCeoImage" id="camp_ceoImage_rm">
+		<id property="campCeoImageNo" column="CAMP_CEO_IMG_NO" />
+		<result property="campNo" column="CAMP_NO" />
+		<result property="campCeoImagePath" column="CAMP_CEO_IMG_PATH" />
+		<result property="campCeoImageReName" column="CAMP_CEO_IMG_RENAME" />
+		<result property="campCeoImageOriginal" column="CAMP_CEO_IMG_ORIGINAL" />
+	</resultMap>
+	
+	<resultMap type="CampDetailImage" id="camp_detailImage_rm">
+		<id property="campDeImageNo" column="CAMPDE__IMG_NO" />
+		<result property="campDeNo" column="CAMP_DE_NO" />
+		<result property="campDeImagePath" column="CAMP_DE_IMG_PATH" />
+		<result property="campDeImageReName" column="CAMP_DE_IMG_RENAME" />
+		<result property="campDeImageOriginal" column="CAMP_DE_IMG_ORIGINAL" />
+		<result property="campDeImageOrder" column="CAMP_DE_IMG_ORDER" />
+	</resultMap>
+	
+	<!-- collection 중 호실 정보 조회 -->
+	<select id="selectCampDetailList" resultMap="camp_detail_rm">
+		SELECT CAMP_DE_NO, CAMP_NO, CAMP_DE_NAME, CAMP_DE_PRICE, CAPACITY, 
+			(SELECT (CAMP_DE_IMG_PATH || CAMP_DE_IMG_RENAME) 
+			 FROM CAMPING_DETAIL_IMG B
+			 WHERE  A.CAMP_DE_NO = B.CAMP_DE_NO 
+			 AND CAMP_DE_IMG_ORDER = 0) CAMP_DETAIL_THUMBNAIL
+		FROM "CAMPING_DETAIL" A
+		WHERE CAMP_NO = #{campNo}
+	</select>
+	
+	<!-- collection 중 이미지 리스트 조회 -->
+	<select id="selectCampSiteImageList" resultMap="camp_image_rm">
+		SELECT CAMP_IMG_NO, CAMP_NO, CAMP_IMG_PATH, CAMP_IMG_RENAME, CAMP_IMG_ORIGINAL, CAMP_IMG_ORDER
+		FROM "CAMPING_SITE_IMG"
+		WHERE CAMP_NO = #{campNo}
+	</select>
+	
+	<!-- collection 중 CEO 이미지 리스트 조회 -->
+	<select id="selectCampCeoImageList" resultMap="camp_ceoImage_rm">
+		SELECT CAMP_CEO_IMG_NO, CAMP_NO, CAMP_CEO_IMG_PATH, CAMP_CEO_IMG_RENAME, CAMP_CEO_IMG_ORIGINAL
+		FROM "CAMPING_CEO_IMG"
+		WHERE CAMP_NO = #{campNo}
+	</select>
+	
+	<insert id="insertImageList">
+		INSERT INTO "CAMPING_SITE" VALUES(SEQ_CAMP_NO, )
+	</insert>
+	
+	
+</mapper>
