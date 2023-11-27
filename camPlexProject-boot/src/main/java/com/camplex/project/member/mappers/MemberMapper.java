@@ -13,6 +13,12 @@ public interface MemberMapper {
 	// 회원가입
 	int signUp(Member inputMember);
 
+	// 회원 비밀번호 조회
+	String selectEncPw(int memberNo);
+
+	// 회원 탈퇴
+	int deleteMember(int memberNo);
+
 	
 	
 }

@@ -41,4 +41,17 @@
 		, DEFAULT, DEFAULT, DEFAULT)
 	</insert>
 	
+	<!-- 비밀번호 조회 -->
+	<select id="selectEncPw" parameterType="_int" resultType="string">
+		SELECT MEMBER_PW FROM "MEMBER" WHERE MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- 회원 탈퇴 -->
+	<update id="deleteMember" parameterType="_int">
+		UPDATE "MEMBER" SET
+		MEMBER_DEL_FL = 'Y'
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+	
+	
 </mapper>
