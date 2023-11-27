@@ -163,6 +163,10 @@ main {
 	justify-content: end;
 }
 
+.campUploadBtnA {
+	text-decoration: none;
+}
+
 .campUploadBtn {
 	height: 3rem;
 	width: 12rem;

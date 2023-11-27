@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.camplex.project.paysys.mappers.PaysysMapper">
+
+	<resultMap id="cart_rm" type="Cart">
+		<id property="cartNo" column="CART_NO"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+		
+	</resultMap>
+	
+	<resultMap id="cartItem_rm" type="CartItem">
+		<id property="cartItemNo" column="CART_ITEM_NO"/>
+		<result property="cartNo" column="CART_NO"/>
+		<result property="itemNo" column="ITEM_NO"/>
+		<result property="reservationNo" column="RESERVATION_NO"/>
+		<result property="itemQuantity" column="ITEM_QUANTITY_NO"/>
+	</resultMap>
+	
+	<!-- 카트에 렌트아이템 추가-->
+	<insert id="insertCart">
+		INSERT INTO "CART_ITEM"
+		VALUES (SEQ_CART_ITEM_NO.NEXTVAL, #{cartNo}, #{itemNo}, #{reservationNo}, #{itemQuantity})
+	</insert>
+	
+	<!-- 카트없는회원 만들기 -->
+	<insert id="createCart">
+		INSERT INTO "CART"
+		VALUES (SEQ_CART_NO.NEXTVAL, #{memberNo})
+	</insert>
+	
+	<select id="searchCartItem">
+		SELECT COUNT(*) FROM CART_ITEM
+		WHERE CART_NO = #{cartNo}
+		AND ITEM_NO = #{itemNo}
+	</select>
+	  	
+	<!-- 회원의 카트 넘버 조회-->  	
+	<select id="searchMembersCartNo" resultMap="cart_rm">
+		SELECT CART_NO
+		FROM CART
+		WHERE MEMBER_NO = #{memberNo}
+	</select>  	
+	
+	<!-- 회원카트 존재여부 조회 -->
+	<select id="searchCartNo" resultType="_int">
+		SELECT COUNT(*) FROM CART
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
+	
+</mapper>

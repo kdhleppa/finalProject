@@ -86,7 +86,7 @@
                                 <p th:text="|수용인원 ${campDetail.capacity}명|">수용인원</p>
                                 <p th:text="|입실 : ${campDetail.checkIn}  /  퇴실 : ${campDetail.checkOut}|">입실/ 퇴실 </p>
                                 <p th:text="${campDetail.mannerTime}">매너타임</p>
-                                <p id="price" th:text="|${#numbers.formatInteger(campDetail.campDePrice, 3, 'COMMA')}원|">가격</p>
+                                <p id="price" th:text="|${#numbers.formatInteger(campDetail.campDePrice, 3, 'COMMA')}원(1박)|">가격</p>
                             </div>
 
                         </div>

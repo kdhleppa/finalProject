@@ -16,237 +16,148 @@ button {
     unicode-range: U+AC00-D7A3;
 }
 
-/* header 부분 */
-.topBar{
-    width: 100%;
-    height: 200px;
-
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 25px;
-    border-radius: 0 0 10px 10px;
-
-    transition-duration: 0.3s;
-
-    position: sticky;
-    top: 0;
-}
-
-.topBar:hover{
-    background-color: rgba(204, 213, 174, 0.5);
-}
-
-.topMenu{
-    width: 100%;
-
-    flex-basis: 5%;
-
-    display: flex;
-    justify-content: space-between;
-}
-
-.topMenu a{
-    color: #000;
-    text-decoration: none;
-    margin: 0 10px;
-    font-size: 0.7rem;
-
-    
-}
-
-.mainTitle{
-    flex-basis: 50%;
-    align-self: center;
-    font-size: 3rem;
-    font-weight: 900;
-
-    margin: 20px 0;
-
-    height: 60px;
-    line-height: 60px;
-    color: #333;
-    letter-spacing: 5px;
-}
-
-.bottomMenu{
-    flex-basis: 45%;
-    display: flex;
-    align-self: center;
-}
-
-.bottomMenu a {
-    color: #000;
-    text-decoration: none;
-    margin: 0 1rem;
-    font-weight: 600;
-}
-
-/* 공지 상단 메뉴 */
-.boardClass {
-    display: flex;
+/* 게시판 상단 메뉴 */
+.boardTypeList {
+	display: flex;
+	font-family: 'HakgyoansimSantteutdotumL';
     list-style: none;
-    margin-top: 40px;
-}
-
-.boardClass p {
-    font-size: 15px;
-    font-weight: 900;
-    margin-top: 4px;
-}
-
-.boardClass > li > a {
-    font-family: 'HakgyoansimSantteutdotumL';
-    color: black;
-    text-decoration: none;
     font-size: 20px;
-    margin-right: 70px;
-    margin-left: 70px;
+    margin-left: 10rem;
 }
 
-.boardTitle p {
+.boardTypeList > li > a {
+	text-decoration: none;
+	color: black;
+	margin-top: 3.8rem;
+}
+
+.boardTypeList p {
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 4rem;
+    margin-right: 5rem;
+    margin-left: 5rem;
+}
+
+
+#boardSearch {
+    margin-top: 120px;
+    display: flex;
+    justify-content: end;
+}
+
+.boardHead {
+	display: flex;
+	justify-content: space-between;
+}
+
+#boardTypeName {
+	width: 200px;
+	margin-left: 10rem;
+	margin-top: 7rem;
     font-family: 'HakgyoansimSantteutdotumL';
     font-size: 30px;
-    margin-left: 12%;
+    color: black;
 }
 
-.boardTitle {
-    margin-top: 120px;
-    margin-right: 13%;
+.board-write {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
+	margin-top: 2rem;
+}
+
+.board-title > input {
+	width: 50rem;
+	height: 2.5rem;
+	font-size: 15px;
+}
+
+
+/* 이미지를 감싸는 div */
+.imgInput {
+	margin-top: 3rem;
+	display: flex;
+	height: 30rem;
+	width: 59rem;
+}
+
+.img-box {
+	margin-left: 5rem;
+}
+
+.boardImg{
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    text-align: center;
+
+    position: relative;
+}
+
+.boardImg > label{
     width: 100%;
-}
-
-/* 공지 세부 내용 */
-.notiDeLeft {
-    width: 5rem;
-    height: 2rem;
-}
-
-#boardType {
-    margin-left: 1.2rem;
-    font-family: 'HakgyoansimSantteutdotumL';
-    width: 120px;
-    font-size: 20px;
-    height: 35px;
-}
-
-.boardWrite {
-    font-family: 'HakgyoansimSantteutdotumL';
-    margin-top: 20px;
+    height: 100%;
     display: flex;
-    justify-content: space-around;
-    height: 50rem;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    cursor: pointer;
 }
 
-.notiDeTitle {
-    margin-left: -20rem;
+.inputImage{
+    display: none;
 }
 
-#textTitle {
-    border-radius: 10px;
-	width: 60rem;
-    height: 2rem;
-    margin-right: 10px;
-    font-size: 18px;
+
+/* 이미지 */
+.boardImg img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* 썸네일만 이미지 크게 */
+.thumbnail{
+    width: 300px;   
+    height: 300px;
+}
+
+/* 내용 부분 */
+.board-content > textarea {
+	width: 50rem;
+	height: 20rem;
 	resize: none;
-}
-
-.notiDeRight {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    margin-top : 40px;
-    margin-left: -20rem;
-}
-
-.boardContent {
-    margin-left: 0rem;
-    width: 80%;
-    font-size: 22px;
+	
 }
 
 
-/* 등록 취소 버튼 부분 */
+
+/* 버튼 부분 */
 .btnArea {
     display: flex;
     flex-direction: row-reverse;
+    margin-left: 11rem;
+    margin-top: 2rem;
+    margin-bottom: 8rem;
 }
 
 #cancelBtn {
     font-family: 'HakgyoansimSantteutdotumL';
-    margin-right: 150px;
+    margin-right: 11rem;
     width: 8rem;
     height: 4rem;
     background-color: transparent;
     border-style: none;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
-#enterBtn {
+#writeBtn {
     font-family: 'HakgyoansimSantteutdotumL';
     width: 8rem;
     height: 4rem;
     background-color: transparent;
     border-style: none;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
-#listBtn {
-    font-family: 'HakgyoansimSantteutdotumL';
-    width: 8rem;
-    height: 4rem;
-    background-color: transparent;
-    border-style: none;
-    font-size: 1.5rem;
-}
-
-
-/* footer 부분 */
-.bottomBar { 
-    width: 100%;
-    margin-top: 120px;
-    margin-bottom: 120px;
-    font-family: 'HakgyoansimSantteutdotumL';
-    font-weight: 900;
-    line-height: 30px;
-    
-}
-
-.bottomBar > a, .bottomBar > div {
-    margin-left: 120px;
-}
-
-.footerTitle {
-    flex-basis: 50%;
-    align-self: center;
-    font-size: 2rem;
-    font-weight: 1000;
-
-    height: 60px;
-    line-height: 60px;
-    color: #333;
-    letter-spacing: 3px;
-}
-
-.footerMenu {
-    display: flex;
-    flex-basis: 50%;
-    align-self: center;
-    font-size: 1rem;
-    font-weight: 900;
-
-    color: #333;
-    letter-spacing: 1px;
-}
-
-.footerMenu a {
-    text-decoration: none;
-}
-
-.menuDiv {
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-.footerContent {
-    letter-spacing: 1px;
-}

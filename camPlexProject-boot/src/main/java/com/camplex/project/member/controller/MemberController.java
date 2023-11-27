@@ -148,7 +148,6 @@ public class MemberController {
 	public String wishlistInsert(
 			@SessionAttribute(value="loginMember", required = false)Member loginMember,
 			RedirectAttributes ra,
-			Model model,
 			@RequestParam("itemNo") int itemNo,
 			HttpServletRequest request
 			) {
@@ -162,7 +161,6 @@ public class MemberController {
 		if(loginMember != null) {
 			
 			int memberNo = loginMember.getMemberNo();
-			System.out.println(memberNo);
 			searchResult = wishlistService.searchWishlist(memberNo, itemNo);
 			
 			if (searchResult > 0) {

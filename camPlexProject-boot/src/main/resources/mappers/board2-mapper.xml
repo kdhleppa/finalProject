@@ -3,24 +3,6 @@
 <mapper namespace="com.camplex.project.board.mappers.BoardMapper2">
 	
   	
-  	<!-- 게시글 삽입 -->
-  	<!-- 
-  		동적 SQL
-  		- 프로그램 수행 중 SQL을 변경하는 기능
-  		
-  		<selectKey> 태그 : INSERT/UPDATE 시 사용할 키(시퀀스)를
-  					조회해서 파라미터의 지정된 필드 대입
-  	
-  		useGeneratedKeys : DB 내부적으로 생성한키 (시퀀스) 를
-  					전달된 파라미터의 필드로 대입 가능 여부 지정
-  	
-  		order="BEFORE" : 메인 SQL이 수행되기 전에 selectKey가 수행되도록 지정
-  		
-  		keyProperty : selectKey 조회 결과를 저장할 파라미터의 필드
-  					Board의 boardNo 필드에다가 조회 결과를 저장하겠다.
-  	
-  	 -->
-  	
   	<insert id="boardInsert" parameterType="Board" useGeneratedKeys="true">
   	
   		<selectKey order="BEFORE" resultType="_int" keyProperty="boardNo">
@@ -29,11 +11,12 @@
   	
   			INSERT INTO BOARD
   			VALUES( #{boardNo},
-  					#{boardTitle},
-  					#{boardContent},
-  					DEFAULT, DEFAULT, DEFAULT, DEFAULT,
   					#{memberNo},
-  					#{boardType}  )
+  					#{boardType},
+  					#{boardTitle},
+  					#{boardContent}, 
+  					DEFAULT, DEFAULT, DEFAULT, DEFAULT  
+  					)
   	</insert>
   	
   	
@@ -47,15 +30,15 @@
   	<!-- 이미지 리스트(여러개)삽입 -->
   	<insert id="insertImageList" parameterType="list">
   		INSERT INTO "BOARD_IMG"
-  		SELECT SEQ_IMG_NO.NEXTVAL, A.*
+  		SELECT SEQ_BOARD_IMG_NO.NEXTVAL, A.*
   		FROM (
   			
   			<foreach collection="list" item="img" separator=" UNION ALL ">
-  				SELECT #{img.boardImagePath} BOARD_IMG_PATH,
+  				SELECT #{img.boardNo} BOARD_NO,
+  					#{img.boardImagePath} BOARD_IMG_PATH,
   					#{img.boardImageReName} BOARD_IMG_RENAME,
   					#{img.boardImageOriginal} BOARD_IMG_ORIGINAL,
-  					#{img.boardImageOrder} BOARD_IMG_ORDER,
-  					#{img.boardNo} BOARD_NO
+  					#{img.boardImageOrder} BOARD_IMG_ORDER
   				FROM DUAL
   			</foreach>
   		) A
@@ -93,8 +76,8 @@
   	<!-- 이미지 삽입 -->
 	<insert id="imageInsert">
 		INSERT INTO "BOARD_IMG"
-		VALUES(SEQ_IMG_NO.NEXTVAL, #{boardImagePath}, #{boardImageReName},
-			#{boardImageOriginal}, #{boardImageOrder}, #{boardNo}
+		VALUES(SEQ_BOARD_IMG_NO.NEXTVAL, #{boardNo}, #{boardImagePath}, #{boardImageReName},
+			#{boardImageOriginal}, #{boardImageOrder} 
 		)
 	</insert>
   	

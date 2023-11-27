@@ -55,6 +55,18 @@ public interface CampMapper {
 	 */
 	int insertImages(List<CampCeoImage> uploadList);
 
+	/** ceo사진 지우기
+	 * @param imgNo
+	 * @return
+	 */
+	int ceoPicDelete(int imgNo);
+
+	/** 예약 안된 캠핑장 호실 조회
+	 * @param map
+	 * @return
+	 */
+	List<CampDetail> selectCampDetailListNotRes(Map<String, Object> map);
+
 
 
 }

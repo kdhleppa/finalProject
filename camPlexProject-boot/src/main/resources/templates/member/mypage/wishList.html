@@ -14,7 +14,7 @@
 </head>
 <body>
     
-    <th:block th:replace="~{common/header}"></th:block>
+    <th:block th:replace="~{common/headerForContent}"></th:block>
     
     <div class="mainContainer">
         <!--레프트빈공간-->
@@ -29,7 +29,7 @@
                 <tr>
                     <!-- 전체선택체크박스 js구현하기-->
                     <!-- th 위 진한선 아래 연한선주고 추가되는 상품의 밑 마다 선주기-->
-                    <th><input type="checkbox" id="selectAllCamp" th:onclick="selectAllCamp(group1)"></th>
+                    <th><input type="checkbox" id="selectAllCampcb" th:onclick="selectAll('campcb')"></th>
                     <th>번호</th>
                     <th>사진</th>
                     <th>캠핑장 명</th>
@@ -48,13 +48,18 @@
 					<td></td>
 					<td></td>
 				</tr>
-                <th:block th:unless="${camp == null}" th:each="camp, iterStat : ${camp}">
-	                <tr th:id="'tr'+${camp.campNo}" class="campTr" th:data-ccn="'ccn'+${iterStat.count}">
+                <th:block th:unless="${camp == null}" th:each="camp, iterStat : ${camp}" id="campcb">
+	                <tr th:id="'tr'+${camp.campNo}">
 	                    <!-- 개별선택체크박스-->
-	                    <td><input type="checkbox" class=""></td>
+	                    <td><input type="checkbox" class="campcb-item" th:data-ccn="${camp.campNo}"></td>
 	                    <td th:text="${iterStat.count}">넘버</td>
-	                    <td><img th:src="@{/images/itemImg/0340020000042.jpg}" alt="수정전"></td>
+<<<<<<< HEAD
+	                    <td><img th:src="${camp.thumbnail}" th:onclick="|location.href = '@{/camp/{campNo}(campNo = ${camp.campNo})}'|"></td>
 	                    <td>[[${camp.campName}]]<a th:href="@{/camp/${camp.campNo}}" class = "grayBtn rsvBtn" th:text="예약하기">예약하기</a></td>
+=======
+	                    <td><img th:src="@{/images/itemImg/0340020000042.jpg}" alt="수정전"></td>
+	                    <td>[[${camp.campName}]]<a th:href="|/camp/${camp.campNo}|" class = "grayBtn rsvBtn" th:text="예약하기">예약하기</a></td>
+>>>>>>> b5ebe0f7d335c71997cd01e03446026524c3af0f
 	                    <td></td>
 	                    <td></td>
 	                    <td><button class="grayBtn" th:onclick="'deleteCampWish(' + ${camp.campNo} + ');'" th:text="DELETE">DELETE</button></td>
@@ -63,11 +68,11 @@
                
             </table>
 
-            <h2 class="heading">ITEM LIST</h2>
+            <h2 class="heading">ITEM WISHLIST</h2>
 
             <table class="itemListTB">
                 <tr>
-                    <th><input type="checkbox" class=""></th>
+                    <th><input type="checkbox" id="selectAllItemcb" onclick="selectAll('itemcb');"></th>
                     <th>번호</th>
                     <th>사진</th>
                     <th>상품명</th>
@@ -85,13 +90,17 @@
 					<td></td>
 					<td></td>
 				</tr>
-                <th:block th:unless="${item == null}" th:each="item, iterStat : ${item}">
+                <th:block th:unless="${item == null}" th:each="item, iterStat : ${item}" id="itemcb">
 	                <tr th:id="'tr'+${item.itemNo}">
 	                    <!-- 개별선택체크박스-->
-	                    <td><input type="checkbox" class=""></td>
+	                    <td><input type="checkbox" class="itemcb-item" th:data-icn="${item.itemNo}"></td>
 	                    <td th:text="${iterStat.count}">넘버</td>
-	                    <td><img th:src="@{/images/itemImg/0340020000042.jpg}" alt="수정전"></td>
-	                    <td>[[${item.itemName}]]</td>
+	                    <td>
+							<a th:href="@{/item/itemDetail/{itemNo}(itemNo = ${item.itemNo})}">							 
+		                    	<img th:src="${item.thumbnail}">
+						 	</a>
+						 </td>
+	                    <td><a class="nameAtag" th:href="@{/item/itemDetail/{itemNo}(itemNo = ${item.itemNo})}">[[${item.itemName}]]</a></td>
 	                    <td></td>
 	                    <td>[[${item.itemPrice}]]</td>
 	                    <td><button class="grayBtn" th:onclick="'deleteItemWish(' + ${item.itemNo} + ');'" th:text="DELETE">DELETE</button></td>
@@ -100,7 +109,7 @@
                
             </table>
             <div class="buttonList">
-                <button class="Btn">선택삭제</button>
+                <button class="Btn" th:onclick="deleteSelectedItems()">선택삭제</button>
                 <a th:href="@{/paysys/rentCart}" class="Btn">장바구니</a>
                 <a href="javascript:history.back()" class="Btn backBtn">돌아가기</a>
             </div>

@@ -62,7 +62,7 @@
                 <p style="font-size: 18px;"> <span>작성일 : </span> [[${board.boardCreateDate}]] </p> 
                 <hr style="margin-top: 20px; width: 65rem;">
                 
-					<div class="boardContent">
+					<div class="boardImg">
 
 	                    <!-- 이미지가 있을 경우 -->
 			            <th:block th:if="${#lists.size(board.imageList) > 0}">
@@ -76,14 +76,14 @@
 									imageList[0]에 저장되어 있을 것이다.
 							 -->
 							 <th:block th:if="${thumbnail}">
-					            <h5>썸네일</h5>
+					            <h5></h5>
 					            <div class="img-box">
 					                <div class="boardImg thumbnail">
 					                    <img th:src="|${thumbnail.boardImagePath}${thumbnail.boardImageReName}|">
-			
-					                    <a th:href="|${thumbnail.boardImagePath}${thumbnail.boardImageReName}|" 
+					                    
+					                    <a id="imgDown" th:href="|${thumbnail.boardImagePath}${thumbnail.boardImageReName}|" 
 					                    	th:download="${thumbnail.boardImageOriginal}"
-					                    >다운로드</a>
+					                    >사진받기</a>
 					                </div>
 					            </div>
 							 </th:block>
@@ -93,15 +93,15 @@
 							<th:block th:if="${#lists.size(board.imageList) > start}">
 							
 								<!-- 업로드 이미지 영역 -->
-								<h5>업로드 이미지</h5>
+								<h5 style="margin-left: 5rem;"></h5>
 								<div class="img-box">
 								
 									<th:block th:each="i : ${#numbers.sequence(start, #lists.size(board.imageList)-1, 1)}">
-										<div class="boardImg"
+										<div class="uploadImg"
 											th:with="path=|${board.imageList[i].boardImagePath}${board.imageList[i].boardImageReName}|">
 											
 											<img th:src="${path}">
-											<a th:href="${path}" th:download="${board.imageList[i].boardImageOriginal}">다운로드</a>                
+											<a id="imgDown" th:href="${path}" th:download="${board.imageList[i].boardImageOriginal}">사진받기</a>                
 										</div>
 									</th:block>
 									
@@ -110,28 +110,31 @@
 			
 			            	</th:block>
 			            	
-							<hr style="margin-top: 20px; width: 65rem;">
+							
 							
 			            </th:block>
 					
+					</div>
+					
+					<hr style="margin-top: -6rem; width: 65rem;">
 					
                     <br>
                     <div class="boardContent">[[${board.boardContent}]]</div>
-                </div>
+                
             </div>
 
 			<div class="boardDeRight">
                 
                 <!-- 프로필 + 닉네임 + 작성일 + 조회수 -->
-                    <!-- 프로필 이미지 -->
-                	<!-- 프로필 이미지가 없을 경우 기본 이미지 출력 -->
-	                <img th:unless="*{memberProfileImg}" th:src="@{/images/user.png}">
-                	
-                	<!-- 프로필 이미지가 있을 경우 등록한 이미지 출력 -->
-                	<img th:if="*{memberProfileImg}" th:src="*{memberProfileImg}" />
+                    <!-- 프로필 이미지가 없을 경우 기본 이미지 출력 -->
+					<img th:unless="*{memberProfileImg}" th:src="@{/images/user.png}">
+				
+					<!-- 프로필 이미지가 있을 경우 등록한 이미지 출력 -->
+					<img th:if="*{memberProfileImg}" th:src="*{memberProfileImg}" />
                 
                 <span th:text="*{memberNickname}">닉네임</span>
 
+				<p id="readCount"> <i class="fa-solid fa-eye"></i> [[${board.boardReadCount}]] </p>
                 
                 <!-- 좋아요 하트 -->
                 <span class="like-area">
@@ -142,10 +145,10 @@
 						th:classappend="${likeCheck} ? fa-solid : fa-regular"
 					id="boardLike"></i>
 
-                    <span th:text="*{likeCount}">좋아요 개수</span>
+                    <span th:text="*{likeCount}">좋아요</span>
                 </span>
                 
-                <p> <span>조회수</span> [[${board.boardReadCount}]] </p>    
+                
                 
                 <button id="listBtn">목록으로</button>
 
@@ -174,6 +177,21 @@
     </main>
 
     <th:block th:replace="~{common/footer}"></th:block>
+    
+    <script th:inline="javascript">
+		console.log(/*[[${board}]]*/ "board객체");
+
+		const boardNo = /*[[${board.boardNo}]]*/ "게시글번호";
+		
+		const loginMemberNo = /*[[${session.loginMember?.memberNo}]]*/ "로그인 회원번호";
+		
+		if(loginMemberNo == null) loginMemberNo = "";
+
+
+		console.log(boardNo);
+		console.log(loginMemberNo);
+	
+	</script>
     
     <script th:src="@{/js/board/boardDetail.js}"></script>
 	<script th:src="@{/js/board/comment.js}"></script>
