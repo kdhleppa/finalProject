@@ -38,10 +38,9 @@ public class BoardController {
 	@Autowired
 	private BoardService service;
 	
-	
 	// 게시글 목록 조회
 	@GetMapping("/{boardType:[A-Z]+}")
-	public String selectBoardList( 
+	public String selectBoardList(
 			@PathVariable("boardType") String boardType,
 			@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
 			Model model,

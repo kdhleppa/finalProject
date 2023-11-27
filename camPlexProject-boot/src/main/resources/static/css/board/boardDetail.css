@@ -62,8 +62,8 @@ button {
 
 /* 게시판 세부 내용 */
 img {
-	width: 16rem;
-	height: 16rem;
+	width: 14rem;
+	height: 14rem;
 }
 
 .boardDetail {
@@ -86,32 +86,35 @@ img {
 }
 
 .boardDeTitle {
-    margin-left: -20rem;
+    margin-left: -10rem;
     font-size: 25px;
 	height: 100%;
 }
 
 .boardImg {
 	display: flex;
-	margin-top: 2rem;
-	width: 30rem;
+	margin-top: -2rem;
+	width: 70rem;
 }
 
 .boardDeRight {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    margin-top : 40px;
     margin-left: -20rem;
 }
 
-.boardDeRight > span {
-	margin-top: -40rem;
+.boardDeRight > img {
+	width: 10rem;
+	height: 10rem;
 }
 
 #readCount {
-	margin-top: -40rem;
 	margin-left: 2rem;
+	margin-top: 2rem;
+}
+
+#boardLike {
+	margin-top: 2rem;
 }
 
 #createDate {
@@ -122,7 +125,8 @@ img {
 .boardContent {
     width: 80%;
     font-size: 22px;
-    margin-bottom: 9rem;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
 }
 
 #imgDown {
@@ -134,43 +138,52 @@ img {
 
 .img-box {
 	display: flex;
-	width: 100%;
-	height: 100%;
-	margin-bottom: 10rem;
+	flex-wrap: wrap;
 }
 
 .img-box > div {
-	margin-left: 1rem;
+	margin-top: 3rem;
+	margin-left: 2rem;
 }
 
 
 .thumbnail{
 	display: flex;
 	flex-wrap: wrap;
-    width: 19rem;
-    height: 19rem;
+    width: 15rem;
+    height: 15rem;
+    margin-bottom: 2rem;
 }
 
 .thumbnail > img {
-	width: 19rem;
-	height: 19rem;
+	width: 16rem;
+	height: 16rem;
 }
 
 #proImg {
-	width: 100px;
+	width: 10rem;
+	height: 10rem;
+	margin-left: -0.5rem;
+}
+
+#writerNick {
+	margin-left: 3rem;
+	margin-top: 1rem;
+	font-size: 18px;
 }
 
 /* 수정 삭제 버튼 부분 */
 .btnArea {
     display: flex;
     flex-direction: row-reverse;
+    margin-top: 1rem;
 }
 
 #deleteBtn {
     font-family: 'HakgyoansimSantteutdotumL';
-    margin-right: 150px;
-    width: 8rem;
-    height: 4rem;
+    margin-right: 13rem;
+    width: 5rem;
+    height: 2rem;
     background-color: transparent;
     border-style: none;
     font-size: 1.2rem;
@@ -178,20 +191,22 @@ img {
 
 #updateBtn {
     font-family: 'HakgyoansimSantteutdotumL';
-    width: 8rem;
-    height: 4rem;
+    width: 5rem;
+    height: 2rem;
     background-color: transparent;
     border-style: none;
     font-size: 1.2rem;
+    margin-right: 1rem;
 }
 
 #listBtn {
     font-family: 'HakgyoansimSantteutdotumL';
-    width: 8rem;
-    height: 4rem;
+    width: 5rem;
+    height: 2rem;
     background-color: transparent;
     border-style: none;
     font-size: 1.2rem;
+    margin-bottom: 1rem;
 }
 
 
@@ -209,7 +224,7 @@ img {
 	width: 60rem;
     min-height: 100px;
 	resize: none;
-	margin-left: 5rem;
+	margin-left: 7rem;
 }
 
 .comment-write-area > button{
@@ -223,7 +238,7 @@ img {
 }
 
 #commentList{
-    margin-left: 20rem;
+    margin-left: 30rem;
     margin-top: 2rem;
 	padding: 0;
 	list-style: none;
@@ -289,15 +304,6 @@ img {
 	position : absolute;
 	left : 0;
 	top : 35px;
-}
-
-
-/* 답글 */
-#answerBtn {
-	width: 50px;
-    height: 40px;
-    margin-top : -20px;
-    font-size: 16px;
 }
 
 

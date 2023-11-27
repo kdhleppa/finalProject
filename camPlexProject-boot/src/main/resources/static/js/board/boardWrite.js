@@ -1,7 +1,15 @@
 // 취소하기
 document.getElementById('cancelBtn').addEventListener('click', function() {
-    window.history.back();
-  });
+    
+    var confirmation = confirm('취소하시겠습니까?'); // 메시지 출력
+
+    if (confirmation) {
+        window.history.back();
+        return; // 확인이면 뒤로 이동
+    } else {
+        // 취소하면 아무 동작도 수행하지 않음
+    }
+});
 
 // 미리보기 관련 요소 모두 얻어오기
 
@@ -65,7 +73,6 @@ const boardWriteFrm = document.querySelector("#boardWriteFrm");
 const boardTitle = document.querySelector("[name='boardTitle']");
 const boardContent = document.querySelector("[name='boardContent']");
 
-
 boardWriteFrm.addEventListener('submit', e => {
 
     if(boardTitle.value.trim().length == 0){
@@ -84,6 +91,5 @@ boardWriteFrm.addEventListener('submit', e => {
         return;
     }
 
-
-
 });
+

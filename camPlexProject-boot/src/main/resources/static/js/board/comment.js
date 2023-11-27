@@ -168,24 +168,6 @@ addComment.addEventListener("click", e => { // 댓글 등록 버튼이 클릭이
             alert("댓글 등록에 실패했습니다...");
         }
     })
-    .catch(err => console.log(err));
-    fetch("/comment/insert?boardNo=" + boardNo + "&commentContent=" + commentContent.value)
-    .then(response => response.text())
-    .then(result => {
-    	console.log("hi", result);
-        if(result > 0){ // 등록 성공
-            alert("댓글이 등록되었습니다.");
-
-            commentContent.value = ""; // 작성했던 댓글 삭제
-
-            selectCommentList(); // 비동기 댓글 목록 조회 함수 호출
-            // -> 새로운 댓글이 추가되어짐
-
-        } else { // 실패
-            alert("댓글 등록에 실패했습니다...");
-        }
-    })
-    .catch(err => console.log(err));
 });
 
 // -----------------------------------------------------------------------------------

@@ -59,6 +59,8 @@
             <h1 class="board-title">
                 <input type="text" name="boardTitle" placeholder="제목을 입력해 주세요" th:value="${boardTitle}">
             </h1>
+            
+            <hr style="margin-top: 35px; width: 55rem;">
 
 			<div class="imgInput">
 				
@@ -67,7 +69,7 @@
 					<h5>썸네일</h5>
 	                <div class="boardImg thumbnail">
 	                    <label for="img0">
-	                        <img class="preview">
+	                        <img class="preview" src="">
 	                    </label>
 	                    <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
 	                    <span class="delete-image">&times;</span>
@@ -79,7 +81,7 @@
 	                <h5>업로드 이미지</h5>
 	                <div class="boardImg">
 	                    <label for="img1">
-	                        <img class="preview">
+	                        <img class="preview" src="">
 	                    </label>
 	                    <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
 	                    <span class="delete-image">&times;</span>
@@ -87,7 +89,7 @@
 	
 	                <div class="boardImg">
 	                    <label for="img2">
-	                        <img class="preview">
+	                        <img class="preview" src="">
 	                    </label>
 	                    <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
 	                    <span class="delete-image">&times;</span>
@@ -95,7 +97,7 @@
 	
 	                <div class="boardImg">
 	                    <label for="img3">
-	                        <img class="preview">
+	                        <img class="preview" src="">
 	                    </label>
 	                    <input type="file" name="images" class="inputImage" id="img3" accept="image/*">
 	                    <span class="delete-image">&times;</span>
@@ -103,7 +105,7 @@
 	
 	                <div class="boardImg">
 	                    <label for="img4">
-	                        <img class="preview">
+	                        <img class="preview" src="">
 	                    </label>
 	                    <input type="file" name="images" class="inputImage" id="img4" accept="image/*">
 	                    <span class="delete-image">&times;</span>
@@ -112,24 +114,27 @@
 	            </div>
 			</div>
 			
+			<hr style="margin-top: 35px; margin-bottom: 25px; width: 55rem;">
+			
             <!-- 내용 -->
             <div class="board-content">
                 <textarea name="boardContent" th:text="${boardContent}" placeholder="내용을 입력해 주세요">내용</textarea>
             </div>
 
-        
-        
-        <hr style="margin-top: 20px; margin-left: 8%; width: 84%; margin-right: 8%;">
-
-        <div class="btnArea">
+        	<hr style="margin-top: 20px; margin-left: 8%; width: 84%; margin-right: 8%;">
+	
+			<div class="btnArea">
 			
-			<button id="cancelBtn">취소하기</button>                 
-                
-            <button type="submit" id="writeBtn">등록하기</button>   
-                     
-        </div>
-
+            	<button type="submit" id="writeBtn">등록하기</button>
+               
+            	<button type="button" id="cancelBtn">취소하기</button>
+            
+            </div>
+            
 		</form>
+		
+			
+			
         
     </main>
 
