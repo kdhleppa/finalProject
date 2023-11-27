@@ -70,7 +70,7 @@
 	
 	                            <section id="uploadImgBtn">
 	                                <label for="uploadProfileImg" id="selectImg">프로필 이미지 선택</label>
-	                                <input type="file" id="uploadProfileImg" name="memberProfileImg">
+	                                <input type="file" id="uploadProfileImg" name="memberProfileInput">
 	                                <label id="deleteProfileImg">프로필 이미지 삭제</label>
 	                            </section>
 	                            
@@ -85,7 +85,7 @@
 	                        <!-- 회원가입, 이전 페이지로 이동 버튼 -->
 	                        <section id="changePwBtn">
 	                            <button type="submit" id="signUpFrm">가입하기</button>
-	                            <a class="clickBtn" th:onclick="|location.href='@{/member/login}'|">이전으로</a>
+	                            <a class="clickBtn" th:onclick="|window.history.back()|">이전으로</a>
 	                        </section>
 	                        
 	                        <section class="empty3"></section>

@@ -17,11 +17,11 @@ import com.camplex.project.member.model.dto.Member;
 @PropertySource("classpath:/config.properties")
 public class MemberServiceImpl implements MemberService {
 
-	@Value("$camplex.member.location}")
-	private String webPath;
+	@Value("${camplex.member.location}")
+	private String filePath;
 	
 	@Value("${camplex.member.webpath}")
-	private String filePath;
+	private String webPath;
 	
 	@Autowired
 	private MemberMapper mapper;
@@ -52,7 +52,7 @@ public class MemberServiceImpl implements MemberService {
 
 	// 회원가입
 	@Override
-	public int signUp(MultipartFile profileImg, Member inputMember) throws Exception {
+	public int signUp(MultipartFile memberProfileImg, Member inputMember) throws Exception {
 		
 		String encPw = bcrypt.encode(inputMember.getMemberPw());
 		inputMember.setMemberPw(encPw);
@@ -60,15 +60,13 @@ public class MemberServiceImpl implements MemberService {
 		String temp = inputMember.getMemberProfileImg();
 		String rename = null;
 		
-		if(profileImg.getSize() > 0) { // 업로드된 이미지가 있을 경우
+		if(memberProfileImg.getSize() > 0) { // 업로드된 이미지가 있을 경우
 			
 			// 1) 파일 이름 변경
-			rename = Util.fileRename(profileImg.getOriginalFilename());
+			rename = Util.fileRename(memberProfileImg.getOriginalFilename());
 			
 			// 2) 바뀐 이름 loginMember에 세팅
 			inputMember.setMemberProfileImg(webPath + rename);
-			
-			
 			
 		} else { // 업로드된 이미지가 없는 경우 (x버튼) 
 			
@@ -84,20 +82,31 @@ public class MemberServiceImpl implements MemberService {
 			if(rename != null) {
 				
 				// 메모리에 임시 저장되어있는 파일을 서버에 진짜로 저장하는 것
-				profileImg.transferTo(new File(filePath + rename));
+				memberProfileImg.transferTo(new File(filePath + rename));
 			}
-			
 			
 		} else { // 실패
 			
 			// 이전 이미지로 프로필 다시 세팅
 			inputMember.setMemberProfileImg(temp);
 			
-			
 		}
-		
 		
 		return result;
 	}
+
+	// 회원탈퇴
+	@Override
+	public int deleteMember(String memberPw, int memberNo) {
+		
+		String encPw = mapper.selectEncPw(memberNo);
+		
+		if(bcrypt.matches(memberPw, encPw)) {
+			return mapper.deleteMember(memberNo);
+		}
+		
+		return 0;
+	}
+
 
 }

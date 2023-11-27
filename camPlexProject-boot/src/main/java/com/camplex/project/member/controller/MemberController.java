@@ -69,6 +69,9 @@ public class MemberController {
 		
 		if(loginMember != null) {
 			path += "/";
+			ra.addFlashAttribute("message", loginMember.getMemberNickname() + "님 환영합니다.");
+			
+			System.out.println(loginMember);
 			
 			model.addAttribute("loginMember", loginMember);
 		} else {
@@ -88,22 +91,23 @@ public class MemberController {
 	
 	// 회원 가입 진행
 	@PostMapping("/signUp")
-	public String signUp(Member inputMember,
-						@RequestParam("uploadProfileImg") MultipartFile profileImg,
+	public String signUp(Member inputMember, MultipartFile memberProfileInput,
 						RedirectAttributes ra ) throws Exception {	
+		
 		System.out.println(inputMember);
-		int result = service.signUp(profileImg, inputMember);
+		
+		int result = service.signUp(memberProfileInput, inputMember);
 		
 		
 		String path = "redirect:";
 		String message = null;
 		
 		if(result > 0) { // 가입 성공
-			path += "/"; // 메인페이지로
+			path += "login"; // 로그인 페이지로 // 아니면 로그인 된 상태로 메인페이지로 이동
 			
 			message = inputMember.getMemberNickname() + "님의 가입을 환영합니다";
 			
-		}else { // 가입 실패
+		} else { // 가입 실패
 			
 			// 회원 가입 페이지
 			//path += "/member/signUp"; // 절대경로
@@ -137,11 +141,72 @@ public class MemberController {
 		return "redirect:/";
 	}
 	
-	
+	// 회원 마이페이지 이동
 	@GetMapping("/myPage")
 	public String myPage() {
 		return "member/myPage/myPage";
 	}
+	
+	// CEO 마이페이지 이동
+	@GetMapping("/CEOMyPage")
+	public String CEOMyPage() {
+		return "member/myPage/CEOMyPage";
+	}
+	
+	// 관리자 마이페이지 이동
+	@GetMapping("/managerMyPage")
+	public String managerMyPage() {
+		return "member/myPage/managerMyPage";
+	}
+	
+	// 프로필 관리 페이지 이동
+	@GetMapping("/infoModify")
+	public String infoModify() {
+		return "member/infoModify";
+	}
+	
+	// 회원 탈퇴 페이지 이동
+	@GetMapping("/memberWithdrawal1")
+	public String memberWithdrawal1() {
+		return "member/memberWithdrawal1";
+	}
+	
+	// 회원 탈퇴
+	@PostMapping("/deleteMember")
+	public String deleteMember(String memberPw,
+								SessionStatus status,
+								@SessionAttribute("loginMember") Member loginMember,
+								RedirectAttributes ra,
+								@RequestHeader(value = "referer") String referer
+								) {
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		int result = service.deleteMember(memberPw, memberNo);
+		
+		String message = null;
+		String path = "redirect:";
+		
+		
+		if(result > 0 ) {
+		
+			message = "탈퇴 되었습니다.";
+			path = "/member/memberWithdrawal2";
+			status.setComplete();
+		
+		} else {
+			
+			message = "계정과 비밀번호가 일치하지 않습니다.";
+			path += referer;
+			
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return path;
+	}
+	
+	
 	
 	// 위시리스트 추가
 	@PostMapping("/wishlist/insert")

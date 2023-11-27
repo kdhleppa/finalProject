@@ -12,7 +12,20 @@ public interface MemberService {
 	 */
 	Member loginMember(Member inputMember);
 
-	int signUp(MultipartFile profileImg, Member inputMember) throws Exception;
+	/** 회원가입 서비스
+	 * @param memberProfileImg
+	 * @param inputMember
+	 * @return
+	 * @throws Exception
+	 */
+	int signUp(MultipartFile memberProfileImg, Member inputMember) throws Exception;
+
+	/** 회원탈퇴 서비스
+	 * @param memberPw
+	 * @param memberNo
+	 * @return
+	 */
+	int deleteMember(String memberPw, int memberNo);
 
 	
 

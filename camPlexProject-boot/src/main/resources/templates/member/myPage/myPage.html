@@ -16,7 +16,7 @@
 
 	<th:block th:replace="~{common/headerForContent}"></th:block>
 
-    <main>
+    <main th:object="${session.loginMember}">
         <!-- 공백 (우) -->
         <section class="empty1"></section>
         
@@ -39,20 +39,20 @@
                     
                     <section class="empty2"></section>
                     <section id="nameTel">
-                        <p>이름 : 홍길동</p>
-                        <p>전화번호 : 010-1234-5678</p>
+                        <p th:inline="text">이름 : [[${session.loginMember.memberName}]]</p>
+                        <p th:inline="text">전화번호 : [[${session.loginMember.memberPhone}]]</p>
                     </section>
                     <section class="empty3"></section>
                     
                     <section id="nicknameEmail">
-                        <p>닉네임 : 홍로드브론즈</p>
-                        <p>Email : test1234@naver.com</p>
+                        <p th:inline="text">닉네임 : [[${session.loginMember.memberNickname}]]</p>
+                        <p th:inline="text">Email : [[${session.loginMember.memberEmail}]]</p>
                     </section>
                     <section class="empty2"></section>
                     
                     <section class="btnSection">
-                        <a>프로필 관리</a>
-                        <a>회원 탈퇴</a>
+                        <a th:href="@{/member/infoModify}">프로필 관리</a>
+                        <a th:href="@{/member/memberWithdrawal1}">회원 탈퇴</a>
                     </section>
                 </section>
                 

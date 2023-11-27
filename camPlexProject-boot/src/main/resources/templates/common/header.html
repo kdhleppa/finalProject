@@ -12,12 +12,26 @@
 
             <div class="rightOfTopMenu">
                 <a th:unless="${session.loginMember}" th:href="@{/member/login}">LOGIN</a>
-				    <th:block th:if="${session.loginMember}">
+                
+				<th:block th:if="${session.loginMember}">
 					<a th:href="@{/paysys/rentCart}">CART</a>
 	                <a th:href="@{/member/wishlist}">WISH LIST</a>
-	                <a th:href="@{/member/myPage}">MY PAGE</a>
+	                
+	                <th:block th:if="${session.loginMember.memberType == 'U'}">
+			            <a th:href="@{/member/myPage}">MY PAGE</a>
+			        </th:block>
+			
+			        <th:block th:if="${session.loginMember.memberType == 'C'}">
+			            <a th:href="@{/member/CEOMyPage}">MY PAGE</a>
+			        </th:block>
+			
+			        <th:block th:if="${session.loginMember.memberType == 'M'}">
+			            <a th:href="@{/member/managerMyPage}">MY PAGE</a>
+			        </th:block>
+			        
 	                <a th:href="@{/member/logout}">LOGOUT</a>
-				    </th:block>
+			    </th:block>
+			    
                 <a href="#">TOP</a>
             </div>
 
