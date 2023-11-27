@@ -241,26 +241,26 @@
 						<div class="campSite" th:each="campDetail : ${camp.campDetailList}">
 							
 							<input type="radio" name="campDeNo" class="campStieRadio"
-							th:id="campNo+${campDetail.campDeNo}" th:value="${campDetail.campDeNo}">
-						</input>
-						<label th:for="campNo+${campDetail.campDeNo}" class="campSiteBox" onclick="">
+									th:id="campNo+${campDetail.campDeNo}" th:value="${campDetail.campDeNo}">
+							</input>
+							<label th:for="campNo+${campDetail.campDeNo}" class="campSiteBox" onclick="">
 
-							<div class="campSiteImgWrapper">
-								<img th:src="${campDetail.campDeThumbnail}" alt="">
-							</div>
-							
-							<div class="campSiteInfoContainer">
-								<p th:text="${campDetail.campDeName}"></p>
+								<div class="campSiteImgWrapper">
+									<img th:src="${campDetail.campDeThumbnail}" alt="">
+								</div>
 								
-								<div class="campSiteInfo">
-									<div class="campSiteInfoDetail">
-										<p>수용 인원 <input type="text" name="" id="" th:value="${campDetail.capacity}+명"
-											disabled></p>
+								<div class="campSiteInfoContainer">
+									<p th:text="${campDetail.campDeName}"></p>
+									
+									<div class="campSiteInfo">
+										<div class="campSiteInfoDetail">
+											<p>수용 인원 
+												<input type="text" name="" id="" th:value="${campDetail.capacity}+명" disabled class="capacity">
+											</p>
 										</div>
 										<p class="campSitePrice" th:text="|${#numbers.formatInteger(campDetail.campDePrice, 3, 'COMMA')}원|">가격</p>
 									</div>
-									
-									
+											
 								</div>
 								
 							</label>
