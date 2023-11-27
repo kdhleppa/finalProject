@@ -46,13 +46,7 @@
 		AND ITEM_NO = #{itemNo}
 	</select>
 	
-	<!-- 위시리스트에 들어갈 캠핑장 정보 -->
-<<<<<<< HEAD
-	<select id="selectCampWish">
-=======
-
 	<select id="selectCampWish" resultMap="camp_rm">
->>>>>>> afda18afeae59a5a491034742ea64fc60e2a9b05
 			SELECT c.*
 			FROM CAMPING_SITE c
 			INNER JOIN WISH_LIST w ON c.CAMP_NO = w.CAMP_NO
