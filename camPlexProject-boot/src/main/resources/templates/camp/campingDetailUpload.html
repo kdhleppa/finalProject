@@ -17,7 +17,7 @@
     <!-- 메인 -->
     <main class="campingDetailUploadMain">
 		
-		<form class="campingDetailUploadForm">
+		<form action="#" class="campingDetailUploadForm">
 			
 			<!-- Information -->
 	        <section class="informationSec">
@@ -30,9 +30,7 @@
 	
 	        <section class="inputCampingNameSec">
 				
-	            <input class="inputCampingName" type="text" placeholder="캠핑장 명을 입력해주세요." name="campName">
-	            <input class="inputCampingName" type="text" placeholder="캠핑장 주소를 입력해주세요." name="campAddress">
-	            <input class="inputCampingName" type="tel" placeholder="캠핑장 전화번호를 입력해주세요." name="campPhone">
+	            <input class="inputCampingName" name="campName" type="text" placeholder="캠핑장 명을 입력해주세요.">
 	            
 	        </section>
 	
@@ -43,7 +41,7 @@
 	                <div class="thumbnailInput">
 
 						<label for="img0">
-                        	<img class="preview" th:src="@{/images/iconImg/MOTN.png}">
+                        	<img class="preview">
 	                    </label>
 	                    
 	                    <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
@@ -72,7 +70,7 @@
 								<div class="inputEtcImgBtn">			
 
 									<label for="img1">
-			                        	<img class="preview" src="">
+			                        	<img class="preview">
 				                    </label>
 				                    
 				                    <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
@@ -94,7 +92,7 @@
 								<div class="inputEtcImgBtn">			
 
 									<label for="img2">
-			                        	<img class="preview" src="">
+			                        	<img class="preview">
 				                    </label>
 				                    
 				                    <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
@@ -127,7 +125,7 @@
 								<div class="inputEtcImgBtn">			
 
 									<label for="img3">
-			                        	<img class="preview" src="">
+			                        	<img class="preview">
 				                    </label>
 				                    
 				                    <input type="file" name="images" class="inputImage" id="img3" accept="image/*">
@@ -149,7 +147,7 @@
 								<div class="inputEtcImgBtn">			
 
 									<label for="img4">
-			                        	<img class="preview" src="">
+			                        	<img class="preview">
 				                    </label>
 				                    
 				                    <input type="file" name="images" class="inputImage" id="img4" accept="image/*">
@@ -222,7 +220,7 @@
 	
 	        <section class="introductionInputSec">
 	
-	            <textarea class="introduceTextArea" placeholder="캠핑장에 대한 설명을 입력하세요."></textarea>
+	            <textarea class="introduceTextArea" name="campInfo" placeholder="캠핑장에 대한 설명을 입력하세요."></textarea>
 	
 	        </section>
 	
@@ -240,13 +238,13 @@
 	
 	                <section class="detailsInputLeftRightSec" id="detailsInputLeftSec">
 
-						<div class="inputEtcImgBtn" id="introductionTitleDiv">
+						<div class="inputEtcImgBtn" id="iputImgOfDetailMap">
 						   
 		                   	<label for="img5">
-		                       <img class="preview" th:src="@{/images/iconImg/MOTN.png}">
+		                       <img class="preview">
 		                   	</label>
 		                   
-		                   	<input type="file" name="images" class="inputImage" id="img5" accept="image/*">
+		                   	<input type="file" name="campMap" class="inputImage" id="img5" accept="image/*">
 		                   	
 
 		              	</div>
@@ -276,23 +274,23 @@
 	                        <section class="additionalFacilitiesInputLSec">
 	
 	                            <section class="additionalFacilitiesSec">
-	                                <input type="checkbox">&nbsp; 공용 샤워실
+	                                <input type="checkbox" name="campOption" value="SWER">&nbsp; 공용 샤워실
 	                            </section>
 	
 	                            <section class="additionalFacilitiesSec">
-	                                <input type="checkbox">&nbsp; 편의점 / 매점
+	                                <input type="checkbox" name="campOption" value="CONV">&nbsp; 편의점 / 매점
 	                            </section>
 	
 	                            <section class="additionalFacilitiesSec">
-	                                <input type="checkbox">&nbsp; 바베큐장
+	                                <input type="checkbox" name="campOption" value="BBQ">&nbsp; 바베큐장
 	                            </section>
 	
 	                            <section class="additionalFacilitiesSec">
-	                                <input type="checkbox">&nbsp; 공용 화장실
+	                                <input type="checkbox" name="campOption" value="TOIL">&nbsp; 공용 화장실
 	                            </section>
 	
 	                            <section class="additionalFacilitiesSec">
-	                                <input type="checkbox">&nbsp; 공용 주차장
+	                                <input type="checkbox" name="campOption" value="PARK">&nbsp; 공용 주차장
 	                            </section>
 	
 	                        </section>
@@ -300,19 +298,19 @@
 	                        <section class="additionalFacilitiesInputRSec">
 	
 	                            <section class="additionalFacilitiesSec">
-	                                <input type="checkbox">&nbsp; 수영장
+	                                <input type="checkbox" name="campOption" value="POOL">&nbsp; 수영장
 	                            </section>
 	
 	                            <section class="additionalFacilitiesSec">
-	                                <input type="checkbox">&nbsp; Wi-Fi
+	                                <input type="checkbox" name="campOption" value="WIFI">&nbsp; Wi-Fi
 	                            </section>
 	
 	                            <section class="additionalFacilitiesSec">
-	                                <input type="checkbox">&nbsp; 노래방
+	                                <input type="checkbox" name="campOption" value="SING">&nbsp; 노래방
 	                            </section>
 	
 	                            <section class="additionalFacilitiesSec">
-	                                <input type="checkbox">&nbsp; 카페
+	                                <input type="checkbox" name="campOption" value="CAFE">&nbsp; 카페
 	                            </section>    
 	
 	                        </section>
@@ -332,15 +330,15 @@
 	                        <section class="macroEnvironmentInputLRSec">
 	
 	                            <section class="macroEnvironmentInputDetailSec">
-	                                <input type="checkbox">&nbsp; 등산로
+	                                <input type="checkbox" name="aroundView" value="TREK">&nbsp; 등산로
 	                            </section>
 	
 	                            <section class="macroEnvironmentInputDetailSec">
-	                                <input type="checkbox">&nbsp; 계곡
+	                                <input type="checkbox" name="aroundView" value="VALY">&nbsp; 계곡
 	                            </section>
 	
 	                            <section class="macroEnvironmentInputDetailSec">
-	                                <input type="checkbox">&nbsp; 산 / 숲
+	                                <input type="checkbox" name="aroundView" value="MOTN">&nbsp; 산 / 숲
 	                            </section>
 	
 	                        </section>
@@ -348,15 +346,15 @@
 	                        <section class="macroEnvironmentInputLRSec">
 	
 	                            <section class="macroEnvironmentInputDetailSec">
-	                                <input type="checkbox">&nbsp; 바다
+	                                <input type="checkbox" name="aroundView" value="SEA">&nbsp; 바다
 	                            </section>
 	
 	                            <section class="macroEnvironmentInputDetailSec">
-	                                <input type="checkbox">&nbsp; 강 / 호수
+	                                <input type="checkbox" name="aroundView" value="RIVR">&nbsp; 강 / 호수
 	                            </section>
 	
 	                            <section class="macroEnvironmentInputDetailSec">
-	                                <input type="checkbox">&nbsp; 도심
+	                                <input type="checkbox" name="aroundView" value="CITY">&nbsp; 도심
 	                            </section>
 	
 	                        </section>
@@ -379,7 +377,7 @@
 	                        </section>
 	
 	                        <section class="mannerTimeInputDetailSec">
-	                            <input class="mannerTimeInput" type="text" placeholder="매너타임 시간을 입력하세요.">
+	                            <input class="mannerTimeInput" type="text" name="mannerTime" placeholder="매너타임 시간을 입력하세요.">
 	                        </section>
 	
 	                    </section>
@@ -390,6 +388,162 @@
 	            </section>
 	
 	        </section>
+	        
+	        <section class="etcInfoTitleSec">
+				
+				<section class="etcInfoTitleLocationSec">
+					
+					<div class="etcInfoTitleDiv">
+						Etc Info
+					</div>
+					
+				</section>
+				
+			</section>
+			
+			<section class="etcInfoInputSec">
+				
+				<section class="etcInfoInputLocationSec">
+					
+					<section class="etcInfoInputOneLineSec">
+						
+						<section class="etcInfoInputImgSec">
+							
+							<img class="etcInfoInputImg" th:src="@{/images/iconImg/campingUploadAddress.png}">
+							
+						</section>
+						
+						<section class="etcInfoInputBlankSec">
+							
+						</section>
+						
+						<section class="etcInfoInputNameSec">
+							
+							<span>캠핑장 주소</span>
+							
+						</section>
+						
+						<section class="etcInfoInputInfoSec">
+							
+							<input class="etcInfoInput" id="campingAddress">
+							
+						</section>
+						
+					</section>
+					
+					<section class="etcInfoInputOneLineSec">
+						
+						<section class="etcInfoInputImgSec">
+							
+							<img class="etcInfoInputImg" th:src="@{/images/iconImg/campingUploadPhone.png}">
+							
+						</section>
+						
+						<section class="etcInfoInputBlankSec">
+							
+						</section>
+						
+						<section class="etcInfoInputNameSec">
+							
+							<span>전화번호</span>
+							
+						</section>
+						
+						<section class="etcInfoInputInfoSec">
+							
+							<input class="etcInfoInput">
+							
+						</section>
+						
+					</section>
+					
+					<section class="etcInfoInputOneLineSec">
+						
+						<section class="etcInfoInputImgSec">
+							
+							<img class="etcInfoInputImg" th:src="@{/images/iconImg/campingUploadIn.png}">
+							
+						</section>
+						
+						<section class="etcInfoInputBlankSec">
+							
+						</section>
+						
+						<section class="etcInfoInputNameSec">
+							
+							<span>체크인 시간</span>
+							
+						</section>
+						
+						<section class="etcInfoInputInfoSec">
+							
+							<input class="etcInfoInput">
+							
+						</section>
+						
+					</section>
+					
+					<section class="etcInfoInputOneLineSec">
+						
+						<section class="etcInfoInputImgSec">
+							
+							<img class="etcInfoInputImg" th:src="@{/images/iconImg/campingUploadOut.png}">
+							
+						</section>
+						
+						<section class="etcInfoInputBlankSec">
+							
+						</section>
+						
+						<section class="etcInfoInputNameSec">
+							
+							<span>체크아웃 시간</span>
+							
+						</section>
+						
+						<section class="etcInfoInputInfoSec">
+							
+							<input class="etcInfoInput">
+							
+						</section>
+						
+					</section>
+					
+					<section class="etcInfoInputOneLineSec">
+						
+						<section class="etcInfoInputImgSec">
+							
+							<img class="etcInfoInputImg" th:src="@{/images/iconImg/campingUploadCategory.png}">
+							
+						</section>
+						
+						<section class="etcInfoInputBlankSec">
+							
+						</section>
+						
+						<section class="etcInfoInputNameSec">
+							
+							<span>카테고리</span>
+							
+						</section>
+						
+						<section class="etcInfoInputInfoSec">
+							
+							<select class="categorySelect">
+								<option selected>카테고리 선택</option>
+								<option value="AUTO">오토캠핑</option>
+								<option value="BACK">백패킹</option>
+								<option value="CAR">차박</option>
+								<option value="GLAM">글램핑</option>
+							</select>
+							
+						</section>
+						
+					</section>
+					
+				</section>
+				
+			</section>
 	
 	        <section class="enrollSiteTitleSec">
 	
@@ -401,7 +555,7 @@
 	
 	        <section class="enrollSiteSec">
 	
-	            <button class="enrollSiteBtn">+</button>
+	            <button class="enrollSiteBtn" type="submit">+</button>
 	
 	        </section>
 
