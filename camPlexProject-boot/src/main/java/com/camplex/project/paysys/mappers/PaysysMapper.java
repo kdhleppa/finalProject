@@ -5,6 +5,8 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.camplex.project.paysys.model.dto.CartItem;
+
 @Mapper
 public interface PaysysMapper {
 
@@ -22,6 +24,10 @@ public interface PaysysMapper {
 
 
 	Integer searchMembersCartNo(int memberNo);
+
+
+
+	int quantityUpdateCart(CartItem cartItem);
 
 
 

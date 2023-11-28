@@ -27,8 +27,6 @@ public class ItemController2 {
 		
 		searchList = service.searchItems();
 		
-		System.out.println(searchList);
-		
 		model.addAttribute("searchList", searchList);
 		
 		System.out.println(model);

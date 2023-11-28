@@ -23,6 +23,8 @@ public class FindCartItem {
 	private String itemStatus;
 	private int discountRate;
 	private int reservationNo;
+	private int cartItemNo;
+	private int itemQuantity;
 	private String thumbnail;
 	
 	private List<ItemImg> imageList;
