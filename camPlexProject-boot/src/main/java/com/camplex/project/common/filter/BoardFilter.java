@@ -34,7 +34,6 @@ public class BoardFilter implements Filter{
 			for(Map <String,Object> boardTypeFl : boardTypeList) {
 				
 				if((boardTypeFl.get("BOARD_TYPE") + "").equals(boardType)) {
-					System.out.println("test::"+boardTypeFl.get("BOARD_TYPE_NAME"));
 					req.setAttribute("boardTypeName", boardTypeFl.get("BOARD_TYPE_NAME"));
 				}
 			}

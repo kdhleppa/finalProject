@@ -47,33 +47,22 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
 /*reservation List*/
 .reservationText p {
+	margin-top: 50px;
     color: #D4A373;
     font-size: 30px;
 }
 
 .reservationText {
-    
     border-bottom: 1px solid gray;
 }
-
-
 
 
 /*camNameContainer*/
 .campNameContainer {
     margin-top: 30px;
     display: inline-flex;
-    border-bottom: 1px solid gray;
     align-items: baseline;
 }
 

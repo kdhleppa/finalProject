@@ -171,6 +171,7 @@ let checkInDate = document.getElementById('checkInDate')
 let checkOutDate = document.getElementById('checkOutDate')
 
 document.addEventListener('DOMContentLoaded', function() {
+	
 	var calendarNext = document.getElementById('calendar-next');
 
 	var currentDate = new Date();
@@ -230,12 +231,21 @@ document.addEventListener('DOMContentLoaded', function() {
 					calendarCell.classList.add('empty');
 				} else {
 					calendarCell.textContent = currentDay;
+					var today = new Date();
+					var tempDay = new Date(year, month-1, currentDay);
+					
+					if(tempDay < today){
+						calendarCell.classList.add('emptyDay')
+					}
+					
 					currentDay++;
 
 					// Add click event listener to each calendar cell
 					calendarCell.addEventListener('click', function (event) {
+						
 						handleDateClick(event, container);
 					});
+					
 				}
 
 				calendarRow.appendChild(calendarCell);
@@ -283,6 +293,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			if (startDate && cellDate.getTime() === startDate.getTime()) {
 				
 				cell.classList.add('selected-start');
+				
 				exitDate = new Date(startDate);
 			
 				exitDate.setDate(startDate.getDate()+parseInt(stayDate));
@@ -412,6 +423,33 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 	}
 
+	function clickEmpty() {
+
+		let emptyCell = document.querySelectorAll('.emptyDay');
+
+		for (var i = 0; i < emptyCell.length; i++) {
+
+			emptyCell[i].addEventListener("click", () => {
+
+				alert("선택할 수 없는 날짜 입니다.")
+
+				var calendarCellsAll = document.querySelectorAll('.calendar td');
+
+				calendarCellsAll.forEach(cell => {
+					cell.classList.remove('selected-start');
+				});
+
+				checkInDate.innerText = '';
+
+				checkOutDate.innerText = '';
+
+				return;
+
+			})
+		}
+
+	}
+
 
 	// 달력 좌우 이동
 
@@ -425,6 +463,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 		createCalendar(calendarNext, currentYear, currentMonth);
 		applyDateRangeStyle(calendarNext);
+		clickEmpty()
+		
+		
 	});
 
 	// Next month button click event
@@ -437,6 +478,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		}
 		createCalendar(calendarNext, currentYear, currentMonth);
 		applyDateRangeStyle(calendarNext);
+		clickEmpty()
 	});
 
 	
@@ -448,6 +490,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 	
 	
-
+	clickEmpty();
 });
+
+
+
 

@@ -119,6 +119,11 @@ public class CampController {
 			) {
 		
 		 String path = "";
+		 Map<String, Object> map = new HashMap();
+		 
+		 map.put("entDate", entDate);
+		 map.put("outDate", outDate);
+		 map.put("stayDay", stayDay);
 		 
 
 		if(loginMember == null) {
@@ -130,9 +135,9 @@ public class CampController {
 			
 			CampDetail campDetail = service.selectCampDetail(campDeNo);
 			List<CampDetailImage> campDetailImages = service.selectCampDetailImageList(campDeNo);
-			
 			model.addAttribute("campDetail", campDetail);
 			model.addAttribute("campDetailImages", campDetailImages);
+			model.addAttribute("map", map);
 			
 			path = "camp/campingReservation";
 			

@@ -31,8 +31,9 @@
 
             <hr>
 
-			<form>
-				
+			<form th:action="@{/paysys/camp}" id="reservationFrm" method="post">
+				<input type="hidden" name="campDeName" th:value="${campDetail.campDeName}">
+				<input type="hidden" name="campName" th:value="${campDetail.campName}">
 			
             <section class="mainPicArea">
 
@@ -85,11 +86,15 @@
                             </div>
 
                             <div class="campingInfoDetail">
-                                <p>캠핑</p>
-                                <p th:text="|수용인원 ${campDetail.capacity}명|">수용인원</p>
+                                <p th:text="${campDetail.category}"></p>
+                                <p th:text="|수용인원 ${campDetail.capacity}명 / 최대인원 ${campDetail.fullCapacity}명|">수용인원</p>
                                 <p th:text="|입실 : ${campDetail.checkIn}  /  퇴실 : ${campDetail.checkOut}|">입실/ 퇴실 </p>
                                 <p th:text="${campDetail.mannerTime}">매너타임</p>
-                                <p id="price" th:text="|${#numbers.formatInteger(campDetail.campDePrice, 3, 'COMMA')}원(1박)|">가격</p>
+                                <p id="price" th:text="${#numbers.formatInteger(campDetail.campDePrice*map.stayDay, 3, 'COMMA')} 
+                                + '원 (1박  :  '
+                                + ${#numbers.formatInteger(campDetail.campDePrice, 3, 'COMMA')} 
+                                + '원)'">가격</p>
+                                <input type="hidden" name="price" th:value="${campDetail.campDePrice}*${map.stayDay}">
                             </div>
 
                         </div>
@@ -131,20 +136,25 @@
                     
                     <div class="customerInfoInput">
                         
-                        <input type="text" name="customerName" id="">
-                        <input type="tel" name="customerTel" id="" placeholder=" '-'제외 ">
-                        <div>
+                        <input type="text" name="customerName" id="customerName" th:value="${session.loginMember.memberName}">
+                        <input type="tel" name="customerTel" id="customerTel" placeholder=" '-'제외 " th:value="${session.loginMember.memberPhone}">
+                        <div class="humanCountContainer">
                             <img id="adultIcon" class="adultIcon" th:src="@{/images/iconImg/adult.png}" alt="">
-                            <p>4명</p>
+                            <input type="number" name="adultCount" id="adultCount" class="humanCount" value="0" disabled ></input>
                             <img class="kidIcon" th:src="@{/images/iconImg/adult.png}" alt="">
-                            <p>0명</p>
+                            <input type="number" name="kidCount" id="kidCount" class="humanCount" value="0" disabled ></input>
+                            <p>추가인원 :&nbsp; </p>
+                            <input type="number" name="additionalCount" id="additionalCount" class="humanCount" disabled value="0"></input>
+                            <button type="button" id="chooseNumberBtn"> 인원 선택</button>
                         </div>
                         <div>
                             <img class="calIcon" th:src="@{/images/iconImg/cal_icon.png}" alt="">
-                            <input type="date" name="" id="">&nbsp;~&nbsp;<input type="date" name="" id="">
+                            <input type="text" name="entDate" id="" class="date" th:value="${map.entDate}" disabled>
+                            &nbsp;&nbsp;&nbsp;~&nbsp;&nbsp;&nbsp;
+                            <input type="text" name="outDate" id="" class="date" th:value="${map.outDate}" disabled>
                         </div>
-                        <input type="email" name="customerEmail" id="">
-                        <textarea name="" id="" cols="50" rows="10" style="resize: none;"></textarea>
+                        <input type="email" name="customerEmail" id="" th:value="${session.loginMember.memberEmail}">
+                        <textarea name="demand" id="" cols="50" rows="10" style="resize: none;"></textarea>
                         
                     </div>
                 </div>
@@ -153,10 +163,10 @@
 
 
             <div class="btnArea">
-                <ul>
-                    <li><span class="btn">예약하기</span></li>
-                    <li><span class="btn" onclick="history.back()">돌아가기</span></li>
-                </ul>
+         
+                <button class="btn">예약하기</button>
+                <button type="button" class="btn" onclick="history.back()">돌아가기</button>
+                 
             </div>
 
 			</form>
@@ -169,8 +179,16 @@
 	</main>
 
 		<th:block th:replace="~{common/footer}"></th:block>
+		<th:block th:replace="~{camp/numberOfPeopleModal}"></th:block>
 
 		<script th:src="@{/js/camp/CampingReservation.js}"></script>
+		
+		<script th:inline="javascript">
+			
+			const capacity =  /*[[${campDetail.capacity}]]*/ "최대수용인원";
+			const fullCapacity =  /*[[${campDetail.fullCapacity}]]*/ "최대수용인원";
+			
+		</script>
 </body>
 
 </html>
