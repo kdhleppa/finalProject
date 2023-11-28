@@ -58,8 +58,7 @@ public class MemberController {
 	public String login(Member inputMember,
 						Model model,
 						@RequestHeader("referer") String referer,
-						RedirectAttributes ra,
-						HttpServletResponse resp
+						RedirectAttributes ra
 						) {
 		
 		Member loginMember = service.loginMember(inputMember);
@@ -83,7 +82,6 @@ public class MemberController {
 	
 	@GetMapping("/signUp")
 	public String signUp() {
-		
 		return "member/idPw/signUp";
 	}
 	
@@ -120,17 +118,19 @@ public class MemberController {
 	}
 	
 	
-	
+	// 아이디 찾기 페이지 이동
 	@GetMapping("/searchId")
 	public String searchId() {
 		return "member/idPw/searchId1";
 	}
 	
+	// 비밀번호 변경 페이지 이동
 	@GetMapping("/searchPw")
 	public String searchPw() {
 		return "member/idPw/pwReset1";
 	}
 	
+	// 로그아웃 이동
 	@GetMapping("/logout")
 	public String logout(SessionStatus status, HttpSession session) {
 		status.setComplete();
@@ -160,6 +160,44 @@ public class MemberController {
 	public String infoModify() {
 		return "member/infoModify";
 	}
+	
+	// 프로필 정보 수정
+	@PostMapping("/updateMember")
+	public String updateMember(@SessionAttribute("loginMember") Member loginMember,
+								Member inputMember,
+								MultipartFile memberProfileInput,
+								RedirectAttributes ra,
+								Model model
+								) throws Exception {
+		
+		String path = "redirect:";
+		String message = null;
+		
+		inputMember.setMemberNo(loginMember.getMemberNo());
+		
+		int result = service.updateMember(memberProfileInput, inputMember);
+		
+		if(result > 0) {
+			path += "myPage";
+			
+			message = "정보가 수정되었습니다.";
+			
+			model.addAttribute("loginMember", inputMember);
+			
+		} else {
+			
+			path += "infoModify";
+			
+			message = "정보를 수정 실패했습니다.";
+			
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return path;
+	}
+	
+	
 	
 	// 회원 탈퇴 페이지 이동
 	@GetMapping("/memberWithdrawal1")

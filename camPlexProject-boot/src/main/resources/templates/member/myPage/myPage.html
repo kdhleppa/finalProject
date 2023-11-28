@@ -34,7 +34,11 @@
                 <!-- 내 정보 -->
                 <section id="infoMain">
 					<section id="profileImgSection">
-	                    <img id="profileImg" th:src="@{/images/memberImg/naverImg.png}">
+						
+	                    <img th:unless="*{memberProfileImg}" id="profileImg" th:src="@{/images/memberImg/gg_profile.png}">
+						
+	                    <img th:if="*{memberProfileImg}" id="profileImg" th:src="*{memberProfileImg}">
+
 					</section>
                     
                     <section class="empty2"></section>

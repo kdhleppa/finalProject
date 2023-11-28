@@ -16,6 +16,24 @@
 		AND MEMBER_DEL_FL = 'N'
 	</select>
 	
+	<!-- 업데이트 인증번호 -->
+	<update id="updateAuthKey">
+		UPDATE "AUTH_KEY" SET
+		AUTH_CODE = #{authKey},
+		CREATE_DATE = SYSDATE
+		WHERE EMAIL = #{email}
+	</update>
 	
+	<!-- 인서트 인증번호 -->
+	<insert id="insertAuthKey">
+		INSERT INTO "AUTH_KEY" VALUES(SEQ_AUTH_KEY_NO.NEXTVAL, #{authKey}, #{email}, DEFAULT)
+	</insert>
+
+	<!-- 인증번호 확인 -->
+	<select id="checkAuthKey" resultType="_int">
+		SELECT COUNT(*) FROM "AUTH_KEY"
+		WHERE EMAIL = #{email}
+		AND AUTH_CODE = #{inputKey}
+	</select>
 
 </mapper>

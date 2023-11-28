@@ -242,3 +242,7 @@ main {
 #checkEmail {
     margin-top: 75px;
 }
+
+/* 메세지 색상 지정 */
+.confirm{ color : green; }
+.error{ color : red; }
