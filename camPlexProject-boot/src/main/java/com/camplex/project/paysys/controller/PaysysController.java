@@ -10,8 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -20,10 +22,10 @@ import com.camplex.project.camping.model.dto.Camp;
 import com.camplex.project.camping.model.dto.CampDetail;
 import com.camplex.project.camping.model.service.CampService;
 import com.camplex.project.item.model.dto.FindCartItem;
-import com.camplex.project.item.model.dto.Item;
 import com.camplex.project.item.model.dto.MembersReservationDate;
 import com.camplex.project.item.model.service.ItemService;
 import com.camplex.project.member.model.dto.Member;
+import com.camplex.project.paysys.model.dto.CartItem;
 import com.camplex.project.paysys.model.dto.Reservations;
 import com.camplex.project.paysys.model.service.PaysysService;
 import com.camplex.project.paysys.model.service.ReservationsService;
@@ -164,9 +166,21 @@ public class PaysysController {
 		return "/paysys/rentCart";
 	}
 	
+	@ResponseBody
 	@PostMapping("/quantityUpdateCart")
-	public int quantityUadateCart() {
+	public int quantityUpdateCart(@RequestBody CartItem cartItem) {
 		
+		int itemQuantity = cartItem.getItemQuantity();
+		int cartItemNo = cartItem.getCartItemNo();
+		System.out.println("itemQuantity:"+itemQuantity);
+		
+		int result = payService.quantityUpdateCart(cartItem);
+			
+		if (result > 0) {
+			System.out.println("수량 조절 성공성공성공");
+		} else {
+			System.out.println("수량조절 잘안됨");
+		}
 		
 		return 0;
 	}

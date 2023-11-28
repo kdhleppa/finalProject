@@ -42,7 +42,11 @@
 		WHERE MEMBER_NO = #{memberNo}
 	</select>  	
 	
-	
+	<update id="quantityUpdateCart">
+		UPDATE CART_ITEM
+		SET ITEM_QUANTITY = #{itemQuantity}
+		WHERE CART_ITEM_NO = #{cartItemNo}
+	</update>
 	
 	
 </mapper>
