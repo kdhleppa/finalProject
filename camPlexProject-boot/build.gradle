@@ -43,6 +43,22 @@ dependencies {
 	// https://mvnrepository.com/artifact/net.nurigo/sdk
 	implementation 'net.nurigo:sdk:4.2.7'
 
+	// chatdemo
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-websocket
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-websocket', version: '3.1.5'
+	
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-amqp
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-amqp', version: '3.1.5'
+	
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-reactor-netty
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-reactor-netty', version: '3.1.5'
+	
+	// https://mvnrepository.com/artifact/org.json/json
+	implementation group: 'org.json', name: 'json', version: '20230618'
+	
+	// https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+	implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+
 }
 
 tasks.named('bootBuildImage') {

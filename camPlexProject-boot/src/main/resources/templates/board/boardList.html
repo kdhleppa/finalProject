@@ -16,6 +16,8 @@
     
     <th:block th:replace="~{common/headerForContent}"></th:block>
     
+    <th:block th:replace="~{qna/qna}"></th:block>
+    
     <main th:with="pagination=${map.pagination}, boardList=${map.boardList}">
 		<ul class="boardTypeList">
             <li>
@@ -210,6 +212,8 @@
 	        
 	        
 	    </section>
+	    
+	    <th:block th:replace="~{chatdemo/chatdemo}"></th:block>
 	    
 	    	
 	</main>
