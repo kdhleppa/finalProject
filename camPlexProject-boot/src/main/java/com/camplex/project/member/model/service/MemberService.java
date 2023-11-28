@@ -27,6 +27,13 @@ public interface MemberService {
 	 */
 	int deleteMember(String memberPw, int memberNo);
 
+	/** 프로필 정보 수정 서비스
+	 * @param memberProfileInput
+	 * @param inputMember
+	 * @return
+	 */
+	int updateMember(MultipartFile memberProfileInput, Member inputMember) throws Exception;
+
 	
 
 }

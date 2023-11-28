@@ -1,6 +1,7 @@
 package com.camplex.project.member.mappers;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.camplex.project.member.model.dto.Member;
 
@@ -18,6 +19,9 @@ public interface MemberMapper {
 
 	// 회원 탈퇴
 	int deleteMember(int memberNo);
+
+	// 프로필 정보 수정
+	int updateMember(Member inputMember);
 
 	
 	
