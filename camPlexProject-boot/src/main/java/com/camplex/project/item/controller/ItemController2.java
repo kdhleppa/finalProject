@@ -29,8 +29,6 @@ public class ItemController2 {
 		
 		model.addAttribute("searchList", searchList);
 		
-		System.out.println(model);
-		
 		return "item/rentalCheckPage";
 	}
 	

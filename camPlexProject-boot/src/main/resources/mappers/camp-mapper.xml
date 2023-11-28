@@ -48,11 +48,13 @@
 		<result property="campDeName" column="CAMP_DE_NAME" />
 		<result property="campDePrice" column="CAMP_DE_PRICE" />
 		<result property="capacity" column="CAPACITY" />
+		<result property="fullCapacity" column="FULL_CAPACITY" />
 		<result property="campDeThumbnail" column="CAMP_DETAIL_THUMBNAIL" />
 		<result property="campName" column="CAMP_NAME" />
 		<result property="mannerTime" column="MANNER_TIME" />
 		<result property="checkIn" column="CHECK_IN" />
 		<result property="checkOut" column="CHECK_OUT" />
+		<result property="category" column="CATEGORY" />
 	</resultMap>
 	
 	<resultMap type="CampSiteImage" id="camp_image_rm">
@@ -83,7 +85,7 @@
 	
 	<!-- collection 중 호실 정보 조회 -->
 	<select id="selectCampDetailList" resultMap="camp_detail_rm">
-		SELECT CAMP_DE_NO, CAMP_NO, CAMP_DE_NAME, CAMP_DE_PRICE, CAPACITY, 
+		SELECT CAMP_DE_NO, CAMP_NO, CAMP_DE_NAME, CAMP_DE_PRICE, CAPACITY, FULL_CAPACITY,
 			(SELECT (CAMP_DE_IMG_PATH || CAMP_DE_IMG_RENAME) 
 			 FROM CAMPING_DETAIL_IMG B
 			 WHERE  A.CAMP_DE_NO = B.CAMP_DE_NO 
@@ -134,7 +136,15 @@
 	<!-- 캠핑장 예약 이동하면서 보여줄 정보 조회 -->
 	<select id="selectCampDetail" resultMap="camp_detail_rm">
 		SELECT CAMP_NO, CAMP_NAME, CAMP_DE_NAME, CAMP_DE_PRICE, CAPACITY, MANNER_TIME, 
-		CHECK_IN, CHECK_OUT
+		CHECK_IN, CHECK_OUT, FULL_CAPACITY,
+		(SELECT CATEGORY_NAME 
+		FROM CAMPING_CATEGORY 
+		WHERE CATEGORY= (SELECT CATEGORY 
+						 FROM CAMPING_SITE 
+						 WHERE CAMP_NO = (SELECT CAMP_NO 
+						 				  FROM CAMPING_DETAIL
+						 				  WHERE CAMP_DE_NO = #{campDeNo}))		
+		) CATEGORY
 		FROM "CAMPING_DETAIL"
 		JOIN CAMPING_SITE USING(CAMP_NO)
 		WHERE CAMP_DE_NO = #{campDeNo}
@@ -185,7 +195,8 @@
 	
 	<!-- 예약안된 호실 정보 조회 -->
 	<select id="selectCampDetailListNotRes" resultMap="camp_detail_rm">
-		SELECT CAMP_DE_NO, CAMP_NO, CAMP_DE_NAME, CAMP_DE_PRICE, CAPACITY, CHECK_IN, CHECK_OUT, CAMP_NAME, MANNER_TIME,
+		SELECT CAMP_DE_NO, CAMP_NO, CAMP_DE_NAME, CAMP_DE_PRICE, CAPACITY, CHECK_IN, 
+			   CHECK_OUT, CAMP_NAME, MANNER_TIME, FULL_CAPACITY,
       		   (SELECT (CAMP_DE_IMG_PATH || CAMP_DE_IMG_RENAME) 
        			FROM CAMPING_DETAIL_IMG B
         		WHERE A.CAMP_DE_NO = B.CAMP_DE_NO 

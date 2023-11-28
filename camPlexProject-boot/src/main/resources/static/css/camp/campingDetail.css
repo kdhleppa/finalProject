@@ -619,6 +619,11 @@ hr {
 	background-color: #eee;
 }
 
+.emptyDay {
+	background-color: #eee;
+	color: #a6a6a6;
+}
+
 .selected-start,
 .selected-end {
 	background-color: #909090;

@@ -71,8 +71,6 @@ public class MemberController {
 			path += "/";
 			ra.addFlashAttribute("message", loginMember.getMemberNickname() + "님 환영합니다.");
 			
-			System.out.println(loginMember);
-			
 			model.addAttribute("loginMember", loginMember);
 		} else {
 			path += referer;
@@ -93,8 +91,6 @@ public class MemberController {
 	@PostMapping("/signUp")
 	public String signUp(Member inputMember, MultipartFile memberProfileInput,
 						RedirectAttributes ra ) throws Exception {	
-		
-		System.out.println(inputMember);
 		
 		int result = service.signUp(memberProfileInput, inputMember);
 		

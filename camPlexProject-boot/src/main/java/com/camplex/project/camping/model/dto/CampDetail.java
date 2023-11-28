@@ -18,6 +18,7 @@ public class CampDetail {
 	private String campDeName;
 	private int campDePrice;
 	private int capacity;
+	private int fullCapacity;
 	private String checkIn;
 	private String checkOut;
 	
@@ -28,4 +29,5 @@ public class CampDetail {
 	
 	private String campName;
 	private String mannerTime;
+	private String category;
 }
