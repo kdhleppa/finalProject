@@ -25,7 +25,7 @@
             
             <h2 class="heading">SHOPPING LIST</h2>
             <form action="" class="">
-				<th:block th:each="rsvInfo : ${rsvInfo}">
+				<div th:each="rsvInfo : ${rsvInfo}">
 	          		<p th:text="${rsvInfo.campName} + ' (' + ${rsvInfo.campEntDate} + ' ~ ' + ${rsvInfo.campOutDate} + ')'"></p>
 	                <table class="shoppingCartTB">
 	                    <tr>
@@ -48,8 +48,8 @@
 			                        <!-- 개별선택체크박스-->
 			                        <td>
 										<input type="checkbox" class="">
+										<input type="hidden" th:id="'cartItemNo'+${iterStat.index}" th:value="${cartItem.cartItemNo}">
 										<input type="hidden" th:id="'itemPrice'+${iterStat.index}" th:value="${cartItem.itemPrice}">
-										<input type="hidden" th:id="'cartItemNo'+${iterStat.index}" th:value="${cartItem.cartItemNo}">	
 									</td>
 			                        <td><img th:src="${cartItem.thumbnail}" th:onclick-"|location.href = '@{/item/itemDetail/{itemNo}(itemNo = ${cartItem.itemNo})}'|"></td>
 			                        <td>[[${cartItem.itemName}]]</td>
@@ -57,15 +57,15 @@
 			                            <select name="" id="" class="campSelect">
 			                                <option value="default" class="">제품을 이동시킬 캠핑장을 선택해 주세요.</option>
 			                                <th:block th:each="rsvInfo2 : ${rsvInfo2}">
-												<option th:value="${rsvInfo2.reservationNo}" th:text="${rsvInfo2.campName} + ' (' + ${rsvInfo2.campEntDate} + ' ~ ' + ${rsvInfo2.campOutDate} + ')'"></option>
+												<option th:unless="${rsvInfo.reservationNo == rsvInfo2.reservationNo}" th:value="${rsvInfo2.reservationNo}" th:text="${rsvInfo2.campName} + ' (' + ${rsvInfo2.campEntDate} + ' ~ ' + ${rsvInfo2.campOutDate} + ')'"></option>
 											</th:block>
 			                            </select>
 			                            <button href="#" class="grayBtn">MOVE</button>
 			                        </td>
 			                        <td>
-										<button class="qBtn" th:id="'minusBtn'+${iterStat.index}">-</button>
-			                        	&nbsp;&nbsp;<span th:id="'quantityDisplay'+${iterStat.index}">1</span>&nbsp;&nbsp;
-			                        	<button class="qBtn" th:id="'plusBtn'+${iterStat.index}">+</butto>
+										<button type="button" class="qBtn" th:id="'minusBtn'+${iterStat.index}">-</button>
+			                        	&nbsp;&nbsp;<span th:id="'quantityDisplay'+${iterStat.index}" th:text="${cartItem.itemQuantity}">수량</span>&nbsp;&nbsp;
+			                        	<button type="button" class="qBtn" th:id="'plusBtn'+${iterStat.index}">+</butto>
 			                        </td>
 			                        <td class="paymentTextContainer"><p></p></td>
 			                        <td>
@@ -87,7 +87,7 @@
                     	</tr>
                     	
                 </table>
-            </th:block>
+            </div>
                 
                 
                 

@@ -2,6 +2,8 @@ package com.camplex.project.paysys.model.service;
 
 import java.util.Map;
 
+import com.camplex.project.paysys.model.dto.CartItem;
+
 public interface PaysysService {
 
 	void createCart(int memberNo);
@@ -15,6 +17,13 @@ public interface PaysysService {
 
 
 	Integer searchMembersCartNo(int memberNo);
+
+
+
+	int quantityUpdateCart(CartItem cartItem);
+
+
+
 
 
 }

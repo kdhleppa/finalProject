@@ -40,7 +40,8 @@
 		<result property="itemStatus" column="ITEM_STATUS"/>
 		<result property="discountRate" column="DISCOUNT_RATE"/>
 	    <result property="reservationNo" column="RESERVATION_NO"/>
-	    
+	    <result property="cartItemNo" column="CART_ITEM_NO"/>
+	    <result property="itemQuantity" column="ITEM_QUANTITY"/>
 	    <collection property="imageList"
 					select="selectImageList"
 					column="ITEM_NO"
@@ -137,6 +138,8 @@
 			    i.ITEM_STATUS, 
 			    i.DISCOUNT_RATE, 
 			    ci.RESERVATION_NO,
+			    ci.CART_ITEM_NO,
+			    ci.ITEM_QUANTITY,
 			    ii.ITEM_IMG_NO,
 			    (ii.ITEM_IMG_PATH || ii.ITEM_IMG_RENAME) AS THUMBNAIL, 
 			    ii.ITEM_IMG_ORDER

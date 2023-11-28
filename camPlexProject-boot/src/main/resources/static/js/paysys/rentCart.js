@@ -19,18 +19,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function updateQuantityAndCart(index, change) {
     var quantityDisplay = document.getElementById('quantityDisplay' + index);
-    var cartItemNo = document.getElementById('cartItemNo' + index)
+    var cartItemNo = document.getElementById('cartItemNo' + index).value
     var currentQuantity = parseInt(quantityDisplay.textContent);
     var newQuantity = Math.max(0, currentQuantity + change);
     quantityDisplay.textContent = newQuantity;
 
     // Fetch API를 사용하여 서버에 변경사항 전송
-    fetch('/paysys/quantityUpdateCart', {
+    fetch('/paysys/quantityUpdateCart/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ cartItemNo: cartItemNo, quantity: newQuantity })
+        body: JSON.stringify({ cartItemNo: cartItemNo, itemQuantity: newQuantity })
     })
     .then(response => response.json())
     .then(data => {
