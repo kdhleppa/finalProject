@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="${boardType}">게시판이름</title>
+    <title th:text="${boardTypeName}">게시판이름</title>
 
     <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
     <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
@@ -139,7 +139,7 @@
 						th:classappend="${likeCheck} ? fa-solid : fa-regular"
 					id="boardLike"></i>
 
-                    <span th:text="*{likeCount}">좋아요</span>
+                    <span th:text="*{likeCount}">좋아요개수</span>
                 </span>
                 
 
