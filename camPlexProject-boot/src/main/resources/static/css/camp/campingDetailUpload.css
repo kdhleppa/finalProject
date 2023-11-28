@@ -555,7 +555,7 @@ label > img {
 /* Etc Info Input Sec */
 .etcInfoInputSec {
 	width: 100%;
-	height: 35rem;
+	height: 40rem;
 	display: flex;
 	justify-content: center;
 }
@@ -623,10 +623,22 @@ label > img {
 	outline: none;
 	border: none;
 	border-bottom: 1px solid #909090;
+	padding: 0.5rem;
 }
 
 #campingAddress {
 	width: 50rem;
+}
+
+.CEONumInput {
+	height: 3rem;
+	width: 15rem;
+	border-radius: 10px;
+	outline: none;
+	padding: 0.5rem;
+	font-size: 1.3rem;
+	text-align: center;
+	border: 1px solid #909090;
 }
 
 /* enroll Sec*/
@@ -649,10 +661,10 @@ label > img {
 
 .enrollSiteSec {
     width: 100%;
-    height: 25rem;
+    height: auto;
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-direction: column;
 }
 
 .enrollSiteBtn {
@@ -664,6 +676,112 @@ label > img {
     font-size: 2rem;
 }
 
+.enrollSiteBtn:hover {
+	background-color: #909090;
+}
+
+.enrollSiteBlankSec {
+	width: 100%;
+	height: 5rem;
+}
+
+.plusCampingSiteSec {
+	width: 100%;
+	height: 18rem;
+	display: flex;
+	justify-content: center;
+}
+
+.plusCampingSiteDiv {
+	height: 100%;
+	width: 70rem;
+	background-color: #FEFAE0;
+	border-radius: 10px;
+	display: flex;
+}
+
+.plusCampingSiteDivLeftSec {
+	height: 100%;
+	flex-basis: 40%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+
+.plusCampingSampleImg {
+	height: 15rem;
+	width: 23rem;
+	border-radius: 10px;
+}	
+
+.plusCampingSiteDivRightSec {
+	height: 100%;
+	flex-basis: 55%;
+	display: flex;
+	flex-direction: column;
+}
+
+.plusCampingSiteDivSiteNameSec {
+	flex-basis: 50%;
+	width: 100%;
+	padding-top: 1.3rem;
+	font-size: 1.6rem;
+	font-weight: bold;
+}
+
+.plusCampingSiteDivEtcInfoSec {
+	flex-basis: 50%;
+	width: 100%;
+	display: flex;
+}
+
+.plusCampingSiteDivEtcInfoLeftSec {
+	flex-basis: 70%;
+	height: 100%;
+	display: flex;
+}
+
+.capacityTitleSec {
+	width: 7rem;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	font-size: 1.4rem;
+}
+
+.capacityOutputSec {
+	width: 6rem;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	font-size: 1.4rem;
+	color: #D4A373;
+}
+
+.plusCampingSiteDivEtcInfoRightSec {
+	flex-basis: 30%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	font-size: 1.4rem;
+}
+
+.plusCampingSiteDeleteBtnSec {
+	flex-basis: 5%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	padding-top: 0.8rem;
+}
+
+.plusCampingSiteDeleteBtn {
+	width: 1.5rem;
+	height: 1.5rem;
+	cursor: pointer;
+}
+
+/* 등록하기 돌아가기 버튼 Sec*/
 .enrollOrBackSec {
 	width: 100%;
 	height: 8rem;
@@ -717,8 +835,5 @@ label > img {
 }
 
 .campingUploadBtn:hover:after { transform: scaleX(1); }
-
-
-
 
 

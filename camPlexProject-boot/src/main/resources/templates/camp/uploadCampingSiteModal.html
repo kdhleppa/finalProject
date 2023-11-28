@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캠핑 site 업로드</title>
+    <link rel="stylesheet" th:href="@{/css/camp/uploadCampingSiteModal.css}">
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}" rel="stylesheet">
+    <link rel="icon" th:href="@{/images/iconImg/favicon.png}">
+</head>
+<body>
+    <!-- 모달 div -->	
+	<div id="modalContainer" class="hidden">
+		
+		<form action="#">
+						
+			<main class="modalMain">
+				
+				<section class="modalLeftSec">
+					
+					<section class="modalLeftSecCenterSec">
+						
+						<div class="campingSiteThumbnailDiv">
+
+							<label for="campingSiteThumbnailInput">
+	                        	<img class="previewcampingSiteThumbnail">
+		                    </label>
+		                    
+		                    <input type="file" name="images" class="campingSiteThumbnailInput" id="campingSiteThumbnailInput" accept="image/*">
+		                    
+						</div>
+						
+					</section>
+					
+				</section>
+				
+				<section class="modalRightSec">
+					
+					<section class="modalRightTopSec">
+						
+						<section class="modalDeleteBtnSec">
+							<img class="modalDeleteBtn" th:src="@{/images/iconImg/campingUploadDelete.png}">
+						</section>
+						
+						<section class="modalLocationInfoTitleSec">
+							
+							<div class="modalLocationInfoTitleDiv">
+								장소 정보
+							</div>
+							
+						</section>
+						
+						<section class="modalInputInfoSec">
+							
+							<section class="modalInputInfoNameSec">
+								구역명(호수)
+							</section>
+							
+							<section class="modalInputSec">
+								
+								<input class="modalInput" type="text">
+								
+							</section>
+							
+						</section>
+						
+						<section class="modalInputInfoSec">
+							
+							<section class="modalInputInfoNameSec">
+								유형
+							</section>
+							
+							<section class="modalInputSec">
+								
+								<input class="modalInput" type="text">
+								
+							</section>
+							
+						</section>
+						
+						<section class="modalInputInfoSec">
+							
+							<section class="modalInputInfoNameSec">
+								인원
+							</section>
+							
+							<section class="modalInputSec">
+									
+								<section class="capacityInputSec">
+									수용 인원 &nbsp; <input class="capacityInput"> &nbsp; 명
+								</section>
+								
+								<section class="maxCapacityInputSec">
+									/ &nbsp; 최대 인원 &nbsp; <input class="capacityInput"> &nbsp; 명
+								</section>
+								
+							</section>
+							
+						</section>
+						
+						<section class="modalInputInfoSec">
+							
+							<section class="modalInputInfoNameSec">
+								가격
+							</section>
+							
+							<section class="modalInputSec">
+								
+								<input class="modalInput" type="text">
+								
+								
+								
+								<img class="wonImg" th:src="@{/images/iconImg/wonImage.png}">
+								
+							</section>
+							
+						</section>
+						
+					</section>
+					
+					<section class="modalRightBottomSec">
+						
+						<section class="moreImgSec"></section>
+						
+					</section>
+					
+					
+					
+				</section>
+				
+			</main>
+			
+		</form>
+		
+		
+	</div>
+		
+
+</body>
+</html>

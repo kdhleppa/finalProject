@@ -425,7 +425,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input class="etcInfoInput" id="campingAddress">
+							<input class="etcInfoInput" id="campingAddress" placeholder="OO도 OO시 OO동 (상세주소)">
 							
 						</section>
 						
@@ -451,7 +451,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input class="etcInfoInput">
+							<input class="etcInfoInput" placeholder="000) 000 - 000">
 							
 						</section>
 						
@@ -477,7 +477,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input class="etcInfoInput">
+							<input class="etcInfoInput" placeholder="00시 00분">
 							
 						</section>
 						
@@ -503,7 +503,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input class="etcInfoInput">
+							<input class="etcInfoInput" placeholder="00시 00분">
 							
 						</section>
 						
@@ -541,6 +541,32 @@
 						
 					</section>
 					
+					<section class="etcInfoInputOneLineSec">
+						
+						<section class="etcInfoInputImgSec">
+							
+							<img class="etcInfoInputImg" th:src="@{/images/iconImg/campingUploadCEO.png}">
+							
+						</section>
+						
+						<section class="etcInfoInputBlankSec">
+							
+						</section>
+						
+						<section class="etcInfoInputNameSec">
+							
+							<span>CEO 번호</span>
+							
+						</section>
+						
+						<section class="etcInfoInputInfoSec">
+							
+							<input class="CEONumInput">
+							
+						</section>
+						
+					</section>
+					
 				</section>
 				
 			</section>
@@ -552,10 +578,58 @@
 	            </div>
 	
 	        </section>
+	        
+	        <section class="enrollSiteBlankSec">
+				
+			</section>
 	
 	        <section class="enrollSiteSec">
+				
+				<section class="plusCampingSiteSec">
+					
+					<div class="plusCampingSiteDiv">
+						   
+						   <section class="plusCampingSiteDivLeftSec">
+								   <img class="plusCampingSampleImg" th:src="@{/images/campingImg/20231122100520_00001.png}">
+						   </section>
+						   
+						   <section class="plusCampingSiteDivRightSec">
+							   
+							   <section class="plusCampingSiteDivSiteNameSec">
+								   잔디 구역 (A-1)
+							   </section>
+							   
+							   <section class="plusCampingSiteDivEtcInfoSec">
+								   
+								   <section class="plusCampingSiteDivEtcInfoLeftSec">
+									   
+									   <section class="capacityTitleSec">
+										   수용 인원
+									   </section>
+									   
+									   <section class="capacityOutputSec">
+										   4명
+									   </section>
+									   
+								   </section>
+								   
+								   <section class="plusCampingSiteDivEtcInfoRightSec">
+									   50000원 ~
+								   </section>
+								   
+							   </section>
+							   
+						   </section>
+						   
+						   <section class="plusCampingSiteDeleteBtnSec">
+							   <img class="plusCampingSiteDeleteBtn" th:src="@{/images/iconImg/campingUploadDelete.png}">
+						   </section>
+						   
+					</div>
+					
+				</section>
 	
-	            <button class="enrollSiteBtn" type="submit">+</button>
+	            <button class="enrollSiteBtn" type="button">+</button>
 	
 	        </section>
 
@@ -578,6 +652,8 @@
 	<th:block th:replace="~{common/footer}"></th:block>
 	
 	<script th:src="@{/js/camp/CampingDetailUpload.js}"></script>
+	
+	<th:block th:replace="~{camp/uploadCampingSiteModal}"></th:block>
 </body>
 
 
