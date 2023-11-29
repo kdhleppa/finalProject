@@ -61,5 +61,20 @@
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
+	<!-- 비밀번호 재설정을 위한 회원정보 찾기 -->
+	<select id="searchMember" resultType="_int">
+		SELECT COUNT(*)
+		FROM "MEMBER"
+		WHERE MEMBER_DEL_FL = 'N'
+		AND MEMBER_EMAIL = #{memberEmail}
+	</select>
+	
+	<!-- 비밀번호 재설정 (비밀번호 업데이트) -->
+	<update id="changePw">
+		UPDATE "MEMBER" SET 
+		MEMBER_PW = #{memberPw}
+		WHERE MEMBER_EMAIL = #{memberEmail}
+		AND MEMBER_DEL_FL = 'N'
+	</update>
 	
 </mapper>

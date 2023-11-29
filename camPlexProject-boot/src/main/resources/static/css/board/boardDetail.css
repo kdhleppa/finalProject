@@ -48,23 +48,28 @@ button {
 
 .boardHead {
 	display: flex;
-	justify-content: space-between;
+	margin-top: 7rem;
+}
+
+#boardNo {
+	font-size: 20px;
+	margin-left: 2rem;
+	margin-top: 1rem;
+}
+
+#boardNoWrite {
+	font-size: 19px;
+	margin-top: 1rem;
 }
 
 #boardTypeName {
-	width: 200px;
 	margin-left: 10rem;
-	margin-top: 7rem;
     font-family: 'HakgyoansimSantteutdotumL';
     font-size: 30px;
     color: black;
 }
 
 /* 게시판 세부 내용 */
-img {
-	width: 14rem;
-	height: 14rem;
-}
 
 .boardDetail {
     font-family: 'HakgyoansimSantteutdotumL';
@@ -136,6 +141,13 @@ img {
 	color: rgb(0, 128, 0);
 }
 
+img {
+	width: 13rem;
+	height: 13rem;
+	border-radius: 20px;
+	overflow: hidden;
+}
+
 .img-box {
 	display: flex;
 	flex-wrap: wrap;
@@ -150,24 +162,29 @@ img {
 .thumbnail{
 	display: flex;
 	flex-wrap: wrap;
-    width: 15rem;
-    height: 15rem;
+    width: 17rem;
+    height: 17rem;
     margin-bottom: 2rem;
 }
 
 .thumbnail > img {
-	width: 16rem;
-	height: 16rem;
+	width: 17rem;
+	height: 17rem;
+	border-radius: 20px;
+	overflow: hidden;
 }
 
 #proImg {
-	width: 10rem;
-	height: 10rem;
-	margin-left: -0.5rem;
+	width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: -0.6rem;
+    margin-top: 2rem;
 }
 
 #writerNick {
-	margin-left: 3rem;
+	margin-left: 2rem;
 	margin-top: 1rem;
 	font-size: 18px;
 }
@@ -262,6 +279,13 @@ img {
 .comment-date{
 	font-size: 0.8em;
 	color: #aaa;
+}
+
+#comProImg {
+	width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 /* 버튼 */

@@ -22,7 +22,7 @@
         
         <section id="loginForm">
 
-		<form th:action="@{/member/pwReset}" method="post" name="pwReset">
+		<form th:action="@{/member/pwReset1}" method="post" name="pwReset">
 
             <!-- 대제목 -->
             <section id="headerName">PW 재설정</section>
@@ -34,18 +34,18 @@
                 <!-- 이메일, 인증번호 입력 -->
                 <section id="inputEmailAuthekey">
 
-                    <input id="inputEmail" type="email" placeholder="이메일">
-                    <p class="authkeySendMassage" id="emailMessage"></p>
+                    <input id="inputEmail" type="email" placeholder="이메일" name="memberEmail">
+                    <p class="authkeySendMassage" id="emailMessage">인증 받을 메일을 입력해주세요.</p>
                     <input id="inputAuthkey" type="text" placeholder="인증번호">
-                    <p class="authkeySendMassage" id="authKeyMessage"></p>
+                    <p class="authkeySendMassage" id="authKeyMessage">인증번호를 입력해주세요.</p>
 
                     <section id="searchIdBtnSection">
                         <section class="empty3"></section>
                         
                         <!-- PW 변경, 이전 페이지로 이동 버튼 -->
                         <section id="changePwBtn">
-                            <button class="clickBtn">PW 재설정</button>
-                            <button class="clickBtn" th:onclick="|location.href='@{/member/login}'|">이전으로</button>
+                            <button type="submit" class="clickBtn">PW 재설정</button>
+                            <button type="button" class="clickBtn" th:onclick="|location.href='@{/member/login}'|">이전으로</button>
                         </section>
                         
                         <section class="empty3"></section>
@@ -53,8 +53,8 @@
 
                 </section>
                 <section class="empty2" id="emailCheckBtnSection">
-                    <button class="emailCheckBtn" id="sendAuthkey">인증</button>
-                    <button class="emailCheckBtn" id="checkEmail">확인</button>
+                    <button type="button" class="emailCheckBtn" id="sendAuthkey">인증</button>
+                    <button type="button" class="emailCheckBtn" id="checkEmail">확인</button>
                 </section>
 
             </section>
@@ -68,7 +68,7 @@
 
     </main>
 
-	<script th:src="@{/js/member/pwReset.js}"></script>
+	<script th:src="@{/js/member/pwReset1.js}"></script>
     
 </body>
 </html>

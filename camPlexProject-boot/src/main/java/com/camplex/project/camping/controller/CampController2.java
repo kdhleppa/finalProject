@@ -33,24 +33,46 @@ public class CampController2 {
 			, @RequestParam(value = "images", required = false) List<MultipartFile> images
 			, RedirectAttributes ra) throws IllegalStateException, IOException {
 		
-		int result = service.campInsert(camp, images);
+		String[] optionArr = camp.getCampOption().split(",");
+		String[] aroundArr = camp.getCampAroundView().split(",");
 		
+		System.out.println(optionArr[0]);
 		
-		String message = null;
-		String path = "redirect:";
-		
-		
-		if(result > 0) {
-			message = "캠프장 등록 완료";
-			path += "/camp/campingDetailUpload";
+		if(camp.getCampOption() == null) {
+			camp.setCampOption(null);
 		} else {
-			message = "캠프장 등록 실패";
-			path += "campInsert";
+			String addr = String.join("^^^", optionArr);
+			camp.setCampOption(addr);
 		}
 		
-		ra.addFlashAttribute("message", message);
 		
-		return path;
+		if(camp.getCampAroundView() == null) {
+			camp.setCampAroundView(null);
+		} else {
+			String addr = String.join("^^^", aroundArr);
+			camp.setCampAroundView(addr);
+		}
+		
+		System.out.println(camp);
+		
+//		int result = service.campInsert(camp, images);
+		
+		
+//		String message = null;
+//		String path = "redirect:";
+		
+		
+//		if(result > 0) {
+//			message = "캠프장 등록 완료";
+//			path += "/camp/campingDetailUpload";
+//		} else {
+//			message = "캠프장 등록 실패";
+//			path += "campInsert";
+//		}
+		
+//		ra.addFlashAttribute("message", message);
+		
+		return "camp/campingDetailUpload";
 		
 	}
 	

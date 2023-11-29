@@ -20,12 +20,20 @@
 				
 				<section class="modalLeftSec">
 					
+					<section class="modalTitleSec">
+						
+						<div class="modalTitleDiv">
+							Upload Site
+						</div>
+						
+					</section>
+					
 					<section class="modalLeftSecCenterSec">
 						
 						<div class="campingSiteThumbnailDiv">
 
 							<label for="campingSiteThumbnailInput">
-	                        	<img class="previewcampingSiteThumbnail">
+	                        	<img class="previewcampingSiteThumbnail" id="previewcampingSiteThumbnail">
 		                    </label>
 		                    
 		                    <input type="file" name="images" class="campingSiteThumbnailInput" id="campingSiteThumbnailInput" accept="image/*">
@@ -41,7 +49,7 @@
 					<section class="modalRightTopSec">
 						
 						<section class="modalDeleteBtnSec">
-							<img class="modalDeleteBtn" th:src="@{/images/iconImg/campingUploadDelete.png}">
+							<img id="modalDeleteBtn" class="modalDeleteBtn" th:src="@{/images/iconImg/campingUploadDelete.png}">
 						</section>
 						
 						<section class="modalLocationInfoTitleSec">
@@ -122,7 +130,49 @@
 					
 					<section class="modalRightBottomSec">
 						
-						<section class="moreImgSec"></section>
+						<section class="moreImgTitleSec">
+							
+							<div class="moreImgTitleDiv">
+								
+								<section class="moreImgTitleNameSec">
+									더 보기 이미지
+								</section>
+								
+								<section class="moreImgPlusBtnSec">
+									
+									<label for="etcImgPlusInput">
+										<img class="campUploadModalPlusBtn" th:src="@{/images/iconImg/campUploadModalPlusBtn.png}">
+									</label>
+									
+									<input id="etcImgPlusInput" class="etcImgPlusInput" type="file" accept="image/*">
+									
+								</section>
+								
+								<section class="moreImgDeleteBtnSec">
+									<img id="campUploadModalDeleteBtn" class="campUploadModalDeleteBtn" th:src="@{/images/iconImg/campUploadModalDeleteBtn.png}">
+								</section>
+								
+							</div>
+							
+						</section>
+						
+						<section class="moreImgSec">
+							
+							<div id="moreImgDiv" class="moreImgDiv">
+								
+								
+								
+							</div>
+							
+						</section>
+						
+						<section class="modalUploadBtnSec">
+							
+							<div class="modalUploadBtnDiv">
+								<button type="submit" class="modalUploadBtn">등록하기</button>
+							</div>
+							
+						</section>
 						
 					</section>
 					
@@ -136,7 +186,8 @@
 		
 		
 	</div>
-		
+
+	<script th:src="@{/js/camp/UploadCampingSiteModal.js}"></script>		
 
 </body>
 </html>

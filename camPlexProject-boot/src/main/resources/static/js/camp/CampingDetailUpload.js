@@ -53,3 +53,30 @@ for(let i=0 ; i< inputImage.length ; i++){
 
     });
 }
+
+const campingUploadBtn = document.getElementById('campingUploadBtn');
+const inputCampingName = document.getElementById('inputCampingName');
+
+campingUploadBtn.addEventListener('submit', e => {
+	
+	if(inputCampingName.value == "") {
+		alert("캠핑장 이름을 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
+	
+	
+	
+});
+
+
+
+
+
+
+
+
+
+
+
+

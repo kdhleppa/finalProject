@@ -23,6 +23,12 @@ public interface MemberMapper {
 	// 프로필 정보 수정
 	int updateMember(Member inputMember);
 
+	// 비밀번호 재설정을 위한 회원정보 찾기
+	int searchMember(Member member);
+	
+	// 비밀번호 재설정 (비밀번호 업데이트)
+	int changePw(Member inputMember);
+
 	
 	
 }

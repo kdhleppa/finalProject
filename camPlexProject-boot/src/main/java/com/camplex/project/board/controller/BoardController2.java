@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.camplex.project.board.model.dto.Board;
+import com.camplex.project.board.model.dto.BoardImage;
 import com.camplex.project.board.model.service.BoardService;
 import com.camplex.project.board.model.service.BoardService2;
 import com.camplex.project.member.model.dto.Member;
@@ -114,6 +115,23 @@ public class BoardController2 {
 		map.put("boardNo", boardNo);
 		
 		Board board = boardService.selectBoard(map);
+		
+		if(board.getImageList().size() > 0 ) {
+			
+			BoardImage thumbnail = null;
+			
+			// 0번 인덱스 이미지의 순서가 0인 경우 == 썸네일
+			if(board.getImageList().get(0).getBoardImageOrder() == 0) {
+				thumbnail = board.getImageList().get(0);
+			}
+			
+			model.addAttribute("thumbnail", thumbnail); // 썸네일 없으면 null
+			
+			// 썸네일 있으면 start = 1
+			//        없으면 start = 0
+			model.addAttribute("start", thumbnail != null ? 1 : 0);
+			
+		}
 		
 		model.addAttribute("board", board);
 		
