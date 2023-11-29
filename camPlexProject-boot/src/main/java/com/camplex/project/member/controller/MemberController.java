@@ -80,6 +80,7 @@ public class MemberController {
 		return path;
 	}
 	
+	// 회원 가입 페이지 이동
 	@GetMapping("/signUp")
 	public String signUp() {
 		return "member/idPw/signUp";
@@ -117,7 +118,6 @@ public class MemberController {
 		return path;
 	}
 	
-	
 	// 아이디 찾기 페이지 이동
 	@GetMapping("/searchId")
 	public String searchId() {
@@ -128,6 +128,64 @@ public class MemberController {
 	@GetMapping("/searchPw")
 	public String searchPw() {
 		return "member/idPw/pwReset1";
+	}
+	
+	// 비밀번호 재설정 페이지 이동(이메일 정보)
+	@PostMapping("/pwReset1")
+	public String pwReset(String memberEmail,
+							RedirectAttributes ra,
+							Model model,
+							@RequestHeader(value = "referer") String referer) {
+		
+		Member member = new Member();
+		
+		member.setMemberEmail(memberEmail);
+		
+		String path = "redirect:";
+		String message = "";
+		
+		int result = service.searchMember(member);
+		
+		if(result > 0) {
+			model.addAttribute("memberEmail", memberEmail);
+			path = "/member/idPw/pwReset2";
+		} else {
+			message = "일치하는 회원 정보가 없습니다.";
+			path = "redirect:" + referer;
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return path;
+	}
+	
+	// 비밀번호 재설정 (비밀번호 업데이트)
+	@PostMapping("/pwReset2")
+	public String pwReset2(Member inputMember,
+							RedirectAttributes ra,
+							@RequestHeader(value = "referer") String referer) {
+		
+		String path = "redirect:";
+		String message = "";
+		
+		int result = service.changePw(inputMember);
+
+		if(result > 0) {
+			
+			message = "비밀번호 변경이 완료되었습니다.";
+			path += "/member/login";
+		
+		} else {
+			
+			message = "비밀번호 변경에 실패하였습니다.";
+			path += referer;
+			
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return path;
+		
 	}
 	
 	// 로그아웃 이동
@@ -197,8 +255,6 @@ public class MemberController {
 		return path;
 	}
 	
-	
-	
 	// 회원 탈퇴 페이지 이동
 	@GetMapping("/memberWithdrawal1")
 	public String memberWithdrawal1() {
@@ -210,7 +266,6 @@ public class MemberController {
 	public String deleteMember(String memberPw,
 								SessionStatus status,
 								@SessionAttribute("loginMember") Member loginMember,
-								RedirectAttributes ra,
 								@RequestHeader(value = "referer") String referer
 								) {
 		
@@ -218,27 +273,29 @@ public class MemberController {
 		
 		int result = service.deleteMember(memberPw, memberNo);
 		
-		String message = null;
 		String path = "redirect:";
 		
 		
 		if(result > 0 ) {
 		
-			message = "탈퇴 되었습니다.";
 			path = "/member/memberWithdrawal2";
 			status.setComplete();
 		
 		} else {
 			
-			message = "계정과 비밀번호가 일치하지 않습니다.";
 			path += referer;
 			
 		}
 		
-		ra.addFlashAttribute("message", message);
-		
 		return path;
 	}
+	
+	// CEO 계정 변경 신청 페이지 이동
+	@GetMapping("/levelUpForm")
+	public String levelUpForm() {
+		return "member/levelUpForm";
+	}
+	
 	
 	
 	

@@ -150,5 +150,22 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	// 비밀번호 재설정을 위한 회원정보 찾기
+	@Override
+	public int searchMember(Member member) {
+		return mapper.searchMember(member);
+	}
+	
+	// 비밀번호 재설정 (비밀번호 업데이트)
+	@Override
+	public int changePw(Member inputMember) {
+		
+		String encPw = bcrypt.encode(inputMember.getMemberPw());
+		
+		inputMember.setMemberPw(encPw);
+		
+		return mapper.changePw(inputMember);
+	}
+
 
 }
