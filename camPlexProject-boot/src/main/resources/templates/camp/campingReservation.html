@@ -94,7 +94,9 @@
                                 + '원 (1박  :  '
                                 + ${#numbers.formatInteger(campDetail.campDePrice, 3, 'COMMA')} 
                                 + '원)'">가격</p>
+                                <input type="hidden" name="priceOneDay" th:value="${campDetail.campDePrice}">
                                 <input type="hidden" name="price" th:value="${campDetail.campDePrice}*${map.stayDay}">
+                                <input type="hidden" name="stayDay" th:value="${map.stayDay}">
                             </div>
 
                         </div>
@@ -140,21 +142,21 @@
                         <input type="tel" name="customerTel" id="customerTel" placeholder=" '-'제외 " th:value="${session.loginMember.memberPhone}">
                         <div class="humanCountContainer">
                             <img id="adultIcon" class="adultIcon" th:src="@{/images/iconImg/adult.png}" alt="">
-                            <input type="number" name="adultCount" id="adultCount" class="humanCount" value="0" disabled ></input>
+                            <input type="number" name="adultCount" id="adultCount" class="humanCount" value="0" readonly></input>
                             <img class="kidIcon" th:src="@{/images/iconImg/adult.png}" alt="">
-                            <input type="number" name="kidCount" id="kidCount" class="humanCount" value="0" disabled ></input>
+                            <input type="number" name="kidCount" id="kidCount" class="humanCount" value="0" readonly></input>
                             <p>추가인원 :&nbsp; </p>
-                            <input type="number" name="additionalCount" id="additionalCount" class="humanCount" disabled value="0"></input>
+                            <input type="number" name="additionalCount" id="additionalCount" class="humanCount" value="0" readonly></input>
                             <button type="button" id="chooseNumberBtn"> 인원 선택</button>
                         </div>
                         <div>
                             <img class="calIcon" th:src="@{/images/iconImg/cal_icon.png}" alt="">
-                            <input type="text" name="entDate" id="" class="date" th:value="${map.entDate}" disabled>
+                            <input type="text" name="entDate" id="" class="date" th:value="${map.entDate}" readonly>
                             &nbsp;&nbsp;&nbsp;~&nbsp;&nbsp;&nbsp;
-                            <input type="text" name="outDate" id="" class="date" th:value="${map.outDate}" disabled>
+                            <input type="text" name="outDate" id="" class="date" th:value="${map.outDate}" readonly>
                         </div>
                         <input type="email" name="customerEmail" id="" th:value="${session.loginMember.memberEmail}">
-                        <textarea name="demand" id="" cols="50" rows="10" style="resize: none;"></textarea>
+                        <textarea name="demand" id="demand" cols="50" rows="10" style="resize: none;"></textarea>
                         
                     </div>
                 </div>

@@ -105,13 +105,9 @@ confirmNumber.addEventListener("click", () => {
 	adultCount.value = adultSum;
 	kidCount.value = kidSum;
 	
-	console.log(adultSum + kidSum)
-	console.log(capacity)
 	if((adultSum + kidSum) > capacity){
 		additionalCount.value = (adultSum + kidSum - capacity);
 	}
-	
-	
 	
 	modalContainerPopup.classList.add('hidden')
 })
