@@ -4,7 +4,7 @@
     margin: 0;
     padding: 0;
 
-    border: 1px solid black; 
+    /*border: 1px solid black;*/
 }
 
 @font-face {
@@ -31,9 +31,9 @@
 	z-index: 1050;
 }
 
-/*#modalContainer.hidden {
+#modalContainer.hidden {
 	display: none;
-}*/
+}
 
 /* 모달 메인 */
 .modalMain {
@@ -49,20 +49,35 @@
 	height: 100%;
 	width: 50%;
 	display: flex;
+	flex-direction: column;
+	align-items: end;
+}
+
+.modalTitleSec {
+	width: 100%;
+	height: 8rem;
+	display: flex;
 	align-items: center;
-	justify-content: end;
+	justify-content: center;
+	color: #D4A373;
+	font-size: 2rem;
+}
+
+.modalTitleDiv {
+	width: 33rem;
+	height: 4rem;
 }
 
 .modalLeftSecCenterSec {
 	width: 38rem;
-	height: 35rem;
+	height: 28rem;
 	display: flex;
 	justify-content: center;
 }
 
 .campingSiteThumbnailDiv {
 	width: 35rem;
-	height: 27rem;
+	height: 26rem;
 	background-color: #EAEAEA;
 	border-radius: 10px;
 }
@@ -102,7 +117,7 @@
 }
 
 .modalRightTopSec {
-	height: 56%;
+	height: 51%;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -141,7 +156,7 @@
 
 .modalInputInfoSec {
 	width: 100%;
-	height: 4rem;
+	height: 3.5rem;
 	display: flex;
 }
 
@@ -161,8 +176,8 @@
 }
 
 .modalInput {
-	height: 3rem;
-	width: 15rem;
+	height: 2.5rem;
+	width: 13rem;
 	border-radius: 10px;
 	outline: none;
 	border: 1px solid #909090;
@@ -204,21 +219,136 @@
 
 .modalRightBottomSec {
 	width: 100%;
-	height: 15rem;
+	height: 18rem;
 	display: flex;
 	flex-direction: column;
 }
 
-.moreImgSec {
-	height: 5rem;
+.moreImgTitleSec {
+	height: 3.5rem;
 	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.moreImgTitleDiv {
+	width: 33.6rem;
+	height: 3rem;
+	display: flex;
+}
+
+.moreImgTitleNameSec {
+	height: 100%;
+	width: 10rem;
+	display: flex;
+	align-items: center;
+	font-size: 1.2rem;
+}
+
+.moreImgPlusBtnSec {
+	height: 100%;
+	width: 6rem;
+	display: flex;
+	align-items: center;
+}
+
+.campUploadModalPlusBtn {
+	width: 2.2rem;
+	height: 2.2rem;
+	cursor: pointer;
+}
+
+.moreImgDeleteBtnSec {
+	height: 100%;
+	width: 6rem;
+	display: flex;
+	align-items: center;
+}
+
+.campUploadModalDeleteBtn {
+	width: 2rem;
+	height: 2rem;
+	cursor: pointer;
+}
+
+.moreImgSec {
+	width: 100%;
+	height: 10rem;
+	display: flex;
+	justify-content: center;
+}
+
+.moreImgDiv {
+	width: 35rem;
+	height: 9rem;
+	background-color: #EAEAEA;
+	border-radius: 10px;
+	padding: 0.5rem;
+	padding-left: 1rem;
+	display: flex;
+	overflow: auto;
+}
+
+.moreImgDetailSec {
+	width: 11rem;
+	height: 100%;
+	display: flex;
+}
+
+.moreImgDetailDiv {
+	width: 10rem;
+	height: 100%;
+	border-radius: 10px;
+	margin-right: 1rem;
+}
+	
+.etcImgPlusInput {
+	display: none;
+}
+
+.moreImg {
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+}
+
+.modalUploadBtnSec {
+	width: 100%;
+	height: 4rem;
+	display: flex;
+	justify-content: end;
+}
+
+.modalUploadBtnDiv {
+	width: 13rem;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modalUploadBtn {
+	width: 5.5rem;
+	height: 3rem;
+	font-size: 1.4rem;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	display: inline-block;
 }
 
 
+.modalUploadBtn:after {
+	margin-top: 0.5rem;
+    display:block;
+    content: '';
+    border-bottom: solid 1px #909090;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+}
 
-
-
-
+.modalUploadBtn:hover:after { transform: scaleX(1); }
 
 
 

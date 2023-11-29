@@ -674,6 +674,7 @@ label > img {
     border: none;
     cursor: pointer;
     font-size: 2rem;
+    outline: none;
 }
 
 .enrollSiteBtn:hover {
@@ -791,10 +792,10 @@ label > img {
 }
 
 .campingUploadBtn {
-	width: 7rem;
+	width: 5.5rem;
 	height: 3rem;
 	font-size: 1.4rem;
-	margin-right: 3rem;
+	margin-right: 4rem;
 	background-color: transparent;
 	outline: none;
 	border: none;

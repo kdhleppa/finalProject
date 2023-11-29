@@ -42,7 +42,7 @@ public class CampServiceImpl2 implements CampService2{
 	public int campInsert(Camp camp, List<MultipartFile> images) 
 			throws IllegalStateException, IOException {
 		
-		int result = mapper.campInsert(camp, images);
+		int result = mapper.campInsert(camp);
 		
 		if(result == 0) return 0;
 		
