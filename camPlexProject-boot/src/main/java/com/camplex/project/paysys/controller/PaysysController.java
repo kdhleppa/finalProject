@@ -26,6 +26,7 @@ import com.camplex.project.item.model.dto.MembersReservationDate;
 import com.camplex.project.item.model.service.ItemService;
 import com.camplex.project.member.model.dto.Member;
 import com.camplex.project.paysys.model.dto.CartItem;
+import com.camplex.project.paysys.model.dto.InfoForReservation;
 import com.camplex.project.paysys.model.dto.Reservations;
 import com.camplex.project.paysys.model.service.PaysysService;
 import com.camplex.project.paysys.model.service.ReservationsService;
@@ -185,23 +186,33 @@ public class PaysysController {
 		return 0;
 	}
 	
+	/** 캠핑장 결제 페이지 이동
+	 * @param info
+	 * @param model
+	 * @return
+	 */
 	@PostMapping("/camp")
-	public String payCamp(String campDeName,
-						  String campName,
-						  String customerName,
-						  String customerTel,
-						  @RequestParam(value="adultCount", required=false)String adultCount,
-						  @RequestParam(value="kidCount", required=false)String kidCount,
-						  String additionalCount, 
-						  String entDate,
-						  String outDate,
-						  String customerEmail,
-						  String demand,
-						  int price
-			) {
+	public String payCamp(InfoForReservation info, Model model) {
 		
+		model.addAttribute("info", info);
 		
 		return "paysys/campPay";
+	}
+	
+	@PostMapping("/payDone")
+	public String paying(InfoForReservation info,
+						 String payBy,
+						 String bank,
+						 String senderName
+			) {
+		
+		String path = null;
+		
+		if(payBy.equals("b")) {
+			path = "paysys/payDone";
+		}
+		
+		return "paysys/payDone";
 	}
 
 }

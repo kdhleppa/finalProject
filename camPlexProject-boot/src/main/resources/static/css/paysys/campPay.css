@@ -26,14 +26,19 @@ body {
 }
 
 .emptySpace {
-    width: 100px;
+    flex-basis: 20%;
 }
 
 .midContainer {
-    width: 1720px;
+   	flex-basis: 60%;
 }
 
 /*표 간격 조절*/
+
+.reservationSite{
+	margin: 50px 0; 
+}
+
 .reservationSite td:first-child {
     width: 150px;
 }
@@ -43,7 +48,7 @@ body {
 }
 
 .reservationSite td {
-    height: 60px;
+    height: 50px;
 }
 
 
@@ -61,23 +66,79 @@ body {
 
 /*camNameContainer*/
 .campNameContainer {
-    margin-top: 30px;
+    margin-top: 50px;
     display: inline-flex;
     align-items: baseline;
 }
 
 .campNameContainer p {
     margin-left: 20px;
+    font-size: 1.3rem;
 }
 
 /*사람 아이콘 크기 조절*/
+
+.humanCountContainer{
+	display: flex;
+	align-items: center;
+}
+
+.humanCountContainer >p >input{
+	color: rgb(255, 102, 102);
+}
+
 .adultImg {
-    width: 45px;
-    height: 45px;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
 }
 .childImg {
-    width: 30px;
-    height: 30px;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+}
+
+.humanCount{
+	background-color: transparent;
+	border: none;
+	width: 2rem;
+}
+
+.dateContainer{
+	display: flex;
+	align-items: center;
+}
+
+.dateContainer > input {
+	border: transparent;
+	font-size: 1rem;
+	width: 6rem;
+}
+
+.dateContaine > p {
+	font-size: 1rem;
+}
+
+#customerName, #customerTel{
+	background-color: transparent;
+	border: none;
+	font-size: 1rem;
+}
+
+#customerEmail {
+	border: none;
+	font-size: 1rem;
+}
+
+.demandContainer{
+	display: flex;
+	margin-top: 20px;
+}
+
+#demand{
+	margin-top: 20px;
+	padding: 10px;
+	border-radius: 5px;
 }
 
 /*페이먼트영역*/
@@ -97,59 +158,83 @@ body {
     display: flex;
 }
 
-.payContainer {
-    font-size: 30px;
-}
-
 .payInputContainer {
     width: 400px;
     display: flex;
     align-items: center;
+    font-size: 1.4rem;
 }
 
 .payBy {
-    line-height: 30px;
+	font-size: 0.5rem;
 }
 
 .nPayLogo {
-    width: 164px;
-    height: 64px;
+    width: 100px;
 }
 .kPayLogo {
-    width: 175px;
-    height: 72px;
+    width: 100px;
+}
+
+.bankAccount{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 70px;
+
+}
+
+.bankAccount input, select{
+    height: 2rem;
+    width: 25rem;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.account, .host{
+    display: flex;
+    margin: 5px 0;
+    font-size: 1.3rem;
 }
 
 /*인풋래디오크기 키우기*/
-input[type="radio"].payBy {
-    transform: scale(1.5); /* 1.5배 크기로 확대 */
-}
 
 .buttonList {
     text-align: end;
     margin-top: 50px;
+    margin-bottom: 200px;
 }
 
 .Btn {
-    margin-left: 30px;
-    font-size: 20px;
+    margin: 0 30px;
+    font-size: 1.5rem;
     text-decoration: none;
+    background-color: white;
+    border:none;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .backBtn {
     margin-right: 20px;
-    
 }
 
-
-.Btn {
-    color: gray;
-    padding-bottom: 5px;
-    background-color: white;
-    border:none;
-    border-bottom: 1px solid gray; 
-    text-decoration: none;
-    cursor: pointer;
+.buttonList button { 
+  display:inline-block; 
+  text-transform:uppercase; 
+  padding-bottom: 5px;
+}
+  
+.buttonList button:after {
+	display:block;
+	content: '';
+	border-bottom: solid 1px #000;  
+	transform: scaleX(0);  
+	transition: transform 250ms ease-in-out;
+	padding-bottom: 5px;
+}
+.buttonList button:hover:after { 
+	transform: scaleX(1); 
 }
 
 .payContainer {
