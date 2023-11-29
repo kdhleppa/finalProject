@@ -45,6 +45,7 @@ public class QnaController {
 		qna.setQNATitle(QNATitle);
 		qna.setQNAContent(QNAContent);
 		qna.setMemberNo(loginMember.getMemberNo());
+		qna.setMemberNickname(loginMember.getMemberNickname());
 		
 		int result = service.insertQNA(qna);
 		

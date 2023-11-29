@@ -41,7 +41,12 @@
             	<p>게시판이름</p>
 			</div>
 			
+			<div id="updating">
+            	<p>- 수정</p>
+			</div>
         </section>
+        
+        	
         
         <hr style="height: 0.2rem; background-color:black; margin-top: 1rem; margin-left: 8%; width: 84%; margin-right: 40%;">
         
@@ -62,7 +67,9 @@
 					<h5>썸네일</h5>
 	                <div class="boardImg thumbnail">
 	                    <label for="img0">
-	                        <img class="preview">
+							<th:block th:if="${thumbnail}">
+	                        	<img class="preview" th:src="|${thumbnail.boardImagePath}${thumbnail.boardImageReName}|">
+	                       	</th:block>
 	                    </label>
 	                    <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
 	                    <span class="delete-image">&times;</span>
@@ -74,7 +81,7 @@
 	                <h5>업로드 이미지</h5>
 	                <div class="boardImg">
 	                    <label for="img1">
-	                        <img class="preview">
+	                        <img class="preview" th:src="|${board.imageList[1].boardImagePath}${board.imageList[1].boardImageReName}|">
 	                    </label>
 	                    <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
 	                    <span class="delete-image">&times;</span>
@@ -82,7 +89,7 @@
 	
 	                <div class="boardImg">
 	                    <label for="img2">
-	                        <img class="preview">
+	                        <img class="preview" th:src="|${board.imageList[2].boardImagePath}${board.imageList[2].boardImageReName}|">
 	                    </label>
 	                    <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
 	                    <span class="delete-image">&times;</span>
@@ -90,7 +97,7 @@
 	
 	                <div class="boardImg">
 	                    <label for="img3">
-	                        <img class="preview">
+	                        <img class="preview" th:src="|${board.imageList[3].boardImagePath}${board.imageList[3].boardImageReName}|">
 	                    </label>
 	                    <input type="file" name="images" class="inputImage" id="img3" accept="image/*">
 	                    <span class="delete-image">&times;</span>
@@ -98,7 +105,7 @@
 	
 	                <div class="boardImg">
 	                    <label for="img4">
-	                        <img class="preview">
+	                        <img class="preview" th:src="|${board.imageList[4].boardImagePath}${board.imageList[4].boardImageReName}|">
 	                    </label>
 	                    <input type="file" name="images" class="inputImage" id="img4" accept="image/*">
 	                    <span class="delete-image">&times;</span>

@@ -63,6 +63,7 @@
 
 .qnaSubmit > div {
 	margin-top: 3rem;
+	margin-left: 1rem;
 	display: flex;
 }
 
@@ -102,12 +103,13 @@
 
 #writeBtn {
     font-family: 'HakgyoansimSantteutdotumL';
-    width: 8rem;
+    width: 6rem;
     background-color: transparent;
     border-style: none;
     font-size: 1.2rem;
     cursor: pointer;
     margin-top: -1.5rem;
+    margin-left: 3rem;
 }
 
 

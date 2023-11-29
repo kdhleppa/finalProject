@@ -16,6 +16,8 @@
     
     <th:block th:replace="~{common/headerForContent}"></th:block>
     
+    <th:block th:replace="~{qna/qna}"></th:block>
+    
     <main>
 		<ul class="boardTypeList">
             <li>
@@ -40,9 +42,17 @@
 			<div id="boardTypeName" th:text="${boardTypeName}">
             	<p>게시판이름</p>
 			</div>
+			
+			<div id="boardNo" th:text="${boardNo}">
+            	<p>글번호</p>
+			</div>
+			
+			<div id="boardNoWrite">
+				<p>번 글</p>
+			</div>
 
         </section>
-
+		
         <hr style="height: 0.2rem; background-color:black; margin-top: 1rem; margin-left: 8%; width: 84%; margin-right: 40%;">
 
         <section class="boardDetail">
@@ -121,7 +131,7 @@
                 
                 	<!-- 프로필 + 닉네임 + 작성일 + 조회수 -->
                     <!-- 프로필 이미지가 없을 경우 기본 이미지 출력 -->
-					<img id="proImg" th:unless="*{memberProfileImg}" th:src="@{/images/user.png}">
+					<img id="proImg" th:unless="*{memberProfileImg}" th:src={/images/boardImg/user.png}>
 				
 					<!-- 프로필 이미지가 있을 경우 등록한 이미지 출력 -->
 					<img id="proImg" th:if="*{memberProfileImg}" th:src="*{memberProfileImg}" />

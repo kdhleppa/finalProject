@@ -52,7 +52,8 @@ public class DBConfig {
 				+ " com.camplex.project.item.model.dto,"
 				+ " com.camplex.project.camping.model.dto,"
 				+ " com.camplex.project.board.model.dto,"
-				+ " com.camplex.project.paysys.model.dto"
+				+ " com.camplex.project.paysys.model.dto,"
+				+ " com.camplex.project.qna.model.dto"
 				);
 
 		

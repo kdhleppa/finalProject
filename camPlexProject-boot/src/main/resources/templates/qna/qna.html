@@ -23,14 +23,14 @@
 			
 		<div class="qmodal_close" style="cursor: pointer;">x</div>
    
-    		<div class="text">
-		
-		        <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
-			    enabled. Please enable
-			    Javascript and reload this page!</h2></noscript>
+		<div class="text">
+	
+	        <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+		    enabled. Please enable
+		    Javascript and reload this page!</h2></noscript>
 
-			    <div id="main-content" class="container">
-		
+		    <div id="main-content" class="container">
+	
 		        <section class="qnaTop">
 		            <p>1대1 문의</p>
 		        </section>
@@ -39,30 +39,36 @@
 	
 	    		<div class="qnaDetail">
 	
-	            <form action="/qna/qnaSubmit" method="post" id="qnaFrm" class="qnaSubmit">
-					<div class="qnaTitle">
-						<p>제목</p>
-						<input type="text" id="QNATitle" class="form-control" placeholder="제목을 입력하세요">
-					</div>
-					
-					<div class="qnaContent">
-			            <p>문의내용</p>
-	                    <textarea id="QNAContent" class="form-control" placeholder="내용을 입력하세요"></textarea>
-	                </div>
-	                
-	                <div class="btnArea">
-
-		            	<button type="submit" id="writeBtn">문의하기</button>
-				
-					</div>
-	                
-				</form>
+		            <form th:action="@{/qna/qnaSubmit}" method="POST" id="qnaFrm" class="qnaSubmit" enctype="multipart/form-data">
+						
+						<div class="qnaTitle">
+							<p>제목</p>
+							<input type="text" id="QNATitle" name="QNATitle" class="form-control" placeholder="제목을 입력하세요">
+						</div>
+						
+						<div class="qnaContent">
+				            <p>문의내용</p>
+		                    <textarea id="QNAContent" name="QNAContent" class="form-control" placeholder="내용을 입력하세요"></textarea>
+		                </div>
+		                
+		                <div class="btnArea">
 	
-	        	</div>
-	        
-		     	</div>
-	     	
+			            	<button type="submit" id="writeBtn">문의하기</button>
+					
+						</div>
+						
+						<div th:object="${board}">
+							<input type="hidden" name="memberNo" th:value="${memberNo}">
+							<input type="hidden" name="memberNickname" th:value="${memberNickname}">
+		                </div>
+		                
+					</form>
+
+        		</div>
+        
 	     	</div>
+     	
+     	</div>
 	     	
 	</div>
      
@@ -74,7 +80,5 @@
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js}"></script>
 		
 	<script th:src="@{/js/qna/qna.js}"></script>
-        
-
-</body>
+	
 </html>

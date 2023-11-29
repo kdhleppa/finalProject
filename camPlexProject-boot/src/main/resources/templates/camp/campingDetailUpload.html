@@ -17,7 +17,7 @@
     <!-- 메인 -->
     <main class="campingDetailUploadMain">
 		
-		<form action="#" class="campingDetailUploadForm">
+		<form th:action="@{/camp2/campInsert}" method="post" class="campingDetailUploadForm">
 			
 			<!-- Information -->
 	        <section class="informationSec">
@@ -30,7 +30,7 @@
 	
 	        <section class="inputCampingNameSec">
 				
-	            <input class="inputCampingName" name="campName" type="text" placeholder="캠핑장 명을 입력해주세요.">
+	            <input id="inputCampingName" class="inputCampingName" name="campName" type="text" placeholder="캠핑장 명을 입력해주세요.">
 	            
 	        </section>
 	
@@ -330,15 +330,15 @@
 	                        <section class="macroEnvironmentInputLRSec">
 	
 	                            <section class="macroEnvironmentInputDetailSec">
-	                                <input type="checkbox" name="aroundView" value="TREK">&nbsp; 등산로
+	                                <input type="checkbox" name="campAroundView" value="TREK">&nbsp; 등산로
 	                            </section>
 	
 	                            <section class="macroEnvironmentInputDetailSec">
-	                                <input type="checkbox" name="aroundView" value="VALY">&nbsp; 계곡
+	                                <input type="checkbox" name="campAroundView" value="VALY">&nbsp; 계곡
 	                            </section>
 	
 	                            <section class="macroEnvironmentInputDetailSec">
-	                                <input type="checkbox" name="aroundView" value="MOTN">&nbsp; 산 / 숲
+	                                <input type="checkbox" name="campAroundView" value="MOTN">&nbsp; 산 / 숲
 	                            </section>
 	
 	                        </section>
@@ -346,15 +346,15 @@
 	                        <section class="macroEnvironmentInputLRSec">
 	
 	                            <section class="macroEnvironmentInputDetailSec">
-	                                <input type="checkbox" name="aroundView" value="SEA">&nbsp; 바다
+	                                <input type="checkbox" name="campAroundView" value="SEA">&nbsp; 바다
 	                            </section>
 	
 	                            <section class="macroEnvironmentInputDetailSec">
-	                                <input type="checkbox" name="aroundView" value="RIVR">&nbsp; 강 / 호수
+	                                <input type="checkbox" name="campAroundView" value="RIVR">&nbsp; 강 / 호수
 	                            </section>
 	
 	                            <section class="macroEnvironmentInputDetailSec">
-	                                <input type="checkbox" name="aroundView" value="CITY">&nbsp; 도심
+	                                <input type="checkbox" name="campAroundView" value="CITY">&nbsp; 도심
 	                            </section>
 	
 	                        </section>
@@ -425,7 +425,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input class="etcInfoInput" id="campingAddress" placeholder="OO도 OO시 OO동 (상세주소)">
+							<input class="etcInfoInput" id="campingAddress" name="campAddress" placeholder="OO도 OO시 OO동 (상세주소)">
 							
 						</section>
 						
@@ -451,7 +451,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input class="etcInfoInput" placeholder="000) 000 - 000">
+							<input class="etcInfoInput" name="campPhone" placeholder="000) 000 - 000">
 							
 						</section>
 						
@@ -477,7 +477,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input class="etcInfoInput" placeholder="00시 00분">
+							<input class="etcInfoInput" name="checkIn" placeholder="00시 00분">
 							
 						</section>
 						
@@ -503,7 +503,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input class="etcInfoInput" placeholder="00시 00분">
+							<input class="etcInfoInput" name="checkOut" placeholder="00시 00분">
 							
 						</section>
 						
@@ -529,7 +529,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<select class="categorySelect">
+							<select class="categorySelect" name="category">
 								<option selected>카테고리 선택</option>
 								<option value="AUTO">오토캠핑</option>
 								<option value="BACK">백패킹</option>
@@ -561,7 +561,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input class="CEONumInput">
+							<input class="CEONumInput" name="memberNo">
 							
 						</section>
 						
@@ -629,13 +629,13 @@
 					
 				</section>
 	
-	            <button class="enrollSiteBtn" type="button">+</button>
+	            <button id="enrollSiteBtn" class="enrollSiteBtn" type="button">+</button>
 	
 	        </section>
 
 			<section class="enrollOrBackSec">
 				
-				<button class="campingUploadBtn">
+				<button id="campingUploadBtn" class="campingUploadBtn" type="submit">
 					등록하기
 				</button>
 				

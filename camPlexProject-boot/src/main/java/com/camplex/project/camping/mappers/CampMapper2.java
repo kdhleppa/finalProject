@@ -16,7 +16,7 @@ public interface CampMapper2 {
 	 * @param images
 	 * @return
 	 */
-	int campInsert(Camp camp, List<MultipartFile> images);
+	int campInsert(Camp camp);
 
 	/** 캠프장 삽입(이미지)
 	 * @param uploadList
