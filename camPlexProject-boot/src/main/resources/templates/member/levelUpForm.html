@@ -1,46 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CEO로 등업신청</title>
 
-    <link rel="stylesheet" href="/CSS/levelUpForm.css">
+    <link rel="stylesheet" th:href="@{/css/member/levelUpForm.css}">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
 
 </head>
 <body>
 
-    <header class="topBar">
-
-        <div class="topMenu">
-
-            <div class="leftOfTopMenu">
-                <a href="#">COMMUNITY</a>
-                <a href="#">CONTACT</a>
-                <a href="#">ABOUT US</a>
-            </div>
-
-            <div class="rightOfTopMenu">
-                <a href="#">LOGIN</a>
-                <a href="#">TOP</a>
-            </div>
-
-        </div>
-
-        <a class="mainTitle" href="/">C A M P L E X </a>
-
-        <div class="bottomMenu">
-            <a href="#">CAMPING</a>
-            <a href="#">RENTAL</a>
-            <a href="#">BOARD</a>
-            <a href="#">EVENT</a>
-        </div>
-
-    </header>
+	<th:block th:replace="~{common/headerForContent}"></th:block>
 
     <main>
         <!-- 공백 (우) -->
@@ -76,6 +50,28 @@
                                 <input type="text">
                             </section>
                         </section>
+                        <section id="placeInfo">
+                            <section class="inputInfo" id="inputTitle">
+                                <span>캠핑장 명 :</span>
+                                <input type="text">
+                            </section>
+
+                            <section class="inputInfo" id="inputAddress">
+                                <span>캠핑장 주소 :</span>
+                                <input type="text">
+                            </section>
+                        </section>
+                        <section id="placeInfo">
+                            <section class="inputInfo" id="inputTitle">
+                                <span>캠핑장 명 :</span>
+                                <input type="text">
+                            </section>
+
+                            <section class="inputInfo" id="inputAddress">
+                                <span>캠핑장 주소 :</span>
+                                <input type="text">
+                            </section>
+                        </section>
 
                         
                         <section class="empty3"></section>
@@ -87,160 +83,6 @@
                     <section class="empty2"></section>
                 </section>
 
-                <!-- 업로드 할 이미지 -->
-                
-                <section id="uploadImgSection">
-                    <section class="empty2"></section>
-
-                    <section id="inputImgListSection">
-                            
-                        <section id="uploadImgTitle">
-                            업로드 할 이미지 (5개 이상 9개 이하)
-                        </section>
-                        <hr id="mideUnderLine"/>
-                        
-                        <section class="inputImgList">
-
-                            <section id="uploadImgBtn">
-                                <section class="imgBox">
-                                    <img class="uploadImg" id="img1" src="/IMG/1.png">
-                                </section>
-                                <label for="uploadCampImg1" class="selectImgBtn">이미지 선택</label>
-                                <input type="file" id="uploadCampImg1">
-                                <label class="deleteProfileImg">이미지 삭제</label>
-                            </section>
-
-                            <section id="uploadImgBtn">
-                                <section class="imgBox">
-                                    <img class="uploadImg" id="img2" src="/IMG/2.png">
-                                </section>
-                                <label for="uploadCampImg2" class="selectImgBtn">이미지 선택</label>
-                                <input type="file" id="uploadCampImg2">
-                                <label class="deleteProfileImg">이미지 삭제</label>
-                            </section>
-
-                            <section id="uploadImgBtn">
-                                <section class="imgBox">
-                                    <img class="uploadImg" id="img3" src="/IMG/3.png">
-                                </section>
-                                <label for="uploadCampImg3" class="selectImgBtn">이미지 선택</label>
-                                <input type="file" id="uploadCampImg3">
-                                <label class="deleteProfileImg">이미지 삭제</label>
-                            </section>
-
-                        </section>
-
-                        <section class="inputImgList">
-
-                            <section id="uploadImgBtn">
-                                <section class="imgBox">
-                                    <img class="uploadImg" id="img4" src="/IMG/4.png">
-                                </section>
-                                <label for="uploadCampImg4" class="selectImgBtn">이미지 선택</label>
-                                <input type="file" id="uploadCampImg4">
-                                <label class="deleteProfileImg">이미지 삭제</label>
-                            </section>
-
-                            <section id="uploadImgBtn">
-                                <section class="imgBox">
-                                    <img class="uploadImg" id="img5" src="/IMG/5.png">
-                                </section>
-                                <label for="uploadCampImg5" class="selectImgBtn">이미지 선택</label>
-                                <input type="file" id="uploadCampImg5">
-                                <label class="deleteProfileImg">이미지 삭제</label>
-                            </section>
-
-                            <section id="uploadImgBtn">
-                                <section class="imgBox">
-                                    <img class="uploadImg" id="img6" src="/IMG/6.png">
-                                </section>
-                                <label for="uploadCampImg6" class="selectImgBtn">이미지 선택</label>
-                                <input type="file" id="uploadCampImg6">
-                                <label class="deleteProfileImg">이미지 삭제</label>
-                            </section>
-
-                        </section>
-                        
-                        <section class="inputImgList">
-
-                            <section id="uploadImgBtn">
-                                <section class="imgBox">
-                                    <img class="uploadImg" id="img7" src="/IMG/7.png">
-                                </section>
-                                <label for="uploadCampImg7" class="selectImgBtn">이미지 선택</label>
-                                <input type="file" id="uploadCampImg7">
-                                <label class="deleteProfileImg">이미지 삭제</label>
-                            </section>
-
-                            <section id="uploadImgBtn">
-                                <section class="imgBox">
-                                    <img class="uploadImg" id="img8" src="/IMG/8.png">
-                                </section>
-                                <label for="uploadCampImg8" class="selectImgBtn">이미지 선택</label>
-                                <input type="file" id="uploadCampImg8">
-                                <label class="deleteProfileImg">이미지 삭제</label>
-                            </section>
-
-                            <section id="uploadImgBtn">
-                                <section class="imgBox">
-                                    <img class="uploadImg" id="img9" src="/IMG/9.png">
-                                </section>
-                                <label for="uploadCampImg9" class="selectImgBtn">이미지 선택</label>
-                                <input type="file" id="uploadCampImg9">
-                                <label class="deleteProfileImg">이미지 삭제</label>
-                            </section>
-
-                        </section>
-
-                    </section>
-
-                    
-                    <section class="empty2"></section>
-                </section>
-                
-                <!-- 캠핑장 정보 입력 -->
-                <section class="inputInfoSection">
-                    
-                    <section class="empty2"></section>
-                    
-                    <section class="inputInfoText">
-                        <p>캠핑장 설명</p>
-                        <section id="textareaSection">
-                            <textarea></textarea>
-                        </section>
-                    </section>
-
-                    <section class="inputInfoText">
-                        <p>부대시설</p>
-                        <section id="textareaSection">
-                            <textarea></textarea>
-                        </section>
-                    </section>
-                    
-                    <section class="empty2"></section>
-                </section>
-                
-                <section class="inputInfoSection">
-                    
-                    <section class="empty2"></section>
-
-                    <section class="inputInfoText">
-                        <p>주변 환경</p>
-                        <section id="textareaSection">
-                            <textarea></textarea>
-                        </section>
-                    </section>
-
-                    <section class="inputInfoText">
-                        <p>매너시간 외 추가 정보</p>
-                        <section id="textareaSection">
-                            <textarea></textarea>
-                        </section>
-                    </section>
-
-                    <section class="empty2"></section>
-                </section>
-                
                 <!-- 서식 전송 버튼 -->
                 <section id="formSendBtn">
 
@@ -265,23 +107,7 @@
 
     <div class="empty5"></div>
     
-    <footer class="bottomBar">
-        <a class="footerTitle">CAMPLEX</a>
-
-        <div class="footerMenu">
-            <a href="#">ABOUT US</a> <p class="menuDiv">|</p>
-            <a href="#">AGREEMENT</a> <p class="menuDiv">|</p>
-            <a href="#">GUIDE</a>
-        </div>
-
-        <div class="footerContent">
-            <p>회사명 캠플렉스 주식회사</p>
-            <p>주소 서울특별시 중구 남대문로 120</p>
-            <p>본 사이트내 모든 이미지 및 컨텐츠 등은 저작권법 제4조의 의한 저작물로써</p> 
-            <p>소유권은 CAMPLEX 주식회사 에게 있으며, 무단 도용시 법적인 제재를 받을 수 있습니다.</p>
-        </div>
-
-    </footer>
+	<th:block th:replace="~{common/footer}"></th:block>
 
 </body>
 </html>

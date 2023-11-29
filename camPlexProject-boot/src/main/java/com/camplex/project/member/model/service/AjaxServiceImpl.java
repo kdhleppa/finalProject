@@ -113,8 +113,6 @@ public class AjaxServiceImpl implements AjaxService {
        map.put("authKey", authKey);
        map.put("email", email);
        
-       System.out.println(map);
-       
        int result = mapper.updateAuthKey(map);
        
        if(result == 0) {

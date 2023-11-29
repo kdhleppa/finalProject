@@ -34,6 +34,18 @@ public interface MemberService {
 	 */
 	int updateMember(MultipartFile memberProfileInput, Member inputMember) throws Exception;
 
+	/** 비밀번호 재설정을 위한 회원정보 찾기
+	 * @param member
+	 * @return
+	 */
+	int searchMember(Member member);
+
+	/** 비밀번호 재설정 (비밀번호 업데이트)
+	 * @param member
+	 * @return
+	 */
+	int changePw(Member inputMember);
+
 	
 
 }
