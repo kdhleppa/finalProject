@@ -1,5 +1,7 @@
 package com.camplex.project.paysys.model.dto;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,5 +21,5 @@ public class Reservations {
 	private String campEntDate;
 	private String campOutDate;
 	
-
+	
 }

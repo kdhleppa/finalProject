@@ -56,8 +56,6 @@
 		<result property="campName" column="CAMP_NAME"/>
 		<result property="campEntDate" column="CAMP_ENTDATE"/>
 		<result property="campOutDate" column="CAMP_OUTDATE"/>
-		
-		
 	</resultMap>
 	
 	
@@ -150,7 +148,7 @@
 			INNER JOIN CART_ITEM ci ON i.ITEM_NO = ci.ITEM_NO
 			INNER JOIN CART c ON ci.CART_NO = c.CART_NO
 			WHERE c.MEMBER_NO = #{memberNo}
-	</select>
+		</select>
 
 	  	
 </mapper>

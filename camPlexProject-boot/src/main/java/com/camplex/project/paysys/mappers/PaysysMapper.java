@@ -31,5 +31,9 @@ public interface PaysysMapper {
 
 
 
+	int moveItemSite(CartItem cartItem);
+
+
+
 
 }

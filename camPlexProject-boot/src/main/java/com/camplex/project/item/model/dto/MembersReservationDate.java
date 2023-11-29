@@ -1,5 +1,7 @@
 package com.camplex.project.item.model.dto;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,5 +17,6 @@ public class MembersReservationDate {
 	public String campEntDate;
 	public String campOutDate;
 	
-
 }
+
+

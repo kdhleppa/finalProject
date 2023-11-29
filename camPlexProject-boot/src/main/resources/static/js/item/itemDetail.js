@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // 결과를 형식에 맞게 표시 (예: ₩240,000)
         document.querySelector('.paymentTextContainer p').innerText = '₩' + totalPrice.toLocaleString();
-    }
+    }	
 
     // 페이지 로드 시 초기 총액 설정
     updateTotal();

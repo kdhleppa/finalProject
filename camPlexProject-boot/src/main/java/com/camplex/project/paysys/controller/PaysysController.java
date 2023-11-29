@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.camplex.project.camping.model.dto.Camp;
 import com.camplex.project.camping.model.dto.CampDetail;
 import com.camplex.project.camping.model.service.CampService;
+import com.camplex.project.common.etc.ResponseMessage;
 import com.camplex.project.item.model.dto.FindCartItem;
 import com.camplex.project.item.model.dto.MembersReservationDate;
 import com.camplex.project.item.model.service.ItemService;
@@ -74,7 +77,6 @@ public class PaysysController {
 			@SessionAttribute(value="loginMember", required = false)Member loginMember,
 			RedirectAttributes ra, HttpServletRequest request
 			) {
-		System.out.println(reservationNo); 
 		Integer cartNo = 0;
 		int result = 0;
 		int searchResult = 0;
@@ -85,18 +87,10 @@ public class PaysysController {
 		if(loginMember != null) {
 			int memberNo = loginMember.getMemberNo();
 			cartNo = payService.searchMembersCartNo(memberNo);
-			System.out.println("카트정보검색" + cartNo);
 			if(cartNo == null) {
 				payService.createCart(memberNo);
 				cartNo = payService.searchMembersCartNo(memberNo);
-				System.out.println("새로만든 카트넘버:"+cartNo);
 			} 
-				
-				
-				
-			System.out.println("있는 카트넘버" + cartNo);
-			
-			
 			
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("itemNo", itemNo);
@@ -152,35 +146,71 @@ public class PaysysController {
 			return "redirect:/member/login";
 		}
 		
-		
+		// map = {List<MembersReservationDate>, List<장바구니리스트>}
 		int memberNo = loginMember.getMemberNo();
 		List<MembersReservationDate> rsvInfo = itemService.membersRsvInfo(memberNo);
 		List<MembersReservationDate> rsvInfo2 = itemService.membersRsvInfo(memberNo);
 		List<FindCartItem> cartItem = itemService.membersCartItem(memberNo);
+		
+		
+
+		
 		model.addAttribute("cartItem", cartItem);
 		model.addAttribute("rsvInfo", rsvInfo);
 		model.addAttribute("rsvInfo2", rsvInfo2);
+		
 		
 		return "/paysys/rentCart";
 	}
 	
 	@ResponseBody
 	@PostMapping("/quantityUpdateCart")
-	public int quantityUpdateCart(@RequestBody CartItem cartItem) {
-		
-		int itemQuantity = cartItem.getItemQuantity();
-		int cartItemNo = cartItem.getCartItemNo();
-		System.out.println("itemQuantity:"+itemQuantity);
-		
-		int result = payService.quantityUpdateCart(cartItem);
-			
-		if (result > 0) {
-			System.out.println("수량 조절 성공성공성공");
-		} else {
-			System.out.println("수량조절 잘안됨");
-		}
-		
-		return 0;
+	public ResponseEntity<?> quantityUpdateCart(@RequestBody CartItem cartItem) {
+	    int itemQuantity = cartItem.getItemQuantity();
+	    int cartItemNo = cartItem.getCartItemNo();
+	    System.out.println("itemquantity"+itemQuantity);
+	    System.out.println("cartItemNo"+cartItemNo);
+	    int result = payService.quantityUpdateCart(cartItem);
+	    if (result > 0) {
+	        return ResponseEntity.ok().body(new ResponseMessage("성공"));
+	    } else {
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseMessage("실패"));
+	    }
 	}
+
+
+	@PostMapping("/rentCart/moveItemToOtherSite")
+	public String moveItemSite(
+			@RequestBody CartItem cartItem,
+			RedirectAttributes ra, HttpServletRequest request
+			) {
+		String referer = request.getHeader("Referer");
+		String path = "redirect:";	
+		
+		int result = payService.moveItemSite(cartItem);
+
+		
+		if (result > 0) {
+			ra.addFlashAttribute("message", "상품이 이동되었습니다.");
+			path += referer;
+			return path;
+			
+		} else {
+			ra.addFlashAttribute("message", "상품 이동에 실패하였습니다.");
+			path += referer;
+			return path;
+				
+		}
+			
+			
+		
+		
+		
+		
+		
+		
+	}
+	
+	
 
 }
