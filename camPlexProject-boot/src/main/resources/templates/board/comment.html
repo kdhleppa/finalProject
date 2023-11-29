@@ -15,7 +15,7 @@
 	
 	                    <!-- 프로필 이미지 -->
 						<!-- 없을 경우 기본 이미지 -->
-	                    <img th:unliss="*{memberProfileImg}" th:src="@{/images/user.png}">
+	                    <img th:unless="*{memberProfileImg}" th:src="@{/Images/user.png}">
 
 						<!-- 있을 경우 프로필 이미지 -->
 						<img th:if="*{memberProfileImg}" th:src="*{memberProfileImg}">
