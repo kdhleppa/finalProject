@@ -16,8 +16,6 @@
     
     <th:block th:replace="~{common/headerForContent}"></th:block>
     
-    <th:block th:replace="~{qna/qna}"></th:block>
-    
     <main th:with="pagination=${map.pagination}, boardList=${map.boardList}">
 		<ul class="boardTypeList">
             <li>
@@ -221,6 +219,7 @@
     <th:block th:replace="~{common/footer}"></th:block>
 
 	<script th:src="@{/js/board/boardList.js}"></script>
+	
 
 </body>
 </html>

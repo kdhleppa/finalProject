@@ -7,7 +7,7 @@ import com.camplex.project.qna.model.dto.Qna;
 @Mapper
 public interface QnaMapper {
 
-	int insertQNA(Qna qna);
+	public int insertQNA(Qna qna);
 
 	
 }

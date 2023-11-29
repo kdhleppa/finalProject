@@ -3,9 +3,22 @@
 <!-- namespace를 Mapper 인터페이스로 지정 -->
 <mapper namespace="com.camplex.project.qna.mappers.QnaMapper">
 	
+	<resultMap type="Qna" id="Qna_rm">
+		<id property="QNANo" column="QNA_NO"/>
+		
+		<result property="QNATitle" column="QNA_TITLE" />
+		<result property="QNAContent" column="QNA_CONTENT" />
+		<result property="QNAAnswer" column="QNA_ANSWER" />
+		<result property="answerFlag" column="ANSWER_FL" />
+		<result property="QNACreateDate" column="Q_CREATE_DATE" />
+		
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="memberNickname" column="MEMBER_NICKNAME" />
+	</resultMap>
+	
 	<insert id="insertQNA">
 		INSERT INTO QNA
-		VALUES(SEQ_QNA_NO.NEXTVAL, #{QNATitle}, #{QNAContent}, DEFAULT, DEFAULT, #{memberNo}, DEFAULT)
+		VALUES(SEQ_QNA_NO.NEXTVAL, #{QNATitle}, #{QNAContent}, DEFAULT, DEFAULT, DEFAULT, #{memberNo}, #{memberNickname})
 	</insert>
 	
 </mapper>
