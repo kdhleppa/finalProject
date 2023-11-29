@@ -14,11 +14,13 @@
 	                <p class="comment-writer">
 	
 	                    <!-- 프로필 이미지 -->
-						<!-- 없을 경우 기본 이미지 -->
-	                    <img th:unless="*{memberProfileImg}" th:src="@{/Images/user.png}">
-
-						<!-- 있을 경우 프로필 이미지 -->
-						<img th:if="*{memberProfileImg}" th:src="*{memberProfileImg}">
+                    
+	                    <!-- 없을 경우 기본 이미지 -->
+	                    <img id="comProImg" th:unless="*{memberProfileImg}" th:src="@{/images/boardImg/user.png}">
+                    
+						          <!-- 있을 경우 프로필 이미지 -->
+						          <img id="comProImg" th:if="*{memberProfileImg}" th:src="*{memberProfileImg}">
+						
 						
 	                    <!-- 닉네임 -->
 	                    <span>[[*{memberNickname}]]</span>

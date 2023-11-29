@@ -4,7 +4,7 @@ const boardLike = document.getElementById("boardLike");
 boardLike.addEventListener("click", e => {
 
     // 로그인 여부 검사
-    if(loginMember.isEmpty){
+    if(loginMemberNo == null){
         alert("로그인 후 이용해주세요")
         return;
     }

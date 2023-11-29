@@ -39,7 +39,7 @@ function selectCommentList(){
             if( comment.memberProfileImg != null ){ // 프로필 이미지가 있을 경우
                 memberProfileImg.setAttribute("src", comment.memberProfileImg);
             }else{ // 없을 경우 == 기본이미지
-                memberProfileImg.setAttribute("src", "/images/user.png");
+                memberProfileImg.setAttribute("src", "/images/boardImg/user.png");
             }
 
             // 작성자 닉네임
@@ -129,7 +129,7 @@ const commentContent = document.getElementById("commentContent");
 addComment.addEventListener("click", e => { // 댓글 등록 버튼이 클릭이 되었을 때
 
     // 1) 로그인이 되어있나? -> 전역변수 memberNo 이용
-    if(loginMemberNo == ""){ // 로그인 X
+    if(loginMemberNo == null){ // 로그인 X
         alert("로그인 후 이용해주세요.");
         return;
     }
