@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
         plusBtn.addEventListener('click', function () {
             var index = this.id.replace('plusBtn', '');
             updateQuantityAndCart(index, 1);
+            
         });
     });
 
@@ -14,7 +15,35 @@ document.addEventListener('DOMContentLoaded', function () {
             updateQuantityAndCart(index, -1);
         });
     });
+    
 });
+
+window.onload = function() {
+    // "index-input" 클래스를 가진 모든 요소를 선택
+    var inputs = document.querySelectorAll('input.index-input');
+
+    // 각 input 요소에 대해 반복
+    inputs.forEach(function(input) {
+        var index = input.value;
+        updateTotal(index);
+    });
+    
+    
+    var rsvInfos = document.querySelectorAll('[id^="rsvInfo"]');
+
+    rsvInfos.forEach(function(rsvInfo) {
+        var rsvInfoIndex = rsvInfo.id.replace('rsvInfo', '');
+        var cartItemRows = document.querySelectorAll('tr[id="cartItemTr' + rsvInfoIndex + '"]');
+
+        if (cartItemRows.length === 0) {
+            rsvInfo.style.display = 'none'; // 혹은 rsvInfo.remove(); 로 완전히 제거
+        }
+    });
+};
+
+
+
+
 
 
 function updateQuantityAndCart(index, change) {
@@ -25,7 +54,7 @@ function updateQuantityAndCart(index, change) {
     quantityDisplay.textContent = newQuantity;
 
     // Fetch API를 사용하여 서버에 변경사항 전송
-    fetch('/paysys/quantityUpdateCart/', {
+    fetch('/paysys/quantityUpdateCart', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -34,10 +63,12 @@ function updateQuantityAndCart(index, change) {
     })
     .then(response => response.json())
     .then(data => {
-        // 성공 응답 처리
+        if (data && data.message === "성공") {
         document.getElementById('quantityDisplay' + index).textContent = newQuantity;
         updateTotal(index);
-        updateCartItemCount(data.totalItemsInCart);
+        } else {
+			console.log("에러 삭제실패")
+		}
     })
     .catch(error => {
         // 오류 처리
@@ -46,6 +77,17 @@ function updateQuantityAndCart(index, change) {
 }
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    setupQuantityButtons(); // 페이지 로드 시 버튼 이벤트 리스너 설정
-});
+
+
+function updateTotal(index) {
+	var itemPrice = document.getElementById('itemPrice'+index).value
+	var quantity = parseInt(document.getElementById('quantityDisplay'+index).textContent)
+	
+	var totalPrice = itemPrice * quantity;
+	console.log(totalPrice);
+	document.getElementById('totalPriceContainer' + index).querySelector('p').innerText = '₩' + totalPrice.toLocaleString();
+}
+
+
+
+

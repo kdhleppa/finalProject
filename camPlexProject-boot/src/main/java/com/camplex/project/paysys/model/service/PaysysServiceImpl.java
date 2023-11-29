@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.camplex.project.paysys.mappers.PaysysMapper;
 import com.camplex.project.paysys.model.dto.CartItem;
@@ -16,12 +17,13 @@ public class PaysysServiceImpl implements PaysysService{
 	@Autowired
 	private PaysysMapper mapper;
 	
-	
+	@Transactional
 	@Override
 	public void createCart(int memberNo) {
 		mapper.createCart(memberNo);
 	}
 
+	@Transactional
 	@Override
 	public int insertCart(Map<String, Object> map) {
 		return mapper.insertCart(map);
@@ -38,9 +40,15 @@ public class PaysysServiceImpl implements PaysysService{
 		return mapper.searchMembersCartNo(memberNo);
 	}
 
+	@Transactional
 	@Override
 	public int quantityUpdateCart(CartItem cartItem) {
 		return mapper.quantityUpdateCart(cartItem);
+	}
+
+	@Override
+	public int moveItemSite(CartItem cartItem) {
+		return mapper.moveItemSite(cartItem);
 	}
 
 

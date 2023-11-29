@@ -24,6 +24,13 @@ public interface PaysysService {
 
 
 
+	int moveItemSite(CartItem cartItem);
+
+
+
+
+
+
 
 
 }

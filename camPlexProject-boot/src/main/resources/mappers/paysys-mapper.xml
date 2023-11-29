@@ -16,7 +16,7 @@
 		<result property="itemQuantity" column="ITEM_QUANTITY_NO"/>
 	</resultMap>
 	
-	<!-- 카트에 렌트아이템 추가-->
+		<!-- 카트에 렌트아이템 추가-->
 	<insert id="insertCart">
 		INSERT INTO "CART_ITEM"
 		VALUES (SEQ_CART_ITEM_NO.NEXTVAL, #{cartNo}, #{itemNo}, #{reservationNo}, #{itemQuantity})
@@ -47,6 +47,16 @@
 		SET ITEM_QUANTITY = #{itemQuantity}
 		WHERE CART_ITEM_NO = #{cartItemNo}
 	</update>
+	
+	
+	<update id="moveItemSite">
+		UPDATE CART_ITEM
+		SET RESERVATION_NO = #{reservationNo}
+		WHERE CART_ITEM_NO = #{cartItemNo}
+	</update>
+
+	
+	
 	
 	
 </mapper>

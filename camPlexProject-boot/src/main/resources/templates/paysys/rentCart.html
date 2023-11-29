@@ -22,10 +22,11 @@
         
         <!--메인공간-->
         <div class="midContainer">
+		
             
             <h2 class="heading">SHOPPING LIST</h2>
             <form action="" class="">
-				<div th:each="rsvInfo : ${rsvInfo}">
+				<div th:each="rsvInfo, rsvInfoIter : ${rsvInfo}" th:id="rsvInfo+${rsvInfoIter.index}">
 	          		<p th:text="${rsvInfo.campName} + ' (' + ${rsvInfo.campEntDate} + ' ~ ' + ${rsvInfo.campOutDate} + ')'"></p>
 	                <table class="shoppingCartTB">
 	                    <tr>
@@ -42,32 +43,33 @@
 	                
 	                    <!-- tr 추가되는식으로 상품추가-->
 	                    <!-- 없으면 없다고 표시하자!!-->
-	                    <th:block th:each = "cartItem, iterStat : ${cartItem}">
+	                    <th:block th:each = "cartItem, iterStat : ${cartItem}" >
 			                    
-			                    <tr th:if="${cartItem.reservationNo == rsvInfo.reservationNo}">
+			                    <tr th:if="${cartItem.reservationNo == rsvInfo.reservationNo}" th:id="cartItemTr+${rsvInfoIter.index}">
 			                        <!-- 개별선택체크박스-->
 			                        <td>
 										<input type="checkbox" class="">
-										<input type="hidden" th:id="'cartItemNo'+${iterStat.index}" th:value="${cartItem.cartItemNo}">
+										<input type="hidden" name="cartItemNo" th:id="'cartItemNo'+${iterStat.index}" th:value="${cartItem.cartItemNo}">
 										<input type="hidden" th:id="'itemPrice'+${iterStat.index}" th:value="${cartItem.itemPrice}">
+										<input type="hidden" class="index-input" th:id="'index'+${iterStat.index}" th:value="${iterStat.index}">	
 									</td>
 			                        <td><img th:src="${cartItem.thumbnail}" th:onclick-"|location.href = '@{/item/itemDetail/{itemNo}(itemNo = ${cartItem.itemNo})}'|"></td>
 			                        <td>[[${cartItem.itemName}]]</td>
 			                        <td>
-			                            <select name="" id="" class="campSelect">
+			                            <select name="reservationNo" id="" class="campSelect">
 			                                <option value="default" class="">제품을 이동시킬 캠핑장을 선택해 주세요.</option>
 			                                <th:block th:each="rsvInfo2 : ${rsvInfo2}">
 												<option th:unless="${rsvInfo.reservationNo == rsvInfo2.reservationNo}" th:value="${rsvInfo2.reservationNo}" th:text="${rsvInfo2.campName} + ' (' + ${rsvInfo2.campEntDate} + ' ~ ' + ${rsvInfo2.campOutDate} + ')'"></option>
 											</th:block>
 			                            </select>
-			                            <button href="#" class="grayBtn">MOVE</button>
+			                            <button type="submit" class="grayBtn" th:formaction="@{/paysys/rentCart/moveItemToOtherSite}" th:text="MOVE">MOVE</button>
 			                        </td>
 			                        <td>
 										<button type="button" class="qBtn" th:id="'minusBtn'+${iterStat.index}">-</button>
 			                        	&nbsp;&nbsp;<span th:id="'quantityDisplay'+${iterStat.index}" th:text="${cartItem.itemQuantity}">수량</span>&nbsp;&nbsp;
 			                        	<button type="button" class="qBtn" th:id="'plusBtn'+${iterStat.index}">+</butto>
 			                        </td>
-			                        <td class="paymentTextContainer"><p></p></td>
+			                        <td th:class="paymentTextContainer" th:id="totalPriceContainer+${iterStat.index}"><p></p></td>
 			                        <td>
 			                            <button href="#" class="grayBtn">WISH LIST</button>
 			                            <div>&nbsp;</div>

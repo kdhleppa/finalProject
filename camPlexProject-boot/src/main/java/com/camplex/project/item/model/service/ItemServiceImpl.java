@@ -32,7 +32,7 @@ public class ItemServiceImpl implements ItemService {
 	 */
 	@Override
 	public List<MembersReservationDate> membersRsvInfo(int memberNo) {
-		// TODO Auto-generated method stub
+		
 		return mapper.membersRsvInfo(memberNo);
 	}
 
