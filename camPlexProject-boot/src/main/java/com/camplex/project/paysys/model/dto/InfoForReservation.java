@@ -12,7 +12,9 @@ import lombok.ToString;
 public class InfoForReservation {
 	
 	private String campDeName;
+	private int campDeNo;
 	private String campName;
+	private int campNo;
 	private String customerName;
 	private String customerTel;
 	private int adultCount;
@@ -25,5 +27,8 @@ public class InfoForReservation {
 	private int stayDay;
 	private int price;
 	private int priceOneDay;
+	private String payType;
+	
+	private int memberNo;
 	
 }

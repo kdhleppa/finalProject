@@ -253,7 +253,7 @@ main {
     height: auto;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     
 }
@@ -286,7 +286,6 @@ main {
 .contentDetailWriteSec {
     flex-basis: 15%;
     width: 100%;
-    display: flex;
     justify-content: center;
     text-decoration: none;
 }
@@ -296,8 +295,24 @@ main {
     flex-basis: 73%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     font-size: 1.2rem;
     color: #000;
+}
+
+.contentDetailWriteSecCenterSec img {
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+}
+
+.star{
+	display: flex;
+	align-items: center;
+}
+
+.star span{
+	font-size: 1rem;
 }
 
 .contentBlanksec {
@@ -307,16 +322,40 @@ main {
 
 .footBlankSec {
     width: 100%;
-    height: 15rem;
+    height: 5rem;
     margin-top: 200px;
 }
 
 
+#content{
+	display: flex;
+}
 
+.blank{
+	flex-basis: 15%;
+}
 
+.bBlank{
+	height: 300px;
+	display: flex;
+	justify-content: center;
+}
 
+.moreBtn{
+	padding-bottom: 50px;
+	width: 100%;
+	background-color: transparent;
+	border: none;
+	font-size: 1.3rem;
+	color: #909090;
+	cursor: pointer;
+}
 
-
+.mainContent{
+	flex-basis: 70%;
+	height: 1000px;
+	overflow-y: clip;
+}
 
 
 

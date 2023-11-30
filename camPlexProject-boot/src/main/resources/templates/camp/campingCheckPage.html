@@ -30,6 +30,12 @@
             </div>
         </a>
 
+		<div id="content">
+			
+		<div class="blank"></div>
+
+		<div class="mainContent">
+			
         <!-- 검색 일자 검색 sec -->
         <section class="checkCalenderSec">
 
@@ -123,8 +129,12 @@
                 </div>
 
                 <a th:href="@{/camp/{campNo}(campNo = ${camp.campNo})}" class="contentDetailWriteSec">
-                    <section class="contentDetailWriteSecCenterSec" th:text="${camp.campName}">
-						캠핑장 명
+                    <section class="contentDetailWriteSecCenterSec">
+						<p  th:text="${camp.campName}"></p>
+						<div class="star">
+	                    	<img th:src="@{/images/iconImg/star-fill.png}" alt="">
+	                    	<span th:text="${camp.campingStar}">0</span>
+						</div>
                     </section>
                 </a>
 				
@@ -132,9 +142,14 @@
 
         </section>
 
-        <section class="footBlankSec"></section>
-       
+		</div>	
+			
+        <div class="blank"></div>
 
+		</div>
+		
+        <div class="bBlank"></div>
+		
     </main>
 
     <th:block th:replace="~{common/footer}"></th:block>

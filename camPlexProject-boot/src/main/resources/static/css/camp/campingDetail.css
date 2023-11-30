@@ -101,6 +101,12 @@ hr {
 	margin: 0 1px;
 }
 
+.starBtn{
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}
+
 .pictureContainer {
 	display: flex;
 	justify-content: space-between;
@@ -503,7 +509,7 @@ hr {
 	background-color: transparent;
 	border: none;
 	font-size: 1.3rem;
-	color: #D4A373;
+	color: rgb(201, 121, 78);
 	padding: 0 10px;
 }
 
@@ -511,7 +517,7 @@ hr {
 	align-self: flex-end;
 	margin-right: 30px;
 	font-size: 1.3rem;
-	color: #d49673;
+	color: rgb(201, 121, 78);
 	background-color: transparent;
 	border: none;
 	width: 11rem;
@@ -522,7 +528,7 @@ hr {
 }
 
 .campStieRadio:checked+label {
-	background-color: #FAEDCD;
+	background-color: rgb(243, 216, 150);
 }
 
 .btnArea {

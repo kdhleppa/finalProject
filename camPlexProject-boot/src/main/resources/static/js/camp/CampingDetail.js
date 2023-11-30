@@ -231,8 +231,11 @@ document.addEventListener('DOMContentLoaded', function() {
 					calendarCell.classList.add('empty');
 				} else {
 					calendarCell.textContent = currentDay;
+					var tempHour = checkIn.split(":");
+					
 					var today = new Date();
 					var tempDay = new Date(year, month-1, currentDay);
+					tempDay.setHours(parseInt(tempHour[0]),0,0,0)
 					
 					if(tempDay < today){
 						calendarCell.classList.add('emptyDay')
@@ -494,5 +497,41 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+// ******************************* 별점 *****************************
+const star = document.querySelectorAll('.starBtn');
+
+console.log(star)
+
+for(var i ; i < star.length ; i++){
+	
+	star[i].addEventListener("click", (e) => {
+		
+		console.log("ss")
+
+		if(loginMember == null){
+			alert("로그인 후 이용해주세요")
+			const starNo = e.target.id.split("_");
+			console.log(starNo[1])
+
+			e.preventDefault();
+			return;
+		}else{
+
+			const starNo = e.target.id.split("_");
+			console.log(starNo[1])
+	
+			fetch("/camp/star?starNo=" + starNo[1] + "&campNo=" + campNo)
+			.then(resp => resp.text)
+			.then(count => {
+				
+				
 
 
+			})
+
+		}
+
+
+	})
+
+}

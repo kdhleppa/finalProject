@@ -148,10 +148,23 @@ main {
 #withdrawalQuestionSection > p {
     margin-top: 30px;
 	text-align: center;
+	font-size: 22px;
 }
 
 #withdrawalQuestion {
     font-size: 22px;
+}
+
+.senderInfo,.bankInfo, .priceInfo{
+	display: flex;
+}
+
+.bankInfoContainer{
+	margin-top: 20px;
+	font-size: 22px;
+	background-color: rgb(232, 232, 232);
+	padding: 20px;
+	border-radius: 5px;
 }
 
 /* ------------------------------------ */
@@ -176,3 +189,5 @@ main {
     font-size: 17px;
     height: 100%;
 }
+
+
