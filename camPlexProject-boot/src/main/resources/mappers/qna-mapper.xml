@@ -21,4 +21,5 @@
 		VALUES(SEQ_QNA_NO.NEXTVAL, #{QNATitle}, #{QNAContent}, DEFAULT, DEFAULT, DEFAULT, #{memberNo}, #{memberNickname})
 	</insert>
 	
+	
 </mapper>

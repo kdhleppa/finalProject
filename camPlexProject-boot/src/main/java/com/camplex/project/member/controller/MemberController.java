@@ -27,6 +27,7 @@ import com.camplex.project.camping.model.dto.Camp;
 import com.camplex.project.common.etc.ResponseMessage;
 import com.camplex.project.item.model.dto.Item;
 import com.camplex.project.item.model.service.ItemService;
+import com.camplex.project.member.model.dto.CEOMember;
 import com.camplex.project.member.model.dto.Member;
 import com.camplex.project.member.model.service.MemberService;
 import com.camplex.project.member.model.service.WishlistService;
@@ -229,8 +230,7 @@ public class MemberController {
 	public String updateMember(@SessionAttribute("loginMember") Member loginMember,
 								Member inputMember,
 								MultipartFile memberProfileInput,
-								RedirectAttributes ra,
-								Model model
+								RedirectAttributes ra
 								) throws Exception {
 		
 		String path = "redirect:";
@@ -243,9 +243,10 @@ public class MemberController {
 		if(result > 0) {
 			path += "myPage";
 			
-			message = "정보가 수정되었습니다.";
+			loginMember.setMemberNickname( inputMember.getMemberNickname() );
+			loginMember.setMemberProfileImg( inputMember.getMemberProfileImg());
 			
-			model.addAttribute("loginMember", inputMember);
+			message = "정보가 수정되었습니다.";
 			
 		} else {
 			
@@ -301,7 +302,43 @@ public class MemberController {
 		return "member/levelUpForm";
 	}
 	
-	
+	// CEO 계정 변경 폼 전송
+	@PostMapping("/levelUpFrom")
+	public String levelUpFrom(@SessionAttribute("loginMember") Member loginMember,
+								CEOMember inputCeoMember,
+								MultipartFile tourLicenseInput,
+								RedirectAttributes ra,
+								@RequestHeader(value = "referer") String referer
+								) throws Exception {
+		
+		inputCeoMember.setMemberNo(loginMember.getMemberNo());
+		
+		String path = "redirect:";
+		String message = "";
+		
+		String searchForm = service.searchForm(loginMember.getMemberNo());
+		
+		if(searchForm == null) {
+			
+			int result = service.levelUpFrom(tourLicenseInput, inputCeoMember);
+			
+			if(result > 0) {
+				message = "신청이 완료 되었습니다.";
+				path += "myPage";
+			} else {
+				message = "신청을 실패했습니다.";
+				path = "redirect:" + referer;
+			}
+			
+		} else {
+			message = "신청 내역이 존재합니다.";
+			path += "myPage";
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return path;
+	}
 	
 	
 	// 위시리스트 추가

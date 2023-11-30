@@ -55,6 +55,7 @@
 		WHERE CART_ITEM_NO = #{cartItemNo}
 	</update>
 
+
 	<select id="searchResult">
 		SELECT COUNT (*)
 		FROM CART_ITEM
@@ -63,14 +64,23 @@
 		AND ITEM_NO = #{itemNo}
 		
 	</select>
+}
+	    AND RESERVATION_NO = #{reservationNo}
+	    AND CART_ITEM_NO = #{cartItemNo}
+	</delete>
 	
 	
 	<delete id="deleteItemcart">
 	    DELETE FROM CART_ITEM
-	    WHERE ITEM_NO = #{itemNo}
-	    AND RESERVATION_NO = #{reservationNo}
-	    AND CART_ITEM_NO = #{cartItemNo}
-	</delete>
+	    WHERE ITEM_NO = #{itemNo
+	<!-- 캠핑 결제 내역 저장 -->
+	<insert id="insertPayCamp">
+		INSERT INTO "PAYMENT"
+		VALUES (SEQ_PAY_NO.NEXTVAL, #{memberNo}, #{campNo}, #{campDeNo},
+				NULL, #{price}, NULL, #{price}, #{payType}, DEFAULT,
+				#{entDate}, #{outDate}, DEFAULT)
+	</insert>
+
 	
 	<delete id="deleteCart">
 		DELETE FROM CART_ITEM

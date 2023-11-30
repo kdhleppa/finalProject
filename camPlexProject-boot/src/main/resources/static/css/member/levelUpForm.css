@@ -24,12 +24,36 @@ a {
     text-decoration: none;
 }
 
-a:hover {
+button { 
+  color: #000;
+  display:inline-block; 
+  margin:0;
+  text-transform:uppercase; 
+}
+  
+button:after {
+  display:block;
+  content: '';
+  border-bottom: solid 2px #000;
+  margin-top: 5px;
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+}
+
+button:hover:after { 
+	transform: scaleX(1);
+}
+
+button:hover {
     cursor: pointer;
 }
 
+input:focus {
+	outline: none;
+}
+
 main, div, section {
-    /* border: 1px solid black; */
+    /*border: 1px solid black;*/
 }
 
 /* -------------------------- */
@@ -72,22 +96,21 @@ main {
 }
 
 .empty2 {
-    flex-basis: 10%;
+    flex-basis: 15%;
 }
 
 #infoMain {
     display: flex;
     flex-direction: column;
-    flex-basis: 80%;
+    flex-basis: 70%;
 }
 
 .empty3 {
-    flex-basis: 15%;
+	margin-top: 30px;
 }
 
-#placeInfo {
+.placeInfo {
     display: flex;
-    flex-basis: 70%;
     justify-content: space-between;
 }
 
@@ -98,14 +121,74 @@ main {
 
 #inputTitle input {
     border: none;
-    font-size: 15px;
-    width: 150px;
+    margin-left: 5px;
+    font-size: 18px;
+    width: 170px;
 }
 
 #inputAddress input {
     border: none;
+    margin-left: 5px;
+    font-size: 18px;
+    width: 330px;
+}
+
+#inputCEO input {
+    border: none;
+    margin-left: 5px;
+    font-size: 18px;
+    width: 100px;
+}
+
+#inputCEONumber input {
+    border: none;
+    margin-left: 5px;
+    font-size: 18px;
+    width: 200px;
+}
+
+#tourLicense input {
+    border: none;
+    margin-left: 5px;
     font-size: 15px;
-    width: 300px;
+    width: 250px;
+}
+
+#tourLicense input[type=file]::file-selector-button {
+	width: 70px;
+	height: 20px;
+	font-size: 13px;
+	background: #fff;
+	border: 1px solid rgb(77, 77, 77);
+	border-radius: 7px;
+	cursor: pointer;
+	transition: background 0.5s ease;
+}
+
+#tourLicense input[type=file]::file-selector-button:hover {
+    background: rgb(77, 77, 77);
+    color: #fff;
+}
+
+#accountHolder input {
+    border: none;
+    margin-left: 5px;
+    font-size: 18px;
+    width: 100px;
+}
+
+#bank input {
+    border: none;
+    margin-left: 5px;
+    font-size: 18px;
+    width: 100px;
+}
+
+#accountNumber input {
+    border: none;
+    margin-left: 5px;
+    font-size: 18px;
+    width: 250px;
 }
 
 /* ------------------------------ */
@@ -119,6 +202,8 @@ main {
 #sendBtn {
     font-size: 20px;
     font-weight: bold;
+    background-color: transparent;
+    border: none;
 }
 
 #sendBtn::after {

@@ -16,18 +16,16 @@
     
     <th:block th:replace="~{common/headerForContent}"></th:block>
     
-    <th:block th:replace="~{qna/qna}"></th:block>
-    
     <main>
 		<ul class="boardTypeList">
             <li>
-                <a th:href="@{/board/{boardType}(boardType=B)}">게시판</a>
+                <a th:href="@{/board/{boardType}(boardType=B)}">자유게시판</a>
             </li>
 
             <p>|</p>
 
             <li id="board">
-                <a th:href="@{/board/{boardType}(boardType=N)}">공지사항</a>
+                <a th:href="@{/board/{boardType}(boardType=N)}">노하우게시판</a>
             </li>
 
             <p>|</p>
@@ -114,7 +112,6 @@
 				            
 			            	</th:block>
 			            	
-			            	
 			            </th:block>
 			            
 					</div>
@@ -131,7 +128,7 @@
                 
                 	<!-- 프로필 + 닉네임 + 작성일 + 조회수 -->
                     <!-- 프로필 이미지가 없을 경우 기본 이미지 출력 -->
-					<img id="proImg" th:unless="*{memberProfileImg}" th:src={/images/boardImg/user.png}>
+					<img id="proImg" th:unless="*{memberProfileImg}" th:src=@{/images/boardImg/user.png}>
 				
 					<!-- 프로필 이미지가 있을 경우 등록한 이미지 출력 -->
 					<img id="proImg" th:if="*{memberProfileImg}" th:src="*{memberProfileImg}" />

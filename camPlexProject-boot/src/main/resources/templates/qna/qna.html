@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1대1문의</title>
+    <title>1:1 문의 (관리자)</title>
 
     <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
     <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
@@ -15,13 +15,13 @@
 
 <body>
     
-    <button type='button' id="qmodal_btn">1:1 문의하기</button>
+    <button type='button' id="qmodal_btn" data-target="modal1">문의하기</button>
 	
-	<div class="qmodal_background" id="modalBack"></div>
+	<div class="qmodal_background" id="qmodalBack" data-target="modal1"></div>
 	
-	<div class="qmodal_wrap" id="qmodalContainer">
+	<div class="qmodal_wrap" id="qmodalContainer" data-target="modal1">
 			
-		<div class="qmodal_close" style="cursor: pointer;">x</div>
+		<div class="qmodal_close" style="cursor: pointer;" data-target="modal1">x</div>
    
 		<div class="text">
 	
@@ -32,7 +32,7 @@
 		    <div id="main-content" class="container">
 	
 		        <section class="qnaTop">
-		            <p>1대1 문의</p>
+		            <p>1:1 문의 (관리자)</p>
 		        </section>
 	
 	    		<hr style="margin-top: 25px; width: 102.2%; margin-left: -15px; margin-bottom: 20px;">
@@ -50,7 +50,7 @@
 				            <p>문의내용</p>
 		                    <textarea id="QNAContent" name="QNAContent" class="form-control" placeholder="내용을 입력하세요"></textarea>
 		                </div>
-		                
+		                        
 		                <div class="btnArea">
 	
 			            	<button type="submit" id="writeBtn">문의하기</button>
@@ -73,6 +73,16 @@
 	</div>
      
 </body>
+
+	<script th:inline="javascript">
+		
+		const loginMemberNo = /*[[${session.loginMember?.memberNo}]]*/ "로그인 회원번호";
+		
+		if(loginMemberNo == null) loginMemberNo = "";
+
+		console.log(loginMemberNo);
+	
+	</script>
 	
 	<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
     <script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>

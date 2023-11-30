@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.camplex.project.paysys.mappers.PaysysMapper;
 import com.camplex.project.paysys.model.dto.CartItem;
+import com.camplex.project.paysys.model.dto.InfoForReservation;
 
 @Service
 @PropertySource("classpath:/config.properties")
@@ -70,6 +71,14 @@ public class PaysysServiceImpl implements PaysysService{
 	public int deleteCart(int cartItemNo) {
 		// TODO Auto-generated method stub
 		return mapper.deleteCart(cartItemNo);
+	}
+
+	/** 캠핑 결제 내역 저장
+	 *
+	 */
+	@Override
+	public int insertPayCamp(InfoForReservation info) {
+		return mapper.insertPayCamp(info);
 	}
 
 

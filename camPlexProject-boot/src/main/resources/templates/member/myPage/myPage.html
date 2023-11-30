@@ -113,52 +113,6 @@
                 <section class="empty2"></section>
 
             </section>
-            <section id="shopingListSection">
-
-                <section class="empty2"></section>
-
-                <section id="shopingList">
-                    
-                    <section id="subName">쇼핑 정보</section>
-                    <hr class="underLine2">
-                    
-                    <section id="shopingListInfo">
-                        
-                        <section class="empty2"></section>
-                        <!-- 내부공백 (우) -->
-                        
-                        <section id="shopingHistoryInfo">
-                            <img src="/IMG/myPageImg.png">
-                            
-                            
-                            <section class="empty3"></section>
-                            <section id="shopingInfo">
-                                <div>
-                                    <a>[Catgill 캠핑장]</a>
-                                </div>
-                                <div>
-                                    <a> < 비바코 젤라 리빙쉘 텐트 외 3개 ></a>
-                                </div>
-                            </section>
-                            
-                            <section class="empty3"></section>
-                            <section id="reviewRebuyDeleteBtnSection">
-                                <a>리뷰 작성</a>
-                                <a>재구매</a>
-                                <a>삭제</a>
-                            </section>
-                        </section>
-                        
-                        <!-- 내부공백 (좌) -->
-                        <section class="empty2"></section>
-                        
-                    </section>
-                    
-                </section>
-
-                <section class="empty2"></section>
-
-            </section>
 
             
             <!-- 관심 상품 -->
@@ -198,7 +152,10 @@
                 <section class="empty2"></section>
 
                 <section class="textListSection">  
-                    <section id="subName">문의사항</section>
+					<div class="textListSecDiv">
+                    	<section id="subName">문의사항</section>
+                    	<th:block th:replace="~{qna/qna}"></th:block>
+                    </div>
                     <hr class="underLine2">
 
                     <section class="textItemSection">

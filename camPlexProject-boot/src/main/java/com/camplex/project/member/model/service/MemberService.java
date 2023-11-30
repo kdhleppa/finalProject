@@ -2,6 +2,7 @@ package com.camplex.project.member.model.service;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.camplex.project.member.model.dto.CEOMember;
 import com.camplex.project.member.model.dto.Member;
 
 public interface MemberService {
@@ -45,6 +46,21 @@ public interface MemberService {
 	 * @return
 	 */
 	int changePw(Member inputMember);
+	
+	/** CEO 변경 신청 내역 조회
+	 * @param memberNo
+	 * @return
+	 */
+	String searchForm(int memberNo);
+
+	/** CEO 계정 변경 폼 전송
+	 * @param tourLicenseInput
+	 * @param inputCeoMember
+	 * @return
+	 */
+	int levelUpFrom(MultipartFile tourLicenseInput, CEOMember inputCeoMember) throws Exception;
+
+
 
 	
 

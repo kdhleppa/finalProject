@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.camplex.project.common.utility.Util;
 import com.camplex.project.member.mappers.MemberMapper;
+import com.camplex.project.member.model.dto.CEOMember;
 import com.camplex.project.member.model.dto.Member;
 
 @Service
@@ -166,6 +167,42 @@ public class MemberServiceImpl implements MemberService {
 		
 		return mapper.changePw(inputMember);
 	}
+
+	// CEO 변경 신청 내역 조회
+	@Override
+	public String searchForm(int memberNo) {
+		return mapper.searchForm(memberNo);
+	}
+	
+	// CEO 계정 변경 폼 전송
+	@Override
+	public int levelUpFrom(MultipartFile tourLicenseInput, CEOMember inputCeoMember) throws Exception {
+		
+		String temp = inputCeoMember.getTourLicense();
+		String rename = null;
+		
+		if(tourLicenseInput.getSize() > 0) { // 업로드된 이미지가 있을 경우
+			
+			rename = Util.fileRename(tourLicenseInput.getOriginalFilename());
+			
+			inputCeoMember.setTourLicense(rename);
+			
+		}
+		
+		int result = mapper.levelUpFrom(inputCeoMember);
+		
+		if(result > 0) {
+			
+			if(rename != null) {
+				
+				tourLicenseInput.transferTo(new File(filePath + rename));
+			}
+			
+		}
+		
+		return result;
+	}
+
 
 
 }

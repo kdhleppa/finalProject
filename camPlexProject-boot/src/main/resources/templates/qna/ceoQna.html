@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1:1 문의 (캠핑장)</title>
+
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}" rel="stylesheet">
+    <script th:src="@{https://kit.fontawesome.com/92fbd4b351.js}" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" th:href="@{/css/qna/ceoQna.css}">
+</head>
+
+<body>
+    
+    <button type='button' id="cqmodal_btn" data-target="modal2">캠핑장 문의</button>
+	
+	<div class="cqmodal_background" id="cqmodalBack" data-target="modal2"></div>
+	
+	<div class="cqmodal_wrap" id="cqmodalContainer" data-target="modal2">
+			
+		<div class="cqmodal_close" style="cursor: pointer;" data-target="modal2">x</div>
+   
+		<div class="text">
+	
+	        <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+		    enabled. Please enable
+		    Javascript and reload this page!</h2></noscript>
+
+		    <div id="main-content" class="container">
+	
+		        <section class="cQnaTop">
+		            <p>1:1 문의 (캠핑장)</p>
+		        </section>
+	
+	    		<hr style="margin-top: 15px; width: 102.2%; margin-left: -15px; margin-bottom: 20px;">
+	
+	    		<div class="ceoQnaDetail">
+	
+		            <form th:action="@{/ceoQna/ceoQnaSubmit}" method="POST" id="ceoQnaFrm" class="ceoQnaSubmit" enctype="multipart/form-data">
+						
+					<div class="ceoQnaTitle">
+							<p>제목</p>
+							<input type="text" id="ceoQnaTitle" name="ceoQnaTitle" class="form-control" placeholder="제목을 입력하세요">
+						</div>
+						
+						<div class="ceoQnaContent">
+				            <p>문의내용</p>
+		                    <textarea id="ceoQnaContent" name="ceoQnaContent" class="form-control" placeholder="내용을 입력하세요"></textarea>
+		                </div>
+		                        
+		                <div class="btnArea">
+	
+			            	<button type="submit" id="writeBtn">문의하기</button>
+					
+						</div>
+						
+						<div th:object="${board}">
+							<input type="hidden" name="memberNo" th:value="${memberNo}">
+							<input type="hidden" name="memberNickname" th:value="${memberNickname}">
+		                </div>
+		                
+					</form>
+
+        		</div>
+        
+	     	</div>
+     	
+     	</div>
+	     	
+	</div>
+     
+</body>
+
+	<script th:inline="javascript">
+		
+		const loginMemberNo = /*[[${session.loginMember?.memberNo}]]*/ "로그인 회원번호";
+		
+		if(loginMemberNo == null) loginMemberNo = "";
+
+		console.log(loginMemberNo);
+	
+	</script>
+	
+	<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js}"></script>
+		
+	<script th:src="@{/js/qna/ceoQna.js}"></script>
+	
+</html>
