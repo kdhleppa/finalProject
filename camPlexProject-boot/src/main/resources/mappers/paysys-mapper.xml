@@ -64,15 +64,16 @@
 		AND ITEM_NO = #{itemNo}
 		
 	</select>
-}
-	    AND RESERVATION_NO = #{reservationNo}
-	    AND CART_ITEM_NO = #{cartItemNo}
-	</delete>
+
 	
 	
 	<delete id="deleteItemcart">
 	    DELETE FROM CART_ITEM
-	    WHERE ITEM_NO = #{itemNo
+	    WHERE ITEM_NO = #{itemNo}
+	    AND RESERVATION_NO = #{reservationNo}
+	    AND CART_ITEM_NO = #{cartItemNo}
+	</delete>
+	
 	<!-- 캠핑 결제 내역 저장 -->
 	<insert id="insertPayCamp">
 		INSERT INTO "PAYMENT"
