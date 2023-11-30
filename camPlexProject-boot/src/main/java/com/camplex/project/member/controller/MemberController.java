@@ -1,6 +1,8 @@
 package com.camplex.project.member.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,9 +30,9 @@ import com.camplex.project.item.model.service.ItemService;
 import com.camplex.project.member.model.dto.Member;
 import com.camplex.project.member.model.service.MemberService;
 import com.camplex.project.member.model.service.WishlistService;
+import com.camplex.project.paysys.model.service.PaysysService;
 
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -46,6 +48,9 @@ public class MemberController {
 	
 	@Autowired
 	private ItemService itemService;
+	
+	@Autowired
+	private PaysysService payService;
 	
 	// 로그인 페이지 이동
 	@GetMapping("/login")
@@ -348,6 +353,61 @@ public class MemberController {
 		}
 		
 	}
+	
+	// 위시리스트 추가후 카트에서 제거
+		@PostMapping("/wishlist/insert2")
+		public String wishlistInsert2(
+				@SessionAttribute(value="loginMember", required = false)Member loginMember,
+				RedirectAttributes ra,
+				@RequestParam("reservationNo") int reservationNo,
+			    @RequestParam("cartItemNo") int cartItemNo,
+			    @RequestParam("itemNo") int itemNo,
+				HttpServletRequest request
+				) {
+			
+			int result = 0;
+			int searchResult = 0;
+			String referer = request.getHeader("Referer");
+			String path = "redirect:";
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("itemNo", itemNo);
+			map.put("reservationNo", reservationNo);
+			map.put("cartItemNo", cartItemNo);
+			
+			if(loginMember != null) {
+				
+				int memberNo = loginMember.getMemberNo();
+				searchResult = wishlistService.searchWishlist(memberNo, itemNo);
+				
+				if (searchResult > 0) {
+					
+					ra.addFlashAttribute("message", "위시리스트에 추가된 상품 입니다.");
+					path += referer;
+					return path;
+					
+				} else {
+					result = wishlistService.wishlistInsert(memberNo, itemNo);
+					
+					if (result > 0) {
+						payService.deleteItemcart(map);
+						ra.addFlashAttribute("message", "상품이 위시리스트에 추가되었습니다.");
+						path += referer;
+						return path;
+						
+					} else {
+						ra.addFlashAttribute("message", "위시리스트 등록에 실패하였습니다.");
+						path += referer;
+						return path;
+					}
+					
+				}
+			} else {
+				ra.addFlashAttribute("message", "로그인 후 이용해 주세요.");
+				path += "/member/login";
+				return path;
+			}
+			
+		}
 	
 	// 위시리스트로 이동~
 	@GetMapping("/wishlist")

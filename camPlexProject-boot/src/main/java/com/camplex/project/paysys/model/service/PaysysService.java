@@ -24,7 +24,19 @@ public interface PaysysService {
 
 
 
-	int moveItemSite(CartItem cartItem);
+	int moveItemSite(Map<String, Object> map);
+
+
+
+	int searchResult(Map<String, Object> map);
+
+
+
+	void deleteItemcart(Map<String, Object> map);
+
+
+
+	int deleteCart(int cartItemNo);
 
 
 

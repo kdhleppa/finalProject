@@ -31,7 +31,19 @@ public interface PaysysMapper {
 
 
 
-	int moveItemSite(CartItem cartItem);
+	int moveItemSite(Map<String, Object> map);
+
+
+
+	int searchResult(Map<String, Object> map);
+
+
+
+	void deleteItemcart(Map<String, Object> map);
+
+
+
+	int deleteCart(@Param("cartItemNo") int cartItemNo);
 
 
 

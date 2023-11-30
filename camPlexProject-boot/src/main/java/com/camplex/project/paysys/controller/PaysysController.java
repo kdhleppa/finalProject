@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,6 +34,7 @@ import com.camplex.project.paysys.model.service.PaysysService;
 import com.camplex.project.paysys.model.service.ReservationsService;
 
 import jakarta.servlet.http.HttpServletRequest;
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping("/paysys")
@@ -213,14 +213,33 @@ public class PaysysController {
 
 	@PostMapping("/rentCart/moveItemToOtherSite")
 	public String moveItemSite(
-			@RequestBody CartItem cartItem,
+			@RequestParam("reservationNo") int reservationNo,
+		    @RequestParam("cartItemNo") int cartItemNo,
+		    @RequestParam("itemNo") int itemNo,
 			RedirectAttributes ra, HttpServletRequest request
 			) {
+		 
+		
 		String referer = request.getHeader("Referer");
 		String path = "redirect:";	
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("reservationNo", reservationNo);
+		map.put("cartItemNo", cartItemNo);
+		map.put("itemNo", itemNo);
 		
-		int result = payService.moveItemSite(cartItem);
-
+		int searchResult = 0;
+		searchResult = payService.searchResult(map);
+		
+		
+		if (searchResult > 0) {
+			ra.addFlashAttribute("message", "선택한 캠핑장에 이미 있는 상품입니다.");
+			path +=referer;
+			return path;
+		}
+		
+		
+		
+		int result = payService.moveItemSite(map);
 		
 		if (result > 0) {
 			ra.addFlashAttribute("message", "상품이 이동되었습니다.");
@@ -234,15 +253,35 @@ public class PaysysController {
 				
 		}
 			
+		
+	}
+	
+	
+	
+	@PostMapping("/rentCart/deleteCart")
+	public String deleteCart (@RequestParam("cartItemNo") int cartItemNo,
+			RedirectAttributes ra, HttpServletRequest request
+			) {
+		String referer = request.getHeader("Referer");
+		String path = "redirect:";
+		
+		int result = payService.deleteCart(cartItemNo);
+		
+		if (result > 0) {
 			
-		
-		
+			ra.addFlashAttribute("message", "삭제되었습니다.");
+			path += referer;
+			return path;
+			
+		} else {
+			ra.addFlashAttribute("message", "삭제 실패.");
+			path += referer;
+			return path;
+		}
 		
 		
 		
 		
 	}
-	
-	
 
 }

@@ -55,8 +55,28 @@
 		WHERE CART_ITEM_NO = #{cartItemNo}
 	</update>
 
+	<select id="searchResult">
+		SELECT COUNT (*)
+		FROM CART_ITEM
+		WHERE CART_ITEM_NO = #{cartItemNo}
+		AND RESERVATION_NO = #{reservationNo}
+		AND ITEM_NO = #{itemNo}
+		
+	</select>
 	
 	
+	<delete id="deleteItemcart">
+	    DELETE FROM CART_ITEM
+	    WHERE ITEM_NO = #{itemNo}
+	    AND RESERVATION_NO = #{reservationNo}
+	    AND CART_ITEM_NO = #{cartItemNo}
+	</delete>
+	
+	<delete id="deleteCart">
+		DELETE FROM CART_ITEM
+		WHERE CART_ITEM_NO= #{cartItemNo}
+		
+	</delete>
 	
 	
 </mapper>

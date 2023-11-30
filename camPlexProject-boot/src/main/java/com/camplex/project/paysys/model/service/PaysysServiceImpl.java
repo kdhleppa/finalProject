@@ -46,9 +46,30 @@ public class PaysysServiceImpl implements PaysysService{
 		return mapper.quantityUpdateCart(cartItem);
 	}
 
+		
+	
+
+	@Transactional
 	@Override
-	public int moveItemSite(CartItem cartItem) {
-		return mapper.moveItemSite(cartItem);
+	public int moveItemSite(Map<String, Object> map) {
+		return mapper.moveItemSite(map);
+	}
+
+	@Override
+	public int searchResult(Map<String, Object> map) {
+		return mapper.searchResult(map);
+	}
+
+	@Transactional
+	@Override
+	public void deleteItemcart(Map<String, Object> map) {
+		mapper.deleteItemcart(map);
+	}
+
+	@Override
+	public int deleteCart(int cartItemNo) {
+		// TODO Auto-generated method stub
+		return mapper.deleteCart(cartItemNo);
 	}
 
 

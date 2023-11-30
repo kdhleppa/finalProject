@@ -16,7 +16,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
     
+    
 });
+
+
 
 window.onload = function() {
     // "index-input" 클래스를 가진 모든 요소를 선택
@@ -36,7 +39,8 @@ window.onload = function() {
         var cartItemRows = document.querySelectorAll('tr[id="cartItemTr' + rsvInfoIndex + '"]');
 
         if (cartItemRows.length === 0) {
-            rsvInfo.style.display = 'none'; // 혹은 rsvInfo.remove(); 로 완전히 제거
+            rsvInfo.remove();
+            /*rsvInfo.style.display = 'none';*/
         }
     });
 };
@@ -88,6 +92,72 @@ function updateTotal(index) {
 	document.getElementById('totalPriceContainer' + index).querySelector('p').innerText = '₩' + totalPrice.toLocaleString();
 }
 
+
+
+function moveItem(button, cartItemIndex) {
+    var form = button.closest('form'); // 버튼이 있는 form을 찾습니다.
+    if (!form) {
+        console.error('Form not found');
+        return; // 폼이 없으면 함수를 종료합니다.
+        }
+    var trElement = button.closest('tr'); // 버튼이 있는 행(tr)을 찾습니다.
+
+
+	 
+    // 현재 행의 캠핑장 예약 번호와 cartItemNo 값을 추출합니다.
+    var selectedReservationNo = trElement.querySelector('select[name="reservationNo' + cartItemIndex + '"]').value;
+    if (selectedReservationNo === 'default') {
+	        alert('캠핑장을 선택해주세요.');
+	        return;
+	    }
+    
+    var cartItemNo = form.querySelector('input[id="cartItemNo' + cartItemIndex + '"]').value;
+	var itemNo = form.querySelector('input[id="itemNo' + cartItemIndex + '"]').value;
+    // 선택된 캠핑장의 예약 번호와 cartItemNo를 hidden input으로 form에 추가합니다.
+    addHiddenInput(form, 'reservationNo', selectedReservationNo);
+    addHiddenInput(form, 'cartItemNo', cartItemNo);
+    addHiddenInput(form, 'itemNo', itemNo);
+    form.action = '/paysys/rentCart/moveItemToOtherSite';
+
+    form.submit(); // form을 제출합니다.
+}
+
+function moveWish(button, rsvInfoIndex, cartItemIndex) {
+	var form = button.closest('form'); 
+    var itemNo = form.querySelector('input[id="itemNo' + cartItemIndex + '"]').value;
+    var cartItemNo = form.querySelector('input[id="cartItemNo' + cartItemIndex + '"]').value;
+    var reservationNo = form.querySelector('input[id="currentReservationNo' + rsvInfoIndex + '"]').value;
+    
+    addHiddenInput(form, 'itemNo', itemNo);
+    addHiddenInput(form, 'reservationNo', reservationNo);
+    addHiddenInput(form, 'cartItemNo', cartItemNo);
+    form.action = '/member/wishlist/insert2';
+    
+    form.submit();
+    
+    
+     
+}
+
+function deleteCart(button, rsvInfoIndex, cartItemIndex) {
+	var form = button.closest('form'); 
+	var cartItemNo = form.querySelector('input[id="cartItemNo' + cartItemIndex + '"]').value;
+	addHiddenInput(form, 'cartItemNo', cartItemNo);
+	 form.action = '/paysys/rentCart/deleteCart';
+    
+    form.submit();
+}
+
+
+
+//한번만 쓰고 버릴 히든창 생성
+function addHiddenInput(form, name, value) {
+    var input = document.createElement('input');
+    input.setAttribute('type', 'hidden');
+    input.setAttribute('name', name);
+    input.setAttribute('value', value);
+    form.appendChild(input);
+}
 
 
 
