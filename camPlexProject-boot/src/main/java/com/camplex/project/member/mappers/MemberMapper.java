@@ -3,6 +3,7 @@ package com.camplex.project.member.mappers;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.camplex.project.member.model.dto.CEOMember;
 import com.camplex.project.member.model.dto.Member;
 
 @Mapper
@@ -28,6 +29,13 @@ public interface MemberMapper {
 	
 	// 비밀번호 재설정 (비밀번호 업데이트)
 	int changePw(Member inputMember);
+
+	// CEO 변경 신청 내역 조회
+	String searchForm(int memberNo);
+	
+	// CEO 계정 변경 폼 전송
+	int levelUpFrom(CEOMember inputCeoMember);
+
 
 	
 	

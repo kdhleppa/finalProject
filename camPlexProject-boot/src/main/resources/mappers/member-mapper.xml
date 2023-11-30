@@ -16,6 +16,18 @@
 		<result property="enrollDate" column="ENROLL_DATE" />
 	</resultMap>
 
+	<resultMap type="CEOMember" id="ceoMember_rm">
+		<id property="memberNo" column="NEMBER_NO"/>
+		<result property="cmapName" column="CAMP_NAME" />
+		<result property="campAdress" column="CAMP_ADDRESS" />
+		<result property="ceoName" column="CEO_NAME" />
+		<result property="businessLicense" column="BUSINESS_LICENSE" />
+		<result property="tourLicense" column="TOUR_LICENSE" />
+		<result property="accountHolder" column="ACCOUNT_HOLDER" />
+		<result property="bankName" column="BANK_NAME" />
+		<result property="ceoAccount" column="CEO_ACCOUNT" />
+	</resultMap>
+
 	<!-- 로그인 -->
 	<select id="login" resultMap="member_rm">
 		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_PW, MEMBER_NAME, MEMBER_NICKNAME,
@@ -76,5 +88,32 @@
 		WHERE MEMBER_EMAIL = #{memberEmail}
 		AND MEMBER_DEL_FL = 'N'
 	</update>
+	
+	<!-- CEO 변경 신청 내역 조회 -->
+	<select id="searchForm">
+		SELECT MEMBER_NO
+		FROM "CEO_MEMBER"
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- CEO 계정 변경 폼 전송 -->
+	<insert id="levelUpFrom">
+		INSERT INTO "CEO_MEMBER"
+		VALUES(
+		#{memberNo}
+		, #{businessLicense}
+		, #{ceoAccount}
+		, #{tourLicense}
+		, DEFAULT
+		, #{campAdress}
+		, #{cmapName}
+		, #{ceoName}
+		, #{accountHolder}
+		, #{bankName})
+	</insert>
+	
+	
+	
+	
 	
 </mapper>
