@@ -18,6 +18,7 @@
 		<result property="thumbnail" column="THUMBNAIL" />
 		<result property="checkIn" column="CHECK_IN" />
 		<result property="checkOut" column="CHECK_OUT" />
+		<result property="campingStar" column="CAMPING_STAR" />
 	
 		<collection property="campDetailList"
 				select="selectCampDetailList"
@@ -112,11 +113,16 @@
 	<select id="selectCampList" resultMap="camp_rm">
 		SELECT CAMP_NO, MEMBER_NO, CAMP_ADDRESS, CAMP_PHONE,
 		CAMP_NAME, CAMP_OPTION, CAMP_AROUND_VIEW, CAMP_MAP,
-		MANNER_TIME,CATEGORY, CAMP_INFO, (CAMP_IMG_PATH || CAMP_IMG_RENAME) THUMBNAIL
-		FROM "CAMPING_SITE"
-		JOIN CAMPING_SITE_IMG USING(CAMP_NO)
+		MANNER_TIME,CATEGORY, CAMP_INFO, 
+			(SELECT (CAMP_IMG_PATH || CAMP_IMG_RENAME) 
+			FROM CAMPING_SITE_IMG B
+			WHERE B.CAMP_NO = A.CAMP_NO
+			AND CAMP_IMG_ORDER = 0) THUMBNAIL,
+			(SELECT ROUND(AVG(COUNTING_STAR), 1)
+			FROM CAMPING_STAR C
+			WHERE C.CAMP_NO = A.CAMP_NO) CAMPING_STAR
+		FROM "CAMPING_SITE" A
 		WHERE CAMP_DEL_FL = 'N'
-		AND CAMP_IMG_ORDER = 0
 		ORDER BY CAMP_NO
 	</select>
 	
@@ -132,6 +138,35 @@
 		AND CAMP_DEL_FL = 'N'
 		AND CAMP_IMG_ORDER = 0
 	</select>
+	
+	<!-- 별점 눌렀는지 여부 조회 -->
+	<select id="checkStar" resultType="_int">
+		SELECT COUNT(*)
+		FROM CAMPING_STAR
+		WHERE CAMP_NO = #{campNo}
+		AND MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- 별점 개수 조회 -->
+	<select id="selectStar" resultType="_int">
+		SELECT COUNTING_STAR
+		FROM CAMPING_STAR
+		WHERE CAMP_NO = #{campNo}
+		AND MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- 별점 업데이트 -->
+	<update id="updateStar">
+		UPDATE CAMPING_STAR SET COUNTING_STAR = #{starNo}
+		WHERE CAMP_NO = #{campNo}
+		AND MEMBER_NO = #{memberNo}
+	</update>
+	
+	<!-- 별점 추가 -->
+	<insert id="insertStar">
+		INSERT INTO CAMPING_STAR VALUES(#{campNo}, #{memberNo}, #{starNo})
+	</insert >
+	
 	
 	<!-- 캠핑장 예약 이동하면서 보여줄 정보 조회 -->
 	<select id="selectCampDetail" resultMap="camp_detail_rm">

@@ -67,6 +67,30 @@ public interface CampService {
 	 */
 	List<CampDetail> selectCampDetailListNotRes(Map<String, Object> map);
 
+	/** 별점 개수 조회
+	 * @param map
+	 * @return
+	 */
+	int selectStar(Map<String, Object> map);
+
+	/** 별점 눌렀는지 확인
+	 * @param map
+	 * @return
+	 */
+	int checkStar(Map<String, Object> map);
+
+	/** 별점 업데이트
+	 * @param map
+	 * @return
+	 */
+	int updateStar(Map<String, Object> map);
+
+	/** 별점 추가
+	 * @param map
+	 * @return
+	 */
+	int insertStar(Map<String, Object> map);
+
 	
 
 }

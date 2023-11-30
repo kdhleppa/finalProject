@@ -11,6 +11,7 @@
     <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
     <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
     <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}" rel="stylesheet">
+	<link rel="icon" th:href="@{/images/iconImg/favicon.png}">
 </head>
 <body>
     <th:block th:replace="~{common/headerForContent}"></th:block>
@@ -24,6 +25,8 @@
                 <h1 th:text="${info.campName}">캠핑장 이름</h1> <p th:text="'( ' + ${info.campDeName} + ' )'">호실</p>
                 <input type="hidden" name="campName" th:value="${info.campName}">
                 <input type="hidden" name="campDeName" th:value="${info.campDeName}">
+                <input type="hidden" name="campDeNo" th:value="${info.campDeNo}">
+                <input type="hidden" name="campNo" th:value="${info.campNo}">
             </div>
             <table class="reservationSite">
                 <tr>

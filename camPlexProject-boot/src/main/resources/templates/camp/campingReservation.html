@@ -11,7 +11,7 @@
     <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
     <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}"
         rel="stylesheet">
-
+	<link rel="icon" th:href="@{/images/iconImg/favicon.png}">
 </head>
 
 <body>
@@ -34,6 +34,8 @@
 			<form th:action="@{/paysys/camp}" id="reservationFrm" method="post">
 				<input type="hidden" name="campDeName" th:value="${campDetail.campDeName}">
 				<input type="hidden" name="campName" th:value="${campDetail.campName}">
+				<input type="hidden" name="campDeNo" th:value="${campDetail.campDeNo}">
+				<input type="hidden" name="campNo" th:value="${campDetail.campNo}">
 			
             <section class="mainPicArea">
 

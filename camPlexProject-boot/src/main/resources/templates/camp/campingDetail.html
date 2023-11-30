@@ -39,13 +39,32 @@
 
 				<div class="campingTitle">
 					<p th:text="${camp.campName}">캠핑장 명</p>
-					<div class="starContainer">
-						<img th:src="@{/images/iconImg/star.png}" alt="">
-						<img th:src="@{/images/iconImg/star.png}" alt="">
-						<img th:src="@{/images/iconImg/star.png}" alt="">
-						<img th:src="@{/images/iconImg/star.png}" alt="">
-						<img th:src="@{/images/iconImg/star.png}" alt="">
-					</div>
+					
+					<th:block th:if="${starCount}">
+						
+						<div class="starContainer">
+								<img th:id="star_+${numStat.count}"  th:src="@{/images/iconImg/star-fill.png}"
+								th:each="num : ${#numbers.sequence(1,starCount)}" class="starBtn">
+								
+							<th:block th:if="${starCount &lt; 5}">
+
+								<img th:id="star_+(${numStat.count}+${starCount})" th:src="@{/images/iconImg/star.png}"
+								th:each="num : ${#numbers.sequence(1,5-starCount)}" class="starBtn">
+							
+							</th:block>
+						</div>
+					
+					</th:block>
+					
+					<th:block th:unless="${starCount}">
+						
+						<div class="starContainer">
+								<img th:id="star_+${numStat.count}" th:src="@{/images/iconImg/star.png}" alt=""
+								th:each="num : ${#numbers.sequence(1,5)}" class="starBtn">
+						</div>
+					
+					</th:block>
+					
 				</div>
 
 				<div class="pictureContainer">
@@ -296,6 +315,7 @@
 		const campNo = /*[[${camp.campNo}]]*/ "캠핑장 번호";
 		const checkIn = /*[[${camp.checkIn}]]*/ "체크인 시간";
 		const checkOut = /*[[${camp.checkOut}]]*/ "체크아웃 시간";
+		const loginMember = /*[[${session.loginMember}]]*/ "로그인 멤버";
 		
 	</script>
 

@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.camplex.project.paysys.model.dto.CartItem;
+import com.camplex.project.paysys.model.dto.InfoForReservation;
 
 @Mapper
 public interface PaysysMapper {
@@ -32,6 +33,14 @@ public interface PaysysMapper {
 
 
 	int moveItemSite(CartItem cartItem);
+
+
+
+	/** 캠핑 결제 내역 저장
+	 * @param info
+	 * @return
+	 */
+	int insertPayCamp(InfoForReservation info);
 
 
 

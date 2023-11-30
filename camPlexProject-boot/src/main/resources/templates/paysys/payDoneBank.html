@@ -23,7 +23,7 @@
         <section id="searchIdInfoSection">
 
             <!-- 대제목 -->
-            <section id="headerName">결제 완료</section>
+            <section id="headerName">결제 요청 완료</section>
             <hr id="underLine"/>
             
             <section id="inputInfo">
@@ -31,8 +31,29 @@
                 <!-- 탈퇴 질문 -->
                 <section id="withdrawalQuestionSection">
                     
-                    <p id="withdrawalQuestion">결제가 완료되었습니다<br><br>결제 내역은 마이페이지에서 확인 가능합니다</p>
-
+                    <p id="withdrawalQuestion">
+						" 무통장 입금 "을 선택하셨습니다<br><br>
+						결제 진행사항은 마이페이지에서 확인 가능합니다<br><br>
+                    
+                    <div class="bankInfoContainer" >
+						
+	                    <div class="bankInfo">
+							<p>입금 계좌 |</p>&nbsp;&nbsp;
+							<p th:text="${bank}"></p>
+						</div>
+						<br>
+						<div class="senderInfo">
+							<p>입금자 명 |</p>&nbsp;&nbsp;
+							<p th:text="${senderName}"></p>
+						</div>
+						<br>
+						<div class="priceInfo">
+							<p>입금 금액 |</p>&nbsp;&nbsp;
+							<p th:text="|${#numbers.formatInteger(info.price, 3, 'COMMA')} 원|"></p>
+						</div>
+					
+					</div>
+                  
                 </section>
 
                 <section id="selectBtnSection">
