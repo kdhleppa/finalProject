@@ -7,23 +7,23 @@
     unicode-range: U+AC00-D7A3;
 }
 
-#qmodal_btn {
+#cqmodal_btn {
 	border-style: none;
 	background-color: transparent;
 	outline: none;
-	font-size: 24px;
-	cursor: pointer;
-	margin-top: 6.5rem;
+	font-size: 18px;
+	margin-top: 2rem;
+	margin-left: 2rem;
 	font-weight: 700;
 }
 
-.qnaTop {
+.cQnaTop {
 	font-size: 28px;
 	margin-left: 2rem;
 	margin-top: 2rem;
 }
 
-.qmodal_wrap {
+.cqmodal_wrap {
 	font-family: 'HakgyoansimSantteutdotumL';
     display: none;
     width: 700px;
@@ -37,7 +37,7 @@
     border-radius: 10px;
 }
 
-.qmodal_background {
+.cqmodal_background {
     display: none;
     position: fixed;
     width: 100%;
@@ -48,7 +48,7 @@
     z-index: 1;
 }
 
-.qmodal_close {
+.cqmodal_close {
     width: 18px;
     height: 18px;
     position: absolute;
@@ -56,23 +56,23 @@
     right: 10px;
 }
 
-.qmodal_wrap .text {
+.cqmodal_wrap .text {
 	font-size: 18px;
     margin-top: 15px;
     margin-left: 15px;
 }
 
-.qnaSubmit > div {
+.ceoQnaSubmit > div {
 	margin-top: 3rem;
 	margin-left: 1rem;
 	display: flex;
 }
 
-.qnaSubmit > div > p {
+.ceoQnaSubmit > div > p {
 	margin-left: 2rem;
 }
 
-#QNATitle {
+#ceoQnaTitle {
 	margin-left: 3rem;
 	width: 30rem;
 	height: 2rem;
@@ -83,7 +83,7 @@
 	padding: 0.5rem;
 }
 
-#QNAContent {
+#ceoQnaContent {
 	margin-left: 1rem;
 	resize: none;
 	width: 30rem;

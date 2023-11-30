@@ -309,6 +309,11 @@ main {
     flex-basis: 80%;
 }
 
+.textListSecDiv {
+	display: flex;
+	justify-content: space-between;
+}
+
 .textList {
     display: flex;
     justify-content: space-between;

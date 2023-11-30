@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- namespace를 Mapper 인터페이스로 지정 -->
+<mapper namespace="com.camplex.project.qna.mappers.ceoQnaMapper">
+	
+	<resultMap type="ceoQna" id="ceoQna_rm">
+		<id property="ceoQnaNo" column="CEO_QNA_NO"/>
+		
+		<result property="ceoQnaTitle" column="CEO_QNA_TITLE" />
+		<result property="ceoQnaContent" column="CEO_QNA_CONTENT" />
+		<result property="ceoQnaAnswer" column="CEO_QNA_ANSWER" />
+		<result property="ceoAnswerFlag" column="ANSWER_FL" />
+		<result property="ceoQnaCreateDate" column="Q_CREATE_DATE" />
+		
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="memberNickname" column="MEMBER_NICKNAME" />
+	</resultMap>
+	
+	<insert id="insertCeoQna">
+		INSERT INTO CEO_QNA
+		VALUES(SEQ_CEO_QNA_NO.NEXTVAL, #{ceoQnaTitle}, #{ceoQnaContent}, DEFAULT, DEFAULT, DEFAULT, #{memberNo}, #{memberNickname})
+	</insert>
+	
+	
+</mapper>

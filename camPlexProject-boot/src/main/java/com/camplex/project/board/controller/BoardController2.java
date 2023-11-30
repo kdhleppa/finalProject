@@ -79,17 +79,12 @@ public class BoardController2 {
 		// 게시글 삽입 서비스 호출 후 삽입된 게시글 번호 반환 받기
 		int boardNo = service.boardInsert(board, images);
 	
-
-		// 게시글 삽입 성공 시
-		// -> 방금 삽입한 게시글의 상세 조회 페이지 리다이렉트
-		// -> /board/{boardType}/{boardNo}
-		
 		String message = null;
 		String path = "redirect:";
 		
 		if(boardNo > 0) {
 			message = "게시글이 등록 되었습니다";
-			path += "/board/" + boardType + "/" + boardNo;
+			path += "/board/" + boardType;
 		} else {
 			message = "게시글 등록 실패.....................";
 			path += "insert";
