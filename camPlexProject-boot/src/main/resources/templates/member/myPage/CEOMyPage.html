@@ -16,7 +16,7 @@
 
 	<th:block th:replace="~{common/headerForContent}"></th:block>
 
-    <main>
+    <main th:object="${session.loginMember}">
         <!-- 공백 (우) -->
         <section class="empty1"></section>
         
@@ -33,24 +33,31 @@
                 
                 <!-- 내 정보 -->
                 <section id="infoMain">
-                    <img id="profileImg" th:src="@{/images/memberImg/pingping.png}">
+                    <section id="profileImgSection">
+						
+	                    <img th:unless="*{memberProfileImg}" id="profileImg" th:src="@{/images/memberImg/gg_profile.png}">
+						
+	                    <img th:if="*{memberProfileImg}" id="profileImg" th:src="*{memberProfileImg}">
+
+					</section>
                     
                     <section class="empty2"></section>
                     <section id="nameTel">
-                        <p>이름 : 홍길동</p>
-                        <p>전화번호 : 010-1234-5678</p>
+                        <p th:inline="text">이름 : [[${session.loginMember.memberName}]]</p>
+                        <p th:inline="text">전화번호 : [[${session.loginMember.memberPhone}]]</p>
+                        <p th:inline="text">CEO 인증번호 : [[${session.loginMember.memberNo}]]</p>
                     </section>
                     <section class="empty3"></section>
                     
                     <section id="nicknameEmail">
-                        <p>닉네임 : 홍로드브론즈</p>
-                        <p>Email : test1234@naver.com</p>
+                        <p th:inline="text">닉네임 : [[${session.loginMember.memberNickname}]]</p>
+                        <p th:inline="text">Email : [[${session.loginMember.memberEmail}]]</p>
                     </section>
                     <section class="empty2"></section>
                     
                     <section class="btnSection">
-                        <a>프로필 관리</a>
-                        <a>회원 탈퇴</a>
+                        <a th:href="@{/member/infoModify}">프로필 관리</a>
+                        <a th:href="@{/member/memberWithdrawal1}">회원 탈퇴</a>
                     </section>
                 </section>
                 
@@ -64,7 +71,7 @@
             <section id="functionBtn">
                 <a>예약 정보 확인<span>&nbsp;&nbsp;3</span></a>
                 <a>1대 1 문의<span>&nbsp;&nbsp;1</span></a>
-                <a>업데이트 요청<p></p></a>
+                <a>업데이트 요청</a>
             </section>
             
 
