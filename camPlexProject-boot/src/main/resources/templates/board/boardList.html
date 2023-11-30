@@ -16,16 +16,18 @@
     
     <th:block th:replace="~{common/headerForContent}"></th:block>
     
+    <th:block th:replace="~{qna/ceoQna}"></th:block>
+    
     <main th:with="pagination=${map.pagination}, boardList=${map.boardList}">
 		<ul class="boardTypeList">
             <li>
-                <a th:href="@{/board/{boardType}(boardType=B)}">게시판</a>
+                <a th:href="@{/board/{boardType}(boardType=B)}">자유게시판</a>
             </li>
 
             <p>|</p>
 
             <li id="board">
-                <a th:href="@{/board/{boardType}(boardType=N)}">공지사항</a>
+                <a th:href="@{/board/{boardType}(boardType=N)}">노하우게시판</a>
             </li>
 
             <p>|</p>
@@ -132,10 +134,8 @@
                     </tbody>
                 </table>
                 
-                <div class="btnArea">
 				<!-- 로그인 상태일 경우 글쓰기 버튼 노출 -->
 	                <button th:if="${session.loginMember}" id="insertBtn">글쓰기</button>
-            	</div>
             	
             </div>
 
@@ -213,9 +213,8 @@
 	    
 	    <th:block th:replace="~{chatdemo/chatdemo}"></th:block>
 	    
-	    	
 	</main>
-
+	
     <th:block th:replace="~{common/footer}"></th:block>
 
 	<script th:src="@{/js/board/boardList.js}"></script>

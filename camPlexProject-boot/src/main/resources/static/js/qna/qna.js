@@ -1,38 +1,15 @@
 const qmodal_btn = document.getElementById("qmodal_btn");
+
 qmodal_btn.addEventListener('click', e => {
 	
-	if(loginMemberNo == null){ // 로그인 X
-        alert("로그인 후 이용해주세요.");
-        return;
+	if(loginMemberNo != null){ 
+		qmodalOpen();
+		e.preventDefault();
+		return;
     } else {
-		qmodalOpen();	
-	}
-    
-    const qnaFrm = document.querySeletor("#qnaFrm");
-	const QNATitle = document.querySelector("[name='QNATitle']");
-	const QNAContent = document.querySelector("[name='QNAContent']");
-
-	qnaFrm.addEventListener('submit', e => {
-	
-	if(QNATitle.value.trim().length == 0){
-		alert("제목을 입력해주세요")
-        QNATitle.value = "";
-        QNATitle.focus();
-        e.preventDefault(); // form 기본 이벤트 제거
+		alert("로그인 후 이용해주세요.");
         return;
 	}
-	
-	if(QNAContent.value.trim().length == 0){
-		alert("내용을 입력해주세요")
-        QNAContent.value = "";
-        QNAContent.focus();
-        e.preventDefault(); // form 기본 이벤트 제거
-        return;
-	}
-    
-});
-
-
 	
 });
 
@@ -68,4 +45,34 @@ const qmodalBack = document.getElementById("qmodalBack");
 	})
 	
 })();
+
+const qnaFrm = document.getElementById("qnaFrm");
+const QNATitle = document.getElementById("QNATitle");
+const QNAContent = document.getElementById("QNAContent");
+
+	qnaFrm.addEventListener('submit', e => {
+	
+	if(QNATitle.value.trim().length == 0){
+		alert("제목을 입력해주세요")
+        QNATitle.value = "";
+        QNATitle.focus();
+        e.preventDefault();
+        return;
+	}
+	
+	if(QNAContent.value.trim().length == 0){
+		alert("내용을 입력해주세요")
+        QNAContent.value = "";
+        QNAContent.focus();
+        e.preventDefault();
+        return;
+	}
+	
+	alert("문의가 접수되었습니다.")
+	document.querySelector("[name='insertQNA']").value
+	 = Array.from(insertQNA);
+	e.preventDefault();
+	qmodalClose();
+	return;
+});
 

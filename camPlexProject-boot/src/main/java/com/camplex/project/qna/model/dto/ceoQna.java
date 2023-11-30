@@ -9,15 +9,17 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class Qna {
-	private int QNANo;
-	private String QNATitle;
-	private String QNAContent;
-	private String QNAAnswer;
-	private String answerFlag;
-	private String QNACreateDate;
+public class ceoQna {
+	private int ceoQnaNo;
+	private String ceoQnaTitle;
+	private String ceoQnaContent;
+	private String ceoQnaAnswer;
+	private String ceoAnswerFlag;
+	private String ceoQnaCreateDate;
+	
 	
 	private int memberNo;
 	private String memberNickname;
 	
+	private int campNo;
 }

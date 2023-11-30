@@ -41,12 +41,11 @@ public class BoardController {
 	// 게시글 목록 조회
 	@GetMapping("/{boardType:[A-Z]+}")
 	public String selectBoardList(
-			@PathVariable("boardType") String boardType,
-			@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
-			Model model,
-			@RequestParam Map<String, Object> paramMap // 파라미터 전부 다담겨있음(검색 시)
+				@PathVariable("boardType") String boardType,
+				@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
+				Model model,
+				@RequestParam Map<String, Object> paramMap // 파라미터 전부 다담겨있음(검색 시)
 			) {
-		
 		
 		if( paramMap.get("key") == null ) { // 검색어가 없을 때 (검색 X)
 			
@@ -64,6 +63,7 @@ public class BoardController {
 			
 			model.addAttribute("map", map);
 		}
+		
 		
 		return "board/boardList";
 	}

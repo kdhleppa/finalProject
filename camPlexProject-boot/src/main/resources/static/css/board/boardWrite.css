@@ -48,13 +48,18 @@ button {
 
 .boardHead {
 	display: flex;
-	justify-content: space-between;
+	margin-top: 7rem;
+}
+
+#writing {
+	font-size: 20px;
+	margin-left: -1rem;
+	margin-top: 1rem;
 }
 
 #boardTypeName {
 	width: 200px;
 	margin-left: 10rem;
-	margin-top: 7rem;
     font-family: 'HakgyoansimSantteutdotumL';
     font-size: 30px;
     color: black;
@@ -71,7 +76,11 @@ button {
 .board-title > input {
 	width: 50rem;
 	height: 2.5rem;
-	font-size: 15px;
+	font-size: 16px;
+	padding: 1rem;
+	outline: none;
+	border: 1px solid rgb(192, 192, 192);
+	border-radius: 20px;
 }
 
 
@@ -104,6 +113,7 @@ button {
     align-items: center;
     border: 1px solid #ccc;
     cursor: pointer;
+    border-radius: 20px;
 }
 
 .inputImage{
@@ -128,6 +138,11 @@ button {
 	width: 50rem;
 	height: 20rem;
 	resize: none;
+	font-size: 16px;
+	padding: 1rem;
+	outline: none;
+	border: 1px solid rgb(192, 192, 192);
+	border-radius: 20px;
 	
 }
 

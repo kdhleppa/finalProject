@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1:1 문의 (관리자)</title>
+    <title>1:1 문의 (캠핑장)</title>
 
     <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
     <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
     <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}" rel="stylesheet">
     <script th:src="@{https://kit.fontawesome.com/92fbd4b351.js}" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" th:href="@{/css/qna/qna.css}">
+    <link rel="stylesheet" th:href="@{/css/qna/ceoQna.css}">
 </head>
 
 <body>
     
-    <button type='button' id="qmodal_btn" data-target="modal1">문의하기</button>
+    <button type='button' id="cqmodal_btn" data-target="modal2">캠핑장 문의</button>
 	
-	<div class="qmodal_background" id="qmodalBack" data-target="modal1"></div>
+	<div class="cqmodal_background" id="cqmodalBack" data-target="modal2"></div>
 	
-	<div class="qmodal_wrap" id="qmodalContainer" data-target="modal1">
+	<div class="cqmodal_wrap" id="cqmodalContainer" data-target="modal2">
 			
-		<div class="qmodal_close" style="cursor: pointer;" data-target="modal1">x</div>
+		<div class="cqmodal_close" style="cursor: pointer;" data-target="modal2">x</div>
    
 		<div class="text">
 	
@@ -31,24 +31,24 @@
 
 		    <div id="main-content" class="container">
 	
-		        <section class="qnaTop">
-		            <p>1:1 문의 (관리자)</p>
+		        <section class="cQnaTop">
+		            <p>1:1 문의 (캠핑장)</p>
 		        </section>
 	
-	    		<hr style="margin-top: 25px; width: 102.2%; margin-left: -15px; margin-bottom: 20px;">
+	    		<hr style="margin-top: 15px; width: 102.2%; margin-left: -15px; margin-bottom: 20px;">
 	
-	    		<div class="qnaDetail">
+	    		<div class="ceoQnaDetail">
 	
-		            <form th:action="@{/qna/qnaSubmit}" method="POST" id="qnaFrm" class="qnaSubmit" enctype="multipart/form-data">
+		            <form th:action="@{/ceoQna/ceoQnaSubmit}" method="POST" id="ceoQnaFrm" class="ceoQnaSubmit" enctype="multipart/form-data">
 						
-						<div class="qnaTitle">
+					<div class="ceoQnaTitle">
 							<p>제목</p>
-							<input type="text" id="QNATitle" name="QNATitle" class="form-control" placeholder="제목을 입력하세요">
+							<input type="text" id="ceoQnaTitle" name="ceoQnaTitle" class="form-control" placeholder="제목을 입력하세요">
 						</div>
 						
-						<div class="qnaContent">
+						<div class="ceoQnaContent">
 				            <p>문의내용</p>
-		                    <textarea id="QNAContent" name="QNAContent" class="form-control" placeholder="내용을 입력하세요"></textarea>
+		                    <textarea id="ceoQnaContent" name="ceoQnaContent" class="form-control" placeholder="내용을 입력하세요"></textarea>
 		                </div>
 		                        
 		                <div class="btnArea">
@@ -89,6 +89,6 @@
     <script th:src="@{https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js}"></script>
     <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js}"></script>
 		
-	<script th:src="@{/js/qna/qna.js}"></script>
+	<script th:src="@{/js/qna/ceoQna.js}"></script>
 	
 </html>

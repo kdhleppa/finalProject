@@ -8,6 +8,5 @@ import com.camplex.project.qna.model.dto.Qna;
 public interface QnaMapper {
 
 	public int insertQNA(Qna qna);
-
 	
 }
