@@ -55,7 +55,13 @@
 		WHERE CART_ITEM_NO = #{cartItemNo}
 	</update>
 
-	
+	<!-- 캠핑 결제 내역 저장 -->
+	<insert id="insertPayCamp">
+		INSERT INTO "PAYMENT"
+		VALUES (SEQ_PAY_NO.NEXTVAL, #{memberNo}, #{campNo}, #{campDeNo},
+				NULL, #{price}, NULL, #{price}, #{payType}, DEFAULT,
+				#{entDate}, #{outDate}, DEFAULT)
+	</insert>
 	
 	
 	

@@ -152,6 +152,38 @@ public class CampServiceImpl implements CampService {
 		return mapper.selectCampDetailListNotRes(map);
 	}
 
+	/** 별점 개수 조회
+	 *
+	 */
+	@Override
+	public int selectStar(Map<String, Object> map) {
+		return mapper.selectStar(map);
+	}
+
+	/** 별점 눌렀는지 확인
+	 *
+	 */
+	@Override
+	public int checkStar(Map<String, Object> map) {
+		return mapper.checkStar(map);
+	}
+
+	/** 별점 업데이트
+	 *
+	 */
+	@Override
+	public int updateStar(Map<String, Object> map) {
+		return mapper.updateStar(map);
+	}
+
+	/** 별점 추가
+	 *
+	 */
+	@Override
+	public int insertStar(Map<String, Object> map) {
+		return  mapper.insertStar(map);
+	}
+
 
 
 }

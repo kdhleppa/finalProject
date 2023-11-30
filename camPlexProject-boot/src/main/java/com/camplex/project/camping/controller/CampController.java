@@ -55,9 +55,26 @@ public class CampController {
 	 * @return
 	 */
 	@GetMapping("/{campNo}")
-	public String campDetail( @PathVariable("campNo") int campNo,
-							  Model model
+	public String campDetail(@PathVariable("campNo") int campNo,
+							 @SessionAttribute(value="loginMember", required=false) Member loginMember,
+							 Model model
 							) {
+		
+		if(loginMember != null) {
+			int memberNo = loginMember.getMemberNo();
+			
+			Map<String, Object> map = new HashMap<>();
+			map.put("campNo", campNo);
+			map.put("memberNo", memberNo);
+			
+			int checkStar = service.checkStar(map);
+			
+			if(checkStar > 0) {
+				
+				int starCount = service.selectStar(map);				
+				model.addAttribute("starCount", starCount);
+			}
+		}
 		
 		Camp camp = service.selectCampOne(campNo);
 		
@@ -102,6 +119,41 @@ public class CampController {
 		return "camp/campingDetail";
 	}
 	
+	/** 별점 처리
+	 * @return
+	 */
+	@GetMapping("/star")
+	@ResponseBody
+	public int updateStar(int starNo,
+						  int campNo,
+						  @SessionAttribute("loginMember") Member loginMember
+						) {
+		int result = 0;
+		int memberNo = loginMember.getMemberNo();
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("memberNo", memberNo);
+		map.put("campNo", campNo);
+		map.put("starNo", starNo);
+		
+		System.out.println(map);
+		
+		int checkStar = service.checkStar(map);
+		
+		if(checkStar > 0) {
+			
+			result = service.updateStar(map);
+			
+		} else {
+			
+			result = service.insertStar(map);
+		}
+		
+		return result;
+	}
+	
+	
 	/** 예약 이동
 	 * @param campDeNo
 	 * @param model
@@ -125,7 +177,6 @@ public class CampController {
 		 map.put("outDate", outDate);
 		 map.put("stayDay", stayDay);
 		 
-
 		if(loginMember == null) {
 			
 			ra.addFlashAttribute("message", "로그인 후 이용해주세요.");
