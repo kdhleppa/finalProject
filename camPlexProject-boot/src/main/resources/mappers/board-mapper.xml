@@ -240,5 +240,10 @@
 	  	<select id="countBoardLike" resultType="_int">
 	  		SELECT COUNT(*) FROM "BOARD_LIKE" WHERE BOARD_NO = #{boardNo}
 	  	</select>
+	  	
+	  	<!-- 이미지 목록 조회 -->
+	  	<select id="selectImageListAll" resultType="string">
+	  		SELECT BOARD_IMG_RENAME FROM BOARD_IMG
+	  	</select>
 	
 </mapper>

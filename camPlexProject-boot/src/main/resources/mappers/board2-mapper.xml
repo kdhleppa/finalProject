@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.camplex.project.board.mappers.BoardMapper2">
 	
-  	
+  	<!-- 게시글 삽입 -->
   	<insert id="boardInsert" parameterType="Board" useGeneratedKeys="true">
   	
   		<selectKey order="BEFORE" resultType="_int" keyProperty="boardNo">

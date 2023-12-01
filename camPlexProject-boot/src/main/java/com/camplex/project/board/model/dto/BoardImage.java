@@ -1,5 +1,7 @@
 package com.camplex.project.board.model.dto;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,6 +16,5 @@ public class BoardImage {
 	private String boardImageOriginal;
 	private int boardImageOrder;
 	private int boardNo;
-
-	private String boardThumbnail;
+	
 }

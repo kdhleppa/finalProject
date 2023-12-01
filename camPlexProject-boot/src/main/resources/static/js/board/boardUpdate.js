@@ -1,3 +1,8 @@
+function onImageLoad(imgElement) {
+    // 이미지가 로드되면 visibility 속성을 visible로 변경
+    imgElement.style.visibility = 'visible';
+}
+
 document.getElementById('cancelBtn').addEventListener('click', function() {
 	
     var confirmation = confirm('취소하시겠습니까?'); // 메시지 출력
