@@ -11,6 +11,8 @@ import lombok.ToString;
 @Getter
 public class MyPage {
 
+	// 마이페이지 정보 뿌리기용 DTO
+	
 	private int memberNo;
 	
 	private String campImg; // 캠핑장 이미지
