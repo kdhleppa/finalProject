@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이페이지 (일반회원)</title>
+    <title>마이페이지</title>
 
     <link rel="stylesheet" th:href="@{/css/member/myPage/myPage.css}">
 
@@ -66,24 +66,82 @@
                 <section class="empty2"></section>
             </section>
             
+            <!-- 구매 내역 정보 -->
+            <section id="buyListSection">
+
+                <section class="empty2"></section>
+
+                <section id="shopingList">
+                    <div class="textListSecDiv">
+	                    <section class="subName">구매 내역</section>
+                    	<a id="buyInfoListBtn">구매 내역 더보기</a>
+                    </div>
+                    <hr class="underLine2">
+                    
+                    <section id="shopingListInfo">
+                        
+                        
+                        <section id="buyHistoryInfo">
+	                        <!-- 내부공백 (우) -->
+                        	<section class="empty2"></section>
+                            
+                            <section id="imgSection">
+	                            <img id="shoppingImg" th:src="@{/images/campingImg/20231122100320_00001.jpg}">
+							</section>
+                            
+                            <section class="empty3"></section>
+                            <section id="buyInfo">
+                                <div>
+                                    <a>[Catgill 캠핑장]</a>
+                                </div>
+                                <div>
+                                    <a>< 비바코 젤라 리빙쉘 텐트 외 3개 ></a>
+                                </div>
+                                <div>
+                                    <p>결제 정보 : 무통장 입금 / 최규연 / 123-1234345-123</p>
+                                </div>
+                            </section>
+                            
+                            <section class="empty3"></section>
+                            <section id="payStateSection">
+                                <a>결제 상태 : 결제 대기중</a>
+                            </section>
+                            
+	                        <!-- 내부공백 (좌) -->
+	                        <section class="empty2"></section>
+                        </section>
+                        
+                        
+                    </section>
+                    
+                </section>
+
+                <section class="empty2"></section>
+
+            </section>
+            
             <!-- 쇼핑 정보 -->
             <section id="shopingListSection">
 
                 <section class="empty2"></section>
 
                 <section id="shopingList">
-                    
-                    <section id="subName">쇼핑 정보</section>
+                    <div class="textListSecDiv">
+	                    <section class="subName">쇼핑 정보</section>
+                    	<a id="shoppingInfoListBtn">쇼핑 정보 더보기</a>
+                    </div>
                     <hr class="underLine2">
                     
                     <section id="shopingListInfo">
                         
-                        <section class="empty2"></section>
-                        <!-- 내부공백 (우) -->
                         
                         <section id="shopingHistoryInfo">
-                            <img src="/IMG/myPageImg.png">
+	                        <!-- 내부공백 (우) -->
+                        	<section class="empty2"></section>
                             
+                            <section id="imgSection">
+	                            <img id="shoppingImg" th:src="@{/images/campingImg/20231122100320_00001.jpg}">
+							</section>
                             
                             <section class="empty3"></section>
                             <section id="shopingInfo">
@@ -91,7 +149,7 @@
                                     <a>[Catgill 캠핑장]</a>
                                 </div>
                                 <div>
-                                    <a> < 비바코 젤라 리빙쉘 텐트 외 3개 ></a>
+                                    <a>< 비바코 젤라 리빙쉘 텐트 외 3개 ></a>
                                 </div>
                             </section>
                             
@@ -99,12 +157,13 @@
                             <section id="reviewRebuyDeleteBtnSection">
                                 <a>리뷰 작성</a>
                                 <a>재구매</a>
-                                <a>삭제</a>
+                                <button>삭제</button>
                             </section>
+                            
+	                        <!-- 내부공백 (좌) -->
+	                        <section class="empty2"></section>
                         </section>
                         
-                        <!-- 내부공백 (좌) -->
-                        <section class="empty2"></section>
                         
                     </section>
                     
@@ -120,21 +179,21 @@
                 <section class="empty2"></section>
 
                 <section id="wishList">
-                    <section id="subName">관심 상품</section>
+                    <section class="subName">관심 상품</section>
                     <hr class="underLine2">
 
                     <section id="wishListItems">
                         <section class="empty2"></section>
 
                         <section class="itemSection">
-                            <img class="wishItem" src="/IMG/관심상품1.png">
+                            <img class="wishItem" th:src="@{/images/itemImg/0340020000042.jpg}">
                             <a>밀크 소파 : 블랙</a>
                         </section>
 
                         <section class="empty4"></section>
 
                         <section class="itemSection">
-                            <img class="wishItem" src="/IMG/관심상품2.png">
+                            <img class="wishItem" th:src="@{/images/itemImg/20231123123730_0004.png}">
                             <a>릴렉스 체어</a>
                         </section>
                             
@@ -153,7 +212,7 @@
 
                 <section class="textListSection">  
 					<div class="textListSecDiv">
-                    	<section id="subName">문의사항</section>
+                    	<section class="subName">문의사항</section>
                     	<th:block th:replace="~{qna/qna}"></th:block>
                     </div>
                     <hr class="underLine2">
@@ -189,7 +248,7 @@
                 <section class="empty2"></section>
 
                 <section class="textListSection">  
-                    <section id="subName">커뮤니티</section>
+                    <section class="subName">커뮤니티</section>
                     <hr class="underLine2">
 
                     <section class="textItemSection">

@@ -1,10 +1,15 @@
 package com.camplex.project.member.mappers;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.camplex.project.member.model.dto.CEOMember;
 import com.camplex.project.member.model.dto.Member;
+import com.camplex.project.member.model.dto.MyPage;
+import com.camplex.project.member.model.dto.Wishlist;
+import com.camplex.project.paysys.model.dto.Payment;
 
 @Mapper
 public interface MemberMapper {
@@ -35,6 +40,10 @@ public interface MemberMapper {
 	
 	// CEO 계정 변경 폼 전송
 	int levelUpFrom(CEOMember inputCeoMember);
+
+	// 마이페이지 값 뿌리기
+	List<MyPage> selectMyPageInfo(int memberNo);
+
 
 
 	

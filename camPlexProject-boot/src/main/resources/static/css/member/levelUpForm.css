@@ -199,6 +199,12 @@ main {
     margin-top: 100px;
 }
 
+#btnSection {
+	flex-basis: 70%;
+	display: flex;
+	justify-content: space-between;
+}
+
 #sendBtn {
     font-size: 20px;
     font-weight: bold;
@@ -207,6 +213,17 @@ main {
 }
 
 #sendBtn::after {
+    margin-top: 5px;
+}
+
+.clickBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.clickBtn::after {
     margin-top: 5px;
 }
 

@@ -35,7 +35,7 @@ a:hover {
 a:after {
   display:block;
   content: '';
-  border-bottom: solid 1px #000;
+  border-bottom: solid 2px #000;
   margin-top: 5px;
   transform: scaleX(0);  
   transition: transform 250ms ease-in-out;
@@ -55,7 +55,7 @@ button {
 button:after {
   display:block;
   content: '';
-  border-bottom: solid 1px #000;
+  border-bottom: solid 2px #000;
   margin-top: 5px;
   transform: scaleX(0);  
   transition: transform 250ms ease-in-out;
@@ -67,6 +67,10 @@ button:hover:after {
 
 button:hover {
     cursor: pointer;
+}
+
+input:focus {
+	outline: none;
 }
 
 main, div, section {
@@ -218,13 +222,14 @@ label:hover {
 }
 
 .empty3 {
-    flex-basis: 20%;
+    flex-basis: 10%;
 }
 
 #changePwBtn {
-    flex-basis: 60%;
+    flex-basis: 80%;
     display: flex;
     justify-content: space-around;
+    align-items: baseline;
     height: 30px;
 }
 

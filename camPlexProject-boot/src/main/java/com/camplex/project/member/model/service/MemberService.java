@@ -1,9 +1,14 @@
 package com.camplex.project.member.model.service;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.camplex.project.member.model.dto.CEOMember;
 import com.camplex.project.member.model.dto.Member;
+import com.camplex.project.member.model.dto.MyPage;
+import com.camplex.project.member.model.dto.Wishlist;
+import com.camplex.project.paysys.model.dto.Payment;
 
 public interface MemberService {
 
@@ -59,6 +64,10 @@ public interface MemberService {
 	 * @return
 	 */
 	int levelUpFrom(MultipartFile tourLicenseInput, CEOMember inputCeoMember) throws Exception;
+
+	// 마이페이지 값 뿌리기
+	List<MyPage> selectMyPageInfo(int memberNo);
+
 
 
 
