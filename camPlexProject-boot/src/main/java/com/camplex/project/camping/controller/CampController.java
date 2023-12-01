@@ -137,7 +137,6 @@ public class CampController {
 		map.put("campNo", campNo);
 		map.put("starNo", starNo);
 		
-		System.out.println(map);
 		
 		int checkStar = service.checkStar(map);
 		
