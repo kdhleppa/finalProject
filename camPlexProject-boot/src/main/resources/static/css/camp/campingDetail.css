@@ -14,7 +14,7 @@
 	padding: 0;
 }
 
-body {
+#body {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -58,18 +58,16 @@ hr {
 	align-items: flex-end;
 }
 
-.headerMenu>a {
+.headerMenu>a, button {
 	background-color: transparent;
 	border: none;
 	margin: 0 1rem;
 	font-size: 1rem;
 	text-decoration: none;
 	color: #000;
-}
-
-.headerMenu>a:hover {
 	cursor: pointer;
 }
+
 
 /* ------------------------------------------------------------ */
 

@@ -71,13 +71,39 @@
 	    AND CART_ITEM_NO = #{cartItemNo}
 	</delete>
 	
-	<!-- 캠핑 결제 내역 저장 -->
+	<!-- 캠핑 결제 내역 저장 (무통장) -->
 	<insert id="insertPayCamp">
 		INSERT INTO "PAYMENT"
 		VALUES (SEQ_PAY_NO.NEXTVAL, #{memberNo}, #{campNo}, #{campDeNo},
 				NULL, #{price}, NULL, #{price}, #{payType}, DEFAULT,
 				#{entDate}, #{outDate}, DEFAULT)
 	</insert>
+	
+	<!-- 캠핑 결제 내역 저장 (카카오)-->
+	<insert id="insertKakao" parameterType="InfoForReservation" useGeneratedKeys="true">
+		
+		<selectKey order="BEFORE" resultType="_int" keyProperty="paymentNo">
+			SELECT SEQ_PAY_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		
+		INSERT INTO "PAYMENT"
+		VALUES (#{paymentNo}, #{memberNo}, #{campNo}, #{campDeNo},
+				NULL, #{price}, NULL, #{price}, '카카오페이', DEFAULT,
+				#{entDate}, #{outDate}, DEFAULT)
+	</insert>
+	
+	<!-- 캠핑 결제 내역 (카카오) 결제 완료로 변경-->
+	<update id="updatePayState">
+		UPDATE PAYMENT SET PAYMENT_STATUS_FL = 'Y'
+		WHERE PAYMENT_NO = #{tempPaymentNo}
+	</update>
+
+	<!-- 캠핑 결제 취소시 내역 삭제(카카오)-->
+	<delete id="deleteKakao">
+		DELETE FROM PAYMENT
+		WHERE PAYMENT_NO = #{tempPaymentNo}
+	</delete>
+	
 
 	
 	<delete id="deleteCart">

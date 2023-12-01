@@ -558,3 +558,26 @@ function clickStar(star) {
 }
 
 
+
+// ******************* 위시리스트 로그인 여부 ********************************
+
+const wishListBtn = document.getElementById("wishListBtn");
+
+wishListBtn.addEventListener('click', e => {
+	
+	if(loginMember == null){
+		alert("로그인 후 이용해주세요.");
+		e.preventDefault();
+        return;
+	}
+	
+});
+
+
+
+
+
+
+
+
+

@@ -54,6 +54,24 @@ public interface PaysysMapper {
 	 */
 	int insertPayCamp(InfoForReservation info);
 
+	/** 캠핑 카카오 결제 내역 저장
+	 * @param info
+	 * @return
+	 */
+	int insertKakao(InfoForReservation info);
+
+	/** 캠핑 카카오 결제 내역 결제완료로 변경
+	 * @param tempPaymentNo
+	 * @return
+	 */
+	int updatePayState(int tempPaymentNo);
+
+	/** 결제 취소시 내역 삭제(카카오)
+	 * @param info
+	 * @return
+	 */
+	int deleteKakao(int tempPaymentNo);
+
 
 
 

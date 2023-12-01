@@ -140,5 +140,16 @@
     <th:block th:replace="~{common/footer}"></th:block>
 
     <script th:src="@{/js/paysys/campPay.js}"></script>
+
+    <script th:inline="javascript">
+
+		const memberNo = /*[[${session.loginMember.memberNo}]]*/ "로그인 멤버";
+		const campNo = /*[[${info.campNo}]]*/ "캠핑장번호";
+		const campDeNo = /*[[${info.campDeNo}]]*/ "호실번호";
+		const entDate = /*[[${info.entDate}]]*/ "입실일";
+		const outDate = /*[[${info.outDate}]]*/ "퇴실일";
+		const price = /*[[${info.price}]]*/ "퇴실일";
+		
+	</script>
 </body>
 </html>

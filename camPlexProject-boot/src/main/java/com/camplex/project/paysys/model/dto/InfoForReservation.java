@@ -30,5 +30,5 @@ public class InfoForReservation {
 	private String payType;
 	
 	private int memberNo;
-	
+	private int paymentNo;
 }

@@ -15,7 +15,7 @@
 	<link rel="icon" th:href="@{/images/iconImg/favicon.png}">
 </head>
 
-<body>
+<body id="body">
 
 	<th:block th:replace="~{common/headerForContent}"></th:block>
 
@@ -28,8 +28,8 @@
 			<section class="header">
 				<p class="headerTitle">Information</p>
 				<div class="headerMenu">
-					<a th:href="|/camp/wishlist?campNo=${camp.campNo}|">WISH LIST</a>
-					<a>1:1 문의</a>
+					<a th:href="|/camp/wishlist?campNo=${camp.campNo}|" id="wishListBtn">WISH LIST</a>
+					<button type="button" id="cqmodal_btn" data-target="modal2">1:1 문의</button>
 				</div>
 			</section>
 
@@ -321,6 +321,7 @@
 
 	<th:block th:replace="~{camp/ceoPicUpload}"></th:block>
 	<th:block th:replace="~{common/footer}"></th:block>
+	<th:block th:replace="~{qna/ceoQna}"></th:block>
 
 	<script th:src="@{/js/camp/CampingDetail.js}"></script>
 </body>

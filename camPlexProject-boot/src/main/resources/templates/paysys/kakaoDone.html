@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>무통장 입금 신청 완료</title>
+
+    <link rel="stylesheet" th:href="@{/css/paysys/payDone.css}">
+
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
+	<link rel="icon" th:href="@{/images/iconImg/favicon.png}">
+</head>
+<body>
+
+	<th:block th:replace="~{common/headerForContent}"></th:block>
+
+    <main>
+        <!-- 공백 (우) -->
+        <section class="empty1"></section>
+        
+        <section id="searchIdInfoSection">
+
+            <!-- 대제목 -->
+            <section id="headerName">결제 완료</section>
+            <hr id="underLine"/>
+            
+            <section id="inputInfo">
+
+                <!-- 탈퇴 질문 -->
+                <section id="withdrawalQuestionSection">
+                    
+                    
+                    
+                    <p id="withdrawalQuestion">결제가 완료되었습니다<br><br>결제 내역은 마이페이지에서 확인 가능합니다</p>
+
+                </section>
+				
+				 <div class="bankInfoContainer" >
+						
+	                    
+						<div class="senderInfo">
+							<p>예약 캠핑장 |</p>&nbsp;&nbsp;
+							<p th:text="${payInfo.item_name}"></p>
+						</div>
+						<br>
+						<div class="priceInfo">
+							<p>결제 금액 |</p>&nbsp;&nbsp;
+							<p th:text="|${#numbers.formatInteger(payInfo.amount.total, 3, 'COMMA')} 원|"></p>
+						</div>
+						<br>
+						<div class="bankInfo">
+							<p>결제 일시 |</p>&nbsp;&nbsp;
+							<p th:text="${payInfo.created_at}"></p>
+						</div>
+					
+					</div>
+
+                <section id="selectBtnSection">
+                    
+                    <!-- 탈퇴, 취소 버튼 -->
+                    <section id="selectBtn">
+                        <a href="/"><button class="clickBtn">홈으로</button></a>
+                    </section>
+                    
+                </section>
+
+            </section>
+
+
+        </section>
+        
+        <!-- 공백 (좌) -->
+        <section class="empty1"></section>
+
+    </main>
+
+    
+</body>
+</html>

@@ -21,9 +21,7 @@ public class ceoQnaController {
 	@Autowired
 	private ceoQnaService service;
 	
-	
-	// 1:1 문의 입력
-	/**
+	/** 캠핑장 1:1 문의 입력
 	 * @param ceoQnaTitle
 	 * @param ceoQnaContent
 	 * @param loginMember
@@ -32,33 +30,30 @@ public class ceoQnaController {
 	 * @return
 	 */
 	@PostMapping("/ceoQnaSubmit")
-	public String ceoqnaSubmit(String ceoQnaTitle, String ceoQnaContent,
-							@SessionAttribute("loginMember") Member loginMember,
-							RedirectAttributes ra,
-							@RequestHeader(value = "referer") String referer
+	public String ceoqnaSubmit(ceoQna ceoQna,
+							   @SessionAttribute("loginMember") Member loginMember,
+							   RedirectAttributes ra,
+							   @RequestHeader(value = "referer") String referer
 			) {
 		
+		
 		String msg = "";
+		int memberNo = loginMember.getMemberNo();
 		
-		ceoQna ceoQna = new ceoQna();
-		
-		ceoQna.setCeoQnaTitle(ceoQnaTitle);
-		ceoQna.setCeoQnaContent(ceoQnaContent);
-		ceoQna.setMemberNo(loginMember.getMemberNo());
-		ceoQna.setMemberNickname(loginMember.getMemberNickname());
+		ceoQna.setMemberNo(memberNo);
 		
 		int result = service.insertCeoQna(ceoQna);
 		
 		if(result > 0) {
 			
-			msg = "문의사항이 등록되었습니다.";
+			msg = "문의사항이 등록되었습니다.\n답변 내역은 마이페이지에서 확인 가능합니다.";
 			
 		} else {
 			
 			msg = "문의사항 등록이 실패했습니다.";
 		}
 		
-		ra.addFlashAttribute("msg", msg);
+		ra.addFlashAttribute("message", msg);
 		
 		return "redirect:" + referer;
 		
