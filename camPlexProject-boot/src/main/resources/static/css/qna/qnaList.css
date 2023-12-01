@@ -1,0 +1,165 @@
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: 1% 500%;
+    unicode-range: U+AC00-D7A3;
+}
+
+.qnaTop > p {
+	font-size: 30px;
+	margin-top: 5rem;
+	margin-left: 10rem;
+}
+
+#N {
+	margin-left: 13rem;
+}
+
+.answerFlag {
+	margin-top : 1rem;
+	margin-left: 3rem;
+}
+
+.askBtn {
+	font-size: 16px;
+}
+
+.qnaListHead {
+	display: flex;
+}
+
+p {
+	font-family: 'HakgyoansimSantteutdotumL';
+}
+
+.sectionList {
+	display: block;
+}
+
+#formContainer {
+	background-color: red;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	width: 90rem;
+	height: 85rem;
+	margin-top: 5rem;
+	margin-left: 15rem;
+	align-items: center;
+}
+
+.divList {
+	display: flex;
+	flex-wrap: wrap;
+	width: 34rem;
+	margin-top: 5rem;
+	margin-left: 4rem;
+	align-items: center;
+}
+
+.qnaNo > p {
+	width: 5rem;
+	height: 2rem;
+	text-align: center;
+	font-size: 17px;
+	padding: 0.1rem;
+	outline: none;
+	border: 1px solid rgb(192, 192, 192);
+	border-radius: 10px;
+}
+
+.memberNickname > p {
+	width: 8rem;
+	height: 2rem;
+	text-align: center;
+	margin-left: 1rem;
+	font-size: 17px;
+	padding: 0.1rem;
+	outline: none;
+	border: 1px solid rgb(192, 192, 192);
+	border-radius: 10px;
+}
+
+.qnaTitle > p {
+	width: 19rem;
+	height: 2rem;
+	text-align: start;
+	margin-left: 1rem;
+	font-size: 17px;
+	padding: 0.1rem;
+	padding-left: 1rem;
+	outline: none;
+	border: 1px solid rgb(192, 192, 192);
+	border-radius: 10px;
+}
+
+.qnaContent > p {
+	width: 34rem;
+	height: 12rem;
+	margin-top: 1rem;
+	font-size: 16px;
+	padding: 1rem;
+	outline: none;
+	border: 1px solid rgb(192, 192, 192);
+	border-radius: 10px;
+}
+
+.qnaAnswer > textarea {
+	font-family: 'HakgyoansimSantteutdotumL';
+	width: 34rem;
+	height: 12rem;
+	margin-top: 1rem;
+	font-size: 16px;
+	padding: 1rem;
+	outline: none;
+	border: 1px solid rgb(192, 192, 192);
+	border-radius: 10px;
+	resize: none;
+}
+
+.writeBtn {
+    font-family: 'HakgyoansimSantteutdotumL';
+    width: 8rem;
+    height: 4rem;
+    background-color: transparent;
+    border-style: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+#loadMoreBtn {
+    font-family: 'HakgyoansimSantteutdotumL';
+    width: 8rem;
+    height: 4rem;
+    background-color: transparent;
+    border-style: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+#collapseBtn {
+    font-family: 'HakgyoansimSantteutdotumL';
+    width: 8rem;
+    height: 4rem;
+    background-color: transparent;
+    border-style: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.btnArea {
+	display: flex;
+	justify-content: center;
+	margin-top: 0.5rem;
+	margin-bottom: 1rem;
+}
+
+
+/* 반응형으로 유지하도록 설정 */
+@media (max-width: 600px) {
+    .qnaLists {
+        width: 100%; /* 작은 화면에서 양식을 전체 너비로 만듭니다. */
+    }
+}
