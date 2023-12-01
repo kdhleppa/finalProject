@@ -57,6 +57,12 @@ public interface PaysysService {
 	 */
 	int deleteKakao(int tempPaymentNo);
 
+	/** 결제 완료시 예약 테이블 저장(카카오)
+	 * @param tempInfo
+	 * @return 
+	 */
+	int insertReservation(InfoForReservation tempInfo);
+
 
 
 

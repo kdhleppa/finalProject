@@ -105,6 +105,15 @@ public class PaysysServiceImpl implements PaysysService{
 		return mapper.deleteKakao(tempPaymentNo);
 	}
 
+	/** 결제 완료시 예약 테이블 저장(카카오)
+	 *
+	 */
+	@Override
+	public int insertReservation(InfoForReservation tempInfo) {
+		return mapper.insertReservation(tempInfo);
+	}
+
+
 	
 
 

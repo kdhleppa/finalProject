@@ -456,7 +456,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	// 달력 좌우 이동
 
-	// Previous month button click event
 	document.getElementById('prev-month').addEventListener('click', function () {
 		if (currentMonth === 1) {
 			currentYear--;
@@ -471,7 +470,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	});
 
-	// Next month button click event
 	document.getElementById('next-month').addEventListener('click', function () {
 		if (currentMonth === 12) {
 			currentYear++;
@@ -575,8 +573,16 @@ wishListBtn.addEventListener('click', e => {
 
 
 
+// *********************** 사진 클릭시 모달 *********************************
 
+const ceoImg = document.querySelectorAll('.ceoImg');
 
+document.addEventListener("click", function (e) {
+   
+	if (e.target.classList.contains('ceoImg')) {
+        console.log(e.target);
+    }
+});
 
 
 
