@@ -107,8 +107,18 @@
 	</select>
 	
 	<insert id="insertImageList">
-		INSERT INTO "CAMPING_SITE" VALUES(SEQ_CAMP_NO, )
+		INSERT INTO "CAMPING_SITE" VALUES()
 	</insert>
+	
+	<insert id="insertDeCamp">
+		INSERT INTO "CAMPING_DETAIL" VALUES(SEQ_CAMP_DE_NO.NEXTVAL, 0, ${campDeName}, ${campDePrice}, ${capacity}, ${fullCapacity})
+	</insert>
+	
+	<select id="selectDeCamp" resultMap="camp_detail_rm">
+		SELECT CAMP_DE_NAME, CAMP_DE_NAME, CAMP_DE_PRICE, CAPACITY, FULL_CAPACITY
+		FROM "CAMPING_DETAIL"
+		WHERE CAMP_NO = 0
+	</select>
 	
 	
 </mapper>

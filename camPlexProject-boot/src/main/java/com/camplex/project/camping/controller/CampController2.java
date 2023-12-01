@@ -1,7 +1,9 @@
 package com.camplex.project.camping.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.camplex.project.camping.model.dto.Camp;
+import com.camplex.project.camping.model.dto.CampDetail;
 import com.camplex.project.camping.model.service.CampService2;
 
 @Controller
@@ -73,6 +76,25 @@ public class CampController2 {
 //		ra.addFlashAttribute("message", message);
 		
 		return "camp/campingDetailUpload";
+		
+	}
+	
+	// 캠핑장 구역 insert + select
+	@GetMapping("/insertDeCamp")
+	public Map<String, Object> insertSelectDeCamp(CampDetail campDetail
+			, @RequestParam(value = "campDeImges", required = false) List<MultipartFile> campDeImges)
+					throws IllegalStateException, IOException {
+		
+		System.out.println(campDetail);
+		
+		int result = service.insertDeCamp(campDetail, campDeImges);
+		
+		
+		List<CampDetail> list = service.selectDeCamp();
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		return map;
 		
 	}
 	

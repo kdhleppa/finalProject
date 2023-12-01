@@ -6,11 +6,22 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.camplex.project.camping.model.dto.Camp;
+import com.camplex.project.camping.model.dto.CampDetail;
 
 public interface CampService2 {
 
 	int campInsert(Camp camp, List<MultipartFile> images)
 								throws IllegalStateException, IOException;
+
+	int insertDeCamp(CampDetail campDetail, List<MultipartFile> campDeImges) throws IllegalStateException, IOException;
+	
+
+	List<CampDetail> selectDeCamp();
+
+
+
+
+	
 
 
 	
