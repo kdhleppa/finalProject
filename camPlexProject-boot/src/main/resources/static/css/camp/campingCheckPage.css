@@ -275,6 +275,12 @@ main {
 
 .contentImageDiv img{
     border-radius: 10px;
+    transition-duration: .3s;
+}
+
+.contentImageDiv img:hover{
+	opacity: 0.8;
+	transform: scale(1.02);
 }
 
 .contentImage {
@@ -349,6 +355,12 @@ main {
 	font-size: 1.3rem;
 	color: #909090;
 	cursor: pointer;
+	transition-duration: .5s;	
+}
+
+.moreBtn:hover{
+	transform: translateY(-1rem);
+	
 }
 
 .mainContent{

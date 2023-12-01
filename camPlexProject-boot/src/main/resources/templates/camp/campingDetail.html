@@ -109,7 +109,7 @@
 							<div class="ceoPicContent" th:id="|img[${camp.campCeoImageList[i].campCeoImageNo}]|" th:each="i : ${#numbers.sequence(0, #lists.size(camp.campCeoImageList)-1, 1)}">
 								<input type="hidden" class="imgNo" th:value="${camp.campCeoImageList[i].campCeoImageNo}">
 								<div class="ceoPictureWrapper">
-									<img th:src="|${camp.campCeoImageList[i].campCeoImagePath}${camp.campCeoImageList[i].campCeoImageReName}|">
+									<img class="ceoImg" th:src="|${camp.campCeoImageList[i].campCeoImagePath}${camp.campCeoImageList[i].campCeoImageReName}|">
 								</div>
 								<th:block th:if="${session.loginMember?.memberType == 'C'} or ${session.loginMember?.memberType == 'M'}">
 									<button type="button" class="ceoPicDeleteBtn">삭제</button>

@@ -104,6 +104,13 @@
 		WHERE PAYMENT_NO = #{tempPaymentNo}
 	</delete>
 	
+	<!-- 결제 완료시 예약 테이블 저장(카카오) -->
+	<insert id="insertReservation">
+		INSERT INTO "RESERVATIONS"
+		VALUES (SEQ_RES_NO.NEXTVAL, #{paymentNo}, #{memberNo}, #{campNo},
+				#{campDeNo}, #{entDate}, #{outDate}, #{adultCount}, 
+				#{kidCount}, #{demand})
+	</insert>
 
 	
 	<delete id="deleteCart">

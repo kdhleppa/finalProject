@@ -29,6 +29,8 @@ public class KakaoContoller {
 	@Autowired
 	private PaysysService service;
     
+	private InfoForReservation tempInfo;
+	
 	private int tempPaymentNo;
 	
     @GetMapping("/paysys/payCancel")
@@ -51,9 +53,8 @@ public class KakaoContoller {
         
         int result = service.insertKakao(info);
         
-        int paymentNo = info.getPaymentNo();
-        
-        tempPaymentNo = paymentNo;
+        tempPaymentNo = info.getPaymentNo();
+        tempInfo = info;
         
         if (result > 0) {
         	System.out.println("결제 정보 저장 성공");
@@ -72,7 +73,9 @@ public class KakaoContoller {
         int result = service.updatePayState(tempPaymentNo);
         
         if(result > 0) {
-        	System.out.println("결제 완료");
+        	
+        	int reserveResult = service.insertReservation(tempInfo);
+        	
         }
         
         model.addAttribute("payInfo", kakaopay.kakaoPayInfo(pg_token));
