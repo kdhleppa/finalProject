@@ -17,8 +17,6 @@ public interface PaysysService {
 
 	int quantityUpdateCart(CartItem cartItem);
 
-	int moveItemSite(CartItem cartItem);
-
 	/** 캠핑 결제 내역 저장
 	 * @param info
 	 * @return
