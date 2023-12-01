@@ -71,7 +71,6 @@
 	    AND CART_ITEM_NO = #{cartItemNo}
 	</delete>
 	
-	
 	<!-- 캠핑 결제 내역 저장 -->
 	<insert id="insertPayCamp">
 		INSERT INTO "PAYMENT"

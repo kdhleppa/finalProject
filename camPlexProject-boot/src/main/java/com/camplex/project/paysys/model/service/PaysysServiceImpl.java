@@ -81,6 +81,8 @@ public class PaysysServiceImpl implements PaysysService{
 		return mapper.insertPayCamp(info);
 	}
 
+	
+
 
 
 }
