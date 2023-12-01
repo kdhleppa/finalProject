@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.camplex.project.camping.model.dto.Camp;
+import com.camplex.project.camping.model.dto.CampDetail;
+import com.camplex.project.camping.model.dto.CampDetailImage;
 import com.camplex.project.camping.model.dto.CampSiteImage;
 
 @Mapper
@@ -23,5 +25,23 @@ public interface CampMapper2 {
 	 * @return
 	 */
 	int insertImageList(List<CampSiteImage> uploadList);
+
+
+	/** 0번 캠핑장 구역 select
+	 * @return
+	 */
+	List<CampDetail> selectDeCamp();
+
+	/** 캠핑장 구역 (이미지X) 삽입
+	 * @param campDetail
+	 * @return
+	 */
+	int insertDeCamp(CampDetail campDetail);
+
+	/** 캠핑장 구역 이미지 삽입
+	 * @param uploadList
+	 * @return
+	 */
+	int insertCampDetailImageList(List<CampDetailImage> uploadList);
 
 }

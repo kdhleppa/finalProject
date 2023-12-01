@@ -14,7 +14,7 @@
     <!-- 모달 div -->	
 	<div id="modalContainer" class="hidden">
 		
-		<form action="#">
+		<!-- <form action="#" id="modalForm"> -->
 						
 			<main class="modalMain">
 				
@@ -36,7 +36,7 @@
 	                        	<img class="previewcampingSiteThumbnail" id="previewcampingSiteThumbnail">
 		                    </label>
 		                    
-		                    <input type="file" name="images" class="campingSiteThumbnailInput" id="campingSiteThumbnailInput" accept="image/*">
+		                    <input type="file" name="campDeImges" class="campingSiteThumbnailInput" id="campingSiteThumbnailInput" accept="image/*">
 		                    
 						</div>
 						
@@ -68,25 +68,11 @@
 							
 							<section class="modalInputSec">
 								
-								<input class="modalInput" type="text">
+								<input id="campDeName" name="campDeName" class="modalInput" type="text">
 								
 							</section>
 							
-						</section>
-						
-						<section class="modalInputInfoSec">
-							
-							<section class="modalInputInfoNameSec">
-								유형
-							</section>
-							
-							<section class="modalInputSec">
-								
-								<input class="modalInput" type="text">
-								
-							</section>
-							
-						</section>
+						</section>		
 						
 						<section class="modalInputInfoSec">
 							
@@ -97,11 +83,11 @@
 							<section class="modalInputSec">
 									
 								<section class="capacityInputSec">
-									수용 인원 &nbsp; <input class="capacityInput"> &nbsp; 명
+									수용 인원 &nbsp; <input id="capacity" name="capacity" class="capacityInput"> &nbsp; 명
 								</section>
 								
 								<section class="maxCapacityInputSec">
-									/ &nbsp; 최대 인원 &nbsp; <input class="capacityInput"> &nbsp; 명
+									/ &nbsp; 최대 인원 &nbsp; <input id="fullCapacity" name="fullCapacity" class="capacityInput"> &nbsp; 명
 								</section>
 								
 							</section>
@@ -116,9 +102,7 @@
 							
 							<section class="modalInputSec">
 								
-								<input class="modalInput" type="text">
-								
-								
+								<input id="campDePrice" name="campDePrice" class="modalInput" type="text">
 								
 								<img class="wonImg" th:src="@{/images/iconImg/wonImage.png}">
 								
@@ -135,7 +119,7 @@
 							<div class="moreImgTitleDiv">
 								
 								<section class="moreImgTitleNameSec">
-									더 보기 이미지
+									더 보기 이미지 (여러 이미지 추가 가능)
 								</section>
 								
 								<section class="moreImgPlusBtnSec">
@@ -144,7 +128,7 @@
 										<img class="campUploadModalPlusBtn" th:src="@{/images/iconImg/campUploadModalPlusBtn.png}">
 									</label>
 									
-									<input id="etcImgPlusInput" class="etcImgPlusInput" type="file" accept="image/*">
+									<input multiple="multiple" name="campDeImges" id="etcImgPlusInput" class="etcImgPlusInput" type="file" accept="image/*">
 									
 								</section>
 								
@@ -169,7 +153,7 @@
 						<section class="modalUploadBtnSec">
 							
 							<div class="modalUploadBtnDiv">
-								<button type="submit" class="modalUploadBtn">등록하기</button>
+								<button id="modalUploadBtn" type="button" class="modalUploadBtn">등록하기</button>
 							</div>
 							
 						</section>
@@ -182,7 +166,7 @@
 				
 			</main>
 			
-		</form>
+		<!-- </form> -->
 		
 		
 	</div>

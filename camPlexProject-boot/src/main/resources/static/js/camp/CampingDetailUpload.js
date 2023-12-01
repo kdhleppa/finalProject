@@ -54,10 +54,30 @@ for(let i=0 ; i< inputImage.length ; i++){
     });
 }
 
-const campingUploadBtn = document.getElementById('campingUploadBtn');
+// 제출 시 비어있는 input값 확인
+
+// 업로드 버튼 form
+const campingDetailUploadForm = document.getElementById('campingDetailUploadForm');
+
+// 캠핑명
 const inputCampingName = document.getElementById('inputCampingName');
 
-campingUploadBtn.addEventListener('submit', e => {
+// 캠핑장 설명
+const introduceTextArea = document.getElementById('introduceTextArea');
+
+// 매너 타임
+const mannerTimeInput = document.getElementById('mannerTimeInput');
+
+// Etc Info
+const campAddress = document.getElementById('campAddress');
+const campPhone = document.getElementById('campPhone');
+const checkIn = document.getElementById('checkIn');
+const checkOut = document.getElementById('checkOut');
+
+const CEONum = document.getElementById('CEONum');
+
+
+campingDetailUploadForm.addEventListener('submit', e => {
 	
 	if(inputCampingName.value == "") {
 		alert("캠핑장 이름을 입력해주세요.");
@@ -65,7 +85,47 @@ campingUploadBtn.addEventListener('submit', e => {
 		return;
 	}
 	
+	if(introduceTextArea.value == "") {
+		alert("캠핑장에 대한 설명을 입력해주세요. ");
+		e.preventDefault();
+		return;
+	}
 	
+	if(mannerTimeInput.value == "") {
+		alert("매너 타임을 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
+	
+	if(campAddress.value == "") {
+		alert("캠핑장 주소를 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
+	
+	if(campPhone.value == "") {
+		alert("캠핑장 번호를 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
+	
+	if(checkIn.value == "") {
+		alert("체크인 시간을 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
+	
+	if(checkOut.value == "") {
+		alert("체크아웃 시간을 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
+	
+	if(CEONum.value == "") {
+		alert("CEO 넘버를 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
 	
 });
 

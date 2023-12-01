@@ -17,7 +17,7 @@
     <!-- 메인 -->
     <main class="campingDetailUploadMain">
 		
-		<form th:action="@{/camp2/campInsert}" method="post" class="campingDetailUploadForm">
+		<form th:action="@{/camp2/campInsert}" id="campingDetailUploadForm" method="post" class="campingDetailUploadForm">
 			
 			<!-- Information -->
 	        <section class="informationSec">
@@ -220,7 +220,7 @@
 	
 	        <section class="introductionInputSec">
 	
-	            <textarea class="introduceTextArea" name="campInfo" placeholder="캠핑장에 대한 설명을 입력하세요."></textarea>
+	            <textarea id="introduceTextArea" class="introduceTextArea" name="campInfo" placeholder="캠핑장에 대한 설명을 입력하세요."></textarea>
 	
 	        </section>
 	
@@ -377,7 +377,7 @@
 	                        </section>
 	
 	                        <section class="mannerTimeInputDetailSec">
-	                            <input class="mannerTimeInput" type="text" name="mannerTime" placeholder="매너타임 시간을 입력하세요.">
+	                            <input id="mannerTimeInput" class="mannerTimeInput" type="text" name="mannerTime" placeholder="매너타임 시간을 입력하세요.">
 	                        </section>
 	
 	                    </section>
@@ -425,7 +425,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input class="etcInfoInput" id="campingAddress" name="campAddress" placeholder="OO도 OO시 OO동 (상세주소)">
+							<input class="etcInfoInput" id="campAddress" name="campAddress" placeholder="OO도 OO시 OO동 (상세주소)">
 							
 						</section>
 						
@@ -451,7 +451,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input class="etcInfoInput" name="campPhone" placeholder="000) 000 - 000">
+							<input id="campPhone" class="etcInfoInput" name="campPhone" placeholder="000) 000 - 000">
 							
 						</section>
 						
@@ -477,7 +477,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input class="etcInfoInput" name="checkIn" placeholder="00시 00분">
+							<input class="etcInfoInput" id="checkIn" name="checkIn" placeholder="00시 00분">
 							
 						</section>
 						
@@ -503,7 +503,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input class="etcInfoInput" name="checkOut" placeholder="00시 00분">
+							<input class="etcInfoInput" id="checkOut" name="checkOut" placeholder="00시 00분">
 							
 						</section>
 						
@@ -561,7 +561,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input class="CEONumInput" name="memberNo">
+							<input class="CEONumInput" id="CEONum" name="memberNo">
 							
 						</section>
 						
@@ -583,7 +583,7 @@
 				
 			</section>
 	
-	        <section class="enrollSiteSec">
+	        <section id="enrollSiteSec" class="enrollSiteSec">
 				
 				<section class="plusCampingSiteSec">
 					

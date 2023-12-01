@@ -58,36 +58,49 @@ const moreImgDiv = document.getElementById('moreImgDiv');
 
 etcImgPlusInput.addEventListener('change', e => {
 	
-	const file = e.target.files[0]; // 파일 데이터
+	moreImgDiv.innerHTML = '';
+	
+	const file = e.target.files;
+	
+	console.log(file);
 	
 	if(file != undefined) {
 		
-		const reader = new FileReader();
 		
-		reader.readAsDataURL(file); // result변수에 URL형식 저장
+		for(let i = 0; i < file.length; i++) {
+			
+			const file = e.target.files[i];
+			
+			const reader = new FileReader();
+			
+			reader.readAsDataURL(file); // result변수에 URL형식 저장
 		
-		reader.onload = e => {
-			
-			const moreImgDetailSec = document.createElement('section');
-			moreImgDetailSec.classList.add('moreImgDetailSec');
-			
-			const moreImgDetailDiv = document.createElement('div');
-			moreImgDetailDiv.classList.add('moreImgDetailDiv');
-			
-			const moreImg = document.createElement('img');
-			moreImg.classList.add('moreImg');
-			
-			
-			moreImgDetailDiv.append(moreImg);
-			moreImgDetailSec.append(moreImgDetailDiv);
-			
-			moreImgDiv.append(moreImgDetailSec);
-			
-			moreImg.setAttribute("src", e.target.result);
-			
+			reader.onload = e => {
+				
+				const moreImgDetailSec = document.createElement('section');
+				moreImgDetailSec.classList.add('moreImgDetailSec');
+				
+				const moreImgDetailDiv = document.createElement('div');
+				moreImgDetailDiv.classList.add('moreImgDetailDiv');
+				
+	
+				const moreImg = document.createElement('img');
+				moreImg.classList.add('moreImg');
+				
+				
+				moreImgDetailDiv.append(moreImg);
+				moreImgDetailSec.append(moreImgDetailDiv);
+				
+				moreImgDiv.append(moreImgDetailSec);
+				
+				moreImg.setAttribute("src", e.target.result);
+				
+			}
+	
 		}
-		
+			
 	}
+		
 	
 });
 
@@ -97,6 +110,61 @@ const campUploadModalDeleteBtn = document.getElementById('campUploadModalDeleteB
 campUploadModalDeleteBtn.addEventListener('click', () => {
 	moreImgDiv.innerHTML = '';
 });
+
+
+// 모달 등록하기 버튼
+const modalUploadBtn = document.getElementById('modalUploadBtn');
+
+const campDeName = document.getElementById('campDeName');
+const capacity = document.getElementById('capacity');
+const fullCapacity = document.getElementById('fullCapacity');
+const campDePrice = document.getElementById('campDePrice');
+
+
+modalUploadBtn.addEventListener('click', e => {
+	
+	if(campDeName.value == "") {
+		alert("구역명(호수)를 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
+	
+	if(capacity.value == "") {
+		alert("수용 인원을 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
+	
+	if(fullCapacity.value == "") {
+		alert("최대 인원을 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
+	
+	if(campDePrice.value == "") {
+		alert("구역명(호수)의 가격을 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
+	
+	// 모달에서 디테일 업로드 페이지로 정보 ajax로 보내기
+	
+	const campDeThumbnail = document.getElementById('campingSiteThumbnailInput');
+	
+	
+	fetch("/camp2/insertDeCamp?campDeThumbnail=" + campDeThumbnail + "&campDeName=" + campDeName
+	 + "&capacity=" + capacity + "&fullCapacity" + fullCapacity + "&campDePrice" + campDePrice)
+	.then(resp => resp.json())
+	.then(list => {
+		
+		// Enroll Site 정보를 감싸고 있는 Sec
+		const enrollSiteSec = document.getElementById('enrollSiteSec');
+		
+		
+	});
+
+});
+
 
 
 

@@ -99,6 +99,15 @@
 	border-radius: 10px;
 }
 
+.moreImgDetailDiv > label {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+}
+
 .previewcampingSiteThumbnail {
 	width: 100%;
 	height: 100%;
@@ -240,7 +249,7 @@
 
 .moreImgTitleNameSec {
 	height: 100%;
-	width: 10rem;
+	width: 22rem;
 	display: flex;
 	align-items: center;
 	font-size: 1.2rem;
@@ -261,7 +270,7 @@
 
 .moreImgDeleteBtnSec {
 	height: 100%;
-	width: 6rem;
+	width: 3rem;
 	display: flex;
 	align-items: center;
 }
