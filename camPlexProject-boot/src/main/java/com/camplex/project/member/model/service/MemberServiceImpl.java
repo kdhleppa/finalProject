@@ -1,6 +1,7 @@
 package com.camplex.project.member.model.service;
 
 import java.io.File;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +14,9 @@ import com.camplex.project.common.utility.Util;
 import com.camplex.project.member.mappers.MemberMapper;
 import com.camplex.project.member.model.dto.CEOMember;
 import com.camplex.project.member.model.dto.Member;
+import com.camplex.project.member.model.dto.MyPage;
+import com.camplex.project.member.model.dto.Wishlist;
+import com.camplex.project.paysys.model.dto.Payment;
 
 @Service
 @PropertySource("classpath:/config.properties")
@@ -202,6 +206,14 @@ public class MemberServiceImpl implements MemberService {
 		
 		return result;
 	}
+
+
+	// 마이페이지 값 뿌리기
+	@Override
+	public List<MyPage> selectMyPageInfo(int memberNo) {
+		return mapper.selectMyPageInfo(memberNo);
+	}
+
 
 
 

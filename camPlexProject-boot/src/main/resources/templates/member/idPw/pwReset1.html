@@ -45,7 +45,7 @@
                         <!-- PW 변경, 이전 페이지로 이동 버튼 -->
                         <section id="changePwBtn">
                             <button type="submit" class="clickBtn">PW 재설정</button>
-                            <button type="button" class="clickBtn" th:onclick="|location.href='@{/member/login}'|">이전으로</button>
+                            <button type="button" class="clickBtn" th:onclick="|javascript:history.back();|">이전으로</button>
                         </section>
                         
                         <section class="empty3"></section>

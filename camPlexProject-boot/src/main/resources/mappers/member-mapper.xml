@@ -27,6 +27,23 @@
 		<result property="bankName" column="BANK_NAME" />
 		<result property="ceoAccount" column="CEO_ACCOUNT" />
 	</resultMap>
+	
+<!--	<resultMap type="MyPageInfoList" id="myPageInfoList_rm">
+		<id property="memberNo" column="NEMBER_NO"/>
+		<result property="wishListNo" column="WISHLIST_NO" />  캠핑장 이미지 
+		<result property="campNo" column="CAMP_NO" />  캠핑장 이름
+		<result property="rentalName" column="ITEM_NAME" />  렌탈 상품명 
+		<result property="rentalName" column="ITEM_NAME" />  결제 정보 
+		<result property="paymentState" column="PAYMENT_STATUS_NAME" />  결제 상태 
+		<result property="paymentState" column="ITEM_IMG_RENAME" />  관심 상품 이미지 
+		<result property="paymentState" column="PAYMENT_STATUS_NAME" />  관심 상품명 
+		<result property="paymentState" column="PAYMENT_STATUS_NAME" />  문의사항 제목 
+		<result property="paymentState" column="PAYMENT_STATUS_NAME" />  문의사항 답변 상태 
+		<result property="paymentState" column="PAYMENT_STATUS_NAME" />  커뮤니티 제목 
+		<result property="paymentState" column="PAYMENT_STATUS_NAME" />  커뮤니티 댓글 수 
+	</resultMap>-->
+	
+	
 
 	<!-- 로그인 -->
 	<select id="login" resultMap="member_rm">
@@ -112,6 +129,7 @@
 		, #{bankName})
 	</insert>
 	
+	<!-- 마이페이지 구매 내역 값 뿌리기 -->
 	
 	
 	

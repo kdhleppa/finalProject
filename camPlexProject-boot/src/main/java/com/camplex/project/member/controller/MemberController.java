@@ -1,5 +1,6 @@
 package com.camplex.project.member.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,8 +30,11 @@ import com.camplex.project.item.model.dto.Item;
 import com.camplex.project.item.model.service.ItemService;
 import com.camplex.project.member.model.dto.CEOMember;
 import com.camplex.project.member.model.dto.Member;
+import com.camplex.project.member.model.dto.MyPage;
+import com.camplex.project.member.model.dto.Wishlist;
 import com.camplex.project.member.model.service.MemberService;
 import com.camplex.project.member.model.service.WishlistService;
+import com.camplex.project.paysys.model.dto.Payment;
 import com.camplex.project.paysys.model.service.PaysysService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -203,7 +207,18 @@ public class MemberController {
 	
 	// 회원 마이페이지 이동
 	@GetMapping("/myPage")
-	public String myPage() {
+	public String myPage(@SessionAttribute("loginMember") Member loginMember,
+							Model model
+						) {
+		int memberNo = loginMember.getMemberNo(); 
+		
+		List<MyPage> selectMyPageInfo = new ArrayList<>();
+		selectMyPageInfo = service.selectMyPageInfo(memberNo);
+		model.addAttribute("selectMyPageInfo", selectMyPageInfo);
+		
+		
+		System.out.println(selectMyPageInfo);
+		
 		return "member/myPage/myPage";
 	}
 	
@@ -241,7 +256,21 @@ public class MemberController {
 		int result = service.updateMember(memberProfileInput, inputMember);
 		
 		if(result > 0) {
-			path += "myPage";
+			
+			String checkMember = loginMember.getMemberType();
+			
+			if(checkMember.equals("U")) {
+				path += "myPage";
+				
+			} else {
+				
+				if(checkMember.equals("C")) {
+					path += "CEOMyPage";
+					
+				} else {
+					path += "managerMyPage";
+				}
+			}
 			
 			loginMember.setMemberNickname( inputMember.getMemberNickname() );
 			loginMember.setMemberProfileImg( inputMember.getMemberProfileImg());
