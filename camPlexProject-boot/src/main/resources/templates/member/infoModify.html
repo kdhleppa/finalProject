@@ -22,7 +22,7 @@
         
         <section id="signUpForm">
 			
-		<form th:action="@{/member/updateMember}" th:object="${session.loginMember}" method="post" name="updateMember" enctype="multipart/form-data">
+		<form th:action="@{/member/updateMember}" th:object="${session.loginMember}" method="post" name="updateMember" id="updateMember" enctype="multipart/form-data">
 
             <!-- 대제목 -->
             <section id="headerName">프로필 관리</section>
@@ -75,7 +75,7 @@
                         
                         <!-- 회원가입, 이전 페이지로 이동 버튼 -->
                         <section id="changePwBtn">
-                            <button class="clickBtn">수정완료</button>
+                            <button type="submit" class="clickBtn">수정완료</button>
                             <a class="clickBtn">비밀번호 변경</a>
                         </section>
                         
