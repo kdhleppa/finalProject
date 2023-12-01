@@ -13,12 +13,12 @@
 		<result property="ceoQnaCreateDate" column="Q_CREATE_DATE" />
 		
 		<result property="memberNo" column="MEMBER_NO" />
-		<result property="memberNickname" column="MEMBER_NICKNAME" />
+		<result property="campNo" column="CAMP_NO" />
 	</resultMap>
 	
 	<insert id="insertCeoQna">
 		INSERT INTO CEO_QNA
-		VALUES(SEQ_CEO_QNA_NO.NEXTVAL, #{ceoQnaTitle}, #{ceoQnaContent}, DEFAULT, DEFAULT, DEFAULT, #{memberNo}, #{memberNickname})
+		VALUES(SEQ_CEO_QNA_NO.NEXTVAL, #{memberNo}, #{campNo}, #{ceoQnaTitle}, #{ceoQnaContent}, NULL, DEFAULT, DEFAULT)
 	</insert>
 	
 	

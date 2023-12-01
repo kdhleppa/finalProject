@@ -81,6 +81,30 @@ public class PaysysServiceImpl implements PaysysService{
 		return mapper.insertPayCamp(info);
 	}
 
+	/** 캠핑 카카오 결제 내역 저장
+	 *
+	 */
+	@Override
+	public int insertKakao(InfoForReservation info) {
+		return mapper.insertKakao(info);
+	}
+
+	/** 캠핑 카카오 결제 내역 결제완료로 변경
+	 *
+	 */
+	@Override
+	public int updatePayState(int tempPaymentNo) {
+		return mapper.updatePayState(tempPaymentNo);
+	}
+
+	/** 결제 취소시 내역 삭제(카카오)
+	 *
+	 */
+	@Override
+	public int deleteKakao(int tempPaymentNo) {
+		return mapper.deleteKakao(tempPaymentNo);
+	}
+
 	
 
 

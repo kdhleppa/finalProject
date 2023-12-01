@@ -1,4 +1,5 @@
 const payBy = document.querySelectorAll('input[name="payBy"]');
+let payFrm = document.getElementById('payFrm')
 
 for(var i = 0 ; i <payBy.length ; i ++){
 
@@ -8,11 +9,37 @@ for(var i = 0 ; i <payBy.length ; i ++){
     
         if(e.target.value == 'b'){
             makeAccount();
-        } else{
+            payFrm.action ="payDone"
+
+            payFrm.addEventListener("submit", (e) => {
+                
+                pay(e)    
+
+
+            })
+
+        } else if (e.target.value == 'k'){
+            payFrm.action ="kakao"
             bankAccountContainer.innerHTML = "";
+        } else if (e.target.value == 'n'){
+            alert("현재 점검 중입니다.")
+            e.target.checked = false;
         }
     })
 }
+
+function pay(e){
+        
+    const senderName = document.getElementById('senderName');
+
+    if(senderName.value.trim().length == 0){
+        alert("이름을 입력해주세요")
+        e.preventDefault();
+        return;
+    }
+
+}
+
 
 
 
@@ -62,43 +89,4 @@ function makeAccount() {
 }
 
 
-const payFrm = document.getElementById('payFrm')
-const payBtn = document.getElementById('payBtn')
 
-payFrm.addEventListener("submit", () => {
-    const payBy = document.querySelector('input[name="payBy"]:checked').value;
-
-    pay(payBy)
-
-    function pay(payBy, event){
-
-        if(payBy == 'k'){
-
-            console.log("카카오")
-
-        }
-
-
-        if(payBy == 'n'){
-
-            console.log("네이버")
-            
-        }
-        
-        
-        if(payBy == 'b'){
-            
-            const senderName = document.getElementById('senderName');
-
-            if(senderName.value == ""){
-                alert("이름을 입력해주세요")
-                event.preventDefault();
-                return;
-            }
-
-        }
-
-    }
-
-
-})

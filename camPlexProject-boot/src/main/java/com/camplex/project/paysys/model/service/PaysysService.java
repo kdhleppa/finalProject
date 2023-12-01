@@ -39,6 +39,24 @@ public interface PaysysService {
 
 	int deleteCart(int cartItemNo);
 
+	/** 카카오 결제 내역 저장
+	 * @param info
+	 * @return
+	 */
+	int insertKakao(InfoForReservation info);
+
+	/** 결제 완료로 변경
+	 * @param tempPaymentNo
+	 * @return
+	 */
+	int updatePayState(int tempPaymentNo);
+
+	/** 결제 취소시 내역 삭제
+	 * @param tempPaymentNo
+	 * @return
+	 */
+	int deleteKakao(int tempPaymentNo);
+
 
 
 

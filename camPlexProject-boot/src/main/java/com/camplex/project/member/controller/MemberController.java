@@ -340,7 +340,6 @@ public class MemberController {
 		return path;
 	}
 	
-	
 	// 위시리스트 추가
 	@PostMapping("/wishlist/insert")
 	public String wishlistInsert(

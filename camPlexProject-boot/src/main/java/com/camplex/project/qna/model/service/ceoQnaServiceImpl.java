@@ -13,6 +13,9 @@ public class ceoQnaServiceImpl implements ceoQnaService{
 	@Autowired
 	private ceoQnaMapper mapper;
 	
+	/** 캠핑장 1:1 문의 입력
+	 *
+	 */
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public int insertCeoQna(ceoQna ceoQna) {

@@ -5,10 +5,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.camplex.project.camping.model.dto.Camp;
@@ -195,60 +200,51 @@ public class PaysysController {
 		return "paysys/campPay";
 	}
 	
+	/** 무통장 입금
+	 * @param info
+	 * @param payBy
+	 * @param bank
+	 * @param senderName
+	 * @param loginMember
+	 * @param model
+	 * @param ra
+	 * @return
+	 */
 	@PostMapping("/payDone")
 	public String paying(InfoForReservation info,
 						 String payBy,
 						 String bank,
 						 String senderName,
-						 @SessionAttribute Member loginMember,
+						 @SessionAttribute("loginMember") Member loginMember,
 						 Model model,
 						 RedirectAttributes ra
 						 ) {
 		
-		String path = null;
 		int result = 0;
 		
-		// 카카오 페이
-		if(payBy.equals("k")) {
-			
+		switch(bank) {
+		
+			case "toss" : bank = "토스뱅크 100001065362 최규연"; break;
+			case "kb" : bank ="국민은행 00440204106870 이재경"; break;
+		
 		}
 		
-		// 네이버 페이
-		if(payBy.equals("n")) {
-			
+		info.setMemberNo(loginMember.getMemberNo());
+		info.setPayType("무통장입금");
+		
+		result = payService.insertPayCamp(info);
+		
+		if(result > 0) {
+			ra.addFlashAttribute("message", "결제 신청이 완료되었습니다.");
+		} else {
+			ra.addFlashAttribute("message", "결제 진행 중 오류가 발생했습니다.");
 		}
 		
-		// 무통장 입금
-		if(payBy.equals("b")) {
-			
-			switch(bank) {
-			
-				case "toss" : bank = "토스뱅크 100001065362 최규연"; break;
-				case "kb" : bank ="국민은행 00440204106870 이재경"; break;
-			
-			}
-			
-			info.setMemberNo(loginMember.getMemberNo());
-			info.setPayType("무통장입금");
-			
-			result = payService.insertPayCamp(info);
-			
-			if(result > 0) {
-				ra.addFlashAttribute("message", "결제 신청이 완료되었습니다.");
-			} else {
-				ra.addFlashAttribute("message", "결제 진행 중 오류가 발생했습니다.");
-			}
-			
-			model.addAttribute("info", info);
-			model.addAttribute("bank", bank);
-			model.addAttribute("senderName", senderName);
-			path = "paysys/payDoneBank";
-		}
+		model.addAttribute("info", info);
+		model.addAttribute("bank", bank);
+		model.addAttribute("senderName", senderName);
 		
-		
-		
-		
-		return path;
+		return "paysys/payDoneBank";
 	}
 
 
@@ -296,7 +292,6 @@ public class PaysysController {
 			
 		
 	}
-	
 	
 	
 	@PostMapping("/rentCart/deleteCart")

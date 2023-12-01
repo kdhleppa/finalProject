@@ -17,7 +17,6 @@ public class ceoQna {
 	private String ceoAnswerFlag;
 	private String ceoQnaCreateDate;
 	
-	
 	private int memberNo;
 	private String memberNickname;
 	

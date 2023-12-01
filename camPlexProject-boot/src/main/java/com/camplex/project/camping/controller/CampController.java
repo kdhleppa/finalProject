@@ -152,7 +152,6 @@ public class CampController {
 		return result;
 	}
 	
-	
 	/** 예약 이동
 	 * @param campDeNo
 	 * @param model
@@ -206,9 +205,6 @@ public class CampController {
 						   int campNo
 			) {
 			
-		
-		if(loginMember != null) {
-
 			int result = 0;
 			int memberNo = loginMember.getMemberNo();
 			
@@ -239,13 +235,6 @@ public class CampController {
 				
 			}
 			
-		} else {
-			
-			ra.addFlashAttribute("message", "로그인 후 이용해주세요");
-			
-		}
-		
-		
 		return "redirect:"+ referer;
 	}
 	
