@@ -47,8 +47,6 @@
 			
         </section>
         
-        	
-        
         <hr style="height: 0.2rem; background-color:black; margin-top: 1rem; margin-left: 8%; width: 84%; margin-right: 40%;">
         
         <form th:action="@{update}" method="POST" class="board-update" id="boardUpdateFrm"
@@ -69,7 +67,9 @@
 	                <div class="boardImg thumbnail">
 	                    <label for="img0">
 							<th:block th:if="${thumbnail}">
-	                        	<img class="preview" th:src="|${thumbnail.boardImagePath}${thumbnail.boardImageReName}|">
+	                        	<div class="uploadImg1">
+                        			<img class="preview" onload="onImageLoad(this)">
+                        		</div>
 	                       	</th:block>
 	                    </label>
 	                    <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
@@ -78,22 +78,48 @@
 	            </div>
 	
 				<!-- 업로드 이미지 영역 -->
-				<th:block th:if="${#lists.size(board.imageList) > start}">
-							
-					<h5 style="margin-left: 5rem;"></h5>
-					<div class="img-box">
-						<th:block th:each="image, i : ${board.imageList}">
-				            <div class="uploadImg"
-				                th:with="path=|${image.boardImagePath}${image.boardImageReName}|">
-				                <label th:for="${'img_' + i.index}">
-				                    <img th:src="${path}" class="preview">
-				                </label>
-				            </div>
-				            <input type="file" name="images" class="inputImage" th:id="${'img_' + i.index}" accept="image/*">
-				            <span class="delete-image">&times;</span>
-				        </th:block>
-	            	</div>
-	            </th:block>
+	            <div class="img-box">
+					<h5>업로드 이미지</h5>
+	                <div class="boardImg">
+	                    <label for="img1">
+	                        <div class="uploadImg">
+	                        	<img class="preview" onload="onImageLoad(this)">
+	                    	</div>
+	                    </label>
+	                    <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
+	                    <span class="delete-image">&times;</span>
+	                </div>
+	
+	                <div class="boardImg">
+	                    <label for="img2">
+	                        <div class="uploadImg">
+	                        	<img class="preview" onload="onImageLoad(this)">
+	                    	</div>
+	                    </label>
+	                    <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
+	                    <span class="delete-image">&times;</span>
+	                </div>
+	
+	                <div class="boardImg">
+	                    <label for="img3">
+	                        <div class="uploadImg">
+	                        	<img class="preview" onload="onImageLoad(this)">
+	                    	</div>
+	                    </label>
+	                    <input type="file" name="images" class="inputImage" id="img3" accept="image/*">
+	                    <span class="delete-image">&times;</span>
+	                </div>
+	
+	                <div class="boardImg">
+	                    <label for="img4">
+	                        <div class="uploadImg">
+	                        	<img class="preview" onload="onImageLoad(this)">
+	                    	</div>
+	                    </label>
+	                    <input type="file" name="images" class="inputImage" id="img4" accept="image/*">
+	                    <span class="delete-image">&times;</span>
+	                </div>
+            	</div>
 			</div>
 			
 			<hr style="margin-top: 35px; margin-bottom: 25px; width: 55rem;">
@@ -103,9 +129,7 @@
                 <textarea name="boardContent" th:text="${board.boardContent}">내용</textarea>
             </div>
 
-        
-        
-        <hr style="margin-top: 20px; margin-left: 8%; width: 84%; margin-right: 8%;">
+        	<hr style="margin-top: 20px; margin-left: 8%; width: 84%; margin-right: 8%;">
 
 			<div class="btnArea">
 
@@ -131,6 +155,18 @@
     
     <script th:src="@{/js/board/boardUpdate.js}"></script>
 
+	<script th:inline="javascript">
+        // 타임리프로 얻어온 자바의 자료형을 JS 자료형으로 변환
+
+        const imageList = /*[[${board.imageList}]]*/ [];
+
+        const previewList = document.querySelectorAll("img.preview");
+
+        for(let img of imageList) {
+            previewList[img.boardImageOrder].src = img.boardImagePath + img.boardImageReName;
+        }
+
+    </script>
 
 </body>
 </html>

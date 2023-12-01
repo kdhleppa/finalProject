@@ -242,6 +242,8 @@ img {
     min-height: 100px;
 	resize: none;
 	margin-left: 7rem;
+	padding: 0.7rem;
+	outline: none;
 }
 
 .comment-write-area > button{
@@ -305,9 +307,12 @@ img {
 }
 
 .update-textarea{
-	width: 100%;
+	width: 66%;
     height: 90px;
     resize: none;
+    border-radius: 10px;
+    outline: none;
+    padding: 0.7rem;
 }
 
 .comment-row{
@@ -342,6 +347,9 @@ img {
     height: 90px;
     resize: none;
     margin-top : 20px;
+    border-radius: 10px;
+    outline: none;
+    padding: 0.7rem;
 }
 
 #addComment {

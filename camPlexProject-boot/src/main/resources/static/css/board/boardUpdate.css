@@ -105,7 +105,7 @@ button {
     position: relative;
 }
 
-.uploadImg > label{
+.boardImg > label{
     width: 100%;
     height: 100%;
     display: flex;
@@ -113,20 +113,35 @@ button {
     align-items: center;
     border: 1px solid #ccc;
     cursor: pointer;
-	border-radius: 20px;
-	margin-top: 1rem;
+    border-radius: 20px;
 }
 
-.uploadImg > label > img {
-	width: 15rem;
-	height: 15rem;
-	border-radius: 20px;
-	overflow: hidden;
+.uploadImg img.preview {
+    visibility: hidden;
 }
 
-.inputImage {
-	display: none;
+.uploadImg1 > img {
+	margin-top: 0.2rem;
+	width: 18.9rem;
+	height: 18.5rem;
+	border-radius: 20px;
 }
+
+.uploadImg img.preview {
+    visibility: hidden;
+}
+
+.uploadImg > img {
+	margin-top: 0.2rem;
+	width: 12.6rem;
+	height: 12.3rem;
+	border-radius: 20px;
+}
+
+.inputImage{
+    display: none;
+}
+
 
 .delete-image {
 	cursor: pointer;
@@ -141,15 +156,8 @@ button {
 
 /* 썸네일만 이미지 크게 */
 .thumbnail{
-    width: 17rem; 
-    height: 17rem;
-	border-radius: 20px;
-	overflow: hidden;
-}
-
-.thumbnail > label > img {
-	width: 100%;
-	height: 100%;
+    width: 300px;   
+    height: 300px;
 }
 
 /* 내용 부분 */
