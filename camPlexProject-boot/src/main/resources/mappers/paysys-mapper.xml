@@ -63,7 +63,7 @@
 		AND RESERVATION_NO = #{reservationNo}
 		AND ITEM_NO = #{itemNo}
 	</select>
-	    
+
 	<delete id="deleteItemcart">
 	    DELETE FROM CART_ITEM
 	    WHERE ITEM_NO = #{itemNo}
