@@ -16,6 +16,10 @@ button {
     unicode-range: U+AC00-D7A3;
 }
 
+textarea {
+	font-family: 'HakgyoansimSantteutdotumL';
+}
+
 /* 게시판 상단 메뉴 */
 .boardTypeList {
 	display: flex;
@@ -338,6 +342,7 @@ img {
 
 /* 댓글 내용 */
 .comment-content {
+	font-family: 'HakgyoansimSantteutdotumL';
 	white-space: pre-wrap;
 	margin-top: 10px;
 }
