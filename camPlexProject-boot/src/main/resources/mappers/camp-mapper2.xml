@@ -116,25 +116,32 @@
 	</insert>
 	
 	<!-- 캠핑장 구역 이미지 삽입-->
-	<insert id="insertCampDetailImageList">
+	<insert id="insertCampDetailImageList" parameterType="list">
 		INSERT INTO "CAMPING_DETAIL_IMG"
 		SELECT SEQ_CAMP_DE_IMG_NO.NEXTVAL, A.*
 		FROM (
 			
 			<foreach collection="list" item="img" separator="UNION ALL">
-				SELECT #{img.campDeImgPath} CAMP_DE_IMG_PATH,
+				SELECT #{img.campDeNo} CAMP_DE_NO,
+					#{img.campDeImgPath} CAMP_DE_IMG_PATH,
 					#{img.campDeImgRename} CAMP_DE_IMG_RENAME,
 					#{img.campDeImgOriginal} CAMP_DE_IMG_ORIGINAL,
 					#{img.campDeImgOrder} CAMP_DE_IMG_ORDER
 				FROM DUAL
 			</foreach>
-		)
+		) A
 	</insert>
 	
 	<select id="selectDeCamp" resultMap="camp_detail_rm">
 		SELECT CAMP_DE_NAME, CAMP_DE_NAME, CAMP_DE_PRICE, CAPACITY, FULL_CAPACITY
 		FROM "CAMPING_DETAIL"
 		WHERE CAMP_NO = 0
+	</select>
+	
+	<select id="selectDeCampImage" resultMap="camp_detailImage_rm">
+		SELECT CAMP_DE_IMG_NO, CAMP_DE_NO, (CAMP_DE_IMG_PATH || CAMP_DE_IMG_RENAME) CAMP_DE_IMG_PATH, CAMP_DE_IMG_ORDER
+		FROM CAMPING_DETAIL_IMG
+		WHERE  CAMP_DE_NO = 0 AND CAMP_DE_IMG_ORDER = 0 
 	</select>
 	
 	

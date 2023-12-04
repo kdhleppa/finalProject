@@ -116,7 +116,7 @@ public class CampServiceImpl2 implements CampService2{
 		
 		if(result == 0) return 0;
 		
-		int campDeNo = campDetail.getCampDeNo();
+		int campDeNo = 0;
 		
 		if(campDeNo > 0) {
 			
@@ -180,6 +180,15 @@ public class CampServiceImpl2 implements CampService2{
 	@Override
 	public List<CampDetail> selectDeCamp() {
 		return mapper.selectDeCamp();
+	}
+
+
+	/** 0번 캠핑장 구역 이미지 select
+	 *
+	 */
+	@Override
+	public List<CampDetailImage> selectDeCampImage() {
+		return mapper.selectDeCampImage();
 	}
 
 	

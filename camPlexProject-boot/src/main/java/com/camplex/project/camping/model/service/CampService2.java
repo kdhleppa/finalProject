@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.camplex.project.camping.model.dto.Camp;
 import com.camplex.project.camping.model.dto.CampDetail;
+import com.camplex.project.camping.model.dto.CampDetailImage;
 
 public interface CampService2 {
 
@@ -17,6 +18,8 @@ public interface CampService2 {
 	
 
 	List<CampDetail> selectDeCamp();
+
+	List<CampDetailImage> selectDeCampImage();
 
 
 
