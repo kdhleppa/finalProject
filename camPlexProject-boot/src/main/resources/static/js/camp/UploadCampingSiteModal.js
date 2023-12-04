@@ -114,14 +114,14 @@ campUploadModalDeleteBtn.addEventListener('click', () => {
 // 모달 등록하기 버튼
 const modalUploadBtn = document.getElementById('modalUploadBtn');
 
-const campDeName = document.getElementById('campDeName').value;
-const capacity = document.getElementById('capacity').value;
-const fullCapacity = document.getElementById('fullCapacity').value;
-const campDePrice = document.getElementById('campDePrice').value;
-
-
 modalUploadBtn.addEventListener('click', e => {
 	
+	const campDeImges = document.getElementById('etcImgPlusInput');
+	const campDeName = document.getElementById('campDeName').value;
+	const capacity = document.getElementById('capacity').value;
+	const fullCapacity = document.getElementById('fullCapacity').value;
+	const campDePrice = document.getElementById('campDePrice').value;
+
 
 	if(campDeName == null) {
 		alert("구역명(호수)를 입력해주세요.");
@@ -148,13 +148,32 @@ modalUploadBtn.addEventListener('click', e => {
 	}
 	
 	// 모달에서 디테일 업로드 페이지로 정보 ajax로 보내기
+
+	const arr = [];
+	const campingSiteThumbnailInput = document.getElementById('campingSiteThumbnailInput').files
+	const etcImgPlusInput = document.getElementById('etcImgPlusInput').files
+
+	arr[0] = campingSiteThumbnailInput[0]
 	
-	const campDeImges = document.getElementsByName('campDeImges');
-	console.log(campDeName);
-		
-	fetch("/camp2/insertDeCamp?campDeName=" + campDeName
-	 + "&capacity=" + capacity + "&fullCapacity=" + fullCapacity + "&campDePrice=" + campDePrice)
-	.then(resp => resp.json())
+	for (let i = 0; i < etcImgPlusInput.length; i++) {
+		arr[i+1] = etcImgPlusInput[i]
+	}
+
+	let formData = new FormData();
+	formData.append("campDeName", campDeName);
+	formData.append("capacity", capacity);
+	formData.append("fullCapacity", fullCapacity);
+	formData.append("campDePrice", campDePrice);
+	for (let i = 0; i < arr.length; i++) {
+		formData.append("campDeImges", arr[i]);
+	}
+
+	fetch("/camp2/insertDeCamp", {
+		enctype: 'multipart/form-data',
+		method : "POST",
+		processData: false,   
+        body : formData
+	}).then(resp => resp.json())
 	.then(map => {
 		
 		// Enroll Site 정보를 감싸고 있는 Sec

@@ -49,7 +49,6 @@ public class CampController {
 		return "camp/campingCheckPage";
 	}
 	
-	
 	/** 캠핑장 정렬
 	 * @param category
 	 * @param model
@@ -74,7 +73,6 @@ public class CampController {
 		return list;
 	}
 	
-	
 	/** 캠핑장 검색
 	 * @param input
 	 * @return
@@ -90,8 +88,6 @@ public class CampController {
 		return list;
 		
 	}
-	
-	
 	
 	/** 캠핑장 상세 조회
 	 * @param campNo
@@ -296,6 +292,7 @@ public class CampController {
 			  				   int campNo,
 			  				   @RequestHeader("referer") String referer
 							   ) throws Exception {
+		
 		
 		int result = service.insertCeoPic(campNo, images);
 		
