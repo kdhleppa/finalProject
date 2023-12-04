@@ -88,25 +88,27 @@
 
 
 				<div class="checkLine"></div>
-				<th:block th:if="${session.loginMember?.memberType == 'C'} or ${session.loginMember?.memberType == 'M'}">
-					<!-- 검색 언더바 sec -->
-
-					<section class="campUploadBtnSec">
-
-
-						<a th:href="@{/camp2/uploadCamp}" class="campUploadBtnA">
-							<div class="campUploadBtn">
-								Camp Upload
-							</div>
-						</a>
-
-
-					</section>
-					
-				</th:block>
+				
 
 				<!-- 정렬 선택 sec -->
 				<section class="chooseClassificationSec">
+
+					<th:block th:if="${session.loginMember?.memberType == 'C'} or ${session.loginMember?.memberType == 'M'}">
+						<!-- 검색 언더바 sec -->
+	
+						<section class="campUploadBtnSec">
+	
+	
+							<a th:href="@{/camp2/uploadCamp}" class="campUploadBtnA">
+								<div class="campUploadBtn">
+									Camp Upload
+								</div>
+							</a>
+	
+	
+						</section>
+						
+					</th:block>
 
 					<section class="chooseClassificationDetailSec">
 						<select id="classification" class="classificationBtn" name="classification">
