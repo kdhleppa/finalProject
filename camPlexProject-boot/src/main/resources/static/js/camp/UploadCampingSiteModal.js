@@ -114,6 +114,7 @@ campUploadModalDeleteBtn.addEventListener('click', () => {
 // 모달 등록하기 버튼
 const modalUploadBtn = document.getElementById('modalUploadBtn');
 
+
 modalUploadBtn.addEventListener('click', e => {
 	
 	const campDeImges = document.getElementById('etcImgPlusInput');
@@ -123,25 +124,30 @@ modalUploadBtn.addEventListener('click', e => {
 	const campDePrice = document.getElementById('campDePrice').value;
 
 
-	if(campDeName == null) {
+	const campDeName = document.getElementById('campDeName').value;
+	const capacity = document.getElementById('capacity').value;
+	const fullCapacity = document.getElementById('fullCapacity').value;
+	const campDePrice = document.getElementById('campDePrice').value;
+
+	if(campDeName == "") {
 		alert("구역명(호수)를 입력해주세요.");
 		e.preventDefault();
 		return;
 	}
 	
-	if(capacity == null) {
+	if(capacity == "") {
 		alert("수용 인원을 입력해주세요.");
 		e.preventDefault();
 		return;
 	}
 	
-	if(fullCapacity == null) {
+	if(fullCapacity == "") {
 		alert("최대 인원을 입력해주세요.");
 		e.preventDefault();
 		return;
 	}
 	
-	if(campDePrice == null) {
+	if(campDePrice == "") {
 		alert("구역명(호수)의 가격을 입력해주세요.");
 		e.preventDefault();
 		return;
@@ -155,6 +161,7 @@ modalUploadBtn.addEventListener('click', e => {
 
 	arr[0] = campingSiteThumbnailInput[0]
 	
+
 	for (let i = 0; i < etcImgPlusInput.length; i++) {
 		arr[i+1] = etcImgPlusInput[i]
 	}
@@ -175,6 +182,8 @@ modalUploadBtn.addEventListener('click', e => {
         body : formData
 	}).then(resp => resp.json())
 	.then(map => {
+		
+		console.log(modalUploadBtn);
 		
 		// Enroll Site 정보를 감싸고 있는 Sec
 		const enrollSiteSec = document.getElementById('enrollSiteSec');
