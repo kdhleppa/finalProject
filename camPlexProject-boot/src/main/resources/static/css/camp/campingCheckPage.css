@@ -160,7 +160,7 @@ main {
 }
 
 .campUploadBtnSec {
-	height: 100%;
+    margin-right: 30px;
 	width: 40%;
 	display: flex;
 	align-items: center;
