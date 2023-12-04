@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쿠폰이벤트</title>
+
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/92fbd4b351.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" th:href="@{/css/event/eventCoupon.css}">
+</head>
+<body>
+    
+    <th:block th:replace="~{common/headerForContent}"></th:block>
+    
+    <main>
+	
+        <section class="eventTitle">
+            <p>쿠폰 이벤트</p>
+
+        </section>
+
+        <hr style="margin-top: 20px; margin-left: 8%; width: 84%; margin-right: 40%;">
+	
+		<section class="couponPick">
+				
+	            <div class="couponImg">
+					
+					<div>
+	                	<p id="ranking">1등 </p> <img th:src="@{/images/boardImg/30per.jpg}"><br>
+	                </div>
+	                
+	                <div>
+	                	<p id="ranking">2등 </p> <img th:src="@{/images/boardImg/20per.jpg}"><br>
+	                </div>
+	                
+	                <div>
+	                	<p id="ranking">3등 </p> <img th:src="@{/images/boardImg/10per.jpg}">
+	            	</div>
+	            	
+	            </div>
+	            
+	            <br>
+	        
+	        <input type="button" value="쿠폰 추첨" id="id_btn">
+		
+			<br>
+			<h1 id="id_out"></h1>
+			
+		</section>
+	    
+        <hr style="margin-top: 20px; margin-left: 8%; width: 84%; margin-right: 40%;">
+
+
+    </main>
+	
+    <th:block th:replace="~{common/footer}"></th:block>
+    
+	<script th:src="@{/js/event/eventCoupon.js}"></script>
+
+</body>
+</html>

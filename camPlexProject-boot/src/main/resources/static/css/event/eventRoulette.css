@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    /* border: 1px solid black; */
+}
+
+button {
+    cursor: pointer;
+}
+
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: 1% 500%;
+    unicode-range: U+AC00-D7A3;
+}
+
+.eventTitle p {
+    font-family: 'HakgyoansimSantteutdotumL';
+    margin-top: 90px;
+    font-size: 30px;
+    margin-left: 8.3%;
+}
+
+.rouletter {
+	margin-top: 20rem;
+	margin-left: 47rem;
+	position: relative;
+	width: 400px;
+	height: 400px;
+	transform:scale(2);
+	margin-bottom: 15rem;
+}
+
+.rouletter-bg {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 350px;
+	height: 350px;
+	border-radius: 350px;
+	overflow: hidden;
+}
+
+.rouletter-wacu {
+	width: 100%;
+	height: 100%;
+	background: #f5f5f2
+	url("https://m.lifeplanet.co.kr:444/commons/slink/administrator/openInnovation/img/MO)%20360%ED%94%8C%EB%9E%98%EB%8B%9B_%EB%A3%B0%EB%A0%9B%ED%8C%90_476x476_201026.png")
+	no-repeat;
+	background-size: 100%;
+	transform-origin: center;
+	transition-timing-function: ease-in-out;
+	transition: 2s;
+}
+
+.rouletter-arrow {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 1px;
+	height: 1px;
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+	border-top: 40px solid red;
+	border-bottom: 0px solid transparent;
+}
+
+.rouletter-btn {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 80px;
+	height: 80px;
+	border-radius: 80px;
+	background: #fff;
+	border-image: linear-gradient(to right, #fbfcb9be, #ffcdf3aa, #65d3ffaa);
+	border: 2px solid;
+}
+
+.hidden-input {
+	display: none;
+}
+

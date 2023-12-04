@@ -24,8 +24,8 @@ import org.springframework.stereotype.Controller;
 public class ChatController {
 	
 
-    private static String secretKey = "a3JScUpDbFFjemZ0cmFiQVVNd0tFbFRzc1VmbXJJZ2g=";
-    private static String apiUrl = "https://q9wfvo3mcs.apigw.ntruss.com/custom/v1/12357/9942a67515787921c2132e613fd9c7e798095850f7678f93887988b4ac3c7797";
+    private static String secretKey = "a3BNbGRVV3dMTHlxQnBHR1BYWFBzaVJLek1NYmlTcnE=";
+    private static String apiUrl = "https://4qk9kzike2.apigw.ntruss.com/custom/v1/12680/b1830c457624687df9070512abda80e95e5e412aa96d38ee58355896739aa8ec";
 
     @MessageMapping("/sendMessage")
     @SendTo("/topic/public")

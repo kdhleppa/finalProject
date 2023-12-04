@@ -19,6 +19,7 @@
 	<div class="modal_wrap" id="modalContainer">
     
     	<div class="modal_close" style="cursor: pointer;">x</div>
+    	
 	    	<div class="text">
 				
 	        <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
@@ -27,7 +28,7 @@
 		    
 			<div id="main-content" class="container">
 			    <div class="row">
-			        <div class="col-md-6">
+			        <div style="display: none;" class="col-md-6">
 			            <form class="form-inline">
 			                <div class="form-group">
 			                    <label for="connect">채팅봇 연결하기 </label>
@@ -40,29 +41,38 @@
 			        <div class="col-md-6">
 			            <form class="form-inline">
 			                <div class="form-group">
-			                    <label for="msg">질문 내용 입력</label>
-			                    <input type="text" id="msg" class="form-control" placeholder="내용을 입력하세요">
+			                    <label for="msg">안녕하세요 CAMPLEX입니다. 무엇을 도와드릴까요?<br>
+												보기에서 문의사항에 해당하는 내용을 선택해주세요.<br><br>
+												1 :  캠핑장<br>
+												2 :  캠핑물품<br>
+												3 :  게시판<br>
+												4 :  직접 문의<br><br>
+												</label>
 			                </div>
+			                
+			                <input type="text" id="msg" class="form-control" placeholder="내용을 입력하세요">
 			                <button id="send" class="btn btn-default" disabled type="submit">보내기</button>
 			            </form>
 			        </div>
 			    </div>
+			    
 			    <div class="row">
 			        <div class="col-md-12">
 			            <table id="conversation" class="table table-striped">
 			                <thead>
-			                <tr>
-			                    <th>메세지</th>
-			                </tr>
 			                </thead>
 			                <tbody id="communicate">
 			                </tbody>
 			            </table>
 			        </div>
 			    </div>
+			    
 			</div>
+			
 	    </div>
+	    
 	</div>
+	
 </body>
 	
     <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
