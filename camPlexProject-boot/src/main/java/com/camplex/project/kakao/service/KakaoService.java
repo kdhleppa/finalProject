@@ -47,7 +47,7 @@ public class KakaoService {
 	        params.add("cid", "TC0ONETIME");
 	        params.add("partner_order_id", "camplex");
 	        params.add("partner_user_id", "camplex");
-	        params.add("item_name", info.getCampName()+" "+info.getCampDeName());
+	        params.add("item_name", info.getCampName()+" ("+info.getCampDeName() + ")");
 	        params.add("quantity", "1");
 	        params.add("total_amount", info.getPrice());
 	        params.add("tax_free_amount", "100");

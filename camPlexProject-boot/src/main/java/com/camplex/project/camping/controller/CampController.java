@@ -49,6 +49,50 @@ public class CampController {
 		return "camp/campingCheckPage";
 	}
 	
+	
+	/** 캠핑장 정렬
+	 * @param category
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/order")
+	@ResponseBody
+	public List<Camp> category(String category,
+							   Model model
+								){
+		List<Camp> list = new ArrayList<>();
+	
+		switch(category) {
+		
+		case "recommend": list = service.selectCampListReccomend(); break;
+		case "current" : list = service.selectCampList(); break;
+		case "popular" : list = service.selectCampListPopular(); break;
+		case "old" : list = service.selectCampListOld(); break;
+		
+		}
+		
+		return list;
+	}
+	
+	
+	/** 캠핑장 검색
+	 * @param input
+	 * @return
+	 */
+	@GetMapping("/searchCamp")
+	@ResponseBody
+	public List<Camp> searchCamp(String input){
+		
+		List<Camp> list = new ArrayList<>();
+		
+		list = service.searchCampList(input);
+		
+		return list;
+		
+	}
+	
+	
+	
 	/** 캠핑장 상세 조회
 	 * @param campNo
 	 * @param model

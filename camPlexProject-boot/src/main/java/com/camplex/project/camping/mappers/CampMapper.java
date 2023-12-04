@@ -91,6 +91,27 @@ public interface CampMapper {
 	 */
 	int insertStar(Map<String, Object> map);
 
+	/** 캠핑장 정렬 추천순(별점 높은 순)
+	 * @return
+	 */
+	List<Camp> selectCampListReccomend();
+
+	/** 캠핑장 정렬 인기순(별점 카운트 높은 순)
+	 * @return
+	 */
+	List<Camp> selectCampListPopular();
+
+	/** 캠핑장 정렬 오래된순
+	 * @return
+	 */
+	List<Camp> selectCampListOld();
+
+	/** 캠핑장 검색
+	 * @param input
+	 * @return
+	 */
+	List<Camp> searchCampList(String input);
+
 
 
 }

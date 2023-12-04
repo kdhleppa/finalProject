@@ -184,6 +184,38 @@ public class CampServiceImpl implements CampService {
 		return  mapper.insertStar(map);
 	}
 
+	/** 캠핑장 정렬 추천순(별점 높은순)
+	 *
+	 */
+	@Override
+	public List<Camp> selectCampListReccomend() {
+		return mapper.selectCampListReccomend();
+	}
+
+	/** 캠핑장 정렬 인기순(별점 카운트 높은 순)
+	 *
+	 */
+	@Override
+	public List<Camp> selectCampListPopular() {
+		return mapper.selectCampListPopular();
+	}
+
+	/** 캠핑장 정렬 오래된순
+	 *
+	 */
+	@Override
+	public List<Camp> selectCampListOld() {
+		return mapper.selectCampListOld();
+	}
+
+	/** 캠핑장 검색
+	 *
+	 */
+	@Override
+	public List<Camp> searchCampList(String input) {
+		return mapper.searchCampList(input);
+	}
+
 
 
 }
