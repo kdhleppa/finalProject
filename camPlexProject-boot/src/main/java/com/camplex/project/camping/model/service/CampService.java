@@ -9,6 +9,9 @@ import com.camplex.project.camping.model.dto.Camp;
 import com.camplex.project.camping.model.dto.CampDetail;
 import com.camplex.project.camping.model.dto.CampDetailImage;
 
+/**
+ * 
+ */
 public interface CampService {
 
 	/** 캠프장 목록 조회
@@ -90,6 +93,27 @@ public interface CampService {
 	 * @return
 	 */
 	int insertStar(Map<String, Object> map);
+
+	/** 추천순(별점 높은 순)
+	 * @return
+	 */
+	List<Camp> selectCampListReccomend();
+
+	/** 인기순(별점 카운트 높은 순)
+	 * @return
+	 */
+	List<Camp> selectCampListPopular();
+
+	/** 오래된순
+	 * @return
+	 */
+	List<Camp> selectCampListOld();
+
+	/** 캠핑장 검색
+	 * @param input
+	 * @return
+	 */
+	List<Camp> searchCampList(String input);
 
 	
 

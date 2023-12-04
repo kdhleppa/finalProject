@@ -68,7 +68,7 @@ for (let i = 0; i < inputImage.length; i++) {
 			reader.onload = e => { // 파일을 다 읽은 후 수행
 				preview[i].setAttribute("src", e.target.result);
 			}
-
+[]
 		} else { // 선택 후 취소 되었을 때
 			// -> 선택된 파일 없음 -> 미리보기 삭제
 			preview[i].removeAttribute("src");

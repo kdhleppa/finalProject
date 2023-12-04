@@ -40,7 +40,7 @@
     align-self: center;
     font-size: 1rem;
     font-weight: 900;
-
+	margin-top: 30px;
     color: #333;
     letter-spacing: 1px;
 }
@@ -51,6 +51,15 @@
     font-weight: 100;
 }
 
+.companyInfo{
+	margin-top: 30px;
+	font-weight: 200;
+}
+
+#companyTel{
+	font-weight: 800;
+}
+
 .menuDiv {
     margin-left: 20px;
     margin-right: 20px;
@@ -58,8 +67,11 @@
 
 .footerContent {
     width: 100%;
-    letter-spacing: 0.07rem;
+    letter-spacing: 0.04rem;
     font-weight: 600;
     font-size: 0.9rem;
+    margin-top: 30px;
+    height: 80%;
+    line-height: 25px;
     
 }

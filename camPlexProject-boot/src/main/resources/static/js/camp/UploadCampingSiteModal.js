@@ -114,8 +114,15 @@ campUploadModalDeleteBtn.addEventListener('click', () => {
 // 모달 등록하기 버튼
 const modalUploadBtn = document.getElementById('modalUploadBtn');
 
-modalUploadBtn.addEventListener('submit', e => {
+
+modalUploadBtn.addEventListener('click', e => {
 	
+	const campDeImges = document.getElementById('etcImgPlusInput');
+	const campDeName = document.getElementById('campDeName').value;
+	const capacity = document.getElementById('capacity').value;
+	const fullCapacity = document.getElementById('fullCapacity').value;
+	const campDePrice = document.getElementById('campDePrice').value;
+
 
 	const campDeName = document.getElementById('campDeName').value;
 	const capacity = document.getElementById('capacity').value;
@@ -147,28 +154,33 @@ modalUploadBtn.addEventListener('submit', e => {
 	}
 	
 	// 모달에서 디테일 업로드 페이지로 정보 ajax로 보내기
+
+	const arr = [];
+	const campingSiteThumbnailInput = document.getElementById('campingSiteThumbnailInput').files
+	const etcImgPlusInput = document.getElementById('etcImgPlusInput').files
+
+	arr[0] = campingSiteThumbnailInput[0]
 	
-	/*const etcFileInfo = document.getElementById('etcImgPlusInput').files;
-	const thumbnailFileInfo = document.getElementById('campingSiteThumbnailInput').files;
-	console.log(etcFileInfo);
-	console.log(thumbnailFileInfo);
-	
-	
-	const campDeImges = new Array();
-	
-	campDeImges[0] = thumbnailFileInfo[0];
-	
-	for(let i = 0; i < etcFileInfo.length; i++) {
-		campDeImges[i+1] = etcFileInfo[i];
+
+	for (let i = 0; i < etcImgPlusInput.length; i++) {
+		arr[i+1] = etcImgPlusInput[i]
 	}
-	
-	console.log(campDeImges);*/
-		
+
+	let formData = new FormData();
+	formData.append("campDeName", campDeName);
+	formData.append("capacity", capacity);
+	formData.append("fullCapacity", fullCapacity);
+	formData.append("campDePrice", campDePrice);
+	for (let i = 0; i < arr.length; i++) {
+		formData.append("campDeImges", arr[i]);
+	}
+
 	fetch("/camp2/insertDeCamp", {
+		enctype: 'multipart/form-data',
 		method : "POST",
-		body : new FormData(modalUploadBtn)
-	})
-	.then(response => response.text())
+		processData: false,   
+        body : formData
+	}).then(resp => resp.json())
 	.then(map => {
 		
 		console.log(modalUploadBtn);

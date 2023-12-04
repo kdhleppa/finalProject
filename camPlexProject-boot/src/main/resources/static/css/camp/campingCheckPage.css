@@ -41,7 +41,7 @@ main {
 }
 
 .calenderSec {
-    flex-basis: 40%;
+    flex-basis: 30%;
     height: 100%;
     display: flex;
     align-items: end;
@@ -85,11 +85,14 @@ main {
 .checkBtnDiv {
     width: 3rem;
     height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .magnifyImg {
-    width: 3rem;
-    height: 3rem;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
 }
 
@@ -98,8 +101,9 @@ main {
     width: 35rem;
     height: 3.2rem;
     display: flex;
-    border: 1px solid #909090;
+    border: 1px solid rgba(0,0,0,0.2);
     border-radius: 10px;
+    justify-content: center;
 }
 
 .calImgSec {
@@ -149,10 +153,10 @@ main {
 }
 
 .checkLine {
-    width: 26%;
+    width: 30%;
     height: 1px;
     border: 1px solid #909090;
-    margin-left: 17%;
+    margin-left: 7%;
 }
 
 .campUploadBtnSec {
@@ -188,19 +192,17 @@ main {
 
 /* 정렬 선택 */
 .chooseClassificationSec {
-    height: 4rem;
+    height: 2rem;
     width: 100%;
     display: flex;
-}
-
-.chooseClassificationBlankSec {
-    height: 100%;
-    width: 12%;
+    justify-content: end;
+    margin-top: 40px;
 }
 
 .chooseClassificationDetailSec {
     height: 100%;
     width: 10%;
+    margin-right: 25px;
 }
 
 .classificationBtn {
