@@ -114,34 +114,33 @@ campUploadModalDeleteBtn.addEventListener('click', () => {
 // 모달 등록하기 버튼
 const modalUploadBtn = document.getElementById('modalUploadBtn');
 
-const campDeName = document.getElementById('campDeName').value;
-const capacity = document.getElementById('capacity').value;
-const fullCapacity = document.getElementById('fullCapacity').value;
-const campDePrice = document.getElementById('campDePrice').value;
-
-
-modalUploadBtn.addEventListener('click', e => {
+modalUploadBtn.addEventListener('submit', e => {
 	
 
-	if(campDeName == null) {
+	const campDeName = document.getElementById('campDeName').value;
+	const capacity = document.getElementById('capacity').value;
+	const fullCapacity = document.getElementById('fullCapacity').value;
+	const campDePrice = document.getElementById('campDePrice').value;
+
+	if(campDeName == "") {
 		alert("구역명(호수)를 입력해주세요.");
 		e.preventDefault();
 		return;
 	}
 	
-	if(capacity == null) {
+	if(capacity == "") {
 		alert("수용 인원을 입력해주세요.");
 		e.preventDefault();
 		return;
 	}
 	
-	if(fullCapacity == null) {
+	if(fullCapacity == "") {
 		alert("최대 인원을 입력해주세요.");
 		e.preventDefault();
 		return;
 	}
 	
-	if(campDePrice == null) {
+	if(campDePrice == "") {
 		alert("구역명(호수)의 가격을 입력해주세요.");
 		e.preventDefault();
 		return;
@@ -149,13 +148,30 @@ modalUploadBtn.addEventListener('click', e => {
 	
 	// 모달에서 디테일 업로드 페이지로 정보 ajax로 보내기
 	
-	const campDeImges = document.getElementsByName('campDeImges');
-	console.log(campDeName);
+	/*const etcFileInfo = document.getElementById('etcImgPlusInput').files;
+	const thumbnailFileInfo = document.getElementById('campingSiteThumbnailInput').files;
+	console.log(etcFileInfo);
+	console.log(thumbnailFileInfo);
+	
+	
+	const campDeImges = new Array();
+	
+	campDeImges[0] = thumbnailFileInfo[0];
+	
+	for(let i = 0; i < etcFileInfo.length; i++) {
+		campDeImges[i+1] = etcFileInfo[i];
+	}
+	
+	console.log(campDeImges);*/
 		
-	fetch("/camp2/insertDeCamp?campDeName=" + campDeName
-	 + "&capacity=" + capacity + "&fullCapacity=" + fullCapacity + "&campDePrice=" + campDePrice)
-	.then(resp => resp.json())
+	fetch("/camp2/insertDeCamp", {
+		method : "POST",
+		body : new FormData(modalUploadBtn)
+	})
+	.then(response => response.text())
 	.then(map => {
+		
+		console.log(modalUploadBtn);
 		
 		// Enroll Site 정보를 감싸고 있는 Sec
 		const enrollSiteSec = document.getElementById('enrollSiteSec');
