@@ -81,13 +81,14 @@ public class CampController2 {
 	}
 	
 	// 캠핑장 구역 insert + select
+
 	@PostMapping("/insertDeCamp")
 	@ResponseBody
 	public Map<String, Object> insertSelectDeCamp(CampDetail campDetail, 
 					@RequestParam(value = "campDeImges", required = false) List<MultipartFile> campDeImges)
 					throws IllegalStateException, IOException {
 		
-		System.out.println(campDeImges);
+		System.out.println("campDeImges:: "+campDeImges);
 		System.out.println(campDetail);
 		
 //		int result = service.insertDeCamp(campDetail, campDeImges);
