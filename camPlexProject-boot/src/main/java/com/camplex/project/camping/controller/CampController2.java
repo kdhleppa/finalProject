@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -57,8 +59,6 @@ public class CampController2 {
 			camp.setCampAroundView(addr);
 		}
 		
-		System.out.println(camp);
-		
 //		int result = service.campInsert(camp, images);
 		
 		
@@ -81,7 +81,8 @@ public class CampController2 {
 	}
 	
 	// 캠핑장 구역 insert + select
-	@GetMapping("/insertDeCamp")
+	@PostMapping("/insertDeCamp")
+	@ResponseBody
 	public Map<String, Object> insertSelectDeCamp(CampDetail campDetail
 			, @RequestParam(value = "campDeImges", required = false) List<MultipartFile> campDeImges)
 					throws IllegalStateException, IOException {
@@ -89,7 +90,7 @@ public class CampController2 {
 		System.out.println(campDeImges);
 		System.out.println(campDetail);
 		
-		int result = service.insertDeCamp(campDetail, campDeImges);
+//		int result = service.insertDeCamp(campDetail, campDeImges);
 		
 		// 캠프장 장소 정보 리스트
 		List<CampDetail> campDetailList = service.selectDeCamp();
