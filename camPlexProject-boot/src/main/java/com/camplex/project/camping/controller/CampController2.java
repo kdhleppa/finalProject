@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.camplex.project.camping.model.dto.Camp;
 import com.camplex.project.camping.model.dto.CampDetail;
+import com.camplex.project.camping.model.dto.CampDetailImage;
 import com.camplex.project.camping.model.service.CampService2;
 
 @Controller
@@ -85,14 +86,23 @@ public class CampController2 {
 			, @RequestParam(value = "campDeImges", required = false) List<MultipartFile> campDeImges)
 					throws IllegalStateException, IOException {
 		
+		System.out.println(campDeImges);
 		System.out.println(campDetail);
 		
 		int result = service.insertDeCamp(campDetail, campDeImges);
 		
+		// 캠프장 장소 정보 리스트
+		List<CampDetail> campDetailList = service.selectDeCamp();
 		
-		List<CampDetail> list = service.selectDeCamp();
+		// 캠프장 장소 썸네일 이미지 리스트
+		List<CampDetailImage> campDetailImageList = service.selectDeCampImage();
 		
 		Map<String, Object> map = new HashMap<>();
+		
+		map.put("campDetailList", campDetailList);
+		map.put("campDetailImageList", campDetailImageList);
+		
+		System.out.println(map);
 		
 		return map;
 		

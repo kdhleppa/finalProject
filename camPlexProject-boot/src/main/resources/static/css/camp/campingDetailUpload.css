@@ -667,6 +667,13 @@ label > img {
     flex-direction: column;
 }
 
+.enrollSiteBtnSec {
+	width: 100%;
+	height: 18rem;
+	display: flex;
+	justify-content: center;
+}
+
 .enrollSiteBtn {
     width: 70rem;
     height: 18rem;
