@@ -43,7 +43,7 @@
 	                        <!-- 간편로그인, 로그인버튼 -->
 	                        <section id="easyLoginBtn">
 	                            <img th:src="@{/images/memberImg/naverIMG.png}">
-	                            <img th:src="@{/images/memberImg/kakaoIMG.png}">
+	                            <img th:src="@{/images/iconImg/kakao_login_small.png}">
 	                            <button type="submit" id="loginBtn">로그인</button>
 	                        </section>
 	                        
@@ -71,19 +71,16 @@
 	
 			</form>
 			
+			<p><a th:href="@{${kakaoUrl}}">카카오로그인</a></p>
+			
         </section>
         
         <!-- 공백 (좌) -->
         <section class="empty1"></section>
     </main>
-    <script th:inline="javascript">
-	
-	const message = /*[[${message}]]*/ "전달받은 메세지(보통은 에러메세지)";
-	if(message != null) alert(message);
-	
-	</script> 
+    
+    
 	<script th:src="@{/js/member/login.js}"></script>
 	
-
 </body>
 </html>
