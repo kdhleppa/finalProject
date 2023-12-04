@@ -16,17 +16,15 @@
 	left: 30px;
 }
 
-.form-group > button, #send {
-	border-style: none;
-	background-color: transparent;
-	font-size: 15px;
-	margin-left: 4rem;
+.form-group > label {
+	font-size: 20px;
 }
 
 #send {
-	margin-left: 24rem;
+	border-style: none;
+	background-color: transparent;
+	font-size: 15px;
 }
-
 
 #modal_btn > img {
 	width: 100px;
@@ -80,11 +78,24 @@
 	border-radius: 10px;
 	border: 1px solid #909090;
 	padding: 0.5rem;
+	margin-left: 3rem;
+	margin-bottom: 0.5rem;
 }
 
 #conversation {
 	margin-top: 10px;
 	margin-left: 40px;
-	margin-bottom: 20px;
 }
+
+#communicate {
+	font-size: 16px;
+}
+
+.col-md-12 {
+	width: 28rem;
+	height: 15rem;
+	overflow-x: auto;
+	overflow-y: auto;
+}
+
 

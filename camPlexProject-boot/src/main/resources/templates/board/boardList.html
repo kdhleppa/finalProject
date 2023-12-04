@@ -23,16 +23,17 @@
             </li>
 
             <p>|</p>
-
-            <li id="board">
-                <a th:href="@{/board/{boardType}(boardType=N)}">노하우게시판</a>
-            </li>
-
-            <p>|</p>
-
-            <li id="ceo">
+			
+			<li id="ceo">
                 <a a th:href="@{/board/{boardType}(boardType=C)}">CEO게시판</a>
             </li>
+            
+            <p>|</p>
+
+			<li id="board">
+                <a th:href="@{/board/{boardType}(boardType=N)}">공지사항</a>
+            </li>
+            
         </ul>
 
         <section class="boardHead">
