@@ -194,4 +194,27 @@ searchCamp.addEventListener("keyup", (e) => {
 
 })
 
+const topBar = document.querySelector(".topBar")
+const mainTitle = document.getElementById("mainTitle")
+const tempX = searchCamp.getBoundingClientRect().bottom;
+
+window.addEventListener("scroll", (e)=> {
+
+	if(searchCamp.getBoundingClientRect().bottom != 260){
+		topBar.style.height = '100px';
+		topBar.style.backgroundColor = "transparent"; 
+		mainTitle.style.lineHeight = "0px";
+		mainTitle.style.margin = "0px";
+		mainTitle.style.marginBottom = "10px";
+		mainTitle.style.marginTop = "10px";
+	} else {
+		topBar.style.height = '170px';
+		topBar.style.backgroundColor = "rgb(216, 216, 216)"; 
+		mainTitle.style.lineHeight = "60px";
+		mainTitle.style.margin = "20px 0";
+	}
+
+	console.log(searchCamp.getBoundingClientRect().bottom)
+
+})
 

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -57,7 +58,26 @@ public class ItemController {
 		}
 	}
 	
-	
+	/** 아이템 목록 정렬
+	 * @return
+	 */
+	@GetMapping("/order")
+	@ResponseBody
+	public List<Item> orderItem(String category){
+		
+		List<Item> list = new ArrayList<>();
+		
+		switch(category) {
+		
+		case "priceLow": list = service.selectItemListPriceLow(); break;
+		case "priceHigh": list = service.selectItemListPricehigh(); break;
+		case "current" : list = service.selectItemList(); break;
+		case "order" : list = service.selectItemListOrder(); break;
+		
+		}
+		
+		return list;
+	}
 	
 
 	

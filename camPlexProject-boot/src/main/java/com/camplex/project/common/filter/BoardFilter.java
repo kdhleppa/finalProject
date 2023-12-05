@@ -4,12 +4,17 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import com.camplex.project.member.model.dto.Member;
+
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
+import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class BoardFilter implements Filter{
 
@@ -18,10 +23,6 @@ public class BoardFilter implements Filter{
 			throws IOException, ServletException {
 		
 		HttpServletRequest req = (HttpServletRequest)request;
-		
-		// /board/1              -> {"","board", "1"}
-		// /board2/1/insert		 -> {"","board2", "1", "insert"}
-		// /board2/1/update      -> {"","board2", "1", "update"}
 		
 		String[] arr = req.getRequestURI().split("/");
 		

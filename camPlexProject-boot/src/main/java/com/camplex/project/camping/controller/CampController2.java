@@ -84,6 +84,7 @@ public class CampController2 {
 
 	@PostMapping("/insertDeCamp")
 	@ResponseBody
+
 	public List<CampDetail> insertSelectDeCamp(CampDetail campDetail
 			, @RequestParam(value = "campDeImges", required = false) List<MultipartFile> campDeImges)
 					throws IllegalStateException, IOException {

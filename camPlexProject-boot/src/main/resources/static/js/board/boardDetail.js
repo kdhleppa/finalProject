@@ -1,3 +1,8 @@
+// 목록으로 돌아가기
+document.getElementById("listBtn").addEventListener("click", () => {
+    window.history.back();
+});
+
 // 좋아요 버튼이 클릭 되었을 때
 const boardLike = document.getElementById("boardLike");
 
@@ -84,9 +89,4 @@ document.getElementById("deleteBtn").addEventListener("click", function() {
 		}
 		// /board2/2/2006/delete (get)
 
-});
-
-// 목록으로 돌아가기
-document.getElementById("listBtn").addEventListener("click", () => {
-    window.history.back();
 });

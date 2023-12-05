@@ -26,30 +26,37 @@
 
 .searchSec {
     width: 100%;
-    height: 12rem;
+    height: 10rem;
     display: flex;
     justify-content: center;
 }
 
 .serchCenterSec {
-    flex-basis: 57%;
+	width: 90%;
     height: 100%;
     display: flex;
     align-items: end;
+    justify-content: center;
 }
 
 .serchDiv {
     width: 100%;
-    height: 8rem;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    height: 51px;
+}
+
+.checkBtnSec{
+	display: flex;
+	align-items: center;
 }
 
 .serchDivTopSec {
+	height: 100%;
     flex-basis: 50%;
     width: 100%;
     display: flex;
-    border-bottom: 1px solid #909090;
+    justify-content: center;
 }
 
 .serchDivBotSec {
@@ -57,9 +64,10 @@
     width: 100%;
     display: flex;
     align-items: end;
+    justify-content: center;
 }
 
-.itemNameSec {
+.itemInputSec {
     flex-basis: 10%;
     height: 100%;
     display: flex;
@@ -67,9 +75,17 @@
     font-size: 1.7rem;
 }
 
-.itemInputSec {
-    flex-basis: 70%;
-    height: 100%;
+.itemInput{
+	height: 100%;
+    width: 28rem;
+    padding-left: 1rem;
+    border: none;
+    border-radius: 20px;
+    font-size: large;
+}
+
+.itemInput:focus {
+    border: #909090 2px solid;
 }
 
 .itemUploadSec {
@@ -111,11 +127,24 @@
 }
 
 .itemInput {
-    width: 30rem;
-    height: 2.8rem;
-    font-size: 1.7rem;
+    width: 28rem;
+    height: 100%;
+    font-size: large;
     outline: none;
     border: none;
+}
+
+.magnifyImg {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.checkLine {
+    width: 21%;
+    height: 1px;
+    border: 1px solid #909090;
+    margin-left: 16%;
 }
 
 .priceSec {
@@ -135,12 +164,16 @@
     align-items: end;
 }
 
+
 .priceInputDiv {
-    width: 70%;
+    width: 80%;
     height: 70%;
     display: flex;
-    border: 1px solid #909090;
     border-radius: 10px;
+   	border : 1px solid rgba(0,0,0,0.2);
+   	padding :5px;
+   	justify-content: center;
+   	align-items: center;
 }
 
 .priceInputDivBlank {
@@ -169,14 +202,12 @@
     align-items: center;
 }
 .wonImg {
-    width: 1.8rem;
-    height: 1.8rem;
+    width: 20px;
+    height: 20px;
 }
 
 .tildeImgSec {
     height: 100%;
-    flex-basis: 13%;
-    display: flex;
     align-items: center;
     font-size: 2rem;
 }
@@ -206,27 +237,23 @@
 }
 
 .classificationSec {
-    width: 100%;
-    height: 10rem;
+	margin-top: 30px;
+    width: 85%;
+    height: 7rem;
     display: flex;
-}
-
-.chooseClassificationBlankSec {
-    height: 100%;
-    width: 12%;
+	justify-content: end;
 }
 
 .chooseClassificationDetailSec {
     height: 100%;
     width: 10%;
     display: flex;
-    align-items: center;
 }
 
 .classificationBtn {
     width: 9rem;
     height: 2.5rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border-radius: 10px;
     text-align: center;
 }
@@ -264,7 +291,6 @@
 
 .contentImg {
     width: 18rem;
-    height: 18rem;
 }
 
 .contentInfoSec {

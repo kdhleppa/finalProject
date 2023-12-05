@@ -28,15 +28,16 @@
     z-index: 100;
     background-color: rgb(216, 216, 216);
 	opacity: 0.7;
+    transition-duration: .3s;
 }
 
 .topBar:hover {
     background-color: #bababa;
     opacity: 0.7;
 }
-.topBar:hover a{
+/* .topBar:hover a{
 	color: #fff;
-} 
+}  */
 
 .topMenu{
     width: 100%;
@@ -88,6 +89,12 @@ html {
     scroll-behavior: smooth;
 }
 
+#mainTitle{
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}
+
 a { 
   display:inline-block; 
   margin:0;
@@ -99,7 +106,7 @@ a {
 
   display:block;
   content: '';
-  border-bottom: solid 1px #fff;  
+  border-bottom: solid 1px #000;  
   transform: scaleX(0);  
   transition: transform 250ms ease-in-out;
 }

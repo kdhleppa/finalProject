@@ -35,13 +35,13 @@
 
         </div>
 
-        <a class="mainTitle" href="/">C A M P L E X </a>
+        <button id="mainTitle" class="mainTitle" onclick="location.href='/'">C A M P L E X </button>
 
         <div class="bottomMenu">
             <a th:href="@{/camp/search}">CAMPING</a>
             <a th:href="@{/item2/search}">RENTAL</a>
             <a th:href="@{/board/{boardType}(boardType=B)}">BOARD</a>
-            <a href="#">EVENT</a>
+            <a th:href="@{/event/eventList}">EVENT</a>
         </div>
 
     </header>

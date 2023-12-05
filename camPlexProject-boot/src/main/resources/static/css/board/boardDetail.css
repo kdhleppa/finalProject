@@ -85,7 +85,6 @@ textarea {
 
 .boardDeLeft {
     margin-top: 30px;
-    margin-left: 2rem;
     /* border: 1px solid rgb(161, 161, 161); */
     border-radius: 20px;
     font-size: 22px;
@@ -109,7 +108,8 @@ textarea {
 .boardDeRight {
     display: flex;
     flex-direction: column;
-    margin-left: -20rem;
+    margin-left: -15rem;
+    margin-right: 10rem;
 }
 
 .boardDeRight > img {
@@ -202,7 +202,7 @@ img {
 
 #deleteBtn {
     font-family: 'HakgyoansimSantteutdotumL';
-    margin-right: 13rem;
+    margin-right: 15rem;
     width: 5rem;
     height: 2rem;
     background-color: transparent;

@@ -57,8 +57,6 @@ public class DBConfig {
 				);
 
 		
-
-		
 		sessionFactoryBean.setConfigLocation(applicationContext.getResource("classpath:mybatis-config.xml"));
 		
 		return sessionFactoryBean.getObject();

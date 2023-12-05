@@ -7,6 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
 import com.camplex.project.item.mappers.ItemMapper;
+import com.camplex.project.item.mappers.ItemMapper2;
 import com.camplex.project.item.model.dto.FindCartItem;
 import com.camplex.project.item.model.dto.Item;
 import com.camplex.project.item.model.dto.MembersReservationDate;
@@ -17,6 +18,9 @@ public class ItemServiceImpl implements ItemService {
 
 	@Autowired
 	private ItemMapper mapper;
+	
+	@Autowired
+	private ItemMapper2 mapper2;
 	
 	/** 상세보기 조회
 	 *
@@ -44,6 +48,43 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public List<FindCartItem> membersCartItem(int memberNo) {
 		return mapper.membersCartItem(memberNo);
+	}
+
+	
+//	목록 조회가 mapper2로 설정되어 있어서 정렬도 mapper2로 갑니다 
+	
+	/** 아이템 최신순 정렬
+	 *
+	 */
+	@Override
+	public List<Item> selectItemList() {
+		return mapper2.selectItemList();
+	}
+
+	/** 아이템 주문 많은 순 정렬
+	 *
+	 */
+	@Override
+	public List<Item> selectItemListOrder() {
+		return mapper2.selectItemListOrder();
+	}
+
+	
+	/** 가격 낮은 순 정렬
+	 *
+	 */
+	@Override
+	public List<Item> selectItemListPriceLow() {
+		return mapper2.selectItemListPriceLow();
+	}
+	
+
+	/** 가격 높은 순 정렬
+	 * 
+	 */
+	@Override
+	public List<Item> selectItemListPricehigh() {
+		return mapper2.selectItemListPricehigh();
 	}
 
 	
