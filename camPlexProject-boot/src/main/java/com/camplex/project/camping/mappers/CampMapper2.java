@@ -44,9 +44,16 @@ public interface CampMapper2 {
 	 */
 	int insertCampDetailImageList(List<CampDetailImage> uploadList);
 
-	/** 캠핑장 구역 이미지 select
+	/** 캠핑장 구역 delete
+	 * @param campDeNo
 	 * @return
 	 */
-	List<CampDetailImage> selectDeCampImage();
+	int deleteCampDe(int campDeNo);
+
+	/** 캠핑장 구역 이미지 delete
+	 * @param campDeNo
+	 * @return
+	 */
+	int deleteCampDeImg(int campDeNo);
 
 }

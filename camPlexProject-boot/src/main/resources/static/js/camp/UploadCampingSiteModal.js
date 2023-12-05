@@ -166,6 +166,7 @@ modalUploadBtn.addEventListener('click', e => {
 	formData.append("capacity", capacity);
 	formData.append("fullCapacity", fullCapacity);
 	formData.append("campDePrice", campDePrice);
+	
 	for (let i = 0; i < arr.length; i++) {
 		formData.append("campDeImges", arr[i]);
 	}
@@ -176,9 +177,9 @@ modalUploadBtn.addEventListener('click', e => {
 		processData: false,   
         body : formData
 	}).then(resp => resp.json())
-	.then(map => {
+	.then(campDetailList => {
 		
-		console.log(modalUploadBtn);
+		console.log(campDetailList);
 		
 		// Enroll Site 정보를 감싸고 있는 Sec
 		const enrollSiteSec = document.getElementById('enrollSiteSec');
@@ -189,7 +190,7 @@ modalUploadBtn.addEventListener('click', e => {
 		
 		// 장소 추가 append ------------------------------
 		
-		for(var i in campDetailImageList) {
+		for(var i in campDetailList) {
 			
 			const plusCampingSiteSec = document.createElement('section');
 			plusCampingSiteSec.classList.add('plusCampingSiteSec');
@@ -202,7 +203,7 @@ modalUploadBtn.addEventListener('click', e => {
 			
 			const plusCampingSampleImg = document.createElement('img');
 			plusCampingSampleImg.classList.add('plusCampingSampleImg');
-			plusCampingSampleImg.src = campDetailImageList[i].campDeImgPath;
+			plusCampingSampleImg.src = campDetailList[i].campDeThumbnail;
 			
 			plusCampingSiteDivLeftSec.append(plusCampingSampleImg);
 			
@@ -211,7 +212,7 @@ modalUploadBtn.addEventListener('click', e => {
 			
 			const plusCampingSiteDivSiteNameSec = document.createElement('section');
 			plusCampingSiteDivSiteNameSec.classList.add('plusCampingSiteDivSiteNameSec');
-			plusCampingSiteDivSiteNameSec.innerText = campDetailList.campDeName;
+			plusCampingSiteDivSiteNameSec.innerText = campDetailList[i].campDeName;
 			
 			const plusCampingSiteDivEtcInfoSec = document.createElement('section');
 			plusCampingSiteDivEtcInfoSec.classList.add('plusCampingSiteDivEtcInfoSec');
@@ -225,14 +226,14 @@ modalUploadBtn.addEventListener('click', e => {
 			
 			const capacityOutputSec = document.createElement('section');
 			capacityOutputSec.classList.add('capacityOutputSec');
-			capacityOutputSec.innerText = campDetailList.capacity;
+			capacityOutputSec.innerText = campDetailList[i].capacity;
 			
 			plusCampingSiteDivEtcInfoLeftSec.append(capacityTitleSec);
 			plusCampingSiteDivEtcInfoLeftSec.append(capacityOutputSec);
 			
 			const plusCampingSiteDivEtcInfoRightSec = document.createElement('section');
 			plusCampingSiteDivEtcInfoRightSec.classList.add('plusCampingSiteDivEtcInfoRightSec');
-			plusCampingSiteDivEtcInfoRightSec.innerText = campDetailList.campDePrice + '원 ~';
+			plusCampingSiteDivEtcInfoRightSec.innerText = campDetailList[i].campDePrice + '원 ~';
 			
 			plusCampingSiteDivEtcInfoSec.append(plusCampingSiteDivEtcInfoLeftSec);
 			plusCampingSiteDivEtcInfoSec.append(plusCampingSiteDivEtcInfoRightSec);
@@ -243,9 +244,13 @@ modalUploadBtn.addEventListener('click', e => {
 			const plusCampingSiteDeleteBtnSec = document.createElement('section');
 			plusCampingSiteDeleteBtnSec.classList.add('plusCampingSiteDeleteBtnSec');
 			
+			
+			
 			const plusCampingSiteDeleteBtn = document.createElement('img');
 			plusCampingSiteDeleteBtn.classList.add('plusCampingSiteDeleteBtn');
 			plusCampingSiteDeleteBtn.setAttribute('src', '/images/iconImg/campingUploadDelete.png');
+			plusCampingSiteDeleteBtn.setAttribute('id', campDetailList[i].campDeNo)
+			plusCampingSiteDeleteBtn.setAttribute('onclick', 'campDeDelete('+ campDetailList[i].campDeNo + ')');
 			
 			plusCampingSiteDeleteBtnSec.append(plusCampingSiteDeleteBtn);
 			
@@ -253,12 +258,13 @@ modalUploadBtn.addEventListener('click', e => {
 			plusCampingSiteDiv.append(plusCampingSiteDivRightSec);
 			plusCampingSiteDiv.append(plusCampingSiteDeleteBtnSec);
 			
+			
 			plusCampingSiteSec.append(plusCampingSiteDiv);
 			
 			enrollSiteSec.append(plusCampingSiteSec);
 			
 		}
-		
+		const modalContainer = document.getElementById('modalContainer');
 		
 		modalContainer.classList.add('hidden');
 		
@@ -267,7 +273,19 @@ modalUploadBtn.addEventListener('click', e => {
 	.catch(err => console.log(err));
 });
 
-
+function campDeDelete(campDeNo) {
+	
+	if(!confirm("정말 삭제 하시겠습니까?")) {
+		return;
+	}
+	
+	fetch("/camp2/deleteCampDe?campDeNo=" + campDeNo)
+	.then(resp => resp.json())
+	.then(result => {
+		
+	})
+	.catch(err => console.log(err));
+}
 
 
 
