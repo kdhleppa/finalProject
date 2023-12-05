@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -28,6 +29,7 @@ import com.camplex.project.camping.model.dto.Camp;
 import com.camplex.project.common.etc.ResponseMessage;
 import com.camplex.project.item.model.dto.Item;
 import com.camplex.project.item.model.service.ItemService;
+import com.camplex.project.kakao.service.KakaoService;
 import com.camplex.project.member.model.dto.CEOMember;
 import com.camplex.project.member.model.dto.Member;
 import com.camplex.project.member.model.dto.MyPage;
@@ -57,9 +59,13 @@ public class MemberController {
 	@Autowired
 	private PaysysService payService;
 	
+	@Autowired
+	private KakaoService kakaoService;
+	
 	// 로그인 페이지 이동
-	@GetMapping("/login")
-	public String login() {
+	@RequestMapping(value="/login", method= RequestMethod.GET)
+    public String login(Model model) {
+        model.addAttribute("kakaoUrl", kakaoService.getKakaoLogin());
 		return "member/idPw/login";
 	}
 	
