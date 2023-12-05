@@ -63,6 +63,8 @@ public interface PaysysService {
 	 */
 	int insertReservation(InfoForReservation tempInfo);
 
+	int deleteAllCart(int memberNo);
+
 
 
 

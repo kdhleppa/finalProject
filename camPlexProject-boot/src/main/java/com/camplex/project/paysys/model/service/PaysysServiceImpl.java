@@ -113,6 +113,11 @@ public class PaysysServiceImpl implements PaysysService{
 		return mapper.insertReservation(tempInfo);
 	}
 
+	@Override
+	public int deleteAllCart(int memberNo) {
+		return mapper.deleteAllCart(memberNo);
+	}
+
 
 	
 

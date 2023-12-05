@@ -80,5 +80,9 @@ public interface PaysysMapper {
 
 
 
+	int deleteAllCart(int memberNo);
+
+
+
 
 }

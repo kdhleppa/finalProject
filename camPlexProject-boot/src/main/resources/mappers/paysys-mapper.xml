@@ -118,5 +118,12 @@
 		WHERE CART_ITEM_NO= #{cartItemNo}
 	</delete>
 	
+	<delete id="deleteAllCart">
+		DELETE FROM CART_ITEM
+		WHERE CART_NO IN (
+	    SELECT CART.CART_NO
+	    FROM CART
+	    WHERE CART.MEMBER_NO = #{memberNo})
+	</delete>
 	
 </mapper>

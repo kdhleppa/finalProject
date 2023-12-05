@@ -319,5 +319,49 @@ public class PaysysController {
 		
 		
 	}
+	
+	@PostMapping("/rentCart/deleteAllCart")
+	public String deleteAllCart (
+			@SessionAttribute("loginMember") Member loginMember,
+			RedirectAttributes ra,
+			HttpServletRequest request
+			) {
+		int memberNo = loginMember.getMemberNo();
+		String referer = request.getHeader("Referer");
+		String path = "redirect:";
+		
+		int result = payService.deleteAllCart(memberNo);
+		
+		if (result > 0) {
+			ra.addFlashAttribute("message", "삭제되었습니다.");
+			path += referer;
+			return path;
+			
+		} else {
+			ra.addFlashAttribute("message", "삭제 실패.");
+			path += referer;
+			return path;
+		}
+	}
+	
+//	@PostMapping("/payAll")
+//	public String payAll(
+//			@SessionAttribute("loginMember") Member loginMember,
+//			@RequestParam(value = "checkCartItemNo", required = false) List<Integer> checkCartItemNo			
+//			) {
+//		
+//		 
+//		
+//		if (checkCartItemNo != null) {
+//			for (Integer cartItemNo: checkCartItemNo ) {
+//				
+//			}
+//			
+//		}
+//		
+//		return null;
+//		
+//	}
+	
 
 }
