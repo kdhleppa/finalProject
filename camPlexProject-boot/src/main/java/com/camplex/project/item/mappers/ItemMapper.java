@@ -20,6 +20,6 @@ public interface ItemMapper {
 	public List<Item> selectItemWish(int memberNo);
 
 	public List<FindCartItem> membersCartItem(int memberNo);
-	
+
 	
 }

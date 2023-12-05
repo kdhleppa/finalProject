@@ -1,195 +1,204 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>렌탈 상품 조회 페이지</title>
-    <link rel="stylesheet" th:href="@{/css/item/rentalCheckPage.css}">
-    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
-    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
-    <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}" rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>렌탈 상품 조회 페이지</title>
+	<link rel="stylesheet" th:href="@{/css/item/rentalCheckPage.css}">
+	<link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+	<link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+	<link
+		th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}"
+		rel="stylesheet">
 	<link rel="icon" th:href="@{/images/iconImg/favicon.png}">
 </head>
+
 <body>
-    
-    <th:block th:replace="~{common/headerForContent}"></th:block>
-    
-    <!-- main -->
-    <main class="main">
 
-        <!-- searchSec -->
-        <section class="searchSec">
+	<th:block th:replace="~{common/headerForContent}"></th:block>
 
-            <section class="serchCenterSec">
+	<!-- main -->
+	<main class="main">
 
-                <div class="serchDiv">
+		<!-- searchSec -->
+		<section class="searchSec">
 
-                    <section class="serchDivTopSec">
+			<section class="serchCenterSec">
 
-                        <section class="itemNameSec">
-                            제품명
-                        </section>
+				<div class="serchDiv">
 
-                        <section class="itemSecBlankSec"></section>
+					<section class="serchDivTopSec">
 
-                        <section class="itemInputSec">
+						<section class="itemInputSec">
 
-                            <input class="itemInput" placeholder="제품명을 입력해주세요.">
+							<input class="itemInput" placeholder="제품명을 입력해주세요.">
 
-                        </section>
-                        
-                        <section class="itemUploadSec">
-							
-							<a th:href="@{/item2/upload}" class="itemUploadA">
-								
-								<div class="itemUploadDiv">
-									Item Upload
-								</div>
-								
-							</a>
-							
 						</section>
 
-                    </section>
+						<section class="checkBtnSec">
 
-                    <section class="serchDivBotSec">
+							<div class="checkBtnDiv">
+								<img class="magnifyImg" th:src="@{/images/iconImg/mdi_magnify.png}">
+							</div>
 
-                        <section class="priceSec">
-                            가격
-                        </section>
+						</section>
 
-                        <section class="itemSecBlankSec"></section>
+					</section>
 
-                        <section class="priceInputSec">
 
-                            <div class="priceInputDiv">
 
-                                <section class="priceInputDivBlank"></section>
+					<section class="serchDivBotSec">
 
-                                <section class="priceInputDetailSec">
-                                    <input class="priceInput" placeholder="10.000">
-                                </section>
+						<section class="priceInputSec">
 
-                                <section class="wonImgSec">
-                                    <img th:src="@{/images/iconImg/wonImage.png}" class="wonImg">
-                                </section>
+							<div class="priceInputDiv">
+								
+								<section class="wonImgSec">
+									<img th:src="@{/images/iconImg/wonImage.png}" class="wonImg">
+								</section>
+								
+								<section class="priceInputDetailSec">
+									<input class="priceInput" placeholder="최저 가격">
+								</section>
+								
+								<section class="tildeImgSec">
+									~&nbsp;&nbsp;&nbsp;
+								</section>
 
-                                <section class="tildeImgSec">
-                                    ~
-                                </section>
+								
+								<section class="wonImgSec">
+									<img th:src="@{/images/iconImg/wonImage.png}" class="wonImg">
+								</section>
+								
+								<section class="priceInputDetailSec">
+									<input class="priceInput" placeholder="최고 가격">
+								</section>
+								
+							</div>
 
-                                <section class="priceInputDetailSec">
-                                    <input class="priceInput" placeholder="10.000">
-                                </section>
+						</section>
 
-                                <section class="wonImgSec">
-                                    <img th:src="@{/images/iconImg/wonImage.png}" class="wonImg">
-                                </section>
 
-                            </div>
+					</section>
 
-                        </section>
-
-                        <section class="searchInputSec">
-                            <button class="searchBtn" type="button">Search</button>
-                        </section>
-
-                    </section>        
-
-                </div>
-
-            </section>
-
-        </section>
-
-        <!-- 정렬 Sec -->
-        <section class="classificationSec">
-
-            <section class="chooseClassificationBlankSec"></section>
-
-            <section class="chooseClassificationDetailSec">
-
-                <select class="classificationBtn" name="classification">
-                    <option selected value="current">최신순</option>
-                    <option value="recommend">추천순</option>
-                    <option value="location">거리순</option>
-                </select>
-
-            </section>
-
-        </section>
-
-        <!-- 컨텐츠 Sec -->
-        <section class="contentSec">
-			
-			<section class="contentSecCenterSec">
+				</div>
 				
-				<section th:each="Item : ${searchList}" class="contentDetailSec">
-					
-					 <section class="contentImgeSec">
-						 
-						 <a th:href="@{/item/itemDetail/{itemNo}(itemNo = ${Item.itemNo})}">							 
-		                    <img th:src="${Item.thumbnail}" class="contentImg">
-						 </a>
-	                    
-	                </section>
-	
-	                <section class="contentInfoSec">
-						
-						<a th:href="@{/item/itemDetail/{itemNo}(itemNo = ${Item.itemNo})}" class="contentNameA">							 
-		                    
-		                    <section class="contentInfo" id="contentTitle" th:text="${Item.itemName}">
-		                        상품명
-		                    </section>
-		                    
-						</a>
-						
-	    
-	                    <section class="contentInfo" id="contentComment" th:text="${Item.itemDescription}">
-	                        상품 간단 설명
-	                    </section>
-	    
-	                    <section class="contentInfo">
-							
-							<th:block th:if="${Item.discountRate} != 0">
-								
-		                        <del th:text="${Item.itemPrice}">
-		                            상품 가격
-		                        </del>
-		                        
-							</th:block>
-							
-							<th:block th:if="${Item.discountRate} == 0">
-								
-								<p th:text="${Item.itemPrice}">
-		                            상품 가격
-		                        </p>
-								
-							</th:block>
-							
-	                        
-	                    </section>
-	    
-	    				<th:block th:if="${Item.discountRate} != 0">
-													
-		                    <section class="contentInfo">
-		                        ￦385,000 &ensp; <p style="color: red;">(13%↓)</p>
-		                    </section>
-		                    
-						</th:block>
-	
-	                </section>
-					
-				</section>
-				
+
 			</section>
 
-        </section>
+		</section>
+				<div class="checkLine"></div>
 
-    </main>
-    
-    <th:block th:replace="~{common/footer}"></th:block>
+		<th:block th:if="${session.loginMember?.memberType == 'C'} or ${session.loginMember?.memberType == 'M'}">
 
+			<section class="itemUploadSec">
+
+				<a th:href="@{/item2/upload}" class="itemUploadA">
+
+					<div class="itemUploadDiv">
+						Item Upload
+					</div>
+
+				</a>
+
+			</section>
+
+		</th:block>
+
+		<!-- 정렬 Sec -->
+		<section class="classificationSec">
+
+			<section class="chooseClassificationDetailSec">
+
+				<select id="classification" class="classificationBtn" name="classification">
+					<option selected value="current">최신순</option>
+					<option value="priceLow">가격낮은 순</option>
+					<option value="priceHigh">가격높은 순</option>
+					<option value="order">주문많은 순</option>
+				</select>
+
+			</section>
+
+		</section>
+
+
+
+		<!-- 컨텐츠 Sec -->
+		<section class="contentSec">
+
+			<section class="contentSecCenterSec">
+
+				<section th:each="Item : ${searchList}" class="contentDetailSec">
+
+					<section class="contentImgeSec">
+
+						<a th:href="@{/item/itemDetail/{itemNo}(itemNo = ${Item.itemNo})}">
+							<img th:src="${Item.thumbnail}" class="contentImg">
+						</a>
+
+					</section>
+
+					<section class="contentInfoSec">
+
+						<a th:href="@{/item/itemDetail/{itemNo}(itemNo = ${Item.itemNo})}" class="contentNameA">
+
+							<section class="contentInfo" id="contentTitle" th:text="${Item.itemName}">
+								상품명
+							</section>
+
+						</a>
+
+
+						<section class="contentInfo" id="contentComment" th:text="${Item.itemDescription}">
+							상품 간단 설명
+						</section>
+
+
+
+						<section class="contentInfo">
+
+							<th:block th:if="${Item.discountRate} != 0">
+
+								<del th:text="|￦ ${#numbers.formatInteger(Item.itemPrice, 3, 'COMMA')}|">
+									상품 가격
+								</del>
+
+							</th:block>
+
+							<th:block th:if="${Item.discountRate} == 0">
+
+								<p th:text="|￦ ${#numbers.formatInteger(Item.itemPrice, 3, 'COMMA')}|">
+									상품 가격
+								</p>
+
+							</th:block>
+
+
+						</section>
+
+						<th:block th:if="${Item.discountRate} != 0">
+
+							<section class="contentInfo" id="discountRate">
+								<p th:text="${#numbers.formatInteger(((Item.itemPrice)*(100-(Item.discountRate))/100), 3, 'COMMA')}"></p>
+								<p style="color: red;" th:text="|(${Item.discountRate}%↓)|">(13%↓)</p>
+							</section>
+
+						</th:block>
+
+					</section>
+
+				</section>
+
+			</section>
+
+		</section>
+
+	</main>
+
+	<th:block th:replace="~{common/footer}"></th:block>
+	<script th:src="@{/js/item/RentalCheckPage.js}"></script>
 
 </body>
+
 </html>

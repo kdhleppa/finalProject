@@ -196,7 +196,7 @@ searchCamp.addEventListener("keyup", (e) => {
 
 const topBar = document.querySelector(".topBar")
 const mainTitle = document.getElementById("mainTitle")
-const tempX = 0;
+const tempX = searchCamp.getBoundingClientRect().bottom;
 
 window.addEventListener("scroll", (e)=> {
 

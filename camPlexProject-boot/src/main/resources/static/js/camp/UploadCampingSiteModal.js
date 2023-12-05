@@ -124,11 +124,6 @@ modalUploadBtn.addEventListener('click', e => {
 	const campDePrice = document.getElementById('campDePrice').value;
 
 
-	const campDeName = document.getElementById('campDeName').value;
-	const capacity = document.getElementById('capacity').value;
-	const fullCapacity = document.getElementById('fullCapacity').value;
-	const campDePrice = document.getElementById('campDePrice').value;
-
 	if(campDeName == "") {
 		alert("구역명(호수)를 입력해주세요.");
 		e.preventDefault();
