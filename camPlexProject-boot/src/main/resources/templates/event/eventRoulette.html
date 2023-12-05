@@ -38,6 +38,16 @@
     <th:block th:replace="~{common/footer}"></th:block>
     
 	<script th:src="@{/js/event/eventRoulette.js}"></script>
+	
+	<script th:inline="javascript">
+		
+		const loginMemberNo = /*[[${session.loginMember?.memberNo}]]*/ "로그인 회원번호";
+		
+		if(loginMemberNo == null) loginMemberNo = "";
+
+		console.log(loginMemberNo);
+		
+	</script>
 
 </body>
 </html>

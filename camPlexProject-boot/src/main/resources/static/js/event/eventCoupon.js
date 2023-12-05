@@ -23,6 +23,11 @@ const getPrize = function() {
 }
 
  document.addEventListener('DOMContentLoaded', () => {
+	if(loginMemberNo == null){
+        alert("로그인 후 이용해주세요")
+        window.history.back();
+    }
+	 
     const btnTag = document.querySelector('#id_btn')
     const outTag = document.querySelector('#id_out')
     

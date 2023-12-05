@@ -11,6 +11,7 @@
     <script th:src="@{https://kit.fontawesome.com/92fbd4b351.js}" crossorigin="anonymous"></script>
     
     <link rel="stylesheet" th:href="@{/css/board/boardList.css}">
+    
 </head>
 <body>
     
@@ -24,16 +25,15 @@
 
             <p>|</p>
 			
-			<li id="ceo">
-                <a a th:href="@{/board/{boardType}(boardType=C)}">CEO게시판</a>
+			<li>
+                <a a th:href="@{/board/{boardType}(boardType=N)}">공지사항</a>
             </li>
             
             <p>|</p>
 
-			<li id="board">
-                <a th:href="@{/board/{boardType}(boardType=N)}">공지사항</a>
-            </li>
-            
+			<li th:unless="${session.loginMember.memberType} == 'U'">
+			    <a th:href="@{/board/{boardType}(boardType=C)}">CEO게시판</a>
+			</li>
         </ul>
 
         <section class="boardHead">
@@ -218,6 +218,18 @@
 
 	<script th:src="@{/js/board/boardList.js}"></script>
 	
+	<script th:inline="javascript">
+		
+		const memberType =  /*[[${session.loginMember?.memberType}]]*/ "로그인 회원타입";
+		
+		const loginMemberNo = /*[[${session.loginMember?.memberNo}]]*/ "로그인 회원번호";
+		
+		if(loginMemberNo == null) loginMemberNo = "";
+
+		console.log(memberType);
+		console.log(loginMemberNo);
+		
+	</script>
 
 </body>
 </html>

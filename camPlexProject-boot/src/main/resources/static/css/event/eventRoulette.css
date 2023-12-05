@@ -25,12 +25,12 @@ button {
 
 .rouletter {
 	margin-top: 20rem;
-	margin-left: 47rem;
+	margin-left: 37%;
 	position: relative;
 	width: 400px;
 	height: 400px;
 	transform:scale(2);
-	margin-bottom: 15rem;
+	margin-bottom: 20rem;
 }
 
 .rouletter-bg {
