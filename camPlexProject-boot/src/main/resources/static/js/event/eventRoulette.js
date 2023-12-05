@@ -66,11 +66,20 @@ const rReset = (ele) => {
   }, 5500);
 };
 
+document.addEventListener('DOMContentLoaded', () => {
+	if(loginMemberNo == null){
+        alert("로그인 후 이용해주세요")
+        window.history.back();
+    }
+    
+})
+
 // 룰렛 이벤트 클릭 버튼
 document.addEventListener("click", function (e) {
-  var target = e.target;
-  if (target.tagName === "BUTTON") {
-    rRotate();
-    rReset(target);
-  }
+	
+	var target = e.target;
+	if (target.tagName === "BUTTON") {
+	  rRotate();
+	  rReset(target);
+	}
 });

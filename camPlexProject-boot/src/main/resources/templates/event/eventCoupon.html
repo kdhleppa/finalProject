@@ -25,7 +25,7 @@
 
         <hr style="margin-top: 20px; margin-left: 8%; width: 84%; margin-right: 40%;">
 	
-		<section class="couponPick">
+		<form class="couponPick">
 				
 	            <div class="couponImg">
 					
@@ -48,9 +48,10 @@
 	        <input type="button" value="쿠폰 추첨" id="id_btn">
 		
 			<br>
+			
 			<h1 id="id_out"></h1>
 			
-		</section>
+		</form>
 	    
         <hr style="margin-top: 20px; margin-left: 8%; width: 84%; margin-right: 40%;">
 
@@ -60,6 +61,16 @@
     <th:block th:replace="~{common/footer}"></th:block>
     
 	<script th:src="@{/js/event/eventCoupon.js}"></script>
+	
+	<script th:inline="javascript">
+		
+		const loginMemberNo = /*[[${session.loginMember?.memberNo}]]*/ "로그인 회원번호";
+		
+		if(loginMemberNo == null) loginMemberNo = "";
+
+		console.log(loginMemberNo);
+		
+	</script>
 
 </body>
 </html>
