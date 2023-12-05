@@ -87,6 +87,14 @@ public class ItemServiceImpl implements ItemService {
 		return mapper2.selectItemListPricehigh();
 	}
 
+	/** 아이템 검색
+	 *
+	 */
+	@Override
+	public List<Item> searchItem(String input) {
+		return mapper2.searchItem(input);
+	}
+
 	
 	
 	
