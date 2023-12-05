@@ -89,6 +89,12 @@ html {
     scroll-behavior: smooth;
 }
 
+#mainTitle{
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}
+
 a { 
   display:inline-block; 
   margin:0;
