@@ -94,5 +94,16 @@
 		JOIN "ITEM_IMG" USING(ITEM_NO)
 		ORDER BY "ITEM_PRICE" DESC
 	</select>
+	
+	<!-- 아이템 검색-->
+	<select id="searchItem" resultMap="item_rm">
+		SELECT ITEM_NO, ITEM_TYPE, ITEM_PRICE, ITEM_NAME, ITEM_DESCRIPTION, 
+		ITEM_STATUS, DISCOUNT_RATE, ITEM_IMG_NO, (ITEM_IMG_PATH || ITEM_IMG_RENAME) THUMBNAIL, ITEM_IMG_ORDER
+		FROM "ITEM"
+		JOIN "ITEM_IMG" USING(ITEM_NO)
+		WHERE ITEM_NAME || ITEM_DESCRIPTION LIKE '%' || #{input} || '%'
+	</select>
+	
+	
 	  	
 </mapper>

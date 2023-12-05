@@ -79,6 +79,17 @@ public class ItemController {
 		return list;
 	}
 	
-
+	/** 아이템 검색
+	 * @param input
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("/search")
+	public List<Item> searchItem(String input){
+		
+		List<Item> list = service.searchItem(input);
+		
+		return list;
+	}
 	
 }

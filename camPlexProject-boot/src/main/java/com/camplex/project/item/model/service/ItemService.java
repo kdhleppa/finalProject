@@ -36,6 +36,12 @@ public interface ItemService {
 	 */
 	List<Item> selectItemListPricehigh();
 
+	/** 아이템 검색
+	 * @param input
+	 * @return
+	 */
+	List<Item> searchItem(String input);
+
 
 
 
