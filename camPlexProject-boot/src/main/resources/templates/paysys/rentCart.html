@@ -32,7 +32,7 @@
 	                    <tr>
 	                        <!-- 전체선택체크박스 js구현하기-->
 	                        <!-- th 위 진한선 아래 연한선주고 추가되는 상품의 밑 마다 선주기-->
-	                        <th><input type="checkbox" class=""></th>
+	                        <th><input type="checkbox" th:id="'selectAllCheckbox' + ${rsvInfoIter.index}" class="selectAllCheckbox"></th>
 	                        <th><input type="hidden" th:id="'currentReservationNo' + ${rsvInfoIter.index}" th:value="${rsvInfo.reservationNo}"></th>
 	                        <th>상품명</th>
 	                        <th>캠핑장 선택</th>
@@ -48,7 +48,7 @@
 			                    <tr th:if="${cartItem.reservationNo == rsvInfo.reservationNo}" th:id="cartItemTr+${rsvInfoIter.index}">
 			                        <!-- 개별선택체크박스-->
 			                        <td>
-										<input type="checkbox" class="">
+										<input type="checkbox" class="individualCheckbox" name="checkCartItemNo" value="${cartItem.cartItemNo}">
 										<input type="hidden" th:name="'cartItemNo'+${iterStat.index}" th:id="'cartItemNo'+${iterStat.index}" th:value="${cartItem.cartItemNo}">
 										<input type="hidden" th:id="'itemPrice'+${iterStat.index}" th:value="${cartItem.itemPrice}">
 										<input type="hidden" th:id="'itemNo'+${iterStat.index}" th:value="${cartItem.itemNo}">
@@ -98,10 +98,10 @@
                 <div class="orderBtncontainer">
                     <div class="orderEmpty"></div>
                     <div class="orderBtnSpace">
-                        <button href="" class="blackBtn">전체상품주문</button>
+                        <button type="submit" class="blackBtn">전체상품주문</button>
                         <button href="" class="blackBtn">선택상품주문</button>
-                        <a href="" class="whiteBtn wBA">계속 쇼핑하기</a>
-                        <button href="" class="whiteBtn">장바구니 비우기</button>
+                        <a th:href="@{/item2/search}" class="whiteBtn wBA">계속 쇼핑하기</a>
+                        <button type="button" th:onclick="deleteAllCart.call(this)" class="whiteBtn">장바구니 비우기</button>
                     </div>
                 <div class="orderEmpty"></div>
             </div>

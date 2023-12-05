@@ -16,7 +16,19 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
     
-    
+    var selectAllCheckboxes = document.querySelectorAll('.selectAllCheckbox');
+    selectAllCheckboxes.forEach(function (checkbox) {
+        checkbox.addEventListener('change', function () {
+            // 해당 체크박스가 속한 테이블 내의 모든 개별 체크박스를 찾습니다.
+            var table = checkbox.closest('table');
+            var individualCheckboxes = table.querySelectorAll('.individualCheckbox');
+            
+            // 각 개별 체크박스의 상태를 전체 선택 체크박스의 상태와 일치시킵니다.
+            individualCheckboxes.forEach(function (indCheckbox) {
+                indCheckbox.checked = checkbox.checked;
+            });
+        });
+    });
 });
 
 
@@ -44,7 +56,6 @@ window.onload = function() {
         }
     });
 };
-
 
 
 
@@ -146,6 +157,19 @@ function deleteCart(button, rsvInfoIndex, cartItemIndex) {
 	 form.action = '/paysys/rentCart/deleteCart';
     
     form.submit();
+}
+
+
+function deleteAllCart(){
+	if (confirm('장바구니를 비우시겠습니까?')) {
+		
+		var form = this.closest('form');
+			
+		form.action = '/paysys/rentCart/deleteAllCart'
+		form.submit();
+	} else {
+		
+	}
 }
 
 
