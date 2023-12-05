@@ -129,6 +129,38 @@
 		, #{bankName})
 	</insert>
 	
+	<!-- 카카오 로그인 시 회원인지 확인 -->
+	<select id="checkMember">
+		SELECT MEMBER_EMAIL
+		FROM "MEMBER"
+		WHERE MEMBER_EMAIL = #{email}
+	</select>
+	
+	<!-- 회원 아닐시 카카오 자동 회원가입 -->
+	<insert id="kakaoSignUp">
+		INSERT INTO "MEMBER"
+		VALUES(SEQ_MEMBER_NO.NEXTVAL
+		, #{memberEmail}
+		, DEFAULT
+		, #{memberName}
+		, DEFAULT
+		, NULL
+		, DEFAULT
+		, DEFAULT, DEFAULT, DEFAULT)
+	</insert>
+	
+	<!-- 카카오 계정 이메일로 로그인 -->
+	<select id="kakaoLoginMember" resultMap="member_rm">
+		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_PW, MEMBER_NAME, MEMBER_NICKNAME,
+		MEMBER_PHONE, MEMBER_PROFILE_IMG, MEMBER_TYPE,
+		TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DATE
+		FROM "MEMBER"
+		WHERE MEMBER_DEL_FL = 'N'
+		AND MEMBER_EMAIL = #{memberEmail}
+	</select>
+	
+	
+	
 	<!-- 마이페이지 구매 내역 값 뿌리기 -->
 	
 	

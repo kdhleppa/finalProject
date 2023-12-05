@@ -2,6 +2,7 @@ package com.camplex.project.member.model.service;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -213,6 +214,25 @@ public class MemberServiceImpl implements MemberService {
 	public List<MyPage> selectMyPageInfo(int memberNo) {
 		return mapper.selectMyPageInfo(memberNo);
 	}
+	
+	// 카카오 로그인 시 회원인지 확인
+	@Override
+	public String checkMember(String email) {
+		return mapper.checkMember(email);
+	}
+
+	// 회원 아닐시 카카오 자동 회원가입
+	@Override
+	public int kakaoSignUp(Map<String, String> map) {
+		return mapper.kakaoSignUp(map);
+	}
+
+	// 카카오 계정 이메일로 로그인
+	@Override
+	public Member kakaoLoginMember(String email) {
+		return mapper.kakaoLoginMember(email);
+	}
+
 
 
 
