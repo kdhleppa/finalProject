@@ -19,7 +19,10 @@ public interface CampService2 {
 
 	List<CampDetail> selectDeCamp();
 
-	List<CampDetailImage> selectDeCampImage();
+	int deleteCampDe(int campDeNo);
+
+	int deleteCampDeImg(int campDeNo);
+
 
 
 

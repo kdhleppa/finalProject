@@ -36,7 +36,7 @@ public class CampServiceImpl2 implements CampService2{
 	private String filePath;
 	
 
-	/** 캠핑 장소 삽입
+	/** 캠핑장 삽입
 	 *
 	 */
 	@Transactional(rollbackFor = Exception.class)
@@ -104,7 +104,7 @@ public class CampServiceImpl2 implements CampService2{
 	}
 
 
-	/** 캠핑장 구역 insert
+	/** 캠핑장 구역 삽입
 	 *
 	 */
 	@Override
@@ -116,32 +116,29 @@ public class CampServiceImpl2 implements CampService2{
 		
 		if(result == 0) return 0;
 		
-		int campDeNo = 0;
+		int campDeNo = campDetail.getCampDeNo();
 		
-		if(campDeNo > 0) {
+		if(result > 0) {
 			
 			List<CampDetailImage> uploadList = new ArrayList<CampDetailImage>();
 			
 			for(int i = 0; i < campDeImges.size(); i++) {
 				
-				if(campDeImges.get(i).getSize() > 0) {
-					
 					CampDetailImage img = new CampDetailImage();
 					
 					img.setCampDeImagePath(webPath);
-					img.setCampDeNo(campDeNo);
 					img.setCampDeImageOrder(i);
 					
 					String fileName = campDeImges.get(i).getOriginalFilename();
 					
 					img.setCampDeImageOriginal(fileName);
+					img.setCampDeNo(campDeNo);
 					img.setCampDeImageReName(Util.fileRename(fileName));
 					
 					uploadList.add(img);
-					
-				}
-				
+	
 			}
+			
 			
 			if(!uploadList.isEmpty()) {
 				
@@ -160,6 +157,7 @@ public class CampServiceImpl2 implements CampService2{
 						
 					}
 					
+					
 				} else {
 					
 					throw new FileUploadException();
@@ -170,7 +168,7 @@ public class CampServiceImpl2 implements CampService2{
 			
 		}
 		
-		return result;
+		return campDeNo;
 	}
 
 
@@ -183,13 +181,25 @@ public class CampServiceImpl2 implements CampService2{
 	}
 
 
-	/** 0번 캠핑장 구역 이미지 select
+	/** 캠핑장 구역 delete
 	 *
 	 */
 	@Override
-	public List<CampDetailImage> selectDeCampImage() {
-		return mapper.selectDeCampImage();
+	public int deleteCampDe(int campDeNo) {
+		return mapper.deleteCampDe(campDeNo);
 	}
+
+
+	/** 캠핑장 구역 이미지 delete
+	 *
+	 */
+	@Override
+	public int deleteCampDeImg(int campDeNo) {
+		return mapper.deleteCampDeImg(campDeNo);
+	}
+
+
+
 
 	
 	
