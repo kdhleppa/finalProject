@@ -17,7 +17,7 @@
     <!-- 메인 -->
     <main class="campingDetailUploadMain">
 		
-		<form th:action="@{/camp2/campInsert}" id="campingDetailUploadForm" method="post" class="campingDetailUploadForm">
+		<form th:action="@{/camp2/campInsert}" id="campingDetailUploadForm" method="post" class="campingDetailUploadForm" enctype="multipart/form-data">
 			
 			<!-- Information -->
 	        <section class="informationSec">
@@ -244,7 +244,7 @@
 		                       <img class="preview">
 		                   	</label>
 		                   
-		                   	<input type="file" name="campMap" class="inputImage" id="img5" accept="image/*">
+		                   	<input type="file" name="inputCampMap" class="inputImage" id="img5" accept="image/*">
 		                   	
 
 		              	</div>
@@ -530,7 +530,7 @@
 						<section class="etcInfoInputInfoSec">
 							
 							<select class="categorySelect" name="category">
-								<option selected>카테고리 선택</option>
+								<option selected disabled>카테고리 선택</option>
 								<option value="AUTO">오토캠핑</option>
 								<option value="BACK">백패킹</option>
 								<option value="CAR">차박</option>
@@ -562,6 +562,32 @@
 						<section class="etcInfoInputInfoSec">
 							
 							<input class="CEONumInput" id="CEONum" name="memberNo">
+							
+						</section>
+						
+					</section>
+					
+					<section class="etcInfoInputOneLineInfoSec">
+						
+						<section class="etcInfoInputImgSec">
+							
+							<img class="etcInfoInputImg" th:src="@{/images/iconImg/campingInfo.png}">
+							
+						</section>
+						
+						<section class="etcInfoInputBlankSec">
+							
+						</section>
+						
+						<section class="etcInfoInputNameSec">
+							
+							<span>캠핑장 Info</span>
+							
+						</section>
+						
+						<section class="etcInfoInputInfoSec">
+							
+							<textarea id="etcInfoTextArea" class="etcInfoTextArea" name="information"></textarea>
 							
 						</section>
 						

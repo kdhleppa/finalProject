@@ -41,12 +41,33 @@ public class CampServiceImpl2 implements CampService2{
 	 */
 	@Transactional(rollbackFor = Exception.class)
 	@Override
-	public int campInsert(Camp camp, List<MultipartFile> images) 
+	public int campInsert(Camp camp, List<MultipartFile> images, MultipartFile inputCampMap) 
 			throws IllegalStateException, IOException {
 		
+		String temp = camp.getCampMap();
+		String renameCampMap = null;
+		
+		if(inputCampMap.getSize() > 0) {
+			
+			renameCampMap = Util.fileRename(inputCampMap.getOriginalFilename());
+			
+			camp.setCampMap(webPath + renameCampMap);
+			
+		} else {
+			
+			camp.setCampMap(null);
+			
+		}
+
 		int result = mapper.campInsert(camp);
 		
+		if(renameCampMap != null) {
+			inputCampMap.transferTo(new File(filePath + renameCampMap));
+		}
+		
 		if(result == 0) return 0;
+		
+		int campNo = camp.getCampNo();
 		
 		if(result > 0) {
 			
@@ -64,6 +85,7 @@ public class CampServiceImpl2 implements CampService2{
 					String fileName = images.get(i).getOriginalFilename();
 					
 					img.setCampImageOriginal(fileName);
+					img.setCampNo(campNo);
 					img.setCampImageReName(Util.fileRename(fileName));
 					
 					uploadList.add(img);
@@ -71,6 +93,8 @@ public class CampServiceImpl2 implements CampService2{
 				}
 				
 			}
+			
+			
 			
 			if(!uploadList.isEmpty()) {
 				
@@ -100,7 +124,7 @@ public class CampServiceImpl2 implements CampService2{
 			
 		}
 
-		return result;
+		return campNo;
 	}
 
 
@@ -196,6 +220,12 @@ public class CampServiceImpl2 implements CampService2{
 	@Override
 	public int deleteCampDeImg(int campDeNo) {
 		return mapper.deleteCampDeImg(campDeNo);
+	}
+
+
+	@Override
+	public int updateCampDe(int campNo) {
+		return mapper.updateCampDe(campNo);
 	}
 
 

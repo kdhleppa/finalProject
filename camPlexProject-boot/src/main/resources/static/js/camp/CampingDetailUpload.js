@@ -73,8 +73,8 @@ const campAddress = document.getElementById('campAddress');
 const campPhone = document.getElementById('campPhone');
 const checkIn = document.getElementById('checkIn');
 const checkOut = document.getElementById('checkOut');
-
 const CEONum = document.getElementById('CEONum');
+const etcInfoTextArea = document.getElementById('etcInfoTextArea');
 
 
 campingDetailUploadForm.addEventListener('submit', e => {
@@ -126,6 +126,14 @@ campingDetailUploadForm.addEventListener('submit', e => {
 		e.preventDefault();
 		return;
 	}
+	
+	if(etcInfoTextArea.value == "") {
+		alert("캠핑장 Info를 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
+	
+	
 	
 });
 
