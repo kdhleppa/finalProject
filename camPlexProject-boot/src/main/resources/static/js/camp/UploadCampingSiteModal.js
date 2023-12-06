@@ -115,13 +115,41 @@ campUploadModalDeleteBtn.addEventListener('click', () => {
 const modalUploadBtn = document.getElementById('modalUploadBtn');
 
 
+function resetAndModalExit() {
+	
+		document.getElementById('campDeName').value = "";
+		document.getElementById('capacity').value = "";
+		document.getElementById('fullCapacity').value = "";
+		document.getElementById('campDePrice').value = "";
+		
+		document.getElementById('previewcampingSiteThumbnail').removeAttribute("src");
+		
+		
+		document.getElementById('campingSiteThumbnailInput').value = "";
+		document.getElementById('etcImgPlusInput').value = "";
+		document.getElementById('moreImgDiv').innerHTML = "";
+		
+		
+		document.getElementById('modalContainer').classList.add('hidden');
+	
+}
+
+
 modalUploadBtn.addEventListener('click', e => {
+	const enrollSiteSec = document.getElementById('enrollSiteSec');
+	console.log("enrollSiteSec", enrollSiteSec);
 	
 	
 	const campDeName = document.getElementById('campDeName').value;
 	const capacity = document.getElementById('capacity').value;
 	const fullCapacity = document.getElementById('fullCapacity').value;
 	const campDePrice = document.getElementById('campDePrice').value;
+		
+	// Enroll Site 정보를 감싸고 있는 Sec
+	//const enrollSiteSec = document.getElementById('enrollSiteSec');
+	//console.log("enrollSiteSec", enrollSiteSec);
+	enrollSiteSec.classList.add('enrollSiteSec');
+	enrollSiteSec.setAttribute('id', "enrollSiteSec");
 
 
 	if(campDeName == "") {
@@ -171,6 +199,10 @@ modalUploadBtn.addEventListener('click', e => {
 		formData.append("campDeImges", arr[i]);
 	}
 
+
+	
+
+	
 	fetch("/camp2/insertDeCamp", {
 		enctype: 'multipart/form-data',
 		method : "POST",
@@ -180,14 +212,8 @@ modalUploadBtn.addEventListener('click', e => {
 	.then(campDetailList => {
 		
 		console.log(campDetailList);
-		
-		// Enroll Site 정보를 감싸고 있는 Sec
-		const enrollSiteSec = document.getElementById('enrollSiteSec');
-		enrollSiteSec.classList.add('enrollSiteSec');
-		enrollSiteSec.setAttribute('id', enrollSiteSec);
-		
+	
 		enrollSiteSec.innerHTML = '';
-		
 		// 장소 추가 append ------------------------------
 		
 		for(var i in campDetailList) {
@@ -266,25 +292,14 @@ modalUploadBtn.addEventListener('click', e => {
 		}
 		
 		
-		document.getElementById('campDeName').value = "";
-		document.getElementById('capacity').value = "";
-		document.getElementById('fullCapacity').value = "";
-		document.getElementById('campDePrice').value = "";
-		
-		document.getElementById('previewcampingSiteThumbnail').removeAttribute("src");
-		
-		
-		document.getElementById('campingSiteThumbnailInput').value = "";
-		document.getElementById('etcImgPlusInput').value = "";
-		document.getElementById('moreImgDiv').innerHTML = "";
-		
-		
-		document.getElementById('modalContainer').classList.add('hidden');
-		
-		
 	})
 	.catch(err => console.log(err));
+	
+	resetAndModalExit();
+	
 });
+
+
 
 function campDeDelete(campDeNo) {
 	

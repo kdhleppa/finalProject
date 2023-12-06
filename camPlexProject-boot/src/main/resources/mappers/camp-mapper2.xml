@@ -181,5 +181,16 @@
 		WHERE CAMP_NO = 0
 	</update>
 	
+	<delete id="delCampDeImgNumO">
+		DELETE FROM "CAMPING_DETAIL_IMG" WHERE (SELECT * 
+												FROM CAMPING_DETAIL_IMG 
+												WHERE CAMP_DE_NO IN (SELECT CAMP_DE_NO
+                                                FROM CAMPING_DETAIL
+                                                WHERE CAMP_NO = '0')
+												SELECT A.CAMP_DE_NO
+												FROM CAMPING_DETAIL A
+												WHERE CAMP_NO = '0'
+												)
+	</delete>
 	
 </mapper>

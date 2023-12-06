@@ -229,6 +229,15 @@ public class CampServiceImpl2 implements CampService2{
 	}
 
 
+	@Override
+	public int delCampDeImgNumO() {
+		return mapper.delCampDeImgNumO();
+	}
+
+
+	
+
+
 
 
 	

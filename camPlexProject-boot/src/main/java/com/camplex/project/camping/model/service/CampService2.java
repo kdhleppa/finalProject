@@ -25,6 +25,10 @@ public interface CampService2 {
 
 	int updateCampDe(int campNo);
 
+	int delCampDeImgNumO();
+
+	
+
 
 
 
