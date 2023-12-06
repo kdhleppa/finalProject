@@ -36,6 +36,8 @@ public class CampController2 {
 	@GetMapping("/uploadCamp")
 	public String uploadPage() {
 		
+		int delResult = service.delCampDeImgNumO();
+		
 		return "camp/campingDetailUpload";
 	}
 	
@@ -82,18 +84,18 @@ public class CampController2 {
 		
 		
 		String message = null;
-		String path = "redirect:";
+		String path = null;
 		
 		
 		if(campNo > 0) {
 			message = "캠프장 등록 완료";
-			path += "/campingCheckPage";
+			path = "camp/campingCheckPage";
 		} else {
 			message = "캠프장 등록 실패";
-			path += "/campingDetailUpload";
+			path = "camp/campingDetailUpload";
 		}
 		
-		ra.addFlashAttribute("message", message);
+//		ra.addFlashAttribute("message", message);
 		
 		return path;
 		

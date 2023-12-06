@@ -58,10 +58,14 @@ public interface CampMapper2 {
 
 	int updateCampDe(int campNo);
 
+
+	int delCampDeImgNumO();
+
 	/** 캠핑장 삭제
 	 * @param campNo
 	 * @return
 	 */
 	int deleteCamp(int campNo);
+
 
 }
