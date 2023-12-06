@@ -216,6 +216,14 @@ public class CampServiceImpl implements CampService {
 		return mapper.searchCampList(input);
 	}
 
+	/** 카테고리 분류
+	 *
+	 */
+	@Override
+	public List<Camp> selectCampListCategory(String category) {
+		return mapper.selectCampListCategory(category);
+	}
+
 
 
 }

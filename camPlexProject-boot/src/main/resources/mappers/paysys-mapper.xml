@@ -75,7 +75,7 @@
 	<insert id="insertPayCamp">
 		INSERT INTO "PAYMENT"
 		VALUES (SEQ_PAY_NO.NEXTVAL, #{memberNo}, #{campNo}, #{campDeNo},
-				NULL, #{price}, NULL, #{price}, #{payType}, DEFAULT,
+				#{price}, #{price}, #{payType}, DEFAULT,
 				#{entDate}, #{outDate}, DEFAULT)
 	</insert>
 	
@@ -88,7 +88,7 @@
 		
 		INSERT INTO "PAYMENT"
 		VALUES (#{paymentNo}, #{memberNo}, #{campNo}, #{campDeNo},
-				NULL, #{price}, NULL, #{price}, '카카오페이', DEFAULT,
+				#{price}, #{price}, '카카오페이', DEFAULT,
 				#{entDate}, #{outDate}, DEFAULT)
 	</insert>
 	

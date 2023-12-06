@@ -56,9 +56,7 @@ public class CampController {
 	 */
 	@GetMapping("/order")
 	@ResponseBody
-	public List<Camp> category(String category,
-							   Model model
-								){
+	public List<Camp> order(String category){
 		List<Camp> list = new ArrayList<>();
 	
 		switch(category) {
@@ -67,6 +65,26 @@ public class CampController {
 		case "current" : list = service.selectCampList(); break;
 		case "popular" : list = service.selectCampListPopular(); break;
 		case "old" : list = service.selectCampListOld(); break;
+		
+		}
+		
+		return list;
+	}
+	
+	/** 캠핑장 분류
+	 * @param category
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/category")
+	@ResponseBody
+	public List<Camp> category(String category){
+		List<Camp> list = new ArrayList<>();
+	
+		switch(category) {
+		
+		case "all" : list = service.selectCampList(); break;
+		default: list= service.selectCampListCategory(category); break;
 		
 		}
 		

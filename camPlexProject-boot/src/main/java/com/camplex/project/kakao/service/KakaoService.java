@@ -7,6 +7,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -28,6 +29,7 @@ import lombok.extern.java.Log;
 
 @Service
 @Log
+@PropertySource("classpath:/config.properties")
 public class KakaoService {
 
 	private KakaoPayReadyVO kakaoPayReadyVO;
@@ -37,6 +39,7 @@ public class KakaoService {
 	
 	@Value("${camplex.kakao.key}")
 	private String Key;
+	
 	/** 카카오 페이
 	 * @param info
 	 * @return
@@ -47,7 +50,7 @@ public class KakaoService {
 		 
 	        // 서버로 요청할 Header
 	        HttpHeaders headers = new HttpHeaders();
-	        headers.add("Authorization", "KakaoAK " + Key);
+	        headers.add("Authorization", "KakaoAK " + "a13f547e0ea960761cb3b4a00a500ca8");
 	        headers.add("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
 	        
 	        // 서버로 요청할 Body

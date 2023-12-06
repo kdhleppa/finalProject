@@ -56,7 +56,6 @@ public class KakaoController {
 
 		String path = "";
 		String message = null;
-
 		// DB에서 앞전에 카카오 로그인이 되었는지 조회
 		String result = service.checkMember(email);
 

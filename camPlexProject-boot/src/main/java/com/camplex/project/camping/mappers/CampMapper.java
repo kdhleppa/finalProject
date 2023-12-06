@@ -112,6 +112,12 @@ public interface CampMapper {
 	 */
 	List<Camp> searchCampList(String input);
 
+	/** 카테고리 분류
+	 * @param category
+	 * @return
+	 */
+	List<Camp> selectCampListCategory(String category);
+
 
 
 }
