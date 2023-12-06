@@ -129,7 +129,7 @@ td {
 }
 
 .wishListTB th:first-child {
-    width: 8%;
+    width: 2%;
 }
 
 .wishListTB th:nth-child(2){
@@ -173,6 +173,10 @@ img {
 }
 
 .campSelect {
+    width: 400px;
+    height: 25px;
+}
+.campSelect2 {
     width: 400px;
     height: 25px;
 }

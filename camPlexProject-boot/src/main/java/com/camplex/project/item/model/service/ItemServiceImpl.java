@@ -87,6 +87,11 @@ public class ItemServiceImpl implements ItemService {
 		return mapper2.selectItemListPricehigh();
 	}
 
+
+	@Override
+	public List<Item> inCartWishlist(int memberNo) {
+		return mapper.inCartWishlist(memberNo);
+
 	/** 아이템 검색
 	 *
 	 */
@@ -125,6 +130,7 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public List<Item> selectKitchenItemList() {
 		return mapper2.selectKitchenItemList();
+
 	}
 
 	

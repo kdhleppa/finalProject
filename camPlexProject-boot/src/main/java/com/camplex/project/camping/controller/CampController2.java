@@ -24,6 +24,8 @@ import com.camplex.project.camping.model.dto.CampDetailImage;
 import com.camplex.project.camping.model.service.CampService2;
 import com.camplex.project.member.model.dto.Member;
 
+import retrofit2.http.GET;
+
 @Controller
 @RequestMapping("/camp2")
 public class CampController2 {
@@ -133,5 +135,31 @@ public class CampController2 {
 		
 	}
 	
-	
+	/** 캠핑장 삭제
+	 * @param campNo
+	 * @return
+	 */
+	@GetMapping("/deleteCamp")
+	public String deleteCamp(int campNo, 
+							 RedirectAttributes ra,
+							 @RequestHeader("referer") String referer
+							) {
+		
+		String path = "redirect:";
+		int result = service.deleteCamp(campNo);
+		
+		if(result>0) {
+			
+			path += "/camp/search";
+			ra.addFlashAttribute("message", "삭제 성공");
+			
+		} else {
+			
+			path += referer;
+			ra.addFlashAttribute("message", "삭제 실패");
+			
+		}
+		
+		return path;
+	}
 }

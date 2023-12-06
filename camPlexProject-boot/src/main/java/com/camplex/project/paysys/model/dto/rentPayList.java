@@ -14,7 +14,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class rentPayList {
-
+	private int memberNo;
 	private int itemNo;
 	private int itemPrice;
 	private String itemName;
@@ -23,6 +23,7 @@ public class rentPayList {
 	private int cartItemNo;
 	private int itemQuantity;
 	private int reservationNo;
-	
+	private String campEntdate;
+	private String campOutdate;
 	private List<ItemImg> imageList;
 }
