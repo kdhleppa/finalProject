@@ -38,8 +38,24 @@
 			<section class="mainPicArea">
 
 				<div class="campingTitle">
-					<p th:text="${camp.campName}">캠핑장 명</p>
-					
+					<div class="titleContainer">
+						<p th:text="${camp.campName}">캠핑장 명</p>
+
+						<th:block th:if="${session.loginMember?.memberType == 'C'} or ${session.loginMember?.memberType == 'M'}">
+							
+							<form th:action="@{/camp2}">
+								<button id="campUpdate" href="">수정</button>
+								<input type="hidden" name="campNo" id="" th:value="${camp.campNo}">
+							</form>
+							
+							<form th:action="@{/camp2/deleteCamp}" id="deleteCampFrm">
+								<button id="campDelete" href="">삭제</button>
+								<input type="hidden" name="campNo" id="" th:value="${camp.campNo}">
+							</form>
+							
+						</th:block>
+					</div>
+
 					<th:block th:if="${starCount}">
 						
 						<div class="starContainer">

@@ -25,6 +25,12 @@ public interface CampService2 {
 
 	int updateCampDe(int campNo);
 
+	/** 캠핑장 삭제
+	 * @param campNo
+	 * @return
+	 */
+	int deleteCamp(int campNo);
+
 
 
 

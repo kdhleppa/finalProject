@@ -89,7 +89,7 @@ classification.addEventListener('change', (e) => {
 			const contentImage = document.createElement('img');
 			contentImage.classList.add('contentImage')
 			contentImage.setAttribute("src", `${camp.thumbnail}`)
-			contentImage.setAttribute("onclick", `location.href = /camp/${camp.campNo}`)
+			contentImage.setAttribute("onclick", `location.href = '/camp/${camp.campNo}'`)
 
 			contentImageDiv.append(contentImage);
 
@@ -171,10 +171,9 @@ searchCamp.addEventListener("keyup", (e) => {
 				const contentImage = document.createElement('img');
 				contentImage.classList.add('contentImage')
 				contentImage.setAttribute("src", `${camp.thumbnail}`)
-				contentImage.setAttribute("onclick", `location.href = /camp/${camp.campNo}`)
+				contentImage.setAttribute("onclick", `location.href = '/camp/${camp.campNo}'`)
 	
 				contentImageDiv.append(contentImage);
-	
 	
 				const contentDetailWriteSec = document.createElement('a');
 				contentDetailWriteSec.classList.add('contentDetailWriteSec');
@@ -289,7 +288,7 @@ for(var i = 0 ; i < categoryBtn.length ; i++){
 					const contentImage = document.createElement('img');
 					contentImage.classList.add('contentImage')
 					contentImage.setAttribute("src", `${camp.thumbnail}`)
-					contentImage.setAttribute("onclick", `location.href = /camp/${camp.campNo}`)
+					contentImage.setAttribute("onclick", `location.href = '/camp/${camp.campNo}'`)
 		
 					contentImageDiv.append(contentImage);
 		
@@ -332,4 +331,17 @@ for(var i = 0 ; i < categoryBtn.length ; i++){
 
 }
 
+// **************************** 캠핑장 삭제 ***********************************
+const deleteCampFrm = document.getElementById('deleteCampFrm');
+
+document.addEventListener("submit", (e) => {
+
+	if(!confirm("삭제 하시겠습니까?")){
+
+		alert("삭제를 취소했습니다.")
+		e.preventDefault();
+		return;
+	}
+
+})
 
