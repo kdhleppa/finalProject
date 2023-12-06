@@ -39,6 +39,7 @@ const rRotate = () => {
   }, 50);
 };
 
+
 // 정해진 alert띄우기, custom modal등
 const rLayerPopup = (num) => {
   switch (num) {

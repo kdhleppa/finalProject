@@ -59,14 +59,9 @@ public class KakaoController {
         String path = "";
 		String message = null;
         
-        System.out.println(email);
-        System.out.println(name);
-        System.out.println(kakaoInfo);
-        
         // DB에서 앞전에 카카오 로그인이 되었는지 조회
         String result = service.checkMember(email);
         
-        System.out.println(result);
         
       
         	 if(result == null) {

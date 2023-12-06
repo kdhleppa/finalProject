@@ -42,6 +42,27 @@ public interface ItemService {
 	 */
 	List<Item> searchItem(String input);
 
+	/** 가구
+	 * @return
+	 */
+	List<Item> selectfurnitureItemList();
+
+	/** 텐트
+	 * @return
+	 */
+	List<Item> selectTentItemList();
+
+	/** 가방 악세서리
+	 * @return
+	 */
+	List<Item> selectBagItemList();
+
+	/** 주방
+	 * @return
+	 */
+	List<Item> selectKitchenItemList();
+
+
 
 
 

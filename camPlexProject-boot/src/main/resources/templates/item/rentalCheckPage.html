@@ -24,6 +24,25 @@
 		<!-- searchSec -->
 		<section class="searchSec">
 
+			<p class="itemTitle">ITEMS</p>
+			<br>
+
+			<section class="categorySec">
+
+				<button type="button" class="categoryBtn" value="a">All</button>
+
+				<button type="button" class="categoryBtn" value="f">furniture</button>
+
+				<button type="button" class="categoryBtn" value="t">Tent / Tarpaulin</button>
+
+				<button type="button" class="categoryBtn" value="ba">Bag / Accessories</button>
+
+				<button type="button" class="categoryBtn" value="k">Kitchen</button>
+
+			</section>
+
+
+
 			<section class="serchCenterSec">
 
 				<div class="serchDiv">
@@ -46,41 +65,17 @@
 
 					</section>
 
+					<!-- 정렬 Sec -->
+						<section class="chooseClassificationDetailSec">
 
-
-					<section class="serchDivBotSec">
-
-						<section class="priceInputSec">
-
-							<div class="priceInputDiv">
-								
-								<section class="wonImgSec">
-									<img th:src="@{/images/iconImg/wonImage.png}" class="wonImg">
-								</section>
-								
-								<section class="priceInputDetailSec">
-									<input class="priceInput" placeholder="최저 가격">
-								</section>
-								
-								<section class="tildeImgSec">
-									~&nbsp;&nbsp;&nbsp;
-								</section>
-
-								
-								<section class="wonImgSec">
-									<img th:src="@{/images/iconImg/wonImage.png}" class="wonImg">
-								</section>
-								
-								<section class="priceInputDetailSec">
-									<input class="priceInput" placeholder="최고 가격">
-								</section>
-
-							</div>
+							<select id="classification" class="classificationBtn" name="classification">
+								<option selected value="current">최신순</option>
+								<option value="priceLow">가격낮은 순</option>
+								<option value="priceHigh">가격높은 순</option>
+								<option value="order">주문많은 순</option>
+							</select>
 
 						</section>
-
-
-					</section>
 
 				</div>
 				
@@ -88,7 +83,6 @@
 			</section>
 
 		</section>
-				<div class="checkLine"></div>
 
 		<th:block th:if="${session.loginMember?.memberType == 'C'} or ${session.loginMember?.memberType == 'M'}">
 
@@ -106,27 +100,17 @@
 
 		</th:block>
 
-		<!-- 정렬 Sec -->
-		<section class="classificationSec">
-
-			<section class="chooseClassificationDetailSec">
-
-				<select id="classification" class="classificationBtn" name="classification">
-					<option selected value="current">최신순</option>
-					<option value="priceLow">가격낮은 순</option>
-					<option value="priceHigh">가격높은 순</option>
-					<option value="order">주문많은 순</option>
-				</select>
-
-			</section>
-
-		</section>
+		
 
 
 
 		<!-- 컨텐츠 Sec -->
-		<section class="contentSec">
+		<div class="overlayScreen">
 
+		<div class="contentContainer">
+
+		<section class="contentSec">
+			
 			<section class="contentSecCenterSec">
 
 				<section th:each="Item : ${searchList}" class="contentDetailSec">
@@ -194,7 +178,12 @@
 
 		</section>
 
+		</div>
+	</div>
+
 	</main>
+
+	<div class="bBlank"></div>
 
 	<th:block th:replace="~{common/footer}"></th:block>
 	<script th:src="@{/js/item/RentalCheckPage.js}"></script>
