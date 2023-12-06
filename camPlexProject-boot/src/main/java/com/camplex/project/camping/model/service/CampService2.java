@@ -11,7 +11,7 @@ import com.camplex.project.camping.model.dto.CampDetailImage;
 
 public interface CampService2 {
 
-	int campInsert(Camp camp, List<MultipartFile> images)
+	int campInsert(Camp camp, List<MultipartFile> images, MultipartFile inputCampMap)
 								throws IllegalStateException, IOException;
 
 	int insertDeCamp(CampDetail campDetail, List<MultipartFile> campDeImges) throws IllegalStateException, IOException;
@@ -22,6 +22,14 @@ public interface CampService2 {
 	int deleteCampDe(int campDeNo);
 
 	int deleteCampDeImg(int campDeNo);
+
+	int updateCampDe(int campNo);
+
+	/** 캠핑장 삭제
+	 * @param campNo
+	 * @return
+	 */
+	int deleteCamp(int campNo);
 
 
 

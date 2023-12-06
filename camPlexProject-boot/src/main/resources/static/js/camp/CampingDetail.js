@@ -572,7 +572,6 @@ wishListBtn.addEventListener('click', e => {
 });
 
 
-
 // *********************** 사진 클릭시 모달 *********************************
 
 const ceoImg = document.querySelectorAll('.ceoImg');
@@ -583,6 +582,21 @@ document.addEventListener("click", function (e) {
         console.log(e.target);
     }
 });
+
+
+// **************************** 캠핑장 삭제 ***********************************
+const deleteCampFrm = document.getElementById('deleteCampFrm');
+
+document.addEventListener("submit", (e) => {
+
+	if(!confirm("삭제 하시겠습니까?")){
+
+		alert("삭제를 취소했습니다.")
+		e.preventDefault();
+		return;
+	}
+
+})
 
 
 

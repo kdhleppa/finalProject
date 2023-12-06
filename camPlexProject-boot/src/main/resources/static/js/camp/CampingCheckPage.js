@@ -1,4 +1,5 @@
 let contentDetail = document.querySelectorAll('.contentDetailSec')
+let overlayScreen = document.querySelector(`.overlayScreen`);
 const bBlank = document.getElementsByClassName('bBlank')
 const mainContent = document.querySelector('.mainContent')
 let contentCount = 6;
@@ -65,6 +66,14 @@ classification.addEventListener('change', (e) => {
 	
 	contentSec.innerHTML = "";
 
+	overlayScreen.classList.add("play");
+		
+	overlayScreen.addEventListener("animationend", function handler() {
+		this.removeEventListener("animationend", handler);
+		this.classList.remove("play");
+	})
+
+
 	fetch("/camp/order?category=" + e.target.value)
 	.then(resp => resp.json())
 	.then(data => {
@@ -80,7 +89,7 @@ classification.addEventListener('change', (e) => {
 			const contentImage = document.createElement('img');
 			contentImage.classList.add('contentImage')
 			contentImage.setAttribute("src", `${camp.thumbnail}`)
-			contentImage.setAttribute("onclick", `location.href = /camp/${camp.campNo}`)
+			contentImage.setAttribute("onclick", `location.href = '/camp/${camp.campNo}'`)
 
 			contentImageDiv.append(contentImage);
 
@@ -126,15 +135,28 @@ searchCamp.addEventListener("keyup", (e) => {
 
 	contentSec.innerHTML = "";
 
+	overlayScreen.classList.add("play");
+		
+	overlayScreen.addEventListener("animationend", function handler() {
+		this.removeEventListener("animationend", handler);
+		this.classList.remove("play");
+	})
+
 	fetch("/camp/searchCamp?input=" + e.target.value)
 	.then(resp => resp.json())
 	.then(data => {
 
 		if(data.length == 0){
 
+			const contentSecCenterSec = document.createElement('section')
+			contentSecCenterSec.classList.add('contentSecCenterSec')
+
 			const none = document.createElement('h1')
-			none.innerText = "검색결과가 없습니다";
-			contentSec.append(none);
+			none.innerText = "해당 캠핑장이 없습니다";
+
+			contentSecCenterSec.append(none)
+
+			contentSec.append(contentSecCenterSec);
 			
 		} else{
 
@@ -149,10 +171,9 @@ searchCamp.addEventListener("keyup", (e) => {
 				const contentImage = document.createElement('img');
 				contentImage.classList.add('contentImage')
 				contentImage.setAttribute("src", `${camp.thumbnail}`)
-				contentImage.setAttribute("onclick", `location.href = /camp/${camp.campNo}`)
+				contentImage.setAttribute("onclick", `location.href = '/camp/${camp.campNo}'`)
 	
 				contentImageDiv.append(contentImage);
-	
 	
 				const contentDetailWriteSec = document.createElement('a');
 				contentDetailWriteSec.classList.add('contentDetailWriteSec');
@@ -190,31 +211,137 @@ searchCamp.addEventListener("keyup", (e) => {
 	})
 
 
-
-
 })
 
-const topBar = document.querySelector(".topBar")
-const mainTitle = document.getElementById("mainTitle")
-const tempX = searchCamp.getBoundingClientRect().bottom;
+// const topBar = document.querySelector(".topBar")
+// const mainTitle = document.getElementById("mainTitle")
+// const tempX = searchCamp.getBoundingClientRect().bottom;
 
-window.addEventListener("scroll", (e)=> {
+// window.addEventListener("scroll", (e)=> {
 
-	if(searchCamp.getBoundingClientRect().bottom != 260){
-		topBar.style.height = '100px';
-		topBar.style.backgroundColor = "transparent"; 
-		mainTitle.style.lineHeight = "0px";
-		mainTitle.style.margin = "0px";
-		mainTitle.style.marginBottom = "10px";
-		mainTitle.style.marginTop = "10px";
-	} else {
-		topBar.style.height = '170px';
-		topBar.style.backgroundColor = "rgb(216, 216, 216)"; 
-		mainTitle.style.lineHeight = "60px";
-		mainTitle.style.margin = "20px 0";
+// 	if(searchCamp.getBoundingClientRect().bottom != 327){
+// 		topBar.style.height = '100px';
+// 		topBar.style.backgroundColor = "transparent"; 
+// 		mainTitle.style.lineHeight = "0px";
+// 		mainTitle.style.margin = "0px";
+// 		mainTitle.style.marginBottom = "10px";
+// 		mainTitle.style.marginTop = "10px";
+// 	} else {
+// 		topBar.style.height = '170px';
+// 		topBar.style.backgroundColor = "rgb(216, 216, 216)"; 
+// 		mainTitle.style.lineHeight = "60px";
+// 		mainTitle.style.margin = "20px 0";
+// 	}
+
+// 	console.log(searchCamp.getBoundingClientRect().bottom)
+
+// })
+
+const categoryBtn = document.querySelectorAll(".categoryBtn")
+
+
+for(var i = 0 ; i < categoryBtn.length ; i++){
+
+	categoryBtn[i].addEventListener("click", (e) => {
+
+		overlayScreen.classList.add("play");
+		
+		overlayScreen.addEventListener("animationend", function handler() {
+			this.removeEventListener("animationend", handler);
+			this.classList.remove("play");
+		})
+		  
+		contentSec.innerHTML = "";
+
+		for(var btn of categoryBtn){
+			btn.classList.remove('clicked')
+		}
+
+		e.target.classList.add('clicked')
+
+		fetch("/camp/category?category=" + e.target.value)
+		.then(resp => resp.json())
+		.then(data => {
+
+			if(data.length == 0){
+
+				const contentSecCenterSec = document.createElement('section')
+				contentSecCenterSec.classList.add('contentSecCenterSec')
+
+				const none = document.createElement('h1')
+				none.innerText = "해당 캠핑장이 없습니다";
+
+				contentSecCenterSec.append(none)
+
+				contentSec.append(contentSecCenterSec);
+				
+			} else{
+
+				for(var camp of data){
+	
+					const contentDetailSec = document.createElement('section');
+					contentDetailSec.classList.add('contentDetailSec');
+		
+					const contentImageDiv = document.createElement('div');
+					contentImageDiv.classList.add('contentImageDiv');
+		
+					const contentImage = document.createElement('img');
+					contentImage.classList.add('contentImage')
+					contentImage.setAttribute("src", `${camp.thumbnail}`)
+					contentImage.setAttribute("onclick", `location.href = '/camp/${camp.campNo}'`)
+		
+					contentImageDiv.append(contentImage);
+		
+		
+					const contentDetailWriteSec = document.createElement('a');
+					contentDetailWriteSec.classList.add('contentDetailWriteSec');
+					contentDetailWriteSec.setAttribute("href", `/camp/${camp.campNo}`)
+		
+					const contentDetailWriteSecCenterSec = document.createElement('section');
+					contentDetailWriteSecCenterSec.classList.add('contentDetailWriteSecCenterSec')
+		
+					const text = document.createElement('p');
+					text.innerText = camp.campName;
+		
+					const star = document.createElement('div');
+					star.classList.add('star');
+		
+					const image = document.createElement('img');
+					image.setAttribute("src", "/images/iconImg/star-fill.png")
+		
+					const starCount = document.createElement('span')
+					starCount.innerText = camp.campingStar
+		
+					star.append(image, starCount);
+		
+					contentDetailWriteSecCenterSec.append(text, star);
+		
+					contentDetailWriteSec.append(contentDetailWriteSecCenterSec);
+		
+					contentDetailSec.append(contentImageDiv, contentDetailWriteSec);
+		
+					contentSec.append(contentDetailSec);
+				}
+			}
+			
+			more(data.length)
+
+		})
+	})
+
+}
+
+// **************************** 캠핑장 삭제 ***********************************
+const deleteCampFrm = document.getElementById('deleteCampFrm');
+
+document.addEventListener("submit", (e) => {
+
+	if(!confirm("삭제 하시겠습니까?")){
+
+		alert("삭제를 취소했습니다.")
+		e.preventDefault();
+		return;
 	}
-
-	console.log(searchCamp.getBoundingClientRect().bottom)
 
 })
 

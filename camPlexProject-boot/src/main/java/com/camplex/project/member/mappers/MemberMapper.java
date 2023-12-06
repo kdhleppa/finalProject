@@ -1,6 +1,7 @@
 package com.camplex.project.member.mappers;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.web.multipart.MultipartFile;
@@ -43,6 +44,22 @@ public interface MemberMapper {
 
 	// 마이페이지 값 뿌리기
 	List<MyPage> selectMyPageInfo(int memberNo);
+
+	// 카카오 로그인 시 회원인지 확인
+	String checkMember(String email);
+
+	// 회원 아닐시 카카오 자동 회원가입
+	int kakaoSignUp(Map<String, String> map);
+
+	// 카카오 계정 이메일로 로그인
+	Member kakaoLoginMember(String email);
+
+	// 회원 아닐 시 네이버 자동 회원가입
+	int naverSignUp(Map<String, String> map);
+	
+	// 네이버 계정 이메일로 로그인
+	Member naverLoginMember(String email);
+
 
 
 

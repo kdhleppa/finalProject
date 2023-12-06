@@ -117,7 +117,7 @@ const modalUploadBtn = document.getElementById('modalUploadBtn');
 
 modalUploadBtn.addEventListener('click', e => {
 	
-	const campDeImges = document.getElementById('etcImgPlusInput');
+	
 	const campDeName = document.getElementById('campDeName').value;
 	const capacity = document.getElementById('capacity').value;
 	const fullCapacity = document.getElementById('fullCapacity').value;
@@ -194,6 +194,7 @@ modalUploadBtn.addEventListener('click', e => {
 			
 			const plusCampingSiteSec = document.createElement('section');
 			plusCampingSiteSec.classList.add('plusCampingSiteSec');
+			plusCampingSiteSec.setAttribute("id", campDetailList[i].campDeNo)
 			
 			const plusCampingSiteDiv = document.createElement('div');
 			plusCampingSiteDiv.classList.add('plusCampingSiteDiv');
@@ -249,7 +250,6 @@ modalUploadBtn.addEventListener('click', e => {
 			const plusCampingSiteDeleteBtn = document.createElement('img');
 			plusCampingSiteDeleteBtn.classList.add('plusCampingSiteDeleteBtn');
 			plusCampingSiteDeleteBtn.setAttribute('src', '/images/iconImg/campingUploadDelete.png');
-			plusCampingSiteDeleteBtn.setAttribute('id', campDetailList[i].campDeNo)
 			plusCampingSiteDeleteBtn.setAttribute('onclick', 'campDeDelete('+ campDetailList[i].campDeNo + ')');
 			
 			plusCampingSiteDeleteBtnSec.append(plusCampingSiteDeleteBtn);
@@ -264,9 +264,22 @@ modalUploadBtn.addEventListener('click', e => {
 			enrollSiteSec.append(plusCampingSiteSec);
 			
 		}
-		const modalContainer = document.getElementById('modalContainer');
 		
-		modalContainer.classList.add('hidden');
+		
+		document.getElementById('campDeName').value = "";
+		document.getElementById('capacity').value = "";
+		document.getElementById('fullCapacity').value = "";
+		document.getElementById('campDePrice').value = "";
+		
+		document.getElementById('previewcampingSiteThumbnail').removeAttribute("src");
+		
+		
+		document.getElementById('campingSiteThumbnailInput').value = "";
+		document.getElementById('etcImgPlusInput').value = "";
+		document.getElementById('moreImgDiv').innerHTML = "";
+		
+		
+		document.getElementById('modalContainer').classList.add('hidden');
 		
 		
 	})
@@ -282,6 +295,10 @@ function campDeDelete(campDeNo) {
 	fetch("/camp2/deleteCampDe?campDeNo=" + campDeNo)
 	.then(resp => resp.json())
 	.then(result => {
+		
+		const campDeNoIdSec = document.getElementById(campDeNo);
+		campDeNoIdSec.remove();
+		
 		
 	})
 	.catch(err => console.log(err));

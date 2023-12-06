@@ -25,33 +25,66 @@ main {
     flex-direction: column;
 }
 
-/* 검색 일자 검색 sec */
-.checkCalenderSec {
-    height: 10rem;
+.campTitle{
     width: 100%;
     display: flex;
     justify-content: center;
+    margin: 30px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
+
+.categorySec{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.categoryBtn{
+    background-color: transparent;
+    border: none;
+    margin: 0 20px;
+    cursor: pointer;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+}
+
+.clicked{
+    color: #d4a373 ;
+}
+
+.categoryBtn:hover{
+    color: #d4a373;
+}
+
+.contentSecCenterSec{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+
+}
+/* 검색 일자 검색 sec */
+.checkCalenderSec {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 
 .checkSec {
     flex-basis: 50%;
-    height: 100%;
     display: flex;
     
 }
 
-.calenderSec {
-    flex-basis: 30%;
-    height: 100%;
-    display: flex;
-    align-items: end;
-}
-
 .checkDetailSec {
     flex-basis: 70%;
-    height: 100%;
     display: flex;
-    align-items: end;
     justify-content: end;
 }
 
@@ -59,7 +92,6 @@ main {
     flex-basis: 30%;
     height: 100%;
     display: flex;
-    align-items: end;
 }
 
 .inputCheck {
@@ -161,7 +193,7 @@ main {
 
 .campUploadBtnSec {
     margin-right: 30px;
-	width: 40%;
+	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: end;
@@ -200,16 +232,15 @@ main {
 }
 
 .chooseClassificationDetailSec {
-    height: 100%;
     width: 10%;
     margin-right: 25px;
 }
 
 .classificationBtn {
-    width: 9rem;
-    height: 2.5rem;
-    font-size: 1.2rem;
-    border-radius: 10px;
+    width: 7rem;
+    height: 2rem;
+    font-size: 1rem;
+    border-radius: 5px;
     text-align: center;
 }
 
@@ -289,6 +320,7 @@ main {
     width: 23rem;
     height: 14rem;
     cursor: pointer;
+    object-fit: cover;
 }
 
 .contentDetailWriteSec {
@@ -304,7 +336,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #000;
 }
 
@@ -372,4 +404,55 @@ main {
 }
 
 
+.overlayScreen{
+    height: 100%;
+    z-index: 9999;
+    bottom: 0;
+    background-color: rgb(255, 255, 255);
+    animation-duration: .5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+  }
+  
+.play {
+    animation-name: overlay-screen-transition;
+  }
+  
+  @keyframes overlay-screen-transition {
+      0% {
+          width: 100%;
+          height: 50%;
+          opacity: 0%;
+          bottom: 0;
+        }
+        
+        100% {
+            width: 100%;
+            height: 50%;
+            opacity: 100%;
+      }
+  }
+  
+  .element-fadeIn {
+    animation-name: element-fadeIn;
+    animation-duration: 0.25s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes element-fadeIn {
+    0% {
+      opacity: 0%;
+    }
+    100% {
+      opacity: 100%;
+    }
+  }
 
+
+  #campDelete{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-right: px;
+  }

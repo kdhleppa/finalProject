@@ -87,9 +87,50 @@ public class ItemServiceImpl implements ItemService {
 		return mapper2.selectItemListPricehigh();
 	}
 
+
 	@Override
 	public List<Item> inCartWishlist(int memberNo) {
 		return mapper.inCartWishlist(memberNo);
+
+	/** 아이템 검색
+	 *
+	 */
+	@Override
+	public List<Item> searchItem(String input) {
+		return mapper2.searchItem(input);
+	}
+
+	/** 가구
+	 *
+	 */
+	@Override
+	public List<Item> selectfurnitureItemList() {
+		return mapper2.selectfurnitureItemList();
+	}
+
+	/** 텐트
+	 *
+	 */
+	@Override
+	public List<Item> selectTentItemList() {
+		return mapper2.selectTentItemList();
+	}
+
+	/** 가방
+	 *
+	 */
+	@Override
+	public List<Item> selectBagItemList() {
+		return mapper2.selectBagItemList();
+	}
+
+	/** 주방
+	 *
+	 */
+	@Override
+	public List<Item> selectKitchenItemList() {
+		return mapper2.selectKitchenItemList();
+
 	}
 
 	

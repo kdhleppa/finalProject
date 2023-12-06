@@ -139,11 +139,17 @@ main {
     flex-basis: 60%;
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 img {
     width: 35px;
     cursor: pointer;
+}
+
+#kakaoLoginImg {
+	width: 65px;
+	margin-left: 3px;
 }
 
 #loginBtn {
@@ -158,6 +164,13 @@ img {
 	display:inline-block; 
 	margin:0;
 	text-transform:uppercase; 
+}
+
+#signUpBtn {
+}
+
+#searchIdBtn {
+	margin-inline: 21px;
 }
 
 .clickBtn::after {

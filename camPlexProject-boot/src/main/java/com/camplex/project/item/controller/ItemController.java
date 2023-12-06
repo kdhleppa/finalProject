@@ -79,6 +79,41 @@ public class ItemController {
 		return list;
 	}
 	
-
+	/** 아이템 검색
+	 * @param input
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("/search")
+	public List<Item> searchItem(String input){
+		
+		List<Item> list = service.searchItem(input);
+		
+		return list;
+	}
+	
+	
+	/** 아이템 카테고리 분류
+	 * @param category
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("/category")
+	public List<Item> selectItemCategory(String category){
+		
+		List<Item> list = new ArrayList<>();
+		
+		switch(category) {
+		
+		case "a": list = service.selectItemList(); break;
+		case "f": list = service.selectfurnitureItemList(); break;
+		case "t": list = service.selectTentItemList(); break;
+		case "ba": list = service.selectBagItemList(); break;
+		case "k": list = service.selectKitchenItemList(); break;
+		
+		}
+		
+		return list;
+	}
 	
 }
