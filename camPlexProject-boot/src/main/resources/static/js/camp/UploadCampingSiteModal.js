@@ -194,6 +194,7 @@ modalUploadBtn.addEventListener('click', e => {
 			
 			const plusCampingSiteSec = document.createElement('section');
 			plusCampingSiteSec.classList.add('plusCampingSiteSec');
+			plusCampingSiteSec.setAttribute("id", )
 			
 			const plusCampingSiteDiv = document.createElement('div');
 			plusCampingSiteDiv.classList.add('plusCampingSiteDiv');
@@ -282,6 +283,8 @@ function campDeDelete(campDeNo) {
 	fetch("/camp2/deleteCampDe?campDeNo=" + campDeNo)
 	.then(resp => resp.json())
 	.then(result => {
+		
+		
 		
 	})
 	.catch(err => console.log(err));
