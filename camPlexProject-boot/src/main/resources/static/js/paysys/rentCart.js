@@ -29,6 +29,30 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     });
+    
+    document.querySelectorAll('.wishToCartBtn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            // 클릭된 버튼에 가장 가까운 폼을 찾습니다.
+            console.log('Button:', button);
+            var form = button.closest('.moveWishlistForm');
+            console.log('Form:', form);
+            // 폼 내에서 '.reservationSelect' 클래스를 가진 셀렉트 박스를 찾습니다.
+            var selectElement = form.querySelector('.reservationSelect');
+            var selectedValue = selectElement.value;
+
+            // 선택된 값이 'default'인 경우 경고를 표시하고 폼 제출을 중단합니다.
+            if (selectedValue === 'default') {
+                alert('추가하려는 캠핑장을 선택해 주세요.');
+            } else {
+                // 그렇지 않으면 폼을 제출합니다.
+                form.submit();
+            }
+        });
+    });
+    
+    
+    
+    
 });
 
 
@@ -60,6 +84,19 @@ window.onload = function() {
 
 
 
+
+
+
+document.getElementById('submitBtn').addEventListener('click', function() {
+    var checkboxes = document.querySelectorAll('#payForm input[type=checkbox]');
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked = true;
+    }
+
+    // 폼 제출
+    document.getElementById('payForm').submit();
+
+});
 
 function updateQuantityAndCart(index, change) {
     var quantityDisplay = document.getElementById('quantityDisplay' + index);

@@ -25,7 +25,7 @@
 		
             
             <h2 class="heading">SHOPPING LIST</h2>
-            <form th:action="@{/paysys/payAll}" method="post" class="">
+            <form th:action="@{/paysys/payCheck}" method="post" class="" id="payForm">
 				<div th:each="rsvInfo, rsvInfoIter : ${rsvInfo}" th:id="rsvInfo+${rsvInfoIter.index}">
 	          		<p th:text="${rsvInfo.campName} + ' (' + ${rsvInfo.campEntDate} + ' ~ ' + ${rsvInfo.campOutDate} + ')'"></p>
 	                <table class="shoppingCartTB">
@@ -48,7 +48,7 @@
 			                    <tr th:if="${cartItem.reservationNo == rsvInfo.reservationNo}" th:id="cartItemTr+${rsvInfoIter.index}">
 			                        <!-- 개별선택체크박스-->
 			                        <td>
-										<input type="checkbox" class="individualCheckbox" name="checkCartItemNo" value="${cartItem.cartItemNo}">
+										<input type="checkbox" class="individualCheckbox" name="checkCartItemNo" th:value="${cartItem.cartItemNo}">
 										<input type="hidden" th:name="'cartItemNo'+${iterStat.index}" th:id="'cartItemNo'+${iterStat.index}" th:value="${cartItem.cartItemNo}">
 										<input type="hidden" th:id="'itemPrice'+${iterStat.index}" th:value="${cartItem.itemPrice}">
 										<input type="hidden" th:id="'itemNo'+${iterStat.index}" th:value="${cartItem.itemNo}">
@@ -98,8 +98,8 @@
                 <div class="orderBtncontainer">
                     <div class="orderEmpty"></div>
                     <div class="orderBtnSpace">
-                        <button type="submit" class="blackBtn">전체상품주문</button>
-                        <button href="" class="blackBtn">선택상품주문</button>
+                        <button type="button" id="submitBtn" class="blackBtn">전체상품주문</button>
+                        <button type="submit" class="blackBtn">선택상품주문</button>
                         <a th:href="@{/item2/search}" class="whiteBtn wBA">계속 쇼핑하기</a>
                         <button type="button" th:onclick="deleteAllCart.call(this)" class="whiteBtn">장바구니 비우기</button>
                     </div>
@@ -124,39 +124,38 @@
                     <th>취소</th>
                 </tr>
                 <!-- 위와 같은 참고사항 지킬것-->
-                <tr>
-                    <td></td>
-                    <td>1</td>
-                    <td><img src="/images/itemImg/0340020000042.jpg"></td>
-                    <td>밀크 소파 : 블랙</td>
-                    <td>
-                        <select name="" id="" class="campSelect2">
-                            <option value="default" class="">캠핑장을 선택해 주세요.</option>
-                            <option value="" class="">다른 캠핑장(25-01-01 ~ 25-01-02)</option>
-                        </select>
-                        <button href="#" class="grayBtn">CART</button>
-                    </td>
-                    <td>있음</td>
-                    <td>100원</td>
-                    <td><button href="#" class = "grayBtn">DELETE</button></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>2</td>
-                    <td><img src="/images/itemImg/0340020000042.jpg"></td>
-                    <td>밀크 소파 : 블랙</td>
-                    <td>
-                        <select name="1" id="2" class="campSelect2">
-                            <option value="default" class="">캠핑장을 선택해 주세요.</option>
-                            <option value="" class="">다른 캠핑장(25-01-01 ~ 25-01-02)</option>
-                        </select>
-                        <button href="#" class="grayBtn">CART</button>
-                    </td>
-                    <td>있음</td>
-                    <td>100원</td>
-                    <td><button href="#" class ="grayBtn">DELETE</button></td>
-                </tr>
-
+                <th:block th:each="wishlist, i : ${wishlist}">
+	                <form th:action="@{/paysys/moveWishlistToCart}" method="post" class="moveWishlistForm">
+		                <tr>
+		                    <td><input type="hidden" name="itemNo" th:value="${wishlist.itemNo}"></td>
+		                    <td>[[${i.count}]]</td>
+		                    <td><img th:src="${wishlist.thumbnail}"></td>
+		                    <td><p th:text="${wishlist.itemName}">상품명</p></td>
+		                    <td>
+								<th:block th:if="${wishlist.itemStatus} == 'Y'"> 
+			                        <select name="reservationNo" class="campSelect2 reservationSelect">
+			                            <option value="default" class="">캠핑장을 선택해 주세요.</option>
+			                            <th:block th:each="rsvInfo2 : ${rsvInfo2}">
+											<option th:value="${rsvInfo2.reservationNo}" th:text="${rsvInfo2.campName} + ' (' + ${rsvInfo2.campEntDate} + ' ~ ' + ${rsvInfo2.campOutDate} + ')'">옵션</option>
+										</th:block>
+			                        </select>
+		                        <button type="button" class="grayBtn wishToCartBtn">GO CART</button>
+		                        </th:block>
+		                        
+		                        <th:block th:unless="${wishlist.itemStatus} == 'Y'">
+									<p>재고가 없습니다.</p>
+									
+								</th:block>
+		                    </td>
+		                    <td>
+		                    	<p th:if="${wishlist.itemStatus} == 'Y'" th:text="있음">있음</p>
+		                    	<p th:unless="${wishlist.itemStatus} == 'Y'" th:text="없음">없음</p>
+		                    </td>
+		                    <td><p th:text="'₩'+${wishlist.itemPrice}">아이템 가격</p></td>
+		                    <td><button href="#" class = "grayBtn">DELETE</button></td>
+		                </tr>
+		               </form>
+                </th:block>
             </table>
             <div class="buttonList">
                 <a th:href="@{/member/wishlist}" class="Btn">CAMP WISH LIST</a>

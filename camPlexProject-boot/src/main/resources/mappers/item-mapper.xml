@@ -150,5 +150,12 @@
 			WHERE c.MEMBER_NO = #{memberNo}
 		</select>
 
-	  	
+	  	<select id="inCartWishlist" resultMap="item_rm">
+			SELECT ITEM_NO, ITEM_TYPE, ITEM_PRICE, ITEM_NAME, ITEM_DESCRIPTION, 
+			ITEM_STATUS, DISCOUNT_RATE, ITEM_IMG_NO, (ITEM_IMG_PATH || ITEM_IMG_RENAME) THUMBNAIL, ITEM_IMG_ORDER
+			FROM "ITEM"
+			JOIN "ITEM_IMG" USING(ITEM_NO)
+			JOIN "WISH_LIST" USING(ITEM_NO)
+			WHERE MEMBER_NO= #{memberNo}
+		</select>
 </mapper>

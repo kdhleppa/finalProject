@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.camplex.project.paysys.model.dto.CartItem;
 import com.camplex.project.paysys.model.dto.InfoForReservation;
+import com.camplex.project.paysys.model.dto.rentPayList;
 
 @Mapper
 public interface PaysysMapper {
@@ -81,6 +82,14 @@ public interface PaysysMapper {
 
 
 	int deleteAllCart(int memberNo);
+
+
+
+	rentPayList selectCheckCart(@Param("cartItemNo") Integer cartItemNo, @Param("memberNo") int memberNo);
+
+
+
+	int insertCartNoQuantity(Map<String, Object> map);
 
 
 

@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.camplex.project.camping.model.dto.Camp;
+import com.camplex.project.item.model.dto.Item;
 
 @Mapper
 public interface WishlistMapper {
@@ -20,6 +21,7 @@ public interface WishlistMapper {
 	public void deleteCampWish(@Param("memberNo") int memberNo, @Param("campNo") int campNo);
 
 	public void deleteItemWish(@Param("memberNo") int memberNo, @Param("itemNo") int itemNo);
+
 
 
 

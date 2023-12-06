@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.camplex.project.camping.model.dto.Camp;
+import com.camplex.project.item.model.dto.Item;
 import com.camplex.project.member.mappers.WishlistMapper;
 
 @Service
@@ -51,6 +52,7 @@ public class WishlistServiceImpl implements WishlistService{
 	public void deleteItemWish(int memberNo, int itemNo) {
 		mapper.deleteItemWish(memberNo, itemNo);
 	}
+
 
 	
 }

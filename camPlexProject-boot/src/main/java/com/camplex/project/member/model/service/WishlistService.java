@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.camplex.project.camping.model.dto.Camp;
 import com.camplex.project.item.model.dto.Item;
+import com.camplex.project.member.model.dto.Wishlist;
 
 public interface WishlistService {
 
@@ -16,6 +17,8 @@ public interface WishlistService {
 	void deleteCampWish(int memberNo, int campNo);
 
 	void deleteItemWish(int memberNo, int itemNo);
+
+
 
 	
 
