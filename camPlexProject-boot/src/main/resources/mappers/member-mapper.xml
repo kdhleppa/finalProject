@@ -159,6 +159,32 @@
 		AND MEMBER_EMAIL = #{memberEmail}
 	</select>
 	
+	<!-- 회원 아닐 시 네이버 자동 회원가입 -->
+	<insert id="naverSignUp">
+		INSERT INTO "MEMBER"
+		VALUES(SEQ_MEMBER_NO.NEXTVAL
+		, #{memberEmail}
+		, DEFAULT
+		, #{memberName}
+		, #{memberNickname}
+		, #{memberPhone}
+		, DEFAULT
+		, DEFAULT, DEFAULT, DEFAULT)
+	</insert>
+	
+	<!-- 네이버 계정 이메일로 로그인 -->
+	<select id="naverLoginMember" resultMap="member_rm">
+		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_PW, MEMBER_NAME, MEMBER_NICKNAME,
+		MEMBER_PHONE, MEMBER_PROFILE_IMG, MEMBER_TYPE,
+		TO_CHAR(ENROLL_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') AS ENROLL_DATE
+		FROM "MEMBER"
+		WHERE MEMBER_DEL_FL = 'N'
+		AND MEMBER_EMAIL = #{memberEmail}
+	</select>
+	
+	
+	
+	
 	
 	
 	<!-- 마이페이지 구매 내역 값 뿌리기 -->

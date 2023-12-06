@@ -42,7 +42,7 @@
 	                        
 	                        <!-- 간편로그인, 로그인버튼 -->
 	                        <section id="easyLoginBtn">
-	                            <img th:src="@{/images/memberImg/naverIMG.png}">
+	                            <a th:href="@{|${naverUrl}|}"><img th:src="@{/images/memberImg/naverIMG.png}"></a>
 	                            <a th:href="@{${kakaoUrl}}"><img th:src="@{/images/iconImg/kakao_login_small.png}"></a>
 	                            <button type="submit" id="loginBtn">로그인</button>
 	                        </section>

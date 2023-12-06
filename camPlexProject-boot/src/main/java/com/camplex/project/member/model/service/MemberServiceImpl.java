@@ -233,6 +233,18 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.kakaoLoginMember(email);
 	}
 
+	// 회원 아닐 시 네이버 자동 회원가입
+	@Override
+	public int naverSignUp(Map<String, String> map) {
+		return mapper.naverSignUp(map);
+	}
+
+	// 네이버 계정 이메일로 로그인
+	@Override
+	public Member naverLoginMember(String email) {
+		return mapper.naverLoginMember(email);
+	}
+
 
 
 
