@@ -193,7 +193,7 @@ main {
 
 .campUploadBtnSec {
     margin-right: 30px;
-	width: 40%;
+	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: end;
@@ -320,6 +320,7 @@ main {
     width: 23rem;
     height: 14rem;
     cursor: pointer;
+    object-fit: cover;
 }
 
 .contentDetailWriteSec {
@@ -335,7 +336,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #000;
 }
 
@@ -446,4 +447,12 @@ main {
     100% {
       opacity: 100%;
     }
+  }
+
+
+  #campDelete{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-right: px;
   }

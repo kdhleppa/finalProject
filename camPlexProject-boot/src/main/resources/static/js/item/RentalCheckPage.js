@@ -97,7 +97,7 @@ classification.addEventListener('change', (e) => {
 
 		}
 
-
+		more(data.length)
 		
 		})	
 	
@@ -210,6 +210,7 @@ itemInput.addEventListener("keyup", (e) => {
 		
 		}
 
+		more(data.length)
 	})
 
 })
@@ -329,7 +330,7 @@ for(var i = 0 ; i < categoryBtn.length ; i++){
 			
 			}
 
-
+			more(data.length)
 
 
 		})
@@ -361,14 +362,14 @@ function more(contentLength){
 
 		btn.addEventListener("click", () => {
 				
-			contentContainer.style.height = contentContainer.offsetHeight+500+'px';
+			contentContainer.style.height = contentContainer.offsetHeight+512+'px';
 			
 			contentCount += 4;
 			more(contentLength)
 		})
 
 
-	} else if(contentLength < contentCount && contentCount > 6) {
+	} else if(contentLength < contentCount && contentCount > 8) {
 
 		const btn = document.createElement('button');
 		btn.classList.add('moreBtn')

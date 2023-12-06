@@ -53,6 +53,17 @@ hr {
 	font-weight: lighter;
 }
 
+.titleContainer{
+	display: flex;
+	align-items: center;
+}
+
+.titleContainer button{
+	margin-left: 20px;
+	color: #000;
+	text-decoration: none;
+}
+
 .headerMenu {
 	display: flex;
 	align-items: flex-end;
@@ -131,7 +142,9 @@ hr {
 
 .thumbsnail img {
 	height: 100%;
+	width: 100%;
 	border-radius: 7px;
+	object-fit: cover;
 }
 
 .campImg {
@@ -156,6 +169,7 @@ hr {
 }
 
 .campImgContainer img {
+	width: 100%;
 	height: 100%;
 	border-radius: 5px;
 }
