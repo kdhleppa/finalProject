@@ -45,4 +45,13 @@ public class AjaxController {
         return service.checkAuthKey(paramMap);
     }
 	
+	// 전화번호 중복 검사
+	@GetMapping("/dupCheck/phone")
+	@ResponseBody
+	public int checkPhone(String phone) {
+		return service.checkPhone(phone);
+	}
+	
+	
+	
 }

@@ -16,4 +16,7 @@ public interface AjaxService {
 	// 이메일 인증번호 확인
 	int checkAuthKey(Map<String, Object> paramMap);
 
+	// 전화번호 중복 검사
+	int checkPhone(String phone);
+
 }

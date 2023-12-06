@@ -127,6 +127,12 @@ public class AjaxServiceImpl implements AjaxService {
 	public int checkAuthKey(Map<String, Object> paramMap) {
 		return mapper.checkAuthKey(paramMap);
 	}
+
+	// 전화번호 중복 검사
+	@Override
+	public int checkPhone(String phone) {
+		return mapper.checkPhone(phone);
+	}
 	
 	
 }
