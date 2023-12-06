@@ -15,21 +15,21 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.camplex.project.kakao.service.KakaoService;
-import com.camplex.project.member.model.dto.KakaoDTO;
 import com.camplex.project.member.model.dto.Member;
+import com.camplex.project.member.model.dto.NaverDTO;
 import com.camplex.project.member.model.service.MemberService;
+import com.camplex.project.member.model.service.NaverService;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("kakao")
+@RequestMapping("naver")
 @SessionAttributes({"loginMember"})
-public class KakaoController {
+public class NaverController {
 
-	private final KakaoService kakaoService;
+	private final NaverService naverService;
 
 	@Autowired
 	private MemberService service;
@@ -38,62 +38,65 @@ public class KakaoController {
 	private Member member;
 
 	@GetMapping("/callback")
-	public ResponseEntity<Object> callback(HttpServletRequest request,
+	public ResponseEntity<Object> callback(HttpServletRequest request, 
 											RedirectAttributes ra,
 											Model model) throws Exception {
 
-		KakaoDTO kakaoInfo = kakaoService.getKakaoInfo(request.getParameter("code"));
+		NaverDTO naverInfo = naverService.getNaverInfo(request.getParameter("code"));
 
-		String email = kakaoInfo.getEmail();
-		String name = kakaoInfo.getNickname();
+		String email = naverInfo.getEmail();
+		String name = naverInfo.getName();
+		String nickname = naverInfo.getNickname();
+		String phone = naverInfo.getMobile();
 
 		member.setMemberEmail(email);
 		member.setMemberName(name);
+		member.setMemberNickname(nickname);
+		member.setMemberPhone(phone);
 
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("memberEmail", email);
 		map.put("memberName", name);
+		map.put("memberNickname", nickname);
+		map.put("memberPhone", phone);
 
 		String path = "";
 		String message = null;
-		// DB에서 앞전에 카카오 로그인이 되었는지 조회
+
 		String result = service.checkMember(email);
-
-		if (result == null) {
-			// 조회된 결과가 없다면 DB insert 후 로그인 상태로 메인페이지 이동
-			int signUpResult = service.kakaoSignUp(map);
-
-			if (signUpResult > 0) {
+		
+		if(result == null) {
+			int signUpResult = service.naverSignUp(map);
+			
+			if(signUpResult > 0) {
 				path = "/";
-
-				Member loginMember = service.kakaoLoginMember(email);
-
-				message = kakaoInfo.getNickname() + "님의 가입을 환영합니다";
+				
+				Member loginMember = service.naverLoginMember(email);
+				
+				message = naverInfo.getNickname() + "님의 가입을 환영합니다.";
+				
 				model.addAttribute("loginMember", loginMember);
-
 			} else {
 				path = "member/idPw/signUp";
 
-				message = "카카오 회원 가입 실패로 camPlex 홈페이지에서 직접 회원가입 바랍니다.";
+				message = "네이버 회원 가입 실패로 camPlex 홈페이지에서 직접 회원가입 바랍니다.";
 			}
-
+			
 		} else {
-			// 조회된 결과가 있다면 email 들고가서 select로 찾아 값 들고
-			// loginMember에 넣어서loginMember 세션에 올림
-			Member loginMember = service.kakaoLoginMember(email);
+			Member loginMember = service.naverLoginMember(email);
 
 			path = "/";
 
-			message = kakaoInfo.getNickname() + "님 환영합니다";
+			message = naverInfo.getNickname() + "님 환영합니다";
+			
 			model.addAttribute("loginMember", loginMember);
 		}
-
+		
 		ra.addFlashAttribute("message", message);
-
+		
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(URI.create(path));
 		return new ResponseEntity<>(headers, HttpStatus.MOVED_PERMANENTLY);
-
+		
 	}
-
 }

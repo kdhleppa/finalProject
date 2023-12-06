@@ -54,6 +54,12 @@ public interface MemberMapper {
 	// 카카오 계정 이메일로 로그인
 	Member kakaoLoginMember(String email);
 
+	// 회원 아닐 시 네이버 자동 회원가입
+	int naverSignUp(Map<String, String> map);
+	
+	// 네이버 계정 이메일로 로그인
+	Member naverLoginMember(String email);
+
 
 
 
