@@ -36,6 +36,8 @@ public interface ItemService {
 	 */
 	List<Item> selectItemListPricehigh();
 
+	List<Item> inCartWishlist(int memberNo);
+
 
 
 

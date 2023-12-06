@@ -1,28 +1,23 @@
 package com.camplex.project.paysys.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.camplex.project.camping.model.dto.Camp;
@@ -30,17 +25,19 @@ import com.camplex.project.camping.model.dto.CampDetail;
 import com.camplex.project.camping.model.service.CampService;
 import com.camplex.project.common.etc.ResponseMessage;
 import com.camplex.project.item.model.dto.FindCartItem;
+import com.camplex.project.item.model.dto.Item;
 import com.camplex.project.item.model.dto.MembersReservationDate;
 import com.camplex.project.item.model.service.ItemService;
 import com.camplex.project.member.model.dto.Member;
+import com.camplex.project.member.model.service.WishlistService;
 import com.camplex.project.paysys.model.dto.CartItem;
 import com.camplex.project.paysys.model.dto.InfoForReservation;
 import com.camplex.project.paysys.model.dto.Reservations;
+import com.camplex.project.paysys.model.dto.rentPayList;
 import com.camplex.project.paysys.model.service.PaysysService;
 import com.camplex.project.paysys.model.service.ReservationsService;
 
 import jakarta.servlet.http.HttpServletRequest;
-import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping("/paysys")
@@ -58,6 +55,9 @@ public class PaysysController {
 	
 	@Autowired
 	private CampService campService;
+	
+	@Autowired
+	private WishlistService wishService;
 	
 	@PostMapping("/rentalPay/now")
 	public String rentalPayNow(
@@ -155,19 +155,18 @@ public class PaysysController {
 			return "redirect:/member/login";
 		}
 		
-		// map = {List<MembersReservationDate>, List<장바구니리스트>}
 		int memberNo = loginMember.getMemberNo();
 		List<MembersReservationDate> rsvInfo = itemService.membersRsvInfo(memberNo);
 		List<MembersReservationDate> rsvInfo2 = itemService.membersRsvInfo(memberNo);
 		List<FindCartItem> cartItem = itemService.membersCartItem(memberNo);
-		
-		
+		List<Item> wishlist = itemService.inCartWishlist(memberNo);
+		System.out.println("check111"+wishlist);
 
 		
 		model.addAttribute("cartItem", cartItem);
 		model.addAttribute("rsvInfo", rsvInfo);
 		model.addAttribute("rsvInfo2", rsvInfo2);
-		
+		model.addAttribute("wishlist", wishlist);
 		
 		return "/paysys/rentCart";
 	}
@@ -344,24 +343,97 @@ public class PaysysController {
 		}
 	}
 	
-//	@PostMapping("/payAll")
-//	public String payAll(
-//			@SessionAttribute("loginMember") Member loginMember,
-//			@RequestParam(value = "checkCartItemNo", required = false) List<Integer> checkCartItemNo			
-//			) {
-//		
-//		 
-//		
-//		if (checkCartItemNo != null) {
-//			for (Integer cartItemNo: checkCartItemNo ) {
-//				
-//			}
-//			
-//		}
-//		
-//		return null;
-//		
-//	}
+	@PostMapping("/payCheck")
+	public String payAll(
+			@SessionAttribute("loginMember") Member loginMember,
+			RedirectAttributes ra, HttpServletRequest request,
+			@RequestParam(value = "checkCartItemNo", required = false) List<Integer> checkCartItemNo,
+			Model model
+			) {
+		int memberNo = loginMember.getMemberNo();
+		List<rentPayList> payList = new ArrayList<>();
+		String referer = request.getHeader("Referer");
+		String path = "redirect:";
+		System.out.println("check1" + checkCartItemNo);
+		if (checkCartItemNo != null) {
+			for (Integer cartItemNo: checkCartItemNo ) {
+				rentPayList data = payService.selectCheckCart(cartItemNo, memberNo);
+				
+				payList.add(data);
+			}
+			
+			System.out.println("check:" + payList);
+			model.addAttribute("rentPayList" , payList);
+			
+			
+		} else {
+			ra.addFlashAttribute("message", "선택된 상품이 없습니다.");
+			path += referer;
+			return path;
+		}
+		
+		return "paysys/rentalPay";
+		
+	}
 	
 
+	
+	@PostMapping("/moveWishlistToCart")
+	public String moveWishlistToCart (
+			int itemNo, int reservationNo,
+			@SessionAttribute(value="loginMember", required = false)Member loginMember,
+			RedirectAttributes ra, HttpServletRequest request
+			) {
+		Integer cartNo = 0;
+		int result = 0;
+		int searchResult = 0;
+		int searchCartNo = 0;
+		String referer = request.getHeader("Referer");
+		String path = "redirect:";
+		
+		
+		int memberNo = loginMember.getMemberNo();
+		cartNo = payService.searchMembersCartNo(memberNo);
+		if(cartNo == null) {
+			payService.createCart(memberNo);
+			cartNo = payService.searchMembersCartNo(memberNo);
+		} 
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("itemNo", itemNo);
+		map.put("reservationNo", reservationNo);
+		map.put("cartNo", cartNo);
+		map.put("memberNo", memberNo);
+		
+		searchResult = payService.searchCartItem(map);
+		
+		if (searchResult > 0) {
+			ra.addFlashAttribute("message", "해당 예약캠핑장카트에 추가된 상품 입니다.\n카트에서 수량조정을 해주세요.");
+			path += referer;
+			return path;
+			
+		} else {
+			result = payService.insertCartNoQuantity(map);
+			
+			if (result > 0) {
+				ra.addFlashAttribute("message", "상품이 카트에 추가되었습니다.");
+				wishService.deleteItemWish(memberNo, itemNo);
+				path += referer;
+				return path;
+			} else {
+				ra.addFlashAttribute("message", "카트 등록에 실패하였습니다.");
+				path += referer;
+				return path;
+				
+			}
+			
+			
+		}
+			
+			
+		
+		
+	}
+		
+	
 }

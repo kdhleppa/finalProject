@@ -21,5 +21,7 @@ public interface ItemMapper {
 
 	public List<FindCartItem> membersCartItem(int memberNo);
 
+	public List<Item> inCartWishlist(int memberNo);
+
 	
 }
