@@ -56,4 +56,6 @@ public interface CampMapper2 {
 	 */
 	int deleteCampDeImg(int campDeNo);
 
+	int updateCampDe(int campNo);
+
 }

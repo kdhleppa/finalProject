@@ -27,6 +27,7 @@ public class Camp {
 	private String campInfo;
 	private String checkIn;
 	private String checkOut;
+	private String information;
 	private float campingStar;
 	
 	private String thumbnail;
