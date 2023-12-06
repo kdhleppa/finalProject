@@ -98,3 +98,28 @@ boardWriteFrm.addEventListener('submit', e => {
 
 });
 
+
+function quilljsediterInit(){
+    var option = {
+        modules: {
+            toolbar: [
+                [{header: [1,2,false] }],
+                ['bold', 'italic', 'underline','code-block'],
+                [{ list: 'ordered' }, { list: 'bullet' }]
+            ]
+        },
+        placeholder: '내용을 입력해 주세요',
+        theme: 'snow'
+    };
+
+    quill = new Quill('#editor', option);
+    quill.on('text-change', function() {
+        document.getElementById("boardContent").value = quill.root.innerHTML;
+    });
+
+    quill.getModule('toolbar').addHandler('image', function () {
+        selectLocalImage();
+    });
+}
+
+quilljsediterInit();

@@ -59,6 +59,10 @@ dependencies {
         // https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
         implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
         
+        
+        implementation 'com.navercorp.lucy:lucy-xss-servlet:2.0.1'
+        implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+        
 }
 
 tasks.named('bootBuildImage') {
