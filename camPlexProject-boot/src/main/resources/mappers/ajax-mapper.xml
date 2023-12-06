@@ -35,5 +35,13 @@
 		WHERE EMAIL = #{email}
 		AND AUTH_CODE = #{inputKey}
 	</select>
+	
+	<!-- 닉네임 중복 검사 -->
+	<select id="checkPhone" resultType="_int">
+		SELECT COUNT(*) FROM "MEMBER"
+		WHERE MEMBER_PHONE = #{phone}
+		AND MEMBER_DEL_FL = 'N'
+	</select>
+	
 
 </mapper>

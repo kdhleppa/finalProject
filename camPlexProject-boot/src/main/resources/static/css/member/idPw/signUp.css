@@ -57,7 +57,7 @@ input:focus {
 }
 
 main, div, section {
-    /* border: 1px solid black; */
+    /*border: 1px solid black;*/
 }
 
 /* ------------------------------- */
@@ -250,23 +250,23 @@ label:hover {
 /* 이메일 인증, 확인 버튼 */
 #telCheckBtnSection {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: start;
 }
 
 .telCheckBtn {
     background-color: transparent;
     border: none;
-    font-size: 17px;
+    font-size: 15px;
     margin-left: 10px;
 }
 
 #checkTel {
-    margin-bottom: 65px;
+	margin-top: 462px;
 }
 
 #checkTelAuthkey {
-    margin-bottom: 342px;
+	margin-top: 66px;
 }
 
 /* 메세지 색상 지정 */
