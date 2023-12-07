@@ -351,7 +351,11 @@ function more(contentLength){
 	
 	bBlank[0].innerHTML = "";
 
-	if(contentLength > contentCount){
+	if(contentLength <= 6) {
+
+		return;
+
+	}else if(contentLength > contentCount){
 		
 		const btn = document.createElement('button');
 		btn.classList.add('moreBtn')
@@ -387,9 +391,6 @@ function more(contentLength){
 			more(contentLength)
 		})
 
-	} else {
-		bBlank[0].innerHTML = "";
-		more(contentLength)
-	}
+	} 
 	
 }

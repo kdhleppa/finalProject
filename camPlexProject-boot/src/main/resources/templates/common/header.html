@@ -14,8 +14,8 @@
                 <a th:unless="${session.loginMember}" th:href="@{/member/login}">LOGIN</a>
                 
 				<th:block th:if="${session.loginMember}">
-					<a th:href="@{/paysys/rentCart}">CART</a>
-	                <a th:href="@{/member/wishlist}">WISH LIST</a>
+					<a class="hideMenu" th:href="@{/paysys/rentCart}">CART</a>
+	                <a class="hideMenu" th:href="@{/member/wishlist}">WISH LIST</a>
 	                
 	                <th:block th:if="${session.loginMember.memberType == 'U'}">
 			            <a th:href="@{/member/myPage}">MY PAGE</a>
@@ -32,12 +32,12 @@
 	                <a th:href="@{/member/logout}">LOGOUT</a>
 			    </th:block>
 			    
-                <a href="#">TOP</a>
+                <a class="hideMenu" href="#">TOP</a>
             </div>
 
         </div>
 
-        <a class="mainTitle" href="/">C A M P L E X </a>
+        <a id="mainTitle" class="mainTitle" href="/">C A M P L E X </a>
 
         <div class="bottomMenu">
             <a th:href="@{/camp/search}">CAMPING</a>

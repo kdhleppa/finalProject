@@ -34,6 +34,15 @@ public interface CampService2 {
 	 */
 	int deleteCamp(int campNo);
 
+	/** 캠핑장 no 0 인 캠핑 장소 삭제
+	 * @return
+	 */
+	int delCampNoZ();
+
+	Camp searchCampForCampNo(int campNo);
+
+	CampDetail searchCampDeForCampNo(int campNo);
+
 
 
 

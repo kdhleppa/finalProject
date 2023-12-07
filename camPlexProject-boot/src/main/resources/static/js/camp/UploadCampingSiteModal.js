@@ -1,3 +1,19 @@
+// 페이지 넘어갈 때 함수 실행
+window.addEventListener('unload', () => {
+	
+	console.log("unload이벤트 발생");
+	
+	/*location.href = "/camp2/deleteCampNoZ";*/
+	
+	fetch("/camp2/deleteCampNoZ")
+	.then(resp => resp.text())
+	.then(count => {
+		console.log(count);
+	})
+});
+
+
+
 const modalDeleteBtn = document.getElementById("modalDeleteBtn");
 const modalContainer = document.getElementById("modalContainer");
 const enrollSiteBtn = document.getElementById('enrollSiteBtn');

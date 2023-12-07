@@ -1,6 +1,7 @@
 package com.camplex.project.member.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
@@ -51,6 +52,12 @@ public class WishlistServiceImpl implements WishlistService{
 	@Override
 	public void deleteItemWish(int memberNo, int itemNo) {
 		mapper.deleteItemWish(memberNo, itemNo);
+	}
+
+	@Transactional
+	@Override
+	public int wishDelete(Map<String, Object> map) {
+		return mapper.wishDelete(map);
 	}
 
 

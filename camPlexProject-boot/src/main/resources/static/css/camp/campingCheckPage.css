@@ -286,13 +286,11 @@ main {
     height: auto;
     width: 100%;
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
-    
 }
 
 .contentDetailSec {
-    width: 26%;
+    width: calc(100%/3);
     height: 22rem;
     display: flex;
     flex-direction: column;
@@ -317,13 +315,14 @@ main {
 }
 
 .contentImage {
-    width: 23rem;
+    width: 22rem;
     height: 14rem;
     cursor: pointer;
     object-fit: cover;
 }
 
 .contentDetailWriteSec {
+    display: flex;
     flex-basis: 15%;
     width: 100%;
     justify-content: center;
@@ -331,8 +330,8 @@ main {
 }
 
 .contentDetailWriteSecCenterSec {
+    width: 80%;
     height: 100%;
-    flex-basis: 73%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -450,9 +449,44 @@ main {
   }
 
 
-  #campDelete{
+  .campDelete{
     background-color: transparent;
     border: none;
     cursor: pointer;
-    margin-right: px;
+    color: #000;
+    text-decoration: none;
+    font-size: 1rem;
   }
+
+ .campDelete:hover{
+    color: red;
+  }
+
+  @media all and (max-width:1600px) {
+
+    .contentDetailSec{
+        height: 22rem;
+        display: flex;
+        flex-direction: column;
+        margin: 0 20px;
+    }
+    #content{
+        display: block;
+    }
+
+    .contentSec{
+        height: auto;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media all and (max-width:886px) {
+
+    .checkCalenderSec{
+        display: none;
+    }
+   
+}

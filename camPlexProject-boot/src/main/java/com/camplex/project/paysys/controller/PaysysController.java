@@ -20,8 +20,6 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.camplex.project.camping.model.dto.Camp;
-import com.camplex.project.camping.model.dto.CampDetail;
 import com.camplex.project.camping.model.service.CampService;
 import com.camplex.project.common.etc.ResponseMessage;
 import com.camplex.project.item.model.dto.FindCartItem;
@@ -32,7 +30,6 @@ import com.camplex.project.member.model.dto.Member;
 import com.camplex.project.member.model.service.WishlistService;
 import com.camplex.project.paysys.model.dto.CartItem;
 import com.camplex.project.paysys.model.dto.InfoForReservation;
-import com.camplex.project.paysys.model.dto.Reservations;
 import com.camplex.project.paysys.model.dto.rentPayList;
 import com.camplex.project.paysys.model.service.PaysysService;
 import com.camplex.project.paysys.model.service.ReservationsService;
@@ -58,28 +55,6 @@ public class PaysysController {
 	
 	@Autowired
 	private WishlistService wishService;
-	
-	@PostMapping("/rentalPay/now")
-	public String rentalPayNow(
-			@SessionAttribute(value="loginMember", required = false)Member loginMember,
-			RedirectAttributes ra,
-			Model model,
-			int quantity, int reservationNo, int itemNo
-			) {
-		if(loginMember == null) {
-			ra.addFlashAttribute("message", "로그인 후 이용해 주세요");
-			return "/member/idPw/login";
-		} else {
-		/*넘어오는값 정리
-		 * 아이템정보, 수량, 예약넘버(예약지, 일정등 조회용), 로긴멤버*/
-			List<CampDetail> campDetail;
-			List<Camp> camp;
-			List<Reservations> rsv;
-			
-			
-			return "/paysys/rentalPay";
-		}
-	}
 	
 	@PostMapping("/rentCart/insert")
 	public String rentCartInsert(int itemNo, int reservationNo, int quantity,
@@ -252,19 +227,20 @@ public class PaysysController {
 			@RequestParam("reservationNo") int reservationNo,
 		    @RequestParam("cartItemNo") int cartItemNo,
 		    @RequestParam("itemNo") int itemNo,
-			RedirectAttributes ra, HttpServletRequest request
+			RedirectAttributes ra, HttpServletRequest request,
+			@SessionAttribute("loginMember") Member loginMember
 			) {
-		 
-		
+		int memberNo = loginMember.getMemberNo(); 
+		int cartNo = payService.searchMembersCartNo(memberNo);
 		String referer = request.getHeader("Referer");
 		String path = "redirect:";	
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("reservationNo", reservationNo);
 		map.put("cartItemNo", cartItemNo);
 		map.put("itemNo", itemNo);
-		
+		map.put("cartNo", cartNo);
 		int searchResult = 0;
-		searchResult = payService.searchResult(map);
+		searchResult = payService.searchCartItem(map);
 		
 		
 		if (searchResult > 0) {
@@ -376,6 +352,46 @@ public class PaysysController {
 		
 	}
 	
+	@PostMapping("/rentalPay/now")
+	public String rentalPayNow(
+			@SessionAttribute(value="loginMember", required = false)Member loginMember,
+			RedirectAttributes ra,
+			Model model,
+			int quantity, int reservationNo, int itemNo
+			) {
+		
+		System.out.println("reservationNo " +reservationNo);
+		if(loginMember == null) {
+			ra.addFlashAttribute("message", "로그인 후 이용해 주세요");
+			return "redirect:/member/login";
+		} else {
+			int memberNo = loginMember.getMemberNo();
+			MembersReservationDate rsvInfo = new MembersReservationDate();
+			rsvInfo = itemService.membersRsvInfo2(reservationNo);
+			rentPayList data = new rentPayList();
+			Item item = itemService.payNow(itemNo);
+			System.out.println(item);
+			data.setMemberNo(memberNo);
+			data.setItemNo(itemNo);
+			data.setItemPrice(item.getItemPrice());
+			data.setItemName(item.getItemName());
+			data.setCampName(rsvInfo.getCampName());
+			data.setThumbnail(item.getThumbnail());
+			data.setCartItemNo(0);
+			data.setItemQuantity(quantity);
+			data.setReservationNo(reservationNo);
+			data.setCampEntdate(rsvInfo.getCampEntDate());
+			data.setCampOutdate(rsvInfo.getCampOutDate());
+			System.out.println("data =" +data);
+			model.addAttribute("rentPayList", data);
+			
+			
+			
+			
+			return "/paysys/rentalPay";
+		}
+	}
+	
 
 	
 	@PostMapping("/moveWishlistToCart")
@@ -427,13 +443,39 @@ public class PaysysController {
 				
 			}
 			
-			
 		}
-			
-			
-		
 		
 	}
+	
+	
+	
+	@PostMapping("/wishDelete")
+	public String wishDelete (@SessionAttribute(value="loginMember", required = false)Member loginMember,
+			RedirectAttributes ra, HttpServletRequest request,
+			int itemNo
+			) {
+		String referer = request.getHeader("Referer");
+		String path = "redirect:";
+		int memberNo = loginMember.getMemberNo();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("itemNo", itemNo);
+		map.put("memberNo", memberNo);
+		
+		int result = 0;
+		
+		result = wishService.wishDelete(map);
+		
+		if(result >0) {
+			ra.addFlashAttribute("message", "삭제되었습니다.");
+			path += referer;
+			return path;
+		} else {
+			ra.addFlashAttribute("message", "삭제실패");
+			path += referer;
+			return path;
+		}
+	}
+	
 		
 	
 }

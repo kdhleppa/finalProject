@@ -244,6 +244,30 @@ public class CampServiceImpl2 implements CampService2{
 	}
 
 
+	/** 캠핑장 no 0 인 캠핑 장소 삭제
+	 *
+	 */
+	@Override
+	public int delCampNoZ() {
+		return mapper.delCampNoZ();
+	}
+
+
+	/** 캠프 no에 따른 조회
+	 *
+	 */
+	@Override
+	public Camp searchCampForCampNo(int campNo) {
+		return mapper.searchCampForCampNo(campNo);
+	}
+
+
+	@Override
+	public CampDetail searchCampDeForCampNo(int campNo) {
+		return mapper.searchCampDeForCampNo(campNo);
+	}
+
+
 
 
 	

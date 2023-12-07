@@ -3,6 +3,7 @@ package com.camplex.project.member.model.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,9 @@ import com.camplex.project.member.mappers.AjaxMapper;
 import jakarta.mail.Message;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
+import jakarta.transaction.Transactional;
+import net.nurigo.sdk.NurigoApp;
+import net.nurigo.sdk.message.service.DefaultMessageService;
 
 @Service
 public class AjaxServiceImpl implements AjaxService {
@@ -68,6 +72,7 @@ public class AjaxServiceImpl implements AjaxService {
 
 	// 이메일 인증번호 발송
 	@Override
+	@Transactional
 	public int sendEmail(String email, String title) {
 		
 		String authKey = createAuthKey();
@@ -85,7 +90,7 @@ public class AjaxServiceImpl implements AjaxService {
            
            // 메일 내용
            String mailContent 
-               = "<p>comPlex 비밀번호 재설정 "+title+" 인증코드입니다.</p>"
+               = "<p>camPlex 비밀번호 재설정 "+title+" 인증코드입니다.</p>"
                + "<h3 style='color:blue'>" + authKey + "</h3>";
            
            
@@ -133,6 +138,37 @@ public class AjaxServiceImpl implements AjaxService {
 	public int checkPhone(String phone) {
 		return mapper.checkPhone(phone);
 	}
+
+	// 인증번호 전송
+	@Override
+	public int sendAuthKey(String phone, int randomNumber) {
+		
+		DefaultMessageService messageService =  NurigoApp.INSTANCE.initialize("NCS21BCIPH9LBAO3", "BGUIGPE95MYQ4JP3LU9WXS2KERRAYO11", "https://api.coolsms.co.kr");
+		// Message 패키지가 중복될 경우 net.nurigo.sdk.message.model.Message로 치환하여 주세요
+		net.nurigo.sdk.message.model.Message message = new net.nurigo.sdk.message.model.Message();
+		message.setFrom("01062701594");
+		message.setTo(phone);
+		message.setText("테스트" + randomNumber);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("randomNumber", randomNumber);
+		map.put("phone", phone);
+		
+		int result = mapper.updateTelAuthKey(map);
+
+		if (result == 0) {
+			result = mapper.insertTelAuthKey(map);
+		}
+
+		return result;
+	}
+
+	// 전화번호 인증번호 확인
+	@Override
+	public int checkTelAuthkey(Map<String, Object> paramMap) {
+		return mapper.checkTelAuthkey(paramMap);
+	}
 	
+
 	
 }

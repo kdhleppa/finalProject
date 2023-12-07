@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,9 +37,20 @@ public class CampController2 {
 	@GetMapping("/uploadCamp")
 	public String uploadPage() {
 		
-		int delResult = service.delCampDeImgNumO();
-		
 		return "camp/campingDetailUpload";
+	}
+	
+	@GetMapping("/deleteCampNoZ")
+	@ResponseBody
+	public int unloadCamp() {
+		
+		int delImgResult = service.delCampDeImgNumO();
+		
+		if(delImgResult > 0) {
+			int delCampDeResult = service.delCampNoZ();
+		}
+		
+		return delImgResult;
 	}
 	
 	@PostMapping("/campInsert")
@@ -46,11 +58,8 @@ public class CampController2 {
 			, @RequestParam(value = "images", required = false) List<MultipartFile> images
 			, RedirectAttributes ra
 			, @RequestParam MultipartFile inputCampMap
-			, @SessionAttribute("loginMember") Member loginMember) throws IllegalStateException, IOException {
-		
-		System.out.println("camp::" + camp);
-		System.out.println("campMap::" + inputCampMap);
-		System.out.println("images::" + images);
+			, @SessionAttribute("loginMember") Member loginMember
+			, @RequestHeader("referer") String referer) throws IllegalStateException, IOException {
 		
 		String[] optionArr = camp.getCampOption().split(",");
 		String[] aroundArr = camp.getCampAroundView().split(",");
@@ -73,29 +82,25 @@ public class CampController2 {
 		}
 		camp.setMemberNo(loginMember.getMemberNo());
 		
-		System.out.println(camp);
-		System.out.println(images);
-		
 		
 		int campNo = service.campInsert(camp, images, inputCampMap);
 		
 		int updateResult = service.updateCampDe(campNo);
 		
 		
-		
 		String message = null;
-		String path = null;
+		String path = "redirect:";
 		
 		
 		if(campNo > 0) {
-			message = "캠프장 등록 완료";
-			path = "camp/campingCheckPage";
+			message = "캠핑장 등록 완료";
+			path += "/camp/search";
 		} else {
-			message = "캠프장 등록 실패";
-			path = "camp/campingDetailUpload";
+			message = "캠핑장 등록 실패";
+			path += referer;
 		}
 		
-//		ra.addFlashAttribute("message", message);
+		ra.addFlashAttribute("message", message);
 		
 		return path;
 		
@@ -109,9 +114,6 @@ public class CampController2 {
 	public List<CampDetail> insertSelectDeCamp(CampDetail campDetail
 			, @RequestParam(value = "campDeImges", required = false) List<MultipartFile> campDeImges)
 					throws IllegalStateException, IOException {
-		
-		System.out.println("campDeImges:: "+campDeImges);
-		System.out.println(campDetail);
 		
 		int campDeNo = service.insertDeCamp(campDetail, campDeImges);
 		
@@ -161,5 +163,28 @@ public class CampController2 {
 		}
 		
 		return path;
+	}
+	
+	/** 캠핑장 수정
+	 * @param campNo
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/editCamp")
+	public String editCamp(int campNo, Model model) {
+		System.out.println(campNo);
+		
+		Camp campList = service.searchCampForCampNo(campNo);
+		
+		System.out.println("campList ::" + campList);
+		
+		CampDetail campDeList = service.searchCampDeForCampNo(campNo);
+		
+		model.addAttribute("campList", campList);
+		model.addAttribute("campDeList", campDeList);
+		
+		System.out.println(campDeList.getCampDetailImageList());
+		
+		return "camp/campingEdit";
 	}
 }

@@ -1,6 +1,7 @@
 package com.camplex.project.member.mappers;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -21,6 +22,8 @@ public interface WishlistMapper {
 	public void deleteCampWish(@Param("memberNo") int memberNo, @Param("campNo") int campNo);
 
 	public void deleteItemWish(@Param("memberNo") int memberNo, @Param("itemNo") int itemNo);
+
+	public int wishDelete(Map<String, Object> map);
 
 
 

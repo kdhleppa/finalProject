@@ -28,16 +28,35 @@ const chooseNumberBtn = document.getElementById("chooseNumberBtn");
 const modalContainerPopup = document.getElementById('modalContainerPopup');
 
 chooseNumberBtn.addEventListener("click", () => {
-
+	
 	modalContainerPopup.classList.remove('hidden');
-
+	
 })
 
 window.addEventListener('click', (e) => {
-
+	
 	e.target === modalContainerPopup ? modalContainerPopup.classList.add('hidden') : false
 	
 });
+
+
+const ceoInfoModal = document.getElementById('ceoInfoModal')
+const ceoInfoPopup = document.getElementById('ceoInfoPopup');
+const infoContent = document.getElementById('infoContent')
+
+ceoInfoModal.addEventListener("click", () => {
+	
+	infoContent.innerText = information;
+	ceoInfoPopup.classList.remove('hidden');
+	
+})
+
+window.addEventListener('click', (e) => {
+	
+	e.target === ceoInfoPopup ? ceoInfoPopup.classList.add('hidden') : false
+	
+});
+
 
 
 const adultPlus = document.getElementById('adultPlus')

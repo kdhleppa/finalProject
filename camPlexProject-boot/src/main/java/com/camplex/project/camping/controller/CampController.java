@@ -174,6 +174,8 @@ public class CampController {
 		model.addAttribute("aroundView", aroundViewMap);
 		model.addAttribute("camp", camp);
 		
+		System.out.println("camp::" + camp);
+		
 		return "camp/campingDetail";
 	}
 	
@@ -249,6 +251,7 @@ public class CampController {
 			path = "camp/campingReservation";
 			
 		}
+		
 		
 		return path;
 	}

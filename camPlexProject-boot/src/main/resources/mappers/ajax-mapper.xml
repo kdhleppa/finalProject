@@ -26,7 +26,7 @@
 	
 	<!-- 인서트 인증번호 -->
 	<insert id="insertAuthKey">
-		INSERT INTO "AUTH_KEY" VALUES(SEQ_AUTH_KEY_NO.NEXTVAL, #{authKey}, #{email}, DEFAULT)
+		INSERT INTO "AUTH_KEY" VALUES(SEQ_AUTH_KEY_NO.NEXTVAL, #{authKey}, #{email}, DEFAULT, NULL)
 	</insert>
 
 	<!-- 인증번호 확인 -->
@@ -43,5 +43,26 @@
 		AND MEMBER_DEL_FL = 'N'
 	</select>
 	
+	<!-- 전화번호 인증번호 업데이트 -->
+	<update id="updateTelAuthKey">
+		UPDATE "AUTH_KEY" SET
+		AUTH_CODE = #{randomNumber},
+		CREATE_DATE = SYSDATE
+		WHERE PHONE = #{phone}
+	</update>
+	
+	<!-- 전화번호 인증번호 전송 -->
+	<insert id="insertTelAuthKey">
+		INSERT INTO "AUTH_KEY" VALUES(SEQ_AUTH_KEY_NO.NEXTVAL, #{randomNumber}, NULL, DEFAULT, #{phone})
+	</insert>
+
+	<!-- 전화번호 인증번호 확인 -->
+	<select id="checkTelAuthkey" resultType="_int">
+		SELECT COUNT(*) FROM "AUTH_KEY"
+		WHERE PHONE = #{phone}
+		AND AUTH_CODE = #{inputKey}
+	</select>
+
+
 
 </mapper>

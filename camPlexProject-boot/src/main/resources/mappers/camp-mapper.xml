@@ -56,6 +56,7 @@
 		<result property="checkIn" column="CHECK_IN" />
 		<result property="checkOut" column="CHECK_OUT" />
 		<result property="category" column="CATEGORY" />
+		<result property="information" column="INFORMATION" />
 	</resultMap>
 	
 	<resultMap type="CampSiteImage" id="camp_image_rm">
@@ -201,7 +202,7 @@
 		SELECT CAMP_NO, MEMBER_NO, CAMP_ADDRESS, CAMP_PHONE,
 		CAMP_NAME, CAMP_OPTION, CAMP_AROUND_VIEW, CAMP_MAP,
 		MANNER_TIME,CATEGORY, CAMP_INFO, (CAMP_IMG_PATH || CAMP_IMG_RENAME) THUMBNAIL, 
-		CHECK_IN, CHECK_OUT
+		CHECK_IN, CHECK_OUT, INFORMATION
 		FROM "CAMPING_SITE"
 		JOIN CAMPING_SITE_IMG USING(CAMP_NO)
 		WHERE CAMP_NO = #{campNo}
@@ -241,7 +242,7 @@
 	<!-- 캠핑장 예약 이동하면서 보여줄 정보 조회 -->
 	<select id="selectCampDetail" resultMap="camp_detail_rm">
 		SELECT CAMP_DE_NO, CAMP_NO, CAMP_NAME, CAMP_DE_NAME, CAMP_DE_PRICE, CAPACITY, MANNER_TIME, 
-		CHECK_IN, CHECK_OUT, FULL_CAPACITY,
+		CHECK_IN, CHECK_OUT, FULL_CAPACITY, INFORMATION,
 		(SELECT CATEGORY_NAME 
 		FROM CAMPING_CATEGORY 
 		WHERE CATEGORY= (SELECT CATEGORY 

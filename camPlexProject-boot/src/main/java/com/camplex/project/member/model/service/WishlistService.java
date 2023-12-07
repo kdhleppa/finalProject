@@ -1,6 +1,7 @@
 package com.camplex.project.member.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.camplex.project.camping.model.dto.Camp;
 import com.camplex.project.item.model.dto.Item;
@@ -17,6 +18,8 @@ public interface WishlistService {
 	void deleteCampWish(int memberNo, int campNo);
 
 	void deleteItemWish(int memberNo, int itemNo);
+
+	int wishDelete(Map<String, Object> map);
 
 
 
