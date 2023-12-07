@@ -652,3 +652,10 @@ hr {
 .range {
 	background-color: #d9edf7;
 }
+
+/*수정 a 태그 */
+#campUpdate {
+	margin-left: 1rem;
+	color: black;
+	text-decoration: none;
+}

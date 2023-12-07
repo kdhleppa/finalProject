@@ -30,7 +30,7 @@
 	
 	        <section class="inputCampingNameSec">
 				
-	            <input id="inputCampingName" class="inputCampingName" name="campName" type="text" placeholder="캠핑장 명을 입력해주세요.">
+	            <input id="inputCampingName" class="inputCampingName" name="campName" type="text" placeholder="캠핑장 명을 입력해주세요." th:value="${campList.campName}">
 	            
 	        </section>
 	
@@ -41,7 +41,7 @@
 	                <div class="thumbnailInput">
 
 						<label for="img0">
-                        	<img class="preview">
+                        	<img class="preview" th:src="|/images/campingImg/${campList.campSiteImageList[0].campImageReName}|">
 	                    </label>
 	                    
 	                    <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
@@ -70,7 +70,7 @@
 								<div class="inputEtcImgBtn">			
 
 									<label for="img1">
-			                        	<img class="preview">
+			                        	<img class="preview" th:src="|/images/campingImg/${campList.campSiteImageList[1].campImageReName}|">
 				                    </label>
 				                    
 				                    <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
@@ -92,7 +92,7 @@
 								<div class="inputEtcImgBtn">			
 
 									<label for="img2">
-			                        	<img class="preview">
+			                        	<img class="preview" th:src="|/images/campingImg/${campList.campSiteImageList[2].campImageReName}|">
 				                    </label>
 				                    
 				                    <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
@@ -125,7 +125,7 @@
 								<div class="inputEtcImgBtn">			
 
 									<label for="img3">
-			                        	<img class="preview">
+			                        	<img class="preview" th:src="|/images/campingImg/${campList.campSiteImageList[3].campImageReName}|">
 				                    </label>
 				                    
 				                    <input type="file" name="images" class="inputImage" id="img3" accept="image/*">
@@ -147,7 +147,7 @@
 								<div class="inputEtcImgBtn">			
 
 									<label for="img4">
-			                        	<img class="preview">
+			                        	<img class="preview" th:src="|/images/campingImg/${campList.campSiteImageList[4].campImageReName}|">
 				                    </label>
 				                    
 				                    <input type="file" name="images" class="inputImage" id="img4" accept="image/*">
@@ -220,7 +220,7 @@
 	
 	        <section class="introductionInputSec">
 	
-	            <textarea id="introduceTextArea" class="introduceTextArea" name="campInfo" placeholder="캠핑장에 대한 설명을 입력하세요."></textarea>
+	            <textarea id="introduceTextArea" class="introduceTextArea" name="campInfo" placeholder="캠핑장에 대한 설명을 입력하세요." th:text="${campList.campInfo}" spellcheck="false"></textarea>
 	
 	        </section>
 	
@@ -241,7 +241,7 @@
 						<div class="inputEtcImgBtn" id="iputImgOfDetailMap">
 						   
 		                   	<label for="img5">
-		                       <img class="preview">
+		                       <img class="preview" th:src="${campList.campMap}">
 		                   	</label>
 		                   
 		                   	<input type="file" name="inputCampMap" class="inputImage" id="img5" accept="image/*">
@@ -377,7 +377,7 @@
 	                        </section>
 	
 	                        <section class="mannerTimeInputDetailSec">
-	                            <input id="mannerTimeInput" class="mannerTimeInput" type="text" name="mannerTime" placeholder="매너타임 시간을 입력하세요.">
+	                            <input id="mannerTimeInput" class="mannerTimeInput" type="text" name="mannerTime" placeholder="매너타임 시간을 입력하세요." th:value="${campList.mannerTime}">
 	                        </section>
 	
 	                    </section>
@@ -425,7 +425,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input class="etcInfoInput" id="campAddress" name="campAddress" placeholder="OO도 OO시 OO동 (상세주소)">
+							<input class="etcInfoInput" id="campAddress" name="campAddress" placeholder="OO도 OO시 OO동 (상세주소)" th:value="${campList.campAddress}">
 							
 						</section>
 						
@@ -451,7 +451,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input id="campPhone" class="etcInfoInput" name="campPhone" placeholder="000) 000 - 000">
+							<input id="campPhone" class="etcInfoInput" name="campPhone" placeholder="000) 000 - 000" th:value="${campList.campPhone}">
 							
 						</section>
 						
@@ -477,7 +477,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input class="etcInfoInput" id="checkIn" name="checkIn" placeholder="00시 00분">
+							<input class="etcInfoInput" id="checkIn" name="checkIn" placeholder="00시 00분" th:value="${campList.checkIn}">
 							
 						</section>
 						
@@ -503,7 +503,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input class="etcInfoInput" id="checkOut" name="checkOut" placeholder="00시 00분">
+							<input class="etcInfoInput" id="checkOut" name="checkOut" placeholder="00시 00분" th:value="${campList.checkOut}">
 							
 						</section>
 						
@@ -529,8 +529,8 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<select class="categorySelect" name="category">
-								<option selected disabled>카테고리 선택</option>
+							<select class="categorySelect" name="category" id="categorySelect">
+								<option selected disabled value="noLoad">카테고리 선택</option>
 								<option value="AUTO">오토캠핑</option>
 								<option value="BACK">백패킹</option>
 								<option value="CAR">차박</option>
@@ -561,7 +561,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input class="CEONumInput" id="CEONum" name="memberNo">
+							<input class="CEONumInput" id="CEONum" name="memberNo" th:value="${campList.memberNo}">
 							
 						</section>
 						
@@ -587,7 +587,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<textarea id="etcInfoTextArea" class="etcInfoTextArea" name="information"></textarea>
+							<textarea id="etcInfoTextArea" class="etcInfoTextArea" name="information" spellcheck="false" th:text="${campList.information}"></textarea>
 							
 						</section>
 						
@@ -610,8 +610,50 @@
 			</section>
 	
 	        <section id="enrollSiteSec" class="enrollSiteSec">
+				<section th:each="ajax : ${campDeList}"></section>
 					
+				<section th:each="campDe : ${campDeList.campDetailImageList}" class="plusCampingSiteSec">
 	
+					<div class="plusCampingSiteDiv">
+						
+						<section class="plusCampingSiteDivLeftSec">
+							<img class="plusCampingSampleImg" th:src="${campDe.campDeImagePath}||${campDeImageReName}">
+						</section>
+						
+						<section class="plusCampingSiteDivRightSec">
+							
+							<section class="plusCampingSiteDivSiteNameSec">
+								asdf
+							</section>
+							
+							<section class="plusCampingSiteDivEtcInfoSec">
+								
+								<section class="plusCampingSiteDivEtcInfoLeftSec">
+									
+									<section class="capacityTitleSec">
+										수용 인원
+									</section>
+									
+									<section class="capacityOutputSec">
+										2
+									</section>
+									
+								</section>
+								
+								<section class="plusCampingSiteDivEtcInfoRightSec">
+									50000000원 ~
+								</section>
+								
+							</section>
+						</section>
+						
+						<section class="plusCampingSiteDeleteBtnSec">
+							<img class="plusCampingSiteDeleteBtn" src="/images/iconImg/campingUploadDelete.png" onclick="campDeDelete(133)">
+						</section>
+						
+					</div>
+					
+				</section>
 	
 	        </section>
 	        
@@ -640,7 +682,7 @@
 	
 	<script th:src="@{/js/camp/CampingDetailUpload.js}"></script>
 	
-	<th:block th:replace="~{camp/uploadCampingSiteModal}"></th:block>
+	<th:block th:replace="~{camp/editCampingSiteModal}"></th:block>
 </body>
 
 

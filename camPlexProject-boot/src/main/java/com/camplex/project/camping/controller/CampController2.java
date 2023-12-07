@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -175,5 +176,28 @@ public class CampController2 {
 		}
 		
 		return path;
+	}
+	
+	/** 캠핑장 수정
+	 * @param campNo
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/editCamp")
+	public String editCamp(int campNo, Model model) {
+		System.out.println(campNo);
+		
+		Camp campList = service.searchCampForCampNo(campNo);
+		
+		System.out.println("campList ::" + campList);
+		
+		CampDetail campDeList = service.searchCampDeForCampNo(campNo);
+		
+		model.addAttribute("campList", campList);
+		model.addAttribute("campDeList", campDeList);
+		
+		System.out.println(campDeList.getCampDetailImageList());
+		
+		return "camp/campingEdit";
 	}
 }

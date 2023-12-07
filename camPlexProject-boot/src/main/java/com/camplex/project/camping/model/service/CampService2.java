@@ -39,6 +39,10 @@ public interface CampService2 {
 	 */
 	int delCampNoZ();
 
+	Camp searchCampForCampNo(int campNo);
+
+	CampDetail searchCampDeForCampNo(int campNo);
+
 
 
 

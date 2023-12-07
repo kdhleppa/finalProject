@@ -75,7 +75,8 @@ const checkIn = document.getElementById('checkIn');
 const checkOut = document.getElementById('checkOut');
 const CEONum = document.getElementById('CEONum');
 const etcInfoTextArea = document.getElementById('etcInfoTextArea');
-
+const categorySelect = document.getElementById('categorySelect');
+const categorySelectValue = categorySelect.options[categorySelect.selectedIndex].value;
 
 campingDetailUploadForm.addEventListener('submit', e => {
 	
@@ -117,6 +118,12 @@ campingDetailUploadForm.addEventListener('submit', e => {
 	
 	if(checkOut.value == "") {
 		alert("체크아웃 시간을 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
+	
+	if(categorySelectValue == "noLoad") {
+		alert("카테고리를 선택해 주세요.");
 		e.preventDefault();
 		return;
 	}

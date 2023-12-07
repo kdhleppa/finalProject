@@ -1,5 +1,5 @@
 // 페이지 넘어갈 때 함수 실행
-window.addEventListener('beforeunload', () => {
+window.addEventListener('unload', () => {
 	
 	console.log("unload이벤트 발생");
 	
