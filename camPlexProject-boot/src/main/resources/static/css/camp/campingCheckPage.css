@@ -449,13 +449,44 @@ main {
   }
 
 
-  #campDelete{
+  .campDelete{
     background-color: transparent;
     border: none;
     cursor: pointer;
-    margin-right: px;
+    color: #000;
+    text-decoration: none;
+    font-size: 1rem;
   }
 
-  #campDelete:hover{
+ .campDelete:hover{
     color: red;
   }
+
+  @media all and (max-width:1600px) {
+
+    .contentDetailSec{
+        height: 22rem;
+        display: flex;
+        flex-direction: column;
+        margin: 0 20px;
+    }
+    #content{
+        display: block;
+    }
+
+    .contentSec{
+        height: auto;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media all and (max-width:886px) {
+
+    .checkCalenderSec{
+        display: none;
+    }
+   
+}

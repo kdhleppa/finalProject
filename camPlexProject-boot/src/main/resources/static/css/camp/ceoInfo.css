@@ -7,15 +7,6 @@
     unicode-range: U+AC00-D7A3;
 }
 
-#modalContainer{
-	display: flex;
-	flex-direction: column;
-	border-radius: 10px;
-	width: 400px;
-	height: 155px;
-	border-radius: 10px;
-}
-
 #mainContainer{
 	background-color: #fff;
 	padding: 10px;
@@ -26,47 +17,13 @@
 
 /* ----------------------------------------------- */
 
-.title{
-    margin: 10px;
-    margin-left: 20px;
+h1 {
+	text-align: center;
 }
 
-.chooseNumber{
-    display: flex;
-    flex-direction: column;
-}
-
-.chooseNumber > div {
-    display: flex;
-    margin: 10px 10px;
-}
-
-.chooseNumber > div > p{
-    margin: 6px 20px;
-}
-
-.number{
-    width: 130px;
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px #b4b4b4 solid;
-}
-
-.minus, .plus{
-    width: 70px;
-    border: 1px #b4b4b4 solid;
-    cursor: pointer;
-}
-
-.minus{
-    border-radius: 10px 0 0 10px;
-}
-
-.plus{
-    border-radius: 0 10px 10px 0;
+#infoContent{
+	padding: 20px;
+	font-size: 1.1rem;
 }
 
 #ceoInfoPopup {
@@ -79,6 +36,7 @@
 	justify-content: center;
 	align-items: center;
 	background: rgba(0, 0, 0, 0.5);
+	z-index: 9999;
 }
 
 

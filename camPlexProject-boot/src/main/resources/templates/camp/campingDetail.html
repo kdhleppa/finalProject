@@ -87,14 +87,14 @@
 
 					<div class="thumbsnail">
 						<div class="thumbsnailContainer">
-							<img th:src="${camp.thumbnail}" alt="">
+							<img class="img" th:src="${camp.thumbnail}" alt="">
 						</div>
 					</div>
 
 					<div class="campImg">
 						<div class="campImgContainer"
 							th:each="i : ${#numbers.sequence(1, #lists.size(camp.campSiteImageList)-1, 1)}">
-							<img th:src="|${camp.campSiteImageList[i].campImagePath}${camp.campSiteImageList[i].campImageReName}|">
+							<img class="img" th:src="|${camp.campSiteImageList[i].campImagePath}${camp.campSiteImageList[i].campImageReName}|">
 						</div>
 					</div>
 
@@ -125,7 +125,7 @@
 							<div class="ceoPicContent" th:id="|img[${camp.campCeoImageList[i].campCeoImageNo}]|" th:each="i : ${#numbers.sequence(0, #lists.size(camp.campCeoImageList)-1, 1)}">
 								<input type="hidden" class="imgNo" th:value="${camp.campCeoImageList[i].campCeoImageNo}">
 								<div class="ceoPictureWrapper">
-									<img class="ceoImg" th:src="|${camp.campCeoImageList[i].campCeoImagePath}${camp.campCeoImageList[i].campCeoImageReName}|">
+									<img class="img" th:src="|${camp.campCeoImageList[i].campCeoImagePath}${camp.campCeoImageList[i].campCeoImageReName}|">
 								</div>
 								<th:block th:if="${session.loginMember?.memberType == 'C'} or ${session.loginMember?.memberType == 'M'}">
 									<button type="button" class="ceoPicDeleteBtn">삭제</button>
@@ -335,6 +335,7 @@
 		
 	</script>
 
+	<th:block th:replace="~{camp/onclickCeoPicModal}"></th:block>
 	<th:block th:replace="~{camp/ceoPicUpload}"></th:block>
 	<th:block th:replace="~{common/footer}"></th:block>
 	<th:block th:replace="~{qna/ceoQna}"></th:block>
