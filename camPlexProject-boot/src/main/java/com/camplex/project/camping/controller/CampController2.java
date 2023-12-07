@@ -44,8 +44,6 @@ public class CampController2 {
 	@ResponseBody
 	public int unloadCamp() {
 		
-		System.out.println("unload이벤트 발생");
-		
 		int delImgResult = service.delCampDeImgNumO();
 		
 		if(delImgResult > 0) {
@@ -62,10 +60,6 @@ public class CampController2 {
 			, @RequestParam MultipartFile inputCampMap
 			, @SessionAttribute("loginMember") Member loginMember
 			, @RequestHeader("referer") String referer) throws IllegalStateException, IOException {
-		
-		System.out.println("camp::" + camp);
-		System.out.println("campMap::" + inputCampMap);
-		System.out.println("images::" + images);
 		
 		String[] optionArr = camp.getCampOption().split(",");
 		String[] aroundArr = camp.getCampAroundView().split(",");
@@ -88,14 +82,10 @@ public class CampController2 {
 		}
 		camp.setMemberNo(loginMember.getMemberNo());
 		
-		System.out.println(camp);
-		System.out.println(images);
-		
 		
 		int campNo = service.campInsert(camp, images, inputCampMap);
 		
 		int updateResult = service.updateCampDe(campNo);
-		
 		
 		
 		String message = null;
@@ -124,9 +114,6 @@ public class CampController2 {
 	public List<CampDetail> insertSelectDeCamp(CampDetail campDetail
 			, @RequestParam(value = "campDeImges", required = false) List<MultipartFile> campDeImges)
 					throws IllegalStateException, IOException {
-		
-		System.out.println("campDeImges:: "+campDeImges);
-		System.out.println(campDetail);
 		
 		int campDeNo = service.insertDeCamp(campDetail, campDeImges);
 		

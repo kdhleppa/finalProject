@@ -3,7 +3,6 @@ let overlayScreen = document.querySelector(`.overlayScreen`);
 const bBlank = document.getElementsByClassName('bBlank')
 const mainContent = document.querySelector('.mainContent')
 let contentCount = 6;
-
 const contentLength = contentDetail.length;
 
 more(contentLength)
@@ -14,7 +13,11 @@ function more(contentLength){
 	
 	bBlank[0].innerHTML = "";
 
-	if(contentLength > contentCount){
+	if(contentLength <= 6) {
+
+		return;
+
+	} else if(contentLength > contentCount){
 		
 		const btn = document.createElement('button');
 		btn.classList.add('moreBtn')
@@ -24,13 +27,14 @@ function more(contentLength){
 		bBlank[0].append(btn)
 
 		btn.addEventListener("click", () => {
-				
+
 			mainContent.style.height = mainContent.offsetHeight+352+'px';
 			
-			contentCount += 3;
-			more(contentLength)
-		})
+			contentCount += 3
 
+			more(contentLength);
+
+		})
 
 	} else if(contentLength < contentCount && contentCount > 6) {
 
@@ -43,17 +47,22 @@ function more(contentLength){
 
 		btn.addEventListener("click", () => {
 				
+			overlayScreen.classList.add("play");
+		
+			overlayScreen.addEventListener("animationend", function handler() {
+				this.removeEventListener("animationend", handler);
+				this.classList.remove("play");
+			})
+
 			mainContent.style.height ='1000px';
-			
+
 			contentCount = 6;
-	
+
 			more(contentLength)
+
 		})
 
-	} else {
-		bBlank[0].innerHTML = "";
-		more(contentLength)
-	}
+	} 
 	
 }
 
@@ -65,6 +74,10 @@ const contentSec = document.querySelector('.contentSec');
 classification.addEventListener('change', (e) => {
 	
 	contentSec.innerHTML = "";
+
+	for(var btn of categoryBtn){
+		btn.classList.remove('clicked')
+	}
 
 	overlayScreen.classList.add("play");
 		
@@ -123,17 +136,16 @@ classification.addEventListener('change', (e) => {
 
 			contentSec.append(contentDetailSec);
 		}
-
+		console.log(data.length)
 		more(data.length)
 	})	
 	
 })
 
+const categoryBtn = document.querySelectorAll(".categoryBtn")
 const searchCamp = document.getElementById('searchCamp');
 
 searchCamp.addEventListener("keyup", (e) => {
-
-	contentSec.innerHTML = "";
 
 	overlayScreen.classList.add("play");
 		
@@ -141,6 +153,12 @@ searchCamp.addEventListener("keyup", (e) => {
 		this.removeEventListener("animationend", handler);
 		this.classList.remove("play");
 	})
+
+	contentSec.innerHTML = "";
+	
+	for(var btn of categoryBtn){
+		btn.classList.remove('clicked')
+	}
 
 	fetch("/camp/searchCamp?input=" + e.target.value)
 	.then(resp => resp.json())
@@ -205,7 +223,6 @@ searchCamp.addEventListener("keyup", (e) => {
 				contentSec.append(contentDetailSec);
 			}
 		}
-		
 		more(data.length)
 		
 	})
@@ -237,7 +254,6 @@ searchCamp.addEventListener("keyup", (e) => {
 
 // })
 
-const categoryBtn = document.querySelectorAll(".categoryBtn")
 
 
 for(var i = 0 ; i < categoryBtn.length ; i++){
@@ -332,16 +348,20 @@ for(var i = 0 ; i < categoryBtn.length ; i++){
 }
 
 // **************************** 캠핑장 삭제 ***********************************
-const deleteCampFrm = document.getElementById('deleteCampFrm');
 
-document.addEventListener("submit", (e) => {
+const deleteCampFrm = document.querySelectorAll(".deleteCampFrm")
 
-	if(!confirm("삭제 하시겠습니까?")){
-
-		alert("삭제를 취소했습니다.")
-		e.preventDefault();
-		return;
-	}
-
-})
-
+for(var i = 0 ; i <deleteCampFrm.length ; i++){
+	
+	deleteCampFrm[i].addEventListener("submit", (e) => {
+		
+		if(!confirm("삭제 하시겠습니까?")){
+			
+			alert("삭제를 취소했습니다.")
+			e.preventDefault();
+			return;
+		}
+		
+	})
+	
+}

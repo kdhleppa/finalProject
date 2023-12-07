@@ -1,0 +1,56 @@
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: 1% 500%;
+    unicode-range: U+AC00-D7A3;
+}
+
+#mainContainer{
+	background-color: #fff;
+	padding: 10px;
+	border-radius: 10px;
+	padding-right: 30px;
+}
+
+
+/* ----------------------------------------------- */
+
+h1 {
+	text-align: center;
+}
+
+#infoContent{
+	padding: 20px;
+	font-size: 1.1rem;
+}
+
+#ceoInfoPopup {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 9999;
+}
+
+
+#ceoInfoPopup.hidden {
+	display: none;
+}
+
+#confirmNumber{
+	width: 100%;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	font-size: 1.1rem;
+	padding: 8px;
+	display: flex;
+	flex-direction: row-reverse;	
+}

@@ -5,6 +5,7 @@ import java.util.List;
 import com.camplex.project.item.model.dto.FindCartItem;
 import com.camplex.project.item.model.dto.Item;
 import com.camplex.project.item.model.dto.MembersReservationDate;
+import com.camplex.project.paysys.model.dto.rentPayList;
 
 public interface ItemService {
 
@@ -64,6 +65,10 @@ public interface ItemService {
 	 * @return
 	 */
 	List<Item> selectKitchenItemList();
+
+	MembersReservationDate membersRsvInfo2(int reservationNo);
+
+	Item payNow(int itemNo);
 
 
 

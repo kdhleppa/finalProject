@@ -108,5 +108,11 @@
     AND MEMBER_NO = #{memberNo}
 	</delete>
 	
+	<!-- 카트에서 위시삭제-->
+	<delete id="wishDelete">
+		DELETE FROM WISH_LIST
+		WHERE ITEM_NO = #{itemNo}
+   		AND MEMBER_NO = #{memberNo}
+	</delete>
 	  	
 </mapper>

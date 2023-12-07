@@ -97,7 +97,6 @@ sendAuthKeyBtn.addEventListener("click", function(){
             console.log("이메일 발송 중 에러 발생");
             console.log(err);
         });
-        
 
         alert("인증번호가 발송 되었습니다.");
 
@@ -143,6 +142,7 @@ checkAuthKeyBtn.addEventListener("click", function(){
         const obj = {"inputKey":authKey.value, "email":tempEmail}
         const query = new URLSearchParams(obj).toString()
         // inputKey=123456&email=user01
+        
 
         fetch("/sendEmail/checkAuthKey?" + query)
         .then(resp => resp.text())
@@ -151,11 +151,11 @@ checkAuthKeyBtn.addEventListener("click", function(){
                 clearInterval(authTimer);
                 authKeyMessage.innerText = "인증되었습니다.";
                 authKeyMessage.classList.add("confirm");
-                checkObj.authKey = true;
+                checkObj.inputAuthkey = true;
 
             } else{
                 alert("인증번호가 일치하지 않습니다.")
-                checkObj.authKey = false;
+                checkObj.inputAuthkey = false;
             }
         })
         .catch(err => console.log(err));
@@ -165,4 +165,28 @@ checkAuthKeyBtn.addEventListener("click", function(){
         alert("인증 시간이 만료되었습니다. 다시 시도해주세요.")
     }
 
+});
+
+
+// 회원 가입 form태그가 제출 되었을 때
+document.getElementById("pwReset1").addEventListener("submit", e => {
+
+	for (let key in checkObj) {
+
+		if (!checkObj[key]) {
+
+			switch (key) {
+				case "inputEmail":
+					alert("이메일이 유효하지 않습니다"); break;
+
+				case "inputAuthkey":
+					alert("인증번호가 유효하지 않습니다"); break;
+			}
+
+			document.getElementById(key).focus();
+
+			e.preventDefault();
+			return;
+		}
+	}
 });

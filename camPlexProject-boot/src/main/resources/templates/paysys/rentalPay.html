@@ -13,49 +13,12 @@
     <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}" rel="stylesheet">
 </head>
 <body>
-    <th:block th:replace="~{common/header}"></th:block>
+    <th:block th:replace="~{common/headerForContent}"></th:block>
 
     <section class="container">
         <div class="emptySpace"></div>
         <form class="midContainer">
-            <div class="reservationText"><p>Reservation List</p></div>
-            <div class="campNameContainer">
-                <h1>Catgill 캠핑장</h1> <p>잔디 구역 (A-1)</p>
-            </div>
-            <table class="reservationSite">
-                <tr>
-                    <td>이름*</td>
-                    <td>이재경</td>
-                </tr>
-                <tr>
-                    <td>연락처*</td>
-                    <td>01012341234</td>
-                </tr>
-                <tr>
-                    <td>숙박 인원</td>
-                    <td>
-                        <img src="/img/el_adult.png" alt="" class="adultImg">4명&nbsp;&nbsp;&nbsp;
-                        <img src="/img/el_adult.png" class="childImg">0명
-                    </td>
-                </tr>
-                <tr>
-                    <td>예약 날짜</td>
-                    <td>2023-11-14(화) ~ 2023-11-15(수) 1박</td>
-                </tr>
-                <tr>
-                    <td>이메일</td>
-                    <td>-</td>
-                </tr>
-                <tr>
-                    <td>요청사항</td>
-                    <td>-</td>
-                </tr>
-
-
-            </table>
-
             <div class="rentalText"><p>Rental List</p></div>
-            <form action="" class="">
                 <table class="itemListTB">
                     <tr>
                         <th>번호</th>

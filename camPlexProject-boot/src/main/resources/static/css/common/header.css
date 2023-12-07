@@ -102,3 +102,51 @@ a {
   transition: transform 250ms ease-in-out;
 }
 .topBar a:hover:after { transform: scaleX(1); }
+
+@media all and (max-width:620px) {
+
+    .leftOfTopMenu{
+
+        display: none;
+    }
+}
+
+@media all and (max-width:352px) {
+
+    .rightOfTopMenu a{
+        font-size: 0.6rem;
+    }
+    .hideMenu{
+        display: none;
+    }
+
+    #mainTitle{
+        font-size: 1.2rem;
+    }
+    
+
+}
+
+@media all and (max-width:300px) {
+
+    .bottomMenu{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .bottomMenu a{
+
+        font-size: 0.4rem;
+    }
+
+}
+
+@media all and (max-width:219px) {
+
+    #mainTitle{
+
+        font-size: 0.5rem;
+    }
+
+}

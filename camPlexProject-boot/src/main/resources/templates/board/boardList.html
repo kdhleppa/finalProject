@@ -31,7 +31,7 @@
             
             <p>|</p>
 
-			<li th:unless="${session.loginMember.memberType} == 'U'">
+			<li th:if="${session.loginMember != null and session.loginMember.memberType == 'C'}">
 			    <a th:href="@{/board/{boardType}(boardType=C)}">CEO게시판</a>
 			</li>
         </ul>
@@ -64,7 +64,6 @@
         <hr style="height: 0.2rem; background-color:black; margin-top: 1rem; margin-left: 8%; width: 84%; margin-right: 40%;">
 
         <section class="chkRadio">
-            <input type="radio" name="typeCheck" class="chk" id="chkNew" value="new">최신 순
             <input type="radio" name="typeCheck" class="chk" id="chkCount" value="count">조회 순
             <input type="radio" name="typeCheck" class="chk" id="chkLike" value="like">좋아요 순
         </section>
