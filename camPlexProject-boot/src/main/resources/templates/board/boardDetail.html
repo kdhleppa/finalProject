@@ -65,7 +65,7 @@
                 <!-- 제목 -->
             	<h1 class="boardTitle" th:text="${board.boardTitle}"></h1><br>
                 <p style="font-size: 18px;"> <span>작성일 : </span> [[${board.boardCreateDate}]] </p> 
-                <hr style="margin-top: 20px; width: 65rem;">
+                <hr style="margin-top: 3rem; width: 90%;">
                 
                 	<div class="boardImg">
                 
@@ -114,12 +114,11 @@
 				            	</div>
 				            
 			            	</th:block>
-			            	
 			            </th:block>
 			            
 					</div>
 					
-					<hr style="margin-top: 1rem; width: 65rem;">
+					<hr style="margin-top: 1.9rem; width: 90%;">
 					
                     <div class="boardContent" id="boardContent" th:utext="${board.boardContent}"></div>
                 
