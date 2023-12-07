@@ -145,6 +145,9 @@ public class MemberController {
 		return "member/idPw/searchId1";
 	}
 	
+	// 아이디 찾기
+	
+	
 	// 비밀번호 변경 페이지 이동
 	@GetMapping("/searchPw")
 	public String searchPw() {
