@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import com.camplex.project.item.model.dto.FindCartItem;
 import com.camplex.project.item.model.dto.Item;
 import com.camplex.project.item.model.dto.MembersReservationDate;
+import com.camplex.project.paysys.model.dto.rentPayList;
 
 @Mapper
 public interface ItemMapper {
@@ -22,6 +23,12 @@ public interface ItemMapper {
 	public List<FindCartItem> membersCartItem(int memberNo);
 
 	public List<Item> inCartWishlist(int memberNo);
+
+	public MembersReservationDate membersRsvInfo2();
+
+	public Item payNow(int itemNo);
+
+	public MembersReservationDate membersRsvInfo2(int reservationNo);
 
 	
 }
