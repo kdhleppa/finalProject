@@ -21,6 +21,8 @@
         <section class="empty1"></section>
         
         <section id="loginForm">
+			
+		<form th:action="@{/member/searchId1}" id="searchId1" method="post" name="pwReset">
 
             <!-- 대제목 -->
             <section id="headerName">ID 찾기</section>
@@ -58,6 +60,7 @@
 
             </section>
 
+		</form>
 
         </section>
         
@@ -66,6 +69,7 @@
 
     </main>
 
+	<script th:src="@{/js/member/searchId1.js}"></script>
     
 </body>
 </html>

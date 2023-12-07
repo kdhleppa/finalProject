@@ -116,35 +116,35 @@
 
 					<section class="contentSec">
 
-						<section th:each="camp : ${campList}" class="contentDetailSec">
+							<section th:each="camp : ${campList}" class="contentDetailSec">
+								
+								<div class="contentImageDiv">
+									<img class="contentImage" th:src="${camp.thumbnail}"
+									th:onclick="|location.href = '@{/camp/{campNo}(campNo = ${camp.campNo})}'|">
+								</div>
+								
+								<a th:href="@{/camp/{campNo}(campNo = ${camp.campNo})}" class="contentDetailWriteSec">
+									<section class="contentDetailWriteSecCenterSec">
+										<p th:text="${camp.campName}"></p>
+										
+										<th:block th:if="${session.loginMember?.memberType == 'C'} or ${session.loginMember?.memberType == 'M'}">
+											
+											<form th:action="@{/camp2/deleteCamp}" class="deleteCampFrm">
+												<button class="campDelete" href="">삭제</button>
+												<input type="hidden" name="campNo" id="" th:value="${camp.campNo}">
+											</form>
+											
+										</th:block>
+										
+										<div class="star">
+											<img th:src="@{/images/iconImg/star-fill.png}" alt="">
+											<span th:text="${camp.campingStar}">0</span>
+										</div>
+									</section>
+								</a>
+								
+							</section>
 							
-							<div class="contentImageDiv">
-								<img class="contentImage" th:src="${camp.thumbnail}"
-								th:onclick="|location.href = '@{/camp/{campNo}(campNo = ${camp.campNo})}'|">
-							</div>
-							
-							<a th:href="@{/camp/{campNo}(campNo = ${camp.campNo})}" class="contentDetailWriteSec">
-								<section class="contentDetailWriteSecCenterSec">
-									<p th:text="${camp.campName}"></p>
-									
-									<th:block th:if="${session.loginMember?.memberType == 'C'} or ${session.loginMember?.memberType == 'M'}">
-							
-										<form th:action="@{/camp2/deleteCamp}" id="deleteCampFrm">
-											<button id="campDelete" href="">삭제</button>
-											<input type="hidden" name="campNo" id="" th:value="${camp.campNo}">
-										</form>
-									
-									</th:block>
-
-									<div class="star">
-										<img th:src="@{/images/iconImg/star-fill.png}" alt="">
-										<span th:text="${camp.campingStar}">0</span>
-									</div>
-								</section>
-							</a>
-
-						</section>
-
 					</section>
 
 				</div>
