@@ -78,8 +78,10 @@ textarea {
 .boardDetail {
     font-family: 'HakgyoansimSantteutdotumL';
     margin-top: 20px;
+    margin-left: 3rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    width: 100%;
     height: 100%;
 }
 
@@ -88,13 +90,12 @@ textarea {
     /* border: 1px solid rgb(161, 161, 161); */
     border-radius: 20px;
     font-size: 22px;
-    width: 5rem;
+    width: 3rem;
     height: 2rem;
     text-align: center;
 }
 
 .boardDeTitle {
-    margin-left: -10rem;
     font-size: 25px;
 	height: 100%;
 }
@@ -108,8 +109,7 @@ textarea {
 .boardDeRight {
     display: flex;
     flex-direction: column;
-    margin-left: -15rem;
-    margin-right: 10rem;
+    margin-right: 4rem;
 }
 
 .boardDeRight > img {
