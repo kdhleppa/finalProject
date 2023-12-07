@@ -129,8 +129,8 @@
 										
 										<th:block th:if="${session.loginMember?.memberType == 'C'} or ${session.loginMember?.memberType == 'M'}">
 											
-											<form th:action="@{/camp2/deleteCamp}" id="deleteCampFrm">
-												<button id="campDelete" href="">삭제</button>
+											<form th:action="@{/camp2/deleteCamp}" class="deleteCampFrm">
+												<button class="campDelete" href="">삭제</button>
 												<input type="hidden" name="campNo" id="" th:value="${camp.campNo}">
 											</form>
 											
