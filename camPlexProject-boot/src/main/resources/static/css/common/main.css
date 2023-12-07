@@ -73,7 +73,7 @@ section > div > img {
     height: 100%;
 }
 
-#p1 {
+.p1 {
     font-family: 'HakgyoansimSantteutdotumL';
     position: absolute;
     top: 50%;
@@ -86,7 +86,7 @@ section > div > img {
     z-index: 10;
 }
 
-#p2 {
+.p2 {
     font-family: 'HakgyoansimSantteutdotumL';
     position: absolute;
     top: 50%;
@@ -97,7 +97,7 @@ section > div > img {
     z-index: 10;
 }
 
-#mainbutton {
+.mainbutton {
     font-family: 'HakgyoansimSantteutdotumL';
     position: absolute;
     top: 50%;
@@ -110,10 +110,10 @@ section > div > img {
     border-radius: 10px;
     font-size: 20px;
     background-color: transparent;
+    border: none;
+    transition: 0.5s;
 }
 
-#mainbutton:hover {
-	transition: 0.5s;
-	background-color: rgb(239, 248, 242);
-	color: #000;
+.mainbutton:hover {
+	color: #ccd5ae;
 }

@@ -574,20 +574,32 @@ wishListBtn.addEventListener('click', e => {
 
 // *********************** 사진 클릭시 모달 *********************************
 
-const ceoImg = document.querySelectorAll('.ceoImg');
+const img = document.querySelectorAll('.img');
+const ceoPicModal = document.getElementById('ceoPicModal')
+const ceoPicModalImg = document.getElementById('ceoPicModalImg')
 
-document.addEventListener("click", function (e) {
-   
-	if (e.target.classList.contains('ceoImg')) {
-        console.log(e.target);
-    }
+for(var i=0 ; i<img.length ; i++){
+
+	img[i].addEventListener("click", (e) => {
+		
+		ceoPicModal.classList.remove('hidden')
+		ceoPicModalImg.setAttribute("src", e.target.src)
+
+	});
+	
+}
+
+window.addEventListener('click', (e) => {
+	
+	e.target === ceoPicModal ? ceoPicModal.classList.add('hidden') : false
+	
 });
 
 
 // **************************** 캠핑장 삭제 ***********************************
 const deleteCampFrm = document.getElementById('deleteCampFrm');
 
-document.addEventListener("submit", (e) => {
+deleteCampFrm.addEventListener("submit", (e) => {
 
 	if(!confirm("삭제 하시겠습니까?")){
 

@@ -21,7 +21,7 @@ public class CampDetail {
 	private int fullCapacity;
 	private String checkIn;
 	private String checkOut;
-	
+	private String information;
 	
 	private String campDeThumbnail;
 	
