@@ -33,6 +33,7 @@ public class Camp {
 	private String thumbnail;
 	
 	private List<CampDetail> campDetailList;
+	private List<CampDetailImage> campDetailImageList;
 	
 	private List<CampSiteImage> campSiteImageList;
 	private List<CampCeoImage> campCeoImageList;
