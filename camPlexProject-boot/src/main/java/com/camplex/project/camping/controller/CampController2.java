@@ -36,9 +36,22 @@ public class CampController2 {
 	@GetMapping("/uploadCamp")
 	public String uploadPage() {
 		
-		int delResult = service.delCampDeImgNumO();
-		
 		return "camp/campingDetailUpload";
+	}
+	
+	@GetMapping("/deleteCampNoZ")
+	@ResponseBody
+	public int unloadCamp() {
+		
+		System.out.println("unload이벤트 발생");
+		
+		int delImgResult = service.delCampDeImgNumO();
+		
+		if(delImgResult > 0) {
+			int delCampDeResult = service.delCampNoZ();
+		}
+		
+		return delImgResult;
 	}
 	
 	@PostMapping("/campInsert")
@@ -46,7 +59,8 @@ public class CampController2 {
 			, @RequestParam(value = "images", required = false) List<MultipartFile> images
 			, RedirectAttributes ra
 			, @RequestParam MultipartFile inputCampMap
-			, @SessionAttribute("loginMember") Member loginMember) throws IllegalStateException, IOException {
+			, @SessionAttribute("loginMember") Member loginMember
+			, @RequestHeader("referer") String referer) throws IllegalStateException, IOException {
 		
 		System.out.println("camp::" + camp);
 		System.out.println("campMap::" + inputCampMap);
@@ -84,18 +98,18 @@ public class CampController2 {
 		
 		
 		String message = null;
-		String path = null;
+		String path = "redirect:";
 		
 		
 		if(campNo > 0) {
-			message = "캠프장 등록 완료";
-			path = "camp/campingCheckPage";
+			message = "캠핑장 등록 완료";
+			path += "/camp/search";
 		} else {
-			message = "캠프장 등록 실패";
-			path = "camp/campingDetailUpload";
+			message = "캠핑장 등록 실패";
+			path += referer;
 		}
 		
-//		ra.addFlashAttribute("message", message);
+		ra.addFlashAttribute("message", message);
 		
 		return path;
 		
