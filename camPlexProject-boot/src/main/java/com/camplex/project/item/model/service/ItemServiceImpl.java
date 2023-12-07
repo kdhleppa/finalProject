@@ -92,7 +92,7 @@ public class ItemServiceImpl implements ItemService {
 	public List<Item> inCartWishlist(int memberNo) {
 		return mapper.inCartWishlist(memberNo);
 	}
-	
+
 	/** 아이템 검색
 	 *
 	 */
