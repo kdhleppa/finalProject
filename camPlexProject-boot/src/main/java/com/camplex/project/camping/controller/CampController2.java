@@ -95,7 +95,7 @@ public class CampController2 {
 			path = "camp/campingDetailUpload";
 		}
 		
-//		ra.addFlashAttribute("message", message);
+		ra.addFlashAttribute("message", message);
 		
 		return path;
 		
