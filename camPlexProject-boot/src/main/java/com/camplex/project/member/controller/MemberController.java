@@ -1,6 +1,5 @@
 package com.camplex.project.member.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,12 +31,9 @@ import com.camplex.project.item.model.service.ItemService;
 import com.camplex.project.kakao.service.KakaoService;
 import com.camplex.project.member.model.dto.CEOMember;
 import com.camplex.project.member.model.dto.Member;
-import com.camplex.project.member.model.dto.MyPage;
-import com.camplex.project.member.model.dto.Wishlist;
 import com.camplex.project.member.model.service.MemberService;
 import com.camplex.project.member.model.service.NaverService;
 import com.camplex.project.member.model.service.WishlistService;
-import com.camplex.project.paysys.model.dto.Payment;
 import com.camplex.project.paysys.model.service.PaysysService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -45,7 +41,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/member")
-@SessionAttributes({"loginMember"})
+@SessionAttributes({"loginMember", "searchId"})
 public class MemberController {
 	
 	@Autowired
@@ -146,7 +142,44 @@ public class MemberController {
 	}
 	
 	// 아이디 찾기
+	@PostMapping("/searchId1")
+	public String searchId1(
+	        @RequestParam("inputName") String inputName,
+	        @RequestParam("inputTel") String inputTel,
+	        RedirectAttributes ra,
+	        Model model) {
+
+	    String path = "redirect:";
+	    String message = null;
+
+	    Map<String, String> map = new HashMap<>();
+	    map.put("memberName", inputName);
+	    map.put("memberPhone", inputTel);
+
+	    String result = service.searchId(map);
+
+	    System.out.println(result);
+	    
+	    if (result != null) {
+	        path += "/member/searchId2";
+	        model.addAttribute("searchId", result);
+	        
+	        System.out.println(model);
+	        
+	    } else {
+	        message = "일치하는 회원 정보가 없습니다.\n회원가입 후 이용 바랍니다.";
+	        path += "/member/signUp";
+	    }
+
+	    ra.addFlashAttribute("message", message);
+
+	    return path;
+	}
 	
+	@GetMapping("/searchId2")
+	public String searchId2() {
+		return "member/idPw/searchId2";
+	}
 	
 	// 비밀번호 변경 페이지 이동
 	@GetMapping("/searchPw")

@@ -34,11 +34,14 @@
                 <!-- 이름, 전화번호 입력 -->
                 <section id="inputNameTel">
 
-                    <input id="inputName" type="text" placeholder="이름">
-                    <input id="inputTel" type="tel" placeholder="전화번호">
-					<p class="authkeySendMassage">인증번호가 발송되었습니다.</p>
+                    <input id="inputName" name="inputName" type="text" placeholder="이름">
+					<p class="authkeySendMassage" id="nameMessage">한글, 영어 2~10글자</p>
+					
+                    <input id="inputTel" name="inputTel" type="tel" placeholder="전화번호" maxlength="11">
+					<p class="authkeySendMassage" id="telMessage">- 제외</p>
+					
                     <input id="inputAuthkey" type="text" placeholder="인증번호">
-					<p class="authkeySendMassage">인증번호가 발송되었습니다.</p>
+					<p class="authkeySendMassage" id="authkeyMessage">휴대폰 메세지를 확인해주세요.</p>
 
                     <section id="searchIdBtnSection">
                         <section class="empty3"></section>
@@ -54,8 +57,8 @@
 
                 </section>
                 <section class="empty2" id="numberCheckBtnSection">
-					<button class="emailCheckBtn" id="sendAuthkey">인증</button>
-                    <button class="emailCheckBtn" id="checkNumber">확인</button>
+					<button type="button" class="emailCheckBtn" id="sendAuthkey">인증</button>
+                    <button type="button" class="emailCheckBtn" id="checkNumber">확인</button>
 				</section>
 
             </section>
