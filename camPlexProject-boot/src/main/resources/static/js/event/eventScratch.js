@@ -1,61 +1,20 @@
-const getPrize = function() {
-    //랜덤값 생성 (1~100)
-    const ranNum = Math.floor((Math.random() * 99) +1)
-
-    //경품 생성
-    const gift = ['1등 30% 쿠폰 당첨!', '2등 20% 쿠폰 당첨!', '3등 10% 쿠폰 당첨!', '꽝! 다음 기회에..']
-    //확률 생성
-    const pbt = [5, 15, 30, 50]
-    //리턴 경품 값
-    let res = ''
-
-    for (let i = 0; i < gift.length; i++) {
-
-        if(pbt[i] >= ranNum){
-            res = gift[i]
-            return res
-        }
-        else if (pbt[pbt.length - 1] < ranNum) {
-            res = gift[gift.length - 1]
-            return res
-        }
-    }
-}
-
- document.addEventListener('DOMContentLoaded', () => {
-	if(loginMemberNo == null){
-        alert("로그인 후 이용해주세요")
-        window.history.back();
-    }
-	 
-    const btnTag = document.querySelector('#id_btn')
-    const outTag = document.querySelector('#id_out')
-    
-	    btnTag.addEventListener('click', (event) => {
-	    const result = getPrize()
-	    outTag.textContent = `${result}`
-	    btnTag.disabled = true;
-	    
-	})
-})
-
-
 function scracth(_id, option = {}){
     const canvas = document.getElementById(_id)
     let ctx = canvas.getContext('2d')
     let width = canvas.width
     let height = canvas.height
-    let size = option.size || 68
-    let row = height / size / 3
-    let column = width / size / 3
+    let size = option.size || 20
+
+    let row = height / size / 1.6
+    let column = width / size / 1.6
     let maxSize = row * column
-	
+
     let inSideArray = []
     let dataArray = []
 
     ctx.save()
     ctx.beginPath()
-    ctx.fillStyle='lightgreen'
+    ctx.fillStyle='yellow'
     ctx.rect(0,0,width,height)
     ctx.fill()
     ctx.closePath()
@@ -94,7 +53,7 @@ function scracth(_id, option = {}){
                     ctx.restore()                      
                 })
                 i -= 0.1
-            }, 40)
+            }, 50)
         }
 
 
@@ -160,8 +119,18 @@ function scracth(_id, option = {}){
     }
 }
 
+
 let sct = scracth('canvas')
 
-document.getElementById('id_btn').addEventListener('click', function() {
-      document.querySelector('.scratchZone').style.display = 'block';
-    });
+
+let reBtn = document.getElementById('reBtn')
+reBtn.addEventListener('click', (event) =>{
+    sct.reDraw( result=>{
+        console.log(result)
+    })
+})
+
+
+const img1 = "/images/event/10per.JPG";
+
+
