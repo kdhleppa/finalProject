@@ -25,4 +25,15 @@ public interface AjaxMapper {
 	// 전화번호 중복 검사
 	int checkPhone(String phone);
 
+	// 인증번호 전송
+	int sendAuthKey(Map<String, Object> map);
+	int updateTelAuthKey(Map<String, Object> map);
+	int insertTelAuthKey(Map<String, Object> map);
+
+	// 전화번호 인증번호 확인
+	int checkTelAuthkey(Map<String, Object> paramMap);
+	
+
+
+
 }
