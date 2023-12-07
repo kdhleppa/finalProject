@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>아이디 찾기 2</title>
 
-    <link rel="stylesheet" href="/CSS/searchId2.css">
+    <link rel="stylesheet" th:href="@{/css/member/idPw/searchId2.css}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,32 +14,7 @@
 </head>
 <body>
 
-    <header class="topBar">
-
-        <div class="topMenu">
-
-            <div class="leftOfTopMenu">
-                <a href="#">COMMUNITY</a>
-                <a href="#">CONTACT</a>
-                <a href="#">ABOUT US</a>
-            </div>
-
-            <div class="rightOfTopMenu">
-                <a href="#">TOP</a>
-            </div>
-            
-        </div>
-        
-        <a class="mainTitle">C A M P L E X </a>
-        
-        <div class="bottomMenu">
-            <a href="#">CAMPING</a>
-            <a href="#">RENTAL</a>
-            <a href="#">BOARD</a>
-            <a href="#">ORDER</a>
-        </div>
-
-    </header>
+	<th:block th:replace="~{common/headerForContent}"></th:block>
 
     <main>
         <!-- 공백 (우) -->
@@ -58,7 +33,7 @@
                     
                     <p>회원님의 아이디는</p>
 
-                    <p id="realIdInfo">test1234@naver.com</p>
+                    <p id="realIdInfo" th:utext="${session.searchId}"></p>
 
                     <p>입니다.</p>
 
