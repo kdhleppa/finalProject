@@ -32,23 +32,42 @@ document.addEventListener('DOMContentLoaded', function () {
     
     document.querySelectorAll('.wishToCartBtn').forEach(function(button) {
         button.addEventListener('click', function() {
-            // 클릭된 버튼에 가장 가까운 폼을 찾습니다.
-            console.log('Button:', button);
-            var form = button.closest('.moveWishlistForm');
+            var formId = button.getAttribute('data-form-id');
+            var selectId = button.getAttribute('data-select-id');
+      		var form = document.getElementById(formId);
+      		var selectElement = document.getElementById(selectId);
             console.log('Form:', form);
-            // 폼 내에서 '.reservationSelect' 클래스를 가진 셀렉트 박스를 찾습니다.
-            var selectElement = form.querySelector('.reservationSelect');
-            var selectedValue = selectElement.value;
+            console.log('Select Element:', selectElement);
+           
+            
 
-            // 선택된 값이 'default'인 경우 경고를 표시하고 폼 제출을 중단합니다.
-            if (selectedValue === 'default') {
-                alert('추가하려는 캠핑장을 선택해 주세요.');
-            } else {
-                // 그렇지 않으면 폼을 제출합니다.
-                form.submit();
-            }
-        });
-    });
+            if (selectElement) {
+	            var selectedValue = selectElement.value;
+	            if (selectedValue === 'default') {
+	                alert('추가하려는 캠핑장을 선택해 주세요.');
+	            } else {
+	                form.submit();
+	            }
+	        } else {
+	            console.log('No select element found');
+	        }
+	    });
+	});
+	
+	
+	document.querySelectorAll('.wishDeleteBtn').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var formId = button.getAttribute('data-form-id');
+      		var form = document.getElementById(formId);
+            var newAction = '/paysys/wishDelete';
+      		form.setAttribute('action', newAction);
+            
+
+            
+	        form.submit();
+	      
+	    });
+	});
     
     
     
@@ -195,6 +214,8 @@ function deleteCart(button, rsvInfoIndex, cartItemIndex) {
     
     form.submit();
 }
+
+
 
 
 function deleteAllCart(){

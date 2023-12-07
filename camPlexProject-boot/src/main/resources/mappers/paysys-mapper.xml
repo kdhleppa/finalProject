@@ -180,6 +180,7 @@
 		    i.ITEM_NAME, 
 		    cs.CAMP_NAME, 
 		    r.CAMP_ENTDATE,
+		    r.CAMP_OUTDATE,
 		    m.MEMBER_NO, 
 		    (ii.ITEM_IMG_PATH || ii.ITEM_IMG_RENAME) AS THUMBNAIL
 		FROM 

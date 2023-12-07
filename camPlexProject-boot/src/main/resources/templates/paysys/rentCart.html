@@ -125,7 +125,7 @@
                 </tr>
                 <!-- 위와 같은 참고사항 지킬것-->
                 <th:block th:each="wishlist, i : ${wishlist}">
-	                <form th:action="@{/paysys/moveWishlistToCart}" method="post" class="moveWishlistForm">
+	                <form th:action="@{/paysys/moveWishlistToCart}" method="post" class="moveWishlistForm" th:id="'wishlistForm' + ${i.index}">
 		                <tr>
 		                    <td><input type="hidden" name="itemNo" th:value="${wishlist.itemNo}"></td>
 		                    <td>[[${i.count}]]</td>
@@ -133,13 +133,13 @@
 		                    <td><p th:text="${wishlist.itemName}">상품명</p></td>
 		                    <td>
 								<th:block th:if="${wishlist.itemStatus} == 'Y'"> 
-			                        <select name="reservationNo" class="campSelect2 reservationSelect">
+			                        <select name="reservationNo" class="campSelect2 reservationSelect" th:id="'select' + ${i.index}">
 			                            <option value="default" class="">캠핑장을 선택해 주세요.</option>
 			                            <th:block th:each="rsvInfo2 : ${rsvInfo2}">
 											<option th:value="${rsvInfo2.reservationNo}" th:text="${rsvInfo2.campName} + ' (' + ${rsvInfo2.campEntDate} + ' ~ ' + ${rsvInfo2.campOutDate} + ')'">옵션</option>
 										</th:block>
 			                        </select>
-		                        <button type="button" class="grayBtn wishToCartBtn">GO CART</button>
+		                        <button type="button" class="grayBtn wishToCartBtn" th:data-select-id="'select' + ${i.index}" th:data-form-id="'wishlistForm' + ${i.index}">GO CART</button>
 		                        </th:block>
 		                        
 		                        <th:block th:unless="${wishlist.itemStatus} == 'Y'">
@@ -152,7 +152,7 @@
 		                    	<p th:unless="${wishlist.itemStatus} == 'Y'" th:text="없음">없음</p>
 		                    </td>
 		                    <td><p th:text="'₩'+${wishlist.itemPrice}">아이템 가격</p></td>
-		                    <td><button href="#" class = "grayBtn">DELETE</button></td>
+		                    <td><button type="button" class = "grayBtn wishDeleteBtn" th:data-form-id="'wishlistForm' + ${i.index}">DELETE</button></td>
 		                </tr>
 		               </form>
                 </th:block>

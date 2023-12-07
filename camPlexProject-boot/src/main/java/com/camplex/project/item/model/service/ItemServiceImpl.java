@@ -11,6 +11,7 @@ import com.camplex.project.item.mappers.ItemMapper2;
 import com.camplex.project.item.model.dto.FindCartItem;
 import com.camplex.project.item.model.dto.Item;
 import com.camplex.project.item.model.dto.MembersReservationDate;
+import com.camplex.project.paysys.model.dto.rentPayList;
 
 @Service
 @PropertySource("classpath:/config.properties")
@@ -87,6 +88,7 @@ public class ItemServiceImpl implements ItemService {
 		return mapper2.selectItemListPricehigh();
 	}
 
+	
 
 	@Override
 	public List<Item> inCartWishlist(int memberNo) {
@@ -132,6 +134,16 @@ public class ItemServiceImpl implements ItemService {
 	public List<Item> selectKitchenItemList() {
 		return mapper2.selectKitchenItemList();
 
+	}
+
+	@Override
+	public MembersReservationDate membersRsvInfo2(int reservationNo) {
+		return mapper.membersRsvInfo2(reservationNo);
+	}
+
+	@Override
+	public Item payNow(int itemNo) {
+		return mapper.payNow(itemNo);
 	}
 
 	
