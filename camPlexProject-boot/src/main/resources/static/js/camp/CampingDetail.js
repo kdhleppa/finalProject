@@ -576,7 +576,7 @@ wishListBtn.addEventListener('click', e => {
 
 const ceoImg = document.querySelectorAll('.ceoImg');
 
-document.addEventListener("click", function (e) {
+ceoImg.addEventListener("click", function (e) {
    
 	if (e.target.classList.contains('ceoImg')) {
         console.log(e.target);
@@ -587,7 +587,7 @@ document.addEventListener("click", function (e) {
 // **************************** 캠핑장 삭제 ***********************************
 const deleteCampFrm = document.getElementById('deleteCampFrm');
 
-document.addEventListener("submit", (e) => {
+deleteCampFrm.addEventListener("submit", (e) => {
 
 	if(!confirm("삭제 하시겠습니까?")){
 

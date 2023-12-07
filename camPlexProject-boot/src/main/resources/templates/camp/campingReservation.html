@@ -75,7 +75,15 @@
 
 
                     <div class="campingInfoContainer">
-                        <p>상품정보</p>
+                        <div class="campInfo">
+
+                            <p>상품정보</p>
+                            <div class="ceoInfoContianer">
+                                <button type="button" class="ceoInfoModal" id="ceoInfoModal">캠핑장 안내사항</button>
+                                <p>( 반드시 확인해주세요! )</p>
+                            </div>
+
+                        </div>
                         <hr>
                         <div class="campingInfo">
 
@@ -184,6 +192,7 @@
 
 		<th:block th:replace="~{common/footer}"></th:block>
 		<th:block th:replace="~{camp/numberOfPeopleModal}"></th:block>
+		<th:block th:replace="~{camp/ceoInfo}"></th:block>
 
 		<script th:src="@{/js/camp/CampingReservation.js}"></script>
 		
@@ -191,7 +200,8 @@
 			
 			const capacity =  /*[[${campDetail.capacity}]]*/ "최대수용인원";
 			const fullCapacity =  /*[[${campDetail.fullCapacity}]]*/ "최대수용인원";
-			
+			const information = /*[[${campDetail.information}]]*/ "ceo제공 정보";
+
 		</script>
 </body>
 
