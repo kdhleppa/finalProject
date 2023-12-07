@@ -479,7 +479,7 @@ main {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: space-around;
     }
 }
 
@@ -487,6 +487,30 @@ main {
 
     .checkCalenderSec{
         display: none;
+    }
+   
+}
+
+@media all and (max-width:840px) {
+
+    .checkCalenderSec{
+        display: none;
+    }
+   
+}
+
+@media all and (max-width:630px) {
+
+    .contentDetailSec{
+        width: auto;
+    }
+   
+}
+
+@media all and (max-width:459px) {
+
+    .categorySec button{
+        font-size: 0.6rem
     }
    
 }

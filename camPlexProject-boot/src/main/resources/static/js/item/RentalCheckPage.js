@@ -1,11 +1,19 @@
 const classification = document.getElementById('classification');
 const contentSecCenterSec = document.querySelector('.contentSecCenterSec');
 let overlayScreen = document.querySelector(`.overlayScreen`);
+const categoryBtn = document.querySelectorAll(".categoryBtn")
+
 
 // 캠핑장 정렬 
 classification.addEventListener('change', (e) => {
 	
 	contentSecCenterSec.innerHTML = "";
+
+	itemInput.value = "";
+
+	for(var btn of categoryBtn){
+		btn.classList.remove('clicked')
+	}
 
 	overlayScreen.classList.add("play");
 		
@@ -109,6 +117,10 @@ const itemInput = document.getElementById('itemInput');
 itemInput.addEventListener("keyup", (e) => {
 
 	contentSecCenterSec.innerHTML = "";
+
+	for(var btn of categoryBtn){
+		btn.classList.remove('clicked')
+	}
 
 	overlayScreen.classList.add("play");
 		
@@ -215,7 +227,7 @@ itemInput.addEventListener("keyup", (e) => {
 
 })
 
-const categoryBtn = document.querySelectorAll(".categoryBtn")
+
 
 
 for(var i = 0 ; i < categoryBtn.length ; i++){
@@ -223,6 +235,8 @@ for(var i = 0 ; i < categoryBtn.length ; i++){
 	categoryBtn[i].addEventListener("click", (e) => {
 
 		contentSecCenterSec.innerHTML = "";
+
+		itemInput.value= "";
 
 		overlayScreen.classList.add("play");
 		
@@ -351,7 +365,7 @@ function more(contentLength){
 	
 	bBlank[0].innerHTML = "";
 
-	if(contentLength <= 6) {
+	if(contentLength <= 8) {
 
 		return;
 

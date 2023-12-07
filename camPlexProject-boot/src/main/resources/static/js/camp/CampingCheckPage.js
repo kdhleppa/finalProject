@@ -1,12 +1,17 @@
 let contentDetail = document.querySelectorAll('.contentDetailSec')
 let overlayScreen = document.querySelector(`.overlayScreen`);
-const bBlank = document.getElementsByClassName('bBlank')
-const mainContent = document.querySelector('.mainContent')
+const bBlank = document.getElementsByClassName('bBlank');
+const mainContent = document.querySelector('.mainContent');
 let contentCount = 6;
 const contentLength = contentDetail.length;
 
-more(contentLength)
+const categoryBtn = document.querySelectorAll(".categoryBtn");
+const searchCamp = document.getElementById('searchCamp');
+const classification = document.getElementById('classification');
+const contentSec = document.querySelector('.contentSec');
 
+
+more(contentLength)
 
 //  더보기 함수
 function more(contentLength){
@@ -36,7 +41,7 @@ function more(contentLength){
 
 		})
 
-	} else if(contentLength < contentCount && contentCount > 6) {
+	} else if(contentLength <= contentCount && contentCount > 6) {
 
 		const btn = document.createElement('button');
 		btn.classList.add('moreBtn')
@@ -67,9 +72,6 @@ function more(contentLength){
 }
 
 
-const classification = document.getElementById('classification');
-const contentSec = document.querySelector('.contentSec');
-
 // 캠핑장 정렬 
 classification.addEventListener('change', (e) => {
 	
@@ -78,6 +80,8 @@ classification.addEventListener('change', (e) => {
 	for(var btn of categoryBtn){
 		btn.classList.remove('clicked')
 	}
+
+	searchCamp.value ="";
 
 	overlayScreen.classList.add("play");
 		
@@ -142,8 +146,6 @@ classification.addEventListener('change', (e) => {
 	
 })
 
-const categoryBtn = document.querySelectorAll(".categoryBtn")
-const searchCamp = document.getElementById('searchCamp');
 
 searchCamp.addEventListener("keyup", (e) => {
 
@@ -268,6 +270,8 @@ for(var i = 0 ; i < categoryBtn.length ; i++){
 		})
 		  
 		contentSec.innerHTML = "";
+
+		searchCamp.value ="";
 
 		for(var btn of categoryBtn){
 			btn.classList.remove('clicked')
