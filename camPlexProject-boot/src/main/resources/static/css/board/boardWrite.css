@@ -198,3 +198,26 @@ button {
     font-size: 1.3rem;
 }
 
+
+
+/* Quill 글꼴 설정 */
+.ql-size-huge {
+	font-size: 40px;
+}
+
+.ql-size-large {
+	font-size: 24px;
+}
+
+.ql-size-small {
+	font-size: 12px;
+}
+
+.ql-font-serif{
+	font-family: serif;
+}
+
+.ql-font-monospace {
+	font-family: monospace;
+}
+

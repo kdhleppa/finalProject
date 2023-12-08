@@ -1,3 +1,6 @@
+const conversation = document.querySelector('.col-md-12')
+var stompClient = null;
+
 // 모달 열기
 function modalOpen() {
     document.querySelector('.modal_wrap').style.display = 'block';
@@ -34,10 +37,13 @@ const modalBack = document.getElementById("modalBack");
 	
 })();
 
+<<<<<<< HEAD
+=======
 const conversation = document.querySelector('.col-md-12')
 
 var stompClient = null;
 
+>>>>>>> 8fe550011ef1464d4792a99a62116bb1feaa9daf
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
@@ -57,7 +63,7 @@ function connect() {
     stompClient.connect({}, function (frame) {
         setConnected(true);
         stompClient.subscribe('/topic/public', function (message) {
-            showMessage("받은 메시지: " + message.body); //서버에 메시지 전달 후 리턴받는 메시지
+            showMessage("CAMPLEX : " + message.body); //서버에 메시지 전달 후 리턴받는 메시지
         });
     });
 }
@@ -84,22 +90,25 @@ for(var i = 0 ; i < noBtn.length ; i ++){
 	
 }
 
-
-
 function sendMessage() {
-    let message = $("#msg").val()
-    showMessage("보낸 메시지: " + message);
-	conversation.scrollTop = conversation.scrollHeight;
-	msg.value ="";
-    stompClient.send("/app/sendMessage", {}, JSON.stringify(message)); //서버에 보낼 메시지
+    var message = document.getElementById('msg').value;
+    showMessage("USER : " + message);
+    document.getElementById('msg').value = "";
+    stompClient.send("/app/sendMessage", {}, JSON.stringify(message));
 }
 
 function showMessage(message) {
-    $("#communicate").append("<tr><td>" + message + "</td></tr>");
+    var communicate = document.getElementById('communicate');
+    var messageRow = document.createElement('tr');
+    var messageCell = document.createElement('td');
+    messageCell.innerHTML = message;
+    messageRow.appendChild(messageCell);
+    communicate.appendChild(messageRow);
+    conversation.scrollTop = conversation.scrollHeight;
 }
 
 $(function () {
-    $("form").on('submit', function (e) {
+    $(".form-inline").on('submit', function (e) {
         e.preventDefault();
     });
     $( "#connect" ).click(function() { connect(); });

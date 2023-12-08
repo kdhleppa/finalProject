@@ -124,17 +124,19 @@ boardUpdateFrm.addEventListener('submit', e => {
     //e.preventDefault(); // 확인만하고 지울 예정
 });
 
-
 function quilljsediterInit(){
     var option = {
         modules: {
             toolbar: [
-                [{header: [1,2,false] }],
-                ['bold', 'italic', 'underline','code-block'],
-                [{ list: 'ordered' }, { list: 'bullet' }]
+				[{ 'font': [] }, { 'size': ['small', false, 'large', 'huge'] }],
+                ['bold', 'italic', 'underline', 'code-block'],
+                [{ 'color': [] }, { 'background': [] }], 
+                [{ 'align': [] }],  
+                [{ list: 'ordered' }, { list: 'bullet' }],
+                ['clean']
             ]
         },
-        placeholder: '내용을 입력해 주세요',
+        placeholder: '내용을 입력해주세요',
         theme: 'snow'
     };
 

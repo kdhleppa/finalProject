@@ -34,7 +34,7 @@
             
             <p>|</p>
 
-			<li>
+			<li th:if="${session.loginMember != null and session.loginMember.memberType != 'U'}">
                 <a th:href="@{/board/{boardType}(boardType=C)}">CEO게시판</a>
             </li>
         </ul>

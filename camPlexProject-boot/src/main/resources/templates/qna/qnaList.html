@@ -26,8 +26,7 @@
 			<p>1:1 문의목록 (관리자)</p>
 		</section>
 
-		<hr
-			style="height: 0.2rem; background-color:black; margin-top: 1rem; margin-left: 8%; width: 84%; margin-right: 40%;">
+		<hr style="height: 0.2rem; background-color:black; margin-top: 1rem; margin-left: 8%; width: 84%; margin-right: 40%;">
 
 		<input type="radio" name="answerFlag" class="answerFlag" id="N" checked></input>
 		<label for="N" class="askBtn" onclick="showQNA('N')">
@@ -39,7 +38,7 @@
 			답변완료 문의
 		</label>
 
-		<section class="sectionList">
+		<section class="sectionList" th:if="${session.loginMember != null and session.loginMember.memberType == 'M'}">
 			<div class="form-container" id="formContainer" th:object="${qna}">
 
 				<div id="divListContainer">
@@ -108,7 +107,7 @@
 </body>
 
 <script th:inline="javascript">
-
+	const memberType = /*[[${session.loginMember?.memberType}]]*/ "로그인 회원타입";
 	const loginMemberNo = /*[[${session.loginMember?.memberNo}]]*/ "로그인 회원번호";
 
 	if (loginMemberNo == null) loginMemberNo = "";
