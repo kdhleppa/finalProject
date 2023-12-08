@@ -34,20 +34,7 @@ const modalBack = document.getElementById("modalBack");
 	
 })();
 
-    
-    function connect() {
-    var socket = new SockJS('/ws');
-    stompClient = Stomp.over(socket);
-    stompClient.connect({}, function (frame) {
-        setConnected(true);
-        stompClient.subscribe('/topic/public', function (message) {
-            showMessage("받은 메시지: " + message.body); //서버에 메시지 전달 후 리턴받는 메시지
-        });
-    });
-}
-
 const conversation = document.querySelector('.col-md-12')
-
 
 var stompClient = null;
 

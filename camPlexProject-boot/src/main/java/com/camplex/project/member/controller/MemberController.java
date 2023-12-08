@@ -224,14 +224,14 @@ public class MemberController {
 	public String myPage(@SessionAttribute("loginMember") Member loginMember,
 							Model model
 						) {
-//		int memberNo = loginMember.getMemberNo(); 
-//		
-//		List<MyPage> selectMyPageInfo = new ArrayList<>();
-//		selectMyPageInfo = service.selectMyPageInfo(memberNo);
-//		model.addAttribute("selectMyPageInfo", selectMyPageInfo);
-//		
-//		
-//		System.out.println(selectMyPageInfo);
+		
+		int memberNo = loginMember.getMemberNo(); 
+		
+		List<MyPage> myPageInfo = service.selectMyPageInfo(memberNo);
+		
+		System.out.println(myPageInfo);
+		
+		model.addAttribute("myPageInfo", myPageInfo);		
 		
 		return "member/myPage/myPage";
 	}

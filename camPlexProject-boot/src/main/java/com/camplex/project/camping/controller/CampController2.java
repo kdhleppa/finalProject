@@ -176,14 +176,10 @@ public class CampController2 {
 		
 		Camp campList = service.searchCampForCampNo(campNo);
 		
-		System.out.println("campList ::" + campList);
-		
 		CampDetail campDeList = service.searchCampDeForCampNo(campNo);
 		
 		model.addAttribute("campList", campList);
 		model.addAttribute("campDeList", campDeList);
-		
-		System.out.println(campDeList.getCampDetailImageList());
 		
 		return "camp/campingEdit";
 	}

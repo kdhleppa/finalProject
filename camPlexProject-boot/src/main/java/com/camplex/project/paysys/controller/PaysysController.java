@@ -188,7 +188,6 @@ public class PaysysController {
 	public String paying(InfoForReservation info,
 						 String payBy,
 						 String bank,
-						 String senderName,
 						 @SessionAttribute("loginMember") Member loginMember,
 						 Model model,
 						 RedirectAttributes ra
@@ -216,7 +215,6 @@ public class PaysysController {
 		
 		model.addAttribute("info", info);
 		model.addAttribute("bank", bank);
-		model.addAttribute("senderName", senderName);
 		
 		return "paysys/payDoneBank";
 	}
