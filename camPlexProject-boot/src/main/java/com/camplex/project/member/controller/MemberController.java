@@ -1,6 +1,9 @@
 package com.camplex.project.member.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,11 +36,10 @@ import com.camplex.project.kakao.service.KakaoService;
 import com.camplex.project.member.model.dto.CEOMember;
 import com.camplex.project.member.model.dto.Member;
 import com.camplex.project.member.model.dto.MyPage;
-import com.camplex.project.member.model.dto.Wishlist;
 import com.camplex.project.member.model.service.MemberService;
 import com.camplex.project.member.model.service.NaverService;
 import com.camplex.project.member.model.service.WishlistService;
-import com.camplex.project.paysys.model.dto.Payment;
+import com.camplex.project.paysys.model.dto.Reservations;
 import com.camplex.project.paysys.model.service.PaysysService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -45,7 +47,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/member")
-@SessionAttributes({"loginMember"})
+@SessionAttributes({"loginMember", "searchId"})
 public class MemberController {
 	
 	@Autowired
@@ -146,7 +148,45 @@ public class MemberController {
 	}
 	
 	// 아이디 찾기
+	@PostMapping("/searchId1")
+	public String searchId1(
+	        @RequestParam("inputName") String inputName,
+	        @RequestParam("inputTel") String inputTel,
+	        RedirectAttributes ra,
+	        Model model) {
+
+	    String path = "redirect:";
+	    String message = null;
+
+	    Map<String, String> map = new HashMap<>();
+	    map.put("memberName", inputName);
+	    map.put("memberPhone", inputTel);
+
+	    String result = service.searchId(map);
+
+	    System.out.println(result);
+	    
+	    if (result != null) {
+	        path += "/member/searchId2";
+	        model.addAttribute("searchId", result);
+	        
+	        System.out.println(model);
+	        
+	    } else {
+	        message = "일치하는 회원 정보가 없습니다.\n회원가입 후 이용 바랍니다.";
+	        path += "/member/signUp";
+	    }
+
+	    ra.addFlashAttribute("message", message);
+
+	    return path;
+	}
 	
+	// 조회된 아이디 노출 페이지
+	@GetMapping("/searchId2")
+	public String searchId2() {
+		return "member/idPw/searchId2";
+	}
 	
 	// 비밀번호 변경 페이지 이동
 	@GetMapping("/searchPw")
@@ -223,15 +263,44 @@ public class MemberController {
 	@GetMapping("/myPage")
 	public String myPage(@SessionAttribute("loginMember") Member loginMember,
 							Model model
-						) {
-//		int memberNo = loginMember.getMemberNo(); 
-//		
-//		List<MyPage> selectMyPageInfo = new ArrayList<>();
-//		selectMyPageInfo = service.selectMyPageInfo(memberNo);
-//		model.addAttribute("selectMyPageInfo", selectMyPageInfo);
-//		
-//		
-//		System.out.println(selectMyPageInfo);
+						) throws ParseException {
+		
+		int memberNo = loginMember.getMemberNo(); 
+		
+		MyPage myPageInfo =  service.selectMyPageInfo(memberNo);
+
+		List<Reservations> olderReservation = new ArrayList<>();
+		List<Reservations> upcomingReservation = new ArrayList<>();
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+		
+		Date today = new Date();
+		
+		for(int i = 0 ; i < myPageInfo.getResList().size() ; i++) {
+			
+			Date tempDate = format.parse(myPageInfo.getResList().get(i).getCampOutDate());
+			
+			if(today.after(tempDate)) {
+				
+				Reservations res = new Reservations();
+				res = myPageInfo.getResList().get(i);
+				olderReservation.add(res);
+								
+			} else {
+				
+				Reservations res = new Reservations();
+				res = myPageInfo.getResList().get(i);
+				upcomingReservation.add(res);
+				
+			}
+			
+		}
+		
+		model.addAttribute("olderReservation", olderReservation);
+		model.addAttribute("upcomingReservation", upcomingReservation);
+		model.addAttribute("myPageInfo", myPageInfo);		
+		
+		System.out.println(model);
 		
 		return "member/myPage/myPage";
 	}
@@ -382,6 +451,23 @@ public class MemberController {
 		
 		return path;
 	}
+	
+	// 등업신청 페이지 이동
+	@GetMapping("/levelUpFormCheck")
+	public String levelUpFormCheck(Model model) {
+		
+		List<CEOMember> levelUpList = service.levelUpList();
+		
+		System.out.println(levelUpList);
+		
+		model.addAttribute("levelUpList", levelUpList);
+		
+		return "member/levelUpFormCheck";
+	}
+	
+	
+	
+	
 	
 	// 위시리스트 추가
 	@PostMapping("/wishlist/insert")

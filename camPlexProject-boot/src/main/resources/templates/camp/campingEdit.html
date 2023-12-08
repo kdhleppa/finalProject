@@ -17,7 +17,7 @@
     <!-- 메인 -->
     <main class="campingDetailUploadMain">
 		
-		<form th:action="@{/camp2/campInsert}" id="campingDetailUploadForm" method="post" class="campingDetailUploadForm" enctype="multipart/form-data">
+		<form th:action="|@{/camp2/editCamp}?campNo=${campList.campNo}|" id="campingDetailUploadForm" method="post" class="campingDetailUploadForm" enctype="multipart/form-data">
 			
 			<!-- Information -->
 	        <section class="informationSec">
@@ -530,7 +530,7 @@
 						<section class="etcInfoInputInfoSec">
 							
 							<select class="categorySelect" name="category" id="categorySelect">
-								<option selected disabled value="noLoad">카테고리 선택</option>
+								<option selected value="noLoad">카테고리 선택</option>
 								<option value="AUTO">오토캠핑</option>
 								<option value="BACK">백패킹</option>
 								<option value="CAR">차박</option>
@@ -610,50 +610,57 @@
 			</section>
 	
 	        <section id="enrollSiteSec" class="enrollSiteSec">
-				<section th:each="ajax : ${campDeList}"></section>
+				
+				<th:block th:unless="${#lists.isEmpty(campDeList)}">
 					
-				<section th:each="campDe : ${campDeList.campDetailImageList}" class="plusCampingSiteSec">
+					<section class="plusCampingSiteSec" th:each="campDeList : ${campDeList}">
+		
+						<div class="plusCampingSiteDiv">
+							
+							<section class="plusCampingSiteDivLeftSec">
 	
-					<div class="plusCampingSiteDiv">
-						
-						<section class="plusCampingSiteDivLeftSec">
-							<img class="plusCampingSampleImg" th:src="${campDe.campDeImagePath}||${campDeImageReName}">
-						</section>
-						
-						<section class="plusCampingSiteDivRightSec">
-							
-							<section class="plusCampingSiteDivSiteNameSec">
-								asdf
-							</section>
-							
-							<section class="plusCampingSiteDivEtcInfoSec">
-								
-								<section class="plusCampingSiteDivEtcInfoLeftSec">
-									
-									<section class="capacityTitleSec">
-										수용 인원
-									</section>
-									
-									<section class="capacityOutputSec">
-										2
-									</section>
-									
-								</section>
-								
-								<section class="plusCampingSiteDivEtcInfoRightSec">
-									50000000원 ~
-								</section>
-								
-							</section>
-						</section>
-						
-						<section class="plusCampingSiteDeleteBtnSec">
-							<img class="plusCampingSiteDeleteBtn" src="/images/iconImg/campingUploadDelete.png" onclick="campDeDelete(133)">
-						</section>
-						
-					</div>
+								<th:block th:if="${campDeList.campDetailImageList.size > 0}">								
+									<img class="plusCampingSampleImg" th:src="|${campDeList.campDetailImageList[0].campDeImagePath}${campDeList.campDetailImageList[0].campDeImageReName}|">
+								</th:block>
 					
-				</section>
+							</section>
+							
+							<section class="plusCampingSiteDivRightSec">
+								
+								<section class="plusCampingSiteDivSiteNameSec" th:text="${campDeList.campDeName}">
+									캠프 구역 이름
+								</section>
+								
+								<section class="plusCampingSiteDivEtcInfoSec">
+									
+									<section class="plusCampingSiteDivEtcInfoLeftSec">
+										
+										<section class="capacityTitleSec">
+											수용 인원
+										</section>
+										
+										<section class="capacityOutputSec" th:text="${campDeList.capacity}">
+											수용 인원
+										</section>
+										
+									</section>
+									
+									<section class="plusCampingSiteDivEtcInfoRightSec" th:text="|${campDeList.campDePrice}~|">
+										가격
+									</section>
+									
+								</section>
+							</section>
+							
+							<section class="plusCampingSiteDeleteBtnSec">
+								<img class="plusCampingSiteDeleteBtn" th:src="@{/images/iconImg/campingUploadDelete.png}" th:onclick="campDeDelete(${campDeList.campDeNo})">
+							</section>
+							
+						</div>
+						
+					</section>
+					
+				</th:block>
 	
 	        </section>
 	        

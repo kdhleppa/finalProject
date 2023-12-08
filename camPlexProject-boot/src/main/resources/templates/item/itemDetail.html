@@ -36,7 +36,27 @@
                         <tr>
                             <td>기본 렌탈가격</td>
                             <td>:</td>
-                            <td id="itemPrice" th:text="'₩ ' + *{itemPrice}">아이템가격</td>
+                            
+                            <th:block th:if="${item.discountRate} != 0">
+							
+                            	<td>
+									<div id="beforeDiscount" >
+										<del th:text="|￦ ${#numbers.formatInteger(item.itemPrice, 3, 'COMMA')}|">상품 가격</del>
+										<p style="color: red;" th:text="|(${item.discountRate}%↓)|">(13%↓)</p>
+									</div>
+									<p id="itemPrice" th:text="|￦ ${#numbers.formatInteger(((item.itemPrice)*(100-(item.discountRate))/100), 3, 'COMMA')}|"></p>
+								</td>
+
+							</th:block>
+							
+							<th:block th:if="${item.discountRate} == 0">
+
+                            	<td id="itemPrice" th:text="|￦ ${#numbers.formatInteger(item.itemPrice, 3, 'COMMA')}|" >아이템가격</td>
+
+							</th:block>
+                            
+                            
+                            
                         </tr>
                         <tr>
                             <td>수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;량</td>
@@ -87,6 +107,14 @@
         <div class="emptyContainer"></div>
 
     </div>
+    
+    <script th:inline="javascript">
+		
+		const price = document.getElementById('itemPrice').innerText;
+		const quantity = document.getElementById('quantity').value;
+		
+	</script>
+  
     <th:block th:replace="~{common/footer}"></th:block>
     <script th:src="@{/js/item/itemDetail.js}"></script>
 

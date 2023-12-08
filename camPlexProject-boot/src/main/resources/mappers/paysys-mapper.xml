@@ -120,8 +120,26 @@
 		INSERT INTO "PAYMENT"
 		VALUES (SEQ_PAY_NO.NEXTVAL, #{memberNo}, #{campNo}, #{campDeNo},
 				#{price}, #{price}, #{payType}, DEFAULT,
-				#{entDate}, #{outDate}, DEFAULT)
+				#{entDate}, #{outDate}, DEFAULT, #{senderName})
 	</insert>
+	
+	<!-- 렌탈 결제 무통장 -->
+	<insert id="insertPayRental">
+		INSERT INTO "RENTAL_PAYMENT"
+		VALUES (SEQ_RENTAL_PAYMENT_NO.NEXTVAL, #{memberNo}, #{price}, DEFAULT,
+				DEFAULT, #{senderName}, '무통장입금')
+	</insert>
+	
+	<select id="selectLastInsertId" resultType="java.lang.Integer">
+    SELECT SEQ_RENTAL_PAYMENT_NO.CURRVAL FROM DUAL
+	</select>
+
+	<!-- 렌탈 결제 아이템 연결 입력-->
+	<insert id="insertPayRentalItem">
+		INSERT INTO "RENTAL_PAYMENT_ITEM"
+		VALUES (SEQ_RENTAL_ITEM_NO.NEXTVAL, #{rentalPaymentNo}, #{itemNo}, ${rentalPaymentNo}, ${reservationNo})
+	</insert>
+	
 	
 	<!-- 캠핑 결제 내역 저장 (카카오)-->
 	<insert id="insertKakao" parameterType="InfoForReservation" useGeneratedKeys="true">
@@ -133,7 +151,7 @@
 		INSERT INTO "PAYMENT"
 		VALUES (#{paymentNo}, #{memberNo}, #{campNo}, #{campDeNo},
 				#{price}, #{price}, '카카오페이', DEFAULT,
-				#{entDate}, #{outDate}, DEFAULT)
+				#{entDate}, #{outDate}, DEFAULT, #{senderName})
 	</insert>
 	
 	<!-- 캠핑 결제 내역 (카카오) 결제 완료로 변경-->

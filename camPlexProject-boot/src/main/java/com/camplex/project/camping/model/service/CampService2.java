@@ -41,7 +41,9 @@ public interface CampService2 {
 
 	Camp searchCampForCampNo(int campNo);
 
-	CampDetail searchCampDeForCampNo(int campNo);
+	List<CampDetail> searchCampDeForCampNo(int campNo);
+
+	int campUpdate(Camp camp, List<MultipartFile> images, MultipartFile inputCampMap) throws IllegalStateException, IOException;
 
 
 

@@ -24,5 +24,9 @@ public class Reservations {
 	private int kidCount;
 	private String demand;
 	
+	private String campName;
+	private String campDeName;
+	private String thumbnail;
+	
 	
 }

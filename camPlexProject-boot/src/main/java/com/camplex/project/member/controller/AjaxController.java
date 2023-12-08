@@ -73,4 +73,19 @@ public class AjaxController {
 		return service.checkTelAuthkey(paramMap);
 	}
 	
+	// 등업 신청 확인
+	@GetMapping("/changeMember/changeMember")
+	@ResponseBody
+	public int changeMember(String CEONumber) {
+		
+		String ceoNumber = CEONumber.substring(CEONumber.lastIndexOf(":") + 1).trim();
+
+		return service.changeMember(ceoNumber);
+	}
+	
+	
+	
+	
+	
+	
 }

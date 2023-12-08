@@ -208,10 +208,9 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
-
 	// 마이페이지 값 뿌리기
 	@Override
-	public List<MyPage> selectMyPageInfo(int memberNo) {
+	public MyPage selectMyPageInfo(int memberNo) {
 		return mapper.selectMyPageInfo(memberNo);
 	}
 	
@@ -244,6 +243,20 @@ public class MemberServiceImpl implements MemberService {
 	public Member naverLoginMember(String email) {
 		return mapper.naverLoginMember(email);
 	}
+
+	// 아이디 찾기
+	@Override
+	public String searchId(Map<String, String> map) {
+		return mapper.searchId(map);
+	}
+
+	// 등업신청 리스트 가져오기
+	@Override
+	public List<CEOMember> levelUpList() {
+		return mapper.levelUpList();
+	}
+
+
 
 
 

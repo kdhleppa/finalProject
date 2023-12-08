@@ -67,7 +67,7 @@ public interface MemberService {
 	int levelUpFrom(MultipartFile tourLicenseInput, CEOMember inputCeoMember) throws Exception;
 
 	// 마이페이지 값 뿌리기
-	List<MyPage> selectMyPageInfo(int memberNo);
+	MyPage selectMyPageInfo(int memberNo);
 
 	// 카카오,네이버 로그인 시 회원인지 확인
 	String checkMember(String email);
@@ -83,6 +83,14 @@ public interface MemberService {
 
 	// 네이버 계정 이메일로 로그인
 	Member naverLoginMember(String email);
+
+	// 아이디 찾기
+	String searchId(Map<String, String> map);
+
+	// 등업신청 리스트 가져오기
+	List<CEOMember> levelUpList();
+
+
 
 
 

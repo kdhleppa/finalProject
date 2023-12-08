@@ -18,19 +18,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // 총액 계산 및 업데이트 함수
-    function updateTotal() {
+	// 총액 계산 및 업데이트 함수
+ 	function updateTotal() {
         var itemPrice = document.getElementById('itemPrice').innerText;
         var quantity = parseInt(document.getElementById('quantity').value);
 
         // 원(KRW) 기호와 쉼표를 제거하고 숫자로 변환
-        itemPrice = parseInt(itemPrice.replace(/₩|,/g, ''));
+        var tempPrice = parseInt(itemPrice.replace(/￦|,/g, ''));
 
-        var totalPrice = itemPrice * quantity;
+        var totalPrice = tempPrice * quantity;
 
         // 결과를 형식에 맞게 표시 (예: ₩240,000)
-        document.querySelector('.paymentTextContainer p').innerText = '₩' + totalPrice.toLocaleString();
+        document.querySelector('.paymentTextContainer p').innerText = '￦' + totalPrice.toLocaleString();
     }	
+
 
     // 페이지 로드 시 초기 총액 설정
     updateTotal();

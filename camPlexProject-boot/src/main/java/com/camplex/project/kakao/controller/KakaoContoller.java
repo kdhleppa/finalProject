@@ -50,6 +50,7 @@ public class KakaoContoller {
     		) {
         
         info.setMemberNo(loginMember.getMemberNo());
+        info.setSenderName(loginMember.getMemberName());
         
         int result = service.insertKakao(info);
         
