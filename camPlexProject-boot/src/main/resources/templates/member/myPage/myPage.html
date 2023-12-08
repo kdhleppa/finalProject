@@ -1,298 +1,343 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이페이지</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>마이페이지</title>
 
-    <link rel="stylesheet" th:href="@{/css/member/myPage/myPage.css}">
-
-    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
-    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/member/myPage/myPage.css}">
+	<link rel="icon" th:href="@{/images/iconImg/favicon.png}">
+	<link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+	<link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap"
+		rel="stylesheet">
 
 </head>
+
 <body>
 
 	<th:block th:replace="~{common/headerForContent}"></th:block>
 
-    <main th:object="${session.loginMember}">
-        <!-- 공백 (우) -->
-        <section class="empty1"></section>
-        
-        <section id="myPageSection">
-            
-            <!-- 대제목 -->
-            <section id="headerName">마이페이지</section>
-            <hr id="underLine"/>
-            
-            <!-- 정보 -->
-            <section id="myInfo">
-                <!-- 내부공백 (우) -->
-                <section class="empty2"></section>
-                
-                <!-- 내 정보 -->
-                <section id="infoMain">
+	<main>
+		<!-- 공백 (우) -->
+		<section class="empty1"></section>
+
+		<section id="myPageSection">
+
+			<!-- 대제목 -->
+			<section id="headerName">마이페이지</section>
+			<hr id="underLine" />
+
+			<!-- 정보 -->
+			<section id="myInfo">
+				<!-- 내부공백 (우) -->
+				<section class="empty2"></section>
+
+				<!-- 내 정보 -->
+				<section id="infoMain">
 					<section id="profileImgSection">
-						
-	                    <img th:unless="*{memberProfileImg}" id="profileImg" th:src="@{/images/memberImg/gg_profile.png}">
-						
-	                    <img th:if="*{memberProfileImg}" id="profileImg" th:src="*{memberProfileImg}">
+
+						<img th:unless="${session.loginMember.memberProfileImg}" id="profileImg"
+							th:src="@{/images/memberImg/gg_profile.png}">
+
+						<img th:if="${session.loginMember.memberProfileImg}" id="profileImg"
+							th:src="${session.loginMember.memberProfileImg}">
 
 					</section>
-                    
-                    <section class="empty2"></section>
-                    <section id="nameTel">
-                        <p th:inline="text">이름 : [[${session.loginMember.memberName}]]</p>
-                        <p th:inline="text">전화번호 : [[${session.loginMember.memberPhone}]]</p>
-                    </section>
-                    <section class="empty3"></section>
-                    
-                    <section id="nicknameEmail">
-                        <p th:inline="text">닉네임 : [[${session.loginMember.memberNickname}]]</p>
-                        <p th:inline="text">Email : [[${session.loginMember.memberEmail}]]</p>
-                    </section>
-                    <section class="empty2"></section>
-                    
-                    <section class="btnSection">
-                        <a th:href="@{/member/infoModify}">프로필 관리</a>
-                        <a th:href="@{/member/levelUpForm}">CEO 계정 변경 신청</a>
-                        <a th:href="@{/member/memberWithdrawal1}">회원 탈퇴</a>
-                    </section> 
-                </section>
-                
-                
-                <!-- 내부공백 (좌) -->
-                <section class="empty2"></section>
-            </section>
-            
-            <!-- 구매 내역 정보 -->
-            <section id="buyListSection">
 
-                <section class="empty2"></section>
+					<section class="empty2"></section>
+					<section id="nameTel">
+						<p th:inline="text">이름 : [[${session.loginMember.memberName}]]</p>
+						<p th:inline="text">전화번호 : [[${session.loginMember.memberPhone}]]</p>
+					</section>
+					<section class="empty3"></section>
 
-                <section id="shopingList">
-                    <div class="textListSecDiv">
-	                    <section class="subName">예약 내역</section>
-                    	<a id="buyInfoListBtn">예약 내역 더보기</a>
-                    </div>
-                    <hr class="underLine2">
-                    
-                    <section id="shopingListInfo">
-                        
-                        
-                        <section id="buyHistoryInfo">
-	                        <!-- 내부공백 (우) -->
-                        	<section class="empty2"></section>
-                            
-                            <section id="imgSection">
-	                            <img id="shoppingImg" th:src="@{/images/campingImg/20231122100320_00001.jpg}">
-							</section>
-                            
-                            <section class="empty3"></section>
-                            
-                            <section id="buyInfo" >
-                                <div>
-                                    <a>[Catgill 캠핑장]</a>
-                                </div>
-                                <div>
-                                    <a>< 비바코 젤라 리빙쉘 텐트 외 3개 ></a>
-                                </div>
-                                <div>
-                                    <p>결제 정보 : 무통장 입금 / 최규연 / 123-1234345-123</p>
-                                </div>
-                            </section>
-                            
-                            <section class="empty3"></section>
-                            <section id="payStateSection">
-                                <a>결제 상태 : 결제 대기중</a>
-                            </section>
-                            
-	                        <!-- 내부공백 (좌) -->
-	                        <section class="empty2"></section>
-                        </section>
-                        
-                        
-                    </section>
-                    
-                </section>
+					<section id="nicknameEmail">
+						<p th:inline="text">닉네임 : [[${session.loginMember.memberNickname}]]</p>
+						<p th:inline="text">Email : [[${session.loginMember.memberEmail}]]</p>
+					</section>
+					<section class="empty2"></section>
 
-                <section class="empty2"></section>
+					<section class="btnSection">
+						<a th:href="@{/member/infoModify}">프로필 관리</a>
+						<a th:href="@{/member/levelUpForm}">CEO 계정 변경 신청</a>
+						<a th:href="@{/member/memberWithdrawal1}">회원 탈퇴</a>
+					</section>
+				</section>
 
-            </section>
-            
-            <!-- 쇼핑 정보 -->
-            <section id="shopingListSection">
 
-                <section class="empty2"></section>
+				<!-- 내부공백 (좌) -->
+				<section class="empty2"></section>
+			</section>
 
-                <section id="shopingList">
-                    <div class="textListSecDiv">
-	                    <section class="subName">이전 구매 내역</section>
-                    	<a id="shoppingInfoListBtn">구매 내역 더보기</a>
-                    </div>
-                    <hr class="underLine2">
-                    
-                    <section id="shopingListInfo">
-                        
-                        
-                        <section id="shopingHistoryInfo">
-	                        <!-- 내부공백 (우) -->
-                        	<section class="empty2"></section>
-                            
-                            <section id="imgSection">
-	                            <img id="shoppingImg" th:src="@{/images/campingImg/20231122100320_00001.jpg}">
-							</section>
-                            
-                            <section class="empty3"></section>
-                            <section id="shopingInfo">
-                                <div>
-                                    <a>[Catgill 캠핑장]</a>
-                                </div>
-                                <div>
-                                    <a>< 비바코 젤라 리빙쉘 텐트 외 3개 ></a>
-                                </div>
-                            </section>
-                            
-                            <section class="empty3"></section>
-                            <section id="reviewRebuyDeleteBtnSection">
-                                <a>리뷰 작성</a>
-                                <a>재구매</a>
-                                <button>삭제</button>
-                            </section>
-                            
-	                        <!-- 내부공백 (좌) -->
-	                        <section class="empty2"></section>
-                        </section>
-                        
-                        
-                    </section>
-                    
-                </section>
+			<!-- 구매 내역 정보 -->
+			<section id="buyListSection">
 
-                <section class="empty2"></section>
+				<section class="empty2"></section>
 
-            </section>
-
-            
-            <!-- 관심 상품 -->
-            <section id="wishListSection">
-                <section class="empty2"></section>
-
-                <section id="wishList">
-                    <section class="subName">관심 상품</section>
-                    <hr class="underLine2">
-
-                    <section id="wishListItems">
-                        <section class="empty2"></section>
-
-                        <section class="itemSection">
-                            <img class="wishItem" th:src="@{/images/itemImg/0340020000042.jpg}">
-                            <a>밀크 소파 : 블랙</a>
-                        </section>
-
-                        <section class="empty4"></section>
-
-                        <section class="itemSection">
-                            <img class="wishItem" th:src="@{/images/itemImg/20231123123730_0004.png}">
-                            <a>릴렉스 체어</a>
-                        </section>
-                            
-                        <section class="empty2"></section>
-                    </section>
-
-                </section>
-
-                <section class="empty2"></section>
-            </section>
-           
-            
-            <!-- 문의사항 -->
-            <section class="textSection">
-                <section class="empty2"></section>
-
-                <section class="textListSection">  
+				<section id="shopingList">
 					<div class="textListSecDiv">
-                    	<section class="subName">문의사항</section>
-                    	<th:block th:replace="~{qna/qna}"></th:block>
-                    </div>
-                    <hr class="underLine2">
+						<section class="subName">예약 내역</section>
+						<a id="buyInfoListBtn">예약 내역 더보기</a>
+					</div>
+					<hr class="underLine2">
 
-                    <section class="textItemSection">
-                        <section class="empty2"></section>
+					<section id="shopingListInfo">
 
-                        <section class="textItmeList">
+						<th:block th:if="${upcomingReservation.size != 0}">
 
-                            <section class="textList">
-                                <a>23.11.13 (화) 캠핑장 예약취소 하려면 어떡하나요??</a>
-                                <a>답변</a>
-                            </section>
-                            
-                            <section class="textList">
-                                <a>23.12.13 (수) 환불규정 알려주세요.</a>
-                                <a>미답변</a>
-                            </section>
+							<section id="buyHistoryInfo" th:each="upcomingRes : ${upcomingReservation}">
+								<!-- 내부공백 (우) -->
+								<section class="empty2"></section>
 
-                        </section>
+								<section id="imgSection">
+									<img id="shoppingImg" th:src="${upcomingRes.thumbnail}">
+								</section>
 
-                        <section class="empty2"></section>
-                    </section>
+								<section class="empty3"></section>
 
-                </section>
+								<section id="buyInfo">
+									<div>
+										<a th:text="|[${upcomingRes.campName}] ( ${upcomingRes.campDeName} )|">캠핑장 명</a>
+									</div>
+									<div>
+										<a>< 비바코 젤라 리빙쉘 텐트 외 3개></a>
+									</div>
+									<div>
+										<p>결제 정보 : 무통장 입금 / 최규연 / 123-1234345-123</p>
+									</div>
+								</section>
 
-                <section class="empty2"></section>
-            </section>
+						</th:block>
+
+						<th:block th:if="${upcomingReservation.size == 0}">
+							
+							<section id="buyHistoryInfo">
+								<section class="empty2"></section>
+								<section id="buyInfo">
+									<p>내역이 존재하지 않습니다.</p>
+								</section>
+							</section>
+
+						</th:block>
+
+					</section>
+
+				</section>
+
+				<section class="empty2"></section>
+
+			</section>
+
+			<!-- 쇼핑 정보 -->
+			<section id="shopingListSection">
+
+				<section class="empty2"></section>
+
+				<section id="shopingList">
+					<div class="textListSecDiv">
+						<section class="subName">이전 구매 내역</section>
+						<a id="shoppingInfoListBtn">구매 내역 더보기</a>
+					</div>
+					<hr class="underLine2">
+
+					<section id="shopingListInfo">
 
 
-            <!-- 커뮤니티 -->
-            <section class="textSection">
-                <section class="empty2"></section>
+						<th:block th:if="${olderReservation.size != 0}">
 
-                <section class="textListSection">  
-                    <section class="subName">커뮤니티</section>
-                    <hr class="underLine2">
+							<section id="buyHistoryInfo" th:each="oldRes : ${olderReservation}">
+								<!-- 내부공백 (우) -->
+								<section class="empty2"></section>
 
-                    <section class="textItemSection">
-                        <section class="empty2"></section>
+								<section id="imgSection">
+									<img id="shoppingImg" th:src="${oldRes.thumbnail}">
+								</section>
 
-                        <section class="textItmeList">
+								<section class="empty3"></section>
 
-                            <section class="textList">
-                                <a>23.11.13 (화) 캠핑장 필수탬 뭔가요?</a>
-                                <a>( 댓글 수 : 5 )</a>
-                            </section>
-                            
-                            <section class="textList">
-                                <a>23.11.16 (목) 우중 캠핑 재밌죠??</a>
-                                <a>( 댓글 수 : 32 )</a>
-                            </section>
+								<section id="buyInfo">
+									<div>
+										<a th:text="|[${oldRes.campName}] ( ${oldRes.campDeName} )|">캠핑장 명</a>
+									</div>
+									<div>
+										<a>< 비바코 젤라 리빙쉘 텐트 외 3개></a>
+									</div>
+									<div>
+										<p>결제 정보 : 무통장 입금 / 최규연 / 123-1234345-123</p>
+									</div>
+								</section>
 
-                        </section>
+						</th:block>
 
-                        <section class="empty2"></section>
-                    </section>
+						<th:block th:if="${olderReservation.size == 0}">
 
-                </section>
-
-                <section class="empty2"></section>
-            </section>
-
-            
+							<section id="buyInfo">
+								<p>내역이 존재하지 않습니다.</p>
+							</section>
 
 
+						</th:block>
 
-            
-        </section>
-        
-        <!-- 공백 (좌) -->
-        <section class="empty1"></section>
+							<section class="empty3"></section>
+							<section id="reviewRebuyDeleteBtnSection">
+								<a>리뷰 작성</a>
+								<a>재구매</a>
+								<button>삭제</button>
+							</section>
 
-    </main>
+							<!-- 내부공백 (좌) -->
+							<section class="empty2"></section>
+						</section>
 
-    <div class="empty5"></div>
-    
+					</section>
+
+				</section>
+
+				<section class="empty2"></section>
+
+			</section>
+
+
+			<!-- 관심 상품 -->
+			<section id="wishListSection">
+				<section class="empty2"></section>
+
+				<section id="wishList">
+					<section class="subName">관심 상품</section>
+					<hr class="underLine2">
+
+					<th:block th:if="${myPageInfo.wishList.size == 0}">
+						<section id="wishListItems">
+							<section class="empty2"></section>
+								<p>관심 상품이 없습니다.</p>
+							<section class="empty2"></section>
+						</section>
+					</th:block>
+
+					<th:block th:if="${myPageInfo.wishList.size > 0}">
+						
+						<section id="wishListItems">
+							
+							<section class="empty2"></section>
+	
+							<section class="itemSection" th:each="wish : ${myPageInfo.wishList}">
+								<img class="wishItem" th:src="${wish.thumbnail}">
+								<a th:text="${wish.itemName}">밀크 소파 : 블랙</a>
+							</section>
+	
+							<section class="empty4"></section>
+	
+						</section>
+
+					</th:block>
+					
+
+				</section>
+
+				<section class="empty2"></section>
+			</section>
+
+
+			<!-- 문의사항 -->
+			<section class="textSection">
+				<section class="empty2"></section>
+
+				<section class="textListSection">
+					<div class="textListSecDiv">
+						<section class="subName">문의사항</section>
+						<th:block th:replace="~{qna/qna}"></th:block>
+					</div>
+					<hr class="underLine2">
+
+					<section class="textItemSection">
+						<section class="empty2"></section>
+
+						<section class="textItmeList">
+
+							<section class="textList">
+								<a>23.11.13 (화) 캠핑장 예약취소 하려면 어떡하나요??</a>
+								<a>답변</a>
+							</section>
+
+							<section class="textList">
+								<a>23.12.13 (수) 환불규정 알려주세요.</a>
+								<a>미답변</a>
+							</section>
+
+						</section>
+
+						<section class="empty2"></section>
+					</section>
+
+				</section>
+
+				<section class="empty2"></section>
+			</section>
+
+
+			<!-- 커뮤니티 -->
+			<section class="textSection">
+				<section class="empty2"></section>
+
+				<section class="textListSection">
+					<section class="subName">커뮤니티</section>
+					<hr class="underLine2">
+
+					<section class="textItemSection">
+						<section class="empty2"></section>
+
+						<section class="textItmeList">
+	
+							<th:block th:if="${myPageInfo.boardList.size > 0}">
+								
+								<section class="textList" th:each="board : ${myPageInfo.boardList}">
+									<a th:text="|${board.boardCreateDate} ${board.boardTitle} |"></a>
+									<a th:text="|( 댓글 수 : ${board.commentCount} )|">( 댓글 수 : 5 )</a>
+								</section>
+		
+							</th:block>
+							
+							<th:block th:if="${myPageInfo.boardList.size == 0}">
+								
+								<section class="textList">
+									<p> 게시판 내역이 없습니다.</p>
+								</section>
+		
+							</th:block>
+						
+						</section>
+
+
+
+
+						<section class="empty2"></section>
+					</section>
+
+				</section>
+
+				<section class="empty2"></section>
+			</section>
+
+
+
+
+
+
+		</section>
+
+		<!-- 공백 (좌) -->
+		<section class="empty1"></section>
+
+	</main>
+
+	<div class="empty5"></div>
+
 	<th:block th:replace="~{common/footer}"></th:block>
 
 
 </body>
+
 </html>

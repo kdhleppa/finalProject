@@ -210,7 +210,7 @@ public class MemberServiceImpl implements MemberService {
 
 	// 마이페이지 값 뿌리기
 	@Override
-	public List<MyPage> selectMyPageInfo(int memberNo) {
+	public MyPage selectMyPageInfo(int memberNo) {
 		return mapper.selectMyPageInfo(memberNo);
 	}
 	

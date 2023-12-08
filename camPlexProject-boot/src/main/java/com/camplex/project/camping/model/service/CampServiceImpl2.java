@@ -274,10 +274,10 @@ public class CampServiceImpl2 implements CampService2{
 		int campDeNo = 0;
 		
 		if(countDe == 0) {
+			
 			return campDe;
-		}
-		
-		if(countDe > 0) {
+			
+		} else {
 			
 			campDe = mapper.searchCampDeForCampNo(campNo);
 			
@@ -300,15 +300,11 @@ public class CampServiceImpl2 implements CampService2{
 		//List<CampDetailImage> camDImg = mapper.selectCampDetailImageList(1);
 		//System.out.println("camDImg ::" + camDImg);
 		
-		
-			
-			
 			
 		}
 		
-		
-		
 		return campDe;
+		
 	}
 
 

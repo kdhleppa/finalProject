@@ -26,6 +26,7 @@ public class Reservations {
 	
 	private String campName;
 	private String campDeName;
+	private String thumbnail;
 	
 	
 }

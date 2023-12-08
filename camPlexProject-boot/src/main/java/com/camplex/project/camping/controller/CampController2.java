@@ -163,22 +163,13 @@ public class CampController2 {
 	 */
 	@GetMapping("/editCampForward")
 	public String editCampForward(int campNo, Model model) {
-		/* System.out.println(campNo); */
 		
 		Camp campList = service.searchCampForCampNo(campNo);
 		
-//		System.out.println("campList ::" + campList);
-		
-		
-		List<CampDetail> campDeList = new ArrayList<CampDetail>();
-			
-		campDeList = service.searchCampDeForCampNo(campNo);
+		List<CampDetail> campDeList = service.searchCampDeForCampNo(campNo);
 		
 		model.addAttribute("campList", campList);
 		model.addAttribute("campDeList", campDeList);
-		
-		
-		System.out.println("campDetailImageList :: " + campDeList.get(0).getCampDetailImageList());
 		
 		return "camp/campingEdit";
 	}

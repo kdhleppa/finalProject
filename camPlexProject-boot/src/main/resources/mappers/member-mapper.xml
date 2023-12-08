@@ -17,7 +17,7 @@
 	</resultMap>
 
 	<resultMap type="CEOMember" id="ceoMember_rm">
-		<id property="memberNo" column="NEMBER_NO"/>
+		<id property="memberNo" column="MEMBER_NO"/>
 		<result property="cmapName" column="CAMP_NAME" />
 		<result property="campAdress" column="CAMP_ADDRESS" />
 		<result property="ceoName" column="CEO_NAME" />
@@ -41,6 +41,7 @@
 		<result property="demand" column="DEMAND"/>
 		<result property="campName" column="CAMP_NAME"/>
 		<result property="campDeName" column="CAMP_DE_NAME"/>
+		<result property="thumbnail" column="THUMBNAIL"/>
 	</resultMap>
 	
 	<resultMap type="Wishlist" id="wishlist_rm">
@@ -48,6 +49,8 @@
 		<result property="memberNo" column="MEMBER_NO"/>
 		<result property="campNo" column="CAMP_NO"/>
 		<result property="itemNo" column="ITEM_NO"/>
+		<result property="thumbnail" column="THUMBNAIL"/>
+		<result property="itemName" column="ITEM_NAME"/>
 	</resultMap>
 	
 	<resultMap type="Qna" id="qna_rm">
@@ -62,7 +65,6 @@
 	</resultMap>
 	
 	<resultMap type="MypageBoard" id="board_rm">
-	
 		<id property="boardNo" column="BOARD_NO"/>
 		<result property="boardTitle" column="BOARD_TITLE"/>
 		<result property="boardContent" column="BOARD_CONTENT"/>
@@ -76,7 +78,7 @@
 	
 	
 	<resultMap type="MyPage" id="myPageInfoList_rm">
-		<id property="memberNo" column="NEMBER_NO"/>
+		<id property="memberNo" column="MEMBER_NO"/>
 		
 		<collection property="resList"
 				select="selectResList"
@@ -118,7 +120,12 @@
 			       	WHERE CAMP_NO = A.CAMP_NO) CAMP_NAME, 
 			       	
 			       (SELECT CAMP_DE_NAME FROM CAMPING_DETAIL
-			       	WHERE CAMP_DE_NO = A.CAMP_DE_NO) CAMP_DE_NAME
+			       	WHERE CAMP_DE_NO = A.CAMP_DE_NO) CAMP_DE_NAME,
+			       	
+			       	(SELECT (CAMP_IMG_PATH || CAMP_IMG_RENAME) 
+					FROM CAMPING_SITE_IMG
+					WHERE CAMP_NO = A.CAMP_NO
+					AND CAMP_IMG_ORDER = 0) THUMBNAIL
 			       	
 		FROM RESERVATIONS A 
 		WHERE MEMBER_NO = #{memberNo}
@@ -127,8 +134,18 @@
 	
 	<!-- collectoion 중 위시리스트 -->
 	<select id="selectWishList" resultMap="wishlist_rm">
-		SELECT *
-		FROM WISH_LIST
+		SELECT WISHLIST_NO, MEMBER_NO, CAMP_NO, ITEM_NO, 
+		
+				(SELECT ITEM_NAME
+				FROM ITEM
+				WHERE ITEM_NO = A.ITEM_NO) ITEM_NAME,
+				
+				(SELECT (ITEM_IMG_PATH || ITEM_IMG_RENAME) 
+				FROM ITEM_IMG
+				WHERE ITEM_NO = A.ITEM_NO
+				AND ITEM_IMG_ORDER = 0) THUMBNAIL
+		
+		FROM WISH_LIST A
 		WHERE MEMBER_NO = #{memberNo}
 	</select>
 	
