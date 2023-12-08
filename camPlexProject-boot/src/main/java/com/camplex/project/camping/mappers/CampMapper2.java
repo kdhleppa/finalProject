@@ -80,5 +80,7 @@ public interface CampMapper2 {
 
 	int countDe(int campNo);
 
+	int campUpdate(Camp camp);
+
 
 }

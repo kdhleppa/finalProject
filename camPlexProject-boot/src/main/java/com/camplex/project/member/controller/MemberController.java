@@ -31,6 +31,7 @@ import com.camplex.project.item.model.service.ItemService;
 import com.camplex.project.kakao.service.KakaoService;
 import com.camplex.project.member.model.dto.CEOMember;
 import com.camplex.project.member.model.dto.Member;
+import com.camplex.project.member.model.dto.MyPage;
 import com.camplex.project.member.model.service.MemberService;
 import com.camplex.project.member.model.service.NaverService;
 import com.camplex.project.member.model.service.WishlistService;

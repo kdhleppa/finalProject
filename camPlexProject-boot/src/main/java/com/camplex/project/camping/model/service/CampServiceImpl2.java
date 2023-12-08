@@ -285,30 +285,115 @@ public class CampServiceImpl2 implements CampService2{
 				
 					campDeNo = campDe.get(i).getCampDeNo();
 					
-					System.out.println("campDeNo ::" + campDeNo);
 					
 					List<CampDetailImage> camDImg = mapper.selectCampDetailImageList(campDeNo);
 					
-					System.out.println("camDImg ::" + camDImg);
 					
 					campDe.get(i).setCampDetailImageList(camDImg);
 					
 			}
-		
-		System.out.println("campDe ::" + campDe);
-		
-		//List<CampDetailImage> camDImg = mapper.selectCampDetailImageList(1);
-		//System.out.println("camDImg ::" + camDImg);
-		
-		
-			
-			
+
+
 			
 		}
 		
 		
 		
 		return campDe;
+	}
+
+
+	/** 캠핑장 업데이트
+	 *
+	 */
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public int campUpdate(Camp camp, List<MultipartFile> images, MultipartFile inputCampMap)throws IllegalStateException, IOException {
+
+		String temp = camp.getCampMap();
+		String renameCampMap = null;
+		
+		if(inputCampMap.getSize() > 0) {
+			
+			renameCampMap = Util.fileRename(inputCampMap.getOriginalFilename());
+			
+			camp.setCampMap(webPath + renameCampMap);
+			
+		} else {
+			
+			camp.setCampMap(null);
+			
+		}
+
+		int result = mapper.campUpdate(camp);
+		
+		if(renameCampMap != null) {
+			inputCampMap.transferTo(new File(filePath + renameCampMap));
+		}
+		
+		if(result == 0) return 0;
+		
+		int campNo = camp.getCampNo();
+		
+		if(result > 0) {
+			
+			List<CampSiteImage> uploadList = new ArrayList<CampSiteImage>();
+			
+			for(int i=0; i < images.size(); i++) {
+				
+				if(images.get(i).getSize() > 0) {
+					
+					CampSiteImage img = new CampSiteImage();
+					
+					img.setCampImagePath(webPath);
+					img.setCampImageOrder(i);
+					
+					String fileName = images.get(i).getOriginalFilename();
+					
+					img.setCampImageOriginal(fileName);
+					img.setCampNo(campNo);
+					img.setCampImageReName(Util.fileRename(fileName));
+					
+					uploadList.add(img);
+					
+					
+					
+				}
+				
+			}
+			
+			
+			
+			if(!uploadList.isEmpty()) {
+				
+				result = mapper.insertImageList(uploadList);
+				
+				if(result == uploadList.size()) {
+					
+					for(int i=0; i < uploadList.size(); i++) {
+						
+						int index = uploadList.get(i).getCampImageOrder();
+						
+						String rename = uploadList.get(i).getCampImageReName();
+						
+						images.get(index).transferTo(new File(filePath + rename));
+								
+					}
+					
+					
+				} else {
+					
+					throw new FileUploadException();
+					
+				}
+				
+			}
+			
+			
+		}
+
+		return campNo;
+		
 	}
 
 
