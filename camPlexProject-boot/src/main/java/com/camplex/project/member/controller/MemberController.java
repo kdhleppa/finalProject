@@ -176,6 +176,7 @@ public class MemberController {
 	    return path;
 	}
 	
+	// 조회된 아이디 노출 페이지
 	@GetMapping("/searchId2")
 	public String searchId2() {
 		return "member/idPw/searchId2";
@@ -415,6 +416,23 @@ public class MemberController {
 		
 		return path;
 	}
+	
+	// 등업신청 페이지 이동
+	@GetMapping("/levelUpFormCheck")
+	public String levelUpFormCheck(Model model) {
+		
+		List<CEOMember> levelUpList = service.levelUpList();
+		
+		System.out.println(levelUpList);
+		
+		model.addAttribute("levelUpList", levelUpList);
+		
+		return "member/levelUpFormCheck";
+	}
+	
+	
+	
+	
 	
 	// 위시리스트 추가
 	@PostMapping("/wishlist/insert")

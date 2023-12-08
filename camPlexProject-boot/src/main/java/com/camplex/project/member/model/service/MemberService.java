@@ -87,6 +87,11 @@ public interface MemberService {
 	// 아이디 찾기
 	String searchId(Map<String, String> map);
 
+	// 등업신청 리스트 가져오기
+	List<CEOMember> levelUpList();
+
+
+
 
 
 

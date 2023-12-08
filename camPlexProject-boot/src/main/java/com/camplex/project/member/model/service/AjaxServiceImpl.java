@@ -168,6 +168,12 @@ public class AjaxServiceImpl implements AjaxService {
 	public int checkTelAuthkey(Map<String, Object> paramMap) {
 		return mapper.checkTelAuthkey(paramMap);
 	}
+
+	// 등업 신청 확인
+	@Override
+	public int changeMember(String ceoNumber) {
+		return mapper.changeMember(ceoNumber);
+	}
 	
 
 	

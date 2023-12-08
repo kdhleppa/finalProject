@@ -1,0 +1,224 @@
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    unicode-range: U+AC00-D7A3
+}
+
+*{
+    font-family: 'HakgyoansimSantteutdotumL', 'Montserrat';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+button { 
+  color: #000;
+  display:inline-block; 
+  margin:0;
+  text-transform:uppercase; 
+}
+  
+button:after {
+  display:block;
+  content: '';
+  border-bottom: solid 2px #000;
+  margin-top: 5px;
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+}
+
+button:hover:after { 
+	transform: scaleX(1);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+input:focus {
+	outline: none;
+}
+
+main, div, section {
+    /*border: 1px solid black;*/
+}
+
+/* -------------------------- */
+/* 메인 틀 */
+main {
+    display: flex;
+    margin-top: 50px;
+}
+
+.empty1 {
+    flex-basis: 15%;
+}
+
+#myPageSection {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 70%;
+}
+
+/* --------------------------------- */
+/* 대제목 */
+#headerName {
+    font-size: 30px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+#underLine {
+    border: 2px solid black;
+    margin-bottom: 50px;
+}
+
+/* ------------------------------- */
+/* 정보 */
+
+/* 캠핑장 정보 */
+#inputInfo {
+    display: flex;
+	flex-direction: column;
+}
+
+.empty2 {
+    flex-basis: 15%;
+}
+
+#infoMain {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 70%;
+}
+
+.empty3 {
+	margin-top: 30px;
+}
+
+.placeInfo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputInfo {
+    font-size: 18px;
+    border-bottom: 2px solid black;
+}
+
+#inputTitle input {
+    border: none;
+    margin-left: 5px;
+    font-size: 18px;
+    width: 170px;
+}
+
+#inputAddress input {
+    border: none;
+    margin-left: 5px;
+    font-size: 18px;
+    width: 330px;
+}
+
+#inputCEO input {
+    border: none;
+    margin-left: 5px;
+    font-size: 18px;
+    width: 100px;
+}
+
+#inputCEONumber input {
+    border: none;
+    margin-left: 5px;
+    font-size: 18px;
+    width: 200px;
+}
+
+#tourLicense input {
+    border: none;
+    margin-left: 5px;
+    font-size: 15px;
+    width: 250px;
+}
+
+#tourLicense input[type=file]::file-selector-button {
+	width: 70px;
+	height: 20px;
+	font-size: 13px;
+	background: #fff;
+	border: 1px solid rgb(77, 77, 77);
+	border-radius: 7px;
+	cursor: pointer;
+	transition: background 0.5s ease;
+}
+
+#tourLicense input[type=file]::file-selector-button:hover {
+    background: rgb(77, 77, 77);
+    color: #fff;
+}
+
+#accountHolder input {
+    border: none;
+    margin-left: 5px;
+    font-size: 18px;
+    width: 100px;
+}
+
+#bank input {
+    border: none;
+    margin-left: 5px;
+    font-size: 18px;
+    width: 100px;
+}
+
+#accountNumber input {
+    border: none;
+    margin-left: 5px;
+    font-size: 18px;
+    width: 250px;
+}
+
+/* ------------------------------ */
+/* 서식 전송 버튼 */
+#formSendBtn {
+    display: flex;
+    justify-content: end;
+    margin-top: 100px;
+}
+
+#btnSection {
+	flex-basis: 70%;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.clickBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.clickBtn::after {
+    margin-top: 5px;
+}
+
+/* ------------------------------ */
+/* 풋터 위 공간 */
+.empty5 {
+    height: 150px;
+}

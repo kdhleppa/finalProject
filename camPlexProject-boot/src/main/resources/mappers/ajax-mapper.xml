@@ -63,6 +63,17 @@
 		AND AUTH_CODE = #{inputKey}
 	</select>
 
+	<!-- 등업 신청 확인 -->
+	<update id="changeMember">
+		UPDATE "MEMBER"
+		SET MEMBER_TYPE = 'C'
+		WHERE MEMBER_NO IN (
+		    SELECT MEMBER_NO
+		    FROM CEO_MEMBER
+		    WHERE BUSINESS_LICENSE = #{ceoNumber}
+		)
+	</update>
+
 
 
 </mapper>
