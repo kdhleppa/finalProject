@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.camplex.project.paysys.mappers.PaysysMapper;
 import com.camplex.project.paysys.model.dto.CartItem;
 import com.camplex.project.paysys.model.dto.InfoForReservation;
+import com.camplex.project.paysys.model.dto.RentalPaymentItem;
 import com.camplex.project.paysys.model.dto.rentPayList;
 
 @Service
@@ -153,6 +154,23 @@ public class PaysysServiceImpl implements PaysysService{
 	@Override
 	public int insertCartNoQuantity(Map<String, Object> map) {
 		return mapper.insertCartNoQuantity(map);
+	}
+
+	@Transactional
+	@Override
+	public int insertPayRental(Map<String, Object> map) {
+		return mapper.insertPayRental(map);
+	}
+
+	@Transactional
+	@Override
+	public int insertPayRentalItem(RentalPaymentItem rent) {
+		return mapper.insertPayRentalItem(rent);
+	}
+
+	@Override
+	public Integer selectLastInsertId() {
+		return mapper.selectLastInsertId();
 	}
 
 
