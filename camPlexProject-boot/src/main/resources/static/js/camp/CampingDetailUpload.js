@@ -82,60 +82,71 @@ campingDetailUploadForm.addEventListener('submit', e => {
 	
 	if(inputCampingName.value == "") {
 		alert("캠핑장 이름을 입력해주세요.");
+		inputCampingName.focus();
 		e.preventDefault();
 		return;
 	}
 	
 	if(introduceTextArea.value == "") {
 		alert("캠핑장에 대한 설명을 입력해주세요. ");
+		introduceTextArea.focus();
 		e.preventDefault();
 		return;
 	}
 	
 	if(mannerTimeInput.value == "") {
 		alert("매너 타임을 입력해주세요.");
+		mannerTimeInput.focus();
 		e.preventDefault();
 		return;
 	}
 	
 	if(campAddress.value == "") {
 		alert("캠핑장 주소를 입력해주세요.");
+		campAddress.focus();
 		e.preventDefault();
 		return;
 	}
 	
 	if(campPhone.value == "") {
 		alert("캠핑장 번호를 입력해주세요.");
+		campPhone.focus();
 		e.preventDefault();
 		return;
 	}
 	
 	if(checkIn.value == "") {
 		alert("체크인 시간을 입력해주세요.");
+		checkIn.focus();
 		e.preventDefault();
 		return;
 	}
 	
 	if(checkOut.value == "") {
 		alert("체크아웃 시간을 입력해주세요.");
+		checkOut.focus();
 		e.preventDefault();
 		return;
 	}
 	
-	if(categorySelectValue == "noLoad") {
+	if(categorySelect.value == "noLoad") {
+		console.log(categorySelectValue);
 		alert("카테고리를 선택해 주세요.");
+		categorySelect.focus();
 		e.preventDefault();
 		return;
 	}
 	
 	if(CEONum.value == "") {
 		alert("CEO 넘버를 입력해주세요.");
+		CEONum.focus();
 		e.preventDefault();
 		return;
 	}
 	
 	if(etcInfoTextArea.value == "") {
 		alert("캠핑장 Info를 입력해주세요.");
+		etcInfoTextArea.focus();
 		e.preventDefault();
 		return;
 	}

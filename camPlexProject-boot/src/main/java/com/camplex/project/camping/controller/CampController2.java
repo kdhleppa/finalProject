@@ -1,6 +1,7 @@
 package com.camplex.project.camping.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,29 +59,20 @@ public class CampController2 {
 			, @RequestParam(value = "images", required = false) List<MultipartFile> images
 			, RedirectAttributes ra
 			, @RequestParam MultipartFile inputCampMap
-			, @SessionAttribute("loginMember") Member loginMember
 			, @RequestHeader("referer") String referer) throws IllegalStateException, IOException {
 		
-		String[] optionArr = camp.getCampOption().split(",");
-		String[] aroundArr = camp.getCampAroundView().split(",");
-		
-		System.out.println(optionArr[0]);
-		
-		if(camp.getCampOption() == null) {
-			camp.setCampOption(null);
-		} else {
+		if(camp.getCampOption() != null) {
+			String[] optionArr = camp.getCampOption().split(",");
 			String addr = String.join("^^^", optionArr);
 			camp.setCampOption(addr);
 		}
 		
-		
-		if(camp.getCampAroundView() == null) {
-			camp.setCampAroundView(null);
-		} else {
+		if(camp.getCampAroundView() != null) {
+			String[] aroundArr = camp.getCampAroundView().split(",");
 			String addr = String.join("^^^", aroundArr);
 			camp.setCampAroundView(addr);
+			
 		}
-		camp.setMemberNo(loginMember.getMemberNo());
 		
 		
 		int campNo = service.campInsert(camp, images, inputCampMap);
@@ -110,7 +102,6 @@ public class CampController2 {
 
 	@PostMapping("/insertDeCamp")
 	@ResponseBody
-
 	public List<CampDetail> insertSelectDeCamp(CampDetail campDetail
 			, @RequestParam(value = "campDeImges", required = false) List<MultipartFile> campDeImges)
 					throws IllegalStateException, IOException {
@@ -165,26 +156,54 @@ public class CampController2 {
 		return path;
 	}
 	
-	/** 캠핑장 수정
+	/** 캠핑장 수정 조회
 	 * @param campNo
 	 * @param model
 	 * @return
 	 */
-	@GetMapping("/editCamp")
-	public String editCamp(int campNo, Model model) {
-		System.out.println(campNo);
+	@GetMapping("/editCampForward")
+	public String editCampForward(int campNo, Model model) {
+		/* System.out.println(campNo); */
 		
 		Camp campList = service.searchCampForCampNo(campNo);
 		
-		System.out.println("campList ::" + campList);
+//		System.out.println("campList ::" + campList);
 		
-		CampDetail campDeList = service.searchCampDeForCampNo(campNo);
+		
+		List<CampDetail> campDeList = new ArrayList<CampDetail>();
+			
+		campDeList = service.searchCampDeForCampNo(campNo);
+			
+	
+		
+		
 		
 		model.addAttribute("campList", campList);
 		model.addAttribute("campDeList", campDeList);
 		
-		System.out.println(campDeList.getCampDetailImageList());
+		
+		
+		System.out.println("campDetailImageList :: " + campDeList.get(0).getCampDetailImageList());
 		
 		return "camp/campingEdit";
 	}
+	
+	@PostMapping("/editCamp")
+	public String editCamp(
+			Camp camp
+			 ,@RequestParam(value = "images", required = false) List<MultipartFile> images
+			, RedirectAttributes ra
+			, @RequestParam MultipartFile inputCampMap
+			, @SessionAttribute("loginMember") Member loginMember
+			, @RequestHeader("referer") String referer) throws IllegalStateException, IOException {
+		
+		System.out.println("editCamp::" + camp);
+				
+		
+		return "redirect:" + referer;
+		
+		
+	}
+	
+	
 }

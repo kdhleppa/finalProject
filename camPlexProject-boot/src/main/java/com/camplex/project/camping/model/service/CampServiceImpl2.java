@@ -263,8 +263,52 @@ public class CampServiceImpl2 implements CampService2{
 
 
 	@Override
-	public CampDetail searchCampDeForCampNo(int campNo) {
-		return mapper.searchCampDeForCampNo(campNo);
+	public List<CampDetail> searchCampDeForCampNo(int campNo) {
+		
+		int countDe = mapper.countDe(campNo);
+		
+		System.out.println("countDe :: " + countDe);
+		
+		List<CampDetail> campDe = new ArrayList<CampDetail>();
+		
+		int campDeNo = 0;
+		
+		if(countDe == 0) {
+			return campDe;
+		}
+		
+		if(countDe > 0) {
+			
+			campDe = mapper.searchCampDeForCampNo(campNo);
+			
+			for(int i = 0; i < campDe.size(); i++) {
+				
+					campDeNo = campDe.get(i).getCampDeNo();
+					
+					System.out.println("campDeNo ::" + campDeNo);
+					
+					List<CampDetailImage> camDImg = mapper.selectCampDetailImageList(campDeNo);
+					
+					System.out.println("camDImg ::" + camDImg);
+					
+					campDe.get(i).setCampDetailImageList(camDImg);
+					
+			}
+		
+		System.out.println("campDe ::" + campDe);
+		
+		//List<CampDetailImage> camDImg = mapper.selectCampDetailImageList(1);
+		//System.out.println("camDImg ::" + camDImg);
+		
+		
+			
+			
+			
+		}
+		
+		
+		
+		return campDe;
 	}
 
 
