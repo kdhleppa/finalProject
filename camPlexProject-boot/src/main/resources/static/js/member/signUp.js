@@ -62,7 +62,7 @@ inputEmail.addEventListener("input", () => {
 
 
 	} else { // 유효하지 않은 경우(무효인 경우)
-		emailMessage.innerText = "이메일 형식이 유효하지 않습니다";
+		emailMessage.innerText = "이메일 형식이 유효하지 않습니다.";
 		emailMessage.classList.add("error"); // .error 스타일 적용
 		emailMessage.classList.remove("confirm"); // .confirm 스타일 제거
 
@@ -105,7 +105,7 @@ inputPw.addEventListener("input", () => {
 		// 비밀번호 확인이 입력되지 않았을 때
 		if (inputPwRe.value.trim().length == 0) {
 
-			pwMessage.innerText = "사용 가능한 비밀번호입니다";
+			pwMessage.innerText = "사용 가능한 비밀번호입니다.";
 			pwMessage.classList.add("confirm");
 			pwMessage.classList.remove("error");
 
@@ -115,13 +115,13 @@ inputPw.addEventListener("input", () => {
 
 			// 비밀번호 == 비밀번호 확인  (같을 경우)
 			if (inputPw.value == inputPwRe.value) {
-				pwMessage.innerText = "비밀번호가 일치합니다";
+				pwMessage.innerText = "비밀번호가 일치합니다.";
 				pwMessage.classList.add("confirm");
 				pwMessage.classList.remove("error");
 				checkObj.inputPwRe = true;
 
 			} else { // 다를 경우
-				pwMessage.innerText = "비밀번호가 일치하지 않습니다";
+				pwMessage.innerText = "비밀번호가 일치하지 않습니다.";
 				pwMessage.classList.add("error");
 				pwMessage.classList.remove("confirm");
 				checkObj.inputPwRe = false;
@@ -131,7 +131,7 @@ inputPw.addEventListener("input", () => {
 
 	} else { // 유효하지 않은 경우
 
-		pwMessage.innerText = "비밀번호 형식이 유효하지 않습니다";
+		pwMessage.innerText = "비밀번호 형식이 유효하지 않습니다.";
 		pwMessage.classList.add("error");
 		pwMessage.classList.remove("confirm");
 		checkObj.inputPw = false;
@@ -146,13 +146,13 @@ inputPwRe.addEventListener('input', () => {
 
 		// 비밀번호 == 비밀번호 확인  (같을 경우)
 		if (inputPw.value == inputPwRe.value) {
-			pwMessage.innerText = "비밀번호가 일치합니다";
+			pwMessage.innerText = "비밀번호가 일치합니다.";
 			pwMessage.classList.add("confirm");
 			pwMessage.classList.remove("error");
 			checkObj.inputPwRe = true;
 
 		} else { // 다를 경우
-			pwMessage.innerText = "비밀번호가 일치하지 않습니다";
+			pwMessage.innerText = "비밀번호가 일치하지 않습니다.";
 			pwMessage.classList.add("error");
 			pwMessage.classList.remove("confirm");
 			checkObj.inputPwRe = false;
@@ -185,13 +185,13 @@ inputName.addEventListener("input", () => {
 
 	if (regEx.test(inputName.value)) {// 유효
 
-		nameMessage.innerText = "사용 가능한 이름 입니다";
+		nameMessage.innerText = "사용 가능한 이름 입니다.";
 		nameMessage.classList.add("confirm");
 		nameMessage.classList.remove("error");
 		checkObj.inputName = true;
 
 	} else { // 무효
-		nameMessage.innerText = "이름 형식이 유효하지 않습니다";
+		nameMessage.innerText = "이름 형식이 유효하지 않습니다.";
 		nameMessage.classList.add("error");
 		nameMessage.classList.remove("confirm");
 		checkObj.inputName = false;
@@ -225,13 +225,13 @@ inputNickname.addEventListener("input", () => {
 			.then(count => {
 
 				if (count == 0) { // 중복 아닌 경우
-					nickMessage.innerText = "사용 가능한 닉네임 입니다";
+					nickMessage.innerText = "사용 가능한 닉네임 입니다.";
 					nickMessage.classList.add("confirm");
 					nickMessage.classList.remove("error");
 					checkObj.inputNickname = true;
 
 				} else { // 중복인 경우
-					nickMessage.innerText = "이미 사용중인 닉네임 입니다";
+					nickMessage.innerText = "이미 사용중인 닉네임 입니다.";
 					nickMessage.classList.add("error");
 					nickMessage.classList.remove("confirm");
 					checkObj.inputNickname = false;
@@ -243,7 +243,7 @@ inputNickname.addEventListener("input", () => {
 
 
 	} else { // 무효
-		nickMessage.innerText = "닉네임 형식이 유효하지 않습니다";
+		nickMessage.innerText = "닉네임 형식이 유효하지 않습니다.";
 		nickMessage.classList.add("error");
 		nickMessage.classList.remove("confirm");
 		checkObj.inputNickname = false;
@@ -278,12 +278,12 @@ inputTel.addEventListener("input", () => {
 		.then(count => {
 
 			if (count == 0) {
-				telMessage.innerText = "사용 가능한 전화번호입니다";
+				telMessage.innerText = "사용 가능한 전화번호입니다.";
 				telMessage.classList.add("confirm");
 				telMessage.classList.remove("error");
 				checkObj.inputTel = true;
 			} else {
-				telMessage.innerText = "이미 사용중인 전화번호입니다";
+				telMessage.innerText = "이미 사용중인 전화번호입니다.";
 				telMessage.classList.add("error");
 				telMessage.classList.remove("confirm");
 				checkObj.inputTel = false;
@@ -293,7 +293,7 @@ inputTel.addEventListener("input", () => {
 		.catch(err => console.log(err));
 
 	} else { // 무효
-		telMessage.innerText = "전화번호 형식이 유효하지 않습니다";
+		telMessage.innerText = "전화번호 형식이 유효하지 않습니다.";
 		telMessage.classList.add("error");
 		telMessage.classList.remove("confirm");
 		checkObj.inputTel = false;
@@ -459,25 +459,25 @@ document.getElementById("signUpFrm").addEventListener("submit", e => {
 
 			switch (key) {
 				case "inputEmail":
-					alert("이메일이 유효하지 않습니다"); break;
+					alert("이메일이 유효하지 않습니다."); break;
 
 				case "inputPw":
-					alert("비밀번호가 유효하지 않습니다"); break;
+					alert("비밀번호가 유효하지 않습니다."); break;
 
 				case "inputPwRe":
-					alert("비밀번호가 확인되지 않았습니다"); break;
+					alert("비밀번호가 확인되지 않았습니다."); break;
 
 				case "inputName":
-					alert("이름이 유효하지 않았습니다"); break;
+					alert("이름이 유효하지 않았습니다."); break;
 
 				case "inputNickname":
-					alert("닉네임이 유효하지 않습니다"); break;
+					alert("닉네임이 유효하지 않습니다."); break;
 					
 				case "inputTel":
-					alert("전화번호가 유효하지 않습니다"); break;
+					alert("전화번호가 유효하지 않습니다."); break;
 					
 				case "inputAuthkey":
-					alert("인증번호가 유효하지 않습니다"); break;
+					alert("인증번호가 유효하지 않습니다."); break;
 			}
 
 			document.getElementById(key).focus();

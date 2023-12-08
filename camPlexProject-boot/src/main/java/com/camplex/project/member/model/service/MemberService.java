@@ -84,6 +84,9 @@ public interface MemberService {
 	// 네이버 계정 이메일로 로그인
 	Member naverLoginMember(String email);
 
+	// 아이디 찾기
+	String searchId(Map<String, String> map);
+
 
 
 
