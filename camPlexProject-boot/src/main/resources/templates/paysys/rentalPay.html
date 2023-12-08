@@ -17,40 +17,48 @@
 
     <section class="container">
         <div class="emptySpace"></div>
-        <form class="midContainer">
+        <form class="midContainer" th:action="@{/paysys/payDoneRental}" method="post">
             <div class="rentalText"><p>Rental List</p></div>
                 <table class="itemListTB">
                     <tr>
                         <th>번호</th>
                         <th>사진</th>
                         <th>상품명</th>
+                        <th>예약정보</th>
                         <th>수량</th>
                         <th>금액</th>
                         <th>취소</th>
                     </tr>
-                    <!-- 위와 같은 참고사항 지킬것-->
-                    <tr>
-                        <td>1</td>
-                        <td><img src="/img/0340020000042.jpg"></td>
-                        <td>밀크 소파 : 블랙</td>
-                        <td><button class="qBtn">-</button>&nbsp;&nbsp;1&nbsp;&nbsp;<button class="qBtn">+</button></td>
-                        <td>100원</td>
-                        <td><button href="#" class = "grayBtn">DELETE</button></td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td><img src="/img/0340020000042.jpg"></td>
-                        <td>밀크 소파 : 블랙</td>
-                        <td><button class="qBtn">-</button>&nbsp;&nbsp;1&nbsp;&nbsp;<button class="qBtn">+</button></td>
-                        <td>100원</td>
-                        <td><button href="#" class = "grayBtn">DELETE</button></td>
-                    </tr>
+                    <th:block th:each="rent, i : ${rentPayList}">
+	                    <tr th:id="'tr'+${i.index}">
+	                        <td>
+								[[${i.count}]]
+								<input type="hidden" name="itemNo" th:value="${rent.itemNo}"}>
+								<input type="hidden" name="reservationNo" th:value="${rent.reservationNo}">
+								<input type="hidden" name="cartItemNo" th:value="${rent.cartItemNo}">
+								<input type="hidden" th:id="'rentalItemQuantity'+${i.index}" name="rentalItemQuantity">
+								
+							</td>
+	                        <td><img th:src="${rent.thumbnail}"></td>
+	                        <td>[[${rent.itemName}]]</td>
+	                        <td th:text="${rent.campName} + ' (' + ${rent.campEntdate} + ' ~ ' + ${rent.campOutdate} + ')'">예약지</td>
+	                        <td>
+								<button type="button" class="qBtn minusBtn" th:data-index="${i.index}" th:data-price="${rent.itemPrice}">-</button>
+					            &nbsp;&nbsp;<span th:id="'quantity'+${i.index}" th:text="${rent.itemQuantity}" ></span>&nbsp;&nbsp;
+					            <button type="button" class="qBtn plusBtn" th:data-index="${i.index}" th:data-price="${rent.itemPrice}">+</button>
+		                    </td>
+	                        <td th:id="'totalPrice'+${i.index}">[[${rent.itemPrice * rent.itemQuantity}]]원</td>
+	                        <td><button type="button" th:id="'deleteBtn' + ${i.index}" onclick="deleteBtn(this)" th:data-index="${i.index}" class = "grayBtn">DELETE</button></td>
+	                        
+	                    </tr>
+                    </th:block>
                     <tr>
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td><input type="hidden" name="price" id="price" value=""></td>
                         <td>총 금액</td>
-                        <td>200원</td>
+                        <td id="overallTotal"> 0원</td>
                         <td></td>
                     </tr>
                     
@@ -61,23 +69,27 @@
                     </div>
                     <div class="payContainer">
                         <div class="payInputContainer">
-                            <input type="radio" class="payBy" name="payBy">&nbsp;&nbsp;&nbsp;무통장 입금
+                            <input type="radio" class="payBy" name="payBy" value="b">&nbsp;&nbsp;&nbsp;무통장 입금
                         </div>
                         <div class="payInputContainer">
-                            <input type="radio" class="payBy" name="payBy">&nbsp;&nbsp;&nbsp;<img src="/img/npaylogo.png" alt="" class="nPayLogo">
+                            <input type="radio" class="payBy" name="payBy" value="n">
+                            &nbsp;&nbsp;&nbsp;<img th:src="@{/images/iconImg/npaylogo.png}" alt="" class="nPayLogo" >
                         </div>
                         <div class="payInputContainer">
-                            <input type="radio" class="payBy" name="payBy">&nbsp;&nbsp;&nbsp;<img src="/img/kpaylogo.png" alt="" class="kPayLogo">
+                            <input type="radio" class="payBy" name="payBy" value="k">
+                             &nbsp;&nbsp;&nbsp;<img th:src="@{/images/iconImg/kpaylogo.png}" alt="" class="kPayLogo" >
                         </div>
                     </div>
                 </div>
-
+				<div id="bankAccountContainer">
+					
+					
+				</div>
                 <div class="buttonList">
-                    <button type="submit" class="Btn">예약하기</button>
+                    <button type="submit" class="Btn" id="payBtn">결제하기</button>
                     
-                    <a href="#" class="Btn backBtn">돌아가기</a>
+                    <button type="button" class="Btn backBtn" onclick="history.back()">돌아가기</button>
                 </div>
-                <div>푸터자리<hr>1<hr>1<hr>1<hr>1<hr>1<hr><hr></div>
             </form>
             
         </div>
@@ -85,5 +97,8 @@
         <div class="emptySpace"></div>
     </section>
     <th:block th:replace="~{common/footer}"></th:block>
+    <script th:src="@{/js/paysys/rentalPay.js}"></script>
+    
+   
 </body>
 </html>

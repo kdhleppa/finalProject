@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +31,8 @@ import com.camplex.project.member.model.dto.Member;
 import com.camplex.project.member.model.service.WishlistService;
 import com.camplex.project.paysys.model.dto.CartItem;
 import com.camplex.project.paysys.model.dto.InfoForReservation;
+import com.camplex.project.paysys.model.dto.RentalPayment;
+import com.camplex.project.paysys.model.dto.RentalPaymentItem;
 import com.camplex.project.paysys.model.dto.rentPayList;
 import com.camplex.project.paysys.model.service.PaysysService;
 import com.camplex.project.paysys.model.service.ReservationsService;
@@ -220,6 +223,86 @@ public class PaysysController {
 		
 		return "paysys/payDoneBank";
 	}
+	
+	@PostMapping("/payDoneRental")
+	public String payRental(
+			@RequestParam List<Integer> itemNo,
+		    @RequestParam List<Integer> reservationNo,
+		    @RequestParam List<Integer> cartItemNo,
+		    @RequestParam List<Integer> rentalItemQuantity,
+			String payBy,
+			String bank,
+			String senderName,
+			Integer price,
+			@SessionAttribute("loginMember") Member loginMember,
+			Model model,
+			HttpServletRequest request, RedirectAttributes ra) {
+		String referer = request.getHeader("Referer");
+		String path = "redirect:";	
+		int result = 0;
+		int result2 = 0;
+		System.out.println("어디가문제니"+itemNo);
+		switch(bank) {
+		
+		case "toss" : bank = "토스뱅크 100001065362 최규연"; break;
+		case "kb" : bank ="국민은행 00440204106870 이재경"; break;
+		
+		
+	
+		}
+	
+		
+		List<RentalPaymentItem> rents = new ArrayList<>();
+		
+		for (int i = 0; i < itemNo.size(); i++) {
+			RentalPaymentItem item = new RentalPaymentItem();
+			item.setItemNo(itemNo.get(i));
+	        item.setReservationNo(reservationNo.get(i));
+	        item.setCartItemNo(cartItemNo.get(i));
+	        item.setRentalItemQuantity(rentalItemQuantity.get(i));
+	        rents.add(item);
+			
+		}
+		Map<String, Object> map = new HashMap<>();
+		
+		map.put("memberNo", loginMember.getMemberNo());
+		map.put("price", price);
+		map.put("senderName", senderName);
+		
+		if (!rents.isEmpty()) {
+			InfoForReservation info = new InfoForReservation();
+			info.setPrice(price);
+			result = payService.insertPayRental(map);
+			Integer rentalPaymentNo= payService.selectLastInsertId();
+			model.addAttribute("info", info);
+			model.addAttribute("bank", bank);
+			model.addAttribute("senderName", senderName);
+		
+			if(result > 0) {
+				for (RentalPaymentItem rent : rents) {
+					rent.setRentalPaymentNo(rentalPaymentNo);
+					result2 = payService.insertPayRentalItem(rent);
+					
+					
+				}
+					
+					ra.addFlashAttribute("message", "결제 신청이 완료되었습니다.");
+				} else {
+					ra.addFlashAttribute("message", "결제 진행 중 오류가 발생했습니다.");
+					path +=referer;
+					return path;
+				}
+		
+		} else {
+			
+			ra.addFlashAttribute("message", "에러남(block안의값잘안드렁온듯)");
+			path +=referer;
+			return path;
+		}
+		
+		
+		return "paysys/payDoneBank";
+	}
 
 
 	@PostMapping("/rentCart/moveItemToOtherSite")
@@ -326,6 +409,12 @@ public class PaysysController {
 			@RequestParam(value = "checkCartItemNo", required = false) List<Integer> checkCartItemNo,
 			Model model
 			) {
+		
+		if(loginMember == null) {
+			ra.addFlashAttribute("message", "로그인 후 이용해 주세요");
+			return "redirect:/member/login";
+		} else {
+		
 		int memberNo = loginMember.getMemberNo();
 		List<rentPayList> payList = new ArrayList<>();
 		String referer = request.getHeader("Referer");
@@ -349,7 +438,7 @@ public class PaysysController {
 		}
 		
 		return "paysys/rentalPay";
-		
+		}
 	}
 	
 	@PostMapping("/rentalPay/now")
@@ -382,7 +471,6 @@ public class PaysysController {
 			data.setReservationNo(reservationNo);
 			data.setCampEntdate(rsvInfo.getCampEntDate());
 			data.setCampOutdate(rsvInfo.getCampOutDate());
-			System.out.println("data =" +data);
 			model.addAttribute("rentPayList", data);
 			
 			

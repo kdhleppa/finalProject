@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.camplex.project.paysys.model.dto.CartItem;
 import com.camplex.project.paysys.model.dto.InfoForReservation;
+import com.camplex.project.paysys.model.dto.RentalPaymentItem;
 import com.camplex.project.paysys.model.dto.rentPayList;
 
 @Mapper
@@ -91,6 +92,18 @@ public interface PaysysMapper {
 
 
 	int insertCartNoQuantity(Map<String, Object> map);
+
+
+
+	int insertPayRental(Map<String, Object> map);
+
+
+
+	int insertPayRentalItem(RentalPaymentItem rent);
+
+
+
+	Integer selectLastInsertId();
 
 
 
