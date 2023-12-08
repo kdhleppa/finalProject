@@ -250,6 +250,14 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.searchId(map);
 	}
 
+	// 등업신청 리스트 가져오기
+	@Override
+	public List<CEOMember> levelUpList() {
+		return mapper.levelUpList();
+	}
+
+
+
 
 
 

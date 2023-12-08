@@ -18,7 +18,11 @@
 
 	<resultMap type="CEOMember" id="ceoMember_rm">
 		<id property="memberNo" column="MEMBER_NO"/>
+<<<<<<< HEAD
+		<result property="campName" column="CAMP_NAME" />
+=======
 		<result property="cmapName" column="CAMP_NAME" />
+>>>>>>> a11c5b3fe27c02b59c5a98d4a0966795f8c30b74
 		<result property="campAdress" column="CAMP_ADDRESS" />
 		<result property="ceoName" column="CEO_NAME" />
 		<result property="businessLicense" column="BUSINESS_LICENSE" />
@@ -257,10 +261,11 @@
 		, #{tourLicense}
 		, DEFAULT
 		, #{campAdress}
-		, #{cmapName}
+		, #{campName}
 		, #{ceoName}
 		, #{accountHolder}
-		, #{bankName})
+		, #{bankName}
+		, DEFAULT)
 	</insert>
 	
 	<!-- 카카오 로그인 시 회원인지 확인 -->
@@ -323,6 +328,16 @@
 		WHERE MEMBER_DEL_FL = 'N'
 		AND MEMBER_NAME = #{memberName}
 		AND MEMBER_PHONE = #{memberPhone}
+	</select>
+	
+	<!-- 등업신청 정보 가져오기 -->
+	<select id="levelUpList" resultMap="ceoMember_rm">
+		SELECT MEMBER_NO, CAMP_NAME, CAMP_ADDRESS, CEO_NAME, BUSINESS_LICENSE,
+		TOUR_LICENSE, ACCOUNT_HOLDER, BANK_NAME, CEO_ACCOUNT
+		FROM "CEO_MEMBER"
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE MEMBER_TYPE = 'U'
+		ORDER BY SEND_FORM_DAY
 	</select>
 	
 	
