@@ -41,7 +41,7 @@ dependencies {
         implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '3.1.0'
         
         // https://mvnrepository.com/artifact/net.nurigo/sdk
-        compile group: 'net.nurigo', name: 'javaSDK', version: '2.2'
+        implementation group: 'net.nurigo', name: 'sdk', version: '4.3.0'
 
         // chatdemo
         // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-websocket
@@ -60,8 +60,7 @@ dependencies {
         implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
         
         
-        implementation 'com.navercorp.lucy:lucy-xss-servlet:2.0.1'
-        implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+        
         
 }
 
