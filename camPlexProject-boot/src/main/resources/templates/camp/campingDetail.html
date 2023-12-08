@@ -43,7 +43,7 @@
 
 						<th:block th:if="${session.loginMember?.memberType == 'C'} or ${session.loginMember?.memberType == 'M'}">
 
-							<a id="campUpdate" th:href="|@{/camp2/editCamp?campNo=}${camp.campNo}|">수정</a>
+							<a id="campUpdate" th:href="|@{/camp2/editCampForward?campNo=}${camp.campNo}|">수정</a>
 
 							<form th:action="@{/camp2/deleteCamp}" id="deleteCampFrm">
 								<button id="campDelete" href="">삭제</button>
