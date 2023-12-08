@@ -1,5 +1,9 @@
 package com.camplex.project.member.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +39,7 @@ import com.camplex.project.member.model.dto.MyPage;
 import com.camplex.project.member.model.service.MemberService;
 import com.camplex.project.member.model.service.NaverService;
 import com.camplex.project.member.model.service.WishlistService;
+import com.camplex.project.paysys.model.dto.Reservations;
 import com.camplex.project.paysys.model.service.PaysysService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -257,15 +262,44 @@ public class MemberController {
 	@GetMapping("/myPage")
 	public String myPage(@SessionAttribute("loginMember") Member loginMember,
 							Model model
-						) {
+						) throws ParseException {
 		
 		int memberNo = loginMember.getMemberNo(); 
 		
-		List<MyPage> myPageInfo = service.selectMyPageInfo(memberNo);
+		MyPage myPageInfo =  service.selectMyPageInfo(memberNo);
+
+		List<Reservations> olderReservation = new ArrayList<>();
+		List<Reservations> upcomingReservation = new ArrayList<>();
 		
-		System.out.println(myPageInfo);
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
 		
+		Date today = new Date();
+		
+		for(int i = 0 ; i < myPageInfo.getResList().size() ; i++) {
+			
+			Date tempDate = format.parse(myPageInfo.getResList().get(i).getCampOutDate());
+			
+			if(today.after(tempDate)) {
+				
+				Reservations res = new Reservations();
+				res = myPageInfo.getResList().get(i);
+				olderReservation.add(res);
+								
+			} else {
+				
+				Reservations res = new Reservations();
+				res = myPageInfo.getResList().get(i);
+				upcomingReservation.add(res);
+				
+			}
+			
+		}
+		
+		model.addAttribute("olderReservation", olderReservation);
+		model.addAttribute("upcomingReservation", upcomingReservation);
 		model.addAttribute("myPageInfo", myPageInfo);		
+		
+		System.out.println(model);
 		
 		return "member/myPage/myPage";
 	}

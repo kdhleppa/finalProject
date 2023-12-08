@@ -17,4 +17,6 @@ public class Wishlist {
 	private int campNo;
 	private int itemNo;
 
+	private String thumbnail;
+	private String itemName;
 }

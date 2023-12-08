@@ -12,6 +12,7 @@ import com.navercorp.lucy.security.xss.servletfilter.XssEscapeServletFilter;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+
 /*
  * @Configuration
  * 
@@ -29,3 +30,4 @@ import lombok.extern.slf4j.Slf4j;
  * }
  * 
  */
+
