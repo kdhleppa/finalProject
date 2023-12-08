@@ -43,7 +43,7 @@ public interface MemberMapper {
 	int levelUpFrom(CEOMember inputCeoMember);
 
 	// 마이페이지 값 뿌리기
-	List<MyPage> selectMyPageInfo(int memberNo);
+	MyPage selectMyPageInfo(int memberNo);
 
 	// 카카오 로그인 시 회원인지 확인
 	String checkMember(String email);

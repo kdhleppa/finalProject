@@ -74,7 +74,13 @@ public interface CampMapper2 {
 
 	Camp searchCampForCampNo(int campNo);
 
-	CampDetail searchCampDeForCampNo(int campNo);
+	List<CampDetail> searchCampDeForCampNo(int campNo);
+
+	List<CampDetailImage> selectCampDetailImageList(int campDeNo);
+
+	int countDe(int campNo);
+
+	int campUpdate(Camp camp);
 
 
 }

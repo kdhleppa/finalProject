@@ -56,13 +56,6 @@
 		<result property="checkIn" column="CHECK_IN" />
 		<result property="checkOut" column="CHECK_OUT" />
 		
-		<collection property="campDetailImageList"
-				select="selectCampDetailImageList"
-				column="CAMP_NO"
-				javaType="java.util.ArrayList"
-				ofType="CampDetailImage"
-		/>
-		
 	</resultMap>
 	
 	<resultMap type="CampSiteImage" id="camp_image_rm">
@@ -83,7 +76,7 @@
 	</resultMap>
 	
 	<resultMap type="CampDetailImage" id="camp_detailImage_rm">
-		<id property="campDeImageNo" column="CAMPDE__IMG_NO" />
+		<id property="campDeImageNo" column="CAMP_DE_IMG_NO" />
 		<result property="campDeNo" column="CAMP_DE_NO" />
 		<result property="campDeImagePath" column="CAMP_DE_IMG_PATH" />
 		<result property="campDeImageReName" column="CAMP_DE_IMG_RENAME" />
@@ -116,12 +109,11 @@
 		WHERE CAMP_NO = #{campNo}
 	</select>
 	
-	<!-- collection 중 캠핑 구역 이미지 리스트 조회-->
+	<!-- 캠프 구역 넘버에 따른 캠핑 구역 이미지 리스트 조회-->
 	<select id="selectCampDetailImageList" resultMap="camp_detailImage_rm">
 		SELECT CAMP_DE_IMG_NO, CAMP_DE_NO, CAMP_DE_IMG_PATH, CAMP_DE_IMG_RENAME, CAMP_DE_IMG_ORIGINAL, CAMP_DE_IMG_ORDER
 		FROM "CAMPING_DETAIL_IMG"
-		JOIN "CAMPING_DETAIL" USING(CAMP_DE_NO)
-		WHERE CAMP_NO = #{campNo}
+		WHERE CAMP_DE_NO = #{campDeNo}
 	</select>
 	
 	<!-- 캠핑장 삽입-->
@@ -232,8 +224,34 @@
 	<select id="searchCampDeForCampNo" resultMap="camp_detail_rm">
 		SELECT CAMP_DE_NO, CAMP_NO, CAMP_DE_NAME, CAMP_DE_PRICE, CAPACITY, FULL_CAPACITY
 		FROM "CAMPING_DETAIL"
-		JOIN "CAMPING_SITE" USING(CAMP_NO)
 		WHERE CAMP_NO = #{campNo}
 	</select>
+	
+	<!-- 캠핑 장소 카운트-->
+	<select id="countDe">
+		SELECT COUNT(*)
+		FROM "CAMPING_DETAIL"
+		WHERE CAMP_NO = #{campNo}
+	</select>
+	
+	<!--<update id="campUpdate">
+		UPDATE "CAMPING_SITE" SET 
+		MEMBER_NO = #{},
+		CAMP_ADDRESS = #{},
+		CAMP_PHONE = #{},
+		CAMP_NAME = #{},
+		CAMP_OPTION = #{},
+		CAMP_AROUND_VIEW  = #{},
+		CAMP_MAP = #{},
+		MANNER_TIME = #{},
+		CATEGORY = #{},
+		CAMP_INFO = #{}
+	</update>-->
+	
+	
+	
+	
+	
+	
 	
 </mapper>

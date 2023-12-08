@@ -28,6 +28,7 @@ public class InfoForReservation {
 	private int price;
 	private int priceOneDay;
 	private String payType;
+	private String senderName;
 	
 	private int memberNo;
 	private int paymentNo;
