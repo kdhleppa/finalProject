@@ -98,14 +98,16 @@ boardWriteFrm.addEventListener('submit', e => {
 
 });
 
-
 function quilljsediterInit(){
     var option = {
         modules: {
             toolbar: [
-                [{header: [1,2,false] }],
-                ['bold', 'italic', 'underline','code-block'],
-                [{ list: 'ordered' }, { list: 'bullet' }]
+				[{ 'font': [] }, { 'size': ['small', false, 'large', 'huge'] }],
+                ['bold', 'italic', 'underline', 'code-block'],
+                [{ 'color': [] }, { 'background': [] }], 
+                [{ 'align': [] }],  
+                [{ list: 'ordered' }, { list: 'bullet' }],
+                ['clean']
             ]
         },
         placeholder: '내용을 입력해 주세요',
