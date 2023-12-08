@@ -227,10 +227,31 @@
 		WHERE CAMP_NO = #{campNo}
 	</select>
 	
+	<!-- 캠핑 장소 카운트-->
 	<select id="countDe">
 		SELECT COUNT(*)
 		FROM "CAMPING_DETAIL"
 		WHERE CAMP_NO = #{campNo}
 	</select>
+	
+	<!--<update id="campUpdate">
+		UPDATE "CAMPING_SITE" SET 
+		MEMBER_NO = #{},
+		CAMP_ADDRESS = #{},
+		CAMP_PHONE = #{},
+		CAMP_NAME = #{},
+		CAMP_OPTION = #{},
+		CAMP_AROUND_VIEW  = #{},
+		CAMP_MAP = #{},
+		MANNER_TIME = #{},
+		CATEGORY = #{},
+		CAMP_INFO = #{}
+	</update>-->
+	
+	
+	
+	
+	
+	
 	
 </mapper>

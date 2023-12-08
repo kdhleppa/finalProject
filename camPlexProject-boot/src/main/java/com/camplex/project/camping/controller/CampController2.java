@@ -184,7 +184,40 @@ public class CampController2 {
 			, @RequestHeader("referer") String referer) throws IllegalStateException, IOException {
 		
 		System.out.println("editCamp::" + camp);
-				
+		
+		if(camp.getCampOption() != null) {
+			String[] optionArr = camp.getCampOption().split(",");
+			String addr = String.join("^^^", optionArr);
+			camp.setCampOption(addr);
+		}
+		
+		if(camp.getCampAroundView() != null) {
+			String[] aroundArr = camp.getCampAroundView().split(",");
+			String addr = String.join("^^^", aroundArr);
+			camp.setCampAroundView(addr);
+			
+		}
+		
+		
+		int campNo = service.campUpdate(camp, images, inputCampMap);
+		
+		int updateResult = service.updateCampDe(campNo);
+		
+		
+		String message = null;
+		String path = "redirect:";
+		
+		
+		if(campNo > 0) {
+			message = "캠핑장 등록 완료";
+			path += "/camp/search";
+		} else {
+			message = "캠핑장 등록 실패";
+			path += referer;
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
 		
 		return "redirect:" + referer;
 		
