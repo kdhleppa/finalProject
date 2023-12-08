@@ -208,7 +208,6 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
-
 	// 마이페이지 값 뿌리기
 	@Override
 	public List<MyPage> selectMyPageInfo(int memberNo) {

@@ -173,14 +173,9 @@ public class CampController2 {
 		List<CampDetail> campDeList = new ArrayList<CampDetail>();
 			
 		campDeList = service.searchCampDeForCampNo(campNo);
-			
-	
-		
-		
 		
 		model.addAttribute("campList", campList);
 		model.addAttribute("campDeList", campDeList);
-		
 		
 		
 		System.out.println("campDetailImageList :: " + campDeList.get(0).getCampDetailImageList());

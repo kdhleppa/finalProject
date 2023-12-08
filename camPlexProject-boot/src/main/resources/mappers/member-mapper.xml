@@ -28,23 +28,141 @@
 		<result property="ceoAccount" column="CEO_ACCOUNT" />
 	</resultMap>
 	
-<!--	<resultMap type="MyPageInfoList" id="myPageInfoList_rm">
+	<resultMap type="Reservations" id="reservation_rm">
+	  	<id property="reservationNo" column="RESERVATION_NO"/>
+		<result property="paymentNo" column="PAYMENT_NO"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="campNo" column="CAMP_NO"/>
+		<result property="campDeNo" column="CAMP_DE_NO"/>
+		<result property="campEntDate" column="CAMP_ENTDATE"/>
+		<result property="campOutDate" column="CAMP_OUTDATE"/>
+		<result property="adultCount" column="ADULT_COUNT"/>
+		<result property="kidCount" column="KID_COUNT"/>
+		<result property="demand" column="DEMAND"/>
+		<result property="campName" column="CAMP_NAME"/>
+		<result property="campDeName" column="CAMP_DE_NAME"/>
+	</resultMap>
+	
+	<resultMap type="Wishlist" id="wishlist_rm">
+	  	<id property="wishListNo" column="WISHLIST_NO"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="campNo" column="CAMP_NO"/>
+		<result property="itemNo" column="ITEM_NO"/>
+	</resultMap>
+	
+	<resultMap type="Qna" id="qna_rm">
+		<id property="QNANo" column="QNA_NO"/>
+		<result property="QNATitle" column="QNA_TITLE" />
+		<result property="QNAContent" column="QNA_CONTENT" />
+		<result property="QNAAnswer" column="QNA_ANSWER" />
+		<result property="answerFlag" column="ANSWER_FL" />
+		<result property="QNACreateDate" column="Q_CREATE_DATE" />
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="memberNickname" column="MEMBER_NICKNAME" />
+	</resultMap>
+	
+	<resultMap type="MypageBoard" id="board_rm">
+	
+		<id property="boardNo" column="BOARD_NO"/>
+		<result property="boardTitle" column="BOARD_TITLE"/>
+		<result property="boardContent" column="BOARD_CONTENT"/>
+		<result property="boardReadCount" column="B_READ_COUNT"/>
+		<result property="boardType" column="BOARD_TYPE"/>
+		<result property="boardCreateDate" column="B_CREATE_DATE"/>
+		<result property="commentCount" column="COMMENT_COUNT"/>
+		<result property="likeCount" column="LIKE_COUNT"/>
+		
+	</resultMap>
+	
+	
+	<resultMap type="MyPage" id="myPageInfoList_rm">
 		<id property="memberNo" column="NEMBER_NO"/>
-		<result property="wishListNo" column="WISHLIST_NO" />  캠핑장 이미지 
-		<result property="campNo" column="CAMP_NO" />  캠핑장 이름
-		<result property="rentalName" column="ITEM_NAME" />  렌탈 상품명 
-		<result property="rentalName" column="ITEM_NAME" />  결제 정보 
-		<result property="paymentState" column="PAYMENT_STATUS_NAME" />  결제 상태 
-		<result property="paymentState" column="ITEM_IMG_RENAME" />  관심 상품 이미지 
-		<result property="paymentState" column="PAYMENT_STATUS_NAME" />  관심 상품명 
-		<result property="paymentState" column="PAYMENT_STATUS_NAME" />  문의사항 제목 
-		<result property="paymentState" column="PAYMENT_STATUS_NAME" />  문의사항 답변 상태 
-		<result property="paymentState" column="PAYMENT_STATUS_NAME" />  커뮤니티 제목 
-		<result property="paymentState" column="PAYMENT_STATUS_NAME" />  커뮤니티 댓글 수 
-	</resultMap>-->
+		
+		<collection property="resList"
+				select="selectResList"
+				column="MEMBER_NO"
+				javaType="java.util.ArrayList"
+				ofType="Reservations"
+		/>
+		
+		<collection property="wishList"
+				select="selectWishList"
+				column="MEMBER_NO"
+				javaType="java.util.ArrayList"
+				ofType="Wishlist"
+		/>
+		
+		<collection property="qnaList"
+				select="selectQnaList"
+				column="MEMBER_NO"
+				javaType="java.util.ArrayList"
+				ofType="Qna"
+		/>
+		
+		<collection property="boardList"
+				select="selectBoardList"
+				column="MEMBER_NO"
+				javaType="java.util.ArrayList"
+				ofType="Board"
+		/>
+		
+		
+	</resultMap>
+	
+	<!-- collectoion 중 예약정보 -->
+	<select id="selectResList" resultMap="reservation_rm">
+		SELECT RESERVATION_NO, PAYMENT_NO, MEMBER_NO, CAMP_NO, CAMP_DE_NO, CAMP_ENTDATE,
+		       CAMP_OUTDATE, ADULT_COUNT, KID_COUNT, DEMAND,
+		        
+			       (SELECT CAMP_NAME FROM CAMPING_SITE
+			       	WHERE CAMP_NO = A.CAMP_NO) CAMP_NAME, 
+			       	
+			       (SELECT CAMP_DE_NAME FROM CAMPING_DETAIL
+			       	WHERE CAMP_DE_NO = A.CAMP_DE_NO) CAMP_DE_NAME
+			       	
+		FROM RESERVATIONS A 
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
 	
 	
-
+	<!-- collectoion 중 위시리스트 -->
+	<select id="selectWishList" resultMap="wishlist_rm">
+		SELECT *
+		FROM WISH_LIST
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- collectoion 중 qna -->
+	<select id="selectQnaList" resultMap="qna_rm">
+		SELECT *
+		FROM QNA
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- collectoion 중 board -->
+	<select id="selectBoardList" resultMap="board_rm">
+		SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT, B_READ_COUNT, BOARD_TYPE, B_CREATE_DATE,
+	  		
+		  		(SELECT COUNT(*) FROM "COMMENT" C
+				 WHERE C.BOARD_NO = B.BOARD_NO
+				 AND COMMENT_DEL_FL = 'N') COMMENT_COUNT,
+				(SELECT COUNT(*) FROM BOARD_LIKE L
+				 WHERE L.BOARD_NO = B.BOARD_NO) LIKE_COUNT
+			
+			FROM "BOARD" B
+			JOIN "MEMBER" USING(MEMBER_NO)
+			WHERE BOARD_DEL_FL = 'N'
+			AND MEMBER_NO = #{memberNo}
+	</select>
+	
+	<select id="selectMyPageInfo" resultMap="myPageInfoList_rm">
+		SELECT MEMBER_NO
+			FROM "MEMBER"
+			WHERE MEMBER_NO = #{memberNo}
+	</select>
+	
+	
+	
 	<!-- 로그인 -->
 	<select id="login" resultMap="member_rm">
 		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_PW, MEMBER_NAME, MEMBER_NICKNAME,

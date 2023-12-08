@@ -15,14 +15,16 @@ import lombok.ToString;
 @ToString
 @Setter
 @Getter
-public class MyPage {
+public class MypageBoard {
 
-	// 마이페이지 정보 뿌리기용 DTO
-	
-	private int memberNo;
-	
-	private List<Reservations> resList;
-	private List<Wishlist> wishList;
-	private List<Qna> qnaList;
-	private List<Board> boardList;
+	private int boardNo;
+	private String boardTitle;
+	private String boardContent;
+	private int boardReadCount;
+	private String boardType;
+	private String boardCreateDate;
+	private int likeCount;
+
+	// 서브쿼리
+	private int commentCount; // 댓글 수
 }

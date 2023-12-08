@@ -174,7 +174,6 @@ public class CampController {
 		model.addAttribute("aroundView", aroundViewMap);
 		model.addAttribute("camp", camp);
 		
-		
 		return "camp/campingDetail";
 	}
 	
