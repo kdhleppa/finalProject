@@ -244,6 +244,12 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.naverLoginMember(email);
 	}
 
+	// 아이디 찾기
+	@Override
+	public String searchId(Map<String, String> map) {
+		return mapper.searchId(map);
+	}
+
 
 
 

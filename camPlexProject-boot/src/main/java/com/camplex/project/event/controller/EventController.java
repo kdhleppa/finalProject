@@ -30,4 +30,10 @@ public class EventController {
 		return"/event/eventRoulette";
 	}
 	
+	// 이벤트 뽑기 페이지
+	@GetMapping("/eventScratch") 
+	public String eventScratch() {
+		return"/event/eventScratch";
+	}
+	
 }

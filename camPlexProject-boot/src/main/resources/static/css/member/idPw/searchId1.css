@@ -124,7 +124,7 @@ main {
 }
 
 #inputTel {
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 #inputAuthkey {
@@ -178,9 +178,13 @@ main {
 }
 
 #sendAuthkey {
-	margin-top: 83px;
+	margin-top: 84px;
 }
 
 #checkNumber {
     margin-top: 54px;
 }
+
+/* 메세지 색상 지정 */
+.confirm{ color : green; }
+.error{ color : red; }

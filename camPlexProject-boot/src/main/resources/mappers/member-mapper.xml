@@ -299,8 +299,14 @@
 		AND MEMBER_EMAIL = #{memberEmail}
 	</select>
 	
-	
-	
+	<!-- 아이디 찾기 -->
+	<select id="searchId">
+		SELECT MEMBER_EMAIL
+		FROM "MEMBER"
+		WHERE MEMBER_DEL_FL = 'N'
+		AND MEMBER_NAME = #{memberName}
+		AND MEMBER_PHONE = #{memberPhone}
+	</select>
 	
 	
 	
