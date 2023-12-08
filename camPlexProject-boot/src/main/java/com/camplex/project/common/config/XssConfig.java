@@ -12,19 +12,20 @@ import com.navercorp.lucy.security.xss.servletfilter.XssEscapeServletFilter;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-@Configuration
-@Slf4j
-@AllArgsConstructor
-public class XssConfig implements WebMvcConfigurer {
-
-    private final ObjectMapper objectMapper;
-
-    @Bean
-    public MappingJackson2HttpMessageConverter jsonEscapeConverter() {
-        ObjectMapper copy = objectMapper.copy();
-        copy.getFactory().setCharacterEscapes(new HTMLCharacterEscapes());
-        return new MappingJackson2HttpMessageConverter(copy);
-    }
-    
-}
-
+/*
+ * @Configuration
+ * 
+ * @Slf4j
+ * 
+ * @AllArgsConstructor public class XssConfig implements WebMvcConfigurer {
+ * 
+ * private final ObjectMapper objectMapper;
+ * 
+ * @Bean public MappingJackson2HttpMessageConverter jsonEscapeConverter() {
+ * ObjectMapper copy = objectMapper.copy();
+ * copy.getFactory().setCharacterEscapes(new HTMLCharacterEscapes()); return new
+ * MappingJackson2HttpMessageConverter(copy); }
+ * 
+ * }
+ * 
+ */
