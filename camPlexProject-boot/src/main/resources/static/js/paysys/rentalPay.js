@@ -90,7 +90,7 @@ for(var i = 0 ; i <payBy.length ; i ++){
     
         if(e.target.value == 'b'){
             makeAccount();
-            payFrm.action ="payDoneRental"
+            payFrm.action ="/paysys/payDoneRental"
 
             payFrm.addEventListener("submit", (e) => {
                 
@@ -100,7 +100,7 @@ for(var i = 0 ; i <payBy.length ; i ++){
             })
 
         } else if (e.target.value == 'k'){
-            payFrm.action ="kakao/rental"
+            payFrm.action ="/kakaoRentalPay"
             bankAccountContainer.innerHTML = "";
         } else if (e.target.value == 'n'){
             alert("현재 점검 중입니다.")

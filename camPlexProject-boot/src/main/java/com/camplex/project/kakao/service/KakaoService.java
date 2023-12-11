@@ -2,6 +2,7 @@ package com.camplex.project.kakao.service;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
@@ -15,6 +16,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +26,7 @@ import org.springframework.web.client.RestTemplate;
 import com.camplex.project.kakao.model.vo.KakaoPayApprovalVO;
 import com.camplex.project.kakao.model.vo.KakaoPayReadyVO;
 import com.camplex.project.member.model.dto.KakaoDTO;
+import com.camplex.project.paysys.mappers.PaysysMapper;
 import com.camplex.project.paysys.model.dto.InfoForReservation;
 
 import lombok.extern.java.Log;
@@ -33,6 +36,9 @@ import lombok.extern.java.Log;
 @PropertySource("classpath:/config.properties")
 public class KakaoService {
 
+	@Autowired
+	private PaysysMapper mapper;
+	
 	private KakaoPayReadyVO kakaoPayReadyVO;
 	private KakaoPayApprovalVO kakaoPayApprovalVO;
 	
@@ -87,10 +93,12 @@ public class KakaoService {
 	
 	
 	/** 페이 렌탈
+	 * @param cartItemNo 
 	 * @param map
 	 * @return
 	 */
-	public String kakaoPayReadyRental(InfoForReservation info) {
+	@Transactional
+	public String kakaoPayReadyRental(InfoForReservation info, List<Integer> cartItemNo) {
 		RestTemplate restTemplate = new RestTemplate();
 		
 		
@@ -116,6 +124,16 @@ public class KakaoService {
             kakaoPayReadyVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/ready"), body, KakaoPayReadyVO.class);
             
             log.info("" + kakaoPayReadyVO);
+            if (!cartItemNo.isEmpty()) {
+            	for (int i = 0 ; i < cartItemNo.size(); i++) {
+            		int result = mapper.deleteCart(cartItemNo.get(i));
+            		
+            		if (result > 0 ) {
+            			System.out.println("카카페성공카트삭제성공");
+            		}
+            	}
+            	
+            }
             
             return kakaoPayReadyVO.getNext_redirect_pc_url();
  

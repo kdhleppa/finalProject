@@ -138,7 +138,6 @@ public class PaysysController {
 		List<MembersReservationDate> rsvInfo2 = itemService.membersRsvInfo(memberNo);
 		List<FindCartItem> cartItem = itemService.membersCartItem(memberNo);
 		List<Item> wishlist = itemService.inCartWishlist(memberNo);
-		System.out.println("check111"+wishlist);
 
 		
 		model.addAttribute("cartItem", cartItem);
@@ -154,8 +153,6 @@ public class PaysysController {
 	public ResponseEntity<?> quantityUpdateCart(@RequestBody CartItem cartItem) {
 	    int itemQuantity = cartItem.getItemQuantity();
 	    int cartItemNo = cartItem.getCartItemNo();
-	    System.out.println("itemquantity"+itemQuantity);
-	    System.out.println("cartItemNo"+cartItemNo);
 	    int result = payService.quantityUpdateCart(cartItem);
 	    if (result > 0) {
 	        return ResponseEntity.ok().body(new ResponseMessage("성공"));
@@ -240,7 +237,6 @@ public class PaysysController {
 		String path = "redirect:";	
 		int result = 0;
 		int result2 = 0;
-		System.out.println("어디가문제니"+rentalItemQuantity);
 		switch(bank) {
 		
 		case "toss" : bank = "토스뱅크 100001065362 최규연"; break;
@@ -420,7 +416,6 @@ public class PaysysController {
 		List<rentPayList> payList = new ArrayList<>();
 		String referer = request.getHeader("Referer");
 		String path = "redirect:";
-		System.out.println("check1" + checkCartItemNo);
 		if (checkCartItemNo != null) {
 			for (Integer cartItemNo: checkCartItemNo ) {
 				rentPayList data = payService.selectCheckCart(cartItemNo, memberNo);
@@ -428,7 +423,6 @@ public class PaysysController {
 				payList.add(data);
 			}
 			
-			System.out.println("check:" + payList);
 			model.addAttribute("rentPayList" , payList);
 			
 			
@@ -450,7 +444,6 @@ public class PaysysController {
 			int quantity, int reservationNo, int itemNo
 			) {
 		
-		System.out.println("reservationNo " +reservationNo);
 		if(loginMember == null) {
 			ra.addFlashAttribute("message", "로그인 후 이용해 주세요");
 			return "redirect:/member/login";
@@ -460,7 +453,6 @@ public class PaysysController {
 			rsvInfo = itemService.membersRsvInfo2(reservationNo);
 			rentPayList data = new rentPayList();
 			Item item = itemService.payNow(itemNo);
-			System.out.println(item);
 			data.setMemberNo(memberNo);
 			data.setItemNo(itemNo);
 			data.setItemPrice(item.getItemPrice());
