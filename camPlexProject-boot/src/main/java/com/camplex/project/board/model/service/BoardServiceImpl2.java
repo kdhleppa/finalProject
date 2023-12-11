@@ -91,7 +91,7 @@ public class BoardServiceImpl2 implements BoardService2 {
 			
 			
 			// 분류 작업 후 uploadList가 비어 있지 않은 경우
-			// == 업로드한 파일이 있따
+			// == 업로드한 파일이 있다
 			if( !uploadList.isEmpty() ) {
 				
 				// BOARD_IMG 테이블에 insert 하는 dao 호출
@@ -114,9 +114,6 @@ public class BoardServiceImpl2 implements BoardService2 {
 						images.get(index).transferTo( new File(filePath + rename));
 						
 					}
-					
-					
-					
 					
 				} else { // 일부 또는 전체 insert 실패
 					

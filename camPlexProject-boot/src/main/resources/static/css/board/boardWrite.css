@@ -104,7 +104,7 @@ button {
     position: relative;
 }
 
-.boardImg > label{
+.boardImg > label {
     width: 100%;
     height: 100%;
     display: flex;
@@ -113,28 +113,11 @@ button {
     border: 1px solid #ccc;
     cursor: pointer;
     border-radius: 20px;
+    overflow: hidden;
 }
 
-.uploadImg1 img.preview {
-    visibility: hidden;
-}
-
-.uploadImg1 > img {
-	margin-top: 0.2rem;
-	width: 18.9rem;
-	height: 18.5rem;
-	border-radius: 20px;
-}
-
-.uploadImg img.preview {
-    visibility: hidden;
-}
-
-.uploadImg > img {
-	margin-top: 0.2rem;
-	width: 12.6rem;
-	height: 12.3rem;
-	border-radius: 20px;
+.boardImg > label > img {
+	object-fit: cover;
 }
 
 .inputImage{

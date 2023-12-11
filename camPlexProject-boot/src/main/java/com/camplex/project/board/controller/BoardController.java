@@ -64,7 +64,6 @@ public class BoardController {
 			model.addAttribute("map", map);
 		}
 		
-		
 		return "board/boardList";
 	}
 	
@@ -84,7 +83,6 @@ public class BoardController {
 				HttpServletResponse resp
 				
 			) throws ParseException {
-		
 		
 		
 		Map<String, Object> map = new HashMap<String, Object>();
