@@ -190,13 +190,13 @@ public class PaysysController {
 	@PostMapping("/payDone")
 	public String paying(InfoForReservation info,
 						 String payBy,
-						 String bank,
 						 @SessionAttribute("loginMember") Member loginMember,
 						 Model model,
 						 RedirectAttributes ra
 						 ) {
 		
 		int result = 0;
+		String bank = info.getBank();
 		
 		switch(bank) {
 		
@@ -204,6 +204,7 @@ public class PaysysController {
 			case "kb" : bank ="국민은행 00440204106870 이재경"; break;
 		
 		}
+		
 		
 		info.setMemberNo(loginMember.getMemberNo());
 		info.setPayType("무통장입금");

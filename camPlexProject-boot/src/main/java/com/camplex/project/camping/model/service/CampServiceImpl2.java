@@ -327,9 +327,6 @@ public class CampServiceImpl2 implements CampService2{
 
 		int result = mapper.campUpdate(camp);
 		
-
-		return campDe;
-    
 		if(renameCampMap != null) {
 			inputCampMap.transferTo(new File(filePath + renameCampMap));
 		}

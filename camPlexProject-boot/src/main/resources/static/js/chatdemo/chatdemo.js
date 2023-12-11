@@ -37,13 +37,8 @@ const modalBack = document.getElementById("modalBack");
 	
 })();
 
-<<<<<<< HEAD
-=======
-const conversation = document.querySelector('.col-md-12')
-
 var stompClient = null;
 
->>>>>>> 8fe550011ef1464d4792a99a62116bb1feaa9daf
 function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
