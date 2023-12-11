@@ -100,7 +100,7 @@ main {
     flex-basis: 15%;
 }
 
-#infoMain {
+.infoMain {
     display: flex;
     flex-direction: column;
     flex-basis: 70%;

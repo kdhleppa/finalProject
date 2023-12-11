@@ -34,6 +34,7 @@ import com.camplex.project.item.model.dto.Item;
 import com.camplex.project.item.model.service.ItemService;
 import com.camplex.project.kakao.service.KakaoService;
 import com.camplex.project.member.model.dto.CEOMember;
+import com.camplex.project.member.model.dto.ItemInfoMypage;
 import com.camplex.project.member.model.dto.Member;
 import com.camplex.project.member.model.dto.MyPage;
 import com.camplex.project.member.model.service.MemberService;
@@ -268,28 +269,37 @@ public class MemberController {
 		int memberNo = loginMember.getMemberNo(); 
 		
 		MyPage myPageInfo =  service.selectMyPageInfo(memberNo);
-
+		
 		List<Reservations> olderReservation = new ArrayList<>();
 		List<Reservations> upcomingReservation = new ArrayList<>();
 		
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		
 		Date today = new Date();
 		
 		for(int i = 0 ; i < myPageInfo.getResList().size() ; i++) {
 			
 			Date tempDate = format.parse(myPageInfo.getResList().get(i).getCampOutDate());
-			
+						
 			if(today.after(tempDate)) {
 				
 				Reservations res = new Reservations();
 				res = myPageInfo.getResList().get(i);
+				
+				int resNo = res.getReservationNo();
+				res.setItemList(service.selectItemListMypage(resNo));
+				
 				olderReservation.add(res);
+				
 								
 			} else {
 				
 				Reservations res = new Reservations();
 				res = myPageInfo.getResList().get(i);
+				
+				int resNo = res.getReservationNo();
+				res.setItemList(service.selectItemListMypage(resNo));
+				
 				upcomingReservation.add(res);
 				
 			}
@@ -299,8 +309,6 @@ public class MemberController {
 		model.addAttribute("olderReservation", olderReservation);
 		model.addAttribute("upcomingReservation", upcomingReservation);
 		model.addAttribute("myPageInfo", myPageInfo);		
-		
-		System.out.println(model);
 		
 		return "member/myPage/myPage";
 	}
@@ -355,8 +363,9 @@ public class MemberController {
 				}
 			}
 			
-			loginMember.setMemberNickname( inputMember.getMemberNickname() );
+			loginMember.setMemberNickname( inputMember.getMemberNickname());
 			loginMember.setMemberProfileImg( inputMember.getMemberProfileImg());
+			loginMember.setMemberPhone(inputMember.getMemberPhone());
 			
 			message = "정보가 수정되었습니다.";
 			
@@ -458,13 +467,10 @@ public class MemberController {
 		
 		List<CEOMember> levelUpList = service.levelUpList();
 		
-		System.out.println(levelUpList);
-		
 		model.addAttribute("levelUpList", levelUpList);
 		
 		return "member/levelUpFormCheck";
 	}
-	
 	
 	
 	

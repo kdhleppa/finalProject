@@ -24,8 +24,32 @@ a {
     text-decoration: none;
 }
 
+button { 
+  color: #000;
+  display:inline-block; 
+  margin:0;
+  text-transform:uppercase; 
+}
+  
+button:after {
+  display:block;
+  content: '';
+  border-bottom: solid 2px #000;
+  margin-top: 5px;
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+}
+
+button:hover:after { 
+	transform: scaleX(1);
+}
+
 button:hover {
     cursor: pointer;
+}
+
+input:focus {
+	outline: none;
 }
 
 main, div, section {
@@ -127,7 +151,6 @@ main {
 .clickBtn {
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid black;
     font-size: 17px;
 }
 

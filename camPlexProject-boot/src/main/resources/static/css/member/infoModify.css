@@ -50,6 +50,9 @@ button {
   display:inline-block; 
   margin:0;
   text-transform:uppercase; 
+  background-color: transparent;
+  border: none;
+  font-size: 17px;
 }
   
 button:after {
@@ -233,12 +236,6 @@ label:hover {
     height: 30px;
 }
 
-.clickBtn {
-    background-color: transparent;
-    border: none;
-    font-size: 17px;
-}
-
 .clickBtn::after {
     margin-top: 5px;
 }
@@ -247,7 +244,7 @@ label:hover {
 /* 이메일 인증, 확인 버튼 */
 #telCheckBtnSection {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: start;
 }
 
@@ -256,16 +253,12 @@ label:hover {
     margin-left: 10px;
 }
 
-#checkTel {
-    margin-bottom: 102px;
+#sendAuthkey {
+	margin-top: 274px;
 }
 
-#checkTelAuthkey {
-    margin-bottom: 70px;
-}
-
-#checkTelAuthkey::after {
-    margin-top: 3px;
+#checkNumber {
+	margin-top: 64px;
 }
 
 /* 메세지 색상 지정 */

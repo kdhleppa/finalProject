@@ -26,6 +26,7 @@ a {
 	display:inline-block; 
 	margin:0;
 	text-transform:uppercase; 
+	font-size: 16px;
 }
 
 a:hover {
@@ -49,7 +50,10 @@ button {
   color: #000;
   display:inline-block; 
   margin:0;
-  text-transform:uppercase; 
+  text-transform:uppercase;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
 }
   
 button:after {
@@ -67,6 +71,10 @@ button:hover:after {
 
 button:hover {
     cursor: pointer;
+}
+
+input:focus {
+	outline: none;
 }
 
 
@@ -172,3 +180,7 @@ main {
     border: none;
     font-size: 17px;
 }
+
+/* 메세지 색상 지정 */
+.confirm{ color : green; }
+.error{ color : red; }

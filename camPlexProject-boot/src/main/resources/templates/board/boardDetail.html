@@ -180,13 +180,11 @@
     
     <script th:inline="javascript">
 		console.log(/*[[${board}]]*/ "board객체");
-
 		const boardNo = /*[[${board.boardNo}]]*/ "게시글번호";
-		
 		const loginMemberNo = /*[[${session.loginMember?.memberNo}]]*/ "로그인 회원번호";
+		const boardType = /*[[${board.boardType}]]*/ "게시글타입";
 		
 		if(loginMemberNo == null) loginMemberNo = "";
-
 
 		console.log(boardNo);
 		console.log(loginMemberNo);

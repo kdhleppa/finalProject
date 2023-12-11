@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
     var quantityInput = document.getElementById('quantity');
+    var quantityInput2 = document.getElementById('quantity2');
     var quantityDisplay = document.getElementById('quantityDisplay');
     
     // '+' 버튼 클릭 이벤트
     document.getElementById('plusBtn').addEventListener('click', function () {
         quantityInput.value = parseInt(quantityInput.value) + 1;
+        quantityInput2.value = parseInt(quantityInput.value) + 1;
         quantityDisplay.textContent = quantityInput.value;
         updateTotal(); // 총액 업데이트
     });
@@ -13,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('minusBtn').addEventListener('click', function () {
         if (quantityInput.value > 0) {
             quantityInput.value = parseInt(quantityInput.value) - 1;
+            quantityInput.value2 = parseInt(quantityInput.value) - 1;
             quantityDisplay.textContent = quantityInput.value;
             updateTotal(); // 총액 업데이트
         }

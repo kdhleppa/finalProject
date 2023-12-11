@@ -70,7 +70,7 @@
 		WHERE MEMBER_NO IN (
 		    SELECT MEMBER_NO
 		    FROM CEO_MEMBER
-		    WHERE BUSINESS_LICENSE = #{ceoNumber}
+		    WHERE MEMBER_NO = #{memberNo}
 		)
 	</update>
 

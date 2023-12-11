@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.camplex.project.member.model.dto.CEOMember;
+import com.camplex.project.member.model.dto.ItemInfoMypage;
 import com.camplex.project.member.model.dto.Member;
 import com.camplex.project.member.model.dto.MyPage;
 import com.camplex.project.member.model.dto.Wishlist;
@@ -89,6 +90,13 @@ public interface MemberService {
 
 	// 등업신청 리스트 가져오기
 	List<CEOMember> levelUpList();
+
+	/** 마이페이지 아이템 정보 가져오기
+	 * @param resNo
+	 * @return
+	 */
+	List<ItemInfoMypage> selectItemListMypage(int resNo);
+
 
 
 
