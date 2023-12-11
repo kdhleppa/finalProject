@@ -54,6 +54,16 @@ public class CampController2 {
 		return delImgResult;
 	}
 	
+	/** 캠핑장 삽입
+	 * @param camp
+	 * @param images
+	 * @param ra
+	 * @param inputCampMap
+	 * @param referer
+	 * @return
+	 * @throws IllegalStateException
+	 * @throws IOException
+	 */
 	@PostMapping("/campInsert")
 	public String campInsert(Camp camp
 			, @RequestParam(value = "images", required = false) List<MultipartFile> images
@@ -65,30 +75,48 @@ public class CampController2 {
 			String[] optionArr = camp.getCampOption().split(",");
 			String addr = String.join("^^^", optionArr);
 			camp.setCampOption(addr);
+		} else {
+			camp.setCampOption(null);
 		}
 		
 		if(camp.getCampAroundView() != null) {
 			String[] aroundArr = camp.getCampAroundView().split(",");
 			String addr = String.join("^^^", aroundArr);
 			camp.setCampAroundView(addr);
-			
+		} else {
+			camp.setCampAroundView(null);
 		}
 		
+		System.out.println("camp ::" + camp);
 		
-		int campNo = service.campInsert(camp, images, inputCampMap);
+
+		int ceoNum = camp.getMemberNo();
+
 		
-		campNo= camp.getCampNo();
-		
-		int updateResult = service.updateCampDe(campNo);
-		
+		Member checkCEO = service.checkCEO(ceoNum);
 		
 		String message = null;
 		String path = "redirect:";
+		
+		if(checkCEO == null) {
+			message = "CEO 넘버가 잘못되었습니다.";
+			path += referer;
+			return path;
+		}
+		
+		int campNo = service.campInsert(camp, images, inputCampMap);
+		
+		
+		int updateResult = service.updateCampDe(campNo);
+		
 		
 		
 		if(campNo > 0) {
 			message = "캠핑장 등록 완료";
 			path += "/camp/search";
+		} else if(campNo == 100){
+			message = "CEO 넘버가 잘못되었습니다.";
+			path += referer;
 		} else {
 			message = "캠핑장 등록 실패";
 			path += referer;
@@ -117,6 +145,26 @@ public class CampController2 {
 		return campDetailList;
 		
 	}
+	
+	@PostMapping("/updateDeCamp")
+	@ResponseBody
+	public List<CampDetail> updateSelcetDeCamp(CampDetail campDetail
+			, @RequestParam(value = "campDeImges", required = false) List<MultipartFile> campDeImges)
+					throws IllegalStateException, IOException {
+		
+		System.out.println("campDetail ::" + campDetail);
+		
+		int updateCampDeToZ = service.updateCampDeToZ(campDetail);
+		
+		int campDeNo = service.insertDeCamp(campDetail, campDeImges);
+		
+		List<CampDetail> campDetailList = service.selectDeCamp();
+		
+		return campDetailList;
+		
+	}
+	
+	
 	
 	@GetMapping("/deleteCampDe")
 	@ResponseBody
@@ -176,13 +224,24 @@ public class CampController2 {
 		return "camp/campingEdit";
 	}
 	
+	
+	/** 캠핑장 수정
+	 * @param camp
+	 * @param images
+	 * @param ra
+	 * @param inputCampMap
+	 * @param loginMember
+	 * @param referer
+	 * @return
+	 * @throws IllegalStateException
+	 * @throws IOException
+	 */
 	@PostMapping("/editCamp")
 	public String editCamp(
 			Camp camp
 			 ,@RequestParam(value = "images", required = false) List<MultipartFile> images
 			, RedirectAttributes ra
 			, @RequestParam MultipartFile inputCampMap
-			, @SessionAttribute("loginMember") Member loginMember
 			, @RequestHeader("referer") String referer) throws IllegalStateException, IOException {
 		
 		System.out.println("editCamp::" + camp);
@@ -201,27 +260,29 @@ public class CampController2 {
 		}
 		
 		
-		int campNo = service.campUpdate(camp, images, inputCampMap);
+		int campUpdateresult = service.campUpdate(camp, images, inputCampMap);
 		
-		int updateResult = service.updateCampDe(campNo);
+		int campNo = camp.getCampNo();
+		
+		int campDeUpdateResult = service.updateCampDe(campNo);
 		
 		
 		String message = null;
 		String path = "redirect:";
 		
 		
-		if(campNo > 0) {
-			message = "캠핑장 등록 완료";
+		if(campDeUpdateResult > 0) {
+			message = "캠핑장 업데이트 완료";
 			path += "/camp/search";
 		} else {
-			message = "캠핑장 등록 실패";
+			message = "캠핑장 업데이트 실패";
 			path += referer;
 		}
 		
 		ra.addFlashAttribute("message", message);
 		
 		
-		return "redirect:" + referer;
+		return path;
 		
 		
 	}

@@ -160,6 +160,8 @@ modalUploadBtn.addEventListener('click', e => {
 	const capacity = document.getElementById('capacity').value;
 	const fullCapacity = document.getElementById('fullCapacity').value;
 	const campDePrice = document.getElementById('campDePrice').value;
+	
+	const campDeNo = document.getElementById('campDeNo').value;
 		
 	// Enroll Site 정보를 감싸고 있는 Sec
 	//const enrollSiteSec = document.getElementById('enrollSiteSec');
@@ -210,13 +212,14 @@ modalUploadBtn.addEventListener('click', e => {
 	formData.append("capacity", capacity);
 	formData.append("fullCapacity", fullCapacity);
 	formData.append("campDePrice", campDePrice);
+	formData.append("campDeNo", campDeNo);
 	
 	for (let i = 0; i < arr.length; i++) {
 		formData.append("campDeImges", arr[i]);
 	}
 
 	
-	fetch("/camp2/insertDeCamp", {
+	fetch("/camp2/updateDeCamp", {
 		enctype: 'multipart/form-data',
 		method : "POST",
 		processData: false,   

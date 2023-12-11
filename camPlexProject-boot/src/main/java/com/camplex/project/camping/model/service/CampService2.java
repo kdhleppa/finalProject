@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.camplex.project.camping.model.dto.Camp;
 import com.camplex.project.camping.model.dto.CampDetail;
 import com.camplex.project.camping.model.dto.CampDetailImage;
+import com.camplex.project.member.model.dto.Member;
 
 public interface CampService2 {
 
@@ -44,6 +45,11 @@ public interface CampService2 {
 	List<CampDetail> searchCampDeForCampNo(int campNo);
 
 	int campUpdate(Camp camp, List<MultipartFile> images, MultipartFile inputCampMap) throws IllegalStateException, IOException;
+
+	Member checkCEO(int ceoNum);
+
+	int updateCampDeToZ(CampDetail campDetail);
+
 
 
 
