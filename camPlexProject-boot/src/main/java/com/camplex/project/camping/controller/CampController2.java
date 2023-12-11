@@ -77,6 +77,8 @@ public class CampController2 {
 		
 		int campNo = service.campInsert(camp, images, inputCampMap);
 		
+		campNo= camp.getCampNo();
+		
 		int updateResult = service.updateCampDe(campNo);
 		
 		

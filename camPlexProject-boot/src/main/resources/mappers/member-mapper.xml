@@ -43,6 +43,9 @@
 		<result property="campName" column="CAMP_NAME"/>
 		<result property="campDeName" column="CAMP_DE_NAME"/>
 		<result property="thumbnail" column="THUMBNAIL"/>
+		<result property="campPayment" column="CAMP_PAYMENT"/>
+		<result property="paymentType" column="PAYMENT_TYPE"/>
+				
 	</resultMap>
 	
 	<resultMap type="Wishlist" id="wishlist_rm">
@@ -75,6 +78,16 @@
 		<result property="commentCount" column="COMMENT_COUNT"/>
 		<result property="likeCount" column="LIKE_COUNT"/>
 		
+	</resultMap>
+	
+	<resultMap type="ItemInfoMypage" id="itemInfoMypage_rm">
+	  	<id property="reservationNo" column="RESERVATION_NO"/>
+		<result property="quantity" column="RENTAL_ITEM_QUANTITY"/>
+		<result property="item_no" column="ITEM_NO"/>
+		<result property="itemName" column="ITEM_NAME"/>
+		<result property="rentalPaymentNo" column="RENTAL_PAYMENT_NO"/>
+		<result property="rentalPaymentTotal" column="RENTAL_PAYMENT_TOTAL"/>
+		<result property="rentalPaymentType" column="RENTAL_PAYMENT_TYPE"/>
 	</resultMap>
 	
 	
@@ -126,13 +139,20 @@
 			       	(SELECT (CAMP_IMG_PATH || CAMP_IMG_RENAME) 
 					FROM CAMPING_SITE_IMG
 					WHERE CAMP_NO = A.CAMP_NO
-					AND CAMP_IMG_ORDER = 0) THUMBNAIL
+					AND CAMP_IMG_ORDER = 0) THUMBNAIL,
+					
+					(SELECT CAMP_PAYMENT
+					FROM PAYMENT
+					WHERE PAYMENT_NO = A.PAYMENT_NO) CAMP_PAYMENT,
+
+					(SELECT PAYMENT_TYPE
+					FROM PAYMENT
+					WHERE PAYMENT_NO = A.PAYMENT_NO) PAYMENT_TYPE
 			       	
 		FROM RESERVATIONS A 
 		WHERE MEMBER_NO = #{memberNo}
 	</select>
-	
-	
+		
 	<!-- collectoion 중 위시리스트 -->
 	<select id="selectWishList" resultMap="wishlist_rm">
 		SELECT WISHLIST_NO, MEMBER_NO, CAMP_NO, ITEM_NO, 
@@ -172,12 +192,30 @@
 			WHERE BOARD_DEL_FL = 'N'
 			AND MEMBER_NO = #{memberNo}
 	</select>
+
+	<!-- 마이페이지 아이템 리스트 -->
+	<select id="selectItemListMypage" resultMap="itemInfoMypage_rm">
+		SELECT RESERVATION_NO, RENTAL_ITEM_QUANTITY, ITEM_NO, RENTAL_PAYMENT_NO,
+				(SELECT ITEM_NAME
+				FROM ITEM
+				WHERE ITEM_NO = A.ITEM_NO) ITEM_NAME,
+				(SELECT RENTAL_PAYMENT_TOTAL
+				FROM RENTAL_PAYMENT
+				WHERE RENTAL_PAYMENT_NO = A.RENTAL_PAYMENT_NO) RENTAL_PAYMENT_TOTAL,
+				(SELECT RENTAL_PAYMENT_TYPE
+				FROM RENTAL_PAYMENT
+				WHERE RENTAL_PAYMENT_NO = A.RENTAL_PAYMENT_NO) RENTAL_PAYMENT_TYPE
+		FROM RENTAL_PAYMENT_ITEM A
+		WHERE RESERVATION_NO = #{resNo}
+	</select>
 	
+	<!-- 마이페이지 값 뿌리기  -->
 	<select id="selectMyPageInfo" resultMap="myPageInfoList_rm">
 		SELECT MEMBER_NO
 			FROM "MEMBER"
 			WHERE MEMBER_NO = #{memberNo}
 	</select>
+	
 	
 	
 	
@@ -336,11 +374,6 @@
 		WHERE MEMBER_TYPE = 'U'
 		ORDER BY SEND_FORM_DAY
 	</select>
-	
-	
-	
-	<!-- 마이페이지 구매 내역 값 뿌리기 -->
-	
 	
 	
 	
