@@ -287,13 +287,21 @@
 		WHERE MEMBER_TYPE = 'C' AND MEMBER_NO = #{ceoNum}
 	</select>
 	
-	<update id="updateCampDeToZ">
-		UPDATE "CAMPING_DETAIL" SET
-		CAMP_NO = 0
-		WHERE "CAMP_NO" = #{campNo}
-	</update>
+	<insert id="upInsertDeCamp" parameterType="CampDetail" useGeneratedKeys="true">
+		
+		<selectKey order="BEFORE" resultType="_int" keyProperty="campDeNo">
+			SELECT SEQ_CAMP_DE_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		
+		INSERT INTO "CAMPING_DETAIL" VALUES(#{campDeNo}, #{campNo}, #{campDeName}, #{campDePrice}, #{capacity}, #{fullCapacity})
+	</insert>
 	
-	
+	<select id="selectDeCampOfCampDeNo" resultMap="camp_detail_rm">
+		SELECT CAMP_DE_NO, CAMP_DE_NAME, CAMP_DE_NAME, CAMP_DE_PRICE, CAPACITY, FULL_CAPACITY, (CAMP_DE_IMG_PATH || CAMP_DE_IMG_RENAME) CAMP_DETAIL_THUMBNAIL
+		FROM "CAMPING_DETAIL"
+		JOIN "CAMPING_DETAIL_IMG" USING(CAMP_DE_NO)
+		WHERE CAMP_NO = #{campNo} AND CAMP_DE_IMG_ORDER = 0
+	</select>
 	
 	
 	

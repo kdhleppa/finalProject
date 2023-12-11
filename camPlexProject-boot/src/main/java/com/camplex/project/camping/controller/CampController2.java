@@ -154,11 +154,11 @@ public class CampController2 {
 		
 		System.out.println("campDetail ::" + campDetail);
 		
-		int updateCampDeToZ = service.updateCampDeToZ(campDetail);
+		int result = service.upInsertDeCamp(campDetail, campDeImges);
 		
-		int campDeNo = service.insertDeCamp(campDetail, campDeImges);
+		int campNo = campDetail.getCampNo();
 		
-		List<CampDetail> campDetailList = service.selectDeCamp();
+		List<CampDetail> campDetailList = service.selectDeCampOfCampDeNo(campNo);
 		
 		return campDetailList;
 		
@@ -271,7 +271,7 @@ public class CampController2 {
 		String path = "redirect:";
 		
 		
-		if(campDeUpdateResult > 0) {
+		if(campUpdateresult > 0) {
 			message = "캠핑장 업데이트 완료";
 			path += "/camp/search";
 		} else {

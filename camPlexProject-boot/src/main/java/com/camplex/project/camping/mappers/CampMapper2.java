@@ -89,7 +89,10 @@ public interface CampMapper2 {
 
 	Member checkCEO(int ceoNum);
 
-	int updateCampDeToZ(CampDetail campDetail);
+	int upInsertDeCamp(CampDetail campDetail);
+
+	List<CampDetail> selectDeCampOfCampDeNo(int campNo);
+
 
 
 }
