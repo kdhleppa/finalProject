@@ -73,21 +73,19 @@ public class KakaoContoller {
  
     }
     
-    @PostMapping("/paysys/kakao/rental")
+    @PostMapping("/kakaoRentalPay")
     public String kakaoPayRental(@SessionAttribute("loginMember") Member loginMember,
-    		int price, List<Integer> itemNo,
+    		Integer price,
+    		@RequestParam List<Integer> itemNo,
     		@RequestParam List<Integer> reservationNo,
 		    @RequestParam List<Integer> cartItemNo,
 		    @RequestParam List<Integer> rentalItemQuantity,
-		    @RequestParam List<String> itemName,
-		    HttpServletRequest request, RedirectAttributes ra
+		    @RequestParam List<String> itemName
     		) {
-    	String referer = request.getHeader("Referer");
-		String path = "redirect:";	
+    	
 		int result = 0;
 		int result2 = 0;
     	int size = itemNo.size() - 1;
-    	System.out.println("itemname"+ itemName.get(0));
     	List<RentalPaymentItem> rents = new ArrayList<>();
     	
     	for (int i = 0; i < itemNo.size(); i++) {
@@ -133,9 +131,8 @@ public class KakaoContoller {
     			System.out.println("rselut :" +result);
     		}
     	}
-    	System.out.println("size = " + size);
     	
-    	return "redirect:" + kakaopay.kakaoPayReadyRental(info);
+    	return "redirect:" + kakaopay.kakaoPayReadyRental(info, cartItemNo);
     }
     
     @GetMapping("/paysys/payDone")
