@@ -48,7 +48,10 @@ public interface CampService2 {
 
 	Member checkCEO(int ceoNum);
 
-	int updateCampDeToZ(CampDetail campDetail);
+	int upInsertDeCamp(CampDetail campDetail, List<MultipartFile> campDeImges) throws IllegalStateException, IOException;
+
+	List<CampDetail> selectDeCampOfCampDeNo(int campNo);
+
 
 
 

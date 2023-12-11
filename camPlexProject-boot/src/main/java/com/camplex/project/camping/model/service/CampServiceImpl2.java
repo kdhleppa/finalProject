@@ -405,9 +405,75 @@ public class CampServiceImpl2 implements CampService2{
 
 
 	@Override
-	public int updateCampDeToZ(CampDetail campDetail) {
+	public int upInsertDeCamp(CampDetail campDetail, List<MultipartFile> campDeImges) throws IllegalStateException, IOException{
 		
-		return mapper.updateCampDeToZ(campDetail);
+		int result = mapper.upInsertDeCamp(campDetail);
+		
+		int campDeNo = campDetail.getCampDeNo();
+		
+		
+		if(result == 0) return 0;
+		
+		if(result > 0) {
+			
+			List<CampDetailImage> uploadList = new ArrayList<CampDetailImage>();
+			
+			for(int i = 0; i < campDeImges.size(); i++) {
+				
+					CampDetailImage img = new CampDetailImage();
+					
+					img.setCampDeImagePath(webPath);
+					img.setCampDeImageOrder(i);
+					
+					String fileName = campDeImges.get(i).getOriginalFilename();
+					
+					img.setCampDeImageOriginal(fileName);
+					img.setCampDeNo(campDeNo);
+					img.setCampDeImageReName(Util.fileRename(fileName));
+					
+					uploadList.add(img);
+	
+			}
+			
+			
+			if(!uploadList.isEmpty()) {
+				
+				result = mapper.insertCampDetailImageList(uploadList);
+				
+				if(result == uploadList.size()) {
+					
+					for(int i = 0; i < uploadList.size(); i++) {
+						
+						int index = uploadList.get(i).getCampDeImageOrder();
+						
+						String rename = uploadList.get(i).getCampDeImageReName();
+						
+						
+						campDeImges.get(index).transferTo(new File(filePath + rename));
+						
+					}
+					
+					
+				} else {
+					
+					throw new FileUploadException();
+					
+				}
+				
+			}
+			
+		}
+		
+		return result;
 	}
+
+
+	@Override
+	public List<CampDetail> selectDeCampOfCampDeNo(int campNo) {
+		return mapper.selectDeCampOfCampDeNo(campNo);
+	}
+
+
+	
 
 }
