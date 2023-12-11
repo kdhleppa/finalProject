@@ -1,6 +1,3 @@
-const conversation = document.querySelector('.col-md-12')
-var stompClient = null;
-
 // 모달 열기
 function modalOpen() {
     document.querySelector('.modal_wrap').style.display = 'block';
@@ -36,6 +33,8 @@ const modalBack = document.getElementById("modalBack");
 	})
 	
 })();
+
+const conversation = document.querySelector('.col-md-12')
 
 var stompClient = null;
 

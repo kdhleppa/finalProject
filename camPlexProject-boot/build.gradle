@@ -41,7 +41,6 @@ dependencies {
         implementation group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '3.1.0'
         
         // https://mvnrepository.com/artifact/net.nurigo/sdk
-        implementation 'net.nurigo:sdk:4.3.0'
         implementation group: 'net.nurigo', name: 'sdk', version: '4.3.0'
 
         // chatdemo
@@ -60,10 +59,6 @@ dependencies {
         // https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
         implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
         
-        // https://mvnrepository.com/artifact/com.navercorp.lucy/lucy-xss-servlet
-		implementation group: 'com.navercorp.lucy', name: 'lucy-xss-servlet', version: '2.0.1'
-        implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
-
         
 }
 

@@ -222,6 +222,7 @@ img {
     border-style: none;
     font-size: 1.2rem;
     margin-bottom: 1rem;
+    margin-left: 0.5rem;
 }
 
 
@@ -341,11 +342,11 @@ img {
 	margin-top: 10px;
 }
 
+
 .commentInsertContent{
 	width: 66%;
     height: 90px;
     resize: none;
-    margin-top : 20px;
     border-radius: 10px;
     outline: none;
     padding: 0.7rem;

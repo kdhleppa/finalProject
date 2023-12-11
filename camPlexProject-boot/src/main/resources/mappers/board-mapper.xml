@@ -13,7 +13,6 @@
 		<result property="boardReadCount" column="B_READ_COUNT"/>
 		<result property="boardType" column="BOARD_TYPE"/>
 		<result property="boardCreateDate" column="B_CREATE_DATE"/>
-		<result property="boardDetailType" column="B_DETAIL_TYPE"/>
 		<result property="boardTypeName" column="BOARD_TYPE_NAME"/>
 		
 		<result property="commentCount" column="COMMENT_COUNT"/>
@@ -199,7 +198,7 @@
 		<select id="selectCommentList" resultMap="comment_rm">
 			SELECT LEVEL, C.* FROM
 				(SELECT COMMENT_NO, COMMENT_CONTENT,
-				TO_CHAR(C_CREATE_DATE, 'YYYY"년" MM"월" DD"일" HH24"시" MI"분" SS"초"') C_CREATE_DATE,
+				TO_CHAR(C_CREATE_DATE, 'YYYY"-"MM"-"DD HH24"시" MI"분" SS"초"') C_CREATE_DATE,
 				BOARD_NO, MEMBER_NO, MEMBER_NICKNAME, MEMBER_PROFILE_IMG, PARENT_NO, COMMENT_DEL_FL
 				FROM "COMMENT"
 				JOIN MEMBER USING(MEMBER_NO)

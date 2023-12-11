@@ -20,7 +20,6 @@ public class Board {
     private int boardReadCount;
     private String boardType;
     private String boardCreateDate;
-    private String boardDetailType;
     
     private String boardTypeName;
     

@@ -20,7 +20,6 @@
 		<id property="memberNo" column="MEMBER_NO"/>
 		<result property="campName" column="CAMP_NAME" />
 
-		<result property="cmapName" column="CAMP_NAME" />
 		<result property="campAdress" column="CAMP_ADDRESS" />
 		<result property="ceoName" column="CEO_NAME" />
 		<result property="businessLicense" column="BUSINESS_LICENSE" />

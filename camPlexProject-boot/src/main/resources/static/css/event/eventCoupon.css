@@ -69,9 +69,9 @@ button {
 	display: inline-block;
 	display: none;
 	position: absolute; 
-	width: 300px;
+	width: 310px;
 	height: 50px;
-	margin-left: 42%;
+	margin-left: 41.5%;
 	margin-right: 42%;
 	margin-top: 30rem;
 	z-index: 1;
@@ -81,15 +81,15 @@ button {
 	position: absolute; 
 	width: 300px;
 	height: 50px;
-	margin-left: 44%;
-	margin-right: 42%;
+	margin-left: 42%;
+	margin-right: 41.5%;
 	margin-top: 30rem;
 	z-index: 0;
 	font-size: 33px;
 }
 
 #canvas {
-	width: 300px;
+	width: 309px;
 	height: 50px;
 	border-radius: 10px;
 }
