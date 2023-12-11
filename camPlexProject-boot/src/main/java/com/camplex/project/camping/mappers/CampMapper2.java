@@ -9,6 +9,7 @@ import com.camplex.project.camping.model.dto.Camp;
 import com.camplex.project.camping.model.dto.CampDetail;
 import com.camplex.project.camping.model.dto.CampDetailImage;
 import com.camplex.project.camping.model.dto.CampSiteImage;
+import com.camplex.project.member.model.dto.Member;
 
 @Mapper
 public interface CampMapper2 {
@@ -81,6 +82,14 @@ public interface CampMapper2 {
 	int countDe(int campNo);
 
 	int campUpdate(Camp camp);
+
+	int campImageUpdate(CampSiteImage img);
+
+	int campImageInsert(CampSiteImage img);
+
+	Member checkCEO(int ceoNum);
+
+	int updateCampDeToZ(CampDetail campDetail);
 
 
 }

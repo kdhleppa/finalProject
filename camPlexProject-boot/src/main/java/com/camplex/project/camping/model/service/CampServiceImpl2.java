@@ -19,6 +19,7 @@ import com.camplex.project.camping.model.dto.CampDetail;
 import com.camplex.project.camping.model.dto.CampDetailImage;
 import com.camplex.project.camping.model.dto.CampSiteImage;
 import com.camplex.project.common.utility.Util;
+import com.camplex.project.member.model.dto.Member;
 
 
 
@@ -44,7 +45,6 @@ public class CampServiceImpl2 implements CampService2{
 	public int campInsert(Camp camp, List<MultipartFile> images, MultipartFile inputCampMap) 
 			throws IllegalStateException, IOException {
 		
-		String temp = camp.getCampMap();
 		String renameCampMap = null;
 		
 		if(inputCampMap.getSize() > 0) {
@@ -58,7 +58,7 @@ public class CampServiceImpl2 implements CampService2{
 			camp.setCampMap(null);
 			
 		}
-
+		
 		int result = mapper.campInsert(camp);
 		
 		if(renameCampMap != null) {
@@ -68,6 +68,8 @@ public class CampServiceImpl2 implements CampService2{
 		if(result == 0) return 0;
 		
 		int campNo = camp.getCampNo();
+		
+		System.out.println("campNo ::" + campNo);
 		
 		if(result > 0) {
 			
@@ -310,91 +312,105 @@ public class CampServiceImpl2 implements CampService2{
 	@Transactional(rollbackFor = Exception.class)
 	public int campUpdate(Camp camp, List<MultipartFile> images, MultipartFile inputCampMap)throws IllegalStateException, IOException {
 
-		String temp = camp.getCampMap();
 		String renameCampMap = null;
 		
 		if(inputCampMap.getSize() > 0) {
-			
-			renameCampMap = Util.fileRename(inputCampMap.getOriginalFilename());
-			
-			camp.setCampMap(webPath + renameCampMap);
-			
-		} else {
-			
-			camp.setCampMap(null);
-			
-		}
-
-		int result = mapper.campUpdate(camp);
+				
+				renameCampMap = Util.fileRename(inputCampMap.getOriginalFilename());
+				
+				camp.setCampMap(webPath + renameCampMap);
+				
+			} else {
+				
+				camp.setCampMap(null);
+				
+			}
+		
+		
+		int rowCount = mapper.campUpdate(camp);
 		
 		if(renameCampMap != null) {
 			inputCampMap.transferTo(new File(filePath + renameCampMap));
 		}
-		
-		if(result == 0) return 0;
-		
-		int campNo = camp.getCampNo();
-		
-		if(result > 0) {
+			
+			
+			// 4. 새로 업로드된 이미지 분류 작업
+			// images : 실제 파일이 담긴 List
+			//         -> input type="file" 개수만큼 요소가 존재
+			//         -> 제출된 파일이 없어도 MultipartFile 객체가 존재
 			
 			List<CampSiteImage> uploadList = new ArrayList<CampSiteImage>();
 			
-			for(int i=0; i < images.size(); i++) {
+			for(int i=0 ; i<images.size(); i++) {
 				
-				if(images.get(i).getSize() > 0) {
+				if(images.get(i).getSize() > 0) { // 업로드된 파일이 있을 경우
 					
 					CampSiteImage img = new CampSiteImage();
 					
-					img.setCampImagePath(webPath);
-					img.setCampImageOrder(i);
+					// img에 파일 정보를 담아서 uploadList에 추가
+					img.setCampImagePath(webPath); // 웹 접근 경로
+					img.setCampNo(camp.getCampNo()); // 캠프장 번호
+					img.setCampImageOrder(i); // 이미지 순서
 					
+					// 파일 원본명
 					String fileName = images.get(i).getOriginalFilename();
 					
-					img.setCampImageOriginal(fileName);
-					img.setCampNo(campNo);
-					img.setCampImageReName(Util.fileRename(fileName));
+					img.setCampImageOriginal(fileName); // 원본명
+					img.setCampImageReName( Util.fileRename(fileName) ); // 변경명    
 					
+					
+					// 오라클은 다중 UPDATE를 지원하지 않기 때문에
+					// 하나씩 UPDATE 수행
 					uploadList.add(img);
 					
+					rowCount = mapper.campImageUpdate(img);
 					
-					
-				}
-				
-			}
-			
-			
-			
-			if(!uploadList.isEmpty()) {
-				
-				result = mapper.insertImageList(uploadList);
-				
-				if(result == uploadList.size()) {
-					
-					for(int i=0; i < uploadList.size(); i++) {
-						
-						int index = uploadList.get(i).getCampImageOrder();
-						
-						String rename = uploadList.get(i).getCampImageReName();
-						
-						images.get(index).transferTo(new File(filePath + rename));
-								
+					if(rowCount == 0) {
+						// 수정 실패 == DB에 이미지가 없었다 
+						// -> 이미지를 삽입
+						rowCount = mapper.campImageInsert(img);
 					}
-					
-					
-				} else {
-					
-					throw new FileUploadException();
-					
 				}
-				
 			}
 			
 			
-		}
+			// 5. uploadList에 있는 이미지들만 서버에 저장(transferTo())
+			if(!uploadList.isEmpty()) {
+				for(int i=0 ; i< uploadList.size(); i++) {
+					
+					int index = uploadList.get(i).getCampImageOrder();
+					
+					// 파일로 변환
+					String rename = uploadList.get(i).getCampImageReName();
+					
+					images.get(index).transferTo( new File(filePath + rename)  );                    
+				}
+			}
 
-		return campNo;
+
+		
+		return rowCount;
 		
 	}
+
+
+	/** 멤버 넘버가 CEO 인지 검사
+	 *
+	 */
+	@Override
+	public Member checkCEO(int ceoNum) {
+		return mapper.checkCEO(ceoNum);
+	}
+
+
+	@Override
+	public int updateCampDeToZ(CampDetail campDetail) {
+		
+		return mapper.updateCampDeToZ(campDetail);
+	}
+
+
+	
 
 
 
