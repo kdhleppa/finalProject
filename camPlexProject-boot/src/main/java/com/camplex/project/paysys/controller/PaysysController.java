@@ -119,7 +119,6 @@ public class PaysysController {
 		
 	}
 	
-	
 	@GetMapping("/rentCart")
 	public String rentCartFoword(
 			@SessionAttribute(value="loginMember", required = false)Member loginMember,
@@ -223,7 +222,6 @@ public class PaysysController {
 		return "paysys/payDoneBank";
 	}
 	
-	
 	@PostMapping("/payDoneRental")
 	public String payRental(
 			@RequestParam List<Integer> itemNo,
@@ -306,7 +304,6 @@ public class PaysysController {
 		return "paysys/payDoneBank";
 	}
 
-
 	@PostMapping("/rentCart/moveItemToOtherSite")
 	public String moveItemSite(
 			@RequestParam("reservationNo") int reservationNo,
@@ -352,7 +349,6 @@ public class PaysysController {
 			
 		
 	}
-	
 	
 	@PostMapping("/rentCart/deleteCart")
 	public String deleteCart (@RequestParam("cartItemNo") int cartItemNo,
@@ -482,8 +478,6 @@ public class PaysysController {
 		}
 	}
 	
-
-	
 	@PostMapping("/moveWishlistToCart")
 	public String moveWishlistToCart (
 			int itemNo, int reservationNo,
@@ -536,8 +530,6 @@ public class PaysysController {
 		}
 		
 	}
-	
-	
 	
 	@PostMapping("/wishDelete")
 	public String wishDelete (@SessionAttribute(value="loginMember", required = false)Member loginMember,
