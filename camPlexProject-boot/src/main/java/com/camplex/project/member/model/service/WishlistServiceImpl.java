@@ -23,8 +23,6 @@ public class WishlistServiceImpl implements WishlistService{
 	@Transactional
 	@Override
 	public int wishlistInsert(int memberNo, int itemNo) {
-		System.out.println("implemm:"+ memberNo);
-		System.out.println("시부랄");
 		return mapper.wishlistInsert(memberNo, itemNo);
 	}
 

@@ -56,7 +56,7 @@ button {
   font-size: 16px;
 }
   
-button:after {
+/*button:after {
   display:block;
   content: '';
   border-bottom: solid 1px #000;
@@ -71,7 +71,7 @@ button:hover:after {
 
 button:hover {
     cursor: pointer;
-}
+}*/
 
 main, div, section {
     /* border: 1px solid black; */
@@ -118,6 +118,9 @@ main {
 
 .empty2 {
     flex-basis: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #infoMain {
@@ -341,30 +344,40 @@ main {
 
 #wishListItems {
     display: flex;
+    flex-basis: 80%;
 }
 
 .itemSection {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     margin-top: 20px;
     margin-right: 40px;
 }
 
 .itemWrapper{
 	display: flex;
-	width: 80%;
+	width: 80px;
+	transition: 0.5s;
+}
+
+.item{
+	flex-basis: 80%;
 	overflow: hidden;
 }
 
-.itemSection > p {
-    font-size: 1rem;
+.itemSection  a {
+	margin-top: 10px;
+    font-size: 0.8rem;
 }
 
 .wishItem {
-    width: 150px;
-    height: 150px;
+    width: 175px;
+    height: 140px;
     object-fit: contain;
+    cursor: pointer;
+    
 }
 
 .empty4 {
@@ -462,4 +475,16 @@ main {
     width: 100%;
     letter-spacing: 1px;
     font-weight: 100;
+}
+
+.arrow {
+	flex-basis: 10%;
+	background-color: transparent;
+	border: transparent;
+	font-size: 1rem;
+}
+
+.arrow img {
+	width: 50px;
+	cursor: pointer;
 }

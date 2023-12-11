@@ -27,6 +27,18 @@ for(var i = 0 ; i <payBy.length ; i ++){
     })
 }
 
+const paybyRadio = document.querySelectorAll('input[name="payBy"]:checked').value;
+
+payFrm.addEventListener("submit", e => {
+	
+	if(paybyRadio == null){
+		alert("결제수단을 선택해주세요")
+		e.preventDefault();
+		return;
+	}
+	
+})
+
 
 function pay(e){
         

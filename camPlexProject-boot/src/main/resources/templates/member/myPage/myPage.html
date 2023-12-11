@@ -246,18 +246,30 @@
 
 						<section id="wishListItems">
 
-							<section class="empty2"></section>
-
-							<div class="itemWrapper">
-
-								<section class="itemSection" th:each="wish : ${myPageInfo.wishList}">
-									<img th:onclick="|location.href='/item/itemDetail/${wish.itemNo}'|" class="wishItem" th:src="${wish.thumbnail}">
-									<a th:text="${wish.itemName}">밀크 소파 : 블랙</a>
-								</section>
-
-							</div>
+							<section class="empty2">
+								<button type="button" class="arrow" id="left" th:if="${myPageInfo.wishList.size > 4}">
+									<img th:src="@{/images/iconImg/left.png}">
+								</button>
+							</section>
 							
-							<section class="empty4"></section>
+							<div class="item">
+								
+								<div class="itemWrapper">
+	
+									<section class="itemSection" th:each="wish : ${myPageInfo.wishList}">
+										<img th:onclick="|location.href='/item/itemDetail/${wish.itemNo}'|" class="wishItem" th:src="${wish.thumbnail}">
+										<a th:text="${wish.itemName}">밀크 소파 : 블랙</a>
+									</section>
+	
+								</div>
+							
+							</div>
+
+							<section class="empty2">
+								<button type="button" class="arrow" id="right" th:if="${myPageInfo.wishList.size > 4}">
+									<img th:src="@{/images/iconImg/right.png}">
+								</button>
+							</section>
 
 						</section>
 
@@ -380,7 +392,7 @@
 	<div class="empty5"></div>
 
 	<th:block th:replace="~{common/footer}"></th:block>
-
+	<script th:src="@{/js/member/myPage.js}"></script>
 
 </body>
 
