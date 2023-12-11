@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +15,7 @@ import com.camplex.project.board.model.dto.Board;
 import com.camplex.project.board.model.dto.Pagination;
 
 @Service
+@PropertySource("classpath:/config.properties")
 public class BoardServiceImpl implements BoardService {
 
 	@Autowired

@@ -25,4 +25,6 @@ public class MyPage {
 	private List<Wishlist> wishList;
 	private List<Qna> qnaList;
 	private List<Board> boardList;
+	
+	
 }

@@ -190,13 +190,13 @@ public class PaysysController {
 	@PostMapping("/payDone")
 	public String paying(InfoForReservation info,
 						 String payBy,
-						 String bank,
 						 @SessionAttribute("loginMember") Member loginMember,
 						 Model model,
 						 RedirectAttributes ra
 						 ) {
 		
 		int result = 0;
+		String bank = info.getBank();
 		
 		switch(bank) {
 		
@@ -204,6 +204,7 @@ public class PaysysController {
 			case "kb" : bank ="국민은행 00440204106870 이재경"; break;
 		
 		}
+		
 		
 		info.setMemberNo(loginMember.getMemberNo());
 		info.setPayType("무통장입금");
@@ -239,7 +240,7 @@ public class PaysysController {
 		String path = "redirect:";	
 		int result = 0;
 		int result2 = 0;
-		System.out.println("어디가문제니"+itemNo);
+		System.out.println("어디가문제니"+rentalItemQuantity);
 		switch(bank) {
 		
 		case "toss" : bank = "토스뱅크 100001065362 최규연"; break;
@@ -270,17 +271,19 @@ public class PaysysController {
 		if (!rents.isEmpty()) {
 			InfoForReservation info = new InfoForReservation();
 			info.setPrice(price);
+			info.setSenderName(senderName);
 			result = payService.insertPayRental(map);
 			Integer rentalPaymentNo= payService.selectLastInsertId();
 			model.addAttribute("info", info);
 			model.addAttribute("bank", bank);
-			model.addAttribute("senderName", senderName);
 		
 			if(result > 0) {
 				for (RentalPaymentItem rent : rents) {
 					rent.setRentalPaymentNo(rentalPaymentNo);
 					result2 = payService.insertPayRentalItem(rent);
-					
+					if (result2 > 0 ) {
+						payService.deleteCart(rent.getCartItemNo());
+					}
 					
 				}
 					
