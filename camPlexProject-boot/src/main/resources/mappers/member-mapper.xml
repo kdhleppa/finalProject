@@ -18,11 +18,8 @@
 
 	<resultMap type="CEOMember" id="ceoMember_rm">
 		<id property="memberNo" column="MEMBER_NO"/>
-<<<<<<< HEAD
 		<result property="campName" column="CAMP_NAME" />
-=======
-		<result property="cmapName" column="CAMP_NAME" />
->>>>>>> a11c5b3fe27c02b59c5a98d4a0966795f8c30b74
+
 		<result property="campAdress" column="CAMP_ADDRESS" />
 		<result property="ceoName" column="CEO_NAME" />
 		<result property="businessLicense" column="BUSINESS_LICENSE" />
