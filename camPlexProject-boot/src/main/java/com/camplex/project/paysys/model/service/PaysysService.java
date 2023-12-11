@@ -79,6 +79,8 @@ public interface PaysysService {
 
 	Integer selectLastInsertId();
 
+	int insertPayRentalKakao(Map<String, Object> map);
+
 
 
 

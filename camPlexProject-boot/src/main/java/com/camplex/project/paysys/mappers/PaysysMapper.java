@@ -107,6 +107,10 @@ public interface PaysysMapper {
 
 
 
+	int insertPayRentalKakao(Map<String, Object> map);
+
+
+
 
 
 
