@@ -14,8 +14,7 @@ for(var i = 0 ; i <payBy.length ; i ++){
             payFrm.addEventListener("submit", (e) => {
                 
                 pay(e)    
-
-
+				
             })
 
         } else if (e.target.value == 'k'){
@@ -27,6 +26,7 @@ for(var i = 0 ; i <payBy.length ; i ++){
         }
     })
 }
+
 
 function pay(e){
         
