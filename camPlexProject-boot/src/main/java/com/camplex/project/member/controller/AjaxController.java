@@ -61,7 +61,6 @@ public class AjaxController {
 	@ResponseBody
 	public int sendAuthKey(String phone) {
 		
-		System.out.println(phone);
 		int randomNumber = (int)((Math.random()* (9999 - 1000 + 1)) + 1000);//난수 생성
         
 		return service.sendAuthKey(phone,randomNumber);
@@ -71,7 +70,6 @@ public class AjaxController {
 	@GetMapping("/sendAuthKey/checkTelAuthkey")
 	@ResponseBody
 	public int checkTelAuthkey(@RequestParam Map<String, Object> paramMap) {
-		System.out.println(paramMap);
 		return service.checkTelAuthkey(paramMap);
 	}
 	
@@ -79,9 +77,6 @@ public class AjaxController {
 	@GetMapping("/changeMember/changeMember")
 	@ResponseBody
 	public int changeMember(String memberNo) {
-		
-		System.out.println(memberNo);
-
 		return service.changeMember(memberNo);
 	}
 	

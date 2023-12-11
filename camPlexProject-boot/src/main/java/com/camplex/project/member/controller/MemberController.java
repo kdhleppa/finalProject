@@ -165,14 +165,9 @@ public class MemberController {
 
 	    String result = service.searchId(map);
 
-	    System.out.println(result);
-	    
 	    if (result != null) {
 	        path += "/member/searchId2";
 	        model.addAttribute("searchId", result);
-	        
-	        System.out.println(model);
-	        
 	    } else {
 	        message = "일치하는 회원 정보가 없습니다.\n회원가입 후 이용 바랍니다.";
 	        path += "/member/signUp";
@@ -335,7 +330,7 @@ public class MemberController {
 	@PostMapping("/updateMember")
 	public String updateMember(@SessionAttribute("loginMember") Member loginMember,
 								Member inputMember,
-								MultipartFile memberProfileInput,
+								MultipartFile memberProfileImg,
 								RedirectAttributes ra
 								) throws Exception {
 		
@@ -344,7 +339,9 @@ public class MemberController {
 		
 		inputMember.setMemberNo(loginMember.getMemberNo());
 		
-		int result = service.updateMember(memberProfileInput, inputMember);
+		System.out.println(inputMember);
+		
+		int result = service.updateMember(memberProfileImg, inputMember);
 		
 		if(result > 0) {
 			

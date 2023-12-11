@@ -117,15 +117,15 @@ public class MemberServiceImpl implements MemberService {
 
 	// 프로필 정보 수정
 	@Override
-	public int updateMember(MultipartFile memberProfileInput, Member inputMember) throws Exception {
+	public int updateMember(MultipartFile memberProfileImg, Member inputMember) throws Exception {
 		
 		String temp = inputMember.getMemberProfileImg();
 		String rename = null;
 		
-		if(memberProfileInput.getSize() > 0) { // 업로드된 이미지가 있을 경우
+		if(memberProfileImg.getSize() > 0) { // 업로드된 이미지가 있을 경우
 			
 			// 1) 파일 이름 변경
-			rename = Util.fileRename(memberProfileInput.getOriginalFilename());
+			rename = Util.fileRename(memberProfileImg.getOriginalFilename());
 			
 			// 2) 바뀐 이름 loginMember에 세팅
 			inputMember.setMemberProfileImg(webPath + rename);
@@ -144,7 +144,7 @@ public class MemberServiceImpl implements MemberService {
 			if(rename != null) {
 				
 				// 메모리에 임시 저장되어있는 파일을 서버에 진짜로 저장하는 것
-				memberProfileInput.transferTo(new File(filePath + rename));
+				memberProfileImg.transferTo(new File(filePath + rename));
 			}
 			
 		} else { // 실패
