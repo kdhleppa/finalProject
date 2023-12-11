@@ -355,8 +355,9 @@ public class MemberController {
 				}
 			}
 			
-			loginMember.setMemberNickname( inputMember.getMemberNickname() );
+			loginMember.setMemberNickname( inputMember.getMemberNickname());
 			loginMember.setMemberProfileImg( inputMember.getMemberProfileImg());
+			loginMember.setMemberPhone(inputMember.getMemberPhone());
 			
 			message = "정보가 수정되었습니다.";
 			
@@ -458,13 +459,10 @@ public class MemberController {
 		
 		List<CEOMember> levelUpList = service.levelUpList();
 		
-		System.out.println(levelUpList);
-		
 		model.addAttribute("levelUpList", levelUpList);
 		
 		return "member/levelUpFormCheck";
 	}
-	
 	
 	
 	

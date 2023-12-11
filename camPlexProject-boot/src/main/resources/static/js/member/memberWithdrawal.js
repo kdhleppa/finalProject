@@ -16,6 +16,7 @@ inputPw.addEventListener("input", () => {
         inputPw.value = ""; // 띄어쓰지 못넣게 하기
 
         pwMessage.innerText = "영어,숫자,특수문자(!,@,#,-,_) 6~20글자";
+		pwMessage.classList.remove("confirm", "error"); // 검정 글씨
 
         checkObj.inputPw = false; // 빈칸 == 유효 X
         return;
@@ -36,6 +37,8 @@ inputPw.addEventListener("input", () => {
         if(inputPwRe.value.trim().length == 0){
 
             pwMessage.innerText = "유효한 비밀번호입니다";
+            pwMessage.classList.add("confirm");
+			pwMessage.classList.remove("error");
         
         }else{
             // 비밀번호가 유효하게 작성된 상태에서
@@ -44,10 +47,14 @@ inputPw.addEventListener("input", () => {
             // 비밀번호 == 비밀번호 확인  (같을 경우)
             if(inputPw.value == inputPwRe.value){
                 pwMessage.innerText = "비밀번호가 일치합니다";
+                pwMessage.classList.add("confirm");
+				pwMessage.classList.remove("error");
                 checkObj.inputPwRe = true;
                 
             } else{ // 다를 경우
                 pwMessage.innerText = "비밀번호가 일치하지 않습니다";
+                pwMessage.classList.add("error");
+				pwMessage.classList.remove("confirm");
                 checkObj.inputPwRe = false;
             }
         }
@@ -56,6 +63,8 @@ inputPw.addEventListener("input", () => {
     } else{ // 유효하지 않은 경우
         
         pwMessage.innerText = "비밀번호 형식이 유효하지 않습니다";
+        pwMessage.classList.add("error");
+		pwMessage.classList.remove("confirm");
         checkObj.inputPw = false; 
     }
 });
@@ -69,10 +78,14 @@ inputPwRe.addEventListener('input', ()=>{
         // 비밀번호 == 비밀번호 확인  (같을 경우)
         if(inputPw.value == inputPwRe.value){
             pwMessage.innerText = "비밀번호가 일치합니다";
+            pwMessage.classList.add("confirm");
+			pwMessage.classList.remove("error");
             checkObj.inputPwRe = true;
             
         } else{ // 다를 경우
             pwMessage.innerText = "비밀번호가 일치하지 않습니다";
+            pwMessage.classList.add("error");
+			pwMessage.classList.remove("confirm");
             checkObj.inputPwRe = false;
         }
 

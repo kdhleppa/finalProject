@@ -15,6 +15,8 @@ import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.transaction.Transactional;
 import net.nurigo.sdk.NurigoApp;
+import net.nurigo.sdk.message.request.SingleMessageSendingRequest;
+import net.nurigo.sdk.message.response.SingleMessageSentResponse;
 import net.nurigo.sdk.message.service.DefaultMessageService;
 
 @Service
@@ -25,6 +27,8 @@ public class AjaxServiceImpl implements AjaxService {
 	
 	@Autowired
 	private JavaMailSender mailSender;
+	
+	DefaultMessageService messageService =  NurigoApp.INSTANCE.initialize("NCS21BCIPH9LBAO3", "BGUIGPE95MYQ4JP3LU9WXS2KERRAYO11", "https://api.coolsms.co.kr");
 
 	// 이메일 중복 검사
 	@Override
@@ -143,12 +147,14 @@ public class AjaxServiceImpl implements AjaxService {
 	@Override
 	public int sendAuthKey(String phone, int randomNumber) {
 		
-		DefaultMessageService messageService =  NurigoApp.INSTANCE.initialize("NCS21BCIPH9LBAO3", "BGUIGPE95MYQ4JP3LU9WXS2KERRAYO11", "https://api.coolsms.co.kr");
 		// Message 패키지가 중복될 경우 net.nurigo.sdk.message.model.Message로 치환하여 주세요
-		net.nurigo.sdk.message.model.Message message = new net.nurigo.sdk.message.model.Message();
-		message.setFrom("01062701594");
-		message.setTo(phone);
-		message.setText("테스트" + randomNumber);
+//		net.nurigo.sdk.message.model.Message message = new net.nurigo.sdk.message.model.Message();
+//		message.setFrom("01062701594");
+//		message.setTo(phone);
+//		message.setText("camPlex 인증번호는 " + randomNumber + "입니다.");
+//		
+//		SingleMessageSentResponse response = this.messageService.sendOne(new SingleMessageSendingRequest(message));
+//		System.out.println(response);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("randomNumber", randomNumber);
@@ -171,10 +177,10 @@ public class AjaxServiceImpl implements AjaxService {
 
 	// 등업 신청 확인
 	@Override
-	public int changeMember(String ceoNumber) {
-		return mapper.changeMember(ceoNumber);
+	public int changeMember(String memberNo) {
+		return mapper.changeMember(memberNo);
 	}
-	
+
 
 	
 }
