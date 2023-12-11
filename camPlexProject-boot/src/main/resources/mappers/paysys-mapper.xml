@@ -137,7 +137,7 @@
 	<!-- 렌탈 결제 아이템 연결 입력-->
 	<insert id="insertPayRentalItem">
 		INSERT INTO "RENTAL_PAYMENT_ITEM"
-		VALUES (SEQ_RENTAL_ITEM_NO.NEXTVAL, #{rentalPaymentNo}, #{itemNo}, ${rentalPaymentNo}, ${reservationNo})
+		VALUES (SEQ_RENTAL_ITEM_NO.NEXTVAL, #{rentalPaymentNo}, #{itemNo}, ${rentalItemQuantity}, ${reservationNo})
 	</insert>
 	
 	
@@ -152,6 +152,13 @@
 		VALUES (#{paymentNo}, #{memberNo}, #{campNo}, #{campDeNo},
 				#{price}, #{price}, '카카오페이', DEFAULT,
 				#{entDate}, #{outDate}, DEFAULT, #{senderName}, NULL)
+	</insert>
+	
+	<!-- 렌탈 결제 내역 저장(카카오) -->
+	<insert id="insertPayRentalKakao" parameterType="RentalPayment" useGeneratedKeys="true">
+		
+		INSERT INTO "RENTAL_PAYMENT"
+		VALUES (SEQ_RENTAL_PAYMENT_NO.NEXTVAL, #{memberNo}, #{price}, DEFAULT, DEFAULT, #{senderName}, '카카오페이')
 	</insert>
 	
 	<!-- 캠핑 결제 내역 (카카오) 결제 완료로 변경-->

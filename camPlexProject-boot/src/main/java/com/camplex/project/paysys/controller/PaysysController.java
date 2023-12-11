@@ -240,7 +240,7 @@ public class PaysysController {
 		String path = "redirect:";	
 		int result = 0;
 		int result2 = 0;
-		System.out.println("어디가문제니"+itemNo);
+		System.out.println("어디가문제니"+rentalItemQuantity);
 		switch(bank) {
 		
 		case "toss" : bank = "토스뱅크 100001065362 최규연"; break;
@@ -271,17 +271,19 @@ public class PaysysController {
 		if (!rents.isEmpty()) {
 			InfoForReservation info = new InfoForReservation();
 			info.setPrice(price);
+			info.setSenderName(senderName);
 			result = payService.insertPayRental(map);
 			Integer rentalPaymentNo= payService.selectLastInsertId();
 			model.addAttribute("info", info);
 			model.addAttribute("bank", bank);
-			model.addAttribute("senderName", senderName);
 		
 			if(result > 0) {
 				for (RentalPaymentItem rent : rents) {
 					rent.setRentalPaymentNo(rentalPaymentNo);
 					result2 = payService.insertPayRentalItem(rent);
-					
+					if (result2 > 0 ) {
+						payService.deleteCart(rent.getCartItemNo());
+					}
 					
 				}
 					

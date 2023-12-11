@@ -1,5 +1,10 @@
 package com.camplex.project.kakao.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,12 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.camplex.project.kakao.service.KakaoService;
 import com.camplex.project.member.model.dto.Member;
 import com.camplex.project.paysys.model.dto.InfoForReservation;
+import com.camplex.project.paysys.model.dto.RentalPaymentItem;
 import com.camplex.project.paysys.model.service.PaysysService;
 
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.Setter;
 import lombok.extern.java.Log;
 
@@ -63,6 +71,71 @@ public class KakaoContoller {
         
         return "redirect:" + kakaopay.kakaoPayReady(info);
  
+    }
+    
+    @PostMapping("/paysys/kakao/rental")
+    public String kakaoPayRental(@SessionAttribute("loginMember") Member loginMember,
+    		int price, List<Integer> itemNo,
+    		@RequestParam List<Integer> reservationNo,
+		    @RequestParam List<Integer> cartItemNo,
+		    @RequestParam List<Integer> rentalItemQuantity,
+		    @RequestParam List<String> itemName,
+		    HttpServletRequest request, RedirectAttributes ra
+    		) {
+    	String referer = request.getHeader("Referer");
+		String path = "redirect:";	
+		int result = 0;
+		int result2 = 0;
+    	int size = itemNo.size() - 1;
+    	System.out.println("itemname"+ itemName.get(0));
+    	List<RentalPaymentItem> rents = new ArrayList<>();
+    	
+    	for (int i = 0; i < itemNo.size(); i++) {
+			RentalPaymentItem item = new RentalPaymentItem();
+			item.setItemNo(itemNo.get(i));
+	        item.setReservationNo(reservationNo.get(i));
+	        item.setCartItemNo(cartItemNo.get(i));
+	        item.setRentalItemQuantity(rentalItemQuantity.get(i));
+	        rents.add(item);
+			
+		}
+    	
+    	
+    	Map<String, Object> map = new HashMap<>();
+    	map.put("memberNo", loginMember.getMemberNo());
+    	map.put("price", price);
+    	map.put("size", size);
+    	map.put("senderName", loginMember.getMemberName());
+    	InfoForReservation info = new InfoForReservation();
+    	
+    	if (!rents.isEmpty()) {
+    		result = service.insertPayRentalKakao(map);
+    		Integer rentalPaymentNo= service.selectLastInsertId();
+    		info.setPaymentNo((int)rentalPaymentNo);
+    		info.setPrice(price);
+    		info.setSenderName(loginMember.getMemberName());
+    		// 조건문으로 렌탈일경우 값 세팅
+    		info.setCampDeName("렌탈");
+    		// 캠프네임에 아이템네임 세팅
+    		info.setCampName(itemName.get(0));
+    		// 외 *개 세팅
+    		info.setPriceOneDay(size);
+    		tempPaymentNo = info.getPaymentNo();
+    		tempInfo = info;
+    		if (result > 0 ) {
+    			for (RentalPaymentItem rent : rents) {
+					rent.setRentalPaymentNo(rentalPaymentNo);
+					result2 = service.insertPayRentalItem(rent);
+					if (result2 > 0 ) {
+						System.out.println("인서트페이렌탈아이템까진 문제없음");
+					}
+    			}
+    			System.out.println("rselut :" +result);
+    		}
+    	}
+    	System.out.println("size = " + size);
+    	
+    	return "redirect:" + kakaopay.kakaoPayReadyRental(info);
     }
     
     @GetMapping("/paysys/payDone")

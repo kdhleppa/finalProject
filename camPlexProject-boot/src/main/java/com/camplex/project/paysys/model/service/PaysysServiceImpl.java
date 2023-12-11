@@ -173,6 +173,16 @@ public class PaysysServiceImpl implements PaysysService{
 		return mapper.selectLastInsertId();
 	}
 
+	
+	/** 카카오용 페이먼트 렌탈 입력
+	 *
+	 */
+	@Transactional
+	@Override
+	public int insertPayRentalKakao(Map<String, Object> map) {
+		return mapper.insertPayRentalKakao(map);
+	}
+
 
 	
 

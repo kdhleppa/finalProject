@@ -36,8 +36,9 @@
 								<input type="hidden" name="itemNo" th:value="${rent.itemNo}"}>
 								<input type="hidden" name="reservationNo" th:value="${rent.reservationNo}">
 								<input type="hidden" name="cartItemNo" th:value="${rent.cartItemNo}">
-								<input type="hidden" th:id="'rentalItemQuantity'+${i.index}" name="rentalItemQuantity">
+								<input type="hidden" name="itemName" th:value="${rent.itemName}">
 								
+								<input th:if="${rent.itemQuantity}" type="hidden" th:id="'rentalItemQuantity'+${i.index}" name="rentalItemQuantity" th:value="${rent.itemQuantity}">
 							</td>
 	                        <td><img th:src="${rent.thumbnail}"></td>
 	                        <td>[[${rent.itemName}]]</td>
@@ -86,7 +87,7 @@
 					
 				</div>
                 <div class="buttonList">
-                    <button type="submit" class="Btn" id="payBtn">결제하기</button>
+                    <button class="Btn" id="payBtn">결제하기</button>
                     
                     <button type="button" class="Btn backBtn" onclick="history.back()">돌아가기</button>
                 </div>
