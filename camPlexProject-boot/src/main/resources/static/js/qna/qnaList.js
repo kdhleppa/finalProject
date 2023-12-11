@@ -1,3 +1,10 @@
+ document.addEventListener('DOMContentLoaded', () => {
+	if(loginMemberNo == null || memberType != 'M' ){
+        alert("관리자만 이용가능합니다")
+        window.history.back();
+    }
+})
+
 const qnaAnswerFrm = document.getElementById("qnaAnswerFrm");
 const QNAAnswer = document.getElementById("QNAAnswer");
 

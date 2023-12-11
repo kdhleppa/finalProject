@@ -1,5 +1,7 @@
 const checkObj = {
-    "inputNickname" : false
+    "inputNickname" : false,
+    "inputTel": false,
+	"inputAuthkey": false
 };
 
 // 프로필 이미지 추가/변경/삭제
@@ -10,6 +12,8 @@ const deleteImage = document.getElementById("deleteProfileImg"); // x버튼
 
 let initCheck; // 초기 프로필 이미지 상태를 저장하는 변수
                 // false == 기본 이미지,  true == 이전 업로드 이미지
+console.log(initCheck);
+
 
 let deleteCheck = -1; 
 // 프로필 이미지가 새로 업로드 되거나 삭제 되었음을 나타내는 변수
@@ -41,8 +45,7 @@ if(imageInput != null){ // 화면에 imageInput이 있을 경우 ( if 굳이 안
 
     imageInput.addEventListener("change", e => {
 
-        // 2MB로 최대 크기 제한 
-        const maxSize = 1 * 1024 * 1024 * 2; // 파일 최대 크기 지정(바이트 단위)
+        const maxSize = 1 * 1024 * 1024 * 5; // 파일 최대 크기 지정(바이트 단위)
 
         console.log(e.target); // input
         console.log(e.target.value); // 업로드된 파일 경로
@@ -115,6 +118,9 @@ if(imageInput != null){ // 화면에 imageInput이 있을 경우 ( if 굳이 안
 const inputNickname = document.getElementById("inputNickname");
 const nickMessage = document.getElementById('nickMessage');
 
+// 기존 닉네임 담을 변수
+const existingNickname = document.getElementById("inputNickname").value;
+
 // 닉네임이 입력이 되었을 때
 inputNickname.addEventListener("input", ()=>{
 
@@ -143,10 +149,20 @@ inputNickname.addEventListener("input", ()=>{
                 checkObj.inputNickname = true;
                 
             }else{ // 중복인 경우
-                nickMessage.innerText = "이미 사용중인 닉네임 입니다";
-                nickMessage.classList.add("error");
-                nickMessage.classList.remove("confirm");
-                checkObj.inputNickname = false;
+            
+            	if(existingNickname == inputNickname.value) {
+	            	// 기존 닉네임과 같은 닉네임인 경우 == 사용가능
+					nickMessage.innerText = "기존 닉네임 사용하기";
+	                nickMessage.classList.add("confirm");
+	                nickMessage.classList.remove("error");
+	                checkObj.inputNickname = true;
+				} else {
+					// 기존 닉네임 외 다른 사용자의 닉네임인 경우 == 사용불가
+	                nickMessage.innerText = "이미 사용중인 닉네임 입니다";
+	                nickMessage.classList.add("error");
+	                nickMessage.classList.remove("confirm");
+	                checkObj.inputNickname = false;
+				}
             }
         })
         .catch(err => console.log(err));
@@ -164,7 +180,149 @@ inputNickname.addEventListener("input", ()=>{
 });
 
 
-// 회원 가입 form태그가 제출 되었을 때
+// 전화번호 유효성 검사
+const inputTel = document.getElementById("inputTel");
+const telMessage = document.getElementById("telMessage");
+
+// 전화번호가 입력 되었을 때
+inputTel.addEventListener("input", () => {
+
+	// 전화번호가 입력이 되지 않은 경우
+	if (inputTel.value.trim() == '') {
+		telMessage.innerText = "- 제외한 전화번호를 입력해주세요.";
+		telMessage.classList.remove("confirm", "error");
+		checkObj.inputTel = false;
+		inputTel.value = "";
+		return;
+	}
+
+	// 정규표현식으로 유효성 검사
+	const regEx = /^0(1[01679]|2|[3-6][1-5]|70)[1-9]\d{2,3}\d{4}$/;
+
+	if (regEx.test(inputTel.value)) {// 유효
+
+		fetch("/dupCheck/phone?phone=" + inputTel.value)
+		.then(resp => resp.text())
+		.then(count => {
+
+			if (count > 0) {
+				telMessage.innerText = "등록된 전화번호입니다.";
+				telMessage.classList.add("error");
+				telMessage.classList.remove("confirm");
+				checkObj.inputTel = false;
+			} else {
+				telMessage.innerText = "사용 가능한 전화번호입니다.";
+				telMessage.classList.add("confirm");
+				telMessage.classList.remove("error");
+				checkObj.inputTel = true;
+			}
+
+		})
+		.catch(err => console.log(err));
+
+	} else { // 무효
+		telMessage.innerText = "전화번호 형식이 유효하지 않습니다.";
+		telMessage.classList.add("error");
+		telMessage.classList.remove("confirm");
+		checkObj.inputTel = false;
+	}
+
+});
+
+// 전화번호 인증
+const checkTel = document.getElementById("sendAuthkey");
+const authkeyMessage = document.getElementById("authkeyMessage");
+let tempTel;
+
+checkTel.addEventListener("click", () => {
+	
+	authMin = 4;
+    authSec = 59;
+	
+	if(checkObj.inputTel) {
+		
+		alert("인증번호가 발송되었습니다.\n휴대폰에서 확인 해 주세요.");
+		
+		fetch("/dupCheck/sendAuthKey?phone=" + inputTel.value)
+		.then(resp => resp.text())
+		.then(count => {
+
+			if (count > 0) {
+				telMessage.innerText = "인증번호가 발송되었습니다.";
+				tempTel = inputTel.value;
+			} else {
+				alert("인증번호 발송에 실패했습니다.");
+			}
+
+		})
+		.catch(err => console.log(err));
+		
+		authkeyMessage.innerText = "05:00";
+        authkeyMessage.classList.remove("confirm");
+
+        authTimer = window.setInterval(()=>{
+													// 삼항연산자  :  조건 	  ?   	true : false
+            authkeyMessage.innerText = "0" + authMin + ":" + (authSec < 10 ? "0" + authSec : authSec);
+            
+            // 남은 시간이 0분 0초인 경우
+            if(authMin == 0 && authSec == 0){
+                checkObj.authKey = false;
+                clearInterval(authTimer);
+                return;
+            }
+
+            // 0초인 경우
+            if(authSec == 0){
+                authSec = 60;
+                authMin--;
+            }
+
+
+            authSec--; // 1초 감소
+
+        }, 1000)
+		
+	}
+	
+})
+
+// 전화번호 인증 인증번호 확인
+const authKey = document.getElementById("inputAuthkey");
+const checkAuthKeyBtn = document.getElementById("checkNumber");
+
+checkAuthKeyBtn.addEventListener("click", function(){
+
+    if(authMin > 0 || authSec > 0){ // 시간 제한이 지나지 않은 경우에만 인증번호 검사 진행
+        /* fetch API */
+        const obj = {"inputKey":authKey.value, "phone":tempTel}
+        const query = new URLSearchParams(obj).toString()
+        // inputKey=123456&email=user01
+
+        fetch("/sendAuthKey/checkTelAuthkey?" + query)
+        .then(resp => resp.text())
+        .then(result => {
+            if(result > 0){
+                clearInterval(authTimer);
+                authkeyMessage.innerText = "인증되었습니다.";
+                authkeyMessage.classList.add("confirm");
+                checkObj.inputAuthkey = true;
+
+            } else{
+                alert("인증번호가 일치하지 않습니다.")
+                checkObj.inputAuthkey = false;
+            }
+        })
+        .catch(err => log(err));
+
+
+    } else{
+        alert("인증 시간이 만료되었습니다. 다시 시도해주세요.")
+    }
+
+});
+
+
+// form태그가 제출 되었을 때
 document.getElementById("updateMember").addEventListener("submit", e=>{
 
 	let flag = true; // 제출하면 안되는 경우의 초기값 플래그 true로 지정
@@ -197,6 +355,11 @@ document.getElementById("updateMember").addEventListener("submit", e=>{
             case "inputNickname" : 
                 alert("닉네임이 유효하지 않습니다"); break;
                 
+            case "inputTel":
+				alert("전화번호가 유효하지 않습니다"); break;
+					
+			case "inputAuthkey":
+				alert("인증번호가 유효하지 않습니다"); break;
             }
 
             document.getElementById(key).focus();

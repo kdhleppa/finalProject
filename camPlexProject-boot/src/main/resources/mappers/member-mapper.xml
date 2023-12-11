@@ -17,8 +17,9 @@
 	</resultMap>
 
 	<resultMap type="CEOMember" id="ceoMember_rm">
-		<id property="memberNo" column="NEMBER_NO"/>
-		<result property="cmapName" column="CAMP_NAME" />
+		<id property="memberNo" column="MEMBER_NO"/>
+		<result property="campName" column="CAMP_NAME" />
+
 		<result property="campAdress" column="CAMP_ADDRESS" />
 		<result property="ceoName" column="CEO_NAME" />
 		<result property="businessLicense" column="BUSINESS_LICENSE" />
@@ -41,6 +42,10 @@
 		<result property="demand" column="DEMAND"/>
 		<result property="campName" column="CAMP_NAME"/>
 		<result property="campDeName" column="CAMP_DE_NAME"/>
+		<result property="thumbnail" column="THUMBNAIL"/>
+		<result property="campPayment" column="CAMP_PAYMENT"/>
+		<result property="paymentType" column="PAYMENT_TYPE"/>
+				
 	</resultMap>
 	
 	<resultMap type="Wishlist" id="wishlist_rm">
@@ -48,6 +53,8 @@
 		<result property="memberNo" column="MEMBER_NO"/>
 		<result property="campNo" column="CAMP_NO"/>
 		<result property="itemNo" column="ITEM_NO"/>
+		<result property="thumbnail" column="THUMBNAIL"/>
+		<result property="itemName" column="ITEM_NAME"/>
 	</resultMap>
 	
 	<resultMap type="Qna" id="qna_rm">
@@ -62,7 +69,6 @@
 	</resultMap>
 	
 	<resultMap type="MypageBoard" id="board_rm">
-	
 		<id property="boardNo" column="BOARD_NO"/>
 		<result property="boardTitle" column="BOARD_TITLE"/>
 		<result property="boardContent" column="BOARD_CONTENT"/>
@@ -74,9 +80,19 @@
 		
 	</resultMap>
 	
+	<resultMap type="ItemInfoMypage" id="itemInfoMypage_rm">
+	  	<id property="reservationNo" column="RESERVATION_NO"/>
+		<result property="quantity" column="RENTAL_ITEM_QUANTITY"/>
+		<result property="item_no" column="ITEM_NO"/>
+		<result property="itemName" column="ITEM_NAME"/>
+		<result property="rentalPaymentNo" column="RENTAL_PAYMENT_NO"/>
+		<result property="rentalPaymentTotal" column="RENTAL_PAYMENT_TOTAL"/>
+		<result property="rentalPaymentType" column="RENTAL_PAYMENT_TYPE"/>
+	</resultMap>
+	
 	
 	<resultMap type="MyPage" id="myPageInfoList_rm">
-		<id property="memberNo" column="NEMBER_NO"/>
+		<id property="memberNo" column="MEMBER_NO"/>
 		
 		<collection property="resList"
 				select="selectResList"
@@ -118,17 +134,39 @@
 			       	WHERE CAMP_NO = A.CAMP_NO) CAMP_NAME, 
 			       	
 			       (SELECT CAMP_DE_NAME FROM CAMPING_DETAIL
-			       	WHERE CAMP_DE_NO = A.CAMP_DE_NO) CAMP_DE_NAME
+			       	WHERE CAMP_DE_NO = A.CAMP_DE_NO) CAMP_DE_NAME,
+			       	
+			       	(SELECT (CAMP_IMG_PATH || CAMP_IMG_RENAME) 
+					FROM CAMPING_SITE_IMG
+					WHERE CAMP_NO = A.CAMP_NO
+					AND CAMP_IMG_ORDER = 0) THUMBNAIL,
+					
+					(SELECT CAMP_PAYMENT
+					FROM PAYMENT
+					WHERE PAYMENT_NO = A.PAYMENT_NO) CAMP_PAYMENT,
+
+					(SELECT PAYMENT_TYPE
+					FROM PAYMENT
+					WHERE PAYMENT_NO = A.PAYMENT_NO) PAYMENT_TYPE
 			       	
 		FROM RESERVATIONS A 
 		WHERE MEMBER_NO = #{memberNo}
 	</select>
-	
-	
+		
 	<!-- collectoion 중 위시리스트 -->
 	<select id="selectWishList" resultMap="wishlist_rm">
-		SELECT *
-		FROM WISH_LIST
+		SELECT WISHLIST_NO, MEMBER_NO, CAMP_NO, ITEM_NO, 
+		
+				(SELECT ITEM_NAME
+				FROM ITEM
+				WHERE ITEM_NO = A.ITEM_NO) ITEM_NAME,
+				
+				(SELECT (ITEM_IMG_PATH || ITEM_IMG_RENAME) 
+				FROM ITEM_IMG
+				WHERE ITEM_NO = A.ITEM_NO
+				AND ITEM_IMG_ORDER = 0) THUMBNAIL
+		
+		FROM WISH_LIST A
 		WHERE MEMBER_NO = #{memberNo}
 	</select>
 	
@@ -154,12 +192,30 @@
 			WHERE BOARD_DEL_FL = 'N'
 			AND MEMBER_NO = #{memberNo}
 	</select>
+
+	<!-- 마이페이지 아이템 리스트 -->
+	<select id="selectItemListMypage" resultMap="itemInfoMypage_rm">
+		SELECT RESERVATION_NO, RENTAL_ITEM_QUANTITY, ITEM_NO, RENTAL_PAYMENT_NO,
+				(SELECT ITEM_NAME
+				FROM ITEM
+				WHERE ITEM_NO = A.ITEM_NO) ITEM_NAME,
+				(SELECT RENTAL_PAYMENT_TOTAL
+				FROM RENTAL_PAYMENT
+				WHERE RENTAL_PAYMENT_NO = A.RENTAL_PAYMENT_NO) RENTAL_PAYMENT_TOTAL,
+				(SELECT RENTAL_PAYMENT_TYPE
+				FROM RENTAL_PAYMENT
+				WHERE RENTAL_PAYMENT_NO = A.RENTAL_PAYMENT_NO) RENTAL_PAYMENT_TYPE
+		FROM RENTAL_PAYMENT_ITEM A
+		WHERE RESERVATION_NO = #{resNo}
+	</select>
 	
+	<!-- 마이페이지 값 뿌리기  -->
 	<select id="selectMyPageInfo" resultMap="myPageInfoList_rm">
 		SELECT MEMBER_NO
 			FROM "MEMBER"
 			WHERE MEMBER_NO = #{memberNo}
 	</select>
+	
 	
 	
 	
@@ -203,7 +259,8 @@
 	<update id="updateMember">
 		UPDATE "MEMBER" SET
 		MEMBER_NICKNAME = #{memberNickname},
-		MEMBER_PROFILE_IMG = #{memberProfileImg}
+		MEMBER_PROFILE_IMG = #{memberProfileImg},
+		MEMBER_PHONE = #{memberPhone}
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
@@ -240,10 +297,11 @@
 		, #{tourLicense}
 		, DEFAULT
 		, #{campAdress}
-		, #{cmapName}
+		, #{campName}
 		, #{ceoName}
 		, #{accountHolder}
-		, #{bankName})
+		, #{bankName}
+		, DEFAULT)
 	</insert>
 	
 	<!-- 카카오 로그인 시 회원인지 확인 -->
@@ -308,10 +366,15 @@
 		AND MEMBER_PHONE = #{memberPhone}
 	</select>
 	
-	
-	
-	<!-- 마이페이지 구매 내역 값 뿌리기 -->
-	
+	<!-- 등업신청 정보 가져오기 -->
+	<select id="levelUpList" resultMap="ceoMember_rm">
+		SELECT MEMBER_NO, CAMP_NAME, CAMP_ADDRESS, CEO_NAME, BUSINESS_LICENSE,
+		TOUR_LICENSE, ACCOUNT_HOLDER, BANK_NAME, CEO_ACCOUNT
+		FROM "CEO_MEMBER"
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE MEMBER_TYPE = 'U'
+		ORDER BY SEND_FORM_DAY
+	</select>
 	
 	
 	

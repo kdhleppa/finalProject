@@ -82,7 +82,9 @@ public class BoardController {
 				// 쿠키를 이용한 조회 수 증가에서 사용
 				HttpServletRequest req,
 				HttpServletResponse resp
+				
 			) throws ParseException {
+		
 		
 		
 		Map<String, Object> map = new HashMap<String, Object>();

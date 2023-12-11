@@ -2,6 +2,8 @@ package com.camplex.project.paysys.model.dto;
 
 import java.util.List;
 
+import com.camplex.project.member.model.dto.ItemInfoMypage;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,6 +28,10 @@ public class Reservations {
 	
 	private String campName;
 	private String campDeName;
+	private String thumbnail;
 	
+	private int campPayment;
+	private String paymentType;
 	
+	private List<ItemInfoMypage> itemList;
 }

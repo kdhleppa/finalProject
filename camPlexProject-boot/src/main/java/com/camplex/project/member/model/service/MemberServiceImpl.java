@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.camplex.project.common.utility.Util;
 import com.camplex.project.member.mappers.MemberMapper;
 import com.camplex.project.member.model.dto.CEOMember;
+import com.camplex.project.member.model.dto.ItemInfoMypage;
 import com.camplex.project.member.model.dto.Member;
 import com.camplex.project.member.model.dto.MyPage;
 import com.camplex.project.member.model.dto.Wishlist;
@@ -210,7 +211,7 @@ public class MemberServiceImpl implements MemberService {
 
 	// 마이페이지 값 뿌리기
 	@Override
-	public List<MyPage> selectMyPageInfo(int memberNo) {
+	public MyPage selectMyPageInfo(int memberNo) {
 		return mapper.selectMyPageInfo(memberNo);
 	}
 	
@@ -249,6 +250,23 @@ public class MemberServiceImpl implements MemberService {
 	public String searchId(Map<String, String> map) {
 		return mapper.searchId(map);
 	}
+
+	// 등업신청 리스트 가져오기
+	@Override
+	public List<CEOMember> levelUpList() {
+		return mapper.levelUpList();
+	}
+
+	/** 마이페이지 아이템 정보 가져오기
+	 *
+	 */
+	@Override
+	public List<ItemInfoMypage> selectItemListMypage(int resNo) {
+		return mapper.selectItemListMypage(resNo);
+	}
+
+
+
 
 
 

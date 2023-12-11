@@ -33,7 +33,7 @@
 
             <p>|</p>
 
-            <li>
+            <li th:if="${session.loginMember != null and session.loginMember.memberType != 'U'}">
                 <a a th:href="@{/board/{boardType}(boardType=C)}">CEO게시판</a>
             </li>
         </ul>
@@ -63,7 +63,7 @@
 
             <div class="boardDeTitle">
                 <!-- 제목 -->
-            	<h1 class="boardTitle" th:text="${board.boardTitle}"></h1><br>
+            	<p class="boardTitle" th:text="${board.boardTitle}"></p><br>
                 <p style="font-size: 18px;"> <span>작성일 : </span> [[${board.boardCreateDate}]] </p> 
                 <hr style="margin-top: 3rem; width: 90%;">
                 
@@ -180,13 +180,11 @@
     
     <script th:inline="javascript">
 		console.log(/*[[${board}]]*/ "board객체");
-
 		const boardNo = /*[[${board.boardNo}]]*/ "게시글번호";
-		
 		const loginMemberNo = /*[[${session.loginMember?.memberNo}]]*/ "로그인 회원번호";
+		const boardType = /*[[${board.boardType}]]*/ "게시글타입";
 		
 		if(loginMemberNo == null) loginMemberNo = "";
-
 
 		console.log(boardNo);
 		console.log(loginMemberNo);

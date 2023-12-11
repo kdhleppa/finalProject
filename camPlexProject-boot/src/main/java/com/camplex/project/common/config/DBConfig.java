@@ -54,6 +54,7 @@ public class DBConfig {
 				+ " com.camplex.project.board.model.dto,"
 				+ " com.camplex.project.paysys.model.dto,"
 				+ " com.camplex.project.qna.model.dto"
+				+ " com.camplex.project.event.model.dto"
 				);
 
 		

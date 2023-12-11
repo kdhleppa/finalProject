@@ -15,7 +15,7 @@
   					#{boardType},
   					#{boardTitle},
   					#{boardContent}, 
-  					DEFAULT, DEFAULT, DEFAULT, DEFAULT  
+  					DEFAULT, DEFAULT, DEFAULT
   					)
   	</insert>
   	

@@ -276,10 +276,10 @@ public class CampServiceImpl2 implements CampService2{
 		int campDeNo = 0;
 		
 		if(countDe == 0) {
+			
 			return campDe;
-		}
-		
-		if(countDe > 0) {
+			
+		} else {
 			
 			campDe = mapper.searchCampDeForCampNo(campNo);
 			
@@ -300,7 +300,7 @@ public class CampServiceImpl2 implements CampService2{
 		}
 		
 		
-		
+
 		return campDe;
 	}
 
@@ -329,6 +329,7 @@ public class CampServiceImpl2 implements CampService2{
 		
 		int rowCount = mapper.campUpdate(camp);
 		
+
 		if(renameCampMap != null) {
 			inputCampMap.transferTo(new File(filePath + renameCampMap));
 		}
@@ -409,14 +410,4 @@ public class CampServiceImpl2 implements CampService2{
 		return mapper.updateCampDeToZ(campDetail);
 	}
 
-
-	
-
-
-
-
-	
-	
-	
-	
 }

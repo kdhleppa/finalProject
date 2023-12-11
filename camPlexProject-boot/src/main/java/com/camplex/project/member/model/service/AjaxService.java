@@ -30,4 +30,8 @@ public interface AjaxService {
 	// 인증번호 확인
 	int checkTelAuthkey(Map<String, Object> paramMap);
 
+	// 등업 신청 확인
+	int changeMember(String memberNo);
+
+
 }

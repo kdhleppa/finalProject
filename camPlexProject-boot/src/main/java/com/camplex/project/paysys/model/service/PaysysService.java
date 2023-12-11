@@ -5,6 +5,8 @@ import java.util.Map;
 
 import com.camplex.project.paysys.model.dto.CartItem;
 import com.camplex.project.paysys.model.dto.InfoForReservation;
+import com.camplex.project.paysys.model.dto.RentalPayment;
+import com.camplex.project.paysys.model.dto.RentalPaymentItem;
 import com.camplex.project.paysys.model.dto.rentPayList;
 
 public interface PaysysService {
@@ -70,6 +72,15 @@ public interface PaysysService {
 	rentPayList selectCheckCart(Integer cartItemNo, int memberNo);
 
 	int insertCartNoQuantity(Map<String, Object> map);
+
+	int insertPayRental(Map<String, Object> map);
+
+	int insertPayRentalItem(RentalPaymentItem rent);
+
+	Integer selectLastInsertId();
+
+	int insertPayRentalKakao(Map<String, Object> map);
+
 
 
 

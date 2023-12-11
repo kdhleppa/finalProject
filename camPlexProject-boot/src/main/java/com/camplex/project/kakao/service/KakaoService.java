@@ -2,6 +2,7 @@ package com.camplex.project.kakao.service;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -83,6 +84,51 @@ public class KakaoService {
 	        
 	        return "/kakaoCancel";
 	}
+	
+	
+	/** 페이 렌탈
+	 * @param map
+	 * @return
+	 */
+	public String kakaoPayReadyRental(InfoForReservation info) {
+		RestTemplate restTemplate = new RestTemplate();
+		
+		
+		HttpHeaders headers = new HttpHeaders();
+        headers.add("Authorization", "KakaoAK " + "a13f547e0ea960761cb3b4a00a500ca8");
+        headers.add("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+        
+        MultiValueMap<String, Object> params = new LinkedMultiValueMap<String, Object>();
+        params.add("cid", "TC0ONETIME");
+        params.add("partner_order_id", "camplex");
+        params.add("partner_user_id", "camplex");
+        params.add("item_name", info.getCampName()+"외"+info.getPriceOneDay() + "개");
+        params.add("quantity", "1");
+        params.add("total_amount", info.getPrice());
+        params.add("tax_free_amount", "100");
+        params.add("approval_url","http://localhost/paysys/payDone");
+        params.add("cancel_url", "http://localhost/paysys/payCancel");
+        params.add("fail_url", "http://localhost/paysys/payFail");
+        
+        HttpEntity<MultiValueMap<String, Object>> body = new HttpEntity<MultiValueMap<String, Object>>(params, headers);
+		
+        try {
+            kakaoPayReadyVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/ready"), body, KakaoPayReadyVO.class);
+            
+            log.info("" + kakaoPayReadyVO);
+            
+            return kakaoPayReadyVO.getNext_redirect_pc_url();
+ 
+        } catch (RestClientException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        
+        return "/kakaoCancel";
+}
+	
+	
 	
 	public KakaoPayApprovalVO kakaoPayInfo(String pg_token) {
 		 
@@ -213,6 +259,9 @@ public class KakaoService {
                     .email(email)
                     .nickname(nickname).build();
     }
+
+
+
 
 
 }

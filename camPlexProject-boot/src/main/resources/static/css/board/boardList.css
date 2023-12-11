@@ -139,11 +139,16 @@ table {
 	height: 75px;
 	vertical-align: middle;
 	border-radius: 20px;
+	margin-right: 0.5rem;
 }
 
 #listTitle {
 	text-decoration: none;
 	color: black;
+}
+
+#tdTitle {
+	width: 55%;
 }
 
 #insertBtn {

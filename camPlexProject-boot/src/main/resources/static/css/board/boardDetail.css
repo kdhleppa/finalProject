@@ -16,10 +16,6 @@ button {
     unicode-range: U+AC00-D7A3;
 }
 
-textarea {
-	font-family: 'HakgyoansimSantteutdotumL';
-}
-
 /* 게시판 상단 메뉴 */
 .boardTypeList {
 	display: flex;
@@ -89,15 +85,13 @@ textarea {
     margin-top: 30px;
     /* border: 1px solid rgb(161, 161, 161); */
     border-radius: 20px;
-    font-size: 22px;
     width: 3rem;
     height: 2rem;
     text-align: center;
 }
 
-.boardDeTitle {
-    font-size: 25px;
-	height: 100%;
+.boardTitle {
+	font-size: 28px;
 }
 
 .boardImg {
@@ -133,9 +127,9 @@ textarea {
 
 .boardContent {
     width: 80%;
-    font-size: 22px;
     margin-top: 2rem;
     margin-bottom: 5rem;
+    font-size: 16px;
 }
 
 #imgDown {
@@ -228,6 +222,7 @@ img {
     border-style: none;
     font-size: 1.2rem;
     margin-bottom: 1rem;
+    margin-left: 0.5rem;
 }
 
 
@@ -347,11 +342,11 @@ img {
 	margin-top: 10px;
 }
 
+
 .commentInsertContent{
 	width: 66%;
     height: 90px;
     resize: none;
-    margin-top : 20px;
     border-radius: 10px;
     outline: none;
     padding: 0.7rem;
@@ -372,3 +367,24 @@ img {
     cursor: pointer;
 }
 
+
+/* Quill 글꼴 설정 */
+.ql-size-huge {
+	font-size: 40px;
+}
+
+.ql-size-large {
+	font-size: 24px;
+}
+
+.ql-size-small {
+	font-size: 12px;
+}
+
+.ql-font-serif{
+	font-family: serif;
+}
+
+.ql-font-monospace {
+	font-family: monospace;
+}

@@ -26,11 +26,11 @@ body {
 }
 
 .emptySpace {
-    width: 100px;
+    width: 10%;
 }
 
 .midContainer {
-    width: 1720px;
+    width: 80%;
 }
 
 /*표 간격 조절*/
@@ -70,12 +70,15 @@ body {
     width: 10%;
 }
 .itemListTB th:nth-child(3){
-    width: auto;
+    width: 15%;
 }
 .itemListTB th:nth-child(4){
-    width: 8%;
+    width: auto;
 }
 .itemListTB th:nth-child(5){
+    width: 8%;
+}
+.itemListTB th:nth-child(6){
     width: 8%;
 }
 .itemListTB th:last-child {
@@ -187,25 +190,21 @@ table {
     width: 400px;
     display: flex;
     align-items: center;
+    font-size: 1.4rem;
 }
 
 .payBy {
-    line-height: 30px;
+    font-size: 0.5rem;
 }
 
 .nPayLogo {
-    width: 164px;
-    height: 64px;
+    width: 100px;
 }
 .kPayLogo {
-    width: 175px;
-    height: 72px;
+    width: 100px;
 }
 
-/*인풋래디오크기 키우기*/
-input[type="radio"].payBy {
-    transform: scale(1.5); /* 1.5배 크기로 확대 */
-}
+
 
 .buttonList {
     text-align: end;
@@ -213,9 +212,13 @@ input[type="radio"].payBy {
 }
 
 .Btn {
-    margin-left: 30px;
-    font-size: 20px;
+    margin: 0 30px;
+    font-size: 1.5rem;
     text-decoration: none;
+    background-color: white;
+    border:none;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .backBtn {
@@ -224,15 +227,7 @@ input[type="radio"].payBy {
 }
 
 
-.Btn {
-    color: gray;
-    padding-bottom: 5px;
-    background-color: white;
-    border:none;
-    border-bottom: 1px solid gray; 
-    text-decoration: none;
-    cursor: pointer;
-}
+
 
 .payContainer {
     margin-top: 30px;
@@ -301,4 +296,26 @@ input[type="radio"].payBy {
     text-decoration: none;
     margin: 0 1rem;
     font-weight: 600;
+}
+
+
+.bankAccount{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 70px;
+
+}
+
+.bankAccount input, select{
+    height: 2rem;
+    width: 25rem;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.account, .host{
+    display: flex;
+    margin: 5px 0;
+    font-size: 1.3rem;
 }

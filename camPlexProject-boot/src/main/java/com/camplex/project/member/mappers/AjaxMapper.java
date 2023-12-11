@@ -32,7 +32,10 @@ public interface AjaxMapper {
 
 	// 전화번호 인증번호 확인
 	int checkTelAuthkey(Map<String, Object> paramMap);
-	
+
+	// 등업 신청 확인
+	int changeMember(String memberNo);
+
 
 
 
