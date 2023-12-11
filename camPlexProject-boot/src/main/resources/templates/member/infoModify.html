@@ -62,11 +62,11 @@
                     <input class="inputSignUpInfo" id="inputNickname" name="memberNickname" type="text" placeholder="닉네임" th:value="*{memberNickname}">
                     <p class="sendMassage" id="nickMessage">한글, 영어, 숫자 2~10글자</p>
                     
-                    <!--<input class="inputSignUpInfo" id="inputTel" type="tel" placeholder="휴대전화">
-                    <p class="sendMassage">인증번호가 발송되었습니다.</p>
+                    <input class="inputSignUpInfo" id="inputTel" name="memberPhone" type="tel" placeholder="전화번호" maxlength="11">
+                    <p class="sendMassage" id="telMessage">- 제외한 전화번호를 입력해주세요.</p>
                     
                     <input class="inputSignUpInfo" id="inputAuthkey" type="text" placeholder="인증번호">
-                    <p class="sendMassage">인증되었습니다.</p>-->
+                    <p class="sendMassage" id="authkeyMessage">휴대폰 메세지를 확인해주세요.</p>
 
                     
 
@@ -86,8 +86,8 @@
                 </section>
 
                 <section class="empty2" id="telCheckBtnSection">
-                    <!--<a class="telCheckBtn" id="checkTel">확인</a>
-                    <a class="telCheckBtn" id="checkTelAuthkey">인증</a>-->
+                  	<button type="button" class="telCheckBtn" id="sendAuthkey">인증</button>
+                    <button type="button" class="telCheckBtn" id="checkNumber">확인</a>
                 </section>
 
             </section>
@@ -103,9 +103,9 @@
 
     <div class="empty4"></div>
 	
-	<script th:src="@{/js/member/infoModify.js}"></script>
-
 	<th:block th:replace="~{common/footer}"></th:block>
-
+	
+	<script th:src="@{/js/member/infoModify.js}"></script>
+	
 </body>
 </html>

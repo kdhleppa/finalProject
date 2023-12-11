@@ -31,6 +31,7 @@ public interface AjaxService {
 	int checkTelAuthkey(Map<String, Object> paramMap);
 
 	// 등업 신청 확인
-	int changeMember(String ceoNumber);
+	int changeMember(String memberNo);
+
 
 }

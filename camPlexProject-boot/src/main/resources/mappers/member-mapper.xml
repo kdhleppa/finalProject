@@ -19,6 +19,7 @@
 	<resultMap type="CEOMember" id="ceoMember_rm">
 		<id property="memberNo" column="MEMBER_NO"/>
 		<result property="campName" column="CAMP_NAME" />
+
 		<result property="cmapName" column="CAMP_NAME" />
 		<result property="campAdress" column="CAMP_ADDRESS" />
 		<result property="ceoName" column="CEO_NAME" />
@@ -259,7 +260,8 @@
 	<update id="updateMember">
 		UPDATE "MEMBER" SET
 		MEMBER_NICKNAME = #{memberNickname},
-		MEMBER_PROFILE_IMG = #{memberProfileImg}
+		MEMBER_PROFILE_IMG = #{memberProfileImg},
+		MEMBER_PHONE = #{memberPhone}
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
 	
