@@ -135,43 +135,53 @@ public class CampController {
 		}
 		
 		Camp camp = service.selectCampOne(campNo);
-		
-		String[] optionArr = camp.getCampOption().split("\\^\\^\\^");
-		String[] arondViewArr = camp.getCampAroundView().split("\\^\\^\\^");
-		
-		Map<String, Object> optionMap = new HashMap<>();
-		Map<String, Object> aroundViewMap = new HashMap<>();
-		
-		for(String option : optionArr) { 
+				
+		if(camp.getCampOption() != null) {
 			
-			switch(option) {
-			case "SWER" : optionMap.put(option, "공용샤워실"); break;
-			case "CONV" : optionMap.put(option, "편의점/매점"); break;
-			case "BBQ" : optionMap.put(option, "바베큐장"); break;			
-			case "TOIL" : optionMap.put(option, "공용화장실"); break;			
-			case "PARK" : optionMap.put(option, "공용주차장"); break;			
-			case "POOL" : optionMap.put(option, "수영장"); break;			
-			case "WIFI" : optionMap.put(option, "와이파이"); break;			
-			case "SING" : optionMap.put(option, "노래방"); break;			
-			case "CAFE" : optionMap.put(option, "카페"); break;			
+			String[] optionArr = camp.getCampOption().split("\\^\\^\\^");
+			Map<String, Object> optionMap = new HashMap<>();
+			
+			for(String option : optionArr) { 
+				
+				switch(option) {
+				case "SWER" : optionMap.put(option, "공용샤워실"); break;
+				case "CONV" : optionMap.put(option, "편의점/매점"); break;
+				case "BBQ" : optionMap.put(option, "바베큐장"); break;			
+				case "TOIL" : optionMap.put(option, "공용화장실"); break;			
+				case "PARK" : optionMap.put(option, "공용주차장"); break;			
+				case "POOL" : optionMap.put(option, "수영장"); break;			
+				case "WIFI" : optionMap.put(option, "와이파이"); break;			
+				case "SING" : optionMap.put(option, "노래방"); break;			
+				case "CAFE" : optionMap.put(option, "카페"); break;			
+				}
+				
 			}
 			
-		}
-		
-		for(String aroundView : arondViewArr) { 
+			model.addAttribute("option", optionMap);
 			
-			switch(aroundView) {
-			case "TREK" : aroundViewMap.put(aroundView, "등산로"); break;
-			case "VALY" : aroundViewMap.put(aroundView, "계곡"); break;
-			case "MOTN" : aroundViewMap.put(aroundView, "산/숲"); break;
-			case "SEA" : aroundViewMap.put(aroundView, "바다"); break;
-			case "RIVR" : aroundViewMap.put(aroundView, "강/호수"); break;
-			case "CITY" : aroundViewMap.put(aroundView, "도심"); break;
-			}	
 		}
 		
-		model.addAttribute("option", optionMap);
-		model.addAttribute("aroundView", aroundViewMap);
+		if(camp.getCampAroundView() != null) {
+			
+			String[] arondViewArr = camp.getCampAroundView().split("\\^\\^\\^");
+			Map<String, Object> aroundViewMap = new HashMap<>();
+			
+			for(String aroundView : arondViewArr) { 
+				
+				switch(aroundView) {
+				case "TREK" : aroundViewMap.put(aroundView, "등산로"); break;
+				case "VALY" : aroundViewMap.put(aroundView, "계곡"); break;
+				case "MOTN" : aroundViewMap.put(aroundView, "산/숲"); break;
+				case "SEA" : aroundViewMap.put(aroundView, "바다"); break;
+				case "RIVR" : aroundViewMap.put(aroundView, "강/호수"); break;
+				case "CITY" : aroundViewMap.put(aroundView, "도심"); break;
+				}	
+			}
+			
+			model.addAttribute("aroundView", aroundViewMap);
+			
+		}
+		
 		model.addAttribute("camp", camp);
 		
 		return "camp/campingDetail";

@@ -173,6 +173,16 @@ main {
     font-size: 30px;
     margin-left: 20px;
     font-weight: 600;
+    cursor: pointer;
+}
+#listTitle, #beforeListTitle{
+	display: flex;
+}
+
+.subListTitle{
+	display: flex;
+	align-items: center;
+	font-size: 15px;
 }
 
 .underLine2 {
@@ -180,7 +190,7 @@ main {
     margin-bottom: 10px;
 }
 
-#shopingList {
+.shopingList {
     flex-basis: 80%;
 }
 
@@ -191,40 +201,57 @@ main {
 	font-size: 17px;
 }
 
-#shopingListInfo {
+.shopingListInfo {
     display: flex;
-    flex-direction: column;
 }
 
-#buyHistoryInfo {
+.contentWrapper{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	overflow: hidden;
+	height: 330px;
+	
+}
+
+.buyHistoryInfo {
     display: flex;
     margin-top: 30px;
+	justify-content: space-between;
 }
 
-#imgSection {
+.imgSection {
 	display: flex;
 	justify-content: center;
 	width: 250px;
     height: 120px;
     border-radius: 10px;
     overflow: hidden;
+    margin-right: 40px;
 }
 
-#shoppingImg {
+.shoppingImg {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-#buyInfo {
+.buyInfo {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     flex-basis: 50%;
+    
 }
 
-#buyInfo a {
+.buyInfo a {
     display: inline-block;
+}
+
+.buyInfo p{
+	
+	margin-bottom: 4px;
+	
 }
 
 #payStateSection {
@@ -247,7 +274,7 @@ main {
     margin-bottom: 10px;
 }
 
-#shopingList {
+.shopingList {
     flex-basis: 80%;
 }
 
@@ -268,7 +295,7 @@ main {
     margin-top: 30px;
 }
 
-#imgSection {
+.imgSection {
 	display: flex;
 	justify-content: center;
 	width: 250px;
@@ -277,7 +304,7 @@ main {
     overflow: hidden;
 }
 
-#shoppingImg {
+.shoppingImg {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -319,15 +346,25 @@ main {
 .itemSection {
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: center;
+    margin-top: 20px;
+    margin-right: 40px;
+}
+
+.itemWrapper{
+	display: flex;
+	width: 80%;
+	overflow: hidden;
 }
 
 .itemSection > p {
-    font-size: 13px;
+    font-size: 1rem;
 }
 
 .wishItem {
-    width: 140px;
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
 }
 
 .empty4 {
