@@ -41,9 +41,9 @@
                         <section id="inputProfileImg">
 
 							<section id="imgSection">
-	                            <img th:unless="*{memberProfileImg}" id="profileImg" th:src="@{/images/memberImg/gg_profile.png}">
+	                            <img th:unless="*{memberProfileImg}" name="memberProfileImg" id="profileImg" th:src="@{/images/memberImg/gg_profile.png}">
 								
-		                    	<img th:if="*{memberProfileImg}" id="profileImg" th:src="*{memberProfileImg}">
+		                    	<img th:if="*{memberProfileImg}" name="memberProfileImg" id="profileImg" th:src="*{memberProfileImg}">
 							</section>
                             
                             <section id="emptyWidth2"></section>

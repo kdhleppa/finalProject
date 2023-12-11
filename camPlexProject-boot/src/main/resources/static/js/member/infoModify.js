@@ -12,8 +12,6 @@ const deleteImage = document.getElementById("deleteProfileImg"); // x버튼
 
 let initCheck; // 초기 프로필 이미지 상태를 저장하는 변수
                 // false == 기본 이미지,  true == 이전 업로드 이미지
-console.log(initCheck);
-
 
 let deleteCheck = -1; 
 // 프로필 이미지가 새로 업로드 되거나 삭제 되었음을 나타내는 변수
@@ -25,6 +23,9 @@ if(imageInput != null){ // 화면에 imageInput이 있을 경우 ( if 굳이 안
 
     // 프로필 이미지가 출력되는 img태그의 src 속성을 저장
     originalImage = profileImg.getAttribute("src"); 
+    
+    console.log(originalImage);
+    
 
 
     // 회원 프로필 화면 진입 시 
@@ -40,7 +41,7 @@ if(imageInput != null){ // 화면에 imageInput이 있을 경우 ( if 굳이 안
     // change 이벤트 : 값이 변했을 때
     // - input type="file", "checkbox", "radio" 에서 많이 사용
     // - text/number 형식 사용 가능
-    //   -> 이 때 input값 입력 후 포커스를 잃었을 때 
+    //   -> 이 때 input값 입력 후 포커스를 잃었을 때
     //      이전 값과 다르면 change 이벤트 발생
 
     imageInput.addEventListener("change", e => {
@@ -62,6 +63,7 @@ if(imageInput != null){ // 화면에 imageInput이 있을 경우 ( if 굳이 안
             // 취소 시 기존 프로필 이미지로 변경 ( 기존 이미지에서 변경되는게 없게 하겠다는거죠 ) 
             profileImg.setAttribute("src", originalImage);
 
+			console.log("profileImg::", profileImg);
             return;
         }
 
@@ -111,7 +113,7 @@ if(imageInput != null){ // 화면에 imageInput이 있을 경우 ( if 굳이 안
 
         deleteCheck = 0;
     });
-
+    
 }
 
 // 닉네임 유효성 검사
@@ -324,6 +326,8 @@ checkAuthKeyBtn.addEventListener("click", function(){
 
 // form태그가 제출 되었을 때
 document.getElementById("updateMember").addEventListener("submit", e=>{
+	
+	console.log("profileImg result", profileImg);
 
 	let flag = true; // 제출하면 안되는 경우의 초기값 플래그 true로 지정
 
@@ -336,12 +340,15 @@ document.getElementById("updateMember").addEventListener("submit", e=>{
     // 이전 프로필 이미지가 있으면서, 프로필 삭제 버튼을 눌렀다 -> 삭제
     if(initCheck && deleteCheck == 0)   flag = false;
 
+    // 이미지 변경 없을 시
+	if(initCheck && deleteCheck == -1) flag = false;
+
     
     if(flag){ // flag == true -> 제출하면 안되는 경우
         e.preventDefault(); // form 기본 이벤트 제거
         alert("이미지 변경 후 클릭하세요");
     }
-
+    
     for(let key in checkObj){
 		
 		console.log("test");
