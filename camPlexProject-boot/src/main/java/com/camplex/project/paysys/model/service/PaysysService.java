@@ -81,6 +81,8 @@ public interface PaysysService {
 
 	int insertPayRentalKakao(Map<String, Object> map);
 
+	int updatePayRentalState(int tempPaymentNo);
+
 
 
 

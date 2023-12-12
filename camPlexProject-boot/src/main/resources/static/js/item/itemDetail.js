@@ -41,15 +41,19 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
+var wishBtnClicked = false;
+document.querySelector(".wishBtn").addEventListener("click", function() {
+    wishBtnClicked = true;
+});
 document.getElementById("payFrm").onsubmit = function() {
     var selectedValue = document.getElementById("defaultOpt").value;
+	
 
-    if (selectedValue === "default") {
+	
+    if (!wishBtnClicked && selectedValue === "default") {
         alert("예약된 캠핑장이 선택되어있어야 합니다.");
-        return false; // 폼 제출을 막습니다.
+        return false;
     }
 };
-
 
 

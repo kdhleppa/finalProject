@@ -110,11 +110,16 @@ public class KakaoService {
         params.add("cid", "TC0ONETIME");
         params.add("partner_order_id", "camplex");
         params.add("partner_user_id", "camplex");
-        params.add("item_name", info.getCampName()+"외"+info.getPriceOneDay() + "개");
+        if (info.getPriceOneDay() > 0) {
+        	params.add("item_name", info.getCampName()+"외"+info.getPriceOneDay() + "개");
+        	
+        } else {
+        	params.add("item_name", info.getCampName());
+        }
         params.add("quantity", "1");
         params.add("total_amount", info.getPrice());
         params.add("tax_free_amount", "100");
-        params.add("approval_url","http://localhost/paysys/payDone");
+        params.add("approval_url","http://localhost/paysys/payDoneRental");
         params.add("cancel_url", "http://localhost/paysys/payCancel");
         params.add("fail_url", "http://localhost/paysys/payFail");
         

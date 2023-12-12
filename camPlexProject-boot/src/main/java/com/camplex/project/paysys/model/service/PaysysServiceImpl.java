@@ -183,6 +183,11 @@ public class PaysysServiceImpl implements PaysysService{
 		return mapper.insertPayRentalKakao(map);
 	}
 
+	@Override
+	public int updatePayRentalState(int tempPaymentNo) {
+		return mapper.updatePayRentalState(tempPaymentNo);
+	}
+
 
 	
 
