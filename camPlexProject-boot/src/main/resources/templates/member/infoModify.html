@@ -41,19 +41,19 @@
                         <section id="inputProfileImg">
 
 							<section id="imgSection">
-	                            <img th:unless="*{memberProfileImg}" name="memberProfileImg" id="profileImg" th:src="@{/images/memberImg/gg_profile.png}">
+	                            <img th:unless="*{memberProfileImg}" name="profileImg" id="profileImg" th:src="@{/images/memberImg/gg_profile.png}">
 								
-		                    	<img th:if="*{memberProfileImg}" name="memberProfileImg" id="profileImg" th:src="*{memberProfileImg}">
+		                    	<img th:if="*{memberProfileImg}" name="profileImg" id="profileImg" th:src="*{memberProfileImg}">
 							</section>
                             
                             <section id="emptyWidth2"></section>
 
-                            <section id="uploadImgBtn">
-                                <label for="uploadProfileImg">프로필 이미지 선택</label>
-                                <input type="file" id="uploadProfileImg" name="memberProfileInput">
-                                <label id="deleteProfileImg">프로필 이미지 삭제</label>
-                            </section>
-                            
+							<section id="uploadImgBtn">
+								<label for="uploadProfileImg">프로필 이미지 선택</label>
+								<input type="file" id="uploadProfileImg" name="profileImg">
+								<label id="deleteProfileImg">프로필 이미지 삭제</label>
+							</section>
+                            	
                         </section>
 
                         <section id="emptyWidth3"></section>
@@ -62,33 +62,26 @@
                     <input class="inputSignUpInfo" id="inputNickname" name="memberNickname" type="text" placeholder="닉네임" th:value="*{memberNickname}">
                     <p class="sendMassage" id="nickMessage">한글, 영어, 숫자 2~10글자</p>
                     
-                    <input class="inputSignUpInfo" id="inputTel" name="memberPhone" type="tel" placeholder="전화번호" maxlength="11">
-                    <p class="sendMassage" id="telMessage">- 제외한 전화번호를 입력해주세요.</p>
-                    
-                    <input class="inputSignUpInfo" id="inputAuthkey" type="text" placeholder="인증번호">
-                    <p class="sendMassage" id="authkeyMessage">휴대폰 메세지를 확인해주세요.</p>
-
-                    
-
                     <section id="searchIdBtnSection">
                         <section class="empty3"></section>
                         
                         <!-- 회원가입, 이전 페이지로 이동 버튼 -->
-                        <section id="changePwBtn">
-                            <button type="submit" class="clickBtn">수정완료</button>
+                        <section class="changePwBtn">
                             <a class="clickBtn" th:href="@{/member/searchPw}">비밀번호 변경</a>
-                            <button type="button" class="clickBtn" th:onclick="|javascript:history.back();|">이전으로</button>
+							<a>전화번호 변경</a>
                         </section>
+                        
+                        <section class="changePwBtn">
+                            <button type="submit" class="clickBtn">수정완료</button>
+                            <button type="button" class="clickBtn" th:onclick="|javascript:history.back();|">이전으로</button>
+						</section>
                         
                         <section class="empty3"></section>
                     </section>
 
                 </section>
 
-                <section class="empty2" id="telCheckBtnSection">
-                  	<button type="button" class="telCheckBtn" id="sendAuthkey">인증</button>
-                    <button type="button" class="telCheckBtn" id="checkNumber">확인</a>
-                </section>
+                <section class="empty2"></section>
 
             </section>
         

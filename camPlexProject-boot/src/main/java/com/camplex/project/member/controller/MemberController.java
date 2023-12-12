@@ -330,7 +330,7 @@ public class MemberController {
 	@PostMapping("/updateMember")
 	public String updateMember(@SessionAttribute("loginMember") Member loginMember,
 								Member inputMember,
-								MultipartFile memberProfileImg,
+								@RequestParam("profileImg") MultipartFile profileImg,
 								RedirectAttributes ra
 								) throws Exception {
 		
@@ -339,9 +339,11 @@ public class MemberController {
 		
 		inputMember.setMemberNo(loginMember.getMemberNo());
 		
-		System.out.println(inputMember);
+		if(profileImg.getSize() == 0) {
+			inputMember.setMemberProfileImg(loginMember.getMemberProfileImg());
+		}
 		
-		int result = service.updateMember(memberProfileImg, inputMember);
+		int result = service.updateMember(profileImg, inputMember);
 		
 		if(result > 0) {
 			
@@ -360,9 +362,8 @@ public class MemberController {
 				}
 			}
 			
-			loginMember.setMemberNickname( inputMember.getMemberNickname());
-			loginMember.setMemberProfileImg( inputMember.getMemberProfileImg());
-			loginMember.setMemberPhone(inputMember.getMemberPhone());
+			loginMember.setMemberNickname(inputMember.getMemberNickname());
+			loginMember.setMemberProfileImg(inputMember.getMemberProfileImg());
 			
 			message = "정보가 수정되었습니다.";
 			
