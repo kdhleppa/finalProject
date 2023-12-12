@@ -182,6 +182,7 @@ img {
     border: 1px solid gray;
     width: 104px;
     transition-duration: 0.3s;
+    cursor: pointer;
 }
 
 .grayBtn:hover {

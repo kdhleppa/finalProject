@@ -49,7 +49,7 @@
 	</resultMap>
 	
 	<select id="selectImageList" resultMap="itemImg_rm">
-		SELECT ITEM_IMG_NO, ITEM_NO, ITEM_IMG_PATH
+		SELECT ITEM_IMG_NO, ITEM_NO, ITEM_IMG_PATH, ITEM_IMG_RENAME
 		FROM ITEM_IMG
 	 	WHERE ITEM_NO = #{itemNo}
 	</select>
@@ -223,18 +223,18 @@
 		    ci.ITEM_QUANTITY, 
 		    ci.RESERVATION_NO,
 		    i.ITEM_PRICE, 
-		    i.ITEM_NAME, 
+		    i.ITEM_NAME,
+		    i.DISCOUNT_RATE, 
 		    cs.CAMP_NAME, 
 		    r.CAMP_ENTDATE,
 		    r.CAMP_OUTDATE,
 		    m.MEMBER_NO, 
-		    (ii.ITEM_IMG_PATH || ii.ITEM_IMG_RENAME) AS THUMBNAIL
+		    (SELECT ITEM_IMG_PATH || ITEM_IMG_RENAME FROM ITEM_IMG WHERE ITEM_IMG_ORDER=0 AND ITEM_NO = i.ITEM_NO) THUMBNAIL
 		FROM 
 		    CART_ITEM ci
 		    JOIN ITEM i ON ci.ITEM_NO = i.ITEM_NO
 		    JOIN RESERVATIONS r ON ci.RESERVATION_NO = r.RESERVATION_NO
 		    JOIN CAMPING_SITE cs ON r.CAMP_NO = cs.CAMP_NO
-		    JOIN ITEM_IMG ii ON i.ITEM_NO = ii.ITEM_NO
 		    JOIN MEMBER m ON r.MEMBER_NO = m.MEMBER_NO
 		WHERE 
 		    ci.CART_ITEM_NO = #{cartItemNo}

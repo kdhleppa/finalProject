@@ -194,7 +194,7 @@ campingDetailUploadForm.addEventListener('submit', e => {
 		return;
 	}
 
-	if(!regEx.test(CEONum.value.value)) {
+	if(!regEx.test(CEONum.value)) {
 		alert("CEO회원 번호는 숫자만 입력해주세요.");
 		campPhone.focus();
 		e.preventDefault();

@@ -16,7 +16,7 @@
 
 	<th:block th:replace="~{common/headerForContent}"></th:block>
 
-    <main th:object="${session.loginMember}">
+    <main>
         <!-- 공백 (우) -->
         <section class="empty1"></section>
         
@@ -35,9 +35,11 @@
                 <section id="infoMain">
                     <section id="profileImgSection">
 						
-	                    <img th:unless="*{memberProfileImg}" id="profileImg" th:src="@{/images/memberImg/gg_profile.png}">
-						
-	                    <img th:if="*{memberProfileImg}" id="profileImg" th:src="*{memberProfileImg}">
+	                    <img th:unless="${session.loginMember.memberProfileImg}" id="profileImg"
+							th:src="@{/images/memberImg/gg_profile.png}">
+
+						<img th:if="${session.loginMember.memberProfileImg}" id="profileImg"
+							th:src="${session.loginMember.memberProfileImg}">
 
 					</section>
                     
@@ -70,7 +72,10 @@
             <section class="functionBtn">
                 <a>예약 정보 확인<span>&nbsp;&nbsp;3</span></a>
                 <a>1대 1 문의<span>&nbsp;&nbsp;1</span></a>
-                <a th:href="@{/member/levelUpFormCheck}">업데이트 요청<span>&nbsp;&nbsp;2</span></a>
+                
+                <section th:unless="${levelUpFormCount} == 0"><a th:href="@{/member/levelUpFormCheck}">업데이트 요청<span th:text="'&nbsp;&nbsp;' + ${levelUpFormCount}"></span></a></section>
+                <section th:if="${levelUpFormCount} == 0"><a th:href="@{/member/levelUpFormCheck}">업데이트 요청</a></section>
+                
             </section>
             
             <section class="functionBtn" id="functionBtn2">

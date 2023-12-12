@@ -23,8 +23,8 @@
             <div class="imgContainer">
 				<img th:src="${item.thumbnail}">
 				
-				<th:block th:each="i : ${#numbers.sequence(1, #lists.size(item.imageList)-1, 1)}">>
-	                <img th:src="|${item.imageList[i].itemImagePath}${item.imageList[i].itemImageReName}|">
+				<th:block th:each="i : ${#numbers.sequence(1, #lists.size(item.imageList)-1, 1)}">
+	                <img th:src="|${item.imageList[i].itemImgPath}${item.imageList[i].itemImgRename}|">
 				</th:block>
 				
             </div>

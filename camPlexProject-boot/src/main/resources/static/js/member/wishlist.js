@@ -1,4 +1,8 @@
+
+
 function deleteCampWish(campNo) {
+   
+
     if (confirm('이 캠핑장을 정말 삭제하시겠습니까?')) {
         fetch('/member/deleteCampWish/' + campNo, { 
             method: 'DELETE'
@@ -10,6 +14,7 @@ function deleteCampWish(campNo) {
                 var tr = document.getElementById('tr' + campNo);
                 if (tr) {
                     tr.remove();
+                   
                 }
                 var table = document.querySelector('.campingListTB');
                 if (table.querySelectorAll('tr').length <= 1) {
@@ -86,6 +91,9 @@ function selectAll(groupClass) {
 function deleteSelectedItems() {
     var selectedCamps = document.querySelectorAll('.campcb-item:checked');
     var selectedItems = document.querySelectorAll('.itemcb-item:checked');
+    const selectAllCampcb = document.getElementById('selectAllCampcb')
+    const selectAllItemcb = document.getElementById('selectAllItemcb')
+    
 
     if (selectedCamps.length === 0 && selectedItems.length === 0) {
         alert('삭제할 항목을 선택해주세요.');
@@ -122,6 +130,8 @@ function deleteSelectedItems() {
                 checkAndAddMessage('.itemListTB', '등록된 상품이 없습니다.');
 
                 alert('모든 선택된 항목이 성공적으로 삭제되었습니다.');
+                selectAllCampcb.checked = false;
+                selectAllItemcb.checked = false;
             } else {
                 alert('일부 항목 삭제에 실패했습니다.');
             }

@@ -230,9 +230,6 @@
 			WHERE MEMBER_NO = #{memberNo}
 	</select>
 	
-	
-	
-	
 	<!-- 로그인 -->
 	<select id="login" resultMap="member_rm">
 		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_PW, MEMBER_NAME, MEMBER_NICKNAME,
@@ -414,6 +411,12 @@
 		WHERE MEMBER_NO = #{memberNo}
 	</select>
 
-	
+	<!-- 등업 신청 카운트 -->
+	<select id="levelUpFormCount">
+		SELECT COUNT(*)
+		FROM "CEO_MEMBER"
+		JOIN "MEMBER" USING(MEMBER_NO)
+		WHERE MEMBER_TYPE = 'U'
+	</select>
 	
 </mapper>

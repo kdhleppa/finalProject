@@ -285,6 +285,12 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.selectCeoQna(memberNo);
 	}
 
+	// 등업 신청 카운트
+	@Override
+	public int levelUpFormCount() {
+		return mapper.levelUpFormCount();
+	}
+
 
 
 

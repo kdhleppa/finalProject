@@ -38,7 +38,7 @@ public class ItemController {
 			) {
 		
 		Item item= service.selectDetail(itemNo);
-		
+		System.out.println(item);
 		if(loginMember == null) {
 			
 			model.addAttribute("item", item);

@@ -1,30 +1,3 @@
-/*function updateQuantity(button, change) {
-    var index = button.id.replace(/(plusBtn|minusBtn)/, '');
-    var quantityElement = document.getElementById('quantity' + index);
-    var totalPriceElement = document.getElementById('totalPrice' + index);
-
-    var currentQuantity = parseInt(quantityElement.textContent);
-    var itemPrice = parseInt(button.dataset.price); // 가격을 data-price 속성에서 가져옴
-
-    var newQuantity = currentQuantity + change;
-    if (newQuantity > 0) {
-        quantityElement.textContent = newQuantity;
-        var newTotalPrice = newQuantity * itemPrice;
-        totalPriceElement.textContent = newTotalPrice + '원';
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    // '+' 및 '-' 버튼 이벤트 리스너
-    document.querySelectorAll('.qBtn').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            var change = this.id.includes('plusBtn') ? 1 : -1;
-            updateQuantity(this, change);
-        });
-    });
-});*/
-
-
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.minusBtn, .plusBtn').forEach(function (btn) {
         btn.addEventListener('click', function () {
@@ -40,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-function updateQuantityAndTotal(index, change) {
+/*function updateQuantityAndTotal(index, change) {
     var quantityElement = document.getElementById('quantity' + index);
     var totalPriceElement = document.getElementById('totalPrice' + index);
     var currentQuantity = parseInt(quantityElement.textContent) || 0;
@@ -58,7 +31,39 @@ function updateQuantityAndTotal(index, change) {
     }
 
     updateOverallTotal();
+}*/
+
+function updateQuantityAndTotal(index, change) {
+    var quantityElement = document.getElementById('quantity' + index);
+    var totalPriceElement = document.getElementById('totalPrice' + index);
+    var discountRateElement = document.getElementById('discountRate' + index);
+    var currentQuantity = parseInt(quantityElement.textContent) || 0;
+    var itemPrice = parseFloat(document.querySelector('[data-index="' + index + '"]').dataset.price) || 0;
+    var discountRate = parseFloat(discountRateElement ? discountRateElement.value : 0);
+
+    // 새 수량 계산
+    var newQuantity = currentQuantity + change;
+    if (newQuantity > 0) {
+        quantityElement.textContent = newQuantity;
+
+        // 새 총 가격 계산
+        var newTotalPrice = newQuantity * itemPrice;
+
+        // 할인율이 적용되는 경우
+        if (discountRate > 0) {
+            var discountedPrice = newTotalPrice * (1 - discountRate / 100);
+            totalPriceElement.innerHTML = '<del>₩' + newTotalPrice.toLocaleString() + '</del><br>' +
+                                          '<span style="color: red;">(' + discountRate + '%↓)</span><br>' +
+                                          '₩' + discountedPrice.toLocaleString() + '원';
+        } else {
+            // 할인율이 적용되지 않는 경우
+            totalPriceElement.textContent = '₩' + newTotalPrice.toLocaleString() + '원';
+        }
+    }
+
+    updateOverallTotal();
 }
+
 
 function updateOverallTotal() {
     var total = 0;
