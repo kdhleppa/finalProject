@@ -38,7 +38,9 @@ public class ItemController {
 			) {
 		
 		Item item= service.selectDetail(itemNo);
-		
+		if (item != null && item.getImageList() != null && !item.getImageList().isEmpty()) {
+		    item.setThumbnail(item.getImageList().get(0).getItemImgPath());
+		}
 		if(loginMember == null) {
 			
 			model.addAttribute("item", item);
