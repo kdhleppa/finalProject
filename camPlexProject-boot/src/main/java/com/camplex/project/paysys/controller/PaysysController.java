@@ -423,8 +423,9 @@ public class PaysysController {
 		String path = "redirect:";
 		if (checkCartItemNo != null) {
 			for (Integer cartItemNo: checkCartItemNo ) {
+				System.out.println("1");
 				rentPayList data = payService.selectCheckCart(cartItemNo, memberNo);
-				
+				System.out.println("2.data" + data);
 				payList.add(data);
 			}
 			
