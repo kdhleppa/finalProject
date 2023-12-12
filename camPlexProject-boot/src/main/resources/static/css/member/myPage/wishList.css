@@ -27,7 +27,7 @@ body {
 h2 {
     text-align: center;
     margin-bottom: 40px;
-    margin-top: 130px;
+    margin-top: 80px;
 }
 
 .heading::after {
@@ -38,7 +38,9 @@ h2 {
     border-bottom: 1px solid black;
 }
 
-
+.heading2 {
+	margin-top : 140px;
+}
 
 .Btn {
     padding-bottom: 5px;

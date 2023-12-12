@@ -30,5 +30,6 @@ public interface ItemMapper {
 
 	public MembersReservationDate membersRsvInfo2(int reservationNo);
 
+
 	
 }

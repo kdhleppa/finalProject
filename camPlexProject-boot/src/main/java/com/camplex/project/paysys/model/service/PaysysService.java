@@ -83,6 +83,8 @@ public interface PaysysService {
 
 	int updatePayRentalState(int tempPaymentNo);
 
+	int deleteNotInStoreCart(int memberNo);
+
 
 
 

@@ -59,6 +59,7 @@ for(let i=0 ; i< inputImage.length ; i++){
 // 업로드 버튼 form
 const campingDetailUploadForm = document.getElementById('campingDetailUploadForm');
 
+
 // 캠핑명
 const inputCampingName = document.getElementById('inputCampingName');
 
@@ -76,75 +77,131 @@ const checkOut = document.getElementById('checkOut');
 const CEONum = document.getElementById('CEONum');
 const etcInfoTextArea = document.getElementById('etcInfoTextArea');
 const categorySelect = document.getElementById('categorySelect');
-const categorySelectValue = categorySelect.options[categorySelect.selectedIndex].value;
+const campOption = document.querySelectorAll('input[name=campOption]')
+const campAroundView = document.querySelectorAll('input[name=campAroundView]')
+const images = document.querySelectorAll('input[name=images]')
+
 
 campingDetailUploadForm.addEventListener('submit', e => {
 	
-	if(inputCampingName.value == "") {
+	if(inputCampingName.value.trim() == "") {
 		alert("캠핑장 이름을 입력해주세요.");
 		inputCampingName.focus();
 		e.preventDefault();
 		return;
 	}
 	
-	if(introduceTextArea.value == "") {
+	for(var i = 0 ; i < images.length ; i++){
+
+		if(images[i].value == ""){
+			alert(i+1 + "번째 사진을 입력해주세요");
+			images[i].focus();
+			e.preventDefault();
+			return;
+		}
+	}
+
+	if(introduceTextArea.value.trim() == "") {
 		alert("캠핑장에 대한 설명을 입력해주세요. ");
 		introduceTextArea.focus();
 		e.preventDefault();
 		return;
 	}
 	
-	if(mannerTimeInput.value == "") {
+	const optionArr = [];
+
+	for(var i = 0 ; i < campOption.length ; i ++){
+
+		if(campOption[i].checked == true){
+			optionArr.push(campOption[i])
+		};
+	}
+	if(optionArr == ""){
+		alert("한 개 이상의 부대 시설을 선택해주세요");
+		e.preventDefault();
+		return;
+	}
+
+	const viewArr = [];
+
+	for(var i = 0 ; i < campAroundView.length ; i ++){
+
+		if(campAroundView[i].checked == true){
+			viewArr.push(campAroundView[i])
+		};
+	}
+	if(viewArr == ""){
+		alert("한 개 이상의 주변 환경을 선택해주세요");
+		e.preventDefault();
+		return;
+	}
+
+	if(mannerTimeInput.value.trim() == "") {
 		alert("매너 타임을 입력해주세요.");
 		mannerTimeInput.focus();
 		e.preventDefault();
 		return;
 	}
 	
-	if(campAddress.value == "") {
+	if(campAddress.value.trim() == "") {
 		alert("캠핑장 주소를 입력해주세요.");
 		campAddress.focus();
 		e.preventDefault();
 		return;
 	}
 	
-	if(campPhone.value == "") {
+	if(campPhone.value.trim() == "") {
 		alert("캠핑장 번호를 입력해주세요.");
 		campPhone.focus();
 		e.preventDefault();
 		return;
 	}
+
+	const regEx = /^[0-9]+$/;
+	if(!regEx.test(campPhone.value)) {
+		alert("전화 번호는 숫자만 입력해주세요.");
+		campPhone.focus();
+		e.preventDefault();
+		return;
+	}
 	
-	if(checkIn.value == "") {
+	if(checkIn.value.trim() == "") {
 		alert("체크인 시간을 입력해주세요.");
 		checkIn.focus();
 		e.preventDefault();
 		return;
 	}
 	
-	if(checkOut.value == "") {
+	if(checkOut.value.trim() == "") {
 		alert("체크아웃 시간을 입력해주세요.");
 		checkOut.focus();
 		e.preventDefault();
 		return;
 	}
-	
+
 	if(categorySelect.value == "noLoad") {
-		console.log(categorySelectValue);
+		console.log(categorySelect.Value);
 		alert("카테고리를 선택해 주세요.");
 		categorySelect.focus();
 		e.preventDefault();
 		return;
 	}
 	
-	if(CEONum.value == "") {
-		alert("CEO 넘버를 입력해주세요.");
+	if(CEONum.value.trim() == "") {
+		alert("CEO회원 번호를 입력해주세요.");
 		CEONum.focus();
 		e.preventDefault();
 		return;
 	}
+
+	if(!regEx.test(CEONum.value.value)) {
+		alert("CEO회원 번호는 숫자만 입력해주세요.");
+		campPhone.focus();
+		e.preventDefault();
+		return;
+	}
 	
-	if(etcInfoTextArea.value == "") {
+	if(etcInfoTextArea.value.trim() == "") {
 		alert("캠핑장 Info를 입력해주세요.");
 		etcInfoTextArea.focus();
 		e.preventDefault();

@@ -263,7 +263,7 @@
 	
 	                    <section class="additionalFacilitiesTitleSec">
 	
-	                        <div class="additionalFacilitiesTitleDiv">
+	                        <div class="additionalFacilitiesTitleDiv" id="view">
 	                            부대 시설
 	                        </div>
 	
@@ -377,7 +377,7 @@
 	                        </section>
 	
 	                        <section class="mannerTimeInputDetailSec">
-	                            <input id="mannerTimeInput" class="mannerTimeInput" type="text" name="mannerTime" placeholder="매너타임 시간을 입력하세요.">
+	                            <input id="mannerTimeInput" class="mannerTimeInput" type="text" name="mannerTime" placeholder="예) 22:00 ~ 06:00">
 	                        </section>
 	
 	                    </section>
@@ -451,7 +451,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input id="campPhone" class="etcInfoInput" name="campPhone" placeholder="000) 000 - 000">
+							<input id="campPhone" class="etcInfoInput" name="campPhone" placeholder="- 제외">
 							
 						</section>
 						
@@ -477,7 +477,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input class="etcInfoInput" id="checkIn" name="checkIn" placeholder="00시 00분">
+							<input class="etcInfoInput" id="checkIn" name="checkIn" placeholder="예) 13 : 00">
 							
 						</section>
 						
@@ -503,7 +503,7 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<input class="etcInfoInput" id="checkOut" name="checkOut" placeholder="00시 00분">
+							<input class="etcInfoInput" id="checkOut" name="checkOut" placeholder="예) 14 : 00">
 							
 						</section>
 						
@@ -529,8 +529,8 @@
 						
 						<section class="etcInfoInputInfoSec">
 							
-							<select class="categorySelect" name="category">
-								<option selected disabled>카테고리 선택</option>
+							<select class="categorySelect" name="category" id="categorySelect">
+								<option selected disabled value="noLoad">카테고리 선택</option>
 								<option value="AUTO">오토캠핑</option>
 								<option value="BACK">백패킹</option>
 								<option value="CAR">차박</option>
@@ -622,7 +622,7 @@
 
 			<section class="enrollOrBackSec">
 				
-				<button id="campingUploadBtn" class="campingUploadBtn" type="submit">
+				<button id="campingUploadBtn" class="campingUploadBtn" >
 					등록하기
 				</button>
 				

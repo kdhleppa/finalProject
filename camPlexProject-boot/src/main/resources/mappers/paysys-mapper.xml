@@ -115,6 +115,21 @@
 	    AND CART_ITEM_NO = #{cartItemNo}
 	</delete>
 	
+	<delete id="deleteNotInStoreCart">
+    DELETE FROM CART_ITEM ci
+	    WHERE ci.CART_NO IN (
+	        SELECT c.CART_NO
+	        FROM CART c
+	        WHERE c.MEMBER_NO = #{memberNo}
+	        AND EXISTS (
+	            SELECT 1
+	            FROM ITEM i
+	            WHERE i.ITEM_NO = ci.ITEM_NO
+	            AND i.ITEM_STATUS = 'N'
+	        )
+	    )
+	</delete>
+	
 	<!-- 캠핑 결제 내역 저장 (무통장) -->
 	<insert id="insertPayCamp">
 		INSERT INTO "PAYMENT"

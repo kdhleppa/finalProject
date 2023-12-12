@@ -27,8 +27,6 @@
 
             <table class="campingListTB">
                 <tr>
-                    <!-- 전체선택체크박스 js구현하기-->
-                    <!-- th 위 진한선 아래 연한선주고 추가되는 상품의 밑 마다 선주기-->
                     <th><input type="checkbox" id="selectAllCampcb" th:onclick="selectAll('campcb')"></th>
                     <th>캠핑장 번호</th>
                     <th>사진</th>
@@ -37,8 +35,6 @@
                     <th></th>
                     <th>취소</th>
                 </tr>
-                <!-- tr 추가되는식으로 상품추가-->
-                <!-- 없으면 없다고 표시하자!!-->
                 <tr th:if="${camp == null || camp.empty}">
 					<td></td>
 					<td></td>
@@ -63,7 +59,7 @@
                
             </table>
 
-            <h2 class="heading">ITEM WISHLIST</h2>
+            <h2 class="heading heading2">ITEM WISHLIST</h2>
 
             <table class="itemListTB">
                 <tr>
@@ -75,7 +71,6 @@
                     <th>금액</th>
                     <th>취소</th>
                 </tr>
-                <!-- 위와 같은 참고사항 지킬것-->
                    <tr th:if="${item == null || item.empty}">
 					<td></td>
 					<td></td>
@@ -97,7 +92,22 @@
 						 </td>
 	                    <td><a class="nameAtag" th:href="@{/item/itemDetail/{itemNo}(itemNo = ${item.itemNo})}">[[${item.itemName}]]</a></td>
 	                    <td></td>
-	                    <td>[[${item.itemPrice}]]</td>
+	                    <th:block th:if="${item.discountRate} != 0">
+							
+                        	<td>
+								<div id="beforeDiscount" >
+									<del th:text="|￦ ${#numbers.formatInteger(item.itemPrice, 3, 'COMMA')}|">상품 가격</del>
+									<p style="color: red;" th:text="|(${item.discountRate}%↓)|">(13%↓)</p>
+								</div>
+								<p id="itemPrice" th:text="|￦ ${#numbers.formatInteger(((item.itemPrice)*(100-(item.discountRate))/100), 3, 'COMMA')}|"></p>
+							</td>
+
+						</th:block>
+						<th:block th:if="${item.discountRate} == 0">
+
+                            	<td id="itemPrice" th:text="|￦ ${#numbers.formatInteger(item.itemPrice, 3, 'COMMA')}|" >아이템가격</td>
+
+						</th:block>
 	                    <td><button class="grayBtn" th:onclick="'deleteItemWish(' + ${item.itemNo} + ');'" th:text="DELETE">DELETE</button></td>
 	                </tr>
                 </th:block>

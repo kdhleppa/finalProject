@@ -11,6 +11,8 @@ import com.camplex.project.member.model.dto.Member;
 import com.camplex.project.member.model.dto.MyPage;
 import com.camplex.project.member.model.dto.Wishlist;
 import com.camplex.project.paysys.model.dto.Payment;
+import com.camplex.project.qna.model.dto.Qna;
+import com.camplex.project.qna.model.dto.ceoQna;
 
 public interface MemberService {
 
@@ -99,6 +101,19 @@ public interface MemberService {
 
 	// 전화번호 변경
 	int phoneChange(Member inputMember);
+
+	/**마이페이지 관리자 qna 목록 불러오기
+	 * @param memberNo
+	 * @return
+	 */
+	List<Qna> selectQna(int memberNo);
+
+	/** 마이페이지 ceo qna 목록 불러오기
+	 * @param memberNo
+	 * @return
+	 */
+	List<ceoQna> selectCeoQna(int memberNo);
+
 
 
 

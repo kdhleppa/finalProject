@@ -137,25 +137,18 @@ function resetAndModalExit() {
 		document.getElementById('capacity').value = "";
 		document.getElementById('fullCapacity').value = "";
 		document.getElementById('campDePrice').value = "";
-		
 		document.getElementById('previewcampingSiteThumbnail').removeAttribute("src");
-		
-		
 		document.getElementById('campingSiteThumbnailInput').value = "";
 		document.getElementById('etcImgPlusInput').value = "";
 		document.getElementById('moreImgDiv').innerHTML = "";
-		
-		
 		document.getElementById('modalContainer').classList.add('hidden');
 	
 }
 
 
 modalUploadBtn.addEventListener('click', e => {
+	const campingSite = document.getElementsByClassName('campingSiteThumbnailInput')
 	const enrollSiteSec = document.getElementById('enrollSiteSec');
-	console.log("enrollSiteSec", enrollSiteSec);
-	
-	
 	const campDeName = document.getElementById('campDeName').value;
 	const capacity = document.getElementById('capacity').value;
 	const fullCapacity = document.getElementById('fullCapacity').value;
@@ -168,14 +161,28 @@ modalUploadBtn.addEventListener('click', e => {
 	enrollSiteSec.setAttribute('id', "enrollSiteSec");
 
 
+	if(campingSite[0].value == ""){
+		alert("썸네일을 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
+
 	if(campDeName == "") {
 		alert("구역명(호수)를 입력해주세요.");
 		e.preventDefault();
 		return;
 	}
-	
+
+	const regEx = /^[0-9]+$/;
+
 	if(capacity == "") {
 		alert("수용 인원을 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
+
+	if(!regEx.test(capacity)) {
+		alert("수용 인원은 숫자로만 입력해주세요.");
 		e.preventDefault();
 		return;
 	}
@@ -185,9 +192,21 @@ modalUploadBtn.addEventListener('click', e => {
 		e.preventDefault();
 		return;
 	}
+
+	if(!regEx.test(fullCapacity)) {
+		alert("최대 인원은 숫자로만 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
 	
 	if(campDePrice == "") {
 		alert("구역명(호수)의 가격을 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
+
+	if(!regEx.test(campDePrice)) {
+		alert("가격은 숫자로만 입력해주세요.");
 		e.preventDefault();
 		return;
 	}
@@ -224,8 +243,6 @@ modalUploadBtn.addEventListener('click', e => {
 	}).then(resp => resp.json())
 	.then(campDetailList => {
 		
-		console.log(campDetailList);
-	
 		enrollSiteSec.innerHTML = '';
 		// 장소 추가 append ------------------------------
 		

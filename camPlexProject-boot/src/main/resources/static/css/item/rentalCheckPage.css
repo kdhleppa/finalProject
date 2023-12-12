@@ -355,6 +355,28 @@
     align-items: center;
 }
 
+.editDeleteSec {
+	flex-basis: 7%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.editDeleteDetailSec {
+	width: 8rem;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.editDeleteBtn {
+	font-size: 1.2rem;
+	text-decoration: none;
+	color: black;
+	cursor: pointer;
+}
+
 .contentNameA {
 	text-decoration: none;
 	color: black;

@@ -19,6 +19,8 @@ import com.camplex.project.member.model.dto.Member;
 import com.camplex.project.member.model.dto.MyPage;
 import com.camplex.project.member.model.dto.Wishlist;
 import com.camplex.project.paysys.model.dto.Payment;
+import com.camplex.project.qna.model.dto.Qna;
+import com.camplex.project.qna.model.dto.ceoQna;
 
 @Service
 @PropertySource("classpath:/config.properties")
@@ -260,12 +262,26 @@ public class MemberServiceImpl implements MemberService {
 	public List<ItemInfoMypage> selectItemListMypage(int resNo) {
 		return mapper.selectItemListMypage(resNo);
 	}
-
 	
 	// 전화번호 변경
 	@Override
 	public int phoneChange(Member inputMember) {
 		return mapper.phoneChange(inputMember);
+
+	/** 마이페이지 관리자 qna 목록 불러오기
+	 *
+	 */
+	@Override
+	public List<Qna> selectQna(int memberNo) {
+		return mapper.selectQna(memberNo);
+	}
+
+	/** 마이페이지 ceo qna 목록 불러오기
+	 *
+	 */
+	@Override
+	public List<ceoQna> selectCeoQna(int memberNo) {
+		return mapper.selectCeoQna(memberNo);
 	}
 
 

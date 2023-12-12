@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.camplex.project.item.model.dto.Item;
+import com.camplex.project.item.model.dto.ItemImg;
 
 @Mapper
 public interface ItemMapper2 {
@@ -62,6 +63,24 @@ public interface ItemMapper2 {
 	 * @return
 	 */
 	List<Item> selectKitchenItemList();
+
+	/** 상품 삭제(업뎃)
+	 * @param itemNo
+	 * @return
+	 */
+	int deleteItem(int itemNo);
+
+	/** 상품 업로드
+	 * @param item
+	 * @return
+	 */
+	int itemInsert(Item item);
+
+	/** 상품 이미지 업로드
+	 * @param uploadList
+	 * @return
+	 */
+	int insertItemImageList(List<ItemImg> uploadList);
 	
 
 }

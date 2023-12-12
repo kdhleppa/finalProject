@@ -51,6 +51,7 @@
 		ITEM_STATUS, DISCOUNT_RATE, ITEM_IMG_NO, (ITEM_IMG_PATH || ITEM_IMG_RENAME) THUMBNAIL, ITEM_IMG_ORDER
 		FROM "ITEM"
 		JOIN "ITEM_IMG" USING(ITEM_NO)
+		WHERE ITEM_STATUS = 'Y'
 		ORDER BY "ITEM_NO"
 	</select>
 	
@@ -60,6 +61,7 @@
 		ITEM_STATUS, DISCOUNT_RATE, ITEM_IMG_NO, (ITEM_IMG_PATH || ITEM_IMG_RENAME) THUMBNAIL, ITEM_IMG_ORDER
 		FROM "ITEM"
 		JOIN "ITEM_IMG" USING(ITEM_NO)
+		WHERE ITEM_STATUS = 'Y'
 		ORDER BY "ITEM_NO" DESC
 	</select>
 	
@@ -74,6 +76,7 @@
 			FROM RENTAL_PAYMENT_ITEM B
 			WHERE B.ITEM_NO = A.ITEM_NO ) ORDER_COUNT
 		FROM "ITEM" A
+		WHERE ITEM_STATUS = 'Y'
 		ORDER BY ORDER_COUNT DESC
 	</select>
 	
@@ -83,6 +86,7 @@
 		ITEM_STATUS, DISCOUNT_RATE, ITEM_IMG_NO, (ITEM_IMG_PATH || ITEM_IMG_RENAME) THUMBNAIL, ITEM_IMG_ORDER
 		FROM "ITEM"
 		JOIN "ITEM_IMG" USING(ITEM_NO)
+		WHERE ITEM_STATUS = 'Y'
 		ORDER BY "ITEM_PRICE" ASC
 	</select>
 	
@@ -92,6 +96,7 @@
 		ITEM_STATUS, DISCOUNT_RATE, ITEM_IMG_NO, (ITEM_IMG_PATH || ITEM_IMG_RENAME) THUMBNAIL, ITEM_IMG_ORDER
 		FROM "ITEM"
 		JOIN "ITEM_IMG" USING(ITEM_NO)
+		WHERE ITEM_STATUS = 'Y'
 		ORDER BY "ITEM_PRICE" DESC
 	</select>
 	
@@ -102,6 +107,7 @@
 		FROM "ITEM"
 		JOIN "ITEM_IMG" USING(ITEM_NO)
 		WHERE ITEM_NAME || ITEM_DESCRIPTION LIKE '%' || #{input} || '%'
+		AND ITEM_STATUS = 'Y'
 	</select>
 	
 	<select id="selectfurnitureItemList" resultMap="item_rm">
@@ -109,13 +115,14 @@
 		ITEM_STATUS, DISCOUNT_RATE, ITEM_IMG_NO, (ITEM_IMG_PATH || ITEM_IMG_RENAME) THUMBNAIL, ITEM_IMG_ORDER
 		FROM "ITEM"
 		JOIN "ITEM_IMG" USING(ITEM_NO)
-		WHERE ITEM_TYPE = 'CH' 
+		WHERE (ITEM_TYPE = 'CH' 
 		OR ITEM_TYPE = 'FC'
 		OR ITEM_TYPE = 'BX'
 		OR ITEM_TYPE = 'SB'
 		OR ITEM_TYPE = 'WD'
 		OR ITEM_TYPE = 'HT'
-		OR ITEM_TYPE = 'TB'
+		OR ITEM_TYPE = 'TB')
+		AND ITEM_STATUS = 'Y'
 	</select>
 	
 	<select id="selectTentItemList" resultMap="item_rm">
@@ -123,8 +130,8 @@
 		ITEM_STATUS, DISCOUNT_RATE, ITEM_IMG_NO, (ITEM_IMG_PATH || ITEM_IMG_RENAME) THUMBNAIL, ITEM_IMG_ORDER
 		FROM "ITEM"
 		JOIN "ITEM_IMG" USING(ITEM_NO)
-		WHERE ITEM_TYPE = 'TT' 
-		OR ITEM_TYPE = 'TP'
+		WHERE (ITEM_TYPE = 'TT' 
+		OR ITEM_TYPE = 'TP') AND ITEM_STATUS = 'Y'
 	</select>
 	
 	<select id="selectBagItemList" resultMap="item_rm">
@@ -132,8 +139,8 @@
 		ITEM_STATUS, DISCOUNT_RATE, ITEM_IMG_NO, (ITEM_IMG_PATH || ITEM_IMG_RENAME) THUMBNAIL, ITEM_IMG_ORDER
 		FROM "ITEM"
 		JOIN "ITEM_IMG" USING(ITEM_NO)
-		WHERE ITEM_TYPE = 'BG' 
-		OR ITEM_TYPE = 'AC'
+		WHERE (ITEM_TYPE = 'BG' 
+		OR ITEM_TYPE = 'AC') AND ITEM_STATUS = 'Y'
 	</select>
 	
 	<select id="selectKitchenItemList" resultMap="item_rm">
@@ -141,11 +148,54 @@
 		ITEM_STATUS, DISCOUNT_RATE, ITEM_IMG_NO, (ITEM_IMG_PATH || ITEM_IMG_RENAME) THUMBNAIL, ITEM_IMG_ORDER
 		FROM "ITEM"
 		JOIN "ITEM_IMG" USING(ITEM_NO)
-		WHERE ITEM_TYPE = 'KC' 
+		WHERE (ITEM_TYPE = 'KC' 
 		OR ITEM_TYPE = 'IB'
 		OR ITEM_TYPE = 'CU'
-		OR ITEM_TYPE = 'FI'
+		OR ITEM_TYPE = 'FI') AND ITEM_STATUS = 'Y'
 	</select>
+	
+	<!-- 상품 삭제(업뎃) -->
+	<update id="deleteItem">
+		UPDATE "ITEM" SET
+		ITEM_STATUS = 'N'
+		WHERE ITEM_NO = #{itemNo}
+	</update>
+	
+	<insert id="itemInsert">
+		
+		<selectKey order="BEFORE" resultType="_int" keyProperty="itemNo">
+  			SELECT SEQ_ITEM_NUM.NEXTVAL FROM DUAL
+  		</selectKey>
+  	
+  			INSERT INTO "ITEM"
+  			VALUES( #{itemNo},
+  					#{itemType},
+  					#{inStoreCount},
+  					DEFAULT,
+  					#{itemPrice},
+  					#{itemName},
+  					#{itemDescription},
+  					DEFAULT,
+  					#{discountRate}
+  					)
+	</insert>
+	
+	<!-- 상품 이미지 리스트(여러개)삽입 -->
+  	<insert id="insertItemImageList" parameterType="list">
+  		INSERT INTO "ITEM_IMG"
+  		SELECT SEQ_ITEM_IMG_NUM.NEXTVAL, A.*
+  		FROM (
+  			
+  			<foreach collection="list" item="img" separator=" UNION ALL ">
+				SELECT #{img.itemNo} ITEM_NO,
+					#{img.itemImgPath} ITEM_IMG_PATH,
+  					#{img.itemImgRename} ITEM_IMG_RENAME,
+  					#{img.itemImgOriginal} ITEM_IMG_ORIGINAL,
+  					#{img.itemImgOrder} ITEM_IMG_ORDER			
+  				FROM DUAL
+  			</foreach>
+  		) A
+  	</insert>
 	
 	  	
 </mapper>
