@@ -115,6 +115,10 @@ public interface PaysysMapper {
 
 
 
+	int deleteNotInStoreCart(int memberNo);
+
+
+
 
 
 

@@ -146,6 +146,8 @@ public class ItemServiceImpl implements ItemService {
 		return mapper.payNow(itemNo);
 	}
 
+
+
 	
 	
 

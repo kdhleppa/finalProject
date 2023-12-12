@@ -188,6 +188,12 @@ public class PaysysServiceImpl implements PaysysService{
 		return mapper.updatePayRentalState(tempPaymentNo);
 	}
 
+	@Transactional
+	@Override
+	public int deleteNotInStoreCart(int memberNo) {
+		return mapper.deleteNotInStoreCart(memberNo);
+	}
+
 
 	
 

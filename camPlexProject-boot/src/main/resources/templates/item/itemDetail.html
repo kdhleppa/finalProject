@@ -95,13 +95,20 @@
                             <p></p>
                         </div>
                     </div>
-					
-                    <button type="submit" class="rentBtn">RENT NOW</button>
-                    <div class="cartWishBtnContainer">
-                        <button type="submit" class="cartBtn" th:formaction="@{/paysys/rentCart/insert}">ADD TO CART</button>
-                        <button type="submit" class="wishBtn" th:formaction="@{/member/wishlist/insert}">WISH LIST</button>
-                    </div>
-                    
+					<th:block th:if="*{itemStatus == 'Y'}">
+	                    <button type="submit" class="rentBtn">RENT NOW</button>
+	                    <div class="cartWishBtnContainer">
+	                        <button type="submit" class="cartBtn" th:formaction="@{/paysys/rentCart/insert}">ADD TO CART</button>
+	                        <button type="submit" class="wishBtn" th:formaction="@{/member/wishlist/insert}">WISH LIST</button>
+	                    </div>
+                    </th:block>
+                    <th:block th:if="*{itemStatus == 'N'}">
+						<h1 class="outOfStockText">OUT OF STOCK</h1>
+						<div class="cartWishBtnContainer">
+							<p class="notInStore">재고가 없습니다.</p>
+							<button type="submit" class="wishBtn" th:formaction="@{/member/wishlist/insert}">WISH LIST</button>
+						</div>
+					</th:block>
                 </form>
             </div>
         </div>

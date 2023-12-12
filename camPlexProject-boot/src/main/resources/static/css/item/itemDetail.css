@@ -13,12 +13,22 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     /*border: 1px solid red;*/
 }
+
+.outOfStockText {
+	margin-top: 20px;
+	
+	
+}
+
+
 
 .container {
     display: flex;
@@ -103,6 +113,8 @@ body {
 
 .cartWishBtnContainer {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 

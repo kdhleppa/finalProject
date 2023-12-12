@@ -174,4 +174,7 @@
 			JOIN "WISH_LIST" USING(ITEM_NO)
 			WHERE MEMBER_NO= #{memberNo}
 		</select>
+		
+		
+		
 </mapper>
