@@ -46,6 +46,7 @@
 										<input type="hidden" th:name="'cartItemNo'+${iterStat.index}" th:id="'cartItemNo'+${iterStat.index}" th:value="${cartItem.cartItemNo}">
 										<input type="hidden" th:id="'itemPrice'+${iterStat.index}" th:value="${cartItem.itemPrice}">
 										<input type="hidden" th:id="'itemNo'+${iterStat.index}" th:value="${cartItem.itemNo}">
+										<input type="hidden" th:id="'discountRate'+${iterStat.index}" th:value="${cartItem.discountRate}"> 
 										<input type="hidden" class="index-input" th:id="'index'+${iterStat.index}" th:value="${iterStat.index}">	
 									</td>
 			                        <td>
@@ -155,7 +156,23 @@
 		                    	<p th:if="${wishlist.itemStatus} == 'Y'" th:text="있음">있음</p>
 		                    	<p th:unless="${wishlist.itemStatus} == 'Y'" th:text="없음">없음</p>
 		                    </td>
-		                    <td><p th:text="'₩'+${wishlist.itemPrice}">아이템 가격</p></td>
+		                    <th:block th:if="${wishlist.discountRate} != 0">
+							
+                            	<td>
+									<div id="beforeDiscount" >
+										<del th:text="|￦ ${#numbers.formatInteger(wishlist.itemPrice, 3, 'COMMA')}|">상품 가격</del>
+										<p style="color: red;" th:text="|(${wishlist.discountRate}%↓)|">(13%↓)</p>
+									</div>
+									<p th:text="|￦ ${#numbers.formatInteger(((wishlist.itemPrice)*(100-(wishlist.discountRate))/100), 3, 'COMMA')}|"></p>
+								</td>
+
+							</th:block>
+							
+							<th:block th:if="${wishlist.discountRate} == 0">
+
+                            	<td th:text="|￦ ${#numbers.formatInteger(wishlist.itemPrice, 3, 'COMMA')}|" >아이템가격</td>
+
+							</th:block>
 		                    <td><button type="button" class = "grayBtn wishDeleteBtn" th:data-form-id="'wishlistForm' + ${i.index}">DELETE</button></td>
 		                </tr>
 		               </form>
