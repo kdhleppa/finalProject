@@ -12,7 +12,7 @@ const moveSlide = function (num) {
 	currentIndex = num;
 }
 
-prev.addEventListener('click', () => {
+prev.addEventListener("click", () => {
 	if (currentIndex !== 0) {
 		moveSlide(currentIndex - 1)
 	}
@@ -32,6 +32,7 @@ next.addEventListener('click', () => {
 
 const askTo = document.querySelectorAll('input[name="askTo"]');
 const textItemSection = document.querySelector(".textItemSection")
+let overlayScreen = document.querySelector(`.overlayScreen`);
 
 for(var i = 0 ; i < askTo.length ; i++){
 
@@ -41,6 +42,14 @@ for(var i = 0 ; i < askTo.length ; i++){
 		const contentLength = textList.length;
 		const moreBtnWrapper = document.getElementsByClassName('moreBtnWrapper')
 		let contentCount = 5;
+
+		overlayScreen.classList.add("play");
+
+		overlayScreen.addEventListener("animationend", function handler() {
+			this.removeEventListener("animationend", handler);
+			this.classList.remove("play");
+		})
+
 
 		function more(contentLength){
 
@@ -110,21 +119,25 @@ for(var i = 0 ; i < askTo.length ; i++){
 			.then(resp => resp.json())
 			.then(data => {
 				
-				for(qna of data){
-
+				
+				if(data.length == 0){
 					const textList = document.createElement('section');
 					textList.classList.add('textList');
+					
+					const p = document.createElement('p');
+					p.innerText = "문의 내역이 없습니다.";
+					
+					textList.append(p);
+					
+					textItmeList.append(textList);
+					
+				} else{
+					
+					for(qna of data){
 
-					if(data.length == 0){
-						const p = document.createElement('p');
-						p.innerText = "문의 내역이 없습니다.";
-
-						textList.append(p);
-
-						textItmeList.append(textList);
-
-					} else{
-
+						const textList = document.createElement('section');
+						textList.classList.add('textList');
+	
 						const a = document.createElement('a');
 						a.setAttribute("id", `qna${qna.qnano}`)
 						a.innerHTML = `${qna.qnacreateDate} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${qna.qnatitle}`
@@ -140,9 +153,9 @@ for(var i = 0 ; i < askTo.length ; i++){
 						}
 
 						textItmeList.append(textList);
-
 					}
-					
+
+
 				}
 				
 				textItemSection.append(textItmeList, empty2);
@@ -162,26 +175,30 @@ for(var i = 0 ; i < askTo.length ; i++){
 			fetch("/member/selectCeoQna")
 			.then(resp => resp.json())
 			.then(data => {
-				
-				for(qna of data){
+
+				if(data.length == 0){
 
 					const textList = document.createElement('section');
 					textList.classList.add('textList');
 
-					if(data.length == 0){
-						const p = document.createElement('p');
-						p.innerText = "문의 내역이 없습니다.";
+					const p = document.createElement('p');
+					p.innerText = "문의 내역이 없습니다.";
 
-						textList.append(p);
+					textList.append(p);
 
-						textItmeList.append(textList);
+					textItmeList.append(textList);
 
-					} else{
+				}else{
 
+					for(qna of data){
+	
+						const textList = document.createElement('section');
+						textList.classList.add('textList');
+	
 						const a = document.createElement('a');
 						a.setAttribute("id", `qna${qna.ceoQnaNo}`)
 						a.innerHTML = `${qna.ceoQnaCreateDate}&nbsp; (${qna.campName}) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${qna.ceoQnaTitle}`
-
+	
 						if(qna.ceoAnswerFlag == 'Y'){
 							const done = document.createElement('a');
 							done.innerText = "답변 완료";
@@ -191,11 +208,11 @@ for(var i = 0 ; i < askTo.length ; i++){
 							notYet.innerText = "답변 대기중";
 							textList.append(a, notYet);
 						}
-
+	
 						textItmeList.append(textList);
-
+	
 					}
-					
+
 				}
 				
 				textItemSection.append(textItmeList, empty2);

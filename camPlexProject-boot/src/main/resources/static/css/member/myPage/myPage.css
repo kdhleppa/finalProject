@@ -352,9 +352,9 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     margin-top: 20px;
     margin-right: 40px;
+    min-height: 200px;
 }
 
 .itemWrapper{
@@ -398,6 +398,7 @@ main {
 
 .textItemSection {
     display: flex;
+    min-height: 200px;
 }
 
 .textItmeList {
@@ -534,3 +535,46 @@ main {
 	transform: translateY(-1rem);
 	
 }
+
+
+.overlayScreen{
+    z-index: 9999;
+    bottom: 0;
+    background-color: rgb(255, 255, 255);
+    animation-duration: .3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+  }
+  
+.play {
+    animation-name: overlay-screen-transition;
+  }
+  
+  @keyframes overlay-screen-transition {
+      0% {
+          width: 100%;
+          opacity: 0%;
+          top: 0;
+        }
+        
+        100% {
+            width: 100%;
+            opacity: 100%;
+      }
+  }
+  
+  .element-fadeIn {
+    animation-name: element-fadeIn;
+    animation-duration: 0.25s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes element-fadeIn {
+    0% {
+      opacity: 0%;
+    }
+    100% {
+      opacity: 100%;
+    }
+  }
