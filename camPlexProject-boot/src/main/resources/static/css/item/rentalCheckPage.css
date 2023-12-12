@@ -331,7 +331,14 @@
 
 .contentImg {
     width: 18rem;
+    transition-duration: .3s;
 }
+
+.contentImg:hover {
+   opacity: 0.8;
+	transform: scale(1.02);
+}
+
 
 .contentInfoSec {
     flex-basis: 25%;

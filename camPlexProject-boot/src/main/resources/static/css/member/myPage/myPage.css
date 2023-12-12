@@ -172,6 +172,7 @@ main {
 }
 
 .subName {
+	display: flex;
     margin-top: 100px;
     font-size: 30px;
     margin-left: 20px;
@@ -487,4 +488,26 @@ main {
 .arrow img {
 	width: 50px;
 	cursor: pointer;
+}
+
+.radioArea{
+	font-size: 1rem;
+	display: flex;
+	align-items: center;
+	margin-left: 20px;	
+}
+.radioArea > input{
+	margin: 0 10px;
+	visibility: hidden;
+}
+
+.radioArea > label{
+	border: 1px solid;
+	cursor: pointer;
+}
+
+.radioArea > input:checked + label{
+	
+	background-color: #000;
+	
 }

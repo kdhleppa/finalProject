@@ -24,7 +24,10 @@ function deleteCampWish(campNo) {
     }
 }
 
+
+
 function deleteItemWish(itemNo) {
+	
     if (confirm('이 상품을 정말 삭제하시겠습니까?')) {
         fetch('/member/deleteItemWish/' + itemNo, { 
             method: 'DELETE'
@@ -37,6 +40,7 @@ function deleteItemWish(itemNo) {
                 if (tr) {
                     tr.remove();
                 }
+                
                 alert(data.message); // 성공 메시지 표시
             } else {
                 // 삭제 실패 메시지 표시
