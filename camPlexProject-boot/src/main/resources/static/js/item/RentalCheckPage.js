@@ -4,7 +4,7 @@ let overlayScreen = document.querySelector(`.overlayScreen`);
 const categoryBtn = document.querySelectorAll(".categoryBtn")
 
 
-// 캠핑장 정렬 
+// 아이템 정렬
 classification.addEventListener('change', (e) => {
 	
 	contentSecCenterSec.innerHTML = "";
@@ -408,3 +408,24 @@ function more(contentLength){
 	} 
 	
 }
+
+// 상품 삭제 함수
+function deleteItem(itemNo) {
+	
+	if(!confirm("정말 삭제 하시겠습니까?")) {
+		return;
+	}
+	
+	location.href = '/item2/deleteItem?itemNo=' + itemNo;
+	
+	
+};
+
+
+	
+
+
+
+
+
+
