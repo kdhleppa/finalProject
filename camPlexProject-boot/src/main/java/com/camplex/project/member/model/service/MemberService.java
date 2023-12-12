@@ -99,6 +99,9 @@ public interface MemberService {
 	 */
 	List<ItemInfoMypage> selectItemListMypage(int resNo);
 
+	// 전화번호 변경
+	int phoneChange(Member inputMember);
+
 	/**마이페이지 관리자 qna 목록 불러오기
 	 * @param memberNo
 	 * @return
@@ -110,6 +113,7 @@ public interface MemberService {
 	 * @return
 	 */
 	List<ceoQna> selectCeoQna(int memberNo);
+
 
 
 

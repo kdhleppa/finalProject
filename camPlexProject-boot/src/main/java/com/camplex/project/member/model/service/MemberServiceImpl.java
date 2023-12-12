@@ -262,6 +262,11 @@ public class MemberServiceImpl implements MemberService {
 	public List<ItemInfoMypage> selectItemListMypage(int resNo) {
 		return mapper.selectItemListMypage(resNo);
 	}
+	
+	// 전화번호 변경
+	@Override
+	public int phoneChange(Member inputMember) {
+		return mapper.phoneChange(inputMember);
 
 	/** 마이페이지 관리자 qna 목록 불러오기
 	 *

@@ -389,6 +389,13 @@
 		ORDER BY SEND_FORM_DAY
 	</select>
 	
+	<!-- 프로필 정보 수정 -->
+	<update id="phoneChange">
+		UPDATE "MEMBER" SET
+		MEMBER_PHONE = #{memberPhone}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
+
 	<!-- qna -->
 	<select id="selectQna" resultMap="qna_rm">
 		SELECT *
@@ -406,6 +413,7 @@
 		FROM CEO_QNA A
 		WHERE MEMBER_NO = #{memberNo}
 	</select>
+
 	
 	
 </mapper>
