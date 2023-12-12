@@ -268,6 +268,7 @@ public class MemberServiceImpl implements MemberService {
 	public int phoneChange(Member inputMember) {
 		return mapper.phoneChange(inputMember);
 	}
+
 	/** 마이페이지 관리자 qna 목록 불러오기
 	 *
 	 */
