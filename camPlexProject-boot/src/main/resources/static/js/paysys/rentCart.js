@@ -89,6 +89,7 @@ window.onload = function() {
         updateTotal(index);
     });
     
+   
     
     var rsvInfos = document.querySelectorAll('[id^="rsvInfo"]');
 	var payForm = document.getElementById('payForm');
@@ -188,16 +189,26 @@ function updateQuantityAndCart(index, change) {
 
 
 
-
 function updateTotal(index) {
-	var itemPrice = document.getElementById('itemPrice'+index).value
-	var quantity = parseInt(document.getElementById('quantityDisplay'+index).textContent)
+    var itemPrice = parseFloat(document.getElementById('itemPrice'+index).value);
+    var quantity = parseInt(document.getElementById('quantityDisplay'+index).textContent);
+    var discountRate = parseFloat(document.getElementById('discountRate'+index).value);
+    var totalPrice = itemPrice * quantity;
+    
+    if (discountRate === 0) {
+        document.getElementById('totalPriceContainer' + index).querySelector('p').innerText = '₩' + totalPrice.toLocaleString();
+    } else {
+        var discountedItemPrice = itemPrice * (1 - (discountRate / 100));
+        var totalDiscountedPrice = discountedItemPrice * quantity;
+        document.getElementById('totalPriceContainer' + index).innerHTML =
+            '<del>₩' + totalPrice.toLocaleString() + '</del><br>' +
+            '<p style="color: red;">(' + discountRate + '%↓)</p>' +
+            '₩' + totalDiscountedPrice.toLocaleString();
+    }
+}	
 	
-	var totalPrice = itemPrice * quantity;
-	console.log(totalPrice);
-	document.getElementById('totalPriceContainer' + index).querySelector('p').innerText = '₩' + totalPrice.toLocaleString();
-}
-
+	
+	
 
 
 function moveItem(button, cartItemIndex) {
