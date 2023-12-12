@@ -30,12 +30,13 @@ public class AjaxServiceImpl implements AjaxService {
 	@Autowired
 	private JavaMailSender mailSender;
 	
+
 	@Value("${coolsms.api.key}")
 	private String apiKey;
 	
 	@Value("${coolsms.api.secret}")
 	private String apiSecret;
-	
+
 	// 이메일 중복 검사
 	@Override
 	public int checkEmail(String email) {
