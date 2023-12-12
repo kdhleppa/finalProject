@@ -318,7 +318,13 @@ public class MemberController {
 	
 	// 관리자 마이페이지 이동
 	@GetMapping("/managerMyPage")
-	public String managerMyPage() {
+	public String managerMyPage(Model model) {
+		
+		// 등업 신청 카운트
+		int levelUpFormCount = service.levelUpFormCount();
+		
+		model.addAttribute("levelUpFormCount", levelUpFormCount);
+		
 		return "member/myPage/managerMyPage";
 	}
 	

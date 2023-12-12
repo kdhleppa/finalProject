@@ -269,7 +269,6 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.phoneChange(inputMember);
 	}
 
-	}
 	/** 마이페이지 관리자 qna 목록 불러오기
 	 *
 	 */
@@ -284,6 +283,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<ceoQna> selectCeoQna(int memberNo) {
 		return mapper.selectCeoQna(memberNo);
+	}
+
+	// 등업 신청 카운트
+	@Override
+	public int levelUpFormCount() {
+		return mapper.levelUpFormCount();
 	}
 
 

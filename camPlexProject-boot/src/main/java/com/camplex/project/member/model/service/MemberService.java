@@ -114,6 +114,9 @@ public interface MemberService {
 	 */
 	List<ceoQna> selectCeoQna(int memberNo);
 
+	// 등업 신청 카운트
+	int levelUpFormCount();
+
 
 
 

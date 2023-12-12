@@ -47,7 +47,13 @@ public class NaverController {
 		String email = naverInfo.getEmail();
 		String name = naverInfo.getName();
 		String nickname = naverInfo.getNickname();
-		String phone = naverInfo.getMobile();
+		
+		// naver 간편 로그인은 010-0000-0000 이런 식으로 넘어오기 때문에
+		// -를 지우기 위한 코드
+		String phoneNumber = naverInfo.getMobile();
+		String onlyPhoneNumber = phoneNumber.replaceAll("-", "");
+		
+		String phone = onlyPhoneNumber;
 
 		member.setMemberEmail(email);
 		member.setMemberName(name);
