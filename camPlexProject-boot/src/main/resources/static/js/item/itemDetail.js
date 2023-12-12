@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // '-' 버튼 클릭 이벤트
     document.getElementById('minusBtn').addEventListener('click', function () {
-        if (quantityInput.value > 0) {
+        if (quantityInput.value > 1) {
             quantityInput.value = parseInt(quantityInput.value) - 1;
             quantityInput.value2 = parseInt(quantityInput.value) - 1;
             quantityDisplay.textContent = quantityInput.value;
