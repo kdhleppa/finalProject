@@ -115,7 +115,7 @@
             <table class="wishListTB">
                 <tr>
                     <th></th>
-                    <th>번호</th>
+                    <th>상품 번호</th>
                     <th>사진</th>
                     <th>상품명</th>
                     <th>캠핑장 선택</th>
@@ -128,7 +128,7 @@
 	                <form th:action="@{/paysys/moveWishlistToCart}" method="post" class="moveWishlistForm" th:id="'wishlistForm' + ${i.index}">
 		                <tr>
 		                    <td><input type="hidden" name="itemNo" th:value="${wishlist.itemNo}"></td>
-		                    <td>[[${i.count}]]</td>
+		                    <td>[[${wishlist.itemNo}]]</td>
 		                    <td>
 								<a th:href="@{/item/itemDetail/{itemNo}(itemNo = ${wishlist.itemNo})}">	
 									<img th:src="${wishlist.thumbnail}">
