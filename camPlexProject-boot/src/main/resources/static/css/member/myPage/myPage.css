@@ -404,6 +404,8 @@ main {
     display: flex;
     flex-direction: column;
     flex-basis: 80%;
+    height: 200px;
+    overflow: hidden;
 }
 
 .textListSecDiv {
@@ -502,12 +504,33 @@ main {
 }
 
 .radioArea > label{
-	border: 1px solid;
 	cursor: pointer;
+	padding: 5px 10px;
+	border-radius: 10px;
 }
 
-.radioArea > input:checked + label{
-	
-	background-color: #000;
+.clicked + label {
+	color: #d4a373;
+}
+
+.moreBtnWrapper { 
+    display: flex;
+    justify-content: center;
+}
+
+.moreBtn{
+    padding-top: 50px;
+	width: 100%;
+	background-color: transparent;
+	border: none;
+	font-size: 1rem;
+	color: #909090;
+	cursor: pointer;
+	transition-duration: .5s;	
+
+}
+
+.moreBtn:hover{
+	transform: translateY(-1rem);
 	
 }

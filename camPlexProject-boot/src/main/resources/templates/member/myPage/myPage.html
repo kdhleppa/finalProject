@@ -249,8 +249,8 @@
 						<section id="wishListItems">
 
 							<section class="empty2">
-								<button type="button" class="arrow" id="left" th:if="${myPageInfo.wishList.size > 4}">
-									<img th:src="@{/images/iconImg/left.png}">
+								<button type="button" class="arrow" id="left" >
+									<img th:if="${myPageInfo.wishList.size > 4}" th:src="@{/images/iconImg/left.png}">
 								</button>
 							</section>
 							
@@ -268,8 +268,8 @@
 							</div>
 
 							<section class="empty2">
-								<button type="button" class="arrow" id="right" th:if="${myPageInfo.wishList.size > 4}">
-									<img th:src="@{/images/iconImg/right.png}">
+								<button type="button" class="arrow" id="right" >
+									<img th:if="${myPageInfo.wishList.size > 4}" th:src="@{/images/iconImg/right.png}">
 								</button>
 							</section>
 
@@ -292,10 +292,10 @@
 					<div class="textListSecDiv">
 						<section class="subName">문의사항
 							<div class="radioArea">
-								<input type="radio" name="askTo" value="ceo" id="ceo">
-								<label for="ceo">ceo</label>
-								<input type="radio" name="askTo" value="admin" id="admin">
+								<input type="radio" name="askTo" value="admin" id="admin" class="clicked">
 								<label for="admin">관리자</label>
+								<input type="radio" name="askTo" value="ceo" id="ceo" >
+								<label for="ceo">ceo</label>
 							</div>
 						</section>
 						
@@ -310,7 +310,7 @@
 
 							<th:blcok th:if="${myPageInfo.qnaList.size == 0}">
 								<section class="textList">
-									<a>문의한 내역이 없습니다.</a>
+									<p>문의한 내역이 없습니다.</p>
 								</section>
 							</th:blcok>
 
@@ -336,6 +336,10 @@
 
 						<section class="empty2"></section>
 					</section>
+					
+					<div class="moreBtnWrapper">
+						<button type="button" class="moreBtn"></button>
+					</div>
 
 				</section>
 

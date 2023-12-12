@@ -21,4 +21,5 @@ public class ceoQna {
 	private String memberNickname;
 	
 	private int campNo;
+	private String campName;
 }

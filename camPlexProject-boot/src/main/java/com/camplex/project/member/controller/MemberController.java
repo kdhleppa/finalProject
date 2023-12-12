@@ -42,6 +42,8 @@ import com.camplex.project.member.model.service.NaverService;
 import com.camplex.project.member.model.service.WishlistService;
 import com.camplex.project.paysys.model.dto.Reservations;
 import com.camplex.project.paysys.model.service.PaysysService;
+import com.camplex.project.qna.model.dto.Qna;
+import com.camplex.project.qna.model.dto.ceoQna;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
@@ -643,6 +645,37 @@ public class MemberController {
 		
 		
 		
+	}
+	
+	
+	/** 마이페이지 관리자 qna 목록 불러오기
+	 * @param loginMember
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("/selectQna")
+	public List<Qna> SelectQna(@SessionAttribute Member loginMember){
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		List<Qna> list = service.selectQna(memberNo);
+		
+		return list;
+	}
+	
+	/** 마이페이지 ceo qna 목록 불러오기
+	 * @param loginMember
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("/selectCeoQna")
+	public List<ceoQna> SelectCeoQna(@SessionAttribute Member loginMember){
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		List<ceoQna> list = service.selectCeoQna(memberNo);
+
+		return list;
 	}
 	
 }

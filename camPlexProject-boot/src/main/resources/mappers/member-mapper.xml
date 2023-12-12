@@ -89,6 +89,19 @@
 		<result property="rentalPaymentType" column="RENTAL_PAYMENT_TYPE"/>
 	</resultMap>
 	
+	<resultMap type="ceoQna" id="ceoQna_rm">
+		<id property="ceoQnaNo" column="CEO_QNA_NO"/>
+		<result property="ceoQnaTitle" column="CEO_QNA_TITLE" />
+		<result property="ceoQnaContent" column="CEO_QNA_CONTENT" />
+		<result property="ceoQnaAnswer" column="CEO_QNA_ANSWER" />
+		<result property="ceoAnswerFlag" column="ANSWER_FL" />
+		<result property="ceoQnaCreateDate" column="Q_CREATE_DATE" />
+		
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="campNo" column="CAMP_NO" />
+		<result property="campName" column="CAMP_NAME" />
+	</resultMap>
+	
 	
 	<resultMap type="MyPage" id="myPageInfoList_rm">
 		<id property="memberNo" column="MEMBER_NO"/>
@@ -376,6 +389,23 @@
 		ORDER BY SEND_FORM_DAY
 	</select>
 	
+	<!-- qna -->
+	<select id="selectQna" resultMap="qna_rm">
+		SELECT *
+		FROM QNA
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- CEO qna -->
+	<select id="selectCeoQna" resultMap="ceoQna_rm">
+		SELECT CEO_QNA_NO, CEO_QNA_TITLE, CEO_QNA_CONTENT, CEO_QNA_ANSWER,
+			   ANSWER_FL, Q_CREATE_DATE, MEMBER_NO, CAMP_NO, 
+			   (SELECT CAMP_NAME
+			   FROM CAMPING_SITE
+			   WHERE CAMP_NO = A.CAMP_NO) CAMP_NAME
+		FROM CEO_QNA A
+		WHERE MEMBER_NO = #{memberNo}
+	</select>
 	
 	
 </mapper>
