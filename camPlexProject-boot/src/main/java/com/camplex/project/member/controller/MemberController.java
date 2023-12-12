@@ -470,8 +470,60 @@ public class MemberController {
 		return "member/levelUpFormCheck";
 	}
 	
+	// 전화번호 변경 페이지 이동
+	@GetMapping("/phoneChange")
+	public String phoneChangePage() {
+		return "member/phoneChange";
+	}
 	
-	
+	// 전화번호 변경
+	@PostMapping("/phoneChange")
+	public String phoneChange(@SessionAttribute("loginMember") Member loginMember,
+								Member inputMember,
+								@RequestParam("inputTel") String inputTel,
+								RedirectAttributes ra) {
+		
+		String path = "redirect:";
+		String message = null;
+		
+		inputMember.setMemberNo(loginMember.getMemberNo());
+		inputMember.setMemberPhone(inputTel);
+		
+		int result = service.phoneChange(inputMember);
+		
+		if(result > 0) {
+			
+			String checkMember = loginMember.getMemberType();
+			
+			if(checkMember.equals("U")) {
+				path += "myPage";
+				
+			} else {
+				
+				if(checkMember.equals("C")) {
+					path += "CEOMyPage";
+					
+				} else {
+					path += "managerMyPage";
+				}
+			}
+			
+			loginMember.setMemberPhone(inputMember.getMemberPhone());
+			
+			message = "전화번호가 변경되었습니다.";
+			
+		} else {
+			
+			path += "phoneChange";
+			
+			message = "전화번호 변경을 실패했습니다.";
+			
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return path;
+	}
 	
 	// 위시리스트 추가
 	@PostMapping("/wishlist/insert")

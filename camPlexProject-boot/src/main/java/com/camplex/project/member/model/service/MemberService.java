@@ -97,6 +97,9 @@ public interface MemberService {
 	 */
 	List<ItemInfoMypage> selectItemListMypage(int resNo);
 
+	// 전화번호 변경
+	int phoneChange(Member inputMember);
+
 
 
 

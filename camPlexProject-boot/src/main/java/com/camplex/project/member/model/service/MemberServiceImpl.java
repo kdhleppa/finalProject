@@ -261,6 +261,13 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.selectItemListMypage(resNo);
 	}
 
+	
+	// 전화번호 변경
+	@Override
+	public int phoneChange(Member inputMember) {
+		return mapper.phoneChange(inputMember);
+	}
+
 
 
 

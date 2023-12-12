@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,13 @@ public class AjaxServiceImpl implements AjaxService {
 	@Autowired
 	private JavaMailSender mailSender;
 	
-	DefaultMessageService messageService =  NurigoApp.INSTANCE.initialize("NCS21BCIPH9LBAO3", "BGUIGPE95MYQ4JP3LU9WXS2KERRAYO11", "https://api.coolsms.co.kr");
+	@Value("${coolsms.api.key}")
+	private String api_key;
+	
+	@Value("${coolsms.api.secret}")
+	private String api_secret;
+	
+	DefaultMessageService messageService =  NurigoApp.INSTANCE.initialize(api_key, api_secret, "https://api.coolsms.co.kr");
 
 	// 이메일 중복 검사
 	@Override
@@ -42,8 +49,11 @@ public class AjaxServiceImpl implements AjaxService {
 		return mapper.checkNickname(nickname);
 	}
 	
-	private String fromEmail = "qkql006@gmail.com";
-	private String fromUsername = "비밀번호 재설정 인증번호";
+	@Value("${spring.mail.username}")
+	private String fromEmail;
+	
+	@Value("${spring.mail.password}")
+	private String fromUsername;
 	
 	// 인증번호 난수 생성
 	public String createAuthKey() {
@@ -101,6 +111,8 @@ public class AjaxServiceImpl implements AjaxService {
            
            // 송신자(보내는 사람) 지정
            mail.setFrom(new InternetAddress(fromEmail, fromUsername));
+           System.out.println(fromEmail);
+           System.out.println(fromUsername);
            // 수신자(받는사람) 지정
            mail.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
            
@@ -147,7 +159,8 @@ public class AjaxServiceImpl implements AjaxService {
 	@Override
 	public int sendAuthKey(String phone, int randomNumber) {
 		
-		// Message 패키지가 중복될 경우 net.nurigo.sdk.message.model.Message로 치환하여 주세요
+		// 주석 풀면 api 사용가능
+		
 //		net.nurigo.sdk.message.model.Message message = new net.nurigo.sdk.message.model.Message();
 //		message.setFrom("01062701594");
 //		message.setTo(phone);

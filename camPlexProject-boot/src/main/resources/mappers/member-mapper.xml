@@ -376,6 +376,12 @@
 		ORDER BY SEND_FORM_DAY
 	</select>
 	
+	<!-- 프로필 정보 수정 -->
+	<update id="phoneChange">
+		UPDATE "MEMBER" SET
+		MEMBER_PHONE = #{memberPhone}
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
 	
 	
 </mapper>
