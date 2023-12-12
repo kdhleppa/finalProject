@@ -3,9 +3,9 @@ package com.camplex.project.member.model.service;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +21,7 @@ import net.nurigo.sdk.message.response.SingleMessageSentResponse;
 import net.nurigo.sdk.message.service.DefaultMessageService;
 
 @Service
+@PropertySource("classpath:/config.properties")
 public class AjaxServiceImpl implements AjaxService {
 
 	@Autowired
@@ -29,7 +30,12 @@ public class AjaxServiceImpl implements AjaxService {
 	@Autowired
 	private JavaMailSender mailSender;
 	
-	DefaultMessageService messageService =  NurigoApp.INSTANCE.initialize("NCS21BCIPH9LBAO3", "BGUIGPE95MYQ4JP3LU9WXS2KERRAYO11", "https://api.coolsms.co.kr");
+
+	@Value("${coolsms.api.key}")
+	private String apiKey;
+	
+	@Value("${coolsms.api.secret}")
+	private String apiSecret;
 
 	// 이메일 중복 검사
 	@Override
@@ -153,6 +159,7 @@ public class AjaxServiceImpl implements AjaxService {
 	@Override
 	public int sendAuthKey(String phone, int randomNumber) {
 		
+		DefaultMessageService messageService =  NurigoApp.INSTANCE.initialize(apiKey, apiSecret, "https://api.coolsms.co.kr");
 		// 주석 풀면 api 사용가능
 		
 //		net.nurigo.sdk.message.model.Message message = new net.nurigo.sdk.message.model.Message();
@@ -160,7 +167,7 @@ public class AjaxServiceImpl implements AjaxService {
 //		message.setTo(phone);
 //		message.setText("camPlex 인증번호는 " + randomNumber + "입니다.");
 //		
-//		SingleMessageSentResponse response = this.messageService.sendOne(new SingleMessageSendingRequest(message));
+//		SingleMessageSentResponse response = messageService.sendOne(new SingleMessageSendingRequest(message));
 //		System.out.println(response);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
