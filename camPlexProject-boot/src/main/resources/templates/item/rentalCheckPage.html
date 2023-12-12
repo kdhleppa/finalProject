@@ -88,7 +88,7 @@
 
 			<section class="itemUploadSec">
 
-				<a th:href="@{/item2/upload}" class="itemUploadA">
+				<a th:href="@{/item2/uploadForward}" class="itemUploadA">
 
 					<div class="itemUploadDiv">
 						Item Upload
@@ -170,6 +170,18 @@
 
 						</th:block>
 
+					</section>
+					
+					<section class="editDeleteSec">
+						
+						<section class="editDeleteDetailSec">
+							<a href="#" class="editDeleteBtn">수정</a>
+						</section>
+						
+						<section class="editDeleteDetailSec">
+							<a class="editDeleteBtn" th:thisRentalNo="${Item.itemNo}" th:onclick="deleteItem(this.getAttribute('thisRentalNo'))">삭제</a>
+						</section>
+						
 					</section>
 
 				</section>
