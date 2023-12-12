@@ -25,6 +25,8 @@ public class Item {
 	private int discountRate;
 	
 	private String thumbnail;
+	private String itemDeImg;
 	
 	private List<ItemImg> imageList;
+	
 }

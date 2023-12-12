@@ -210,6 +210,7 @@ public class CampServiceImpl2 implements CampService2{
 	/** 캠핑장 구역 delete
 	 *
 	 */
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int deleteCampDe(int campDeNo) {
 		return mapper.deleteCampDe(campDeNo);
@@ -219,6 +220,7 @@ public class CampServiceImpl2 implements CampService2{
 	/** 캠핑장 구역 이미지 delete
 	 *
 	 */
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int deleteCampDeImg(int campDeNo) {
 		return mapper.deleteCampDeImg(campDeNo);
@@ -226,6 +228,7 @@ public class CampServiceImpl2 implements CampService2{
 
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public int updateCampDe(int campNo) {
 		return mapper.updateCampDe(campNo);
 	}
@@ -233,6 +236,7 @@ public class CampServiceImpl2 implements CampService2{
 
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public int delCampDeImgNumO() {
 		return mapper.delCampDeImgNumO();
 	}
@@ -241,6 +245,7 @@ public class CampServiceImpl2 implements CampService2{
 	 *
 	 */
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public int deleteCamp(int campNo) {
 		return mapper.deleteCamp(campNo);
 	}
@@ -249,6 +254,7 @@ public class CampServiceImpl2 implements CampService2{
 	/** 캠핑장 no 0 인 캠핑 장소 삭제
 	 *
 	 */
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public int delCampNoZ() {
 		return mapper.delCampNoZ();
@@ -405,6 +411,7 @@ public class CampServiceImpl2 implements CampService2{
 
 
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public int upInsertDeCamp(CampDetail campDetail, List<MultipartFile> campDeImges) throws IllegalStateException, IOException{
 		
 		int result = mapper.upInsertDeCamp(campDetail);

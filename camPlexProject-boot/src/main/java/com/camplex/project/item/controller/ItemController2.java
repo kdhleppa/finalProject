@@ -19,6 +19,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.camplex.project.item.model.dto.Item;
 import com.camplex.project.item.model.service.ItemService2;
 
+import oracle.jdbc.proxy.annotation.Post;
+
 @Controller
 @RequestMapping("/item2")
 public class ItemController2 {
@@ -101,6 +103,44 @@ public class ItemController2 {
 		
 		ra.addFlashAttribute(message);
 		
+		
+		return path;
+	}
+	
+	@GetMapping("/editForward")
+	public String editItemForward(int itemNo, Model model) {
+		
+		Item item = service.selectItemOfItemNo(itemNo);
+		
+		System.out.println("item ::" + item);
+		
+		model.addAttribute("item", item);
+		
+		return "item/editRentalPage";
+	}
+	
+	@PostMapping("/edit")
+	public String editItem(Item item
+			, @RequestParam(value="itemImages", required = false) List<MultipartFile> images
+			, RedirectAttributes ra
+			, @RequestHeader("referer") String referer) throws IllegalStateException, IOException {
+		
+		System.out.println("item ::" + item);
+		
+		int result = service.editItem(item, images);
+		
+		String message = null;
+		String path = "redirect:";
+		
+		if(result > 0) {
+			message = "수정 성공!";
+			path += "/item2/search";
+		} else {
+			message = "수정 실패...";
+			path += referer;
+		}
+		
+		ra.addAttribute("message", message);
 		
 		return path;
 	}

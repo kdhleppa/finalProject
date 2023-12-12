@@ -76,11 +76,35 @@ public interface ItemMapper2 {
 	 */
 	int itemInsert(Item item);
 
-	/** 상품 이미지 업로드
+	/** 상품 이미지 업로드(여러개)
 	 * @param uploadList
 	 * @return
 	 */
 	int insertItemImageList(List<ItemImg> uploadList);
+
+	/** 상품 넘버에 따른 상품 조회
+	 * @param itemNo
+	 * @return
+	 */
+	Item selectItemOfItemNo(int itemNo);
+
+	/** 상품 수정
+	 * @param item
+	 * @return
+	 */
+	int itemUpdate(Item item);
+
+	/** 상품 이미지 수정
+	 * @param img
+	 * @return
+	 */
+	int itemImageUpdate(ItemImg img);
+
+	/** 상품 이미지 삽입
+	 * @param img
+	 * @return
+	 */
+	int itemImageInsert(ItemImg img);
 	
 
 }

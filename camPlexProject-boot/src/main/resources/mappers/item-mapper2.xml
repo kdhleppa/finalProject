@@ -15,6 +15,7 @@
 		<result property="itemDescription" column="ITEM_DESCRIPTION"/>
 		<result property="itemStatus" column="ITEM_STATUS"/>
 		<result property="discountRate" column="DISCOUNT_RATE"/>
+		<result property="itemDeImg" column="ITEM_DETAIL_IMG"/>
 	    
 	    
 	    <collection property="imageList"
@@ -49,7 +50,7 @@
 	
 	<!-- 상품 조회-->
 	<select id="searchItems" resultMap="item_rm">
-		SELECT ITEM_NO, ITEM_TYPE, ITEM_PRICE, ITEM_NAME, ITEM_DESCRIPTION, 
+		SELECT ITEM_NO, ITEM_TYPE, IN_STORE_COUNT, ITEM_PRICE, ITEM_NAME, ITEM_DESCRIPTION,
 		ITEM_STATUS, DISCOUNT_RATE, (SELECT ITEM_IMG_PATH || ITEM_IMG_RENAME FROM ITEM_IMG WHERE ITEM_IMG_ORDER=0 AND ITEM_NO = A.ITEM_NO) THUMBNAIL
 		FROM "ITEM" A 
 		WHERE ITEM_STATUS = 'Y'
@@ -198,6 +199,46 @@
   			</foreach>
   		) A
   	</insert>
+  	
+  	<!-- 상품 넘버에 따른 상품 조회-->
+  	<select id="selectItemOfItemNo" resultMap="item_rm">
+		SELECT ITEM_NO, ITEM_TYPE, IN_STORE_COUNT, ITEM_PRICE, ITEM_NAME, ITEM_DESCRIPTION,
+		ITEM_STATUS, DISCOUNT_RATE, 
+		(SELECT ITEM_IMG_PATH || ITEM_IMG_RENAME FROM ITEM_IMG WHERE ITEM_IMG_ORDER=0 AND ITEM_NO = A.ITEM_NO) THUMBNAIL,
+		(SELECT ITEM_IMG_PATH || ITEM_IMG_RENAME FROM ITEM_IMG WHERE ITEM_IMG_ORDER=1 AND ITEM_NO = A.ITEM_NO) ITEM_DETAIL_IMG
+		FROM "ITEM" A
+		WHERE ITEM_NO = #{itemNo}
+	</select>
+	
+	<!-- 상품 수정-->
+	<update id="itemUpdate">
+  		UPDATE "ITEM" SET
+  		ITEM_TYPE = #{itemType},
+  		IN_STORE_COUNT = #{inStoreCount},
+  		ITEM_PRICE = #{itemPrice},
+  		ITEM_NAME = #{itemName},
+  		ITEM_DESCRIPTION = #{itemDescription},
+  		DISCOUNT_RATE = #{discountRate}
+  		WHERE ITEM_NO = #{itemNo}
+  	</update>
+  	
+  	<!-- 상품 이미지 수정-->
+  	<update id="itemImageUpdate">
+		UPDATE "ITEM_IMG" SET
+		ITEM_IMG_PATH = #{itemImgPath},
+		ITEM_IMG_ORIGINAL = #{itemImgOriginal},
+		ITEM_IMG_RENAME = #{itemImgRename}
+		WHERE ITEM_NO = #{itemNo}
+		AND ITEM_IMG_ORDER = #{itemImgOrder}
+	</update>
+	
+	<!-- 상품 이미지 삽입 -->
+	<insert id="itemImageInsert">
+		INSERT INTO "ITEM_IMG"
+		VALUES(SEQ_ITEM_IMG_NUM.NEXTVAL, #{itemNo}, #{itemImgPath}, #{itemImgRename},
+			#{itemImgOriginal}, #{itemImgOrder}
+		)
+	</insert>
 	
 	  	
 </mapper>
