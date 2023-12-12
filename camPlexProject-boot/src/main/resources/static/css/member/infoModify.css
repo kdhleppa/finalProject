@@ -220,6 +220,7 @@ label:hover {
 /* PW 변경, 이전 페이지로 이동 버튼 */
 #searchIdBtnSection {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     margin-top: 50px;
 }
@@ -228,12 +229,13 @@ label:hover {
     flex-basis: 10%;
 }
 
-#changePwBtn {
+.changePwBtn {
     flex-basis: 80%;
     display: flex;
     justify-content: space-around;
     align-items: baseline;
     height: 30px;
+    margin-top: 15px;
 }
 
 .clickBtn::after {

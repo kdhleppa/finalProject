@@ -260,8 +260,7 @@
 	<update id="updateMember">
 		UPDATE "MEMBER" SET
 		MEMBER_NICKNAME = #{memberNickname},
-		MEMBER_PROFILE_IMG = #{memberProfileImg},
-		MEMBER_PHONE = #{memberPhone}
+		MEMBER_PROFILE_IMG = #{memberProfileImg}
 		WHERE MEMBER_NO = #{memberNo}
 	</update>
 	

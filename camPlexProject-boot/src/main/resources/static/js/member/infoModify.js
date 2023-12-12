@@ -1,7 +1,5 @@
 const checkObj = {
-    "inputNickname" : false,
-    "inputTel": false,
-	"inputAuthkey": false
+    "inputNickname" : false
 };
 
 // 프로필 이미지 추가/변경/삭제
@@ -24,7 +22,7 @@ if(imageInput != null){ // 화면에 imageInput이 있을 경우 ( if 굳이 안
     // 프로필 이미지가 출력되는 img태그의 src 속성을 저장
     originalImage = profileImg.getAttribute("src"); 
     
-    console.log(originalImage);
+    console.log("originalImage : ", originalImage);
     
 
 
@@ -63,12 +61,12 @@ if(imageInput != null){ // 화면에 imageInput이 있을 경우 ( if 굳이 안
             // 취소 시 기존 프로필 이미지로 변경 ( 기존 이미지에서 변경되는게 없게 하겠다는거죠 ) 
             profileImg.setAttribute("src", originalImage);
 
-			console.log("profileImg::", profileImg);
+			console.log("profileImg : ", profileImg);
             return;
         }
 
         if( file.size > maxSize){ // 선택된 파일의 크기가 최대 크기를 초과한 경우
-            alert("2MB 이하의 이미지를 선택해주세요.");
+            alert("5MB 이하의 이미지를 선택해주세요.");
             imageInput.value = ""; 
             // input type="file" 태그에 대입할 수 있는 value는 "" (빈칸) 뿐이다!
             deleteCheck = -1; // 취소 == 파일 없음 == 초기상태
@@ -182,153 +180,10 @@ inputNickname.addEventListener("input", ()=>{
 });
 
 
-// 전화번호 유효성 검사
-const inputTel = document.getElementById("inputTel");
-const telMessage = document.getElementById("telMessage");
-
-// 전화번호가 입력 되었을 때
-inputTel.addEventListener("input", () => {
-
-	// 전화번호가 입력이 되지 않은 경우
-	if (inputTel.value.trim() == '') {
-		telMessage.innerText = "- 제외한 전화번호를 입력해주세요.";
-		telMessage.classList.remove("confirm", "error");
-		checkObj.inputTel = false;
-		inputTel.value = "";
-		return;
-	}
-
-	// 정규표현식으로 유효성 검사
-	const regEx = /^0(1[01679]|2|[3-6][1-5]|70)[1-9]\d{2,3}\d{4}$/;
-
-	if (regEx.test(inputTel.value)) {// 유효
-
-		fetch("/dupCheck/phone?phone=" + inputTel.value)
-		.then(resp => resp.text())
-		.then(count => {
-
-			if (count > 0) {
-				telMessage.innerText = "등록된 전화번호입니다.";
-				telMessage.classList.add("error");
-				telMessage.classList.remove("confirm");
-				checkObj.inputTel = false;
-			} else {
-				telMessage.innerText = "사용 가능한 전화번호입니다.";
-				telMessage.classList.add("confirm");
-				telMessage.classList.remove("error");
-				checkObj.inputTel = true;
-			}
-
-		})
-		.catch(err => console.log(err));
-
-	} else { // 무효
-		telMessage.innerText = "전화번호 형식이 유효하지 않습니다.";
-		telMessage.classList.add("error");
-		telMessage.classList.remove("confirm");
-		checkObj.inputTel = false;
-	}
-
-});
-
-// 전화번호 인증
-const checkTel = document.getElementById("sendAuthkey");
-const authkeyMessage = document.getElementById("authkeyMessage");
-let tempTel;
-
-checkTel.addEventListener("click", () => {
-	
-	authMin = 4;
-    authSec = 59;
-	
-	if(checkObj.inputTel) {
-		
-		alert("인증번호가 발송되었습니다.\n휴대폰에서 확인 해 주세요.");
-		
-		fetch("/dupCheck/sendAuthKey?phone=" + inputTel.value)
-		.then(resp => resp.text())
-		.then(count => {
-
-			if (count > 0) {
-				telMessage.innerText = "인증번호가 발송되었습니다.";
-				tempTel = inputTel.value;
-			} else {
-				alert("인증번호 발송에 실패했습니다.");
-			}
-
-		})
-		.catch(err => console.log(err));
-		
-		authkeyMessage.innerText = "05:00";
-        authkeyMessage.classList.remove("confirm");
-
-        authTimer = window.setInterval(()=>{
-													// 삼항연산자  :  조건 	  ?   	true : false
-            authkeyMessage.innerText = "0" + authMin + ":" + (authSec < 10 ? "0" + authSec : authSec);
-            
-            // 남은 시간이 0분 0초인 경우
-            if(authMin == 0 && authSec == 0){
-                checkObj.authKey = false;
-                clearInterval(authTimer);
-                return;
-            }
-
-            // 0초인 경우
-            if(authSec == 0){
-                authSec = 60;
-                authMin--;
-            }
-
-
-            authSec--; // 1초 감소
-
-        }, 1000)
-		
-	}
-	
-})
-
-// 전화번호 인증 인증번호 확인
-const authKey = document.getElementById("inputAuthkey");
-const checkAuthKeyBtn = document.getElementById("checkNumber");
-
-checkAuthKeyBtn.addEventListener("click", function(){
-
-    if(authMin > 0 || authSec > 0){ // 시간 제한이 지나지 않은 경우에만 인증번호 검사 진행
-        /* fetch API */
-        const obj = {"inputKey":authKey.value, "phone":tempTel}
-        const query = new URLSearchParams(obj).toString()
-        // inputKey=123456&email=user01
-
-        fetch("/sendAuthKey/checkTelAuthkey?" + query)
-        .then(resp => resp.text())
-        .then(result => {
-            if(result > 0){
-                clearInterval(authTimer);
-                authkeyMessage.innerText = "인증되었습니다.";
-                authkeyMessage.classList.add("confirm");
-                checkObj.inputAuthkey = true;
-
-            } else{
-                alert("인증번호가 일치하지 않습니다.")
-                checkObj.inputAuthkey = false;
-            }
-        })
-        .catch(err => log(err));
-
-
-    } else{
-        alert("인증 시간이 만료되었습니다. 다시 시도해주세요.")
-    }
-
-});
-
 
 // form태그가 제출 되었을 때
 document.getElementById("updateMember").addEventListener("submit", e=>{
 	
-	console.log("profileImg result", profileImg);
-
 	let flag = true; // 제출하면 안되는 경우의 초기값 플래그 true로 지정
 
     // 이전 프로필 이미지가 없으면서, 새 이미지 업로드를 했다 -> 처음으로 이미지 추가
@@ -340,7 +195,6 @@ document.getElementById("updateMember").addEventListener("submit", e=>{
     // 이전 프로필 이미지가 있으면서, 프로필 삭제 버튼을 눌렀다 -> 삭제
     if(initCheck && deleteCheck == 0)   flag = false;
 
-    // 이미지 변경 없을 시
 	if(initCheck && deleteCheck == -1) flag = false;
 
     
@@ -361,12 +215,6 @@ document.getElementById("updateMember").addEventListener("submit", e=>{
             switch(key){
             case "inputNickname" : 
                 alert("닉네임이 유효하지 않습니다"); break;
-                
-            case "inputTel":
-				alert("전화번호가 유효하지 않습니다"); break;
-					
-			case "inputAuthkey":
-				alert("인증번호가 유효하지 않습니다"); break;
             }
 
             document.getElementById(key).focus();

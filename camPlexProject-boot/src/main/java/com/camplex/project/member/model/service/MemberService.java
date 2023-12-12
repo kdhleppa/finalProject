@@ -40,7 +40,7 @@ public interface MemberService {
 	 * @param inputMember
 	 * @return
 	 */
-	int updateMember(MultipartFile memberProfileImg, Member inputMember) throws Exception;
+	int updateMember(MultipartFile profileImg, Member inputMember) throws Exception;
 
 	/** 비밀번호 재설정을 위한 회원정보 찾기
 	 * @param member
