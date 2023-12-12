@@ -582,9 +582,16 @@ public class MemberController {
 	@GetMapping("/wishlist")
 	public String wishlistFoward(
 			@SessionAttribute(value="loginMember", required = false)Member loginMember,
-			Model model
+			Model model,
+			RedirectAttributes ra
 			) {
 		// 회원넘버 가지고가서 위시리스트를 가지고 온다. 가지고온 캠프넘버로 캠핑사이트, 아이템넘버로 아이템정보를 가지고온다.
+		
+		if (loginMember == null) {
+			ra.addFlashAttribute("message", "로그인 후 이용해 주세요.");
+			return "redirect:/member/login";
+		}
+		
 		int memberNo = loginMember.getMemberNo();
 		
 		List<Camp> camp = wishlistService.selectCampWish(memberNo);

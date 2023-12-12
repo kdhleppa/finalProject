@@ -11,9 +11,18 @@ function deleteCampWish(campNo) {
                 if (tr) {
                     tr.remove();
                 }
-                alert(data.message); // 성공 메시지 표시
+                var table = document.querySelector('.campingListTB');
+                if (table.querySelectorAll('tr').length <= 1) {
+                    var noDataTr = document.createElement('tr');
+                    var noDataTd = document.createElement('td');
+                    noDataTd.colSpan = 7;
+                    noDataTd.textContent = '등록된 캠핑장이 없습니다.';
+                    noDataTr.appendChild(noDataTd);
+                    table.appendChild(noDataTr);
+                }
+                
+                alert(data.message);
             } else {
-                // 삭제 실패 메시지 표시
                 alert(data ? data.message : '삭제에 실패했습니다.');
             }
         })
@@ -39,6 +48,15 @@ function deleteItemWish(itemNo) {
                 var tr = document.getElementById('tr' + itemNo);
                 if (tr) {
                     tr.remove();
+                }
+                 var table = document.querySelector('.itemListTB');
+                if (table.querySelectorAll('tr').length <= 1) {
+                    var noDataTr = document.createElement('tr');
+                    var noDataTd = document.createElement('td');
+                    noDataTd.colSpan = 7;
+                    noDataTd.textContent = '등록된 상품이 없습니다.';
+                    noDataTr.appendChild(noDataTd);
+                    table.appendChild(noDataTr);
                 }
                 
                 alert(data.message); // 성공 메시지 표시
@@ -99,6 +117,10 @@ function deleteSelectedItems() {
             if (allSuccess) {
                 selectedCamps.forEach(checkbox => checkbox.parentElement.parentElement.remove());
                 selectedItems.forEach(checkbox => checkbox.parentElement.parentElement.remove());
+                
+                checkAndAddMessage('.campingListTB', '등록된 캠핑장이 없습니다.');
+                checkAndAddMessage('.itemListTB', '등록된 상품이 없습니다.');
+
                 alert('모든 선택된 항목이 성공적으로 삭제되었습니다.');
             } else {
                 alert('일부 항목 삭제에 실패했습니다.');
@@ -108,5 +130,17 @@ function deleteSelectedItems() {
             console.error('삭제 중 에러 발생:', error);
             alert('삭제 중 문제가 발생했습니다.');
         });
+}
+
+function checkAndAddMessage(tableClass, message) {
+    var table = document.querySelector(tableClass);
+    if (table && table.querySelectorAll('tr').length <= 1) {
+        var noDataTr = document.createElement('tr');
+        var noDataTd = document.createElement('td');
+        noDataTd.colSpan = 7;
+        noDataTd.textContent = message;
+        noDataTr.appendChild(noDataTd);
+        table.appendChild(noDataTr);
+    }
 }
 

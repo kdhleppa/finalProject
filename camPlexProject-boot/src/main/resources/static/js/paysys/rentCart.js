@@ -76,9 +76,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+
+
 window.onload = function() {
     // "index-input" 클래스를 가진 모든 요소를 선택
     var inputs = document.querySelectorAll('input.index-input');
+
 
     // 각 input 요소에 대해 반복
     inputs.forEach(function(input) {
@@ -88,19 +91,55 @@ window.onload = function() {
     
     
     var rsvInfos = document.querySelectorAll('[id^="rsvInfo"]');
-
+	var payForm = document.getElementById('payForm');
+    var allRsvInfosRemoved = true;
+    
     rsvInfos.forEach(function(rsvInfo) {
         var rsvInfoIndex = rsvInfo.id.replace('rsvInfo', '');
         var cartItemRows = document.querySelectorAll('tr[id="cartItemTr' + rsvInfoIndex + '"]');
 
         if (cartItemRows.length === 0) {
             rsvInfo.remove();
-            /*rsvInfo.style.display = 'none';*/
+        } else {
+            allRsvInfosRemoved = false;
         }
     });
+   if (allRsvInfosRemoved) {
+        var noItemsTable = document.createElement('table');
+        noItemsTable.className = 'shoppingCartTB';
+        noItemsTable.innerHTML = `
+            <tr>
+                <th></th>
+                <th></th>
+                <th>상품명</th>
+                <th>캠핑장 선택</th>
+                <th>수량</th>
+                <th>금액</th>
+                <th>취소</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>등록된 상품이 없습니다.</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+			    <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+        	</tr>
+        `;
+        payForm.insertBefore(noItemsTable, payForm.firstChild);
+    }
+    
 };
-
-
 
 
 

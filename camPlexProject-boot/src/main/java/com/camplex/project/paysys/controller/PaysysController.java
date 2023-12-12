@@ -135,9 +135,17 @@ public class PaysysController {
 		int memberNo = loginMember.getMemberNo();
 		List<MembersReservationDate> rsvInfo = itemService.membersRsvInfo(memberNo);
 		List<MembersReservationDate> rsvInfo2 = itemService.membersRsvInfo(memberNo);
+		
+		// 멤버의 장바구니에서 아이템 재고가 없을경우 삭제하는 메서드
+		int result = payService.deleteNotInStoreCart(memberNo);
+		
+		
+		
 		List<FindCartItem> cartItem = itemService.membersCartItem(memberNo);
 		List<Item> wishlist = itemService.inCartWishlist(memberNo);
 
+		
+		
 		
 		model.addAttribute("cartItem", cartItem);
 		model.addAttribute("rsvInfo", rsvInfo);
