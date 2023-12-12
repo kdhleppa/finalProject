@@ -47,7 +47,7 @@ itemUploadForm.addEventListener('submit', (e) => {
 	const inputItemPrice = document.getElementById('inputItemPrice').value;
 	const inputItemLoanCount = document.getElementById('inputItemLoanCount').value;
 	const selectItemType = document.getElementById('selectItemType').value;
-	
+	const inputItemDiscount = document.getElementById('inputItemDiscount').value;
 
 	if(inputItemName == "") {
 		alert("상품명을 입력해주세요.");
@@ -67,8 +67,14 @@ itemUploadForm.addEventListener('submit', (e) => {
 		return;
 	}
 	
+	if(inputItemDiscount == "") {
+		alert("할인율을 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
+	
 	if(inputItemLoanCount == "") {
-		alert("상품 제고 수량을 입력해주세요.");
+		alert("상품 재고 수량을 입력해주세요.");
 		e.preventDefault();
 		return;
 	}
@@ -80,3 +86,8 @@ itemUploadForm.addEventListener('submit', (e) => {
 	}
 	
 });
+
+
+
+
+
