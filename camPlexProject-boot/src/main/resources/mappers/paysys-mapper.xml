@@ -166,6 +166,12 @@
 		UPDATE PAYMENT SET PAYMENT_STATUS_FL = 'Y'
 		WHERE PAYMENT_NO = #{tempPaymentNo}
 	</update>
+	
+	<!-- 렌탈장비 결제 후 완료 변경 -->
+	<update id="updatePayRentalState">
+		UPDATE RENTAL_PAYMENT SET PAYMENT_STATUS_FL = 'Y'
+		WHERE RENTAL_PAYMENT_NO = #{tempPaymentNo}
+	</update>
 
 	<!-- 캠핑 결제 취소시 내역 삭제(카카오)-->
 	<delete id="deleteKakao">

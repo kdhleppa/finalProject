@@ -153,5 +153,20 @@ public class KakaoContoller {
         
         return "/paysys/kakaoDone";
     }
+    
+    
+    @GetMapping("/paysys/payDoneRental")
+    public String kakaoPaySuccessRental(@RequestParam("pg_token") String pg_token, 
+    		Model model
+    		) {
+    	log.info("kakaoPaySuccess pg_token : " + pg_token);
+    	
+    	int result = service.updatePayRentalState(tempPaymentNo);
+    	
+    	
+    	model.addAttribute("payInfo", kakaopay.kakaoPayInfo(pg_token));
+    	
+    	return "/paysys/kakaoDone";
+    }
 
 }

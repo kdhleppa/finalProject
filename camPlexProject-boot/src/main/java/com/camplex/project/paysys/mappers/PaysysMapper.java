@@ -111,6 +111,10 @@ public interface PaysysMapper {
 
 
 
+	int updatePayRentalState(int tempPaymentNo);
+
+
+
 
 
 
