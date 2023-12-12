@@ -269,7 +269,7 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.phoneChange(inputMember);
 	}
 
-	}
+	
 	/** 마이페이지 관리자 qna 목록 불러오기
 	 *
 	 */
