@@ -29,13 +29,7 @@ public class AjaxServiceImpl implements AjaxService {
 	@Autowired
 	private JavaMailSender mailSender;
 	
-	@Value("${coolsms.api.key}")
-	private String api_key;
-	
-	@Value("${coolsms.api.secret}")
-	private String api_secret;
-	
-	DefaultMessageService messageService =  NurigoApp.INSTANCE.initialize(api_key, api_secret, "https://api.coolsms.co.kr");
+	DefaultMessageService messageService =  NurigoApp.INSTANCE.initialize("NCS21BCIPH9LBAO3", "BGUIGPE95MYQ4JP3LU9WXS2KERRAYO11", "https://api.coolsms.co.kr");
 
 	// 이메일 중복 검사
 	@Override
