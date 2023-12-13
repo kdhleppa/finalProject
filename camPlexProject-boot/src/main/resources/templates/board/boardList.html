@@ -41,7 +41,7 @@
 			<div id="boardTypeName" th:text="${boardTypeName}">
             	<p>게시판이름</p>
 			</div>
-			  
+			
             <!-- 검색창 -->
             <form th:action="${boardType}" method="get" id="boardSearch">
 
@@ -60,15 +60,19 @@
             </form>
             
         </section>
-
+        
         <hr style="height: 0.2rem; background-color:black; margin-top: 1rem; margin-left: 8%; width: 84%; margin-right: 40%;">
 
-        <section class="chkRadio">
-            <input type="radio" name="typeCheck" class="chk" id="chkCount" value="count">조회 순
-            <input type="radio" name="typeCheck" class="chk" id="chkLike" value="like">좋아요 순
-        </section>
-
-        <section class="boardList">
+		<section class="boardSortSec">
+			<div class="radioArea">
+				<input type="radio" name="boardSort" value="recent" id="recent" class="clicked">
+				<label for="recent">최신순</label>
+				<input type="radio" name="boardSort" value="readCount" id="readCount" >
+				<label for="readCount">조회수 순</label>
+				<input type="radio" name="boardSort" value="likeCount" id="likeCount" >
+				<label for="likeCount">좋아요 순</label>
+			</div>
+		</section>
             
             <br>
 

@@ -67,6 +67,22 @@ public class BoardController {
 		return "board/boardList";
 	}
 	
+//	// 게시글 조회수 순 정렬
+//	@ResponseBody
+//	@GetMapping("/orderReadCount")
+//	public Map<String, Object> OrderReadCount(
+//				@PathVariable("boardType") String boardType,
+//				@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
+//				Model model,
+//				@RequestParam Map<String, Object> paramMap
+//			) {
+//		
+//		Map<String, Object> map = service.orderReadCount(paramMap, cp);
+//		
+//		return map;
+//	}
+	
+	
 	
 	// 게시글 상세 조회
 	@GetMapping("/{boardType}/{boardNo}")
