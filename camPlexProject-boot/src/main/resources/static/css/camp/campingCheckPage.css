@@ -268,6 +268,7 @@ main {
 .mapImage {
     width: 4rem;
     height: 4rem;
+    cursor: pointer;
 }
 
 .mapWriteSec {
@@ -279,6 +280,10 @@ main {
 .mapWrite {
     border-bottom: 1px solid black;
     color: black;
+}
+
+.mapWriteSec > p {
+    cursor: pointer;
 }
 
 /* 컨텐츠 sec */
