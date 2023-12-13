@@ -287,5 +287,12 @@ public class CampController2 {
 		
 	}
 	
+	/*
+	 * @GetMapping("/selectCampAddress") public List<Camp> selectCampAddress() {
+	 * 
+	 * }
+	 */
+	
+	
 	
 }
