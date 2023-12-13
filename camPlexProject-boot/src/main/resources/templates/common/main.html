@@ -19,29 +19,28 @@
     <main>
 
         <ul id="mainImageNum">
-            <li data-menumain="main1" class>
-                <a th:href="@{#main1}">1</a>
-            </li>
-
-            <p>ㅡ</p>
-
-            <li data-menumain="main2" class>
-                <a th:href="@{#main2}">2</a>
-            </li>
-
-            <p>ㅡ</p>
-
-            <li data-menumain="main3" class>
-                <a th:href="@{#main3}">3</a>
-            </li>
-
-            <p>ㅡ</p>
-
-            <li data-menumain="main4" class>
-                <a th:href="@{#main4}">4</a>
-            </li>
-            
-        </ul>
+		    <li data-menumain="main1" class>
+		        <button onclick="scrollToSection('main1')">1</button>
+		    </li>
+		
+		    <p>ㅡ</p>
+		
+		    <li data-menumain="main2" class>
+		        <button onclick="scrollToSection('main2')">2</a>
+		    </li>
+		
+		    <p>ㅡ</p>
+		
+		    <li data-menumain="main3" class>
+		        <button onclick="scrollToSection('main3')">3</button>
+		    </li>
+		
+		    <p>ㅡ</p>
+		
+		    <li data-menumain="main4" class>
+		        <button onclick="scrollToSection('main4')">4</button>
+		    </li>
+		</ul>
 
         <section class="mainImage" id="image-slider">
             
@@ -77,9 +76,7 @@
                 </p>
             </div>
             
-            <div class="mainContent" id="mainFooter">
-            	<th:block th:replace="~{common/footer}"></th:block>
-            </div>
+            <th:block th:replace="~{common/footerForMain}"></th:block>
             
         </section>
 

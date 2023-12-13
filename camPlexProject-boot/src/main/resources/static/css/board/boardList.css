@@ -16,7 +16,6 @@ button {
     unicode-range: U+AC00-D7A3;
 }
 
-
 /* 게시판 상단 메뉴 */
 .boardTypeList {
 	display: flex;
@@ -40,6 +39,28 @@ button {
     margin-left: 5rem;
 }
 
+.col-auto {
+	margin-left: 10rem;
+}
+
+.btn-primary {
+	text-decoration: none;
+	color: black;
+	margin-top: 1rem;
+	margin-left: 3rem;
+	font-size: 17px;
+}
+
+#listCount1 {
+	margin-left: 12rem;
+}
+
+#listCount1, #listCount2, #listCount3 {
+	background-color: transparent;
+	border: none;
+	width: 5rem;
+	height: 2rem;
+}
 
 #boardSearch {
     margin-top: 120px;
@@ -59,6 +80,25 @@ button {
     font-family: 'HakgyoansimSantteutdotumL';
     font-size: 30px;
     color: black;
+}
+
+/* 정렬 선택 */
+.boardSortSec {
+    height: 2rem;
+    margin-top: 20px;
+}
+
+.radioArea {
+    width: 35rem;
+    height: 2rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: 3rem;
+}
+
+.radioArea > input {
+	margin-left: 3rem;
 }
 
 /* 검색창 */
@@ -103,7 +143,7 @@ button {
 
 .chkRadio {
     font-family: 'HakgyoansimSantteutdotumL';
-    margin-top: 30px;
+    margin-top: 10px;
     margin-left: 12%;
 }
 
