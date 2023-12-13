@@ -24,9 +24,11 @@ for(var i = 0 ; i <payBy.length ; i ++){
             alert("현재 점검 중입니다.")
             e.target.checked = false;
         }
+
+
+        
     })
 }
-
 
 
 
@@ -41,8 +43,6 @@ function pay(e){
     }
 
 }
-
-
 
 
 function makeAccount() {
