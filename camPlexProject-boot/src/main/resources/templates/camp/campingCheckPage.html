@@ -23,20 +23,18 @@
 	<!-- 메인 -->
 	<main>
 
-
-
 		<!-- fixed map -->
-		<a class="fixedMapA" href="#">
-			<div class="fixedDiv">
-				<section class="mapImageSec">
-					<img class="mapImage" th:src="@{/images/iconImg/mapImage.png}">
-				</section>
+		
+		<div class="fixedDiv">
+			<section class="mapImageSec">
+				<img class="mapImage" th:src="@{/images/iconImg/mapImage.png}" onclick="mapModal()">
+			</section>
 
-				<section class="mapWriteSec">
-					<p class="mapWrite">Map</p>
-				</section>
-			</div>
-		</a>
+			<section class="mapWriteSec">
+				<p class="mapWrite" onclick="mapModal()">Map</p>
+			</section>
+		</div>
+		
 
 		<div id="content">
 
@@ -159,6 +157,7 @@
 	</main>
 
 	<th:block th:replace="~{common/footer}"></th:block>
+	<th:blcok th:replace="~{map/mapModal}"></th:blcok>
 
 	<script th:inline="javascript">
 
