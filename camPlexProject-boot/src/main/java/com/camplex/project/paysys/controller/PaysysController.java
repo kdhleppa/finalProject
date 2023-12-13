@@ -370,7 +370,7 @@ public class PaysysController {
 			return path;
 			
 		} else {
-			ra.addFlashAttribute("message", "삭제 실패.");
+			ra.addFlashAttribute("message", "삭제할 상품이 없습니다.");
 			path += referer;
 			return path;
 		}
@@ -398,7 +398,7 @@ public class PaysysController {
 			return path;
 			
 		} else {
-			ra.addFlashAttribute("message", "삭제 실패.");
+			ra.addFlashAttribute("message", "삭제할 상품이 없습니다.");
 			path += referer;
 			return path;
 		}
@@ -423,9 +423,7 @@ public class PaysysController {
 		String path = "redirect:";
 		if (checkCartItemNo != null) {
 			for (Integer cartItemNo: checkCartItemNo ) {
-				System.out.println("1");
 				rentPayList data = payService.selectCheckCart(cartItemNo, memberNo);
-				System.out.println("2.data" + data);
 				payList.add(data);
 			}
 			
@@ -465,6 +463,7 @@ public class PaysysController {
 			data.setItemName(item.getItemName());
 			data.setCampName(rsvInfo.getCampName());
 			data.setThumbnail(item.getThumbnail());
+			data.setDiscountRate(item.getDiscountRate());
 			data.setCartItemNo(0);
 			data.setItemQuantity(quantity);
 			data.setReservationNo(reservationNo);
@@ -553,7 +552,7 @@ public class PaysysController {
 			path += referer;
 			return path;
 		} else {
-			ra.addFlashAttribute("message", "삭제실패");
+			ra.addFlashAttribute("message", "삭제할 상품이 없습니다.");
 			path += referer;
 			return path;
 		}
