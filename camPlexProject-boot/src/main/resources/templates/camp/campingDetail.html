@@ -56,12 +56,12 @@
 					<th:block th:if="${starCount}">
 						
 						<div class="starContainer">
-								<img th:id="star_+${numStat.count}"  th:src="@{/images/iconImg/star-fill.png}"
+								<img th:id="star_+${numStat.count}"  th:src="@{/images/iconImg/marsh3.png}"
 								th:each="num : ${#numbers.sequence(1,starCount)}" class="starBtn">
 								
 							<th:block th:if="${starCount &lt; 5}">
 
-								<img th:id="star_+(${numStat.count}+${starCount})" th:src="@{/images/iconImg/star.png}"
+								<img th:id="star_+(${numStat.count}+${starCount})" th:src="@{/images/iconImg/marsh1.png}"
 								th:each="num : ${#numbers.sequence(1,5-starCount)}" class="starBtn">
 							
 							</th:block>
@@ -72,7 +72,7 @@
 					<th:block th:unless="${starCount}">
 						
 						<div class="starContainer">
-								<img th:id="star_+${numStat.count}" th:src="@{/images/iconImg/star.png}" alt=""
+								<img th:id="star_+${numStat.count}" th:src="@{/images/iconImg/marsh1.png}" alt=""
 								th:each="num : ${#numbers.sequence(1,5)}" class="starBtn">
 						</div>
 					

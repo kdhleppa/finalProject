@@ -1,6 +1,7 @@
 const mapContainer = document.getElementById('mapContainer');
 
 // 모달 창 esc버튼 누르면 사라짐
+
 (function(){
 	document.addEventListener('keydown', function(e){
 	  const keyCode = e.keyCode;
@@ -30,7 +31,6 @@ function resizeMap() {
     mapContainerDiv.style.width = '1000px';
     mapContainerDiv.style.height = '1000px'; 
 }
-
 
 function relayout() {    
     

@@ -148,6 +148,19 @@ body {
 
 }
 
+.payMent{
+    display: flex;
+    justify-content: space-between;
+}
+
+.payMent button{
+    background-color: transparent;
+    border: none;
+    color: rgb(255 0 0);
+    cursor: pointer;
+    font-weight: 600;
+}
+
 .payType, .payMent {
     margin-top: 50px;
     border-bottom: 1px solid gray;
@@ -303,4 +316,73 @@ body {
     text-decoration: none;
     margin: 0 1rem;
     font-weight: 600;
+}
+
+#modalContainer{
+	display: flex;
+	flex-direction: column;
+	border-radius: 10px;
+	width: 70%;
+	height: 155px;
+	border-radius: 10px;
+}
+
+#mainContainer{
+	background-color: #fff;
+	padding: 10px;
+	border-radius: 10px;
+	padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#modalContainerPopup {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba(0, 0, 0, 0.5);
+    z-index: 90000;
+}
+
+
+#modalContainerPopup.hidden {
+	display: none;
+}
+
+#mainContainer{
+    width: 70%;
+}
+
+.cancelTable{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    width: 50%;
+
+}
+
+.cancelTable tbody{
+    margin: 10px 0;
+    width: 100%;
+    padding: 5px 0;
+}
+
+.cancelTable tr{
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid;
+    padding: 5px;
+}
+
+.cancelTable th,
+.cancelTable td{
+    flex-basis: 33%;
+    display: flex;
+    justify-content: center;
 }

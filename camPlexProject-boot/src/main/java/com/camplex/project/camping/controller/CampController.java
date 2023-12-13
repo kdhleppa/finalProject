@@ -44,6 +44,18 @@ public class CampController {
 		
 		List<Camp> campList = service.selectCampList();
 		
+		String address = "";
+		
+		for(int i = 0; i < campList.size() ; i++) {
+			
+			String[] tempArr = campList.get(i).getCampAddress().split(" ");
+			
+			address = tempArr[0] + " " + tempArr[1];
+
+			campList.get(i).setCampAddress(address);
+		}
+
+		
 		model.addAttribute("campList", campList);
 		
 		return "camp/campingCheckPage";
@@ -68,6 +80,17 @@ public class CampController {
 		
 		}
 		
+		String address = "";
+		
+		for(int i = 0; i < list.size() ; i++) {
+			
+			String[] tempArr = list.get(i).getCampAddress().split(" ");
+			
+			address = tempArr[0] + " " + tempArr[1];
+
+			list.get(i).setCampAddress(address);
+		}
+		
 		return list;
 	}
 	
@@ -88,6 +111,17 @@ public class CampController {
 		
 		}
 		
+		String address = "";
+		
+		for(int i = 0; i < list.size() ; i++) {
+			
+			String[] tempArr = list.get(i).getCampAddress().split(" ");
+			
+			address = tempArr[0] + " " + tempArr[1];
+
+			list.get(i).setCampAddress(address);
+		}
+		
 		return list;
 	}
 	
@@ -102,6 +136,17 @@ public class CampController {
 		List<Camp> list = new ArrayList<>();
 		
 		list = service.searchCampList(input);
+		
+		String address = "";
+		
+		for(int i = 0; i < list.size() ; i++) {
+			
+			String[] tempArr = list.get(i).getCampAddress().split(" ");
+			
+			address = tempArr[0] + " " + tempArr[1];
+
+			list.get(i).setCampAddress(address);
+		}
 		
 		return list;
 		

@@ -103,11 +103,12 @@ hr {
 .starContainer {
 	display: flex;
 	align-items: flex-end;
+	height: 40px;
 }
 
 .starContainer img {
-	width: 20px;
-	margin: 0 1px;
+	width: 35px;
+	margin: 0 3px;
 }
 
 .starBtn{
