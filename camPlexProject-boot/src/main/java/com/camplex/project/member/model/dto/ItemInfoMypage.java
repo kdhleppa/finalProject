@@ -21,5 +21,8 @@ public class ItemInfoMypage {
 	private int rentalPaymentTotal;
 	private String rentalPaymentType;
 	
+	private String thumbnail;
+	private String itemPrice;
+	
 	
 }

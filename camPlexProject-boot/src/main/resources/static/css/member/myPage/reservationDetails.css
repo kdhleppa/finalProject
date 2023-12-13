@@ -102,24 +102,44 @@ main {
 
 /* ---------------------------- */
 /* 구매 내역 정보 */
-.buyListSection {
-    display: flex;
+#titleSection {
+	display: flex;
     margin-bottom: 20px;
 }
 
-.buyInfo {
+.buyListSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.buyPayInfo {
+	display: flex;
+	flex-basis: 90%;
+}
+
+#title {
     flex-basis: 90%;
 	display: flex;
+}
+
+.buyInfo {
+	display: flex;
 	flex-direction: column;
+    margin-bottom: 20px;
 }
 
 .shopingList {
     flex-basis: 90%;
     display: flex;
+    flex-direction: column;
 }
 
 #campInfoFont, #rentalInfoFont {
 	font-size: 20px;
+}
+
+.campRentalInfo {
+	display: flex;
 }
 
 .campInfo, .rentalInfo {
@@ -157,6 +177,20 @@ main {
 	justify-content: space-evenly;
 }
 
+.itemList {
+	display: flex;
+}
+
+.itemList > img{
+	height: 80px;
+	object-fit: cover;
+}
+
+.itemName{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
 
 
 

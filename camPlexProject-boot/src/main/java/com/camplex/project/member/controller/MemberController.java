@@ -402,40 +402,7 @@ public class MemberController {
 	
 	// 회원 탈퇴 페이지 이동
 	@GetMapping("/memberWithdrawal1")
-	public String memberWithdrawal1(@SessionAttribute("loginMember") Member loginMember,
-									Model model) throws ParseException {
-		
-		int memberNo = loginMember.getMemberNo();
-		
-		MyPage myPageInfo = service.selectMyPageInfo(memberNo);
-
-		List<Reservations> upcomingReservation = new ArrayList<>();
-		
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		
-		Date today = new Date();
-		
-		for(int i = 0 ; i < myPageInfo.getResList().size() ; i++) {
-			
-			Date tempDate = format.parse(myPageInfo.getResList().get(i).getCampOutDate());
-						
-			if(today.before(tempDate)) {
-				
-				Reservations res = new Reservations();
-				res = myPageInfo.getResList().get(i);
-				
-				int resNo = res.getReservationNo();
-				res.setItemList(service.selectItemListMypage(resNo));
-				
-				upcomingReservation.add(res);
-								
-			}
-			
-		}
-		
-		model.addAttribute("upcomingReservation", upcomingReservation);
-		model.addAttribute("myPageInfo", myPageInfo);		
-		
+	public String memberWithdrawal1() {
 		return "member/memberWithdrawal1";
 	}
 	
@@ -580,7 +547,43 @@ public class MemberController {
 	
 	// 예약 내역 페이지 이동
 	@GetMapping("/reservationDetails")
-	public String reservationDetails() {
+	public String reservationDetails(@SessionAttribute("loginMember") Member loginMember,
+									Model model) throws ParseException {
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		MyPage myPageInfo = service.selectMyPageInfo(memberNo);
+
+		List<Reservations> upcomingReservation = new ArrayList<>();
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd (E)");
+		
+		Date today = new Date();
+		
+		for(int i = 0 ; i < myPageInfo.getResList().size() ; i++) {
+			
+			Date tempDate = format.parse(myPageInfo.getResList().get(i).getCampOutDate());
+			String tempEnt = format2.format(myPageInfo.getResList().get(i).getCampEntDate());
+						
+			if(today.before(tempDate)) {
+				
+				Reservations res = new Reservations();
+				res = myPageInfo.getResList().get(i);
+				res.setCampEntDate2(tempEnt);
+				
+				int resNo = res.getReservationNo();
+				res.setItemList(service.selectItemListMypage(resNo));
+				
+				upcomingReservation.add(res);
+								
+			}
+			
+		}
+		
+		model.addAttribute("upcomingReservation", upcomingReservation);
+		model.addAttribute("myPageInfo", myPageInfo);		
+		
 		return "member/myPage/reservationDetails";
 	}
 	

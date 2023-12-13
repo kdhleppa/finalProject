@@ -44,7 +44,7 @@
 		<result property="thumbnail" column="THUMBNAIL"/>
 		<result property="campPayment" column="CAMP_PAYMENT"/>
 		<result property="paymentType" column="PAYMENT_TYPE"/>
-				
+		<result property="campAddress" column="CAMP_ADDRESS"/>
 	</resultMap>
 	
 	<resultMap type="Wishlist" id="wishlist_rm">
@@ -87,6 +87,8 @@
 		<result property="rentalPaymentNo" column="RENTAL_PAYMENT_NO"/>
 		<result property="rentalPaymentTotal" column="RENTAL_PAYMENT_TOTAL"/>
 		<result property="rentalPaymentType" column="RENTAL_PAYMENT_TYPE"/>
+		<result property="thumbnail" column="THUMBNAIL"/>
+		<result property="itemPrice" column="ITEM_PRICE"/>
 	</resultMap>
 	
 	<resultMap type="ceoQna" id="ceoQna_rm">
@@ -143,7 +145,10 @@
 		       CAMP_OUTDATE, ADULT_COUNT, KID_COUNT, DEMAND,
 		        
 			       (SELECT CAMP_NAME FROM CAMPING_SITE
-			       	WHERE CAMP_NO = A.CAMP_NO) CAMP_NAME, 
+			       	WHERE CAMP_NO = A.CAMP_NO) CAMP_NAME,
+			       	
+			       (SELECT CAMP_ADDRESS FROM CAMPING_SITE
+			       	WHERE CAMP_NO = A.CAMP_NO) CAMP_ADDRESS,
 			       	
 			       (SELECT CAMP_DE_NAME FROM CAMPING_DETAIL
 			       	WHERE CAMP_DE_NO = A.CAMP_DE_NO) CAMP_DE_NAME,
@@ -211,6 +216,9 @@
 				(SELECT ITEM_NAME
 				FROM ITEM
 				WHERE ITEM_NO = A.ITEM_NO) ITEM_NAME,
+				(SELECT ITEM_PRICE
+				FROM ITEM
+				WHERE ITEM_NO = A.ITEM_NO) ITEM_PRICE,
 				(SELECT RENTAL_PAYMENT_TOTAL
 				FROM RENTAL_PAYMENT
 				WHERE RENTAL_PAYMENT_NO = A.RENTAL_PAYMENT_NO
@@ -218,7 +226,11 @@
 				(SELECT RENTAL_PAYMENT_TYPE
 				FROM RENTAL_PAYMENT
 				WHERE RENTAL_PAYMENT_NO = A.RENTAL_PAYMENT_NO
-				AND PAYMENT_STATUS_FL = 'Y') RENTAL_PAYMENT_TYPE
+				AND PAYMENT_STATUS_FL = 'Y') RENTAL_PAYMENT_TYPE,
+				(SELECT ITEM_IMG_PATH || ITEM_IMG_RENAME 
+				FROM ITEM_IMG 
+				WHERE ITEM_IMG_ORDER=0 
+				AND ITEM_NO = A.ITEM_NO) THUMBNAIL
 		FROM RENTAL_PAYMENT_ITEM A
 		WHERE RESERVATION_NO = #{resNo}
 	</select>

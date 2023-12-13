@@ -31,12 +31,12 @@
 			<hr id="underLine" />
 
 			<!-- 예약 내역 정보 -->
-			<section class="buyListSection">
+			<section id="titleSection">
 
 				<section class="empty2"></section>
 
-				<section class="shopingList">
-					
+				<section id="title">
+
 					<div class="campInfo" id="campInfoFont">캠핑장 정보</div>
 					<div class="rentalInfo" id="rentalInfoFont">렌탈 상품 정보</div>
 
@@ -47,63 +47,95 @@
 			</section>
 			<section class="buyListSection">
 
-				<section class="empty2"></section>
 
-				<div class="buyInfo">
-					
-					<section class="shopingList">
-					
-						<div class="campInfo">
-							<img src="/images/memberImg/20231127122314_56912.jpg">
-							<div class="campNameInfoPrice">
-								<p>캠핑장 : 캠핑장</p>
-								<p>캠핑장 주소 : 캠핑장 주소</p>
-								<p>기간 : 2023-12-12 ~  2023-12-14</p>
-								<p>캠핑장 금액 : 캠핑장 금액</p>
-							</div>
+				<th:block th:if="${upcomingReservation.size != 0}">
+
+
+
+
+					<div class="buyInfo" th:each="upcomingRes : ${upcomingReservation}">
+
+						<div class="buyPayInfo">
+
+							<section class="empty2"></section>
+
+							<section class="shopingList">
+
+								<div class="campRentalInfo">
+
+									<div class="campInfo">
+										<img th:src="${upcomingRes.thumbnail}">
+										<div class="campNameInfoPrice">
+											<a th:text="|[${upcomingRes.campName}] ( ${upcomingRes.campDeName} )|">캠핑장
+												명</a>
+											<p th:text="|[${upcomingRes.campAddress}] ( ${upcomingRes.campAddress} )|">
+												캠핑장 명</p>
+											<p th:text="|입실 일&nbsp; :&nbsp; ${upcomingRes.campEntDate2}|"></p>
+											<p
+												th:text="|캠핑장 금액&nbsp; :&nbsp; ￦ ${#numbers.formatInteger(upcomingRes.campPayment, 3, 'COMMA')}원|">
+											</p>
+										</div>
+									</div>
+
+									<div class="rentalInfo">
+
+										<div class="rentalSection">
+
+											<div class="rentalNamePrice">
+												
+												<th:block th:if="${upcomingRes.itemList.size > 0}">
+													
+													<th:block th:each="itemList : ${upcomingRes.itemList}">
+														<div class="itemList">
+															<img th:src="${itemList.thumbnail}">
+															<div class="itemName">
+																<p th:text="|${itemList.itemName}|"></p>
+																<p th:text="|결제 금액&nbsp; :&nbsp; ￦ ${#numbers.formatInteger(itemList.itemPrice, 3, 'COMMA')}원|"></p>
+															</div>
+														</div>
+													</th:block>
+												
+												</th:block>
+												
+												<th:block th:if="${upcomingRes.itemList.size == 0}">
+													<p>렌탈 상품&nbsp; : 이용하신 렌탈 상품이 없습니다.</p>
+												</th:block>
+												
+											</div>
+
+										</div>
+
+									</div>
+
+								</div>
+
+								<div>
+									<p th:text="|결제 수단&nbsp; :&nbsp; ${upcomingRes.paymentType} |"></p>
+									<p>총 금액 : 780,000원</p>
+								</div>
+
+							</section>
+
+							<section class="empty2"></section>
+
 						</div>
-						
-						<div class="rentalInfo">
-							<div class="rentalSection">
-								<img src="/images/memberImg/kakaoIMG.png">
-								<div class="rentalNamePrice">
-									<p>렌탈 상품명</p>
-									<p>렌탈 금액</p>
-								</div>
-							</div>
-							<div class="rentalSection">
-								<img src="/images/memberImg/kakaoIMG.png">
-								<div class="rentalNamePrice">
-									<p>렌탈 상품명</p>
-									<p>렌탈 금액</p>
-								</div>
-							</div>
-							<div class="rentalSection">
-								<img src="/images/memberImg/kakaoIMG.png">
-								<div class="rentalNamePrice">
-									<p>렌탈 상품명</p>
-									<p>렌탈 금액</p>
-								</div>
-							</div>
-							<div class="rentalSection">
-								<img src="/images/memberImg/kakaoIMG.png">
-								<div class="rentalNamePrice">
-									<p>렌탈 상품명</p>
-									<p>렌탈 금액</p>
-								</div>
-							</div>
-						</div>
-					
-					
+
+					</div>
+
+
+
+
+				</th:block>
+
+				<th:block th:if="${upcomingReservation.size == 0}">
+
+					<section class="buyHistoryInfo">
+						<section class="buyInfo">
+							<p>내역이 존재하지 않습니다.</p>
+						</section>
 					</section>
-					
-					<p>결제수단 : 카카오페이</p>
-					<p>결제수단 : 무통장입금(최규연 : 123-123123-123)</p>
-					<p>총 금액 : 780,000원</p>
-				</div>
-				
 
-				<section class="empty2"></section>
+				</th:block>
 
 			</section>
 
