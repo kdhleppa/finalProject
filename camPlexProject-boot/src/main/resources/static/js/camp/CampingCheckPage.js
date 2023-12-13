@@ -71,6 +71,7 @@ function more(contentLength){
 	
 }
 
+console.log(memberType)
 
 // 캠핑장 정렬 
 classification.addEventListener('change', (e) => {
@@ -104,19 +105,19 @@ classification.addEventListener('change', (e) => {
 			contentImageDiv.classList.add('contentImageDiv');
 
 			const contentImage = document.createElement('img');
-			contentImage.classList.add('contentImage')
-			contentImage.setAttribute("src", `${camp.thumbnail}`)
-			contentImage.setAttribute("onclick", `location.href = '/camp/${camp.campNo}'`)
+			contentImage.classList.add('contentImage');
+			contentImage.setAttribute("src", `${camp.thumbnail}`);
+			contentImage.setAttribute("onclick", `location.href = '/camp/${camp.campNo}'`);
 
 			contentImageDiv.append(contentImage);
 
 
 			const contentDetailWriteSec = document.createElement('a');
 			contentDetailWriteSec.classList.add('contentDetailWriteSec');
-			contentDetailWriteSec.setAttribute("href", `/camp/${camp.campNo}`)
+			contentDetailWriteSec.setAttribute("href", `/camp/${camp.campNo}`);
 
 			const contentDetailWriteSecCenterSec = document.createElement('section');
-			contentDetailWriteSecCenterSec.classList.add('contentDetailWriteSecCenterSec')
+			contentDetailWriteSecCenterSec.classList.add('contentDetailWriteSecCenterSec');
 
 			const text = document.createElement('p');
 			text.innerText = camp.campName;
@@ -132,7 +133,29 @@ classification.addEventListener('change', (e) => {
 
 			star.append(image, starCount);
 
-			contentDetailWriteSecCenterSec.append(text, star);
+			if(memberType == 'M'){
+				const deleteCampFrm = document.createElement('form');
+				deleteCampFrm.classList.add('deleteCampFrm');
+				deleteCampFrm.setAttribute("action", "/camp2/deleteCamp")
+
+				const campDelete = document.createElement('button');
+				campDelete.classList.add('campDelete');
+				campDelete.innerText = "삭제";
+
+				const campNo = document.createElement('input');
+				campNo.setAttribute("type", "hidden");
+				campNo.setAttribute("name", "campNo");
+				campNo.setAttribute("value", `${camp.campNo}`);
+
+				deleteCampFrm.append(campDelete, campNo);
+
+				contentDetailWriteSecCenterSec.append(text, deleteCampFrm, star);
+
+			} else{
+				
+				contentDetailWriteSecCenterSec.append(text, star);
+
+			}
 
 			contentDetailWriteSec.append(contentDetailWriteSecCenterSec);
 
@@ -184,44 +207,66 @@ searchCamp.addEventListener("keyup", (e) => {
 
 				const contentDetailSec = document.createElement('section');
 				contentDetailSec.classList.add('contentDetailSec');
-	
+
 				const contentImageDiv = document.createElement('div');
 				contentImageDiv.classList.add('contentImageDiv');
-	
+
 				const contentImage = document.createElement('img');
-				contentImage.classList.add('contentImage')
-				contentImage.setAttribute("src", `${camp.thumbnail}`)
-				contentImage.setAttribute("onclick", `location.href = '/camp/${camp.campNo}'`)
-	
+				contentImage.classList.add('contentImage');
+				contentImage.setAttribute("src", `${camp.thumbnail}`);
+				contentImage.setAttribute("onclick", `location.href = '/camp/${camp.campNo}'`);
+
 				contentImageDiv.append(contentImage);
-	
+
+
 				const contentDetailWriteSec = document.createElement('a');
 				contentDetailWriteSec.classList.add('contentDetailWriteSec');
-				contentDetailWriteSec.setAttribute("href", `/camp/${camp.campNo}`)
-	
+				contentDetailWriteSec.setAttribute("href", `/camp/${camp.campNo}`);
+
 				const contentDetailWriteSecCenterSec = document.createElement('section');
-				contentDetailWriteSecCenterSec.classList.add('contentDetailWriteSecCenterSec')
-	
+				contentDetailWriteSecCenterSec.classList.add('contentDetailWriteSecCenterSec');
+
 				const text = document.createElement('p');
 				text.innerText = camp.campName;
-	
+
 				const star = document.createElement('div');
 				star.classList.add('star');
-	
+
 				const image = document.createElement('img');
 				image.setAttribute("src", "/images/iconImg/star-fill.png")
-	
+
 				const starCount = document.createElement('span')
 				starCount.innerText = camp.campingStar
-	
+
 				star.append(image, starCount);
-	
-				contentDetailWriteSecCenterSec.append(text, star);
-	
+
+				if(memberType == 'M'){
+					const deleteCampFrm = document.createElement('form');
+					deleteCampFrm.classList.add('deleteCampFrm');
+					deleteCampFrm.setAttribute("action", "/camp2/deleteCamp")
+
+					const campDelete = document.createElement('button');
+					campDelete.classList.add('campDelete');
+					campDelete.innerText = "삭제";
+
+					const campNo = document.createElement('input');
+					campNo.setAttribute("type", "hidden");
+					campNo.setAttribute("name", "campNo");
+					campNo.setAttribute("value", `${camp.campNo}`);
+
+					deleteCampFrm.append(campDelete, campNo);
+
+					contentDetailWriteSecCenterSec.append(text, deleteCampFrm, star);
+
+				} else{
+					
+					contentDetailWriteSecCenterSec.append(text, star);
+				}
+
 				contentDetailWriteSec.append(contentDetailWriteSecCenterSec);
-	
+
 				contentDetailSec.append(contentImageDiv, contentDetailWriteSec);
-	
+
 				contentSec.append(contentDetailSec);
 			}
 		}
@@ -301,45 +346,66 @@ for(var i = 0 ; i < categoryBtn.length ; i++){
 	
 					const contentDetailSec = document.createElement('section');
 					contentDetailSec.classList.add('contentDetailSec');
-		
+	
 					const contentImageDiv = document.createElement('div');
 					contentImageDiv.classList.add('contentImageDiv');
-		
+	
 					const contentImage = document.createElement('img');
-					contentImage.classList.add('contentImage')
-					contentImage.setAttribute("src", `${camp.thumbnail}`)
-					contentImage.setAttribute("onclick", `location.href = '/camp/${camp.campNo}'`)
-		
+					contentImage.classList.add('contentImage');
+					contentImage.setAttribute("src", `${camp.thumbnail}`);
+					contentImage.setAttribute("onclick", `location.href = '/camp/${camp.campNo}'`);
+	
 					contentImageDiv.append(contentImage);
-		
-		
+	
+	
 					const contentDetailWriteSec = document.createElement('a');
 					contentDetailWriteSec.classList.add('contentDetailWriteSec');
-					contentDetailWriteSec.setAttribute("href", `/camp/${camp.campNo}`)
-		
+					contentDetailWriteSec.setAttribute("href", `/camp/${camp.campNo}`);
+	
 					const contentDetailWriteSecCenterSec = document.createElement('section');
-					contentDetailWriteSecCenterSec.classList.add('contentDetailWriteSecCenterSec')
-		
+					contentDetailWriteSecCenterSec.classList.add('contentDetailWriteSecCenterSec');
+	
 					const text = document.createElement('p');
 					text.innerText = camp.campName;
-		
+	
 					const star = document.createElement('div');
 					star.classList.add('star');
-		
+	
 					const image = document.createElement('img');
 					image.setAttribute("src", "/images/iconImg/star-fill.png")
-		
+	
 					const starCount = document.createElement('span')
 					starCount.innerText = camp.campingStar
-		
+	
 					star.append(image, starCount);
-		
-					contentDetailWriteSecCenterSec.append(text, star);
-		
+	
+					if(memberType == 'M'){
+						const deleteCampFrm = document.createElement('form');
+						deleteCampFrm.classList.add('deleteCampFrm');
+						deleteCampFrm.setAttribute("action", "/camp2/deleteCamp")
+	
+						const campDelete = document.createElement('button');
+						campDelete.classList.add('campDelete');
+						campDelete.innerText = "삭제";
+	
+						const campNo = document.createElement('input');
+						campNo.setAttribute("type", "hidden");
+						campNo.setAttribute("name", "campNo");
+						campNo.setAttribute("value", `${camp.campNo}`);
+	
+						deleteCampFrm.append(campDelete, campNo);
+	
+						contentDetailWriteSecCenterSec.append(text, deleteCampFrm, star);
+	
+					} else{
+						
+						contentDetailWriteSecCenterSec.append(text, star);
+					}
+	
 					contentDetailWriteSec.append(contentDetailWriteSecCenterSec);
-		
+	
 					contentDetailSec.append(contentImageDiv, contentDetailWriteSec);
-		
+	
 					contentSec.append(contentDetailSec);
 				}
 			}

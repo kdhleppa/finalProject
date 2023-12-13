@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>렌탈 상품 CRUD</title>
+	<link rel="stylesheet" th:href="@{/css/map/mapModal.css}">
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}" rel="stylesheet">
+</head>
+<body>
+		
+	<div id="mapContainer" class="hidden">
+		
+		<div class="mapModalDiv" id="map">
+			Hello World
+		</div>
+		
+	</div>
+		
+	
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0192cd18a9c63c5978c5ab52284189af"></script>
+    <script th:src="@{/js/map/mapModal.js}"></script>
+
+</body>
+</html>
