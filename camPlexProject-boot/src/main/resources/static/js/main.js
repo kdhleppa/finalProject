@@ -5,6 +5,7 @@ const lastPage = container.length -1; // 마지막 페이지
 let isScrolling = false;
 
 window.addEventListener('wheel',(e)=>{
+    console.log(e.deltaY)
     e.preventDefault();
     
     if (!isScrolling) {
@@ -34,3 +35,10 @@ window.addEventListener('wheel',(e)=>{
     }
 }, { passive: false });
 	
+document.getElementById('main1Btn').addEventListener("click", () => {
+    
+    
+    const main1 = document.getElementById('main1').offsetHeight;
+    window.scrollTo({main1, behaviors:'smooth'});
+
+})

@@ -132,7 +132,7 @@ classification.addEventListener('change', (e) => {
 			star.classList.add('star');
 
 			const image = document.createElement('img');
-			image.setAttribute("src", "/images/iconImg/star-fill.png")
+			image.setAttribute("src", "/images/iconImg/marsh3.png")
 
 			const starCount = document.createElement('span')
 			starCount.innerText = camp.campingStar
@@ -247,7 +247,7 @@ searchCamp.addEventListener("keyup", (e) => {
 				star.classList.add('star');
 
 				const image = document.createElement('img');
-				image.setAttribute("src", "/images/iconImg/star-fill.png")
+				image.setAttribute("src", "/images/iconImg/marsh3.png")
 
 				const starCount = document.createElement('span')
 				starCount.innerText = camp.campingStar
@@ -395,7 +395,7 @@ for(var i = 0 ; i < categoryBtn.length ; i++){
 					star.classList.add('star');
 
 					const image = document.createElement('img');
-					image.setAttribute("src", "/images/iconImg/star-fill.png")
+					image.setAttribute("src", "/images/iconImg/marsh3.png")
 
 					const starCount = document.createElement('span')
 					starCount.innerText = camp.campingStar
