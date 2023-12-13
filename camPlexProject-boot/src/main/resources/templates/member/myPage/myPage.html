@@ -109,12 +109,12 @@
 										</div>
 										<div>
 											<p th:text="|결제 수단&nbsp; :&nbsp; ${upcomingRes.paymentType} |"></p>
-											<p th:text="|입실 일&nbsp;&nbsp; &nbsp; :&nbsp; ${upcomingRes.campEntDate}|"></p>
+											<p th:text="|입실 일&nbsp;&nbsp; &nbsp; :&nbsp; ${upcomingRes.campEntDate2}|"></p>
 											<p th:text="|결제 금액&nbsp; :&nbsp; ￦ ${#numbers.formatInteger(upcomingRes.campPayment, 3, 'COMMA')}원|"></p>
 											
 											<th:block th:if="${upcomingRes.itemList.size > 0}">
 												<p th:if="${upcomingRes.itemList.size == 1}" th:text="|렌탈 상품 &nbsp; :&nbsp; ${upcomingRes.itemList[0].itemName}|"></p>
-												<p th:if="${upcomingRes.itemList.size > 1}" th:text="|렌탈 상품 &nbsp; :&nbsp; ${upcomingRes.itemList[0].itemName} 외 ${#lists.size(upcomingRes.itemList)-2} 개 상품|"></p>
+												<p th:if="${upcomingRes.itemList.size > 1}" th:text="|렌탈 상품 &nbsp; :&nbsp; ${upcomingRes.itemList[0].itemName} 외 ${#lists.size(upcomingRes.itemList)-1} 개 상품|"></p>
 											</th:block>
 											<th:block th:if="${upcomingRes.itemList.size == 0}">
 												<p>렌탈 상품&nbsp; : 이용하신 렌탈 상품이 없습니다.</p>
@@ -183,11 +183,11 @@
 										</div>
 										<div>
 											<p th:text="|결제 정보&nbsp; :&nbsp; ${oldRes.paymentType}|"></p>
-											<p th:text="|입실일 &nbsp; :&nbsp; ${oldRes.campEntDate}|"></p>
+											<p th:text="|입실일 &nbsp; :&nbsp; ${oldRes.campEntDate2}|"></p>
 											<p th:text="|결제 금액&nbsp; :&nbsp; ￦ ${#numbers.formatInteger(oldRes.campPayment, 3, 'COMMA')}원|"></p>
 											<th:block th:if="${oldRes.itemList.size > 0}">
 												<p th:if="${oldRes.itemList.size == 1}" th:text="|렌탈 상품 &nbsp; :&nbsp; ${oldRes.itemList[0].itemName}|"></p>
-												<p th:if="${oldRes.itemList.size > 1}" th:text="|렌탈 상품 &nbsp; :&nbsp; ${oldRes.itemList[0].itemName} 외 ${#lists.size(oldRes.itemList)-2} 개 상품|"></p>
+												<p th:if="${oldRes.itemList.size > 1}" th:text="|렌탈 상품 &nbsp; :&nbsp; ${oldRes.itemList[0].itemName} 외 ${#lists.size(oldRes.itemList)-1} 개 상품|"></p>
 											</th:block>
 											<th:block th:if="${oldRes.itemList.size == 0}">
 												<p>렌탈 상품&nbsp; : 이용하신 렌탈 상품이 없습니다.</p>

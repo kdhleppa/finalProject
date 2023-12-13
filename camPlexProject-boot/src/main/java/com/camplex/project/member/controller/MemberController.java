@@ -271,17 +271,20 @@ public class MemberController {
 		List<Reservations> upcomingReservation = new ArrayList<>();
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd (E)");
 		
 		Date today = new Date();
 		
 		for(int i = 0 ; i < myPageInfo.getResList().size() ; i++) {
 			
 			Date tempDate = format.parse(myPageInfo.getResList().get(i).getCampOutDate());
-						
+			String tempEnt = format2.format(myPageInfo.getResList().get(i).getCampEntDate());			
+			
 			if(today.after(tempDate)) {
 				
 				Reservations res = new Reservations();
 				res = myPageInfo.getResList().get(i);
+				res.setCampEntDate2(tempEnt);
 				
 				int resNo = res.getReservationNo();
 				res.setItemList(service.selectItemListMypage(resNo));
@@ -293,6 +296,7 @@ public class MemberController {
 				
 				Reservations res = new Reservations();
 				res = myPageInfo.getResList().get(i);
+				res.setCampEntDate2(tempEnt);
 				
 				int resNo = res.getReservationNo();
 				res.setItemList(service.selectItemListMypage(resNo));
