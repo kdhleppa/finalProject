@@ -113,7 +113,6 @@ public class Pagination {
 	}
 
 	
-	
 	// 페이징 처리에 필요한 값을 계산하는 메소드
 	private void makePagination() {
 		
@@ -131,8 +130,6 @@ public class Pagination {
 		//  101  /  10 = 10.1 == 11
 		maxPage  =   (int)Math.ceil( (double)listCount / limit );
 		
-		
-		
 		// * startPage : 페이지네이션 목록에서 제일 앞에 보여지는 페이지 번호
 		
 		// 페이지네이션 목록이 10개씩 보여진다고 했을 때
@@ -142,16 +139,12 @@ public class Pagination {
 		
 		startPage = (currentPage-1) / pageSize * pageSize + 1;
 		
-		
-		
 		// * endPage : 페이지네이션 목록에서 가장 끝 페이지 번호
 		// 페이지네이션 목록이 10개씩 보여진다고 했을 때
 		// 현재 페이지가 1~10 인 경우 :  10 페이지
 		// 현재 페이지가 11~20 인 경우 : 20 페이지
 		// 현재 페이지가 21~30 인 경우 : 30 페이지
 		endPage = startPage + pageSize - 1;
-		
-		
 		
 		// ** 계산된 endPage가 전체 페이지네이션 목록 수(maxPage)를 초과하는 경우
 		if(endPage > maxPage) {

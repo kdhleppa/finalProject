@@ -4,6 +4,7 @@
 }
 
 body{
+	overflow: hidden;
 	height:100%;
 }
 
@@ -53,7 +54,7 @@ button {
     font-style: bolder;
 }
 
-#mainImageNum a {
+#mainImageNum button {
     font-family: 'HakgyoansimSantteutdotumL';
     font-size: 28px;
     color: white;

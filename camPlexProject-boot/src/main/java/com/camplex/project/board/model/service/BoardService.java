@@ -52,5 +52,12 @@ public interface BoardService {
 	 */
 	List<String> selectImageList();
 
+//	/** 게시글 조회수 순 정렬
+//	 * @param paramMap
+//	 * @param cp
+//	 * @return
+//	 */
+//	Map<String, Object> orderReadCount(Map<String, Object> paramMap, int cp);
+
 	
 }

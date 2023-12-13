@@ -257,6 +257,7 @@ main {
     left: 90%;
     display: flex;
     flex-direction: column;
+    z-index: 1000;
 }
 
 .mapImageSec {

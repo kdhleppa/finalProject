@@ -14,24 +14,65 @@ if(insertBtn != null) { // 로그인 여부에 따라 insertBtn에 있는가 없
 	});
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    const currentSortType = /*[[${param.typeCheck}]]*/ ''; // 이전에 선택된 정렬 유형
-    const currentBoardType = /*[[${boardType}]]*/ ''; // 현재 게시판 유형
-    const queryParams = new URLSearchParams(window.location.search);
-
-    // 이전에 선택된 정렬 유형이 있으면 해당 라디오 버튼을 체크
-    if (currentSortType) {
-        document.querySelector('input[name="typeCheck"][value="' + currentSortType + '"]').checked = true;
-    }
-
-    // 라디오 버튼 변경 이벤트 리스너 추가
-    document.querySelectorAll('input[name="typeCheck"]').forEach(function (radio) {
-        radio.addEventListener('change', function () {
-            const newSortType = this.value;
-
-            // 현재 게시판 타입과 선택된 정렬 유형을 이용하여 새로운 URL을 생성
-            const newUrl = '/board/' + currentBoardType + '?cp=1&typeCheck=' + newSortType;
-            window.location.href = newUrl;
-        });
-    });
-});
+const boardSort = document.querySelectorAll('input[name="boardSort"]');
+let overlayScreen = document.querySelector(`.overlayScreen`);
+	
+for(var i = 0 ; i < boardSort.length ; i++) {
+	
+	boardSort[i].addEventListener("change", e => {
+		
+		let boardList = document.querySelectorAll('.boardList')
+		
+		overlayScreen.addEventListener("animationend", function handler() {
+			this.removeEventListener("animationend", handler);
+			this.classList.remove("play");
+		})
+		
+		if(e.target.value == 'recent') {
+			
+			fetch("/board/{boardType:[A-Z]+}")
+			.then(resp => resp.json())
+			.then(data => {
+				
+				e.defaultPrevented();
+				
+			})
+			
+		}
+		
+		if(e.target.value == 'readCount') {
+			
+			for(var i = 0; i < boardSort.length; i++) {
+				boardSort[i].classList.remove('clicked')
+			}
+			
+			e.target.classList.add('clicked')
+			
+			fetch("/board/orderReadCount")
+			.then(resp => resp.json())
+			.then(data => {
+				
+				console.log(data);
+				
+			})
+		}
+		
+		if(e.target.value == 'likeCount') {
+			
+			for(var i = 0; i < boardSort.length; i++) {
+				boardSort[i].classList.remove('clicked')
+			}
+			
+			e.target.classList.add('clicked')
+			
+			fetch("/board/orderLikeCount")
+			.then(resp => resp.json())
+			.then(data => {
+				
+				console.log(data);
+				
+			})
+		}
+		
+	})
+}
