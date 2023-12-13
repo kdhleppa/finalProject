@@ -123,7 +123,10 @@
 								
 								<a th:href="@{/camp/{campNo}(campNo = ${camp.campNo})}" class="contentDetailWriteSec">
 									<section class="contentDetailWriteSecCenterSec">
-										<p th:text="${camp.campName}"></p>
+										<div>
+											<p th:text="${camp.campName}"></p>
+											<p id="address" th:text="${camp.campAddress}"></p>											
+										</div>
 										
 										<th:block th:if="${session.loginMember?.memberType == 'C'} or ${session.loginMember?.memberType == 'M'}">
 											
@@ -135,7 +138,7 @@
 										</th:block>
 										
 										<div class="star">
-											<img th:src="@{/images/iconImg/star-fill.png}" alt="">
+											<img th:src="@{/images/iconImg/marsh3.png}" alt="">
 											<span th:text="${camp.campingStar}">0</span>
 										</div>
 									</section>

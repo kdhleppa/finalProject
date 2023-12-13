@@ -1,5 +1,6 @@
 package com.camplex.project.paysys.model.dto;
 
+import java.util.Date;
 import java.util.List;
 
 import com.camplex.project.member.model.dto.ItemInfoMypage;
@@ -20,7 +21,8 @@ public class Reservations {
 	private int memberNo;
 	private int campNo;
 	private int campDeNo;
-	private String campEntDate;
+	private Date campEntDate;
+	private String campEntDate2;
 	private String campOutDate;
 	private int adultCount;
 	private int kidCount;

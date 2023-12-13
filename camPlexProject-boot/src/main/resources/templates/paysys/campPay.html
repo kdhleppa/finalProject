@@ -15,12 +15,13 @@
 </head>
 <body>
     <th:block th:replace="~{common/headerForContent}"></th:block>
+    <th:block th:replace="~{paysys/cancelInfo}"></th:block>
 
     <section class="container">
         <div class="emptySpace"></div>
         
         <form th:action="@{payDone}" class="midContainer" id="payFrm" method="post">
-            <div class="reservationText"><p>Reservation List</p></div>
+            <div class="reservationText"><p>Reservation</p></div>
             <div class="campNameContainer">
                 <h1 th:text="${info.campName}">캠핑장 이름</h1> <p th:text="'( ' + ${info.campDeName} + ' )'">호실</p>
                 <input type="hidden" name="campName" th:value="${info.campName}">
@@ -83,6 +84,7 @@
 
             <div class="payMent">
                 <p>결제 금액</p>
+                <button type="button" id="cancelInfoBtn">취소수수료 안내</button>
             </div>
             <table class="reservationSite">
                 <tr>
@@ -91,7 +93,7 @@
 						 <p id="price" th:text="${#numbers.formatInteger(info.price, 3, 'COMMA')} 
                                 + '원 '
                                 + '(1박 : '
-                                + ${info.priceOneDay}
+                                + ${#numbers.formatInteger(info.priceOneDay, 3, 'COMMA')}
                                 + '원)'
                                 "></p>
 						<input type="hidden" name="price" th:value="${info.price}">

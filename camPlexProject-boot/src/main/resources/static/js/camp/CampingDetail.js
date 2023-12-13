@@ -508,6 +508,8 @@ document.addEventListener("click", function (e) {
 });
 
 
+
+
 function clickStar(star) {
 
 	if (loginMember == null) {
@@ -523,6 +525,8 @@ function clickStar(star) {
 
 			if (count > 0) {
 
+			
+
 				starContainer.innerHTML = '';
 
 				for (var i = 0; i < 5; i++) {
@@ -531,15 +535,17 @@ function clickStar(star) {
 
 						const starBtn = document.createElement("img")
 						starBtn.setAttribute('id', "star_" + (i + 1))
-						starBtn.setAttribute('src', "/images/iconImg/star-fill.png")
 						starBtn.classList.add('starBtn')
+						starBtn.setAttribute('src', "/images/iconImg/marsh4.png")
 						starContainer.append(starBtn)
+
+						setTimeout(function(){starBtn.setAttribute('src', "/images/iconImg/marsh3.png")}, 300)
 
 					} else {
 
 						const starBtn = document.createElement("img")
 						starBtn.setAttribute('id', "star_" + (i + 1))
-						starBtn.setAttribute('src', "/images/iconImg/star.png")
+						starBtn.setAttribute('src', "/images/iconImg/marsh1.png")
 						starBtn.classList.add('starBtn')
 						starContainer.append(starBtn)
 					}

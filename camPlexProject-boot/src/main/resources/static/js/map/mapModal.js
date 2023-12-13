@@ -1,6 +1,8 @@
 
 // 모달 창 esc버튼 누르면 사라짐
+
 const mapContainer = document.getElementById('mapContainer');
+
 
 (function(){
 	document.addEventListener('keydown', function(e){
@@ -15,6 +17,7 @@ const mapContainer = document.getElementById('mapContainer');
 // 모달 창 띄우기 함수
 function mapModal() {
 	mapContainer.classList.remove('hidden');
+
 
 	// 카카오 맵 api
 	var mapKko = document.getElementById('mapKko'), // 지도를 표시할 div 

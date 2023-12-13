@@ -39,8 +39,8 @@ function updateQuantityAndTotal(index, change) {
     var discountRateElement = document.getElementById('discountRate' + index);
     var currentQuantity = parseInt(quantityElement.textContent) || 0;
     var itemPrice = parseFloat(document.querySelector('[data-index="' + index + '"]').dataset.price) || 0;
-    var discountRate = parseFloat(discountRateElement ? discountRateElement.value : 0);
-
+    var discountRate = discountRateElement.value;
+    console.log(discountRate);
     // 새 수량 계산
     var newQuantity = currentQuantity + change;
     if (newQuantity > 0) {
@@ -52,9 +52,7 @@ function updateQuantityAndTotal(index, change) {
         // 할인율이 적용되는 경우
         if (discountRate > 0) {
             var discountedPrice = newTotalPrice * (1 - discountRate / 100);
-            totalPriceElement.innerHTML = '<del>₩' + newTotalPrice.toLocaleString() + '</del><br>' +
-                                          '<span style="color: red;">(' + discountRate + '%↓)</span><br>' +
-                                          '₩' + discountedPrice.toLocaleString() + '원';
+            totalPriceElement.textContent = '₩' + discountedPrice.toLocaleString() + '원';
         } else {
             // 할인율이 적용되지 않는 경우
             totalPriceElement.textContent = '₩' + newTotalPrice.toLocaleString() + '원';
@@ -68,7 +66,7 @@ function updateQuantityAndTotal(index, change) {
 function updateOverallTotal() {
     var total = 0;
     document.querySelectorAll('.itemListTB td[id^="totalPrice"]').forEach(function(td) {
-        var price = parseInt(td.textContent.replace('원', '')) || 0;
+        var price = parseInt(td.textContent.replace(/₩|원|,/g, '')) || 0;
         total += price;
     });
     document.getElementById('overallTotal').textContent = total + '원';

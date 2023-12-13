@@ -13,22 +13,56 @@ for(var i = 0 ; i <payBy.length ; i ++){
 
             payFrm.addEventListener("submit", (e) => {
                 
-                pay(e)    
-				
+                pay(e)
+
+                if(!confirm('취소수수료에 대한 안내를 확인 하셨습니까?')){
+                    e.preventDefault();
+                    return;
+                }
             })
 
         } else if (e.target.value == 'k'){
             payFrm.action ="kakao"
             bankAccountContainer.innerHTML = "";
+
+            payFrm.addEventListener("submit", (e) => {
+                
+                if(!confirm('취소수수료에 대한 안내를 확인 하셨습니까?')){
+                    alert("결제금액란의 취소수수료 안내를 확인해주세요")
+                    e.preventDefault();
+                    return;
+                }
+            })
+
         } else if (e.target.value == 'n'){
             alert("현재 점검 중입니다.")
             e.target.checked = false;
+            bankAccountContainer.innerHTML = "";
         }
 
-
-        
     })
 }
+
+payFrm.addEventListener("submit", e => {
+
+    var tempCount = 0;
+
+    for(var i = 0 ; i <payBy.length ; i ++){
+        
+        if(payBy[i].checked){
+            tempCount++;
+        }
+    }
+
+    if(tempCount == 0){
+
+        alert("결제 수단을 선택해주세요");
+        e.preventDefault();
+        return;
+    
+    } 
+
+})
 
 
 
@@ -92,3 +126,17 @@ function makeAccount() {
 
 
 
+const cancelInfoBtn = document.getElementById("cancelInfoBtn");
+const modalContainerPopup = document.getElementById('modalContainerPopup');
+
+cancelInfoBtn.addEventListener("click", () => {
+	
+	modalContainerPopup.classList.remove('hidden');
+	
+})
+
+window.addEventListener('click', (e) => {
+	
+	e.target === modalContainerPopup ? modalContainerPopup.classList.add('hidden') : false
+	
+});

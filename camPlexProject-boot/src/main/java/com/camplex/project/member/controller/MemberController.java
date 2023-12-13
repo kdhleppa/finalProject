@@ -263,25 +263,28 @@ public class MemberController {
 							Model model
 						) throws ParseException {
 		
-		int memberNo = loginMember.getMemberNo(); 
+		int memberNo = loginMember.getMemberNo();
 		
-		MyPage myPageInfo =  service.selectMyPageInfo(memberNo);
+		MyPage myPageInfo = service.selectMyPageInfo(memberNo);
 		
 		List<Reservations> olderReservation = new ArrayList<>();
 		List<Reservations> upcomingReservation = new ArrayList<>();
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd (E)");
 		
 		Date today = new Date();
 		
 		for(int i = 0 ; i < myPageInfo.getResList().size() ; i++) {
 			
 			Date tempDate = format.parse(myPageInfo.getResList().get(i).getCampOutDate());
-						
+			String tempEnt = format2.format(myPageInfo.getResList().get(i).getCampEntDate());			
+			
 			if(today.after(tempDate)) {
 				
 				Reservations res = new Reservations();
 				res = myPageInfo.getResList().get(i);
+				res.setCampEntDate2(tempEnt);
 				
 				int resNo = res.getReservationNo();
 				res.setItemList(service.selectItemListMypage(resNo));
@@ -293,6 +296,7 @@ public class MemberController {
 				
 				Reservations res = new Reservations();
 				res = myPageInfo.getResList().get(i);
+				res.setCampEntDate2(tempEnt);
 				
 				int resNo = res.getReservationNo();
 				res.setItemList(service.selectItemListMypage(resNo));
@@ -339,6 +343,7 @@ public class MemberController {
 	public String updateMember(@SessionAttribute("loginMember") Member loginMember,
 								Member inputMember,
 								@RequestParam("profileImg") MultipartFile profileImg,
+								@RequestParam("afterImg") String afterImg,
 								RedirectAttributes ra
 								) throws Exception {
 		
@@ -347,8 +352,15 @@ public class MemberController {
 		
 		inputMember.setMemberNo(loginMember.getMemberNo());
 		
-		if(profileImg.getSize() == 0) {
-			inputMember.setMemberProfileImg(loginMember.getMemberProfileImg());
+		if(profileImg.getSize() == 0) { // input file이 없음 == 기존 이미지 사용 or 삭제버튼(기본 이미지)
+			
+			// 기본 이미지인지 아닌지 확인
+			if(afterImg.isEmpty()) { // 기본 이미지라면 == 삭제버튼 O
+				inputMember.setMemberProfileImg("/images/memberImg/gg_profile.png");
+			} else { // 기본이미지가 아니라면 == 삭제버튼 X, 기존 이미지 사용
+				inputMember.setMemberProfileImg(loginMember.getMemberProfileImg());
+			}
+			
 		}
 		
 		int result = service.updateMember(profileImg, inputMember);
@@ -390,7 +402,40 @@ public class MemberController {
 	
 	// 회원 탈퇴 페이지 이동
 	@GetMapping("/memberWithdrawal1")
-	public String memberWithdrawal1() {
+	public String memberWithdrawal1(@SessionAttribute("loginMember") Member loginMember,
+									Model model) throws ParseException {
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		MyPage myPageInfo = service.selectMyPageInfo(memberNo);
+
+		List<Reservations> upcomingReservation = new ArrayList<>();
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
+		Date today = new Date();
+		
+		for(int i = 0 ; i < myPageInfo.getResList().size() ; i++) {
+			
+			Date tempDate = format.parse(myPageInfo.getResList().get(i).getCampOutDate());
+						
+			if(today.before(tempDate)) {
+				
+				Reservations res = new Reservations();
+				res = myPageInfo.getResList().get(i);
+				
+				int resNo = res.getReservationNo();
+				res.setItemList(service.selectItemListMypage(resNo));
+				
+				upcomingReservation.add(res);
+								
+			}
+			
+		}
+		
+		model.addAttribute("upcomingReservation", upcomingReservation);
+		model.addAttribute("myPageInfo", myPageInfo);		
+		
 		return "member/memberWithdrawal1";
 	}
 	
@@ -531,6 +576,12 @@ public class MemberController {
 		ra.addFlashAttribute("message", message);
 		
 		return path;
+	}
+	
+	// 예약 내역 페이지 이동
+	@GetMapping("/reservationDetails")
+	public String reservationDetails() {
+		return "member/myPage/reservationDetails";
 	}
 	
 	// 위시리스트 추가

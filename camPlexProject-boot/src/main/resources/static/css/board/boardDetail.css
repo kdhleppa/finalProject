@@ -144,6 +144,7 @@ img {
 	height: 13rem;
 	border-radius: 20px;
 	overflow: hidden;
+    object-fit: cover;
 }
 
 .img-box {
