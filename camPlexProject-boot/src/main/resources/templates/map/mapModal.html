@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>렌탈 상품 CRUD</title>
+    <title>맵 모달</title>
 	<link rel="stylesheet" th:href="@{/css/map/mapModal.css}">
     <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
     <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
@@ -13,14 +13,36 @@
 		
 	<div id="mapContainer" class="hidden">
 		
-		<div class="mapModalDiv" id="map">
-			Hello World
+		<div class="mapModalDiv">
+			<div class="mapKko" id="mapKko"></div>
+			<div class="campTypeDiv">
+				
+				<section class="campTypeSec">
+                    <img class="campTypeImages" th:src="@{/images/iconImg/autoCampImgIcon.png}">
+                    <span>오토캠핑</span>
+                </section>
+				<section class="campTypeSec">
+                    <img class="bagCampImg" th:src="@{/images/iconImg/backCampImgIcon.png}">
+                    <section class="campTypeSecBlank"></section>
+                    <span>백패킹</span>
+                </section>
+				<section class="carCampTypeSec">
+                    <img class="carCampImg" th:src="@{/images/iconImg/carCampImgIcon.png}">
+                    <section class="campTypeSecBlank"></section>
+                    <span>차박캠핑</span>
+                </section>
+				<section class="campTypeSec">
+                    <img class="campTypeImages" th:src="@{/images/iconImg/glampingCampImgIcon.png}">
+                    <span>글램핑</span>
+                </section>
+				
+			</div>
 		</div>
 		
 	</div>
 		
 	
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0192cd18a9c63c5978c5ab52284189af"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=0192cd18a9c63c5978c5ab52284189af&libraries=services,clusterer,drawing"></script>
     <script th:src="@{/js/map/mapModal.js}"></script>
 
 </body>
