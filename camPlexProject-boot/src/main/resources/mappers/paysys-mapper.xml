@@ -28,7 +28,7 @@
 		<result property="reservationNo" column="RESERVATION_NO"/>
 		<result property="campEntdate" column="CAMP_ENTDATE"/>
 		<result property="campOutdate" column="CAMP_OUTDATE"/>
-		
+		<result property="discountRate" column="DISCOUNT_RATE"/>
 		<collection property="imageList"
 					select="selectImageList"
 					column="ITEM_NO"

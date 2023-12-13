@@ -37,7 +37,7 @@
 								<input type="hidden" name="reservationNo" th:value="${rent.reservationNo}">
 								<input type="hidden" name="cartItemNo" th:value="${rent.cartItemNo}">
 								<input type="hidden" name="itemName" th:value="${rent.itemName}">
-								<input type="hidden" name="discountRate" th:value="${rent.discountRate}">
+								<input type="hidden" th:id="'discountRate'+${i.index}" name="discountRate" th:value="${rent.discountRate}">
 								<input type="hidden" class="index-input" th:id="'index'+${i.index}" th:value="${i.index}">
 								<input th:if="${rent.itemQuantity}" type="hidden" th:id="'rentalItemQuantity'+${i.index}" name="rentalItemQuantity" th:value="${rent.itemQuantity}">
 							</td>
@@ -49,7 +49,12 @@
 					            &nbsp;&nbsp;<span th:id="'quantity'+${i.index}" th:text="${rent.itemQuantity}" ></span>&nbsp;&nbsp;
 					            <button type="button" class="qBtn plusBtn" th:data-index="${i.index}" th:data-price="${rent.itemPrice}">+</button>
 		                    </td>
-		                    <td th:id="'totalPrice'+${i.index}">[[${rent.itemPrice * rent.itemQuantity}]]원</td>
+		                    <th:block th:if="${rent.discountRate == 0}">
+		                    	<td th:id="'totalPrice'+${i.index}">₩[[${#numbers.formatInteger(rent.itemPrice * rent.itemQuantity, 3, 'COMMA')}]]원</td>
+		                    </th:block>
+		                    <th:block th:unless="${rent.discountRate == 0}">
+								<td th:id="'totalPrice'+${i.index}">₩[[${#numbers.formatInteger((rent.itemPrice * (100 - rent.discountRate) / 100) * rent.itemQuantity, 3, 'COMMA')}]]원</td>
+							</th:block>
 	                        <td><button type="button" th:id="'deleteBtn' + ${i.index}" onclick="deleteBtn(this)" th:data-index="${i.index}" class = "grayBtn">DELETE</button></td>
 	                        
 	                    </tr>

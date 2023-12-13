@@ -30,9 +30,14 @@
 }
 
 .mapModalDiv {
-	width: 50rem;
-	height: 30rem;
+	width: 80rem;
+	height: 50rem;
     background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid black;
 }
 
 
