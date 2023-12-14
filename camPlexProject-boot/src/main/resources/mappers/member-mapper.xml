@@ -54,6 +54,8 @@
 		<result property="itemNo" column="ITEM_NO"/>
 		<result property="thumbnail" column="THUMBNAIL"/>
 		<result property="itemName" column="ITEM_NAME"/>
+		<result property="campName" column="CAMP_NAME"/>
+		<result property="campThumbnail" column="CAMP_THUMBNAIL"/>
 	</resultMap>
 	
 	<resultMap type="Qna" id="qna_rm">
@@ -185,6 +187,7 @@
 		
 		FROM WISH_LIST A
 		WHERE MEMBER_NO = #{memberNo}
+		AND CAMP_NO IS NULL
 	</select>
 	
 	<!-- collectoion 중 qna -->
@@ -429,6 +432,42 @@
 		FROM "CEO_MEMBER"
 		JOIN "MEMBER" USING(MEMBER_NO)
 		WHERE MEMBER_TYPE = 'U'
+	</select>
+	
+	<!--  마이페이지 아이템 위시리스트 조회 -->
+	<select id="selectItemWish" resultMap="wishlist_rm">
+		SELECT WISHLIST_NO, MEMBER_NO, CAMP_NO, ITEM_NO, 
+		
+				(SELECT ITEM_NAME
+				FROM ITEM
+				WHERE ITEM_NO = A.ITEM_NO) ITEM_NAME,
+				
+				(SELECT (ITEM_IMG_PATH || ITEM_IMG_RENAME) 
+				FROM ITEM_IMG
+				WHERE ITEM_NO = A.ITEM_NO
+				AND ITEM_IMG_ORDER = 0) THUMBNAIL
+		
+		FROM WISH_LIST A
+		WHERE MEMBER_NO = #{memberNo}
+		AND CAMP_NO IS NULL
+	</select>
+	
+	<!--  마이페이지 캠핑 위시리스트 조회 -->
+	<select id="selectCampWish" resultMap="wishlist_rm">
+		SELECT WISHLIST_NO, MEMBER_NO, CAMP_NO, ITEM_NO,
+		
+				(SELECT CAMP_NAME
+				FROM CAMPING_SITE
+				WHERE CAMP_NO = A.CAMP_NO) CAMP_NAME,
+				
+				(SELECT (CAMP_IMG_PATH || CAMP_IMG_RENAME) 
+				FROM CAMPING_SITE_IMG
+				WHERE CAMP_NO = A.CAMP_NO
+				AND CAMP_IMG_ORDER = 0) CAMP_THUMBNAIL
+		
+		FROM WISH_LIST A
+		WHERE MEMBER_NO = #{memberNo}
+		AND ITEM_NO IS NULL
 	</select>
 	
 </mapper>

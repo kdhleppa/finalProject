@@ -117,6 +117,18 @@ public interface MemberService {
 	// 등업 신청 카운트
 	int levelUpFormCount();
 
+	/** 캠핑 위시리스트
+	 * @param memberNo
+	 * @return
+	 */
+	List<Wishlist> selectCampWish(int memberNo);
+
+	/** 아이템 위시리스트
+	 * @param memberNo
+	 * @return
+	 */
+	List<Wishlist> selectItemWish(int memberNo);
+
 
 
 

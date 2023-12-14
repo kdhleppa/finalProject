@@ -228,9 +228,18 @@
 			<!-- 관심 상품 -->
 			<section id="wishListSection">
 				<section class="empty2"></section>
-
 				<section id="wishList">
-					<section class="subName" onclick="location.href='/member/wishlist'">관심 상품</section>
+					<section class="subName">
+						<p onclick="location.href='/member/wishlist'">관심 상품</p>
+
+						<div class="radioArea">
+							<input type="radio" name="wish" value="item" id="item" class="clicked">
+							<label for="item">렌탈 상품</label>
+							<input type="radio" name="wish" value="camp" id="camping" >
+							<label for="camping">캠핑장</label>
+						</div>
+						
+					</section>
 					<hr class="underLine2">
 
 					<th:block th:if="${myPageInfo.wishList.size == 0}">
@@ -239,9 +248,14 @@
 								<button type="button" class="arrow" id="left"></button>
 							</section>
 							
-							<section class="itemSection">
-								<p>관심 상품이 없습니다.</p>
-							</section>
+							<div class="overlayScreenWish">
+
+								<section class="itemSection">
+									<p>관심 상품이 없습니다.</p>
+								</section>
+
+							</div>
+
 							<section class="empty2">
 								<button type="button" class="arrow" id="right" ></button>
 							</section>
@@ -258,17 +272,21 @@
 								</button>
 							</section>
 							
-							<div class="item">
-								
-								<div class="itemWrapper">
-	
-									<section class="itemSection" th:each="wish : ${myPageInfo.wishList}">
-										<img th:onclick="|location.href='/item/itemDetail/${wish.itemNo}'|" class="wishItem" th:src="${wish.thumbnail}">
-										<a th:text="${wish.itemName}">밀크 소파 : 블랙</a>
-									</section>
-	
+							<div class="overlayScreenWish">
+
+								<div class="item">
+									
+									<div class="itemWrapper">
+										
+										<section class="itemSection" th:each="wish : ${myPageInfo.wishList}">
+											<img th:onclick="|location.href='/item/itemDetail/${wish.itemNo}'|" class="wishItem" th:src="${wish.thumbnail}">
+											<a th:text="${wish.itemName}">밀크 소파 : 블랙</a>
+										</section>
+										
+									</div>
+									
 								</div>
-							
+								
 							</div>
 
 							<section class="empty2">
@@ -293,7 +311,9 @@
 				<section class="empty2"></section>
 				<section class="textListSection">
 					<div class="textListSecDiv">
-						<section class="subName">문의사항
+						<section class="subName">
+							<p>문의사항</p>
+							
 							<div class="radioArea">
 								<input type="radio" name="askTo" value="admin" id="admin" class="clicked">
 								<label for="admin">관리자 문의</label>
@@ -307,7 +327,9 @@
 					<hr class="underLine2">
 					
 					<div class="overlayScreen">
+
 					<section class="textItemSection">
+
 						<section class="empty2"></section>
 
 						<section class="textItmeList">
@@ -340,6 +362,8 @@
 
 						<section class="empty2"></section>
 					</section>
+
+
 					</div>
 					
 					<div class="moreBtnWrapper">

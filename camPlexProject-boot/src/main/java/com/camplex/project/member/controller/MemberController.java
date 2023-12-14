@@ -37,6 +37,7 @@ import com.camplex.project.member.model.dto.CEOMember;
 import com.camplex.project.member.model.dto.ItemInfoMypage;
 import com.camplex.project.member.model.dto.Member;
 import com.camplex.project.member.model.dto.MyPage;
+import com.camplex.project.member.model.dto.Wishlist;
 import com.camplex.project.member.model.service.MemberService;
 import com.camplex.project.member.model.service.NaverService;
 import com.camplex.project.member.model.service.WishlistService;
@@ -789,5 +790,38 @@ public class MemberController {
 
 		return list;
 	}
+	
+	
+	/** 마이페이지 camping위시리스트 목록 불러오기
+	 * @param loginMember
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("/selectCampWish")
+	public List<Wishlist> selectCampWish(@SessionAttribute Member loginMember){
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		List<Wishlist> list = service.selectCampWish(memberNo);
+
+		return list;
+	}
+	
+	/** 마이페이지 item 위시리스트 목록 불러오기
+	 * @param loginMember
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("/selectItemWish")
+	public List<Wishlist> selectItemWish(@SessionAttribute Member loginMember){
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		List<Wishlist> list = service.selectItemWish(memberNo);
+
+		return list;
+	}
+	
+	
 	
 }
