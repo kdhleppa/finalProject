@@ -150,7 +150,7 @@ function resetAndModalExit() {
 	
 }
 
-
+// 캠핑장 호수 등록 버튼
 modalUploadBtn.addEventListener('click', e => {
 	const enrollSiteSec = document.getElementById('enrollSiteSec');
 	console.log("enrollSiteSec", enrollSiteSec);
