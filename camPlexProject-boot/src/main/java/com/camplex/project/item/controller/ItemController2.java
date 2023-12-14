@@ -19,7 +19,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.camplex.project.item.model.dto.Item;
 import com.camplex.project.item.model.service.ItemService2;
 
-import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping("/item2")

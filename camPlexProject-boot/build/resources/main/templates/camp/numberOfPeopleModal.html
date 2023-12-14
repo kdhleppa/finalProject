@@ -1,0 +1,34 @@
+<link rel="stylesheet" th:href="@{/css/camp/numberOfPeopleModal.css}">
+
+<div id="modalContainerPopup" class="hidden">
+
+	<div id="mainContainer">
+
+
+		<div class="title">
+			<p>인원 선택</p>
+		</div>
+
+		<hr>
+
+		<div class="chooseNumber">
+			<div>
+				<p>성인</p>
+				<button class="minus" id="adultMinus">-</button>
+				<span class="number" id="adultNumber">0</span>
+				<button class="plus" id="adultPlus">+</button>
+			</div>
+
+			<div>
+				<p>아동</p>
+				<button class="minus" id="kidMinus">-</button>
+				<span class="number" id="kidNumber">0</span>
+				<button class="plus" id="kidPlus">+</button>
+			</div>
+
+		</div>
+
+		<button id="confirmNumber" type="button">확인</button>
+
+	</div>
+</div>

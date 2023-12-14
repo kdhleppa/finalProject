@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지 (CEO)</title>
+
+    <link rel="stylesheet" th:href="@{/css/member/myPage/CEOMyPage.css}">
+
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+	<th:block th:replace="~{common/headerForContent}"></th:block>
+
+    <main th:object="${session.loginMember}">
+        <!-- 공백 (우) -->
+        <section class="empty1"></section>
+        
+        <section id="myPageSection">
+            
+            <!-- 대제목 -->
+            <section id="headerName">CEO 마이페이지</section>
+            <hr id="underLine"/>
+            
+            <!-- 정보 -->
+            <section id="myInfo">
+                <!-- 내부공백 (우) -->
+                <section class="empty2"></section>
+                
+                <!-- 내 정보 -->
+                <section id="infoMain">
+                    <section id="profileImgSection">
+						
+	                    <img th:unless="*{memberProfileImg}" id="profileImg" th:src="@{/images/memberImg/gg_profile.png}">
+						
+	                    <img th:if="*{memberProfileImg}" id="profileImg" th:src="*{memberProfileImg}">
+
+					</section>
+                    
+                    <section class="empty2"></section>
+                    <section id="nameTel">
+                        <p th:inline="text">이름 : [[${session.loginMember.memberName}]]</p>
+                        <p th:inline="text">전화번호 : [[${session.loginMember.memberPhone}]]</p>
+                        <p th:inline="text">CEO 인증번호 : [[${session.loginMember.memberNo}]]</p>
+                    </section>
+                    <section class="empty3"></section>
+                    
+                    <section id="nicknameEmail">
+                        <p th:inline="text">닉네임 : [[${session.loginMember.memberNickname}]]</p>
+                        <p th:inline="text">Email : [[${session.loginMember.memberEmail}]]</p>
+                    </section>
+                    <section class="empty2"></section>
+                    
+                    <section class="btnSection">
+                        <a th:href="@{/member/infoModify}">프로필 관리</a>
+                        <a th:href="@{/member/memberWithdrawal1}">회원 탈퇴</a>
+                    </section>
+                </section>
+                
+                
+                <!-- 내부공백 (좌) -->
+                <section class="empty2"></section>
+            </section>
+            
+
+            <!-- 예약 정보 확인, 1대 1문의, 업데이트 요청 -->
+            <section id="functionBtn">
+                <a>예약 정보 확인<span>&nbsp;&nbsp;3</span></a>
+                <a>1대 1 문의<span>&nbsp;&nbsp;1</span></a>
+                <a>업데이트 요청</a>
+            </section>
+            
+
+
+            <!-- 쇼핑 정보 -->
+            <section id="shopingListSection">
+
+                <section class="empty2"></section>
+
+                <section id="shopingList">
+                    
+                    <section id="subName">쇼핑 정보</section>
+                    <hr class="underLine2">
+                    
+                    <section id="shopingListInfo">
+                        
+                        <section class="empty2"></section>
+                        <!-- 내부공백 (우) -->
+                        
+                        <section id="shopingHistoryInfo">
+                            <img src="/IMG/myPageImg.png">
+                            
+                            
+                            <section class="empty3"></section>
+                            <section id="shopingInfo">
+                                <div>
+                                    <a>[Catgill 캠핑장]</a>
+                                </div>
+                                <div>
+                                    <a> < 비바코 젤라 리빙쉘 텐트 외 3개 ></a>
+                                </div>
+                            </section>
+                            
+                            <section class="empty3"></section>
+                            <section id="reviewRebuyDeleteBtnSection">
+                                <a>리뷰 작성</a>
+                                <a>재구매</a>
+                                <a>삭제</a>
+                            </section>
+                        </section>
+                        
+                        <!-- 내부공백 (좌) -->
+                        <section class="empty2"></section>
+                        
+                    </section>
+                    
+                </section>
+
+                <section class="empty2"></section>
+
+            </section>
+
+            
+            <!-- 관심 상품 -->
+            <section id="wishListSection">
+                <section class="empty2"></section>
+
+                <section id="wishList">
+                    <section id="subName">관심 상품</section>
+                    <hr class="underLine2">
+
+                    <section id="wishListItems">
+                        <section class="empty2"></section>
+
+                        <section class="itemSection">
+                            <img class="wishItem" src="/IMG/관심상품1.png">
+                            <a>밀크 소파 : 블랙</a>
+                        </section>
+
+                        <section class="empty4"></section>
+
+                        <section class="itemSection">
+                            <img class="wishItem" src="/IMG/관심상품2.png">
+                            <a>릴렉스 체어</a>
+                        </section>
+                            
+                        <section class="empty2"></section>
+                    </section>
+
+                </section>
+
+                <section class="empty2"></section>
+            </section>
+           
+            
+            <!-- 문의사항 -->
+            <section class="textSection">
+                <section class="empty2"></section>
+
+                <section class="textListSection">  
+                    <section id="subName">문의사항</section>
+                    <hr class="underLine2">
+
+                    <section class="textItemSection">
+                        <section class="empty2"></section>
+
+                        <section class="textItmeList">
+
+                            <section class="textList">
+                                <a>23.11.13 (화) 캠핑장 예약취소 하려면 어떡하나요??</a>
+                                <a>답변</a>
+                            </section>
+                            
+                            <section class="textList">
+                                <a>23.12.13 (수) 환불규정 알려주세요.</a>
+                                <a>미답변</a>
+                            </section>
+
+                        </section>
+
+                        <section class="empty2"></section>
+                    </section>
+
+                </section>
+
+                <section class="empty2"></section>
+            </section>
+
+
+            <!-- 커뮤니티 -->
+            <section class="textSection">
+                <section class="empty2"></section>
+
+                <section class="textListSection">  
+                    <section id="subName">커뮤니티</section>
+                    <hr class="underLine2">
+
+                    <section class="textItemSection">
+                        <section class="empty2"></section>
+
+                        <section class="textItmeList">
+
+                            <section class="textList">
+                                <a>23.11.13 (화) 캠핑장 필수탬 뭔가요?</a>
+                                <a>( 댓글 수 : 5 )</a>
+                            </section>
+                            
+                            <section class="textList">
+                                <a>23.11.16 (목) 우중 캠핑 재밌죠??</a>
+                                <a>( 댓글 수 : 32 )</a>
+                            </section>
+
+                        </section>
+
+                        <section class="empty2"></section>
+                    </section>
+
+                </section>
+
+                <section class="empty2"></section>
+            </section>
+
+            
+
+
+
+            
+        </section>
+        
+        <!-- 공백 (좌) -->
+        <section class="empty1"></section>
+
+    </main>
+
+    <div class="empty5"></div>
+    
+	<th:block th:replace="~{common/footer}"></th:block>
+
+</body>
+</html>

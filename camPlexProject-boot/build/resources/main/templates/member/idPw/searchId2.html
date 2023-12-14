@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아이디 찾기 2</title>
+
+    <link rel="stylesheet" th:href="@{/css/member/idPw/searchId2.css}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+	<th:block th:replace="~{common/headerForContent}"></th:block>
+
+    <main>
+        <!-- 공백 (우) -->
+        <section class="empty1"></section>
+        
+        <section id="searchIdInfoSection">
+
+            <!-- 대제목 -->
+            <section id="headerName">ID 찾기</section>
+            <hr id="underLine"/>
+            
+            <section id="inputInfo">
+
+                <!-- 찾은 아이디 정보 출력 -->
+                <section id="searchIdConfirm">
+                    
+                    <p>회원님의 아이디는</p>
+
+                    <p id="realIdInfo" th:utext="${session.searchId}"></p>
+
+                    <p>입니다.</p>
+
+                </section>
+
+                <section id="goLoginPagedBtnSection">
+                    
+                    <!-- 로그인 페이지로 이동 버튼 -->
+                    <section id="goLoginPageBtn">
+                        <a class="clickBtn" th:href="@{/member/login}">로그인 페이지로</a>
+                    </section>
+                    
+                </section>
+
+            </section>
+
+
+        </section>
+        
+        <!-- 공백 (좌) -->
+        <section class="empty1"></section>
+
+    </main>
+
+    
+</body>
+</html>

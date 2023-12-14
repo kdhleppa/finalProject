@@ -1,0 +1,217 @@
+*{
+    font-family: 'HakgyoansimSantteutdotumL', 'Montserrat';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    /*border: 1px solid black; */
+
+}
+
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: 1% 500%;
+    unicode-range: U+AC00-D7A3;
+}
+
+
+.rentalCRUDMain {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.rentalCRUDTitleSec {
+    height: 10rem;
+    width: 100%;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.rentalTitle {
+    width: 80%;
+    height: 5rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #909090;
+}
+
+.rentalUploadForm {
+	width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.rentalTotalSec {
+    width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.rentalImgInputSec {
+    width: 50%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.thumbnailBtn {
+    width: 35rem;
+    height: 30rem;
+    background-color: #EAEAEA;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+}
+
+.detailBtn {
+    width: 35rem;
+    height: 30rem;
+    background-color: #EAEAEA;
+    border-top: 1px solid black;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+}
+
+.preview {
+	max-width: 100%;
+}
+
+.inputImage {
+	display: none;
+}
+
+.imgLabel {
+	width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.rentalInputSec {
+    width: 50%;
+    height: 70rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.rentalInputSecBlankSec {
+    width: 100%;
+    height: 2rem;
+}
+
+.inputDetailSec {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+}
+
+.rentalDetailTitleSec {
+    width: 10rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.rentalDetailInputSec {
+    width: 40rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.inputDetail {
+    width: 35rem;
+    height: 3rem;
+    margin-left: 1.5rem;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    border: 1px solid #909090;
+    outline: none;
+    padding: 0.5rem;
+}
+
+.inputDetailSmall {
+    width: 20rem;
+    height: 3rem;
+    margin-left: 1.5rem;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    border: 1px solid #909090;
+    outline: none;
+    padding: 0.5rem;
+}
+
+.inputWonImage {
+    width: 2rem;
+    height: 2rem;
+    margin-left: 1rem;
+}
+
+.discountWord {
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+
+.countWord {
+    font-size: 2rem;
+    margin-left: 1rem;
+}
+
+.category {
+    margin-left: 1.5rem;
+    width: 20rem;
+    height: 2.5rem;
+    border-radius: 10px;
+    text-align: center;
+    outline: none;
+    font-size: 1.2rem;
+}
+
+.uploadSec {
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+
+.uploadBtn {
+    width: 5rem;
+    height: 3rem;
+    font-size: 1.3rem;
+    background-color: transparent;
+    border: none;
+    margin-right: 10rem;
+    text-transform:uppercase;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.uploadBtn:after {
+	margin-top: 0.5rem;
+    display:block;
+    content: '';
+    border-bottom: solid 1px #909090;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+}
+
+.uploadBtn:hover:after { transform: scaleX(1); }
+
