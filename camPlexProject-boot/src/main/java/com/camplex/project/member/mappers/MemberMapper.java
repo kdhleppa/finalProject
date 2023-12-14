@@ -90,6 +90,18 @@ public interface MemberMapper {
 	// 등업 신청 카운트
 	int levelUpFormCount();
 
+	/** 마이페이지 캠핑장 위시리스트 조회
+	 * @param memberNo
+	 * @return
+	 */
+	List<Wishlist> selectCampWish(int memberNo);
+
+	/** 마이페이지 아이템 위시리스트 조회
+	 * @param memberNo
+	 * @return
+	 */
+	List<Wishlist> selectItemWish(int memberNo);
+
 
 
 

@@ -346,6 +346,7 @@ main {
 #wishListItems {
     display: flex;
     flex-basis: 80%;
+    height: 200px;
 }
 
 .itemSection {
@@ -378,6 +379,7 @@ main {
     height: 140px;
     object-fit: contain;
     cursor: pointer;
+    border-radius: 5px;
     
 }
 
@@ -536,14 +538,14 @@ main {
 	
 }
 
-
-.overlayScreen{
+.overlayScreen, .overlayScreenWish{
     z-index: 9999;
     bottom: 0;
     background-color: rgb(255, 255, 255);
     animation-duration: .3s;
     animation-timing-function: ease-in-out;
     animation-iteration-count: 1;
+    width: 100%;
   }
   
 .play {

@@ -19,4 +19,6 @@ public class Wishlist {
 
 	private String thumbnail;
 	private String itemName;
+	private String campName;
+	private String campThumbnail;
 }

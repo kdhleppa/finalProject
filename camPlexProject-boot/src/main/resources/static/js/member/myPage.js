@@ -1,38 +1,52 @@
-const prev = document.getElementById('left');
-const next = document.getElementById('right');
-const itemWrapper = document.querySelector('.itemWrapper');
-const itemSection = document.querySelectorAll('.itemSection');
-const itemSectionlength = document.querySelector('.itemSection');
-const slideLength = itemSection.length
+let prev = document.getElementById('left');
+let next = document.getElementById('right');
+let itemWrapper = document.querySelector('.itemWrapper');
+let itemSection = document.querySelectorAll('.itemSection');
+let itemSectionlength = document.querySelector('.itemSection');
+let slideLength = itemSection.length
 let currentIndex = 0;
 
-// ceo 사진 이동
-const moveSlide = function (num) {
-	itemWrapper.style.transform = `translateX(${-num * 215}px)`;
-	currentIndex = num;
+
+move()
+
+function move(){
+
+	let prev = document.getElementById('left');
+	let next = document.getElementById('right');
+	let itemWrapper = document.querySelector('.itemWrapper');
+	let itemSection = document.querySelectorAll('.itemSection');
+	let itemSectionlength = document.querySelector('.itemSection');
+	let slideLength = itemSection.length
+	let currentIndex = 0;
+	
+	const moveSlide = function (num) {
+		itemWrapper.style.transform = `translateX(${-num * 215}px)`;
+		currentIndex = num;
+	}
+	
+	prev.addEventListener("click", () => {
+		if (currentIndex !== 0) {
+			moveSlide(currentIndex - 1)
+		}
+	})
+	
+	next.addEventListener('click', () => {
+		if (slideLength <= 4) {
+			return;
+		}
+		
+		if (currentIndex !== slideLength - 4) {
+			moveSlide(currentIndex + 1)
+		}
+		
+	})
+	
 }
-
-prev.addEventListener("click", () => {
-	if (currentIndex !== 0) {
-		moveSlide(currentIndex - 1)
-	}
-})
-
-next.addEventListener('click', () => {
-	if (slideLength <= 4) {
-		return;
-	}
-
-	if (currentIndex !== slideLength - 4) {
-		moveSlide(currentIndex + 1)
-	}
-
-})
-
 
 const askTo = document.querySelectorAll('input[name="askTo"]');
 const textItemSection = document.querySelector(".textItemSection")
 let overlayScreen = document.querySelector(`.overlayScreen`);
+
 
 for(var i = 0 ; i < askTo.length ; i++){
 
@@ -225,6 +239,271 @@ for(var i = 0 ; i < askTo.length ; i++){
 	})
 
 }
+
+const wishListItems = document.getElementById('wishListItems')
+const wish = document.querySelectorAll('input[name="wish"]');
+let overlayScreenWish = document.querySelector(`.overlayScreenWish`);
+
+for(var i = 0 ; i < wish.length ; i++){
+	
+	wish[i].addEventListener("change", e => {
+		for(var i = 0 ; i<wish.length ; i ++){
+			wish[i].classList.remove('clicked')
+		}
+		
+		e.target.classList.add('clicked')
+		
+		wishListItems.innerHTML ="";
+		
+		if(e.target.value == 'item'){
+			
+			fetch("/member/selectItemWish")
+			.then(resp => resp.json())
+			.then(data => {
+				
+				if(data.length == 0){
+
+					const empty = document.createElement('section');
+					empty.classList.add('empty2');
+
+					const empty2 = document.createElement('section');
+					empty2.classList.add('empty2');
+
+					const left = document.createElement('button');
+					left.classList.add('arrow');
+					left.setAttribute("type", "button");
+					left.setAttribute("id", "left")
+
+					const right = document.createElement('button');
+					right.classList.add('arrow');
+					right.setAttribute("type", "button");
+					right.setAttribute("id", "right")
+
+					empty.append(left)
+					empty2.append(right)
+
+					const overlayScreenWish = document.createElement('div')
+					overlayScreenWish.classList.add('overlayScreenWish')
+
+					const itemSection = document.createElement('section');
+					itemSection.classList.add('itemSection')
+
+					const p = document.createElement('p')
+					p.innerText = "관심 상품이 없습니다.";
+					
+					itemSection.append(p)
+
+					overlayScreenWish.append(itemSection)
+
+					wishListItems.append(empty, overlayScreenWish, empty2)
+
+				} else {
+
+					const empty = document.createElement('section');
+					empty.classList.add('empty2');
+
+					const empty2 = document.createElement('section');
+					empty2.classList.add('empty2');
+
+					const left = document.createElement('button');
+					left.classList.add('arrow');
+					left.setAttribute("type", "button");
+					left.setAttribute("id", "left")
+					
+					const right = document.createElement('button');
+					right.classList.add('arrow');
+					right.setAttribute("type", "button");
+					right.setAttribute("id", "right")
+					
+					if(data.length > 4) {
+						const leftIcon = document.createElement('img');
+						leftIcon.setAttribute('src', '/images/iconImg/left.png');
+						
+						const rightIcon = document.createElement('img');
+						rightIcon.setAttribute('src', '/images/iconImg/right.png');
+
+						left.append(leftIcon)
+						right.append(rightIcon)
+
+						empty.append(left)
+						empty2.append(right)
+					}
+
+					const overlayScreenWish = document.createElement('div')
+					overlayScreenWish.classList.add('overlayScreenWish')
+
+					const item = document.createElement('div');
+					item.classList.add('item')
+
+					const itemWrapper = document.createElement('section');
+					itemWrapper.classList.add('itemWrapper');
+
+					for(let temp of data){
+
+						const itemSection = document.createElement('section');
+						itemSection.classList.add('itemSection');
+
+						const wishItem = document.createElement('img');
+						wishItem.classList.add('wishItem')	
+						wishItem.setAttribute('src', `${temp.thumbnail}`);
+						wishItem.setAttribute('onclick', `location.href='/item/itemDetail/${temp.itemNo}'`)
+
+						const a = document.createElement('a')
+						a.innerText = `${temp.itemName}`;
+
+						itemSection.append(wishItem, a);
+
+						itemWrapper.append(itemSection);
+					}
+
+					item.append(itemWrapper);
+
+					overlayScreenWish.append(item)
+
+					wishListItems.append(empty, overlayScreenWish, empty2)
+
+					overlayScreenWish.classList.add("play");
+			
+					overlayScreenWish.addEventListener("animationend", function handler() {
+						this.removeEventListener("animationend", handler);
+						this.classList.remove("play");
+					})
+				}
+				move()
+
+			})
+
+
+		}
+
+		if(e.target.value == 'camp'){
+			
+			fetch("/member/selectCampWish")
+			.then(resp => resp.json())
+			.then(data => {
+				
+				if(data.length == 0){
+
+					const empty = document.createElement('section');
+					empty.classList.add('empty2');
+
+					const empty2 = document.createElement('section');
+					empty2.classList.add('empty2');
+
+					const left = document.createElement('button');
+					left.classList.add('arrow');
+					left.setAttribute("type", "button");
+					left.setAttribute("id", "left")
+
+					const right = document.createElement('button');
+					right.classList.add('arrow');
+					right.setAttribute("type", "button");
+					right.setAttribute("id", "right")
+
+					empty.append(left)
+					empty2.append(right)
+
+					const overlayScreenWish = document.createElement('div')
+					overlayScreenWish.classList.add('overlayScreenWish')
+
+					const itemSection = document.createElement('section');
+					itemSection.classList.add('itemSection')
+
+					const p = document.createElement('p')
+					p.innerText = "관심 상품이 없습니다.";
+					
+					itemSection.append(p)
+
+					overlayScreenWish.append(itemSection)
+
+					wishListItems.append(empty, overlayScreenWish, empty2)
+
+				} else {
+
+					const empty = document.createElement('section');
+					empty.classList.add('empty2');
+
+					const empty2 = document.createElement('section');
+					empty2.classList.add('empty2');
+
+					const left = document.createElement('button');
+					left.classList.add('arrow');
+					left.setAttribute("type", "button");
+					left.setAttribute("id", "left")
+					
+					const right = document.createElement('button');
+					right.classList.add('arrow');
+					right.setAttribute("type", "button");
+					right.setAttribute("id", "right")
+					
+					if(data.length > 4) {
+						const leftIcon = document.createElement('img');
+						leftIcon.setAttribute('src', '/images/iconImg/left.png');
+						
+						const rightIcon = document.createElement('img');
+						rightIcon.setAttribute('src', '/images/iconImg/right.png');
+
+						left.append(leftIcon)
+						right.append(rightIcon)
+					}
+
+					const overlayScreenWish = document.createElement('div')
+					overlayScreenWish.classList.add('overlayScreenWish')
+
+					const item = document.createElement('div');
+					item.classList.add('item')
+
+					const itemWrapper = document.createElement('section');
+					itemWrapper.classList.add('itemWrapper');
+
+					for(let temp of data){
+
+						const itemSection = document.createElement('section');
+						itemSection.classList.add('itemSection');
+
+						const wishItem = document.createElement('img');
+						wishItem.classList.add('wishItem')	
+						wishItem.setAttribute('src', `${temp.campThumbnail}`);
+						wishItem.setAttribute('onclick', `location.href='/camp/${temp.campNo}'`)
+
+						const a = document.createElement('a')
+						a.innerText = `${temp.campName}`;
+
+						itemSection.append(wishItem, a);
+
+						itemWrapper.append(itemSection);
+					}
+
+					overlayScreenWish.append(item)
+					
+					item.append(itemWrapper);
+
+					wishListItems.append(empty, overlayScreenWish, empty2)
+
+					overlayScreenWish.classList.add("play");
+			
+					overlayScreenWish.addEventListener("animationend", function handler() {
+						this.removeEventListener("animationend", handler);
+						this.classList.remove("play");
+					})
+					
+					move()
+				}
+
+			})
+
+
+
+
+		}
+	})
+
+}
+
+
+
+
+
 
 let textList = document.querySelectorAll('.textList')
 const contentLength = textList.length;

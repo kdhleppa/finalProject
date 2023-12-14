@@ -286,6 +286,22 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.levelUpFormCount();
 	}
 
+	/** 마이페이지 캠핑장 위시리스트 조회
+	 *
+	 */
+	@Override
+	public List<Wishlist> selectCampWish(int memberNo) {
+		return mapper.selectCampWish(memberNo);
+	}
+
+	/** 마이페이지 아이템 위시리스트 조회
+	 *
+	 */
+	@Override
+	public List<Wishlist> selectItemWish(int memberNo) {
+		return mapper.selectItemWish(memberNo);
+	}
+
 
 
 
