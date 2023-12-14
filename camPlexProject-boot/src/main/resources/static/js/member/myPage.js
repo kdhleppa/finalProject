@@ -297,6 +297,13 @@ for(var i = 0 ; i < wish.length ; i++){
 
 					wishListItems.append(empty, overlayScreenWish, empty2)
 
+					overlayScreenWish.classList.add("play");
+			
+					overlayScreenWish.addEventListener("animationend", function handler() {
+						this.removeEventListener("animationend", handler);
+						this.classList.remove("play");
+					})
+
 				} else {
 
 					const empty = document.createElement('section');
@@ -418,6 +425,13 @@ for(var i = 0 ; i < wish.length ; i++){
 
 					wishListItems.append(empty, overlayScreenWish, empty2)
 
+					overlayScreenWish.classList.add("play");
+			
+					overlayScreenWish.addEventListener("animationend", function handler() {
+						this.removeEventListener("animationend", handler);
+						this.classList.remove("play");
+					})
+
 				} else {
 
 					const empty = document.createElement('section');
@@ -445,6 +459,9 @@ for(var i = 0 ; i < wish.length ; i++){
 
 						left.append(leftIcon)
 						right.append(rightIcon)
+
+						empty.append(left)
+						empty2.append(right)
 					}
 
 					const overlayScreenWish = document.createElement('div')
