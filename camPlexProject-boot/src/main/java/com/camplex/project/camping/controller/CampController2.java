@@ -87,8 +87,6 @@ public class CampController2 {
 			camp.setCampAroundView(null);
 		}
 		
-		System.out.println("camp ::" + camp);
-		
 
 		int ceoNum = camp.getMemberNo();
 
@@ -151,8 +149,6 @@ public class CampController2 {
 	public List<CampDetail> updateSelcetDeCamp(CampDetail campDetail
 			, @RequestParam(value = "campDeImges", required = false) List<MultipartFile> campDeImges)
 					throws IllegalStateException, IOException {
-		
-		System.out.println("campDetail ::" + campDetail);
 		
 		int result = service.upInsertDeCamp(campDetail, campDeImges);
 		
@@ -244,8 +240,6 @@ public class CampController2 {
 			, @RequestParam MultipartFile inputCampMap
 			, @RequestHeader("referer") String referer) throws IllegalStateException, IOException {
 		
-		System.out.println("editCamp::" + camp);
-		
 		if(camp.getCampOption() != null) {
 			String[] optionArr = camp.getCampOption().split(",");
 			String addr = String.join("^^^", optionArr);
@@ -296,8 +290,6 @@ public class CampController2 {
 	public List<Camp> selectForMapOfCamp() {
 		
 		List<Camp> campList = service.selectForMapOfCamp();
-		
-		System.out.println("campList ::" + campList);
 		
 		return campList;
 		
