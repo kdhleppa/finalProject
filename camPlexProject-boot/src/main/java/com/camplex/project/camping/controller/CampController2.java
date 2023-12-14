@@ -211,30 +211,17 @@ public class CampController2 {
 	public String editCampForward(int campNo, Model model) {
 		
 		Camp campList = service.searchCampForCampNo(campNo);
-		
-		String[] optionArr = null;
-		
-		String[] aroundViewArr = null;
-		
-		if(campList.getCampOption() != null) {
 			
-			optionArr = campList.getCampOption().split("\\^\\^\\^");
-			
-		}
-		
-		if(campList.getCampAroundView() != null) {
-			
-			aroundViewArr = campList.getCampAroundView().split("\\^\\^\\^");
-			
-		}
-		
 		
 		List<CampDetail> campDeList = service.searchCampDeForCampNo(campNo);
 		
+		String option = campList.getCampOption();
+		String aroundView = campList.getCampAroundView();
+		
 		model.addAttribute("campList", campList);
 		model.addAttribute("campDeList", campDeList);
-		model.addAttribute("option", optionArr);
-		model.addAttribute("aroundView", aroundViewArr);
+		model.addAttribute("option", option);
+		model.addAttribute("aroundView", aroundView);
 		
 		return "camp/campingEdit";
 	}
