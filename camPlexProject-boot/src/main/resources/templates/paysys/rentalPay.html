@@ -39,6 +39,7 @@
 								<input type="hidden" name="itemName" th:value="${rent.itemName}">
 								<input type="hidden" th:id="'discountRate'+${i.index}" name="discountRate" th:value="${rent.discountRate}">
 								<input type="hidden" class="index-input" th:id="'index'+${i.index}" th:value="${i.index}">
+								<input type="hidden" th:id="'stayDay'+${i.index}" th:value="${rent.stayDay}">
 								<input th:if="${rent.itemQuantity}" type="hidden" th:id="'rentalItemQuantity'+${i.index}" name="rentalItemQuantity" th:value="${rent.itemQuantity}">
 							</td>
 	                        <td><img th:src="${rent.thumbnail}"></td>
@@ -50,10 +51,18 @@
 					            <button type="button" class="qBtn plusBtn" th:data-index="${i.index}" th:data-price="${rent.itemPrice}">+</button>
 		                    </td>
 		                    <th:block th:if="${rent.discountRate == 0}">
-		                    	<td th:id="'totalPrice'+${i.index}">₩[[${#numbers.formatInteger(rent.itemPrice * rent.itemQuantity, 3, 'COMMA')}]]원</td>
+		                    	<td>
+									<p th:id="'totalPrice'+${i.index}">[[${#numbers.formatInteger(rent.itemPrice * rent.itemQuantity, 3, 'COMMA')}]]원</p>
+									<p class="bak">([[${rent.stayDay}]]박)</p>
+									<p th:id="'stayTotal'+${i.index}"></p>
+								</td>
 		                    </th:block>
 		                    <th:block th:unless="${rent.discountRate == 0}">
-								<td th:id="'totalPrice'+${i.index}">₩[[${#numbers.formatInteger((rent.itemPrice * (100 - rent.discountRate) / 100) * rent.itemQuantity, 3, 'COMMA')}]]원</td>
+								<td>
+									<p th:id="'totalPrice'+${i.index}">[[${#numbers.formatInteger((rent.itemPrice * (100 - rent.discountRate) / 100) * rent.itemQuantity, 3, 'COMMA')}]]원</p>
+									<p class="bak">([[${rent.stayDay}]]박)</p>
+									<p th:id="'stayTotal'+${i.index}"></p>
+								</td>
 							</th:block>
 	                        <td><button type="button" th:id="'deleteBtn' + ${i.index}" onclick="deleteBtn(this)" th:data-index="${i.index}" class = "grayBtn">DELETE</button></td>
 	                        
@@ -65,7 +74,7 @@
                         <td></td>
                         <td><input type="hidden" name="price" id="price" value=""></td>
                         <td>총 금액</td>
-                        <td id="overallTotal"> 0원</td>
+                        <td id="overallTotal"></td>
                         <td></td>
                     </tr>
                     

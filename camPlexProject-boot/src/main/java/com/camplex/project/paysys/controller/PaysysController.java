@@ -1,5 +1,9 @@
 package com.camplex.project.paysys.controller;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +34,6 @@ import com.camplex.project.member.model.dto.Member;
 import com.camplex.project.member.model.service.WishlistService;
 import com.camplex.project.paysys.model.dto.CartItem;
 import com.camplex.project.paysys.model.dto.InfoForReservation;
-import com.camplex.project.paysys.model.dto.RentalPayment;
 import com.camplex.project.paysys.model.dto.RentalPaymentItem;
 import com.camplex.project.paysys.model.dto.rentPayList;
 import com.camplex.project.paysys.model.service.PaysysService;
@@ -424,7 +426,22 @@ public class PaysysController {
 		if (checkCartItemNo != null) {
 			for (Integer cartItemNo: checkCartItemNo ) {
 				rentPayList data = payService.selectCheckCart(cartItemNo, memberNo);
+				
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+				LocalDateTime entDateTime = LocalDateTime.parse(data.getCampEntdate(), formatter);
+				LocalDateTime outDateTime = LocalDateTime.parse(data.getCampOutdate(), formatter);
+
+				
+				LocalDate entDate = entDateTime.toLocalDate();
+			    LocalDate outDate = outDateTime.toLocalDate();
+
+			    
+			    int stayDay = (int) ChronoUnit.DAYS.between(entDate, outDate);
+			    data.setStayDay(stayDay);
+			    
+			    
 				payList.add(data);
+				System.out.println(data);
 			}
 			
 			model.addAttribute("rentPayList" , payList);
@@ -457,6 +474,19 @@ public class PaysysController {
 			rsvInfo = itemService.membersRsvInfo2(reservationNo);
 			rentPayList data = new rentPayList();
 			Item item = itemService.payNow(itemNo);
+			
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+			LocalDateTime entDateTime = LocalDateTime.parse(rsvInfo.getCampEntDate(), formatter);
+			LocalDateTime outDateTime = LocalDateTime.parse(rsvInfo.getCampOutDate(), formatter);
+
+			
+			LocalDate entDate = entDateTime.toLocalDate();
+		    LocalDate outDate = outDateTime.toLocalDate();
+
+		    
+		    int stayDay = (int) ChronoUnit.DAYS.between(entDate, outDate);
+		    data.setStayDay(stayDay);
+			
 			data.setMemberNo(memberNo);
 			data.setItemNo(itemNo);
 			data.setItemPrice(item.getItemPrice());
@@ -469,6 +499,7 @@ public class PaysysController {
 			data.setReservationNo(reservationNo);
 			data.setCampEntdate(rsvInfo.getCampEntDate());
 			data.setCampOutdate(rsvInfo.getCampOutDate());
+			
 			model.addAttribute("rentPayList", data);
 			
 			

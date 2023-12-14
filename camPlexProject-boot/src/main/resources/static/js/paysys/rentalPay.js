@@ -3,35 +3,12 @@ document.addEventListener('DOMContentLoaded', function () {
         btn.addEventListener('click', function () {
             var index = this.dataset.index;
             var change = this.classList.contains('plusBtn') ? 1 : -1;
-            console.log("index", index);
-            console.log("change", change);
             updateQuantityAndTotal(index, change);
         });
     });
-    
+    updateStayTotal();
     updateOverallTotal();
 });
-
-
-/*function updateQuantityAndTotal(index, change) {
-    var quantityElement = document.getElementById('quantity' + index);
-    var totalPriceElement = document.getElementById('totalPrice' + index);
-    var currentQuantity = parseInt(quantityElement.textContent) || 0;
-    var itemPrice = parseInt(document.querySelector('[data-index="' + index + '"]').dataset.price) || 0;
-	var rentalItemQuantity = document.getElementById('rentalItemQuantity' + index);
-
-
-
-    var newQuantity = currentQuantity + change;
-    if (newQuantity > 0) {
-        quantityElement.textContent = newQuantity;
-        rentalItemQuantity.value = newQuantity;
-        var newTotalPrice = newQuantity * itemPrice;
-        totalPriceElement.textContent = newTotalPrice + '원';
-    }
-
-    updateOverallTotal();
-}*/
 
 function updateQuantityAndTotal(index, change) {
     var quantityElement = document.getElementById('quantity' + index);
@@ -52,21 +29,39 @@ function updateQuantityAndTotal(index, change) {
         // 할인율이 적용되는 경우
         if (discountRate > 0) {
             var discountedPrice = newTotalPrice * (1 - discountRate / 100);
-            totalPriceElement.textContent = '₩' + discountedPrice.toLocaleString() + '원';
+            totalPriceElement.textContent = discountedPrice.toLocaleString() + '원';
         } else {
             // 할인율이 적용되지 않는 경우
-            totalPriceElement.textContent = '₩' + newTotalPrice.toLocaleString() + '원';
+            totalPriceElement.textContent = newTotalPrice.toLocaleString() + '원';
         }
     }
 
-    updateOverallTotal();
+    updateStayTotal();
 }
 
 
+
+function updateStayTotal() {
+	var totalPriceElements = document.querySelectorAll("[id^='totalPrice']");
+    totalPriceElements.forEach(function(element, index) {
+            var stayDay = document.getElementById("stayDay" + index).value;
+            var totalPrice = parseInt(element.textContent.replace(/₩|원|,/g, ''));
+
+            var stayTotal = totalPrice * parseInt(stayDay);
+
+            document.getElementById("stayTotal" + index).innerText = stayTotal.toLocaleString() + '원';
+            updateOverallTotal()
+        });
+  
+};
+
 function updateOverallTotal() {
     var total = 0;
-    document.querySelectorAll('.itemListTB td[id^="totalPrice"]').forEach(function(td) {
-        var price = parseInt(td.textContent.replace(/₩|원|,/g, '')) || 0;
+    console.log("hi");
+    document.querySelectorAll('.itemListTB p[id^="stayTotal"]').forEach(function(p) {
+        var price = parseInt(p.textContent.replace(/₩|원|,/g, '')) || 0;
+        
+        console.log(price);
         total += price;
     });
     document.getElementById('overallTotal').textContent = total + '원';

@@ -20,6 +20,10 @@ body {
     /* border: 1px solid red; */
 }
 
+
+.bak{
+	margin-top: 10px;
+}
 /*좌우 빈칸 여백*/
 .container {
     display: flex;
