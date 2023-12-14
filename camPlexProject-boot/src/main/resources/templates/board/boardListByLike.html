@@ -17,7 +17,7 @@
     
     <th:block th:replace="~{common/headerForContent}"></th:block>
     
-    <main th:with="pagination=${map.pagination}, boardList=${map.boardList}">
+    <main th:with="paginationL=${map.paginationL}, boardListL=${map.boardListL}">
 		<ul class="boardTypeList">
             <li>
                 <a th:href="@{/board/{boardType}(boardType=B)}">자유게시판</a>
@@ -43,7 +43,7 @@
 			</div>
 			
             <!-- 검색창 -->
-            <form th:action="${boardType}" method="get" id="boardSearch">
+            <form th:action="${boardListByLike}" method="get" id="boardSearch">
 
                 <select name="key" id="searchKey">
                     <option value="t">제목</option>
@@ -80,7 +80,7 @@
 			<a th:href="@{/board/C/boardListByRead}">조회수 순</a>
 			<a th:href="@{/board/C/boardListByLike}">좋아요 순</a>
 		</li>
-		
+            
             <br>
 
             <h3 style="margin:5rem; margin-left: 20rem;" th:if="${param.query}" th:text='|"${param.query}" 검색 결과|'></h3>
@@ -101,8 +101,8 @@
 
                     <tbody>
                         <!-- 타임리프 내장 객체 중 #lists -->
-                        <!-- #lists.size(boardList) : boardList의 길이 반환 -->
-                        <th:block th:if="${#lists.size(boardList) == 0}">
+                        <!-- #lists.size(boardListL) : boardListL의 길이 반환 -->
+                        <th:block th:if="${#lists.size(boardListL) == 0}">
                         
                     	<!-- 조회된 게시글 목록이 비어있거나 null 경우 -->
                             <!-- 게시글 목록 조회 결과가 비어있다면 -->
@@ -111,10 +111,10 @@
                             </tr>
                         </th:block>
                     		
-                    	<th:block th:unless="${#lists.size(boardList) == 0}">
+                    	<th:block th:unless="${#lists.size(boardListL) == 0}">
 
                                 <!-- 게시글 목록 조회 결과가 있다면 -->
-                                <tr id="tableTr" th:each="board : ${boardList}">
+                                <tr id="tableTr" th:each="board : ${boardListL}">
                                     <td th:text="${board.boardNo}">게시글 번호</td>
                                     <td id="tdTitle"> 
                                     
@@ -122,12 +122,12 @@
                                             <img th:if="${board.thumbnail}" class="list-thumbnail" th:src="${board.thumbnail}">
       									
                                         <!-- ${boardType} : @Pathvariable 로 request scope에 추가된 값 -->
-                                        <!--<a th:href="/board/${boardType}/${board.boardNo}?cp=${pagination.currentPage}">${board.boardTitle}</a>-->   
+                                        <!--<a th:href="/board/${boardType}/${board.boardNo}?cp=${paginationL.currentPage}">${board.boardTitle}</a>-->   
                                         <!-- 검색 X -->
-                                        <a th:id="listTitle" th:unless="${param.query}" th:href="@{/board/{boardType}/{boardNo}(boardType=${boardType}, boardNo=${board.boardNo}, cp=${pagination.currentPage})}" th:text="${board.boardTitle}">게시글 제목</a>
+                                        <a th:id="listTitle" th:unless="${param.query}" th:href="@{/board/{boardType}/{boardNo}(boardType=${boardType}, boardNo=${board.boardNo}, cp=${paginationL.currentPage})}" th:text="${board.boardTitle}">게시글 제목</a>
                                         
                                         <!-- 검색 O -->
-                                        <a th:id="listTitle" th:if="${param.query}" th:href="@{/board/{boardType}/{boardNo}(boardType=${boardType}, boardNo=${board.boardNo}, cp=${pagination.currentPage}, key=${param.key}, query=${param.query})}" th:text="${board.boardTitle}">게시글 제목</a>
+                                        <a th:id="listTitle" th:if="${param.query}" th:href="@{/board/{boardType}/{boardNo}(boardType=${boardType}, boardNo=${board.boardNo}, cp=${paginationL.currentPage}, key=${param.key}, query=${param.query})}" th:text="${board.boardTitle}">게시글 제목</a>
                                         
                                         <th:block th:text="|[${board.commentCount}]|">댓글 수</th:block>
                                                                
@@ -150,39 +150,39 @@
 
 
             <!-- 게시글이 있을 때만 페이지네이션 보이기 -->
-            <div th:if="${#lists.size(boardList) > 0}" class="pagination-area">
+            <div th:if="${#lists.size(boardListL) > 0}" class="pagination-area">
 
                 <!-- 검색 X인 경우의 페이지네이션 -->
                 <ul th:unless="${param.query}" class="pagination">
                 
                     <!-- 첫 페이지로 이동 -->
-                    <li><a th:href="@{/board/{boardType}(boardType=${boardType}, cp=1)}">&lt;&lt;</a></li>
+                    <li><a th:href="@{/board/{boardType}/boardListByLike(boardType=${boardType}, cp=1)}">&lt;&lt;</a></li>
 
                     <!-- 이전 목록 마지막 번호로 이동 -->
-                    <li><a th:href="@{/board/{boardType}(boardType=${boardType}, cp=${pagination.prevPage})}">&lt;</a></li>
+                    <li><a th:href="@{/board/{boardType}/boardListByLike(boardType=${boardType}, cp=${paginationL.prevPage})}">&lt;</a></li>
 
                     <!-- 특정 페이지로 이동 -->
                     <!-- #numbers.sequence(시작, 끝 [,step]) : 시작 이상, 끝 이하 까지 step 만큼 증가하는 숫자를 발생시켜 리스트로 반환 -->
-                    <th:block th:each="i : ${#numbers.sequence(pagination.startPage, pagination.endPage, 1)}">
+                    <th:block th:each="i : ${#numbers.sequence(paginationL.startPage, paginationL.endPage, 1)}">
                     	
                         <!-- 현재 보고있는 페이지 -->
-                            <li th:if="${i == pagination.currentPage}">
+                            <li th:if="${i == paginationL.currentPage}">
                                 <a id="currentPa" th:text="${i}">현재 페이지</a>
                             </li>
                         
                         <!-- 현재 페이지를 제외한 나머지 -->
-                            <li th:unless="${i == pagination.currentPage}">
-                                <a th:href="@{/board/{boardType}(boardType=${boardType}, cp=${i})}"
+                            <li th:unless="${i == paginationL.currentPage}">
+                                <a th:href="@{/board/{boardType}/boardListByLike(boardType=${boardType}, cp=${i})}"
                                     th:text="${i}">나머지 페이지</a>
                             </li>
 
                     </th:block>
                     
                     <!-- 다음 목록 시작 번호로 이동 -->
-                    <li><a th:href="@{/board/{boardType}(boardType=${boardType}, cp=${pagination.nextPage})}">&gt;</a></li>
+                    <li><a th:href="@{/board/{boardType}/boardListByLike(boardType=${boardType}, cp=${paginationL.nextPage})}">&gt;</a></li>
 
                     <!-- 끝 페이지로 이동 -->
-                    <li><a th:href="@{/board/{boardType}(boardType=${boardType}, cp=${pagination.maxPage})}">&gt;&gt;</a></li>
+                    <li><a th:href="@{/board/{boardType}/boardListByLike(boardType=${boardType}, cp=${paginationL.maxPage})}">&gt;&gt;</a></li>
 
                 </ul>
 
@@ -190,25 +190,25 @@
                 <ul th:if="${param.query}" class="pagination">
               
                     <!-- 첫 페이지로 이동 -->
-                    <li><a th:href="@{/board/{boardType}(boardType=${boardType}, cp=1, key=${param.key}, query=${param.query})}">&lt;&lt;</a></li>
+                    <li><a th:href="@{/board/{boardType}/boardListByLike(boardType=${boardType}, cp=1, key=${param.key}, query=${param.query})}">&lt;&lt;</a></li>
                     <!-- 이전 목록 마지막 번호로 이동 -->
-                    <li><a th:href="@{/board/{boardType}(boardType=${boardType}, cp=${pagination.prevPage}, key=${param.key}, query=${param.query})}">&lt;</a></li>
+                    <li><a th:href="@{/board/{boardType}/boardListByLike(boardType=${boardType}, cp=${paginationL.prevPage}, key=${param.key}, query=${param.query})}">&lt;</a></li>
                     <!-- #numbers.sequence(시작, 끝 [,step]) -->
                     <!-- 특정 페이지로 이동 -->
-                    <th:block th:each="i : ${#numbers.sequence(pagination.startPage, pagination.endPage, 1)}">
+                    <th:block th:each="i : ${#numbers.sequence(paginationL.startPage, paginationL.endPage, 1)}">
                         <!-- 현재 보고있는 페이지 -->
-                        <li th:if="${i == pagination.currentPage}">
+                        <li th:if="${i == paginationL.currentPage}">
                             <a id="currentPa" th:text="${i}">현재 페이지</a>
                         </li>
                         <!-- 현재 페이지를 제외한 나머지 -->
-                        <li th:unless="${i == pagination.currentPage}">
-                            <a th:href="@{/board/{boardType}(boardType=${boardType}, cp=${i}, key=${param.key}, query=${param.query})}" th:text="${i}">현재 페이지</a>
+                        <li th:unless="${i == paginationL.currentPage}">
+                            <a th:href="@{/board/{boardType}/boardListByLike(boardType=${boardType}, cp=${i}, key=${param.key}, query=${param.query})}" th:text="${i}">현재 페이지</a>
                         </li>
                     </th:block>
                     <!-- 다음 목록 시작 번호로 이동 -->
-                    <li><a th:href="@{/board/{boardType}(boardType=${boardType}, cp=${pagination.nextPage}, key=${param.key}, query=${param.query})}">&gt;</a></li>
+                    <li><a th:href="@{/board/{boardType}/boardListByLike(boardType=${boardType}, cp=${paginationL.nextPage}, key=${param.key}, query=${param.query})}">&gt;</a></li>
                     <!-- 끝 페이지로 이동 -->
-                    <li><a th:href="@{/board/{boardType}(boardType=${boardType}, cp=${pagination.maxPage}, key=${param.key}, query=${param.query})}">&gt;&gt;</a></li>
+                    <li><a th:href="@{/board/{boardType}/boardListByLike(boardType=${boardType}, cp=${paginationL.maxPage}, key=${param.key}, query=${param.query})}">&gt;&gt;</a></li>
                 </ul>
 
             </div>
@@ -226,6 +226,11 @@
 	</main>
 	
     <th:block th:replace="~{common/footer}"></th:block>
+	
+	<script>
+		const recentRadio = document.getElementById('recent');
+		recentRadio.checked = true;
+	</script>
 	
 	<script th:src="@{/js/board/boardList.js}"></script>
 	

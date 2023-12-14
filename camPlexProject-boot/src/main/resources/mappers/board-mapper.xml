@@ -80,6 +80,20 @@
 			AND BOARD_TYPE = #{boardType}
 	  	</select>
 	  	
+	  	<select id="getListCountByRead" resultType="_int">
+	  		SELECT COUNT(*) FROM BOARD
+			WHERE BOARD_DEL_FL = 'N'
+			AND BOARD_TYPE = #{boardType}
+			ORDER BY B_READ_COUNT DESC
+	  	</select>
+	  	
+	  	<select id="getListCountByLike" resultType="_int">
+	  		SELECT COUNT(*) FROM BOARD B
+			WHERE BOARD_DEL_FL = 'N'
+			AND BOARD_TYPE = #{boardType}
+			ORDER BY (SELECT COUNT(*) FROM BOARD_LIKE L WHERE L.BOARD_NO = B.BOARD_NO) DESC
+	  	</select>
+	  	
 	  	<!-- CDATA 태그 : 해당 태그 내부에 작성된 것은 모두 문자로 취급 -->
 	  	<select id="selectBoardList" resultMap="board_rm">
 	  		SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME, B_READ_COUNT, B_CREATE_DATE,

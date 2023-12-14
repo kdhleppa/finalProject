@@ -264,49 +264,70 @@ public class BoardController {
 	}
 	
 	
-//	// 게시글 조회수 순 정렬
-//	@ResponseBody
-//	@GetMapping("/orderReadCount")
-//	public String OrderReadCount(
-//						@PathVariable("boardType") String boardType,
-//						@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
-//						Model model,
-//						@RequestParam Map<String, Object> paramMap
-//			) {
-//		
-//		if( paramMap.get("key") == null ) { // 검색어가 없을 때 (검색 X)
-//		
-//			// 게시글 목록 조회 서비스 호출
-//			Map<String, Object> map = service.orderReadCount(boardType, cp);
-//			
-//			// 조회 결과를 request scope에 세팅 후 forward
-//			model.addAttribute("map", map);
-//			
-//		} else { // 검색어가 있을 때 (검색 O)
-//			
-//			paramMap.put("boardType", boardType);
-//			
-//			Map<String, Object> map = service.orderReadCount(paramMap, cp); // 오버로딩 적용
-//			
-//			model.addAttribute("map", map);
-//			
-//		}
-//
-//		model.addAttribute("boardType", boardType);
-//		
-//		return "board/boardList";
-//		return list;
-//		
-//	}
-//	
-//	// 게시글 좋아요 순 정렬
-//	@ResponseBody
-//	@GetMapping("/orderLikeCount")
-//	public List<Board> OrderLikeCount(String boardType) {
-//		
-//		List<Board> list = service.orderLikeCount(boardType);
-//		
-//		return list;
-//	}
+	// 게시글 조회수 순 조회
+	@GetMapping("/{boardType}/boardListByRead")
+	public String orderReadCount(
+					@PathVariable("boardType") String boardType,
+					@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
+					Model model,
+					@RequestParam Map<String, Object> paramMap
+			) {
+		
+		if( paramMap.get("key") == null ) { // 검색어가 없을 때 (검색 X)
+		
+			// 게시글 목록 조회 서비스 호출
+			Map<String, Object> map = service.orderReadCount(boardType, cp);
+			
+			// 조회 결과를 request scope에 세팅 후 forward
+			model.addAttribute("map", map);
+			
+		} else { // 검색어가 있을 때 (검색 O)
+			
+			paramMap.put("boardType", boardType);
+			
+			Map<String, Object> map = service.orderReadCount(paramMap, cp); // 오버로딩 적용
+			
+			model.addAttribute("map", map);
+			
+		}
+
+		model.addAttribute("boardType", boardType);
+		
+		return "board/boardListByRead";
+	}
+	
+	
+	// 게시글 좋아요 순 조회
+	@GetMapping("/{boardType}/boardListByLike")
+	public String orderLikeCount(
+					@PathVariable("boardType") String boardType,
+					@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
+					Model model,
+					@RequestParam Map<String, Object> paramMap
+			) {
+		
+		if( paramMap.get("key") == null ) { // 검색어가 없을 때 (검색 X)
+			
+			// 게시글 목록 조회 서비스 호출
+			Map<String, Object> map = service.orderLikeCount(boardType, cp);
+			
+			// 조회 결과를 request scope에 세팅 후 forward
+			model.addAttribute("map", map);
+			
+		} else { // 검색어가 있을 때 (검색 O)
+			
+			paramMap.put("boardType", boardType);
+			
+			Map<String, Object> map = service.orderLikeCount(paramMap, cp); // 오버로딩 적용
+			
+			model.addAttribute("map", map);
+			
+		}
+
+		model.addAttribute("boardType", boardType);
+		
+		return "board/boardListByLike";
+	}
+	
 	
 }
