@@ -39,7 +39,10 @@
 
 				<div class="campingTitle">
 					<div class="titleContainer">
-						<p th:text="${camp.campName}">캠핑장 명</p>
+						<div>
+							<p th:text="${camp.campName}">캠핑장 명</p>
+							<p id="address" th:text="${camp.campAddress}"></p>
+						</div>
 
 						<th:block th:if="${session.loginMember?.memberType == 'C'} or ${session.loginMember?.memberType == 'M'}">
 
