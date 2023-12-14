@@ -22,7 +22,18 @@ public interface BoardMapper {
 	 * @return listCount
 	 */
 	public int getListCount(String boardType);
-
+	
+	/** 특정 게시판의 삭제되지 않은 게시글 수 조회 (조회수 순)
+	 * @param boardType
+	 * @return listCount
+	 */
+	public int getListCountByRead(String boardType);
+	
+	/** 특정 게시판의 삭제되지 않은 게시글 수 조회 (좋아요 순)
+	 * @param boardType
+	 * @return listCount
+	 */
+	public int getListCountByLike(String boardType);
 
 	/** 특정 게시판에서 현재 페이지에 해당하는 부분에 대한 게시글 목록 조회
 	 * @param pagination
@@ -90,10 +101,16 @@ public interface BoardMapper {
 	public List<String> selectImageList();
 
 	// 조회수 순 정렬
-	List<Board> orderReadCount(String boardType);
+	public List<Board> orderReadCount(String boardType, RowBounds rowBounds);
 
+	// 조회수 순 정렬 (검색)
+	public List<Board> orderReadCount(Map<String, Object> paramMap, RowBounds rowBounds);
+	
 	// 좋아요 순 정렬
-	List<Board> orderLikeCount(String boardType);
+	public List<Board> orderLikeCount(String boardType, RowBounds rowBounds);
+
+	// 좋아요 순 정렬 (검색)
+	public List<Board> orderLikeCount(Map<String, Object> paramMap, RowBounds rowBounds);
 	
 	
 	

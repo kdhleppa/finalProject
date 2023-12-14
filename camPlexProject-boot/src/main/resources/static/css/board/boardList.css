@@ -25,6 +25,22 @@ button {
     margin-left: 10rem;
 }
 
+.boardViewList {
+	display: flex;
+	font-family: 'HakgyoansimSantteutdotumL';
+    list-style: none;
+    font-size: 20px;
+    margin-left: 7rem;
+}
+
+.boardViewList > a {
+	text-decoration: none;
+	color: black;
+	margin-top: 1rem;
+	margin-left: 2rem;
+}
+
+
 .boardTypeList > li > a {
 	text-decoration: none;
 	color: black;

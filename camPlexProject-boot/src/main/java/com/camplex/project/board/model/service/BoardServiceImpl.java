@@ -139,19 +139,118 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.selectImageList();
 	}
 
-//	// 조회수 순 정렬
-//	@Override
-//	public List<Board> orderReadCount(String boardType) {
-//		return mapper.orderReadCount(boardType);
-//	}
-//
-//	// 좋아요 순 정렬
-//	@Override
-//	public List<Board> orderLikeCount(String boardType) {
-//		return mapper.orderLikeCount(boardType);
-//	}
+	// 조회수 순 조회
+	@Override
+	public Map<String, Object> orderReadCount(String boardType, int cp) {
+		
+		int listCountR = mapper.getListCountByRead(boardType);
+		
+		// 2. 1번 조회 결과 + cp 를 이용해서 Pagination 객체 생성
+		// -> 내부 필드가 모두 계산되어 초기화됨
+		Pagination paginationR = new Pagination(listCountR, cp);
+		
+		// 1) offset 계산
+		int offset 
+			= (paginationR.getCurrentPage() - 1) * paginationR.getLimit();
+		
+		// 2) RowBounds 객체 생성
+		RowBounds rowBoundsR = new RowBounds(offset, paginationR.getLimit());
+		
+		List<Board> boardListR = mapper.orderReadCount(boardType, rowBoundsR);
+		
+		System.out.println("boardListR? ::" + boardListR);
+		
+		// 4. pagination, boardListR를 Map에 담아서 반환
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("paginationR", paginationR);
+		map.put("boardListR", boardListR);
+		
+		return map;
+		
+	}
+	
+	// 조회수 순 조회(검색)
+	@Override
+	public Map<String, Object> orderReadCount(Map<String, Object> paramMap, int cp) {
+		
+		int listCountR = mapper.getSearchListCount(paramMap);
+		
+		// 2. 1번 조회 결과 + cp 를 이용해서 Pagination 객체 생성
+		// -> 내부 필드가 모두 계산되어 초기화됨
+		Pagination paginationR = new Pagination(listCountR, cp);
+		
+		// 1) offset 계산
+		int offset 
+			= (paginationR.getCurrentPage() - 1) * paginationR.getLimit();
+		
+		// 2) RowBounds 객체 생성
+		RowBounds rowBoundsR = new RowBounds(offset, paginationR.getLimit());
+		
+		List<Board> boardListR = mapper.orderReadCount(paramMap, rowBoundsR);
+		
+		// 4. pagination, boardList를 Map에 담아서 반환
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("paginationR", paginationR);
+		map.put("boardListR", boardListR);
+		
+		return map;
+	}
+	
 
+	// 좋아요 순 조회
+	@Override
+	public Map<String, Object> orderLikeCount(String boardType, int cp) {
+
+		int listCountL = mapper.getListCountByLike(boardType);
+		
+		// 2. 1번 조회 결과 + cp 를 이용해서 Pagination 객체 생성
+		// -> 내부 필드가 모두 계산되어 초기화됨
+		Pagination paginationL = new Pagination(listCountL, cp);
+		
+		// 1) offset 계산
+		int offset 
+			= (paginationL.getCurrentPage() - 1) * paginationL.getLimit();
+		
+		// 2) RowBounds 객체 생성
+		RowBounds rowBoundsL = new RowBounds(offset, paginationL.getLimit());
+		
+		List<Board> boardListL = mapper.orderLikeCount(boardType, rowBoundsL);
+		
+		// 4. pagination, boardList를 Map에 담아서 반환
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("paginationL", paginationL);
+		map.put("boardListL", boardListL);
+		
+		return map;
+	}
 	
 	
+	// 좋아요 순 조회(검색)
+	@Override
+	public Map<String, Object> orderLikeCount(Map<String, Object> paramMap, int cp) {
+		
+		int listCountL = mapper.getSearchListCount(paramMap);
+		
+		// 2. 1번 조회 결과 + cp 를 이용해서 Pagination 객체 생성
+		// -> 내부 필드가 모두 계산되어 초기화됨
+		Pagination paginationL = new Pagination(listCountL, cp);
+		
+		// 1) offset 계산
+		int offset 
+			= (paginationL.getCurrentPage() - 1) * paginationL.getLimit();
+		
+		// 2) RowBounds 객체 생성
+		RowBounds rowBoundsL = new RowBounds(offset, paginationL.getLimit());
+		
+		List<Board> boardListL = mapper.orderLikeCount(paramMap, rowBoundsL);
+		
+		// 4. pagination, boardList를 Map에 담아서 반환
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("paginationL", paginationL);
+		map.put("boardListL", boardListL);
+		
+		return map;
+	}
+
 
 }

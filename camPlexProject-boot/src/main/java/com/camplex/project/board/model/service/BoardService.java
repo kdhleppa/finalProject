@@ -19,7 +19,6 @@ public interface BoardService {
 	 */
 	Map<String, Object> selectBoardList(String boardType, int cp);
 
-	
 	/** 게시글 목록 조회 (검색)
 	 * @param paramMap
 	 * @param cp
@@ -52,16 +51,17 @@ public interface BoardService {
 	 */
 	List<String> selectImageList();
 
-//	// 조회수 순 정렬
-//	Map<String, Object> orderReadCount(String boardType, int cp);
-//	
-//	// 조회수 순 정렬(검색)
-//	Map<String, Object> orderReadCount(Map<String, Object> paramMap, int cp);
-//	
-//	// 좋아요 순 정렬
-//	Map<String, Object> orderLikeCount(String boardType, int cp);
-
+	// 조회수 순 조회
+	Map<String, Object> orderReadCount(String boardType, int cp);
 	
+	// 조회수 순 조회(검색)
+	Map<String, Object> orderReadCount(Map<String, Object> paramMap, int cp);
+	
+	// 좋아요 순 조회
+	Map<String, Object> orderLikeCount(String boardType, int cp);
+
+	// 좋아요 순 조회(검색)
+	Map<String, Object> orderLikeCount(Map<String, Object> paramMap, int cp);
 	
 
 	
