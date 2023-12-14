@@ -64,7 +64,7 @@ function updateOverallTotal() {
         console.log(price);
         total += price;
     });
-    document.getElementById('overallTotal').textContent = total + '원';
+    document.getElementById('overallTotal').textContent = total.toLocaleString() + '원';
     document.getElementById('price').value = total;
 }
 
@@ -75,7 +75,13 @@ function deleteBtn (element) {
 	updateOverallTotal();
 		
 }
-
+document.getElementById('payBtn').addEventListener('click', function(event) {
+    var priceValue = document.getElementById('price').value;
+    if(priceValue == "0") {
+        alert("선택된 상품이 없습니다.");
+        event.preventDefault();
+    }
+});
 
 const payBy = document.querySelectorAll('input[name="payBy"]');
 let payFrm = document.getElementById('payFrm')
