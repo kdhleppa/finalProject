@@ -38,4 +38,6 @@ public class Reservations {
 	private String campAddress;
 	
 	private List<ItemInfoMypage> itemList;
+	
+	private int totalPrice;
 }

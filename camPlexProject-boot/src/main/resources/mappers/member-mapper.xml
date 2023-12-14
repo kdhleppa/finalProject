@@ -155,7 +155,7 @@
 			       (SELECT CAMP_DE_NAME FROM CAMPING_DETAIL
 			       	WHERE CAMP_DE_NO = A.CAMP_DE_NO) CAMP_DE_NAME,
 			       	
-			       	(SELECT (CAMP_IMG_PATH || CAMP_IMG_RENAME) 
+			       	(SELECT (CAMP_IMG_PATH || CAMP_IMG_RENAME)
 					FROM CAMPING_SITE_IMG
 					WHERE CAMP_NO = A.CAMP_NO
 					AND CAMP_IMG_ORDER = 0) THUMBNAIL,
@@ -170,6 +170,7 @@
 			       	
 		FROM RESERVATIONS A 
 		WHERE MEMBER_NO = #{memberNo}
+		ORDER BY CAMP_ENTDATE
 	</select>
 		
 	<!-- collectoion 중 위시리스트 -->
