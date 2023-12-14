@@ -26,5 +26,6 @@ public class rentPayList {
 	private String campEntdate;
 	private String campOutdate;
 	private int discountRate;
+	private int stayDay;
 	private List<ItemImg> imageList;
 }
