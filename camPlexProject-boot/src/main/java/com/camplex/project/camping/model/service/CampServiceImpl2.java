@@ -481,6 +481,24 @@ public class CampServiceImpl2 implements CampService2{
 	}
 
 
+	/** 맵에 사용될 캠핑장 select (ajax)
+	 *
+	 */
+	@Override
+	public List<Camp> selectForMapOfCamp() {
+		return mapper.selectForMapOfCamp();
+	}
+
+
+	/** 카테고리에 따른 캠프 select
+	 *
+	 */
+	@Override
+	public List<Camp> selectForMapOfCampCategory(String category) {
+		return mapper.selectForMapOfCampCategory(category);
+	}
+
+
 	
 
 }

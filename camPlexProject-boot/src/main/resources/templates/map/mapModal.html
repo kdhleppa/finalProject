@@ -14,27 +14,35 @@
 	<div id="mapContainer" class="hidden">
 		
 		<div class="mapModalDiv">
+
 			<div class="mapKko" id="mapKko"></div>
+
 			<div class="campTypeDiv">
+
+                <section class="viewAllSec">
+                    <span class="viewAllBtn" type="button" onclick="mapModal()">전체 보기</span>
+                </section>
 				
 				<section class="campTypeSec">
-                    <img class="campTypeImages" th:src="@{/images/iconImg/autoCampImgIcon.png}">
-                    <span>오토캠핑</span>
+                    <img class="campTypeImages" th:src="@{/images/iconImg/autoCampImgIcon.png}" onclick="campType('AUTO')">
+                    <span onclick="campType('AUTO')" style="cursor: pointer;">오토캠핑</span>
                 </section>
 				<section class="campTypeSec">
-                    <img class="bagCampImg" th:src="@{/images/iconImg/backCampImgIcon.png}">
+                    <img class="bagCampImg" th:src="@{/images/iconImg/backCampImgIcon.png}" onclick="campType('BACK')" style="cursor: pointer;">
                     <section class="campTypeSecBlank"></section>
-                    <span>백패킹</span>
+                    <span onclick="campType('BACK')" style="cursor: pointer;">백패킹</span>
                 </section>
 				<section class="carCampTypeSec">
-                    <img class="carCampImg" th:src="@{/images/iconImg/carCampImgIcon.png}">
+                    <img class="carCampImg" th:src="@{/images/iconImg/carCampImgIcon.png}" onclick="campType('CAR')">
                     <section class="campTypeSecBlank"></section>
-                    <span>차박캠핑</span>
+                    <span onclick="campType('CAR')" style="cursor: pointer;">차박캠핑</span>
                 </section>
 				<section class="campTypeSec">
-                    <img class="campTypeImages" th:src="@{/images/iconImg/glampingCampImgIcon.png}">
-                    <span>글램핑</span>
+                    <img class="campTypeImages" th:src="@{/images/iconImg/glampingCampImgIcon.png}" onclick="campType('GLAM')">
+                    <span onclick="campType('GLAM')" style="cursor: pointer;">글램핑</span>
                 </section>
+                
+                <img class="xBtnImg" th:src="@{/images/iconImg/campingUploadDelete.png}" onclick="modalHidden()">
 				
 			</div>
 		</div>

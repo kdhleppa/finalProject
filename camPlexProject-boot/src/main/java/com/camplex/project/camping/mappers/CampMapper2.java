@@ -93,6 +93,17 @@ public interface CampMapper2 {
 
 	List<CampDetail> selectDeCampOfCampDeNo(int campNo);
 
+	/** 맵에 사용될 캠핑장 select (ajax)
+	 * @return
+	 */
+	List<Camp> selectForMapOfCamp();
+
+	/** 카테고리에 따른 캠프 select
+	 * @param category
+	 * @return
+	 */
+	List<Camp> selectForMapOfCampCategory(String category);
+
 
 
 }

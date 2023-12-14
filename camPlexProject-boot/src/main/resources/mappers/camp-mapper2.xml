@@ -303,6 +303,19 @@
 		WHERE CAMP_NO = #{campNo} AND CAMP_DE_IMG_ORDER = 0
 	</select>
 	
+	<!-- 맵에 사용될 캠핑장 select (ajax) -->
+	<select id="selectForMapOfCamp" resultMap="camp_rm">
+		SELECT CAMP_NO, CAMP_ADDRESS, CAMP_NAME
+		FROM "CAMPING_SITE"
+		WHERE CAMP_DEL_FL = 'N'
+	</select>
+	
+	<select id="selectForMapOfCampCategory" resultMap="camp_rm">
+		SELECT CAMP_NO, CAMP_ADDRESS, CAMP_NAME
+		FROM "CAMPING_SITE"
+		WHERE CATEGORY = #{category} AND CAMP_DEL_FL = 'N'
+	</select>
+	
 	
 	
 	
