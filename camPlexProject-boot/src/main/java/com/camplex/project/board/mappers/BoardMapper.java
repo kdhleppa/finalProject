@@ -71,13 +71,11 @@ public interface BoardMapper {
 	 */
 	public int countBoardLike(Integer boardNo);
 
-
 	/** 게시글 수 조회 (검색)
 	 * @param paramMap
 	 * @return
 	 */
 	public int getSearchListCount(Map<String, Object> paramMap);
-
 
 	/** 게시글 목록 조회 (검색)
 	 * @param pagination
@@ -86,10 +84,17 @@ public interface BoardMapper {
 	 */
 	public List<Board> selectSearchBoardList(Map<String, Object> paramMap, RowBounds rowBounds);
 
- 
 	/** DB 이미지 파일 목록 조회
 	 * @return
 	 */
 	public List<String> selectImageList();
+
+	// 조회수 순 정렬
+	List<Board> orderReadCount(String boardType);
+
+	// 좋아요 순 정렬
+	List<Board> orderLikeCount(String boardType);
+	
+	
 	
 }

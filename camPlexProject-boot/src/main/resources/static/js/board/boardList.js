@@ -1,3 +1,5 @@
+const boardTypeCheck = document.getElementById("boardTypeCheck").value;
+
 const insertBtn = document.querySelector("#insertBtn");
 
 // 글쓰기 버튼 클릭 시
@@ -15,64 +17,76 @@ if(insertBtn != null) { // 로그인 여부에 따라 insertBtn에 있는가 없
 }
 
 const boardSort = document.querySelectorAll('input[name="boardSort"]');
-let overlayScreen = document.querySelector(`.overlayScreen`);
-	
-for(var i = 0 ; i < boardSort.length ; i++) {
-	
-	boardSort[i].addEventListener("change", e => {
-		
-		let boardList = document.querySelectorAll('.boardList')
-		
-		overlayScreen.addEventListener("animationend", function handler() {
-			this.removeEventListener("animationend", handler);
-			this.classList.remove("play");
-		})
-		
-		if(e.target.value == 'recent') {
-			
-			fetch("/board/{boardType:[A-Z]+}")
-			.then(resp => resp.json())
-			.then(data => {
-				
-				e.defaultPrevented();
-				
-			})
-			
-		}
-		
-		if(e.target.value == 'readCount') {
-			
-			for(var i = 0; i < boardSort.length; i++) {
-				boardSort[i].classList.remove('clicked')
-			}
-			
-			e.target.classList.add('clicked')
-			
-			fetch("/board/orderReadCount")
-			.then(resp => resp.json())
-			.then(data => {
-				
-				console.log(data);
-				
-			})
-		}
-		
-		if(e.target.value == 'likeCount') {
-			
-			for(var i = 0; i < boardSort.length; i++) {
-				boardSort[i].classList.remove('clicked')
-			}
-			
-			e.target.classList.add('clicked')
-			
-			fetch("/board/orderLikeCount")
-			.then(resp => resp.json())
-			.then(data => {
-				
-				console.log(data);
-				
-			})
-		}
-		
-	})
+
+function createTableRow(board) {
+    return `
+        <tr id="tableTr">
+            <td>${board.boardNo}</td>
+            <td id="tdTitle">
+                ${board.boardTitle}
+            </td>
+            <td>${board.memberNickname}</td>
+            <td>${board.boardCreateDate}</td>
+            <td><i class="fa-solid fa-eye"></i> ${board.boardReadCount}</td>
+            <td><i id="boardLike" class="fa-solid fa-heart"></i> ${board.likeCount}</td>
+        </tr>
+    `;
 }
+
+
+function updateTable(data) {
+    const tableBody = document.querySelector('.listTable tbody');
+    
+    tableBody.innerHTML = '';
+
+    data.forEach(board => {
+        const rowHtml = createTableRow(board);
+        tableBody.insertAdjacentHTML('beforeend', rowHtml);
+    });
+}
+
+
+for (let i = 0; i < boardSort.length; i++) {
+    boardSort[i].addEventListener('change', (e) => {
+        
+		let tableTr = document.querySelectorAll('#tableTr');
+
+        if (e.target.value == 'readCount') {
+            for (let i = 0; i < boardSort.length; i++) {
+                boardSort[i].classList.remove('clicked');
+            }
+
+            e.target.classList.add('clicked');
+
+            fetch('/board/orderReadCount?boardType=' + boardTypeCheck)
+            .then((resp) => resp.json())
+            .then((data) => {
+				
+                updateTable(data);
+                
+            });
+            
+        }
+
+        if(e.target.value == 'likeCount') {
+			
+			for(var i = 0; i < boardSort.length; i++) {
+				boardSort[i].classList.remove('clicked')
+			}
+			
+			e.target.classList.add('clicked')
+			
+			fetch("/board/orderLikeCount?boardType=" + boardTypeCheck)
+			.then(resp => resp.json())
+			.then(data => {
+				
+				updateTable(data);
+				
+			})
+		}
+		
+    });
+    
+}
+
+

@@ -52,12 +52,17 @@ public interface BoardService {
 	 */
 	List<String> selectImageList();
 
-//	/** 게시글 조회수 순 정렬
-//	 * @param paramMap
-//	 * @param cp
-//	 * @return
-//	 */
+//	// 조회수 순 정렬
+//	Map<String, Object> orderReadCount(String boardType, int cp);
+//	
+//	// 조회수 순 정렬(검색)
 //	Map<String, Object> orderReadCount(Map<String, Object> paramMap, int cp);
+//	
+//	// 좋아요 순 정렬
+//	Map<String, Object> orderLikeCount(String boardType, int cp);
+
+	
+	
 
 	
 }

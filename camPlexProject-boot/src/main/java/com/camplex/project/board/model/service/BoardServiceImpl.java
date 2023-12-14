@@ -139,33 +139,19 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.selectImageList();
 	}
 
-	
-//	// 게시글 조회수 순 정렬
+//	// 조회수 순 정렬
 //	@Override
-//	public Map<String, Object> orderReadCount(Map<String, Object> paramMap, int cp) {
-//		
-//			// 1. 특정 게시판의 삭제되지 않은 게시글 수 조회
-//			int listCount = mapper.getListCount(boardType);
-//			
-//			// 2. 1번 조회 결과 + cp 를 이용해서 Pagination 객체 생성
-//			// -> 내부 필드가 모두 계산되어 초기화됨
-//			Pagination pagination = new Pagination(listCount, cp);
-//			
-//			// 1) offset 계산
-//			int offset 
-//				= (pagination.getCurrentPage() - 1) * pagination.getLimit();
-//			
-//			// 2) RowBounds 객체 생성
-//			RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
-//			
-//			List<Board> boardList = mapper.selectBoardList(boardType, rowBounds);
-//			
-//			// 4. pagination, boardList를 Map에 담아서 반환
-//			Map<String, Object> map = new HashMap<String, Object>();
-//			map.put("pagination", pagination);
-//			map.put("boardList", boardList);
-//			
-//			return map;
+//	public List<Board> orderReadCount(String boardType) {
+//		return mapper.orderReadCount(boardType);
 //	}
+//
+//	// 좋아요 순 정렬
+//	@Override
+//	public List<Board> orderLikeCount(String boardType) {
+//		return mapper.orderLikeCount(boardType);
+//	}
+
+	
+	
 
 }
