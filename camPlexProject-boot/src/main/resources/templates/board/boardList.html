@@ -154,7 +154,6 @@
                     <!-- 이전 목록 마지막 번호로 이동 -->
                     <li><a th:href="@{/board/{boardType}(boardType=${boardType}, cp=${pagination.prevPage})}">&lt;</a></li>
 
-					
                     <!-- 특정 페이지로 이동 -->
                     <!-- #numbers.sequence(시작, 끝 [,step]) : 시작 이상, 끝 이하 까지 step 만큼 증가하는 숫자를 발생시켜 리스트로 반환 -->
                     <th:block th:each="i : ${#numbers.sequence(pagination.startPage, pagination.endPage, 1)}">
@@ -214,7 +213,9 @@
 	    </section>
 	    
 	    <th:block th:replace="~{chatdemo/chatdemo}"></th:block>
-	    
+		
+		<input id="boardTypeCheck" type="hidden" th:value="${boardType}">
+		    
 	</main>
 	
     <th:block th:replace="~{common/footer}"></th:block>
@@ -222,7 +223,7 @@
 	<script th:src="@{/js/board/boardList.js}"></script>
 	
 	<script th:inline="javascript">
-		
+				
 		const memberType =  /*[[${session.loginMember?.memberType}]]*/ "로그인 회원타입";
 		
 		const loginMemberNo = /*[[${session.loginMember?.memberNo}]]*/ "로그인 회원번호";
