@@ -216,10 +216,29 @@ public class CampController2 {
 		
 		Camp campList = service.searchCampForCampNo(campNo);
 		
+		String[] optionArr = null;
+		
+		String[] aroundViewArr = null;
+		
+		if(campList.getCampOption() != null) {
+			
+			optionArr = campList.getCampOption().split("\\^\\^\\^");
+			
+		}
+		
+		if(campList.getCampAroundView() != null) {
+			
+			aroundViewArr = campList.getCampAroundView().split("\\^\\^\\^");
+			
+		}
+		
+		
 		List<CampDetail> campDeList = service.searchCampDeForCampNo(campNo);
 		
 		model.addAttribute("campList", campList);
 		model.addAttribute("campDeList", campDeList);
+		model.addAttribute("option", optionArr);
+		model.addAttribute("aroundView", aroundViewArr);
 		
 		return "camp/campingEdit";
 	}
