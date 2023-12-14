@@ -20,26 +20,32 @@
 
         <ul id="mainImageNum">
 
-            <li data-menumain="main1" class>
-                <a id="main1Btn">1</a>
+            <li data-menumain="main1" class="Btn">
+                <a id="main1Btn" href="#main1">1</a>
             </li>
 
             <p>ㅡ</p>
 
-            <li data-menumain="main2" class>
-                <a id="main2Btn">2</a>
+            <li data-menumain="main2" class="Btn">
+                <a id="main2Btn" href="#main2">2</a>
             </li>
 
             <p>ㅡ</p>
 
-            <li data-menumain="main3" class>
-                <a id="main3Btn">3</a>
+            <li data-menumain="main3" class="Btn">
+                <a id="main3Btn" href="#main3">3</a>
             </li>
 
             <p>ㅡ</p>
 
-            <li data-menumain="main4" class>
-                <a id="main4Btn">4</a>
+            <li data-menumain="main4" class="Btn">
+                <a id="main4Btn" href="#main4">4</a>
+            </li>
+
+            <p>ㅡ</p>
+
+            <li data-menumain="main5" class="Btn">
+                <a id="main5Btn" href="#main5">5</a>
             </li>
             
         </ul>
@@ -67,7 +73,7 @@
                 <img th:src="@{/images/campingImg/main3.jpg}">
                 <p class="p1">CAMPING X RENTAL <br>
                 	<p class="p2">별 좋은 어느 겨울날의 편안한 캠핑</p>
-                	<button class="mainbutton">캠핑장 보러가기</button>
+                	<button class="mainbutton" onclick="location.href='/board/B'">게시판 보러가기</button>
                 </p>
             </div>
 
@@ -75,11 +81,15 @@
                 <img th:src="@{/images/campingImg/main4.jpg}">
                 <p class="p1">CAMPING X RENTAL <br>
                 	<p class="p2">별 좋은 어느 겨울날의 편안한 캠핑</p>
-                	<button class="mainbutton">캠핑장 보러가기</button>
+                	<button class="mainbutton" onclick="location.href='/event/eventList'">이벤트 보러가기</button>
                 </p>
             </div>
+
+            <div class="mainContent" id="main5">
+                <th:block th:replace="~{common/footerForMain}"></th:block>
+                <button class="mainbutton">5</button>
+            </div>
             
-            <th:block th:replace="~{common/footerForMain}"></th:block>
             
         </section>
 

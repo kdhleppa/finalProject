@@ -41,7 +41,7 @@ button {
 
 #mainImageNum {
     position: fixed;
-    top: 50%;
+    top: 60%;
     transform: translateY(-100%);
     left: 10px;
     list-style: none;
@@ -50,17 +50,19 @@ button {
 
 #mainImageNum p {
     color: white;
-    font-size: 16px;
+    font-size: 1rem;
     font-style: bolder;
 }
 
-#mainImageNum button {
+#mainImageNum a {
     font-family: 'HakgyoansimSantteutdotumL';
-    font-size: 28px;
+    font-size: 1rem;
     color: white;
     text-decoration: none;
     background-color: transparent;
     border: none;
+    display: flex;
+    justify-content: center;
 }
 
 /* 메인화면 이미지, 가운데 문구 & 버튼 */
