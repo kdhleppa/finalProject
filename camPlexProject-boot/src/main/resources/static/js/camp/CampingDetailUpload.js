@@ -80,6 +80,7 @@ const categorySelect = document.getElementById('categorySelect');
 const campOption = document.querySelectorAll('input[name=campOption]');
 const campAroundView = document.querySelectorAll('input[name=campAroundView]');
 
+
 campingDetailUploadForm.addEventListener('submit', e => {
 	
 	if(inputCampingName.value.trim() == "") {
@@ -91,7 +92,7 @@ campingDetailUploadForm.addEventListener('submit', e => {
 	
 	for(var i = 0 ; i < preview.length - 1 ; i++){
 
-		if(preview[i].getAttribute('src') == ""){
+		if(preview[i].getAttribute('src') == "" || preview[i].getAttribute('src') == null){
 			alert(i+1 + "번째 사진을 입력해주세요");
 			preview[i].focus();
 			e.preventDefault();
