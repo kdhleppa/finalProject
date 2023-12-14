@@ -77,10 +77,8 @@ const checkOut = document.getElementById('checkOut');
 const CEONum = document.getElementById('CEONum');
 const etcInfoTextArea = document.getElementById('etcInfoTextArea');
 const categorySelect = document.getElementById('categorySelect');
-const campOption = document.querySelectorAll('input[name=campOption]')
-const campAroundView = document.querySelectorAll('input[name=campAroundView]')
-const images = document.querySelectorAll('input[name=images]')
-
+const campOption = document.querySelectorAll('input[name=campOption]');
+const campAroundView = document.querySelectorAll('input[name=campAroundView]');
 
 campingDetailUploadForm.addEventListener('submit', e => {
 	
@@ -91,11 +89,11 @@ campingDetailUploadForm.addEventListener('submit', e => {
 		return;
 	}
 	
-	for(var i = 0 ; i < images.length ; i++){
+	for(var i = 0 ; i < preview.length - 1 ; i++){
 
-		if(images[i].value == ""){
+		if(preview[i].getAttribute('src') == ""){
 			alert(i+1 + "번째 사진을 입력해주세요");
-			images[i].focus();
+			preview[i].focus();
 			e.preventDefault();
 			return;
 		}

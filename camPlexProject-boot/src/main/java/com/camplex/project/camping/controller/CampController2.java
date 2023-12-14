@@ -287,11 +287,36 @@ public class CampController2 {
 		
 	}
 	
-	/*
-	 * @GetMapping("/selectCampAddress") public List<Camp> selectCampAddress() {
-	 * 
-	 * }
+	
+	/** 맵에 사용될 캠핑장 select (ajax)
+	 * @return
 	 */
+	@GetMapping("/selectForMapOfCamp")
+	@ResponseBody
+	public List<Camp> selectForMapOfCamp() {
+		
+		List<Camp> campList = service.selectForMapOfCamp();
+		
+		System.out.println("campList ::" + campList);
+		
+		return campList;
+		
+	}
+	
+	
+	/** 카테고리에 따른 캠프 select
+	 * @param category
+	 * @return
+	 */
+	@GetMapping("/selectForMapOfCampCategory")
+	@ResponseBody
+	public List<Camp> selectForMapOfCampCategory(String category) {
+		
+		List<Camp> campList = service.selectForMapOfCampCategory(category);
+		
+		return campList;
+	}
+	 
 	
 	
 	
