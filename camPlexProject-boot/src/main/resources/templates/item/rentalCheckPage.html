@@ -172,7 +172,7 @@
 
 					</section>
 					
-					<section class="editDeleteSec">
+					<section class="editDeleteSec" th:if="${session.loginMember?.memberType == 'M'}">
 						
 						<section class="editDeleteDetailSec">
 							<a class="editDeleteBtn" th:href="|@{/item2/editForward?itemNo=}${Item.itemNo}|">수정</a>
