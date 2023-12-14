@@ -22,7 +22,7 @@ public class ItemInfoMypage {
 	private String rentalPaymentType;
 	
 	private String thumbnail;
-	private String itemPrice;
+	private int itemPrice;
 	
 	
 }

@@ -57,7 +57,7 @@ button {
 }
   
 main, div, section {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
 }
 
 /* ------------------------------- */
@@ -86,15 +86,20 @@ main {
     font-weight: 600;
 }
 
+#headerSubName {
+	font-size: 20px;
+    font-weight: 600;
+}
+
 #underLine {
     border: 2px solid black;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 /* ------------------------------- */
 /* 정보 */
 .empty2 {
-    flex-basis: 15%;
+    flex-basis: 5%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -114,10 +119,11 @@ main {
 
 .buyPayInfo {
 	display: flex;
+	flex-basis: 90%;
 }
 
 #title {
-    flex-basis: 70%;
+    flex-basis: 90%;
 	display: flex;
 }
 
@@ -128,7 +134,7 @@ main {
 }
 
 .shopingList {
-    flex-basis: 70%;
+    flex-basis: 90%;
     display: flex;
     flex-direction: column;
 }
@@ -141,31 +147,17 @@ main {
 	display: flex;
 }
 
-#campInfoFont {
-	flex-basis: 65%;
-}
-
-#rentalInfoFont {
-	flex-basis: 35%;
+.campInfo, .rentalInfo {
+	flex-basis: 50%;
 }
 
 .campInfo {
 	display: flex;
 	flex-direction: column;
-	flex-basis: 65%;
 }
 
-.campImgDiv {
-	width: 95%;
-    height: 250px;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.campImg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.campInfo img {
+	width: 400px;
 }
 
 .campNameInfoPrice {
@@ -177,11 +169,11 @@ main {
 
 .rentalInfo {
 	display: flex;
-	flex-basis: 35%;
 }
 
 .rentalSection {
 	display: flex;
+	margin-block: 10px;
 }
 
 .rentalSection img {
@@ -192,27 +184,15 @@ main {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
-	margin-left: 10px;
 }
 
 .itemList {
 	display: flex;
 }
 
-.itemImgDiv {
-	width: 90px;
-    height: 90px;
-    border-radius: 10px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.itemImg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.itemList > img{
+	height: 80px;
+	object-fit: cover;
 }
 
 .itemName{
