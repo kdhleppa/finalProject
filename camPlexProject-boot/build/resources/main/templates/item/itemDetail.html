@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제품 상세보기</title>
+    <link rel="stylesheet" th:href="@{/css/item/itemDetail.css}">
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap}" rel="stylesheet">
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}" rel="stylesheet">
+	<link rel="icon" th:href="@{/images/iconImg/favicon.png}">
+</head>
+<body>
+    <th:block th:replace="~{common/headerForContent}"></th:block>
+
+    <div class="container">
+        <div class="emptyContainer"></div>
+
+        <div class="midContainer">
+            <div class="imgContainer">
+				<img th:src="${item.thumbnail}">
+				
+				<th:block th:each="i : ${#numbers.sequence(1, #lists.size(item.imageList)-1, 1)}">
+	                <img th:src="|${item.imageList[i].itemImgPath}${item.imageList[i].itemImgRename}|">
+				</th:block>
+				
+            </div>
+            <div>
+                <form id="payFrm" th:action="@{/paysys/rentalPay/now}" method="post" class="productContentContainer" th:object="${item}">
+                    <!-- 나중에 불러와서 넣을 값들 대체-->
+                    <h2 th:text="*{itemName}">아이템 이름</h2>
+                    <p class="firstP" th:text="*{itemDescription}">아이템 설명</p>
+                    <table class="productContent">
+                        <tr>
+                            <td>기본 렌탈가격</td>
+                            <td>:</td>
+                            
+                            <th:block th:if="${item.discountRate} != 0">
+							
+                            	<td>
+									<div id="beforeDiscount" >
+										<del th:text="|￦ ${#numbers.formatInteger(item.itemPrice, 3, 'COMMA')}|">상품 가격</del>
+										<p style="color: red;" th:text="|(${item.discountRate}%↓)|">(13%↓)</p>
+									</div>
+									<p id="itemPrice" th:text="|￦ ${#numbers.formatInteger(((item.itemPrice)*(100-(item.discountRate))/100), 3, 'COMMA')}|"></p>
+								</td>
+
+							</th:block>
+							
+							<th:block th:if="${item.discountRate} == 0">
+
+                            	<td id="itemPrice" th:text="|￦ ${#numbers.formatInteger(item.itemPrice, 3, 'COMMA')}|" >아이템가격</td>
+
+							</th:block>
+                            
+                            
+                            
+                        </tr>
+                        <tr>
+                            <td>수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;량</td>
+                            <td>:</td>
+                            <td>
+								<input type="number" id="quantity" name="quantity" th:value="1" min="0" hidden>
+								<input type="number" id="quantity2" name="rentalItemQuantity" th:value="1" min="0" hidden>
+								<span id="quantityDisplay">1</span>&nbsp;&nbsp;<button type="button" class="qBtn" id="plusBtn">+</button>&nbsp;&nbsp;<button type="button" class="qBtn" id="minusBtn">-</button>
+							</td>
+                        </tr>
+                        <tr>
+                            <td>여행지 선택</td>
+                            <td>:</td>
+                            <td>
+                                <select name="reservationNo" id="defaultOpt" class="selectBox" th:if="${session.loginMember}">
+									<!--예약목록을가져와야하는데 캠핑장명, 날짜 알아야함 여행 출발일의 전날까지만 나오게해야함-->
+									<option id="" value="default" class="dfText">여행지를 선택 해 주세요</option>
+                                    <th:block th:each="rsvInfo : ${rsvInfo}">
+        								<option th:value="${rsvInfo.reservationNo}" th:text="${rsvInfo.campName} + ' (' + ${rsvInfo.campEntDate} + ' ~ ' + ${rsvInfo.campOutDate} + ')'"></option>
+    								</th:block>
+                                </select>
+
+                                <select name="reservationNo" id="defaultOpt" class="selectBox" th:unless="${session.loginMember}">
+									<option id="" value="0">로그인을 해주세요</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+					<input type="hidden" name="itemNo" th:value="*{itemNo}">
+                    <div class="totalPaymentContainer">
+                        <div class="totalTextContainer">
+                            <p>TOTAL</p>
+                        </div>
+                        <div class="paymentTextContainer">
+                            <p></p>
+                        </div>
+                    </div>
+					<th:block th:if="*{itemStatus == 'Y'}">
+	                    <button type="submit" class="rentBtn">RENT NOW</button>
+	                    <div class="cartWishBtnContainer">
+	                        <button type="submit" class="cartBtn" th:formaction="@{/paysys/rentCart/insert}">ADD TO CART</button>
+	                        <button type="submit" class="wishBtn" th:formaction="@{/member/wishlist/insert}">WISH LIST</button>
+	                    </div>
+                    </th:block>
+                    <th:block th:if="*{itemStatus == 'N'}">
+						<h1 class="outOfStockText">OUT OF STOCK</h1>
+						<div class="cartWishBtnContainer">
+							<p class="notInStore">재고가 없습니다.</p>
+							<button type="submit" class="wishBtn" th:formaction="@{/member/wishlist/insert}">WISH LIST</button>
+						</div>
+					</th:block>
+                </form>
+            </div>
+        </div>
+
+        <div class="emptyContainer"></div>
+
+    </div>
+    
+    <script th:inline="javascript">
+		
+		const price = document.getElementById('itemPrice').innerText;
+		const quantity = document.getElementById('quantity').value;
+		
+	</script>
+  
+    <th:block th:replace="~{common/footer}"></th:block>
+    <script th:src="@{/js/item/itemDetail.js}"></script>
+
+</body>
+</html>

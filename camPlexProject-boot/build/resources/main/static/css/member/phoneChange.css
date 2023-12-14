@@ -1,0 +1,190 @@
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    unicode-range: U+AC00-D7A3
+}
+
+*{
+    font-family: 'HakgyoansimSantteutdotumL', 'Montserrat';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+button { 
+  color: #000;
+  display:inline-block; 
+  margin:0;
+  text-transform:uppercase; 
+}
+  
+button:after {
+  display:block;
+  content: '';
+  border-bottom: solid 2px #000;
+  margin-top: 5px;
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+}
+
+button:hover:after { 
+	transform: scaleX(1);
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+input:focus {
+	outline: none;
+}
+
+
+main, div, section {
+    /* border: 1px solid black; */
+}
+
+/* ------------------------------- */
+/* 메인 틀 */
+main {
+    display: flex;
+    margin-top: 50px;
+}
+
+.empty1 {
+    flex-basis: 15%;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 70%;
+}
+
+/* --------------------------------- */
+/* 대제목 */
+#headerName {
+    font-size: 30px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+#underLine {
+    border: 2px solid black;
+    margin-bottom: 83px;
+}
+
+/* ------------------------------ */
+/* 이름, 전화번호 입력 */
+#inputInfo {
+    display: flex;
+    justify-content: center;
+}
+
+.empty2 {
+    flex-basis: 30%;
+}
+
+#inputNameTel {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 40%;
+}
+
+#inputName::placeholder {
+    font-size: 11px;
+}
+#inputTel::placeholder {
+    font-size: 11px;
+}
+#inputAuthkey::placeholder {
+    font-size: 11px;
+}
+
+#inputName, #inputTel, #inputAuthkey{
+    height: 30px;
+    border: none;
+    border-bottom: 2px solid black;
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+#inputTel {
+    margin-top: 30px;
+}
+
+#inputAuthkey {
+	margin-top: 30px;
+}
+
+.authkeySendMassage {
+    font-size: 13px;
+    margin-top: 5px;
+    margin-left: 8px;
+}
+
+/* ------------------------------------ */
+/* ID 찾기, 이전 페이지로 이동 버튼 */
+#searchIdBtnSection {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.empty3 {
+    flex-basis: 20%;
+}
+
+#searchIdBtn {
+    flex-basis: 60%;
+    display: flex;
+    justify-content: space-around;
+    height: 30px;
+}
+
+.clickBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+}
+
+/* --------------------------------- */
+/* 이메일 인증, 확인 버튼 */
+#numberCheckBtnSection {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.emailCheckBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+    margin-left: 10px;
+}
+
+#sendAuthkey {
+	margin-top: 33px;
+}
+
+#checkNumber {
+    margin-top: 54px;
+}
+
+/* 메세지 색상 지정 */
+.confirm{ color : green; }
+.error{ color : red; }

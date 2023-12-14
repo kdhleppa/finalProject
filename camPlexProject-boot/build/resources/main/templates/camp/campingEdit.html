@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캠핑장 상세 업로드</title>
+    <link rel="stylesheet" th:href="@{/css/camp/campingDetailUpload.css}">
+	<link rel="icon" th:href="@{/images/iconImg/favicon.png}">
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <th:block th:replace="~{common/headerForContent}"></th:block>
+
+    <!-- 메인 -->
+    <main class="campingDetailUploadMain">
+		
+		<form th:action="|@{/camp2/editCamp}?campNo=${campList.campNo}|" id="campingDetailUploadForm" method="post" class="campingDetailUploadForm" enctype="multipart/form-data">
+			
+			<!-- Information -->
+	        <section class="informationSec">
+	
+	            <div class="informationDiv">
+	                Information
+	            </div>
+	
+	        </section>
+	
+	        <section class="inputCampingNameSec">
+				
+	            <input id="inputCampingName" class="inputCampingName" name="campName" type="text" placeholder="캠핑장 명을 입력해주세요." th:value="${campList.campName}">
+	            
+	        </section>
+	
+	        <section class="inputThumbnailEtcImgSec">
+	
+	            <section class="thumbnailImgSec">
+	
+	                <div class="thumbnailInput">
+
+						<label for="img0">
+                        	<img class="preview" th:src="|/images/campingImg/${campList.campSiteImageList[0].campImageReName}|">
+	                    </label>
+	                    
+	                    <input type="file" name="images" class="inputImage" id="img0" accept="image/*">
+	                    
+					</div>
+					
+					<section class="deleteBtnSec">
+						
+						<div class="deleteImgDiv">
+							<img th:src="@{/images/iconImg/deleteImgBtn.png}" class="deleteImg">
+						</div>
+						
+					</section>
+	
+	            </section>
+	
+	            <section class="etcImgSec">
+	
+	                <section class="etcImgTopBottomSec">
+						
+						
+						<section class="etcImgTopBottomSecImgSec">
+							
+							<section class="etcImgTopBottomSecImgSecLeft">
+								
+								<div class="inputEtcImgBtn">			
+
+									<label for="img1">
+			                        	<img class="preview" th:src="|/images/campingImg/${campList.campSiteImageList[1].campImageReName}|">
+				                    </label>
+				                    
+				                    <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
+				                    
+								</div>
+								
+								<section class="deleteBtnSec">
+									
+									<div class="deleteImgDiv">
+										<img th:src="@{/images/iconImg/deleteImgBtn.png}" class="deleteImg">
+									</div>
+									
+								</section>
+								
+							</section>
+							
+							<section class="etcImgTopBottomSecImgSectRight">
+								
+								<div class="inputEtcImgBtn">			
+
+									<label for="img2">
+			                        	<img class="preview" th:src="|/images/campingImg/${campList.campSiteImageList[2].campImageReName}|">
+				                    </label>
+				                    
+				                    <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
+				                    
+								</div>
+								
+								<section class="deleteBtnSec">
+									
+									<div class="deleteImgDiv">
+										<img th:src="@{/images/iconImg/deleteImgBtn.png}" class="deleteImg">
+									</div>
+									
+								</section>
+								
+							</section>
+							
+						</section>
+						
+	                   	
+	
+	                </section>
+	
+	                <section class="etcImgTopBottomSec">
+						
+						
+						<section class="etcImgTopBottomSecImgSec">
+							
+							<section class="etcImgTopBottomSecImgSecLeft">
+								
+								<div class="inputEtcImgBtn">			
+
+									<label for="img3">
+			                        	<img class="preview" th:src="|/images/campingImg/${campList.campSiteImageList[3].campImageReName}|">
+				                    </label>
+				                    
+				                    <input type="file" name="images" class="inputImage" id="img3" accept="image/*">
+				                    
+								</div>
+								
+								<section class="deleteBtnSec">
+									
+									<div class="deleteImgDiv">
+										<img th:src="@{/images/iconImg/deleteImgBtn.png}" class="deleteImg">
+									</div>
+									
+								</section>
+								
+							</section>
+							
+							<section class="etcImgTopBottomSecImgSectRight">
+								
+								<div class="inputEtcImgBtn">			
+
+									<label for="img4">
+			                        	<img class="preview" th:src="|/images/campingImg/${campList.campSiteImageList[4].campImageReName}|">
+				                    </label>
+				                    
+				                    <input type="file" name="images" class="inputImage" id="img4" accept="image/*">
+				                    
+								</div>
+								
+								<section class="deleteBtnSec">
+
+									<div class="deleteImgDiv">
+										<img th:src="@{/images/iconImg/deleteImgBtn.png}" class="deleteImg">
+									</div>
+
+								</section>
+								
+							</section>
+							
+						</section>
+						
+	                   	
+	
+	                </section>
+						
+	                   	
+	
+	                </section>
+	
+	            </section>
+	
+	        </section>
+	
+			<!-- ceo's pic -->
+	        <section class="ceosPicSec">
+	
+	            <section class="ceosPicTitleSec">
+	
+	                <div class="ceosPicTitleDiv">
+	                    CEO's Pic
+	                </div>
+	
+	            </section>
+	
+	            <section class="ceosPicImgSec">
+	
+	                <section class="arrowSec1">
+	                    <img class="arrowImg" th:src="@{/images/iconImg/arrowleft.png}">
+	                </section>
+	
+	                <section class="ceosPicImgDetailSec">
+	
+	                    <div class="ceosPicImgDetailDiv"></div>
+	
+	                </section>
+	
+	                <section class="arrowSec2">
+	                    <img class="arrowImg" th:src="@{/images/iconImg/arrowRight.png}">
+	                </section>
+	
+	            </section>
+	
+	        </section>
+	
+			<!-- Introduction -->
+	        <section class="introductionTitleSec">
+	
+	            <div class="introductionTitleDiv">
+	                Introduction
+	            </div>
+	
+	        </section>
+	
+	        <section class="introductionInputSec">
+	
+	            <textarea id="introduceTextArea" class="introduceTextArea" name="campInfo" placeholder="캠핑장에 대한 설명을 입력하세요." th:text="${campList.campInfo}" spellcheck="false"></textarea>
+	
+	        </section>
+	
+	        <section class="detailsUploadSec">
+	
+	            <section class="detailsUploadTitleSec">
+	
+	                <div class="detailsUploadTitleDiv">
+	                    Details
+	                </div>
+	
+	            </section>
+	
+	            <section class="detailsInputSec">
+	
+	                <section class="detailsInputLeftRightSec" id="detailsInputLeftSec">
+
+						<div class="inputEtcImgBtn" id="iputImgOfDetailMap">
+						   
+		                   	<label for="img5">
+		                       <img class="preview" th:src="${campList.campMap}">
+		                   	</label>
+		                   
+		                   	<input type="file" name="inputCampMap" class="inputImage" id="img5" accept="image/*">
+		                   	
+
+		              	</div>
+		              	
+		              	<section class="deleteBtnSec">
+						
+							<div class="deleteImgDiv">
+								<img th:src="@{/images/iconImg/deleteImgBtn.png}" class="deleteImg">
+							</div>
+							
+						</section>	                    
+
+	                </section>
+	
+	                <section class="detailsInputLeftRightSec" id="detailsInputRightSec">
+	
+	                    <section class="additionalFacilitiesTitleSec">
+	
+	                        <div class="additionalFacilitiesTitleDiv">
+	                            부대 시설
+	                        </div>
+	
+	                    </section>
+	
+	                    <section class="additionalFacilitiesInputSec">
+	
+	                        <section class="additionalFacilitiesInputLSec">
+	
+	                            <section class="additionalFacilitiesSec">
+	                                <input type="checkbox" name="campOption" value="SWER">&nbsp; 공용 샤워실
+	                            </section>
+	
+	                            <section class="additionalFacilitiesSec">
+	                                <input type="checkbox" name="campOption" value="CONV">&nbsp; 편의점 / 매점
+	                            </section>
+	
+	                            <section class="additionalFacilitiesSec">
+	                                <input type="checkbox" name="campOption" value="BBQ">&nbsp; 바베큐장
+	                            </section>
+	
+	                            <section class="additionalFacilitiesSec">
+	                                <input type="checkbox" name="campOption" value="TOIL">&nbsp; 공용 화장실
+	                            </section>
+	
+	                            <section class="additionalFacilitiesSec">
+	                                <input type="checkbox" name="campOption" value="PARK">&nbsp; 공용 주차장
+	                            </section>
+	
+	                        </section>
+	
+	                        <section class="additionalFacilitiesInputRSec">
+	
+	                            <section class="additionalFacilitiesSec">
+	                                <input type="checkbox" name="campOption" value="POOL">&nbsp; 수영장
+	                            </section>
+	
+	                            <section class="additionalFacilitiesSec">
+	                                <input type="checkbox" name="campOption" value="WIFI">&nbsp; Wi-Fi
+	                            </section>
+	
+	                            <section class="additionalFacilitiesSec">
+	                                <input type="checkbox" name="campOption" value="SING">&nbsp; 노래방
+	                            </section>
+	
+	                            <section class="additionalFacilitiesSec">
+	                                <input type="checkbox" name="campOption" value="CAFE">&nbsp; 카페
+	                            </section>    
+	
+	                        </section>
+	
+	                    </section>
+	
+	                    <section class="macroEnvironmentTitleSec">
+	
+	                        <div class="macroEnvironmentTitleDiv">
+	                            주변 환경
+	                        </div>
+	
+	                    </section>
+	
+	                    <section class="macroEnvironmentInputSec">
+	
+	                        <section class="macroEnvironmentInputLRSec">
+	
+	                            <section class="macroEnvironmentInputDetailSec">
+	                                <input type="checkbox" name="campAroundView" value="TREK">&nbsp; 등산로
+	                            </section>
+	
+	                            <section class="macroEnvironmentInputDetailSec">
+	                                <input type="checkbox" name="campAroundView" value="VALY">&nbsp; 계곡
+	                            </section>
+	
+	                            <section class="macroEnvironmentInputDetailSec">
+	                                <input type="checkbox" name="campAroundView" value="MOTN">&nbsp; 산 / 숲
+	                            </section>
+	
+	                        </section>
+	
+	                        <section class="macroEnvironmentInputLRSec">
+	
+	                            <section class="macroEnvironmentInputDetailSec">
+	                                <input type="checkbox" name="campAroundView" value="SEA">&nbsp; 바다
+	                            </section>
+	
+	                            <section class="macroEnvironmentInputDetailSec">
+	                                <input type="checkbox" name="campAroundView" value="RIVR">&nbsp; 강 / 호수
+	                            </section>
+	
+	                            <section class="macroEnvironmentInputDetailSec">
+	                                <input type="checkbox" name="campAroundView" value="CITY">&nbsp; 도심
+	                            </section>
+	
+	                        </section>
+	
+	
+	                    </section>
+	
+	                    <section class="mannerTimeTitleSec">
+	
+	                        <div class="mannerTimeTitleDiv">
+	                            매너 타임
+	                        </div>
+	
+	                    </section>
+	
+	                    <section class="mannertimeInputSec">
+	
+	                        <section class="mannerTimeImgSec">
+	                            <img class="mannerTimeImg" th:src="@{/images/iconImg/clock.png}">
+	                        </section>
+	
+	                        <section class="mannerTimeInputDetailSec">
+	                            <input id="mannerTimeInput" class="mannerTimeInput" type="text" name="mannerTime" placeholder="매너타임 시간을 입력하세요." th:value="${campList.mannerTime}">
+	                        </section>
+	
+	                    </section>
+	
+	                </section>
+	
+	
+	            </section>
+	
+	        </section>
+	        
+	        <section class="etcInfoTitleSec">
+				
+				<section class="etcInfoTitleLocationSec">
+					
+					<div class="etcInfoTitleDiv">
+						Etc Info
+					</div>
+					
+				</section>
+				
+			</section>
+			
+			<section class="etcInfoInputSec">
+				
+				<section class="etcInfoInputLocationSec">
+					
+					<section class="etcInfoInputOneLineSec">
+						
+						<section class="etcInfoInputImgSec">
+							
+							<img class="etcInfoInputImg" th:src="@{/images/iconImg/campingUploadAddress.png}">
+							
+						</section>
+						
+						<section class="etcInfoInputBlankSec">
+							
+						</section>
+						
+						<section class="etcInfoInputNameSec">
+							
+							<span>캠핑장 주소</span>
+							
+						</section>
+						
+						<section class="etcInfoInputInfoSec">
+							
+							<input class="etcInfoInput" id="campAddress" name="campAddress" placeholder="OO도 OO시 OO동 (상세주소)" th:value="${campList.campAddress}">
+							
+						</section>
+						
+					</section>
+					
+					<section class="etcInfoInputOneLineSec">
+						
+						<section class="etcInfoInputImgSec">
+							
+							<img class="etcInfoInputImg" th:src="@{/images/iconImg/campingUploadPhone.png}">
+							
+						</section>
+						
+						<section class="etcInfoInputBlankSec">
+							
+						</section>
+						
+						<section class="etcInfoInputNameSec">
+							
+							<span>전화번호</span>
+							
+						</section>
+						
+						<section class="etcInfoInputInfoSec">
+							
+							<input id="campPhone" class="etcInfoInput" name="campPhone" placeholder="000) 000 - 000" th:value="${campList.campPhone}">
+							
+						</section>
+						
+					</section>
+					
+					<section class="etcInfoInputOneLineSec">
+						
+						<section class="etcInfoInputImgSec">
+							
+							<img class="etcInfoInputImg" th:src="@{/images/iconImg/campingUploadIn.png}">
+							
+						</section>
+						
+						<section class="etcInfoInputBlankSec">
+							
+						</section>
+						
+						<section class="etcInfoInputNameSec">
+							
+							<span>체크인 시간</span>
+							
+						</section>
+						
+						<section class="etcInfoInputInfoSec">
+							
+							<input class="etcInfoInput" id="checkIn" name="checkIn" placeholder="00시 00분" th:value="${campList.checkIn}">
+							
+						</section>
+						
+					</section>
+					
+					<section class="etcInfoInputOneLineSec">
+						
+						<section class="etcInfoInputImgSec">
+							
+							<img class="etcInfoInputImg" th:src="@{/images/iconImg/campingUploadOut.png}">
+							
+						</section>
+						
+						<section class="etcInfoInputBlankSec">
+							
+						</section>
+						
+						<section class="etcInfoInputNameSec">
+							
+							<span>체크아웃 시간</span>
+							
+						</section>
+						
+						<section class="etcInfoInputInfoSec">
+							
+							<input class="etcInfoInput" id="checkOut" name="checkOut" placeholder="00시 00분" th:value="${campList.checkOut}">
+							
+						</section>
+						
+					</section>
+					
+					<section class="etcInfoInputOneLineSec">
+						
+						<section class="etcInfoInputImgSec">
+							
+							<img class="etcInfoInputImg" th:src="@{/images/iconImg/campingUploadCategory.png}">
+							
+						</section>
+						
+						<section class="etcInfoInputBlankSec">
+							
+						</section>
+						
+						<section class="etcInfoInputNameSec">
+							
+							<span>카테고리</span>
+							
+						</section>
+						
+						<section class="etcInfoInputInfoSec">
+							
+							<select class="categorySelect" name="category" id="categorySelect">
+								<option selected value="noLoad">카테고리 선택</option>
+								<option value="AUTO">오토캠핑</option>
+								<option value="BACK">백패킹</option>
+								<option value="CAR">차박</option>
+								<option value="GLAM">글램핑</option>
+							</select>
+							
+						</section>
+						
+					</section>
+					
+					<section class="etcInfoInputOneLineSec">
+						
+						<section class="etcInfoInputImgSec">
+							
+							<img class="etcInfoInputImg" th:src="@{/images/iconImg/campingUploadCEO.png}">
+							
+						</section>
+						
+						<section class="etcInfoInputBlankSec">
+							
+						</section>
+						
+						<section class="etcInfoInputNameSec">
+							
+							<span>CEO 번호</span>
+							
+						</section>
+						
+						<section class="etcInfoInputInfoSec">
+							
+							<input class="CEONumInput" id="CEONum" name="memberNo" th:value="${campList.memberNo}">
+							
+						</section>
+						
+					</section>
+					
+					<section class="etcInfoInputOneLineInfoSec">
+						
+						<section class="etcInfoInputImgSec">
+							
+							<img class="etcInfoInputImg" th:src="@{/images/iconImg/campingInfo.png}">
+							
+						</section>
+						
+						<section class="etcInfoInputBlankSec">
+							
+						</section>
+						
+						<section class="etcInfoInputNameSec">
+							
+							<span>캠핑장 Info</span>
+							
+						</section>
+						
+						<section class="etcInfoInputInfoSec">
+							
+							<textarea id="etcInfoTextArea" class="etcInfoTextArea" name="information" spellcheck="false" th:text="${campList.information}"></textarea>
+							
+						</section>
+						
+					</section>
+					
+				</section>
+				
+			</section>
+	
+	        <section class="enrollSiteTitleSec">
+	
+	            <div class="enrollSiteTitleDiv">
+	                Enroll Site
+	            </div>
+	
+	        </section>
+	        
+	        <section class="enrollSiteBlankSec">
+				
+			</section>
+	
+	        <section id="enrollSiteSec" class="enrollSiteSec">
+				
+				<th:block th:unless="${#lists.isEmpty(campDeList)}">
+					
+					<th:block th:each="campDeList : ${campDeList}">
+						
+						<section th:id="${campDeList.campDeNo}" class="plusCampingSiteSec">
+			
+							<div class="plusCampingSiteDiv">
+								
+								<section class="plusCampingSiteDivLeftSec">
+		
+									<th:block th:if="${campDeList.campDetailImageList.size > 0}">								
+										<img class="plusCampingSampleImg" th:src="|${campDeList.campDetailImageList[0].campDeImagePath}${campDeList.campDetailImageList[0].campDeImageReName}|">
+									</th:block>
+						
+								</section>
+								
+								<section class="plusCampingSiteDivRightSec">
+									
+									<section class="plusCampingSiteDivSiteNameSec" th:text="${campDeList.campDeName}">
+										캠프 구역 이름
+									</section>
+									
+									<section class="plusCampingSiteDivEtcInfoSec">
+										
+										<section class="plusCampingSiteDivEtcInfoLeftSec">
+											
+											<section class="capacityTitleSec">
+												수용 인원
+											</section>
+											
+											<section class="capacityOutputSec" th:text="${campDeList.capacity}">
+												수용 인원
+											</section>
+											
+										</section>
+										
+										<section class="plusCampingSiteDivEtcInfoRightSec" th:text="|${campDeList.campDePrice}~|">
+											가격
+										</section>
+										
+									</section>
+								</section>
+								
+								<section class="plusCampingSiteDeleteBtnSec">
+									<img class="plusCampingSiteDeleteBtn" th:src="@{/images/iconImg/campingUploadDelete.png}" th:thisCampNo="${campDeList.campDeNo}" th:onclick="campDeDelete(this.getAttribute('thisCampNo'))">
+								</section>
+								
+							</div>
+							
+						</section>
+					
+					</th:block>
+					
+					
+				</th:block>
+	
+	        </section>
+	        
+	        <section class="enrollSiteBtnSec">
+	            <button id="enrollSiteBtn" class="enrollSiteBtn" type="button">+</button>
+			</section>
+	        
+
+			<section class="enrollOrBackSec">
+				
+				<button id="campingUploadBtn" class="campingUploadBtn" type="submit">
+					등록하기
+				</button>
+				
+				<a class="backBtn" th:href="@{/camp/search}">
+					돌아가기
+				</a>
+				
+			</section>
+			
+		</form>
+
+    </main>
+    
+	<th:block th:replace="~{common/footer}"></th:block>
+	
+	<script th:src="@{/js/camp/CampingDetailUpload.js}"></script>
+	
+	<th:block th:replace="~{camp/editCampingSiteModal}"></th:block>
+</body>
+
+
+</html>

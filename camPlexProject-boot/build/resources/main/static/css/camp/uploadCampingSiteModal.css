@@ -1,0 +1,363 @@
+*{
+    font-family: 'HakgyoansimSantteutdotumL', 'Montserrat';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    /*border: 1px solid black;*/
+}
+
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: 1% 500%;
+    unicode-range: U+AC00-D7A3;
+}
+
+
+/* 모달 div */
+#modalContainer {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 3000;
+}
+
+#modalContainer.hidden {
+	display: none;
+}
+
+/* 모달 메인 */
+.modalMain {
+	width: 82rem;
+	height: 42rem;
+	background-color: white;
+	border-radius: 10px;
+	display: flex;
+}
+
+/* 모달 왼쪽 Sec */
+.modalLeftSec {
+	height: 100%;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+}
+
+.modalTitleSec {
+	width: 100%;
+	height: 8rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #D4A373;
+	font-size: 2rem;
+}
+
+.modalTitleDiv {
+	width: 33rem;
+	height: 4rem;
+}
+
+.modalLeftSecCenterSec {
+	width: 38rem;
+	height: 28rem;
+	display: flex;
+	justify-content: center;
+}
+
+.campingSiteThumbnailDiv {
+	width: 35rem;
+	height: 26rem;
+	background-color: #EAEAEA;
+	border-radius: 10px;
+}
+
+.campingSiteThumbnailDiv:hover {
+	background-color: #909090;
+}
+
+.campingSiteThumbnailInput {
+	display: none;
+}
+
+.campingSiteThumbnailDiv > label {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+}
+
+.moreImgDetailDiv > label {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+}
+
+.previewcampingSiteThumbnail {
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
+}
+
+
+/* 모달 오른쪽 Sec */
+.modalRightSec {
+	height: 100%;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+}
+
+.modalRightTopSec {
+	height: 51%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	padding-left: 3.5rem;
+}
+
+.modalDeleteBtnSec {
+	width: 100%;
+	height: 3rem;
+	display: flex;
+	justify-content: end;
+	padding: 0.5rem;
+}
+
+.modalDeleteBtn {
+	width: 2rem;
+	height: 2rem;
+	cursor: pointer;
+}
+
+.modalLocationInfoTitleSec {
+	width: 100%;
+	height: 4rem;
+	display: flex;
+}
+
+.modalLocationInfoTitleDiv {
+	font-size: 1.4rem;
+	font-weight: bold;
+	width: 25rem;
+	height: 3.2rem;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #909090;
+}
+
+.modalInputInfoSec {
+	width: 100%;
+	height: 3.5rem;
+	display: flex;
+}
+
+.modalInputInfoNameSec {
+	width: 9rem;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	font-size: 1.4rem;
+}
+
+.modalInputSec {
+	width: 25rem;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.modalInput {
+	height: 2.5rem;
+	width: 13rem;
+	border-radius: 10px;
+	outline: none;
+	border: 1px solid #909090;
+	font-size: 1.2rem;
+	padding: 0.5rem;
+}
+
+.capacityInputSec {
+	width: 11rem;
+	height: 100%;
+	font-size: 1.2rem;
+	display: flex;
+	align-items: center;
+}
+
+.capacityInput {
+	height: 2rem;
+	width: 3rem;
+	font-size: 1.2rem;
+	border-radius: 10px;
+	text-align: center;
+	border: 1px solid #909090;
+	outline: none;
+}
+
+.maxCapacityInputSec {
+	width: 13rem;
+	height: 100%;
+	font-size: 1.2rem;
+	display: flex;
+	align-items: center;
+}
+
+.wonImg {
+	width: 2.5rem;
+	height: 2.5rem;
+	margin-left: 0.7rem;
+}
+
+.modalRightBottomSec {
+	width: 100%;
+	height: 18rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.moreImgTitleSec {
+	height: 3.5rem;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.moreImgTitleDiv {
+	width: 33.6rem;
+	height: 3rem;
+	display: flex;
+}
+
+.moreImgTitleNameSec {
+	height: 100%;
+	width: 22rem;
+	display: flex;
+	align-items: center;
+	font-size: 1.2rem;
+}
+
+.moreImgPlusBtnSec {
+	height: 100%;
+	width: 6rem;
+	display: flex;
+	align-items: center;
+}
+
+.campUploadModalPlusBtn {
+	width: 2.2rem;
+	height: 2.2rem;
+	cursor: pointer;
+}
+
+.moreImgDeleteBtnSec {
+	height: 100%;
+	width: 3rem;
+	display: flex;
+	align-items: center;
+}
+
+.campUploadModalDeleteBtn {
+	width: 2rem;
+	height: 2rem;
+	cursor: pointer;
+}
+
+.moreImgSec {
+	width: 100%;
+	height: 10rem;
+	display: flex;
+	justify-content: center;
+}
+
+.moreImgDiv {
+	width: 35rem;
+	height: 9rem;
+	background-color: #EAEAEA;
+	border-radius: 10px;
+	padding: 0.5rem;
+	padding-left: 1rem;
+	display: flex;
+	overflow: auto;
+}
+
+.moreImgDetailSec {
+	width: 11rem;
+	height: 100%;
+	display: flex;
+}
+
+.moreImgDetailDiv {
+	width: 10rem;
+	height: 100%;
+	border-radius: 10px;
+	margin-right: 1rem;
+}
+	
+.etcImgPlusInput {
+	display: none;
+}
+
+.moreImg {
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+}
+
+.modalUploadBtnSec {
+	width: 100%;
+	height: 4rem;
+	display: flex;
+	justify-content: end;
+}
+
+.modalUploadBtnDiv {
+	width: 13rem;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modalUploadBtn {
+	width: 5.5rem;
+	height: 3rem;
+	font-size: 1.4rem;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	display: inline-block;
+}
+
+
+.modalUploadBtn:after {
+	margin-top: 0.5rem;
+    display:block;
+    content: '';
+    border-bottom: solid 1px #909090;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+}
+
+.modalUploadBtn:hover:after { transform: scaleX(1); }
+
+
+

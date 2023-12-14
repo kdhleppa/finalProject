@@ -1,0 +1,111 @@
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    unicode-range: U+AC00-D7A3
+}
+
+*{
+    font-family: 'HakgyoansimSantteutdotumL', 'Montserrat';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+main, div, section {
+    /* border: 1px solid black; */
+}
+
+/* ------------------------------- */
+/* 메인 틀 */
+main {
+    display: flex;
+    margin-top: 50px;
+}
+
+.empty1 {
+    flex-basis: 15%;
+}
+
+#searchIdInfoSection {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 70%;
+}
+
+/* --------------------------------- */
+/* 대제목 */
+#headerName {
+    font-size: 30px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+#underLine {
+    border: 2px solid black;
+    margin-bottom: 40px;
+}
+
+/* ------------------------------ */
+/* 찾은 아이디 정보 출력 */
+#inputInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#searchIdConfirm {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 40%;
+}
+
+#searchIdConfirm > p {
+    margin-top: 30px;
+}
+
+#realIdInfo {
+    font-size: 20px;
+    border-bottom: 2px solid black;
+}
+
+/* ------------------------------------ */
+/* 로그인 페이지로 이동 버튼 */
+#goLoginPagedBtnSection {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+#goLoginPageBtn {
+    flex-basis: 60%;
+    display: flex;
+    justify-content: space-around;
+    height: 30px;
+}
+
+.clickBtn {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid black;
+    font-size: 17px;
+}

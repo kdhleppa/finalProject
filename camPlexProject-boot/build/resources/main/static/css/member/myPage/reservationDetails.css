@@ -1,0 +1,169 @@
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    unicode-range: U+AC00-D7A3
+}
+
+*{
+    font-family: 'HakgyoansimSantteutdotumL', 'Montserrat';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    color: #000;
+	display:inline-block; 
+	margin:0;
+	text-transform:uppercase; 
+	font-size: 16px;
+}
+
+a:hover {
+	cursor: pointer;
+}
+  
+a:after {
+  display:block;
+  content: '';
+  border-bottom: solid 1px #000;
+  margin-top: 5px;
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+}
+
+a:hover:after { 
+	transform: scaleX(1);
+}
+
+button { 
+  color: #000;
+  display:inline-block; 
+  margin:0;
+  text-transform:uppercase;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+}
+  
+main, div, section {
+    border: 1px solid black;
+}
+
+/* ------------------------------- */
+/* 메인 틀 */
+main {
+    display: flex;
+    margin-top: 50px;
+}
+
+.empty1 {
+    flex-basis: 15%;
+}
+
+#myPageSection {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 70%;
+}
+
+/* --------------------------------- */
+/* 대제목 */
+#headerName {
+    font-size: 30px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+#underLine {
+    border: 2px solid black;
+    margin-bottom: 50px;
+}
+
+/* ------------------------------- */
+/* 정보 */
+.empty2 {
+    flex-basis: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---------------------------- */
+/* 구매 내역 정보 */
+.buyListSection {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.buyInfo {
+    flex-basis: 90%;
+	display: flex;
+	flex-direction: column;
+}
+
+.shopingList {
+    flex-basis: 90%;
+    display: flex;
+}
+
+#campInfoFont, #rentalInfoFont {
+	font-size: 20px;
+}
+
+.campInfo, .rentalInfo {
+	flex-basis: 50%;
+}
+
+.campInfo {
+	display: flex;
+	flex-direction: column;
+}
+
+.campInfo img {
+	width: 400px;
+}
+
+.campNameInfoPrice {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	margin-block: 10px;
+}
+
+.rentalSection {
+	display: flex;
+	margin-block: 10px;
+}
+
+.rentalSection img {
+	width: 80px;
+}
+
+.rentalNamePrice {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+
+
+
+
+
+/* ------------------------------ */
+/* 풋터 위 공간 */
+.empty5 {
+    height: 300px;
+}

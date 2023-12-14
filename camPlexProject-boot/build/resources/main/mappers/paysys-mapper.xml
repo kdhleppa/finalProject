@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.camplex.project.paysys.mappers.PaysysMapper">
+
+	<resultMap type="Cart" id="cart_rm">
+		<id property="cartNo" column="CART_NO"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+		
+	</resultMap>
+	
+	<resultMap type="CartItem" id="cartItem_rm">
+		<id property="cartItemNo" column="CART_ITEM_NO"/>
+		<result property="cartNo" column="CART_NO"/>
+		<result property="itemNo" column="ITEM_NO"/>
+		<result property="reservationNo" column="RESERVATION_NO"/>
+		<result property="itemQuantity" column="ITEM_QUANTITY_NO"/>
+	</resultMap>
+	
+	<resultMap id="rentPayList_rm" type="rentPayList">
+		<id property="memberNo" column="MEMBER_NO"/>
+		<result property="itemNo" column="ITEM_NO"/>
+		<result property="itemPrice" column="ITEM_PRICE"/>
+		<result property="itemName" column="ITEM_NAME"/>
+		<result property="campName" column="CAMP_NAME"/>
+		<result property="thumbnail" column="THUMBNAIL"/>
+		<result property="cartItemNo" column="CART_ITEM_NO"/>
+		<result property="itemQuantity" column="ITEM_QUANTITY"/>
+		<result property="reservationNo" column="RESERVATION_NO"/>
+		<result property="campEntdate" column="CAMP_ENTDATE"/>
+		<result property="campOutdate" column="CAMP_OUTDATE"/>
+		<result property="discountRate" column="DISCOUNT_RATE"/>
+		<collection property="imageList"
+					select="selectImageList"
+					column="ITEM_NO"
+					javaType="java.util.ArrayList"
+					ofType="ItemImg"
+		 />
+	</resultMap>
+	
+	<resultMap type="ItemImg" id="itemImg_rm">
+		<id property="itemImgNo" column="ITEM_IMG_NO"/>
+		
+		<result property="itemNo" column="ITEM_NO" />
+		<result property="itemImgPath" column="ITEM_IMG_PATH" />
+		<result property="itemImgRename" column="ITEM_IMG_RENAME" />
+		<result property="itemImgOriginal" column="ITEM_IMG_ORIGINAL"/>
+		<result property="itemImgOrder" column="ITEM_IMG_ORDER" />
+	
+	</resultMap>
+	
+	<select id="selectImageList" resultMap="itemImg_rm">
+		SELECT ITEM_IMG_NO, ITEM_NO, ITEM_IMG_PATH, ITEM_IMG_RENAME
+		FROM ITEM_IMG
+	 	WHERE ITEM_NO = #{itemNo}
+	</select>
+	
+		<!-- 카트에 렌트아이템 추가-->
+	<insert id="insertCart">
+		INSERT INTO "CART_ITEM"
+		VALUES (SEQ_CART_ITEM_NO.NEXTVAL, #{cartNo}, #{itemNo}, #{reservationNo}, #{itemQuantity})
+	</insert>
+	
+	<!-- 위시리스트에서 카트로 추가-->
+	<insert id="insertCartNoQuantity">
+		INSERT INTO "CART_ITEM"
+		VALUES (SEQ_CART_ITEM_NO.NEXTVAL, #{cartNo}, #{itemNo}, #{reservationNo}, 1)
+	</insert>
+	
+	<!-- 카트없는회원 만들기 -->
+	<insert id="createCart">
+		INSERT INTO "CART"
+		VALUES (SEQ_CART_NO.NEXTVAL, #{memberNo})
+	</insert>
+	
+	<select id="searchCartItem" resultType="_int">
+		SELECT COUNT(*) FROM CART_ITEM
+		WHERE CART_NO = #{cartNo}
+		AND ITEM_NO = #{itemNo}
+		AND RESERVATION_NO = #{reservationNo}
+	</select>
+	  	
+	<!-- 회원의 카트 넘버 조회-->  	
+	<select id="searchMembersCartNo" resultType="java.lang.Integer">
+		SELECT CART_NO
+		FROM CART
+		WHERE MEMBER_NO = #{memberNo}
+	</select>  	
+	
+	<update id="quantityUpdateCart">
+		UPDATE CART_ITEM
+		SET ITEM_QUANTITY = #{itemQuantity}
+		WHERE CART_ITEM_NO = #{cartItemNo}
+	</update>
+	
+	
+	<update id="moveItemSite">
+		UPDATE CART_ITEM
+		SET RESERVATION_NO = #{reservationNo}
+		WHERE CART_ITEM_NO = #{cartItemNo}
+	</update>
+
+
+	<select id="searchResult">
+		SELECT COUNT (*)
+		FROM CART_ITEM
+		WHERE CART_ITEM_NO = #{cartItemNo}
+		AND RESERVATION_NO = #{reservationNo}
+		AND ITEM_NO = #{itemNo}
+	</select>
+
+	<delete id="deleteItemcart">
+	    DELETE FROM CART_ITEM
+	    WHERE ITEM_NO = #{itemNo}
+	    AND RESERVATION_NO = #{reservationNo}
+	    AND CART_ITEM_NO = #{cartItemNo}
+	</delete>
+	
+	<delete id="deleteNotInStoreCart">
+    DELETE FROM CART_ITEM ci
+	    WHERE ci.CART_NO IN (
+	        SELECT c.CART_NO
+	        FROM CART c
+	        WHERE c.MEMBER_NO = #{memberNo}
+	        AND EXISTS (
+	            SELECT 1
+	            FROM ITEM i
+	            WHERE i.ITEM_NO = ci.ITEM_NO
+	            AND i.ITEM_STATUS = 'N'
+	        )
+	    )
+	</delete>
+	
+	<!-- 캠핑 결제 내역 저장 (무통장) -->
+	<insert id="insertPayCamp">
+		INSERT INTO "PAYMENT"
+		VALUES (SEQ_PAY_NO.NEXTVAL, #{memberNo}, #{campNo}, #{campDeNo},
+				#{price}, #{price}, #{payType}, DEFAULT,
+				#{entDate}, #{outDate}, DEFAULT, #{senderName}, #{bank})
+	</insert>
+	
+	<!-- 렌탈 결제 무통장 -->
+	<insert id="insertPayRental">
+		INSERT INTO "RENTAL_PAYMENT"
+		VALUES (SEQ_RENTAL_PAYMENT_NO.NEXTVAL, #{memberNo}, #{price}, DEFAULT,
+				DEFAULT, #{senderName}, '무통장입금')
+	</insert>
+	
+	<select id="selectLastInsertId" resultType="java.lang.Integer">
+    SELECT SEQ_RENTAL_PAYMENT_NO.CURRVAL FROM DUAL
+	</select>
+
+	<!-- 렌탈 결제 아이템 연결 입력-->
+	<insert id="insertPayRentalItem">
+		INSERT INTO "RENTAL_PAYMENT_ITEM"
+		VALUES (SEQ_RENTAL_ITEM_NO.NEXTVAL, #{rentalPaymentNo}, #{itemNo}, ${rentalItemQuantity}, ${reservationNo})
+	</insert>
+	
+	
+	<!-- 캠핑 결제 내역 저장 (카카오)-->
+	<insert id="insertKakao" parameterType="InfoForReservation" useGeneratedKeys="true">
+		
+		<selectKey order="BEFORE" resultType="_int" keyProperty="paymentNo">
+			SELECT SEQ_PAY_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		
+		INSERT INTO "PAYMENT"
+		VALUES (#{paymentNo}, #{memberNo}, #{campNo}, #{campDeNo},
+				#{price}, #{price}, '카카오페이', DEFAULT,
+				#{entDate}, #{outDate}, DEFAULT, #{senderName}, NULL)
+	</insert>
+	
+	<!-- 렌탈 결제 내역 저장(카카오) -->
+	<insert id="insertPayRentalKakao" parameterType="RentalPayment" useGeneratedKeys="true">
+		
+		INSERT INTO "RENTAL_PAYMENT"
+		VALUES (SEQ_RENTAL_PAYMENT_NO.NEXTVAL, #{memberNo}, #{price}, DEFAULT, DEFAULT, #{senderName}, '카카오페이')
+	</insert>
+	
+	<!-- 캠핑 결제 내역 (카카오) 결제 완료로 변경-->
+	<update id="updatePayState">
+		UPDATE PAYMENT SET PAYMENT_STATUS_FL = 'Y'
+		WHERE PAYMENT_NO = #{tempPaymentNo}
+	</update>
+	
+	<!-- 렌탈장비 결제 후 완료 변경 -->
+	<update id="updatePayRentalState">
+		UPDATE RENTAL_PAYMENT SET PAYMENT_STATUS_FL = 'Y'
+		WHERE RENTAL_PAYMENT_NO = #{tempPaymentNo}
+	</update>
+
+	<!-- 캠핑 결제 취소시 내역 삭제(카카오)-->
+	<delete id="deleteKakao">
+		DELETE FROM PAYMENT
+		WHERE PAYMENT_NO = #{tempPaymentNo}
+	</delete>
+	
+	<!-- 결제 완료시 예약 테이블 저장(카카오) -->
+	<insert id="insertReservation">
+		INSERT INTO "RESERVATIONS"
+		VALUES (SEQ_RES_NO.NEXTVAL, #{paymentNo}, #{memberNo}, #{campNo},
+				#{campDeNo}, #{entDate}, #{outDate}, #{adultCount}, 
+				#{kidCount}, #{demand})
+	</insert>
+
+	
+	<delete id="deleteCart">
+		DELETE FROM CART_ITEM
+		WHERE CART_ITEM_NO= #{cartItemNo}
+	</delete>
+	
+	<delete id="deleteAllCart">
+		DELETE FROM CART_ITEM
+		WHERE CART_NO IN (
+	    SELECT CART.CART_NO
+	    FROM CART
+	    WHERE CART.MEMBER_NO = #{memberNo})
+	</delete>
+	
+	<select id="selectCheckCart" resultMap="rentPayList_rm">
+		SELECT 
+		    ci.CART_ITEM_NO,
+		    ci.ITEM_NO, 
+		    ci.ITEM_QUANTITY, 
+		    ci.RESERVATION_NO,
+		    i.ITEM_PRICE, 
+		    i.ITEM_NAME,
+		    i.DISCOUNT_RATE, 
+		    cs.CAMP_NAME, 
+		    r.CAMP_ENTDATE,
+		    r.CAMP_OUTDATE,
+		    m.MEMBER_NO, 
+		    (SELECT ITEM_IMG_PATH || ITEM_IMG_RENAME FROM ITEM_IMG WHERE ITEM_IMG_ORDER=0 AND ITEM_NO = i.ITEM_NO) THUMBNAIL
+		FROM 
+		    CART_ITEM ci
+		    JOIN ITEM i ON ci.ITEM_NO = i.ITEM_NO
+		    JOIN RESERVATIONS r ON ci.RESERVATION_NO = r.RESERVATION_NO
+		    JOIN CAMPING_SITE cs ON r.CAMP_NO = cs.CAMP_NO
+		    JOIN MEMBER m ON r.MEMBER_NO = m.MEMBER_NO
+		WHERE 
+		    ci.CART_ITEM_NO = #{cartItemNo}
+
+	</select>
+	
+	
+	
+	
+</mapper>

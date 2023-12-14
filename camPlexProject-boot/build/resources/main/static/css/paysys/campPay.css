@@ -1,0 +1,388 @@
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+}
+/*텍스트 관련*/
+body {
+    font-family: 'HakgyoansimSantteutdotumL', sans-serif;
+}
+
+:lang(en) {
+    font-family: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* border: 1px solid red; */
+}
+
+/*좌우 빈칸 여백*/
+.container {
+    display: flex;
+}
+
+.emptySpace {
+    flex-basis: 20%;
+}
+
+.midContainer {
+   	flex-basis: 60%;
+}
+
+/*표 간격 조절*/
+
+.reservationSite{
+	margin: 50px 0; 
+}
+
+.reservationSite td:first-child {
+    width: 150px;
+}
+
+.reservationSite td:last-child {
+    width: 660px;
+}
+
+.reservationSite td {
+    height: 50px;
+}
+
+
+/*reservation List*/
+.reservationText p {
+	margin-top: 50px;
+    color: #D4A373;
+    font-size: 30px;
+}
+
+.reservationText {
+    border-bottom: 1px solid gray;
+}
+
+
+/*camNameContainer*/
+.campNameContainer {
+    margin-top: 50px;
+    display: inline-flex;
+    align-items: baseline;
+}
+
+.campNameContainer p {
+    margin-left: 20px;
+    font-size: 1.3rem;
+}
+
+/*사람 아이콘 크기 조절*/
+
+.humanCountContainer{
+	display: flex;
+	align-items: center;
+}
+
+.humanCountContainer >p >input{
+	color: rgb(255, 102, 102);
+}
+
+.adultImg {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+.childImg {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+}
+
+.humanCount{
+	background-color: transparent;
+	border: none;
+	width: 2rem;
+}
+
+.dateContainer{
+	display: flex;
+	align-items: center;
+}
+
+.dateContainer > input {
+	border: transparent;
+	font-size: 1rem;
+	width: 6rem;
+}
+
+.dateContaine > p {
+	font-size: 1rem;
+}
+
+#customerName, #customerTel{
+	background-color: transparent;
+	border: none;
+	font-size: 1rem;
+}
+
+#customerEmail {
+	border: none;
+	font-size: 1rem;
+}
+
+.demandContainer{
+	display: flex;
+	margin-top: 20px;
+}
+
+#demand{
+	margin-top: 20px;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+/*페이먼트영역*/
+.payType p, .payMent p {
+    color: #D4A373;
+    font-size: 30px;
+
+}
+
+.payMent{
+    display: flex;
+    justify-content: space-between;
+}
+
+.payMent button{
+    background-color: transparent;
+    border: none;
+    color: rgb(255 0 0);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.payType, .payMent {
+    margin-top: 50px;
+    border-bottom: 1px solid gray;
+    width: 600px;
+}
+
+.payContainer {
+    display: flex;
+}
+
+.payInputContainer {
+    width: 400px;
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+}
+
+.payBy {
+	font-size: 0.5rem;
+}
+
+.nPayLogo {
+    width: 100px;
+}
+.kPayLogo {
+    width: 100px;
+}
+
+.bankAccount{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 70px;
+
+}
+
+.bankAccount input, select{
+    height: 2rem;
+    width: 25rem;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.account, .host{
+    display: flex;
+    margin: 5px 0;
+    font-size: 1.3rem;
+}
+
+
+.buttonList {
+    text-align: end;
+    margin-top: 50px;
+    margin-bottom: 200px;
+}
+
+.Btn {
+    margin: 0 30px;
+    font-size: 1.5rem;
+    text-decoration: none;
+    background-color: white;
+    border:none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.backBtn {
+    margin-right: 20px;
+}
+
+.buttonList button { 
+  display:inline-block; 
+  text-transform:uppercase; 
+  padding-bottom: 5px;
+}
+  
+.buttonList button:after {
+	display:block;
+	content: '';
+	border-bottom: solid 1px #000;  
+	transform: scaleX(0);  
+	transition: transform 250ms ease-in-out;
+	padding-bottom: 5px;
+}
+.buttonList button:hover:after { 
+	transform: scaleX(1); 
+}
+
+.payContainer {
+    margin-top: 30px;
+}
+
+/*헤더바*/
+.topBar{
+    width: 100%;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+    border-radius: 0 0 10px 10px;
+
+    transition-duration: 0.3s;
+
+    position: sticky;
+    top: 0;
+}
+
+.topBar:hover{
+    background-color: rgba(204, 213, 174, 0.5);
+}
+
+.topMenu{
+    width: 100%;
+
+    flex-basis: 5%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.topMenu a{
+    color: #000;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.7rem;
+
+    
+}
+
+.mainTitle{
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 3rem;
+    font-weight: 900;
+
+    margin: 20px 0;
+
+    height: 60px;
+    line-height: 60px;
+    color: #333;
+    letter-spacing: 5px;
+}
+
+.bottomMenu{
+    flex-basis: 45%;
+    display: flex;
+    align-self: center;
+}
+
+.bottomMenu a {
+    color: #000;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 600;
+}
+
+#modalContainer{
+	display: flex;
+	flex-direction: column;
+	border-radius: 10px;
+	width: 70%;
+	height: 155px;
+	border-radius: 10px;
+}
+
+#mainContainer{
+	background-color: #fff;
+	padding: 10px;
+	border-radius: 10px;
+	padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#modalContainerPopup {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba(0, 0, 0, 0.5);
+    z-index: 90000;
+}
+
+
+#modalContainerPopup.hidden {
+	display: none;
+}
+
+#mainContainer{
+    width: 70%;
+}
+
+.cancelTable{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    width: 50%;
+
+}
+
+.cancelTable tbody{
+    margin: 10px 0;
+    width: 100%;
+    padding: 5px 0;
+}
+
+.cancelTable tr{
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid;
+    padding: 5px;
+}
+
+.cancelTable th,
+.cancelTable td{
+    flex-basis: 33%;
+    display: flex;
+    justify-content: center;
+}

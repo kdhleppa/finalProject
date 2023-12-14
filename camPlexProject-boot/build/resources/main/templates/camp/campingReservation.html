@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	 <title></title>
+
+    <link rel="stylesheet" th:href="@{/css/camp/CampingReservation.css}">
+
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}"
+        rel="stylesheet">
+	<link rel="icon" th:href="@{/images/iconImg/favicon.png}">
+</head>
+
+<body>
+
+		<th:block th:replace="~{common/headerForContent}"></th:block>
+
+	<main>
+
+     
+        <div id="leftBlank"></div>
+
+        <div id="mainContent">
+
+            <section class="header">
+                <p class="headerTitle">Reservation</p>
+            </section>
+
+            <hr>
+
+			<form th:action="@{/paysys/camp}" id="reservationFrm" method="post">
+				<input type="hidden" name="campDeName" th:value="${campDetail.campDeName}">
+				<input type="hidden" name="campName" th:value="${campDetail.campName}">
+				<input type="hidden" name="campDeNo" th:value="${campDetail.campDeNo}">
+				<input type="hidden" name="campNo" th:value="${campDetail.campNo}">
+			
+            <section class="mainPicArea">
+
+                <div class="campingTitle">
+                    <p class="campingTitleName" th:text="${campDetail.campDeName}">호실 명</p>
+                    <p class="campSiteName" th:text="|(${campDetail.campName})|">캠핑장명</p>
+                </div>
+
+                <div class="pictureContainer">
+
+
+
+					<button type="button" class="arrow" id="left">
+						<img th:src="@{/images/iconImg/left.png}">
+					</button>
+  				
+  					<div class="detailPicture">
+
+						<div class="detailImgSlideBox">
+							
+	                    	<div class="detailImgContainer" th:each="img : ${campDetailImages}">
+	                       	 	<div class="detailImgWrapper">
+	                            	<img th:src="|${img.campDeImagePath}${img.campDeImageReName}|" alt="">
+	                        	</div>
+	                    	</div>
+	                    	
+	                    </div>
+	                    
+	                    
+                    </div>
+                    
+                    
+                    <button type="button" class="arrow" id="right">
+						<img th:src="@{/images/iconImg/right.png}">
+					</button>
+
+
+
+                    <div class="campingInfoContainer">
+                        <div class="campInfo">
+
+                            <p>상품정보</p>
+                            <div class="ceoInfoContianer">
+                                <button type="button" class="ceoInfoModal" id="ceoInfoModal">캠핑장 안내사항</button>
+                                <p>( 반드시 확인해주세요! )</p>
+                            </div>
+
+                        </div>
+                        <hr>
+                        <div class="campingInfo">
+
+                            <div class="campingInfoCategory">
+                                <p>유형</p>
+                                <p>인원</p>
+                                <p>입퇴실 시간</p>
+                                <p>매너타임</p>
+                                <p>가격</p>
+                            </div>
+
+                            <div class="campingInfoDetail">
+                                <p th:text="${campDetail.category}"></p>
+                                <p th:text="|수용인원 ${campDetail.capacity}명 / 최대인원 ${campDetail.fullCapacity}명|">수용인원</p>
+                                <p th:text="|입실 : ${campDetail.checkIn}  /  퇴실 : ${campDetail.checkOut}|">입실/ 퇴실 </p>
+                                <p th:text="${campDetail.mannerTime}">매너타임</p>
+                                <p id="price" th:text="${#numbers.formatInteger(campDetail.campDePrice*map.stayDay, 3, 'COMMA')} 
+                                + '원 (1박  :  '
+                                + ${#numbers.formatInteger(campDetail.campDePrice, 3, 'COMMA')} 
+                                + '원)'">가격</p>
+                                <input type="hidden" name="priceOneDay" th:value="${campDetail.campDePrice}">
+                                <input type="hidden" name="price" th:value="${campDetail.campDePrice}*${map.stayDay}">
+                                <input type="hidden" name="stayDay" th:value="${map.stayDay}">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+            
+            <section class="customerArea">
+
+                <div class="customerTitle">
+                    <p>예약자 정보</p>
+                </div>
+
+                <hr>
+
+                <div class="customerInfoContainer">
+
+                    <div class="customerInfoCategory">
+                        
+                        <div>
+                            <p>이름</p>
+                            <p class="mandatory">*</p>
+                        </div>
+                        
+                        <div>
+                            <p>연락처</p>
+                            <p class="mandatory">*</p>
+                        </div>
+                        
+                        <p>숙박 인원</p>
+                        <p>예약 날짜</p>
+                        <p>이메일</p>
+                        <p>요청사항</p>
+                        
+                    </div>
+                    
+                    <div class="customerInfoInput">
+                        
+                        <input type="text" name="customerName" id="customerName" th:value="${session.loginMember.memberName}">
+                        <input type="tel" name="customerTel" id="customerTel" placeholder=" '-'제외 " th:value="${session.loginMember.memberPhone}">
+                        <div class="humanCountContainer">
+                            <img id="adultIcon" class="adultIcon" th:src="@{/images/iconImg/adult.png}" alt="">
+                            <input type="number" name="adultCount" id="adultCount" class="humanCount" value="0" readonly></input>
+                            <img class="kidIcon" th:src="@{/images/iconImg/adult.png}" alt="">
+                            <input type="number" name="kidCount" id="kidCount" class="humanCount" value="0" readonly></input>
+                            <p>추가인원 :&nbsp; </p>
+                            <input type="number" name="additionalCount" id="additionalCount" class="humanCount" value="0" readonly></input>
+                            <button type="button" id="chooseNumberBtn"> 인원 선택</button>
+                        </div>
+                        <div>
+                            <img class="calIcon" th:src="@{/images/iconImg/cal_icon.png}" alt="">
+                            <input type="text" name="entDate" id="" class="date" th:value="${map.entDate}" readonly>
+                            &nbsp;&nbsp;&nbsp;~&nbsp;&nbsp;&nbsp;
+                            <input type="text" name="outDate" id="" class="date" th:value="${map.outDate}" readonly>
+                        </div>
+                        <input type="email" name="customerEmail" id="" th:value="${session.loginMember.memberEmail}">
+                        <textarea name="demand" id="demand" cols="50" rows="10" style="resize: none;"></textarea>
+                        
+                    </div>
+                </div>
+                    
+            </section>
+
+
+            <div class="btnArea">
+         
+                <button class="btn">예약하기</button>
+                <button type="button" class="btn" onclick="history.back()">돌아가기</button>
+                 
+            </div>
+
+			</form>
+			
+        </div>
+
+        <div id="rightBlank"></div>
+
+
+	</main>
+
+		<th:block th:replace="~{common/footer}"></th:block>
+		<th:block th:replace="~{camp/numberOfPeopleModal}"></th:block>
+		<th:block th:replace="~{camp/ceoInfo}"></th:block>
+
+		<script th:src="@{/js/camp/CampingReservation.js}"></script>
+		
+		<script th:inline="javascript">
+			
+			const capacity =  /*[[${campDetail.capacity}]]*/ "최대수용인원";
+			const fullCapacity =  /*[[${campDetail.fullCapacity}]]*/ "최대수용인원";
+			const information = /*[[${campDetail.information}]]*/ "ceo제공 정보";
+
+		</script>
+</body>
+
+</html>

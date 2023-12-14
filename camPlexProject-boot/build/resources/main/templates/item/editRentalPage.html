@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>렌탈 상품 CRUD</title>
+	<link rel="stylesheet" th:href="@{/css/item/uploadRentalPage.css}">
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}" rel="stylesheet">
+</head>
+<body>
+    
+    <th:block th:replace="~{common/headerForContent}"></th:block>
+
+    <!-- 메인 -->
+    <main class="rentalCRUDMain">
+
+        <!-- 상단 페이지 표시 -->
+        <section class="rentalCRUDTitleSec">
+            
+            <div class="rentalTitle">
+                Item Upload
+            </div>
+
+        </section>
+        
+		<form class="rentalUploadForm" id="itemUploadForm" th:action="@{/item2/edit}" method="post" enctype="multipart/form-data">
+		
+			<input type="hidden" name="itemNo" th:value="${item.itemNo}">
+	        <!-- 렌탈 업로드 상세 -->
+	        <section class="rentalTotalSec">
+	
+	            <!-- 렌탈 업로드 이미지 Sec -->
+	            <section class="rentalImgInputSec">
+
+	                <div class="thumbnailBtn">
+	                    <label class="imgLabel" for="img0">
+	                        <img class="preview" th:src="${item.thumbnail}">
+	                    </label>
+	                    <input type="file" name="itemImages" class="inputImage" id="img0" accept="image/*">
+	                </div>
+	                
+	                <div class="detailBtn">
+	                    <label class="imgLabel" for="img1">
+							
+							<th:block th:if="${item.itemDeImg} != null">
+		                        <img class="preview" th:src="${item.itemDeImg}">					
+							</th:block>
+							
+							<th:block th:unless="${item.itemDeImg} != null">
+		                        <img class="preview" th:src="@{/images/iconImg/emptyImgIcon.png}">					
+							</th:block>
+							
+	                    </label>
+	                    <input type="file" name="itemImages" class="inputImage" id="img1" accept="image/*">
+	                </div>
+		                
+	
+	            </section>
+	
+	            <!-- 렌탈 업로드 인풋 Sec -->
+	            <section class="rentalInputSec">
+	
+	                <section class="rentalInputSecBlankSec">
+	
+	                </section>
+	
+	                <section class="inputDetailSec">
+	
+	                    <section class="rentalDetailTitleSec">
+	
+	                        상품명
+	
+	                    </section>
+	
+	                    <section class="rentalDetailInputSec">
+	
+	                        <input id="inputItemName" class="inputDetail" name="itemName" type="text" th:value="${item.itemName}">
+	
+	                    </section>
+	
+	                </section>
+	
+	                <section class="inputDetailSec">
+	
+	                    <section class="rentalDetailTitleSec">
+	                        상품 간단설명
+	                    </section>
+	
+	                    <section class="rentalDetailInputSec">
+	
+	                        <input id="inputItemDescription" class="inputDetail" name="itemDescription" type="text" th:value="${item.itemDescription}">
+	
+	                    </section>
+	
+	                </section>
+	
+	                <section class="inputDetailSec">
+	
+	                    <section class="rentalDetailTitleSec">
+	                        가격
+	                    </section>
+	
+	                    <section class="rentalDetailInputSec">
+	
+	                        <input id="inputItemPrice" class="inputDetailSmall" name="itemPrice" th:value="${item.itemPrice}">
+	                        <img class="inputWonImage" th:src="@{/images/iconImg/wonImage.png}">
+	
+	                    </section>
+	
+	                </section>
+	
+	                <section class="inputDetailSec">
+	
+	                    <section class="rentalDetailTitleSec">
+	                        할인률
+	                    </section>
+	
+	                    <section class="rentalDetailInputSec">
+	
+	                        <input id="inputItemDiscount" class="inputDetailSmall" name="discountRate" th:value="${item.discountRate}">
+	                        <span class="discountWord">%</span>
+	
+	                    </section>
+	
+	                </section>
+	
+	             
+	
+	                <section class="inputDetailSec">
+	
+	                    <section class="rentalDetailTitleSec">
+	                        재고 수량
+	                    </section>
+	
+	                    <section class="rentalDetailInputSec">
+	
+	                        <input id="inputItemLoanCount" class="inputDetailSmall" name="inStoreCount" th:value="${item.inStoreCount}">
+	                        <span class="countWord">개</span>
+	
+	                    </section>
+	
+	                </section>
+	
+	                <section class="inputDetailSec">
+	
+	                    <section class="rentalDetailTitleSec">
+	                        카테고리
+	                    </section>
+	
+	                    <section class="rentalDetailInputSec">
+	
+	                        <select id="selectItemType" class="category" name="itemType">
+	                            <option value="noSelect">선택</option>
+	                            <option th:selected="${item.itemType == 'CH'}" value="CH">의자</option>
+	                            <option th:selected="${item.itemType == 'TT'}" value="TT">텐트</option>
+	                            <option th:selected="${item.itemType == 'TP'}" value="TP">타프</option>
+	                            <option th:selected="${item.itemType == 'SB'}" value="SB">침낭</option>
+	                            <option th:selected="${item.itemType == 'FC'}" value="FC">가구</option>
+	                            <option th:selected="${item.itemType == 'BX'}" value="BX">수납</option>
+	                            <option th:selected="${item.itemType == 'BG'}" value="BG">가방</option>
+	                            <option th:selected="${item.itemType == 'KC'}" value="KC">키친/주방</option>
+	                            <option th:selected="${item.itemType == 'IB'}" value="IB">아이스박스</option>
+	                            <option th:selected="${item.itemType == 'CU'}" value="CU">컵/잔</option>
+	                            <option th:selected="${item.itemType == 'FI'}" value="FI">스토브/화로</option>
+	                            <option th:selected="${item.itemType == 'AC'}" value="AC">악세사리</option>
+	                            <option th:selected="${item.itemType == 'WD'}" value="WD">선풍기</option>
+	                            <option th:selected="${item.itemType == 'HT'}" value="HT">난로</option>
+	                            <option th:selected="${item.itemType == 'TB'}" value="TB">테이블/상</option>
+	                        </select>
+	
+	                    </section>
+	
+	                </section>
+	
+	                <section class="uploadSec">
+	                    <button class="uploadBtn" type="submit">업로드</button>
+	                </section>
+	
+	
+	            </section>
+	
+	        </section>
+        
+        </form>
+
+    </main>
+    
+    <th:block th:replace="~{common/footer}"></th:block>
+    
+    <script th:src="@{/js/item/uploadRentalPage.js}"></script>
+
+</body>
+</html>

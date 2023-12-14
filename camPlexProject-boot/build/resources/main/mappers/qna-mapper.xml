@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!-- namespace를 Mapper 인터페이스로 지정 -->
+<mapper namespace="com.camplex.project.qna.mappers.QnaMapper">
+	
+	<resultMap type="Qna" id="Qna_rm">
+		<id property="QNANo" column="QNA_NO"/>
+		
+		<result property="QNATitle" column="QNA_TITLE" />
+		<result property="QNAContent" column="QNA_CONTENT" />
+		<result property="QNAAnswer" column="QNA_ANSWER" />
+		<result property="answerFlag" column="ANSWER_FL" />
+		<result property="QNACreateDate" column="Q_CREATE_DATE" />
+		
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="memberNickname" column="MEMBER_NICKNAME" />
+	</resultMap>
+	
+	<insert id="insertQNA">
+		INSERT INTO QNA
+		VALUES(SEQ_QNA_NO.NEXTVAL, #{QNATitle}, #{QNAContent}, DEFAULT, DEFAULT, DEFAULT, #{memberNo}, #{memberNickname})
+	</insert>
+	
+	<select id="QNACount" resultType="_int">
+		SELECT COUNT(*)
+		FROM QNA
+		WHERE ANSWER_FL = 'N'
+	</select>
+	
+	<select id="selectQna" resultMap="Qna_rm">
+		SELECT QNA_NO, QNA_TITLE,
+		QNA_CONTENT, QNA_ANSWER, ANSWER_FL, Q_CREATE_DATE, MEMBER_NO, MEMBER_NICKNAME
+		FROM QNA
+		WHERE ANSWER_FL = 'N'
+		ORDER BY 'QNA_NO' ASC
+	</select>
+	
+	<select id="selectQnaY" resultMap="Qna_rm">
+		SELECT QNA_NO, QNA_TITLE,
+		QNA_CONTENT, QNA_ANSWER, ANSWER_FL, Q_CREATE_DATE, MEMBER_NO, MEMBER_NICKNAME
+		FROM QNA
+		WHERE ANSWER_FL = 'Y'
+		ORDER BY 'QNA_NO' ASC
+	</select>
+	
+	<update id="insertAnswer">
+		UPDATE QNA SET
+		QNA_ANSWER = #{QNAAnswer},
+		ANSWER_FL = 'Y'
+		WHERE QNA_NO = #{qnaNo}
+	</update>
+ 
+ 	<update id="updateAnswer">
+		UPDATE QNA SET
+		QNA_ANSWER = #{QNAAnswer}
+		WHERE QNA_NO = #{qnaNo}
+	</update>
+	
+	
+	
+</mapper>

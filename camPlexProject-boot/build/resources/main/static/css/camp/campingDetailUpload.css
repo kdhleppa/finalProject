@@ -1,0 +1,862 @@
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: 1% 500%;
+    unicode-range: U+AC00-D7A3;
+}
+
+*{
+    font-family: 'HakgyoansimSantteutdotumL', 'Montserrat';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /*border: 1px solid black;*/
+}
+
+
+/* 메인 */
+.campingDetailUploadMain {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.campingDetailUploadMain {
+	width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.informationSec {
+    width: 100%;
+    height: 7rem;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+.informationDiv {
+    width: 80%;
+    height: 3rem;
+    font-size: 1.7rem;
+    color: #D4A373;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #909090;
+}
+
+.inputCampingNameSec {
+    width: 100%;
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputCampingName {
+    width: 32rem;
+    height: 3.3rem;
+    margin-left: 12rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+    border: 1px solid #909090;
+    padding-left: 1rem;
+    font-size: 1.3rem;
+    outline: none;
+}
+
+.inputThumbnailEtcImgSec {
+    width: 100%;
+    height: 30rem;
+    display: flex;
+}
+
+.thumbnailImgSec {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+.thumbnailInput {
+    width: 40rem;
+    height: 28rem;
+    font-size: 3rem;
+    border-radius: 10px;
+    border: none;
+    margin-left: 20%;
+    display: flex;
+    background-color: #EAEAEA;
+}
+
+.thumbnailInput:hover {
+	background-color: #909090;
+}
+
+
+
+
+#inputEtcImgBtnDiv {
+	width: 10rem;
+	height: 3rem;
+}
+
+.deleteImgDiv {
+	width: 2rem;
+	height: 2rem;
+	cursor: pointer;
+}
+
+.deleteImgBtn {
+	width: 2rem;
+	height: 2rem;
+}
+
+.thumbnailInput > label{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputEtcImgBtn > label{
+	width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preview {
+	max-width: 100%;
+    max-height: 100%;
+}
+
+
+
+.inputImage {
+	display: none;
+}
+
+
+.etcImgSec {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.etcImgTopBottomSec {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+
+
+.etcImgTopBottomSecImgSec {
+	height: 15rem;
+	width: 100%;
+	display: flex;
+}
+
+.etcImgTopBottomSecImgSecLeft {
+	height: 100%;
+	width: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.etcImgTopBottomSecImgSectRight {
+	height: 100%;
+	width: 50%;
+	display: flex;
+	align-items: center;
+}
+
+.deleteBtnSec {
+	display: flex;
+	align-items: center;
+	width: 1.5rem;
+	height: 100%;
+}
+
+.deleteImg {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.inputEtcImgBtn {
+    width: 20rem;
+    height: 13rem;
+    border-radius: 10px;
+    font-size: 3rem;
+    cursor: pointer;
+    border: none;
+    background-color: #EAEAEA;
+}
+
+.inputEtcImgBtn > label{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label > img {
+	width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.inputEtcImgBtn:hover {
+	background-color: #909090;
+}
+
+.ceosPicSec {
+    width: 100%;
+    height: 32rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.ceosPicTitleSec {
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    align-items: end;
+}
+
+.ceosPicTitleDiv {
+    width: 35rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+}
+
+.ceosPicImgSec {
+    display: flex;
+    width: 100%;
+    height: 20rem;
+}
+
+.arrowSec1 {
+    width: 12%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.arrowSec2 {
+    width: 12%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.ceosPicImgDetailSec {
+    width: 76%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrowImg {
+    width: 5rem;
+    height: 5rem;
+}
+
+.ceosPicImgDetailDiv {
+    width: 85rem;
+    height: 18rem;
+    border-radius: 10px;
+    background-color: #EAEAEA;
+}
+
+.introductionTitleSec {
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    align-items: end;
+}
+
+.introductionTitleDiv {
+    width: 37rem;
+    height: 5rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    margin-left: 15rem;
+    border-bottom: 1px solid #909090;
+}
+
+.introductionInputSec {
+    width: 100%;
+    height: 25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.introduceTextArea {
+    width: 82rem;
+    height: 20rem;
+    border-radius: 10px;
+    padding: 1rem;
+    font-size: 1.5rem;
+    resize: none;
+    outline: none;
+}
+
+.detailsUploadSec {
+    width: 100%;
+    height: 52rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.detailsUploadTitleSec {
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    align-items: end;
+}
+
+.detailsUploadTitleDiv {
+    width: 37rem;
+    height: 5rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    margin-left: 15rem;
+    border-bottom: 1px solid #909090;
+}
+
+.detailsInputSec {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.detailsInputLeftRightSec {
+    height: 100%;
+    width: 50%;
+    display: flex;
+}
+
+#detailsInputLeftSec {
+    align-items: center;
+    justify-content: center;
+}
+
+#iputImgOfDetailMap {
+	height: 40rem;
+	width: 30rem;
+	margin-left: 10rem;
+}
+
+.detailsImgBtn {
+    width: 32rem;
+    height: 38rem;
+    border-radius: 10px;
+    border: none;
+    font-size: 3rem;
+    margin-left: 10rem;
+    cursor: pointer;
+}
+
+#detailsInputRightSec {
+    flex-direction: column;
+}
+
+.additionalFacilitiesTitleSec {
+    width: 100%;
+    height: 3.5rem;
+    display: flex;
+    align-items: end;
+}
+
+.additionalFacilitiesTitleDiv {
+    width: 35rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    border-bottom: 1px solid #909090;
+}
+
+.additionalFacilitiesInputSec {
+    width: 100%;
+    height: 15rem;
+    display: flex;
+}
+
+.additionalFacilitiesInputLSec {
+    height: 100%;
+    width: 12rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.additionalFacilitiesInputRSec {
+    height: 100%;
+    width: 12rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.additionalFacilitiesSec {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+.macroEnvironmentTitleSec {
+    width: 100%;
+    height: 3.5rem;
+    display: flex;
+    align-items: end;
+}
+
+.macroEnvironmentTitleDiv {
+    width: 35rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    border-bottom: 1px solid #909090;
+}
+
+.macroEnvironmentInputSec {
+    width: 100%;
+    height: 9rem;
+    display: flex;
+}
+
+.macroEnvironmentInputLRSec {
+    height: 100%;
+    width: 12rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.macroEnvironmentInputDetailSec {
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+/* 매너타임 Sec*/
+.mannerTimeTitleSec {
+    width: 100%;
+    height: 7rem;
+    display: flex;
+    align-items: end;
+}
+
+.mannerTimeTitleDiv {
+    width: 35rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    border-bottom: 1px solid #909090;
+}
+
+.mannertimeInputSec {
+    width: 100%;
+    height: 5rem;
+    display: flex;
+}
+
+.mannerTimeImgSec {
+    height: 100%;
+    width: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mannerTimeImg {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.mannerTimeInputDetailSec {
+    width: 40rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.mannerTimeInput {
+    width: 30rem;
+    height: 3.5rem;
+    border-radius: 10px;
+    padding: 1rem;
+    font-size: 1.3rem;
+    border: 1px solid #909090;
+    outline: none;
+}
+
+/* Etc Info Sec*/
+.etcInfoTitleSec {
+	width: 100%;
+	height: 7rem;
+	display: flex;
+	justify-content: center;
+}
+
+.etcInfoTitleLocationSec {
+	flex-basis: 75%;
+	height: 100%;
+	display: flex;
+}
+
+.etcInfoTitleDiv {
+	width: 37rem;
+    height: 5rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #909090;
+}
+
+/* Etc Info Input Sec */
+.etcInfoInputSec {
+	width: 100%;
+	height: 50rem;
+	display: flex;
+	justify-content: center;
+}
+
+.etcInfoInputLocationSec {
+	flex-basis: 75%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.etcInfoInputOneLineSec {
+	width: 80rem;
+	height: 6rem;
+	display: flex;
+}
+
+.etcInfoInputImgSec {
+	height: 100%;
+	width: 6rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.etcInfoInputBlankSec {
+	height: 100%;
+	width: 2rem;
+}
+
+.etcInfoInputNameSec {
+	height: 100%;
+	width: 11rem;
+	display: flex;
+	align-items: center;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.etcInfoInputInfoSec {
+	height: 100%;
+	width: 55rem;
+	display: flex;
+	align-items: center;
+}
+
+.categorySelect {
+	width: 12rem;
+	height: 3rem;
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.2rem;
+	border-radius: 10px;
+}
+
+.etcInfoInputImg {
+	height: 4rem;
+	width: 4rem;
+}
+
+.etcInfoInput {
+	height: 3rem;
+	width: 28rem;
+	font-size: 1.3rem;
+	outline: none;
+	border: none;
+	border-bottom: 1px solid #909090;
+	padding: 0.5rem;
+}
+
+#campingAddress {
+	width: 50rem;
+}
+
+.CEONumInput {
+	height: 3rem;
+	width: 15rem;
+	border-radius: 10px;
+	outline: none;
+	padding: 0.5rem;
+	font-size: 1.3rem;
+	text-align: center;
+	border: 1px solid #909090;
+}
+
+.etcInfoInputOneLineInfoSec {
+	width: 80rem;
+	height: 13rem;
+	display: flex;
+}
+
+.etcInfoTextArea {
+	height: 12rem;
+	width: 50rem;
+	font-size: 1.3rem;
+	border-radius: 10px;
+	padding: 0.5rem;
+	resize: none;
+	outline: none;
+	border: 1px solid #909090;
+}
+
+/* enroll Sec*/
+.enrollSiteTitleSec {
+    width: 100%;
+    height: 15rem;
+    display: flex;
+    align-items: end;
+}
+
+.enrollSiteTitleDiv {
+    width: 37rem;
+    height: 5rem;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    margin-left: 15rem;
+    border-bottom: 1px solid #909090;
+}
+
+.enrollSiteSec {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.enrollSiteBtnSec {
+	width: 100%;
+	height: 18rem;
+	display: flex;
+	justify-content: center;
+}
+
+.enrollSiteBtn {
+    width: 70rem;
+    height: 18rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    outline: none;
+}
+
+.enrollSiteBtn:hover {
+	background-color: #909090;
+}
+
+.enrollSiteBlankSec {
+	width: 100%;
+	height: 5rem;
+}
+
+.plusCampingSiteSec {
+	width: 100%;
+	height: 18rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.plusCampingSiteDiv {
+	height: 90%;
+	width: 70rem;
+	background-color: #FEFAE0;
+	border-radius: 10px;
+	display: flex;
+}
+
+.plusCampingSiteDivLeftSec {
+	height: 100%;
+	flex-basis: 40%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+
+.plusCampingSampleImg {
+	height: 15rem;
+	width: 23rem;
+	border-radius: 10px;
+}	
+
+.plusCampingSiteDivRightSec {
+	height: 100%;
+	flex-basis: 55%;
+	display: flex;
+	flex-direction: column;
+}
+
+.plusCampingSiteDivSiteNameSec {
+	flex-basis: 50%;
+	width: 100%;
+	padding-top: 1.3rem;
+	font-size: 1.6rem;
+	font-weight: bold;
+}
+
+.plusCampingSiteDivEtcInfoSec {
+	flex-basis: 50%;
+	width: 100%;
+	display: flex;
+}
+
+.plusCampingSiteDivEtcInfoLeftSec {
+	flex-basis: 70%;
+	height: 100%;
+	display: flex;
+}
+
+.capacityTitleSec {
+	width: 7rem;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	font-size: 1.4rem;
+}
+
+.capacityOutputSec {
+	width: 6rem;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	font-size: 1.4rem;
+	color: #D4A373;
+}
+
+.plusCampingSiteDivEtcInfoRightSec {
+	flex-basis: 30%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	font-size: 1.4rem;
+}
+
+.plusCampingSiteDeleteBtnSec {
+	flex-basis: 5%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	padding-top: 0.8rem;
+}
+
+.plusCampingSiteDeleteBtn {
+	width: 1.5rem;
+	height: 1.5rem;
+	cursor: pointer;
+}
+
+/* 등록하기 돌아가기 버튼 Sec*/
+.enrollOrBackSec {
+	width: 100%;
+	height: 8rem;
+	display: flex;
+	align-items: end;
+	justify-content: end;
+}
+
+.campingUploadBtn {
+	width: 5.5rem;
+	height: 3rem;
+	font-size: 1.4rem;
+	margin-right: 4rem;
+	background-color: transparent;
+	outline: none;
+	border: none;
+	font-weight: bold;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.backBtn {
+	font-size: 1.4rem;
+	color: black;
+	text-decoration: none;
+	margin-bottom: 0.3rem;
+	margin-right: 15rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.backBtn:after {
+	margin-top: 0.5rem;
+	display:block;
+    content: '';
+    border-bottom: solid 1px #909090;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+}
+
+.backBtn:hover:after { transform: scaleX(1); }
+
+.campingUploadBtn:after {
+	margin-top: 0.5rem;
+	display:block;
+    content: '';
+    border-bottom: solid 1px #909090;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+}
+
+.campingUploadBtn:hover:after { transform: scaleX(1); }
+
+

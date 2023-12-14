@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEO로 등업신청</title>
+
+    <link rel="stylesheet" th:href="@{/css/member/levelUpForm.css}">
+
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+	<th:block th:replace="~{common/headerForContent}"></th:block>
+
+    <main>
+        <!-- 공백 (우) -->
+        <section class="empty1"></section>
+        
+        <section id="myPageSection">
+            
+            <form th:action="@{/member/levelUpFrom}" method="POST" name="levelUpFrom" id="levelUpFrom" enctype="multipart/form-data">
+
+                <!-- 대제목 -->
+                <section id="headerName">CEO계정으로 변경신청</section>
+                <hr id="underLine"/>
+                
+                <!-- 정보 -->
+                <section id="inputInfo">
+                    <!-- 내부공백 (우) -->
+                    <section class="empty2"></section>
+                    
+                    <!-- 캠핑장 정보 정보 -->
+                    <section id="infoMain">
+                        
+                        <section class="empty3"></section>
+
+                        <!-- 캠핑장 명, 주소 입력 -->
+                        <section class="placeInfo">
+                            <section class="inputInfo" id="inputTitle">
+                                <span>캠핑장 명 :</span>
+                                <input type="text" id="cmapName" name="cmapName">
+                            </section>
+
+                            <section class="inputInfo" id="inputAddress">
+                                <span>캠핑장 주소 :</span>
+                                <input type="text" id="campAdress" name="campAdress">
+                            </section>
+                        </section>
+                        
+                        <section class="empty3"></section>
+                        
+                        <section class="placeInfo">
+                            <section class="inputInfo" id="inputCEO">
+                                <span>대표자 :</span>
+                                <input type="text" id="ceoName" name="ceoName">
+                            </section>
+
+                            <section class="inputInfo" id="inputCEONumber">
+                                <span>사업자 등록번호 :</span>
+                                <input type="text" id="businessLicense" name="businessLicense">
+                            </section>
+                        </section>
+                        
+                        <section class="empty3"></section>
+                        
+                        <section class="placeInfo">
+                            <section class="inputInfo" id="tourLicense">
+                                <span>관광사업 등록증 사본 :</span>
+                                <input type="file" id="tourLicenseInput" name="tourLicenseInput">
+                            </section>
+
+                            <section class="inputInfo" id="accountHolder">
+                                <span>예금주 :</span>
+                                <input type="text" id="accountHolderInput" name="accountHolder">
+                            </section>
+                        </section>
+                        
+                        <section class="empty3"></section>
+
+                        <section class="placeInfo">
+                            <section class="inputInfo" id="bank">
+                                <span>은행 :</span>
+                                <input type="text" id="bankName" name="bankName">
+                            </section>
+
+                            <section class="inputInfo" id="accountNumber">
+                                <span>계좌번호 :</span>
+                                <input type="text" id="ceoAccount" name="ceoAccount">
+                            </section>
+                        </section>
+
+                        
+                        <section class="empty3"></section>
+                        
+                    </section>
+                    
+                    
+                    <!-- 내부공백 (좌) -->
+                    <section class="empty2"></section>
+                </section>
+
+                <!-- 서식 전송 버튼 -->
+                <section id="formSendBtn">
+                    <section class="empty2"></section>
+
+                    <section id="btnSection">
+                        <button type="button" class="clickBtn" th:onclick="|javascript:history.back();|">이전으로</button>
+                        <button type="submit" id="sendBtn">서식 전송</button>
+                    </section>
+
+                    <section class="empty2"></section>
+                </section>
+
+                <section class="empty2"></section>
+
+            </form>
+
+        </section>
+
+        
+        <!-- 공백 (좌) -->
+        <section class="empty1"></section>
+
+    </main>
+
+    <div class="empty5"></div>
+    
+	<th:block th:replace="~{common/footer}"></th:block>
+
+	<script th:src="@{/js/member/levelUpForm.js}"></script>
+
+</body>
+</html>

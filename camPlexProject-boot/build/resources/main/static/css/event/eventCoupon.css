@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    /* border: 1px solid black; */
+}
+
+button {
+    cursor: pointer;
+}
+
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: 1% 500%;
+    unicode-range: U+AC00-D7A3;
+}
+
+.eventTitle p {
+    font-family: 'HakgyoansimSantteutdotumL';
+    margin-top: 90px;
+    font-size: 30px;
+    margin-left: 8.3%;
+}
+
+#couponList {
+	font-size: 22px;
+}
+
+#ranking {
+	font-size: 30px;
+	margin-left: 10.5rem;
+	margin-bottom: 10px;
+}
+
+.couponPick {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 4rem;
+}
+
+.couponImg {
+	display: flex;
+	width: 90rem;
+	height: 20rem;
+}
+
+.couponImg > div {
+	margin-left: 4rem;
+}
+
+.couponImg > img {
+	border-radius: 15px;
+}
+
+#id_btn {
+	background-color: antiquewhite;
+	border-radius: 10px;
+	width: 8rem;
+	height: 4rem;
+	font-size : 22px;
+	cursor: pointer;
+	margin-bottom: 2rem;
+}
+
+.scratchZone {
+	display: inline-block;
+	display: none;
+	position: absolute; 
+	width: 310px;
+	height: 50px;
+	margin-left: 41.5%;
+	margin-right: 42%;
+	margin-top: 30rem;
+	z-index: 1;
+}
+
+#id_out {
+	position: absolute; 
+	width: 300px;
+	height: 50px;
+	margin-left: 42%;
+	margin-right: 41.5%;
+	margin-top: 30rem;
+	z-index: 0;
+	font-size: 33px;
+}
+
+#canvas {
+	width: 309px;
+	height: 50px;
+	border-radius: 10px;
+}
+

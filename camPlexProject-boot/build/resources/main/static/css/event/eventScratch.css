@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    /* border: 1px solid black; */
+}
+
+button {
+    cursor: pointer;
+}
+
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: 1% 500%;
+    unicode-range: U+AC00-D7A3;
+}
+
+.eventTitle p {
+    font-family: 'HakgyoansimSantteutdotumL';
+    margin-top: 10px;
+    font-size: 30px;
+    margin-left: 8.3%;
+}
+
+.eventP {
+	display: flex;
+	justify-content: center;
+	font-size: 22px;
+	font-family: 'HakgyoansimSantteutdotumL';
+	margin-top: 0.5rem;
+}
+
+#scratchBack {
+	margin-top: 7rem;
+	scale: 1.2;
+}
+
+
+
+main {
+	margin-bottom: 15rem;
+}
+

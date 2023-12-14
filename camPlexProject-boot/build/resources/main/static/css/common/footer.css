@@ -1,0 +1,77 @@
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: 1% 500%;
+    unicode-range: U+AC00-D7A3;
+}
+
+*{
+    font-family: 'HakgyoansimSantteutdotumL', 'Montserrat';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.bottomBar { 
+    margin: 25px 0 25px 25px ;
+    font-family: 'HakgyoansimSantteutdotumL';
+    font-weight: 900;
+    line-height: 30px;
+    
+}
+
+.footerTitle {
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 1.2rem;
+    font-weight: 1000;
+
+    height: 60px;
+    line-height: 60px;
+    color: #333;
+    letter-spacing: 3px;
+}
+
+.footerMenu {
+    display: flex;
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 900;
+	margin-top: 30px;
+    color: #333;
+    letter-spacing: 1px;
+}
+
+.footerMenu a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 100;
+}
+
+.companyInfo{
+	margin-top: 30px;
+	font-weight: 200;
+}
+
+#companyTel{
+	font-weight: 800;
+}
+
+.menuDiv {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.footerContent {
+    width: 100%;
+    letter-spacing: 0.04rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 30px;
+    height: 80%;
+    line-height: 25px;
+    
+}

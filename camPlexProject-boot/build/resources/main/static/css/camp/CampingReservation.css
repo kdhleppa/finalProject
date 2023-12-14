@@ -1,0 +1,393 @@
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: 1% 500%;
+    unicode-range: U+AC00-D7A3;
+}
+
+*{
+    font-family: 'HakgyoansimSantteutdotumL', 'Montserrat';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    display: flex;
+}
+
+#leftBlank, #rightBlank{
+    flex-basis: 20%;
+}
+
+#mainContent{
+    flex-basis: 60%;
+}
+
+
+/* ---------------------------------------------------------------------- */
+
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.headerTitle{
+    font-size: 1.5rem;
+    color: #D4A373;
+    font-weight: lighter;
+}
+
+.headerMenu{
+    display: flex;
+    align-items: flex-end;
+}
+
+
+.mainPicArea{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 5rem;
+    margin-top: 40px;
+}
+
+.campingTitle{
+    display: flex;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.campingTitleName{
+    font-size: 2.5rem;
+}
+
+.campSiteName{
+    font-size: 1.5rem;
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.arrow{
+    background-color: transparent;
+    border: transparent;
+    font-size: 1rem;
+}
+
+.arrow img{
+    width: 20px;
+    cursor: pointer;
+}
+
+
+.pictureContainer{
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.detailPicture{
+	display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+.detailImgSlideBox{
+	 display: flex;
+    flex-basis: 80%;
+    transition: 0.5s;
+    max-width: 22rem;
+}
+
+
+.detailImgWrapper{
+	width: 20rem;
+    height: 22rem;
+    margin: 0 20px;
+    border-radius: 5px;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.detailImgWrapper img {
+    height: 100%;
+    border-radius: 5px;
+}
+
+
+/**********************************************/
+
+
+.campingInfoContainer{
+    width: 60%;
+    padding: 0 20px 20px 20px;
+    margin-left: 30px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.campInfo > p{
+    font-size: 1.5rem;
+    align-self: flex-start;
+}
+
+.campingInfoContainer > hr{
+    margin: 20px 0;
+}
+
+.campInfo{
+    display: flex;
+    justify-content: space-between;
+}
+
+.ceoInfoContianer{
+    display: flex;
+    align-items: center;
+}
+
+.campingInfo{
+    display: flex;
+}
+
+.ceoInfoModal{
+    border: none;
+    background-color: transparent;
+    margin-right: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    color: rgb(255, 0, 0)
+}
+
+.campingInfo > div{
+    margin: 0 20px;
+}
+
+.campingInfoCategory, .campingInfoDetail{
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.campingInfoCategory > p, .campingInfoDetail > p{
+    margin: 18px 0;
+    font-size: 1.1rem;
+}
+
+#price{
+    color: #D4A373;
+}
+
+/* ----------------------------------------------------------- */
+
+
+.customerTitle{
+    display: flex;
+    width: 60%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.customerTitle > p{
+    font-size: 1.5rem;
+}
+
+.customerArea > hr{
+    margin: 20px 0;
+    width: 45rem;
+}
+
+.customerInfoContainer{
+    display: flex;
+}
+
+.customerInfoCategory{
+    display: flex;
+    flex-direction: column;
+
+    margin: 0 20px;
+}
+
+.customerInfoCategory > div{
+    display: flex;
+}
+
+.mandatory{
+    color: #ff0000;
+}
+
+.customerInfoCategory p {
+    margin: 13px 0;
+    font-size: 1.3rem;
+}
+
+.customerInfoInput{
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+
+.customerInfoInput > input, .customerInfoInput > textarea{
+    width: 25rem;
+    margin: 12px 0;
+    border: #adadad solid 1px;
+    border-radius: 5px;
+    padding: 0 5px;
+}
+
+.customerInfoInput > input{
+    height: 1.8rem;
+}
+
+.customerInfoInput > div{
+    display: flex;
+    margin: 12px 0;
+}
+
+.customerInfoInput > div > img{
+    margin: 0 10px;
+}
+
+.adultIcon,.calIcon{
+    width: 20px;
+    height: 20px;
+}
+
+#chooseNumberBtn{
+	font-size: 1rem;
+	background-color: transparent;
+	border: none;
+	margin-left: 20px;
+	cursor: pointer;
+	padding-bottom: 2px;
+	border-bottom: 2px solid;
+}
+
+.humanCountContainer{
+	display: flex;
+	align-items: center;
+}
+
+.humanCount{
+	background-color: transparent;
+	border: none;
+	width: 2rem;
+}
+
+#additionalCount{
+	color: rgb(255, 102, 102);
+	
+}
+.date{
+	font-size: 1rem;
+	background-color: transparent;
+	border: none;
+	width: 5.4rem;
+}
+
+.kidIcon{
+    width: 15px;
+    height: 15px;
+}
+
+#demand{
+	padding: 10px;
+}
+
+/* ------------------------------------------------------------------------------ */
+
+
+
+.btnArea{
+    display: flex;
+    justify-content: flex-end;
+    align-self: flex-end;
+    margin: 50px 0;
+    margin-bottom: 200px;
+}
+
+.btn{
+    background-color: transparent;
+    border: none;
+    margin: 0 30px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.btnArea button { 
+  display:inline-block; 
+  text-transform:uppercase; 
+}
+  
+
+.btnArea button:after {
+
+  display:block;
+  content: '';
+  border-bottom: solid 1px #000;  
+  transform: scaleX(0);  
+  transition: transform 250ms ease-in-out;
+  padding-bottom: 5px;
+}
+.btnArea button:hover:after { transform: scaleX(1); }
+
+/* ---------------------------------- footer --------------------------------- */
+.bottomBar { 
+    margin: 25px 0 25px 25px ;
+    font-family: 'HakgyoansimSantteutdotumL';
+    font-weight: 900;
+    line-height: 30px;
+    
+}
+
+.footerTitle {
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 2rem;
+    font-weight: 1000;
+
+    height: 60px;
+    line-height: 60px;
+    color: #333;
+    letter-spacing: 3px;
+}
+
+.footerMenu {
+    display: flex;
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 900;
+
+    color: #333;
+    letter-spacing: 1px;
+}
+
+.footerMenu a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 100;
+}
+
+.menuDiv {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.footerContent {
+    width: 100%;
+    letter-spacing: 1px;
+    font-weight: 100;
+}
+
