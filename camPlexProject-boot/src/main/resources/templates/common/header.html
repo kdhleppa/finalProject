@@ -4,12 +4,6 @@
 
         <div class="topMenu">
 
-            <div class="leftOfTopMenu">
-                <a href="#">COMMUNITY</a>
-                <a th:href="@{/qna/qnaList}">CONTACT</a>
-                <a href="#">ABOUT US</a>
-            </div>
-
             <div class="rightOfTopMenu">
                 <a th:unless="${session.loginMember}" th:href="@{/member/login}">LOGIN</a>
                 
@@ -32,12 +26,12 @@
 	                <a th:href="@{/member/logout}">LOGOUT</a>
 			    </th:block>
 			    
-                <a class="hideMenu" href="#">TOP</a>
+                <a class="hideMenu" th:href="@{#main1}">TOP</a>
             </div>
 
         </div>
 
-        <a id="mainTitle" class="mainTitle" href="/">C A M P L E X </a>
+        <button id="mainTitle" class="mainTitle" href="/">C A M P L E X </button>
 
         <div class="bottomMenu">
             <a th:href="@{/camp/search}">CAMPING</a>

@@ -104,13 +104,13 @@ public interface BoardMapper {
 	public List<Board> orderReadCount(String boardType, RowBounds rowBounds);
 
 	// 조회수 순 정렬 (검색)
-	public List<Board> orderReadCount(Map<String, Object> paramMap, RowBounds rowBounds);
+	public List<Board> orderSearchReadCount(Map<String, Object> paramMap, RowBounds rowBounds);
 	
 	// 좋아요 순 정렬
 	public List<Board> orderLikeCount(String boardType, RowBounds rowBounds);
 
 	// 좋아요 순 정렬 (검색)
-	public List<Board> orderLikeCount(Map<String, Object> paramMap, RowBounds rowBounds);
+	public List<Board> orderSearchLikeCount(Map<String, Object> paramMap, RowBounds rowBounds);
 	
 	
 	

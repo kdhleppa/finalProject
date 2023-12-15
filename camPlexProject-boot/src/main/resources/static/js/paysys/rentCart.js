@@ -161,7 +161,7 @@ function updateQuantityAndCart(index, change) {
     var quantityDisplay = document.getElementById('quantityDisplay' + index);
     var cartItemNo = document.getElementById('cartItemNo' + index).value
     var currentQuantity = parseInt(quantityDisplay.textContent);
-    var newQuantity = Math.max(0, currentQuantity + change);
+    var newQuantity = Math.max(1, currentQuantity + change);
     quantityDisplay.textContent = newQuantity;
 
     // Fetch API를 사용하여 서버에 변경사항 전송

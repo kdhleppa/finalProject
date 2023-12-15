@@ -205,6 +205,8 @@ document.addEventListener('DOMContentLoaded', function () {
 			var dayTitle = document.createElement('th');
 			dayTitle.textContent = day;
 			headerRow.appendChild(dayTitle);
+			if(day == '일'){ dayTitle.classList.add('red') }
+			if(day == '토'){ dayTitle.classList.add('blue') }
 		});
 
 		tableHead.appendChild(headerRow);

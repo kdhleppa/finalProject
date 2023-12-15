@@ -36,6 +36,9 @@
 .topBar:hover a{
 	color: #000;
 } 
+.topBar:hover button{
+	color: #000;
+} 
 
 .topMenu{
     width: 100%;
@@ -43,7 +46,7 @@
     flex-basis: 5%;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 .topMenu a{
@@ -87,6 +90,12 @@ html {
     scroll-behavior: smooth;
 }
 
+#mainTitle{
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}
+
 a {
   color: #fff;
   display:inline-block; 
@@ -94,13 +103,14 @@ a {
 }
   
 .topBar a:after {
-  display:block;
-  content: '';
-  border-bottom: solid 1px #000;
-  transform: scaleX(0);
-  transition: transform 250ms ease-in-out;
-}
-.topBar a:hover:after { transform: scaleX(1); }
+
+    display:block;
+    content: '';
+    border-bottom: solid 1px #000;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+  }
+  .topBar a:hover:after { transform: scaleX(1); }
 
 @media all and (max-width:620px) {
 

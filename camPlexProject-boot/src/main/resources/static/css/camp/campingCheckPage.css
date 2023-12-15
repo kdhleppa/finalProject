@@ -468,11 +468,12 @@ main {
     cursor: pointer;
     color: #000;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    color: red;
   }
 
  .campDelete:hover{
-    color: red;
+    font-weight: bold;
   }
 
   @media all and (max-width:1600px) {

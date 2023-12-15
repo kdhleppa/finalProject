@@ -15,16 +15,18 @@
 }
 
 .bottomBar { 
-    margin: 25px 0 25px 25px ;
+    height: 100%;
+    margin: 0 0 25px 25px ;
+    padding-bottom: 50px;
     font-family: 'HakgyoansimSantteutdotumL';
     font-weight: 900;
     line-height: 30px;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
 }
 
 .footerTitle {
-    flex-basis: 50%;
-    align-self: center;
     font-size: 1.2rem;
     font-weight: 1000;
 
@@ -36,8 +38,6 @@
 
 .footerMenu {
     display: flex;
-    flex-basis: 50%;
-    align-self: center;
     font-size: 1rem;
     font-weight: 900;
 	margin-top: 30px;
@@ -66,12 +66,10 @@
 }
 
 .footerContent {
-    width: 100%;
     letter-spacing: 0.04rem;
     font-weight: 600;
     font-size: 0.9rem;
     margin-top: 30px;
-    height: 80%;
     line-height: 25px;
     
 }

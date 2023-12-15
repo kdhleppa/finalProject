@@ -488,11 +488,14 @@ hr {
 	flex-basis: 30%;
 	padding: 30px;
 	width: 100%;
+	height: 200px;
 }
 
 .campSiteImgWrapper img {
 	width: 100%;
 	border-radius: 10px;
+	height: 100%;
+	object-fit: cover;
 }
 
 .campSiteInfoContainer {
@@ -659,12 +662,33 @@ hr {
 
 /*수정 a 태그 */
 #campUpdate {
-	margin-left: 1rem;
-	color: black;
+	margin-left: 3rem;
+	color: #1135CE;
 	text-decoration: none;
+}
+
+#campUpdate:hover {
+	font-weight: bold;
+}
+
+#campDelete {
+	color: red;
+	margin-left: 2rem;
+}
+
+#campDelete:hover {
+	font-weight: bold;
 }
 
 #address{
 	font-size: 1.1rem;
 	margin-top: 5px;
+}
+
+.red{
+	color: rgb(255,0,0);
+}
+
+.blue{
+	color: rgb(0, 0, 255);
 }
