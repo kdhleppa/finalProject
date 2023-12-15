@@ -270,8 +270,8 @@
 		CAMP_IMG_PATH = #{campImagePath},
 		CAMP_IMG_ORIGINAL = #{campImageOriginal},
 		CAMP_IMG_RENAME = #{campImageReName}
-		WHERE BOARD_NO = #{campNo}
-		AND IMG_ORDER = #{campImageOrder}
+		WHERE CAMP_NO = #{campNo}
+		AND CAMP_IMG_ORDER = #{campImageOrder}
 	</update>
 	
 	<insert id="campImageInsert">
