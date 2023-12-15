@@ -469,9 +469,9 @@ function more(contentLength) {
 
 		btn.addEventListener("click", () => {
 
-			contentContainer.style.height = contentContainer.offsetHeight + 512 + 'px';
+			contentContainer.style.height = contentContainer.offsetHeight + 1024 + 'px';
 
-			contentCount += 4;
+			contentCount += 8;
 			more(contentLength)
 		})
 

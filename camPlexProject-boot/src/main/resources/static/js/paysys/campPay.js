@@ -11,28 +11,9 @@ for(var i = 0 ; i <payBy.length ; i ++){
             makeAccount();
             payFrm.action ="payDone"
 
-            payFrm.addEventListener("submit", (e) => {
-                
-                pay(e)
-
-                if(!confirm('취소수수료에 대한 안내를 확인 하셨습니까?')){
-                    e.preventDefault();
-                    return;
-                }
-            })
-
         } else if (e.target.value == 'k'){
             payFrm.action ="kakao"
             bankAccountContainer.innerHTML = "";
-
-            payFrm.addEventListener("submit", (e) => {
-                
-                if(!confirm('취소수수료에 대한 안내를 확인 하셨습니까?')){
-                    alert("결제금액란의 취소수수료 안내를 확인해주세요")
-                    e.preventDefault();
-                    return;
-                }
-            })
 
         } else if (e.target.value == 'n'){
             alert("현재 점검 중입니다.")
@@ -42,6 +23,8 @@ for(var i = 0 ; i <payBy.length ; i ++){
 
     })
 }
+
+const checkbox = document.querySelectorAll(".checkbox")
 
 payFrm.addEventListener("submit", e => {
 
@@ -59,24 +42,37 @@ payFrm.addEventListener("submit", e => {
         alert("결제 수단을 선택해주세요");
         e.preventDefault();
         return;
-    
     } 
 
-})
+    var checkboxCount = 0;
 
-
-
-function pay(e){
+    for(var i = 0 ; i <checkbox.length ; i ++){
         
-    const senderName = document.getElementById('senderName');
-
-    if(senderName.value.trim().length == 0){
-        alert("이름을 입력해주세요")
-        e.preventDefault();
-        return;
+        if(checkbox[i].checked){
+            checkboxCount++;
+        }
     }
 
-}
+    if(checkboxCount != 3){
+        alert("이용약관에 동의해주세요");
+        e.preventDefault();
+        return;
+    }   
+
+    for(var i = 0 ; i <payBy.length ; i ++){
+        
+        if(payBy[i].value == 'b'){
+            if(senderName.value.trim().length == 0){
+                alert("입금자 명을 입력해주세요")
+                e.preventDefault();
+                return;
+            }
+        }
+    }
+
+
+
+})
 
 
 function makeAccount() {
@@ -138,5 +134,39 @@ cancelInfoBtn.addEventListener("click", () => {
 window.addEventListener('click', (e) => {
 	
 	e.target === modalContainerPopup ? modalContainerPopup.classList.add('hidden') : false
+	
+});
+/*******************************************************************************/
+
+
+const collectPersonalInfoBtn = document.getElementById("collectPersonalInfoBtn");
+const collectPersonalInfoModalContainer = document.getElementById('collectPersonalInfoModalContainer');
+
+collectPersonalInfoBtn.addEventListener("click", () => {
+	
+	collectPersonalInfoModalContainer.classList.remove('hidden');
+	
+})
+
+window.addEventListener('click', (e) => {
+	
+	e.target === collectPersonalInfoModalContainer ? collectPersonalInfoModalContainer.classList.add('hidden') : false
+	
+});
+
+/*******************************************************************************/
+
+const collectInfoBtn = document.getElementById("collectInfoBtn");
+const collectInfoModalContainer = document.getElementById('collectInfoModalContainer');
+
+collectInfoBtn.addEventListener("click", () => {
+	
+	collectInfoModalContainer.classList.remove('hidden');
+	
+})
+
+window.addEventListener('click', (e) => {
+	
+	e.target === collectInfoModalContainer ? collectInfoModalContainer.classList.add('hidden') : false
 	
 });

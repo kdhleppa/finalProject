@@ -33,9 +33,9 @@ function more(contentLength){
 
 		btn.addEventListener("click", () => {
 
-			mainContent.style.height = mainContent.offsetHeight+352+'px';
+			mainContent.style.height = mainContent.offsetHeight+704+'px';
 			
-			contentCount += 3
+			contentCount += 6
 
 			more(contentLength);
 
