@@ -28,6 +28,9 @@ public class FileUploadConfig implements WebMvcConfigurer{
 	@Value("${spring.servlet.multipart.max-request-size}")
 	private long maxRequestSize;
 	
+	@Value("${camplex.images.resourcePath}")
+	private String resourcePath;
+	
 	@Bean
 	public MultipartConfigElement configElement() {
 		
@@ -57,7 +60,8 @@ public class FileUploadConfig implements WebMvcConfigurer{
 		String webPath = "/images/**"; // /images/로 시작되는 모든 요청
 		
 		//실제로 자원이 저장되어 있는 로컬 경로
-		String resourcePath = "file:///C:/camplex/finalProject/";
+//		String resourcePath = "file:///C:/camplex/finalProject/";
+		
 		
 		// /images/로 시작되는 모든 요청을 resoucePath로 연결
 		registry.addResourceHandler(webPath).addResourceLocations(resourcePath);
