@@ -25,9 +25,8 @@ inputName.addEventListener("input", () => {
 
 	if (regEx.test(inputName.value)) {// 유효
 
-		nameMessage.innerText = "유효한 이름입니다.";
-		nameMessage.classList.add("confirm");
-		nameMessage.classList.remove("error");
+		nameMessage.innerText = "한글, 영어 2~10글자";
+		nameMessage.classList.remove("confirm", "error");
 		checkObj.inputName = true;
 
 	} else { // 무효
@@ -65,14 +64,12 @@ inputTel.addEventListener("input", () => {
 		.then(count => {
 
 			if (count > 0) {
-				telMessage.innerText = "등록된 전화번호입니다.";
-				telMessage.classList.add("confirm");
-				telMessage.classList.remove("error");
+				telMessage.innerText = "- 제외한 전화번호를 입력해주세요.";
+				telMessage.classList.remove("confirm", "error");
 				checkObj.inputTel = true;
 			} else {
-				telMessage.innerText = "등록된 정보가 없습니다.";
-				telMessage.classList.add("error");
-				telMessage.classList.remove("confirm");
+				telMessage.innerText = "- 제외한 전화번호를 입력해주세요.";
+				telMessage.classList.remove("confirm", "error");
 				checkObj.inputTel = false;
 			}
 
@@ -141,6 +138,8 @@ checkTel.addEventListener("click", () => {
 
         }, 1000)
 		
+	} else {
+		alert("등록된 정보가 없습니다.");
 	}
 	
 })

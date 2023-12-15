@@ -39,11 +39,9 @@
 				<section id="infoMain">
 					<section id="profileImgSection">
 
-						<img th:unless="${session.loginMember.memberProfileImg}" id="profileImg"
-							th:src="@{/images/memberImg/gg_profile.png}">
+						<img th:unless="${session.loginMember.memberProfileImg}" id="profileImg" th:src="@{/images/memberImg/gg_profile.png}">
 
-						<img th:if="${session.loginMember.memberProfileImg}" id="profileImg"
-							th:src="${session.loginMember.memberProfileImg}">
+						<img th:if="${session.loginMember.memberProfileImg}" id="profileImg" th:src="${session.loginMember.memberProfileImg}">
 
 					</section>
 

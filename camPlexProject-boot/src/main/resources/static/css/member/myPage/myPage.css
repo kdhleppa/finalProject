@@ -178,6 +178,7 @@ main {
     margin-left: 20px;
     font-weight: 600;
     cursor: pointer;
+    width: 108px;
 }
 #listTitle, #beforeListTitle{
 	display: flex;
@@ -579,3 +580,17 @@ main {
       opacity: 100%;
     }
   }
+  
+  
+.clickBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+    transition: color 0.3s;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.clickBtn:hover {
+	color: #909090;
+}

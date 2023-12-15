@@ -146,93 +146,6 @@ main {
     color: red;
 }
 
-/* ---------------------------- */
-/* 쇼핑 정보 */
-#shopingListSection {
-    display: flex;
-}
-
-#subName {
-    margin-top: 100px;
-    font-size: 30px;
-    margin-left: 20px;
-    font-weight: 600;
-}
-
-.underLine2 {
-    border: 2px solid black;
-    margin-bottom: 10px;
-}
-
-#shopingList {
-    flex-basis: 80%;
-}
-
-#shopingListInfo {
-    display: flex;
-}
-
-#shopingHistoryInfo {
-    display: flex;
-    flex-basis: 80%;
-}
-
-#shopingHistoryInfo > img {
-    width: 210px;
-}
-
-#shopingInfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    flex-basis: 60%;
-}
-
-#shopingInfo a {
-    display: inline-block;
-}
-
-#reviewRebuyDeleteBtnSection {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-basis: 10%;
-}
-
-/* ------------------------------ */
-/* 관심 상품 */
-#wishListSection {
-    display: flex;
-}
-
-#wishList {
-    flex-basis: 80%;
-}
-
-#wishListItems {
-    display: flex;
-}
-
-.itemSection {
-    display: flex;
-    flex-direction: column;
-    align-items: end;
-}
-
-.itemSection > p {
-    font-size: 13px;
-}
-
-.wishItem {
-    width: 140px;
-}
-
-.empty4 {
-    flex-basis: 3%;
-}
-
-
 /* ------------------------------------ */
 /* 문의사항, 커뮤니티 공통사항 */
 .textSection {
@@ -245,12 +158,20 @@ main {
 
 .textItemSection {
     display: flex;
+    min-height: 200px;
 }
 
 .textItmeList {
     display: flex;
     flex-direction: column;
     flex-basis: 80%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.textListSecDiv {
+	display: flex;
+	justify-content: space-between;
 }
 
 .textList {
@@ -261,6 +182,21 @@ main {
 
 .textList {
     font-size: 15px;
+}
+
+.subName {
+	display: flex;
+    margin-top: 60px;
+    font-size: 30px;
+    margin-left: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 108px;
+}
+
+.underLine2 {
+    border: 2px solid black;
+    margin-bottom: 10px;
 }
 
 /* ------------------------------ */
@@ -319,3 +255,18 @@ main {
     letter-spacing: 1px;
     font-weight: 100;
 }
+/* --------------------------------- */
+
+.clickBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+    transition: color 0.3s;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.clickBtn:hover {
+	color: #909090;
+}
+

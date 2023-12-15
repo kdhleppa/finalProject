@@ -172,8 +172,8 @@ public class MemberController {
 	        path += "/member/searchId2";
 	        model.addAttribute("searchId", result);
 	    } else {
-	        message = "일치하는 회원 정보가 없습니다.\n회원가입 후 이용 바랍니다.";
-	        path += "/member/signUp";
+	        message = "일치하는 회원 정보가 없습니다.";
+	        path += "/member/searchId";
 	    }
 
 	    ra.addFlashAttribute("message", message);
@@ -317,7 +317,15 @@ public class MemberController {
 	
 	// CEO 마이페이지 이동
 	@GetMapping("/CEOMyPage")
-	public String CEOMyPage() {
+	public String CEOMyPage(@SessionAttribute("loginMember") Member loginMember,
+							Model model) {
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		MyPage myPageInfo = service.selectMyPageInfo(memberNo);
+		
+		model.addAttribute("myPageInfo", myPageInfo);
+		
 		return "member/myPage/CEOMyPage";
 	}
 	
@@ -639,6 +647,12 @@ public class MemberController {
 		model.addAttribute("myPageInfo", myPageInfo);
 		
 		return "member/myPage/payHistory";
+	}
+	
+	// 캠핑장 업데이트 요청
+	@GetMapping("/campUpdate")
+	public String campUpdate() {
+		return "member/campUpdate";
 	}
 	
 	// 위시리스트 추가
