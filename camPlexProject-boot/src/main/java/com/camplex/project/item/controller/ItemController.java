@@ -1,5 +1,7 @@
 package com.camplex.project.item.controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +52,16 @@ public class ItemController {
 			
 			List<MembersReservationDate> rsvInfo;
 			rsvInfo = service.membersRsvInfo(memberNo);
+			
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd (E)");
+		    DateTimeFormatter originalFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); 
+
+		    rsvInfo.forEach(info -> {
+		        LocalDateTime entDate = LocalDateTime.parse(info.getCampEntDate(), originalFormatter);
+		        LocalDateTime outDate = LocalDateTime.parse(info.getCampOutDate(), originalFormatter);
+		        info.setCampEntDate(entDate.format(formatter));
+		        info.setCampOutDate(outDate.format(formatter));
+		    });
 			
 			model.addAttribute("item", item);
 			model.addAttribute("rsvInfo", rsvInfo);

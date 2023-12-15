@@ -146,6 +146,23 @@ public class PaysysController {
 		List<FindCartItem> cartItem = itemService.membersCartItem(memberNo);
 		List<Item> wishlist = itemService.inCartWishlist(memberNo);
 
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd (E)");
+	    DateTimeFormatter originalFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); 
+
+	    rsvInfo2.forEach(info -> {
+	        LocalDateTime entDate = LocalDateTime.parse(info.getCampEntDate(), originalFormatter);
+	        LocalDateTime outDate = LocalDateTime.parse(info.getCampOutDate(), originalFormatter);
+	        info.setCampEntDate(entDate.format(formatter));
+	        info.setCampOutDate(outDate.format(formatter));
+	    });
+
+	    rsvInfo.forEach(info -> {
+	        LocalDateTime entDate = LocalDateTime.parse(info.getCampEntDate(), originalFormatter);
+	        LocalDateTime outDate = LocalDateTime.parse(info.getCampOutDate(), originalFormatter);
+	        info.setCampEntDate(entDate.format(formatter));
+	        info.setCampOutDate(outDate.format(formatter));
+	    });
+
 		
 		
 		
@@ -248,8 +265,8 @@ public class PaysysController {
 		int result2 = 0;
 		switch(bank) {
 		
-		case "toss" : bank = "토스뱅크 100001065362 최규연"; break;
-		case "kb" : bank ="국민은행 00440204106870 이재경"; break;
+		case "toss" : bank = "토스뱅크 0044011111111 최규연"; break;
+		case "kb" : bank ="국민은행 100011111111 이재경"; break;
 		
 		
 	
@@ -423,26 +440,33 @@ public class PaysysController {
 		List<rentPayList> payList = new ArrayList<>();
 		String referer = request.getHeader("Referer");
 		String path = "redirect:";
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd (E)");
+		DateTimeFormatter originalFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		if (checkCartItemNo != null) {
 			for (Integer cartItemNo: checkCartItemNo ) {
 				rentPayList data = payService.selectCheckCart(cartItemNo, memberNo);
-				
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-				LocalDateTime entDateTime = LocalDateTime.parse(data.getCampEntdate(), formatter);
-				LocalDateTime outDateTime = LocalDateTime.parse(data.getCampOutdate(), formatter);
+				LocalDateTime entDateTime = LocalDateTime.parse(data.getCampEntdate(), originalFormatter);
+				LocalDateTime outDateTime = LocalDateTime.parse(data.getCampOutdate(), originalFormatter);
 
+				data.setCampEntdate(entDateTime.format(formatter));
+				data.setCampOutdate(outDateTime.format(formatter));
+				
 				
 				LocalDate entDate = entDateTime.toLocalDate();
 			    LocalDate outDate = outDateTime.toLocalDate();
-
+			    			    
 			    
 			    int stayDay = (int) ChronoUnit.DAYS.between(entDate, outDate);
 			    data.setStayDay(stayDay);
 			    
 			    
 				payList.add(data);
-				System.out.println(data);
 			}
+			
+			
+			
+
+		    
 			
 			model.addAttribute("rentPayList" , payList);
 			
@@ -590,5 +614,7 @@ public class PaysysController {
 	}
 	
 		
+	
+	
 	
 }
