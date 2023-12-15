@@ -42,8 +42,7 @@
 	                    
 						<div class="senderInfo">
 							<p th:if="${payInfo.item_name=='렌탈'}">상품명 |&nbsp;&nbsp;</p>
-							<p th:unless="${payInfo.item_name=='렌탈'}">예약 캠핑장 |&nbsp;&nbsp;</p>&nbsp;&nbsp;
-							<p th:text="${payInfo.item_name}"></p>
+							<p th:unless="${payInfo.item_name=='렌탈'}">예약 캠핑장 |&nbsp;&nbsp;</p>&nbsp; <p th:text="${payInfo.item_name}"></p>
 						</div>
 						<br>
 						<div class="priceInfo">
