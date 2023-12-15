@@ -279,6 +279,41 @@
 			ORDER BY B_READ_COUNT DESC
 	  	</select>
 	  	
+	  	<!-- 조회수 순 게시글 조회(검색) -->
+	  	<select id="orderSearchReadCount" resultMap="board_rm">
+	  		SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME, B_READ_COUNT, B_CREATE_DATE
+			FROM "BOARD"
+			JOIN "MEMBER" USING(MEMBER_NO)
+			WHERE BOARD_DEL_FL = 'N'
+			AND BOARD_TYPE = #{boardType}
+			
+			<choose>
+				<when test='key == "t"'>
+					<!-- 제목 -->
+					AND BOARD_TITLE LIKE '%${query}%'
+				</when>
+				
+				<when test='key == "c"'>
+					<!-- 내용 -->
+					AND BOARD_CONTENT LIKE '%${query}%'
+				</when>
+				
+				<when test='key == "tc"'>
+					<!-- 제목 + 내용 -->
+					AND (BOARD_TITLE LIKE '%${query}%' OR BOARD_CONTENT LIKE '%${query}%')
+				</when>
+				
+				<when test='key == "w"'>
+					<!-- 작성자(닉네임) -->
+					AND MEMBER_NICKNAME LIKE '%${query}%'
+				</when>
+				
+			</choose>
+			
+			
+			ORDER BY B_READ_COUNT DESC
+	  	</select>
+	  	
 	  	
 	  	<!-- 좋아요 순 게시글 조회 -->
 	  	<select id="orderLikeCount" resultMap="board_rm">
@@ -298,6 +333,41 @@
 			WHERE BOARD_DEL_FL = 'N'
 			AND BOARD_TYPE = #{boardType}
 			ORDER BY LIKE_COUNT DESC
+	  	</select>
+	  	
+	  	<!-- 좋아요 순 게시글 조회(검색) -->
+	  	<select id="orderSearchLikeCount" resultMap="board_rm">
+	  		SELECT BOARD_NO, BOARD_TITLE, MEMBER_NICKNAME, B_READ_COUNT, B_CREATE_DATE
+			FROM "BOARD" B
+			JOIN "MEMBER" USING(MEMBER_NO)
+			WHERE BOARD_DEL_FL = 'N'
+			AND BOARD_TYPE = #{boardType}
+			
+			<choose>
+				<when test='key == "t"'>
+					<!-- 제목 -->
+					AND BOARD_TITLE LIKE '%${query}%'
+				</when>
+				
+				<when test='key == "c"'>
+					<!-- 내용 -->
+					AND BOARD_CONTENT LIKE '%${query}%'
+				</when>
+				
+				<when test='key == "tc"'>
+					<!-- 제목 + 내용 -->
+					AND (BOARD_TITLE LIKE '%${query}%' OR BOARD_CONTENT LIKE '%${query}%')
+				</when>
+				
+				<when test='key == "w"'>
+					<!-- 작성자(닉네임) -->
+					AND MEMBER_NICKNAME LIKE '%${query}%'
+				</when>
+				
+			</choose>
+			
+			
+			ORDER BY (SELECT COUNT(*) FROM BOARD_LIKE L WHERE L.BOARD_NO = B.BOARD_NO) DESC
 	  	</select>
 	  	
 	

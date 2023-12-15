@@ -30,7 +30,7 @@ button {
 	font-family: 'HakgyoansimSantteutdotumL';
     list-style: none;
     font-size: 20px;
-    margin-left: 7rem;
+    margin-left: 8rem;
 }
 
 .boardViewList > a {
@@ -98,25 +98,6 @@ button {
     color: black;
 }
 
-/* 정렬 선택 */
-.boardSortSec {
-    height: 2rem;
-    margin-top: 20px;
-}
-
-.radioArea {
-    width: 35rem;
-    height: 2rem;
-    font-size: 1rem;
-    border-radius: 5px;
-    text-align: center;
-    margin-left: 3rem;
-}
-
-.radioArea > input {
-	margin-left: 3rem;
-}
-
 /* 검색창 */
 #searchKey {
     font-family: 'HakgyoansimSantteutdotumL';
@@ -157,16 +138,6 @@ button {
     margin-right: 1rem;
 }
 
-.chkRadio {
-    font-family: 'HakgyoansimSantteutdotumL';
-    margin-top: 10px;
-    margin-left: 12%;
-}
-
-.chkRadio > input {
-    margin-left: 20px;
-}
-
 /* 게시판 리스트 */
 .listWrapper {
 	display: flex;
@@ -203,8 +174,13 @@ table {
 	color: black;
 }
 
+#blank {
+	width: 15%;
+}
+
 #tdTitle {
-	width: 55%;
+	width: 50%;
+	text-align: left;
 }
 
 #insertBtn {
@@ -242,8 +218,7 @@ table {
 }
 
 #currentPa {
-	color: limegreen;
-	text-decoration: overline;
+	color: rgb(99, 181, 60);
 }
 
 /* 좋아요 */

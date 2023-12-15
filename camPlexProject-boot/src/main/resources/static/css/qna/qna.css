@@ -18,7 +18,7 @@
 }
 
 .qnaTop {
-	font-size: 28px;
+	font-size: 20px;
 	margin-left: 2rem;
 	margin-top: 2rem;
 }
@@ -32,7 +32,7 @@
     border: none;
     top: 25%;
     left: 32%;
-    background:rgb(254, 245, 245);
+    background: #fff;
     z-index: 2;
     border-radius: 10px;
 }
@@ -54,6 +54,7 @@
     position: absolute;
     top: 10px;
     right: 10px;
+    font-size: 1.3rem;
 }
 
 .qmodal_wrap .text {
@@ -63,13 +64,14 @@
 }
 
 .qnaSubmit > div {
-	margin-top: 3rem;
+	margin-top: 2rem;
 	margin-left: 1rem;
 	display: flex;
 }
 
 .qnaSubmit > div > p {
 	margin-left: 2rem;
+	margin-right: 1rem;
 }
 
 #QNATitle {
@@ -97,7 +99,7 @@
 
 .btnArea {
 	display: flex;
-	justify-content: center;
+	justify-content: end;
 	width: 39rem;
 	
 }
@@ -109,8 +111,14 @@
     border-style: none;
     font-size: 1.2rem;
     cursor: pointer;
-    margin-top: -1.5rem;
-    margin-left: 3rem;
+    margin-top: 1rem;
+    color: #909090;
+    transition-duration: 0.3s;
+}
+
+#writeBtn:hover {
+	
+	color: #000;
 }
 
 

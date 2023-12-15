@@ -96,8 +96,7 @@ button {
 
 .boardImg {
 	display: flex;
-	margin-top: -2rem;
-	width: 70rem;
+	width: 75rem;
 }
 
 .boardDeRight {
@@ -132,13 +131,6 @@ button {
     font-size: 16px;
 }
 
-#imgDown {
-	font-size: 16px;
-	height: 1.3rem;
-	text-decoration: none;
-	color: rgb(0, 128, 0);
-}
-
 img {
 	width: 13rem;
 	height: 13rem;
@@ -154,21 +146,20 @@ img {
 
 .img-box > div {
 	margin-top: 3rem;
-	margin-left: 2rem;
+	margin-left: 4rem;
 }
 
 
 .thumbnail{
 	display: flex;
 	flex-wrap: wrap;
-    width: 17rem;
-    height: 17rem;
-    margin-bottom: 2rem;
+    width: 20rem;
+    height: 20rem;
 }
 
-.thumbnail > img {
-	width: 17rem;
-	height: 17rem;
+.thumbnail > a > img {
+	width: 20rem;
+	height: 20rem;
 	border-radius: 20px;
 	overflow: hidden;
 }
@@ -228,20 +219,19 @@ img {
 
 
 /* 댓글 부분 */
-
 .comment-write-area {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin-top: 2rem;
+	margin-left: 6%;
 }
 
 .comment-write-area > textarea{
     border-radius: 10px;
-	width: 60rem;
+	width: 42%;
     min-height: 100px;
 	resize: none;
-	margin-left: 7rem;
 	padding: 0.7rem;
 	outline: none;
 }
@@ -257,7 +247,7 @@ img {
 }
 
 #commentList{
-    margin-left: 30rem;
+    margin-left: 35rem;
     margin-top: 2rem;
 	padding: 0;
 	list-style: none;
@@ -337,15 +327,16 @@ img {
 
 
 /* 댓글 내용 */
+
 .comment-content {
 	font-family: 'HakgyoansimSantteutdotumL';
-	white-space: pre-wrap;
-	margin-top: 10px;
+	margin-top: 20px;
+	width: 65%;
+	word-wrap: break-word;
 }
 
-
 .commentInsertContent{
-	width: 66%;
+	width: 52rem;
     height: 90px;
     resize: none;
     border-radius: 10px;
