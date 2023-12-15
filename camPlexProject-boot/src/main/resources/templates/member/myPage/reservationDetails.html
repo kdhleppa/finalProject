@@ -37,8 +37,8 @@
 
 				<section id="title">
 
-					<div class="campInfo" id="campInfoFont">캠핑장 정보</div>
-					<div class="rentalInfo" id="rentalInfoFont">렌탈 상품 정보</div>
+					<div id="campInfoFont">캠핑장 정보</div>
+					<div id="rentalInfoFont">렌탈 상품 정보</div>
 
 				</section>
 
@@ -112,7 +112,7 @@
 
 								</div>
 
-								<div>
+								<div class="totalPrice">
 									<p th:text="|결제 수단&nbsp; :&nbsp; ${upcomingRes.paymentType} |"></p>
 									<p th:text="|총 결제&nbsp; :&nbsp; ${#numbers.formatInteger(upcomingRes.campPayment + upcomingRes.totalPrice, 3, 'COMMA')} ￦|"></p>
 								</div>
