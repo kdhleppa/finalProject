@@ -57,7 +57,7 @@ button {
 }
   
 main, div, section {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
 }
 
 /* ------------------------------- */
@@ -124,7 +124,7 @@ main {
 .buyInfo {
 	display: flex;
 	flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .shopingList {
@@ -142,17 +142,17 @@ main {
 }
 
 #campInfoFont {
-	flex-basis: 65%;
+	flex-basis: 60%;
 }
 
 #rentalInfoFont {
-	flex-basis: 35%;
+	flex-basis: 40%;
 }
 
 .campInfo {
 	display: flex;
 	flex-direction: column;
-	flex-basis: 65%;
+	flex-basis: 60%;
 }
 
 .campImgDiv {
@@ -177,7 +177,7 @@ main {
 
 .rentalInfo {
 	display: flex;
-	flex-basis: 35%;
+	flex-basis: 40%;
 }
 
 .rentalSection {
@@ -221,7 +221,11 @@ main {
 	justify-content: space-evenly;
 }
 
-
+.totalPrice {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
 
 
 
