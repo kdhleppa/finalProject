@@ -4,7 +4,7 @@
 }
 
 body{
-	overflow: hidden;
+	
 	height:100%;
 }
 
@@ -22,9 +22,6 @@ button {
     width:100%;height:100%;
 }
 
-.mainContent > :last-child {
-	margin-top: 57rem;
-}
 
 @font-face {
     font-family: 'HakgyoansimSantteutdotumL';
@@ -74,6 +71,7 @@ button {
 section > div > img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .p1 {
@@ -119,4 +117,10 @@ section > div > img {
 
 .mainbutton:hover {
 	color: #ccd5ae;
+}
+
+#main5{
+    width: 100vw;
+    height: 50vh;
+    background-color: #d9d9d9;
 }
