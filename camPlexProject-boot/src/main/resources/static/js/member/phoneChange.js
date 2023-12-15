@@ -31,14 +31,12 @@ inputTel.addEventListener("input", () => {
 		.then(count => {
 
 			if (count > 0) {
-				telMessage.innerText = "이미 등록된 전화번호입니다.";
-				telMessage.classList.add("error");
-				telMessage.classList.remove("confirm");
+				telMessage.innerText = "- 제외한 전화번호를 입력해주세요.";
+				telMessage.classList.remove("confirm", "error");
 				checkObj.inputTel = false;
 			} else {
-				telMessage.innerText = "사용가능한 전화번호입니다.";
-				telMessage.classList.add("confirm");
-				telMessage.classList.remove("error");
+				telMessage.innerText = "- 제외한 전화번호를 입력해주세요.";
+				telMessage.classList.remove("confirm", "error");
 				checkObj.inputTel = true;
 			}
 
@@ -107,6 +105,8 @@ checkTel.addEventListener("click", () => {
 
         }, 1000)
 		
+	} else {
+		alert("사용이 불가능한 번호입니다.");
 	}
 	
 })

@@ -93,16 +93,17 @@ main {
 /* 캠핑장 정보 */
 #inputInfo {
     display: flex;
+    
 }
 
 .empty2 {
-    flex-basis: 15%;
+    flex-basis: 25%;
 }
 
 #infoMain {
     display: flex;
     flex-direction: column;
-    flex-basis: 70%;
+    flex-basis: 50%;
 }
 
 .empty3 {
@@ -116,42 +117,43 @@ main {
 
 .inputInfo {
     font-size: 18px;
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid #909090;
+    margin-bottom: 20px;
 }
 
 #inputTitle input {
     border: none;
     margin-left: 5px;
     font-size: 18px;
-    width: 170px;
+    width: 83%;
 }
 
 #inputAddress input {
     border: none;
     margin-left: 5px;
     font-size: 18px;
-    width: 330px;
+    width: 78%;
 }
 
 #inputCEO input {
     border: none;
     margin-left: 5px;
     font-size: 18px;
-    width: 100px;
+    width: 86%;
 }
 
 #inputCEONumber input {
     border: none;
     margin-left: 5px;
     font-size: 18px;
-    width: 200px;
+    width: 72%;
 }
 
 #tourLicense input {
     border: none;
     margin-left: 5px;
     font-size: 15px;
-    width: 250px;
+    width: 64%;
 }
 
 #tourLicense input[type=file]::file-selector-button {
@@ -174,21 +176,21 @@ main {
     border: none;
     margin-left: 5px;
     font-size: 18px;
-    width: 100px;
+    width: 86%;
 }
 
 #bank input {
     border: none;
     margin-left: 5px;
     font-size: 18px;
-    width: 100px;
+    width: 89%;
 }
 
 #accountNumber input {
     border: none;
     margin-left: 5px;
     font-size: 18px;
-    width: 250px;
+    width: 83%;
 }
 
 /* ------------------------------ */
@@ -196,11 +198,11 @@ main {
 #formSendBtn {
     display: flex;
     justify-content: end;
-    margin-top: 100px;
+    margin-top: 40px;
 }
 
 #btnSection {
-	flex-basis: 70%;
+	flex-basis: 50%;
 	display: flex;
 	justify-content: space-between;
 }
