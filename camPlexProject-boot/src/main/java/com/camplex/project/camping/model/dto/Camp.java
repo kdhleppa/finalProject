@@ -36,5 +36,6 @@ public class Camp {
 	private List<CampDetailImage> campDetailImageList;
 	
 	private List<CampSiteImage> campSiteImageList;
+	
 	private List<CampCeoImage> campCeoImageList;
 }
