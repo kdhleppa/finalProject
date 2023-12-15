@@ -662,9 +662,22 @@ hr {
 
 /*수정 a 태그 */
 #campUpdate {
-	margin-left: 1rem;
-	color: black;
+	margin-left: 3rem;
+	color: #1135CE;
 	text-decoration: none;
+}
+
+#campUpdate:hover {
+	font-weight: bold;
+}
+
+#campDelete {
+	color: red;
+	margin-left: 2rem;
+}
+
+#campDelete:hover {
+	font-weight: bold;
 }
 
 #address{

@@ -164,7 +164,7 @@
 						<th:block th:if="${Item.discountRate} != 0">
 
 							<section class="contentInfo" id="discountRate">
-								<p th:text="${#numbers.formatInteger(((Item.itemPrice)*(100-(Item.discountRate))/100), 3, 'COMMA')}"></p>
+								<p th:text="|￦ ${#numbers.formatInteger(((Item.itemPrice)*(100-(Item.discountRate))/100), 3, 'COMMA')}|"></p>
 								<p style="color: red;" th:text="|(${Item.discountRate}%↓)|">(13%↓)</p>
 							</section>
 
