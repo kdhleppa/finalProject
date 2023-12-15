@@ -99,6 +99,7 @@ public class CampController2 {
 		if(checkCEO == null) {
 			message = "CEO 넘버가 잘못되었습니다.";
 			path += referer;
+			ra.addFlashAttribute("message", message);
 			return path;
 		}
 		
@@ -112,10 +113,7 @@ public class CampController2 {
 		if(campNo > 0) {
 			message = "캠핑장 등록 완료";
 			path += "/camp/search";
-		} else if(campNo == 100){
-			message = "CEO 넘버가 잘못되었습니다.";
-			path += referer;
-		} else {
+		}else {
 			message = "캠핑장 등록 실패";
 			path += referer;
 		}
@@ -263,16 +261,28 @@ public class CampController2 {
 			
 		}
 		
+		String message = null;
+		String path = "redirect:";
+		
+		int ceoNum = camp.getMemberNo();
+
+		
+		Member checkCEO = service.checkCEO(ceoNum);
+		
+		
+		if(checkCEO == null) {
+			message = "CEO 넘버가 잘못되었습니다.";
+			path += referer;
+			ra.addFlashAttribute("message", message);
+			return path;
+		}
+		
 		
 		int campUpdateresult = service.campUpdate(camp, images, inputCampMap);
 		
 		int campNo = camp.getCampNo();
 		
 		int campDeUpdateResult = service.updateCampDe(campNo);
-		
-		
-		String message = null;
-		String path = "redirect:";
 		
 		
 		if(campUpdateresult > 0) {
@@ -318,6 +328,27 @@ public class CampController2 {
 		
 		return campList;
 	}
+	
+//	@GetMapping("/checkCeo")
+//	@ResponseBody
+//	public String checkCeo(int memberNo) {
+//		
+//		int ceoNum = memberNo;
+//		
+//		Member member = service.checkCEO(ceoNum);
+//		
+//		String checkFl = "";
+//		
+//		if(member == null) {
+//			checkFl = "false";
+//		}else {
+//			checkFl = "true";
+//		}
+//		
+//		System.out.println("checkFl ::" + checkFl);
+//		
+//		return checkFl;
+//	}
 	 
 	
 	

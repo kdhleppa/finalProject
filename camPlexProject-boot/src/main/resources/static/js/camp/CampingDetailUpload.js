@@ -195,10 +195,37 @@ campingDetailUploadForm.addEventListener('submit', e => {
 
 	if(!regEx.test(CEONum.value)) {
 		alert("CEO회원 번호는 숫자만 입력해주세요.");
-		campPhone.focus();
+		CEONum.focus();
 		e.preventDefault();
 		return;
 	}
+
+	// const checkCeo = "";
+
+	// fetch("/camp2/checkCeo?memberNo=" + CEONum.value)
+	// .then(resp => resp.text())
+	// .then(checkFl => {
+
+	// 	console.log("checkFl ::" + checkFl)
+
+	// 	if(checkFl == "true") {
+	// 		checkCeo = "true";
+	// 	}else {
+	// 		checkCeo = "false";
+	// 	}
+
+
+	// })
+	// .catch(err => console.log(err));
+
+	// if(checkCeo == "false") {
+	// 	alert("CEO회원의 번호가 아닙니다.");
+	// 	CEONum.focus();
+	// 	e.preventDefault();
+	// 	return;
+	// }
+
+	
 	
 	if(etcInfoTextArea.value.trim() == "") {
 		alert("캠핑장 Info를 입력해주세요.");
