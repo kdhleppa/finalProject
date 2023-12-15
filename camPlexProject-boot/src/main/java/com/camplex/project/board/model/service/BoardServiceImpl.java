@@ -158,8 +158,6 @@ public class BoardServiceImpl implements BoardService {
 		
 		List<Board> boardListR = mapper.orderReadCount(boardType, rowBoundsR);
 		
-		System.out.println("boardListR? ::" + boardListR);
-		
 		// 4. pagination, boardListR를 Map에 담아서 반환
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("paginationR", paginationR);
@@ -186,7 +184,7 @@ public class BoardServiceImpl implements BoardService {
 		// 2) RowBounds 객체 생성
 		RowBounds rowBoundsR = new RowBounds(offset, paginationR.getLimit());
 		
-		List<Board> boardListR = mapper.orderReadCount(paramMap, rowBoundsR);
+		List<Board> boardListR = mapper.orderSearchReadCount(paramMap, rowBoundsR);
 		
 		// 4. pagination, boardList를 Map에 담아서 반환
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -242,7 +240,7 @@ public class BoardServiceImpl implements BoardService {
 		// 2) RowBounds 객체 생성
 		RowBounds rowBoundsL = new RowBounds(offset, paginationL.getLimit());
 		
-		List<Board> boardListL = mapper.orderLikeCount(paramMap, rowBoundsL);
+		List<Board> boardListL = mapper.orderSearchLikeCount(paramMap, rowBoundsL);
 		
 		// 4. pagination, boardList를 Map에 담아서 반환
 		Map<String, Object> map = new HashMap<String, Object>();

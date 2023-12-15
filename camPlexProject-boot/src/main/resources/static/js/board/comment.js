@@ -54,12 +54,12 @@ function selectCommentList(){
             // 작성자 영역(p)에 프로필,닉네임,작성일 마지막 자식으로(append) 추가
             commentWriter.append(memberProfileImg , memberNickname , commentDate);
 
-            
-
             // 댓글 내용
             const commentContent = document.createElement("p");
             commentContent.classList.add("comment-content");
             commentContent.innerHTML = comment.commentContent;
+            commentContent.style.width = '52rem';
+            commentContent.style.wordBreak = 'break-word';
 
             // 행에 작성자, 내용 추가
             commentRow.append(commentWriter, commentContent);
@@ -163,7 +163,7 @@ addComment.addEventListener("click", e => { // 댓글 등록 버튼이 클릭이
 
             selectCommentList(); // 비동기 댓글 목록 조회 함수 호출
             // -> 새로운 댓글이 추가되어짐
-
+            
         } else { // 실패
             alert("댓글 등록에 실패했습니다...");
         }

@@ -84,11 +84,10 @@
 					            <h5></h5>
 					            <div class="img-box">
 					                <div class="boardImg thumbnail">
-					                    <img th:src="|${thumbnail.boardImagePath}${thumbnail.boardImageReName}|">
-					                    
-					                    <a id="imgDown" th:href="|${thumbnail.boardImagePath}${thumbnail.boardImageReName}|" 
-					                    	th:download="${thumbnail.boardImageOriginal}"
-					                    >사진받기</a>
+					                    <a th:href="|${thumbnail.boardImagePath}${thumbnail.boardImageReName}|" 
+					                    	th:download="${thumbnail.boardImageOriginal}">
+					                    	<img th:src="|${thumbnail.boardImagePath}${thumbnail.boardImageReName}|">
+					                    </a>
 					                </div>
 					            </div>
 					            
@@ -105,9 +104,9 @@
 									<th:block th:each="i : ${#numbers.sequence(start, #lists.size(board.imageList)-1, 1)}">
 										<div class="uploadImg"
 											th:with="path=|${board.imageList[i].boardImagePath}${board.imageList[i].boardImageReName}|">
-											
-											<img th:src="${path}">
-											<a id="imgDown" th:href="${path}" th:download="${board.imageList[i].boardImageOriginal}">사진받기</a>                
+											<a th:href="${path}" th:download="${board.imageList[i].boardImageOriginal}">
+												<img th:src="${path}">
+											</a>      
 										</div>
 									</th:block>
 									
