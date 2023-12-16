@@ -146,7 +146,7 @@ classification.addEventListener('change', (e) => {
 
 				const campDelete = document.createElement('button');
 				campDelete.classList.add('campDelete');
-				campDelete.innerText = "삭제";
+				campDelete.innerText = "DEL";
 
 				const campNo = document.createElement('input');
 				campNo.setAttribute("type", "hidden");
@@ -261,7 +261,7 @@ searchCamp.addEventListener("keyup", (e) => {
 
 					const campDelete = document.createElement('button');
 					campDelete.classList.add('campDelete');
-					campDelete.innerText = "삭제";
+					campDelete.innerText = "DEL";
 
 					const campNo = document.createElement('input');
 					campNo.setAttribute("type", "hidden");
@@ -409,7 +409,7 @@ for(var i = 0 ; i < categoryBtn.length ; i++){
 
 						const campDelete = document.createElement('button');
 						campDelete.classList.add('campDelete');
-						campDelete.innerText = "삭제";
+						campDelete.innerText = "DEL";
 
 						const campNo = document.createElement('input');
 						campNo.setAttribute("type", "hidden");

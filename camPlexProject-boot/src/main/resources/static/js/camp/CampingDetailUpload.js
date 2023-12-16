@@ -84,8 +84,10 @@ const campAroundView = document.querySelectorAll('input[name=campAroundView]');
 campingDetailUploadForm.addEventListener('submit', e => {
 	
 	if(inputCampingName.value.trim() == "") {
+		let inputCampingNameTop= inputCampingName.offsetTop;
 		alert("캠핑장 이름을 입력해주세요.");
 		inputCampingName.focus();
+		window.scrollTo({top:inputCampingName, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
@@ -93,16 +95,20 @@ campingDetailUploadForm.addEventListener('submit', e => {
 	for(var i = 0 ; i < preview.length - 1 ; i++){
 
 		if(preview[i].getAttribute('src') == "" || preview[i].getAttribute('src') == null){
+			let previewSc = preview[i].offsetTop;
 			alert(i+1 + "번째 사진을 입력해주세요");
 			preview[i].focus();
+			window.scrollTo({top:previewSc - 320, behavior:'smooth'});
 			e.preventDefault();
 			return;
 		}
 	}
 
 	if(introduceTextArea.value.trim() == "") {
+		let introduceTextAreaSc = introduceTextArea.offsetTop;
 		alert("캠핑장에 대한 설명을 입력해주세요. ");
 		introduceTextArea.focus();
+		window.scrollTo({top:introduceTextAreaSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
@@ -115,8 +121,11 @@ campingDetailUploadForm.addEventListener('submit', e => {
 			optionArr.push(campOption[i])
 		};
 	}
+
 	if(optionArr == ""){
+		let iputImgOfDetailMapSc = document.getElementById('iputImgOfDetailMap').offsetTop;
 		alert("한 개 이상의 부대 시설을 선택해주세요");
+		window.scrollTo({top:iputImgOfDetailMapSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
@@ -130,36 +139,46 @@ campingDetailUploadForm.addEventListener('submit', e => {
 		};
 	}
 	if(viewArr == ""){
+		let iputImgOfDetailMapSc = document.getElementById('iputImgOfDetailMap').offsetTop;
 		alert("한 개 이상의 주변 환경을 선택해주세요");
+		window.scrollTo({top:iputImgOfDetailMapSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
 
-	if(mannerTimeInput.value.trim() == "") {
-		alert("매너 타임을 입력해주세요.");
-		mannerTimeInput.focus();
-		e.preventDefault();
-		return;
-	}
+	// if(mannerTimeInput.value.trim() == "") {
+	// 	let mannerTimeInputSc = mannerTimeInputSc.offsetTop;
+	// 	alert("매너 타임을 입력해주세요.");
+	// 	mannerTimeInput.focus();
+	// 	window.scrollTo({top:mannerTimeInputSc - 320, behavior:'smooth'});
+	// 	e.preventDefault();
+	// 	return;
+	// }
 	
 	if(campAddress.value.trim() == "") {
+		let campAddressSc = campAddressSc.offsetTop;
 		alert("캠핑장 주소를 입력해주세요.");
 		campAddress.focus();
+		window.scrollTo({top:campAddressSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
 	
 	if(campPhone.value.trim() == "") {
+		let campPhone = campPhone.offsetTop;
 		alert("캠핑장 번호를 입력해주세요.");
 		campPhone.focus();
+		window.scrollTo({top:campPhone - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
 
 	const regEx = /^[0-9]+$/;
 	if(!regEx.test(campPhone.value)) {
+		let campPhone = campPhone.offsetTop;
 		alert("전화 번호는 숫자만 입력해주세요.");
 		campPhone.focus();
+		window.scrollTo({top:campPhone - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}

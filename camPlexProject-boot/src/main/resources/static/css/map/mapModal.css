@@ -106,18 +106,17 @@
 }
 
 .mapCampName {
-    width:11rem;
+    width:auto;
     color: black;
-    background-color: transparent;
+    background-color: rgb(245, 245, 245, 0.8);
     text-align:center;
     padding:6px 0;
     border-radius: 10px;
     position: absolute;
     left: 0;
     bottom: 40px;
-    margin-left: -75px;
     cursor: pointer;
-    border: 1px solid slategray;
+    border: 2px solid #EAEAEA;
 }
 
 .viewAllSec {
