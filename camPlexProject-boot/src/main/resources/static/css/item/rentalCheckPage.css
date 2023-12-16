@@ -377,6 +377,22 @@
 	cursor: pointer;
 }
 
+#editBtn {
+    color: #1135CE;
+}
+
+#editBtn:hover {
+    font-weight: bold;
+}
+
+#delBtn {
+    color: red;
+}
+
+#delBtn:hover {
+    font-weight: bold;
+}
+
 .contentNameA {
 	text-decoration: none;
 	color: black;

@@ -75,12 +75,13 @@
 
 .detailBtn {
     width: 44.5rem;
-    height: 30rem;
-    background-color: #EAEAEA;
-    border-top: 1px solid black;
+    height: auto;
     display: inline-block;
-    text-align: center;
     position: relative;
+}
+
+.detailBtn > span {
+    font-size: 1.5rem;
 }
 
 .preview {
@@ -89,8 +90,22 @@
     object-fit: cover;
 }
 
-.inputImage {
-	display: none;
+#img0 {
+    display: none;
+}
+
+#img1::file-selector-button {
+    width: 150px;
+    height: 30px;
+    background: #fff;
+    border: 1px solid rgb(77,77,77);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#img1[type=file]::file-selector-button:hover {
+    background-color: rgb(77,77,77);
+    color: #fff;
 }
 
 .imgLabel {
