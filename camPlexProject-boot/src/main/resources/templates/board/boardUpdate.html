@@ -57,7 +57,7 @@
         			
             <!-- 제목 -->
             <h1 class="board-title">
-                <input type="text" name="boardTitle" placeholder="제목" th:value="${board.boardTitle}">
+                <input type="text" name="boardTitle" placeholder="제목" th:value="${board.boardTitle}" maxlength="25">
             </h1>
 			
 			<hr style="margin-top: 35px; width: 55rem;">
@@ -130,7 +130,7 @@
             <!-- 내용 -->
             <div class="board-content">
 				<div id="editor" th:utext="${board.boardContent}"></div>
-				<input type="hidden" id="boardContent" name="boardContent" th:value="${board.boardContent}">
+				<input type="hidden" id="boardContent" name="boardContent" th:value="${board.boardContent}" maxlength="300">
             </div>
 
         	<hr style="margin-top: 20px; margin-left: 8%; width: 84%; margin-right: 8%;">
