@@ -472,4 +472,14 @@
 		AND ITEM_NO IS NULL
 	</select>
 	
+	<!-- qna -->
+	<select id="selectQnaOne" resultMap="qna_rm">
+		SELECT *
+		FROM QNA
+		WHERE QNA_NO = #{qnaNo}
+	</select>
+	
+	
+	
+	
 </mapper>

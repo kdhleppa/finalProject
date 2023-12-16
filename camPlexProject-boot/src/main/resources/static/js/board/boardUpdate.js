@@ -136,13 +136,29 @@ function quilljsediterInit(){
                 ['clean']
             ]
         },
-        placeholder: '내용을 입력해주세요',
+        placeholder: '내용을 입력해 주세요',
         theme: 'snow'
     };
 
     quill = new Quill('#editor', option);
-    quill.on('text-change', function() {
-        document.getElementById("boardContent").value = quill.root.innerHTML;
+    
+    quill.on('text-change', function (delta, oldDelta, source) {
+        // 현재 텍스트 가져오기
+        var text = quill.getText();
+        // 바이트 수 계산
+        var bytes = new TextEncoder('utf-8').encode(text).length;
+
+        // 최대 바이트 수
+        var maxBytes = 4000;
+
+        if (bytes > maxBytes) {
+            quill.deleteText(text.length - 1, 1);
+            // 알림 표시
+            alert("더 이상 입력할 수 없습니다.");
+        } else {
+            // 최대 바이트 수를 초과하지 않으면 입력 허용
+            document.getElementById("boardContent").value = text;
+        }
     });
 
     quill.getModule('toolbar').addHandler('image', function () {

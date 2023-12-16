@@ -179,8 +179,16 @@ modalUploadBtn.addEventListener('click', e => {
 		return;
 	}
 	
+	const regEx = /^[0-9]+$/;
+
 	if(capacity == "") {
 		alert("수용 인원을 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
+
+	if(!regEx.test(capacity)) {
+		alert("수용 인원은 숫자로만 입력해주세요.");
 		e.preventDefault();
 		return;
 	}
@@ -190,9 +198,21 @@ modalUploadBtn.addEventListener('click', e => {
 		e.preventDefault();
 		return;
 	}
+
+	if(!regEx.test(fullCapacity)) {
+		alert("최대 인원은 숫자로만 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
 	
 	if(campDePrice == "") {
 		alert("구역명(호수)의 가격을 입력해주세요.");
+		e.preventDefault();
+		return;
+	}
+
+	if(!regEx.test(campDePrice)) {
+		alert("가격은 숫자로만 입력해주세요.");
 		e.preventDefault();
 		return;
 	}

@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <style>
+        #error-container{
+            width: 800px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        #error-container > h1{ margin-bottom: 50px; }
+
+		body {
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		
+        .error-cnotent-title{
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        #btn-area{ 
+			text-align: center;
+			margin-top: 50px 
+			
+		}
+
+		#btn-area a{ 
+			text-decoration: none;
+			color: #000;
+			margin: 0 20px;
+			cursor: pointer;
+		}
+
+		#btn-area a:hover{
+			color: #d4a373;
+		}
+	
+		#starBtnContainer{
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: end;
+			height: 400px;
+		}
+		
+		#starBtn{ 
+			width: 200px;
+			object-fit: contain;
+			cursor: pointer;
+		}
+		
+		
+    </style>
+    
+    
+</head>
+<body>
+
+	<div id="starBtnContainer">
+		
+		<img th:src="@{/images/iconImg/marsh1.png}" id="starBtn">
+		
+	</div>
+
+    <div id="error-container">
+        <h1>서비스 이용 중 문제가 발생했습니다</h1>
+        
+        <span class="error-content-title"> 발생한 예외 : [[${e}]]</span>
+        
+        <div id="btn-area">
+			
+            <a href="/">메인 페이지</a>
+
+            <!-- <a href="${header.referer}">이전 페이지</a> -->
+
+            <a onclick="history.back()">이전 페이지</a>
+            
+            <!-- referer : 페이지 방문 흔적 -->
+        </div>
+    </div>
+
+    
+    
+</body>
+
+<script th:src="@{/js/error/error.js}"></script>
+
+</html>

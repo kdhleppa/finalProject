@@ -105,8 +105,9 @@ classification.addEventListener('change', (e) => {
 					
 					const editDeleteBtn = document.createElement('a');
 					editDeleteBtn.classList.add('editDeleteBtn');
+					editDeleteBtn.setAttribute("id", "editBtn");
 					editDeleteBtn.setAttribute("href", `/item2/editForward?itemNo=${item.itemNo}`);
-					editDeleteBtn.innerText = "수정";
+					editDeleteBtn.innerText = "EDIT";
 					
 					editDeleteDetailSec.append(editDeleteBtn)
 
@@ -114,10 +115,12 @@ classification.addEventListener('change', (e) => {
 					editDeleteDetailSec2.classList.add('editDeleteDetailSec');
 					
 					const editupdateBtn = document.createElement('a');
+
 					editupdateBtn.classList.add('editDeleteBtn');
+					editupdateBtn.setAttribute('id', 'delBtn');
 					editupdateBtn.setAttribute("thisRentalNo", `${item.itemNo}`);
 					editupdateBtn.setAttribute("onclick","deleteItem(this.getAttribute('thisRentalNo'))");
-					editupdateBtn.innerText = "삭제";
+					editupdateBtn.innerText = "DEL";
 					
 					editDeleteDetailSec2.append(editupdateBtn)
 
@@ -249,9 +252,10 @@ itemInput.addEventListener("keyup", (e) => {
 						editDeleteDetailSec.classList.add('editDeleteDetailSec');
 						
 						const editDeleteBtn = document.createElement('a');
+						editDeleteBtn.setAttribute("id", "editBtn");
 						editDeleteBtn.classList.add('editDeleteBtn');
 						editDeleteBtn.setAttribute("href", `/item2/editForward?itemNo=${item.itemNo}`);
-						editDeleteBtn.innerText = "수정";
+						editDeleteBtn.innerText = "EDIT";
 						
 						editDeleteDetailSec.append(editDeleteBtn)
 
@@ -259,10 +263,12 @@ itemInput.addEventListener("keyup", (e) => {
 						editDeleteDetailSec2.classList.add('editDeleteDetailSec');
 						
 						const editupdateBtn = document.createElement('a');
+						
 						editupdateBtn.classList.add('editDeleteBtn');
+						editupdateBtn.setAttribute('id', 'delBtn');
 						editupdateBtn.setAttribute("thisRentalNo", `${item.itemNo}`);
 						editupdateBtn.setAttribute("onclick","deleteItem(this.getAttribute('thisRentalNo'))");
-						editupdateBtn.innerText = "삭제";
+						editupdateBtn.innerText = "DEL";
 						
 						editDeleteDetailSec2.append(editupdateBtn)
 
@@ -401,9 +407,10 @@ for (var i = 0; i < categoryBtn.length; i++) {
 							editDeleteDetailSec.classList.add('editDeleteDetailSec');
 							
 							const editDeleteBtn = document.createElement('a');
+							editDeleteBtn.setAttribute("id", "editBtn");
 							editDeleteBtn.classList.add('editDeleteBtn');
 							editDeleteBtn.setAttribute("href", `/item2/editForward?itemNo=${item.itemNo}`);
-							editDeleteBtn.innerText = "수정";
+							editDeleteBtn.innerText = "EDIT";
 							
 							editDeleteDetailSec.append(editDeleteBtn)
 
@@ -411,10 +418,11 @@ for (var i = 0; i < categoryBtn.length; i++) {
 							editDeleteDetailSec2.classList.add('editDeleteDetailSec');
 							
 							const editupdateBtn = document.createElement('a');
+							editupdateBtn.setAttribute('id', 'delBtn');
 							editupdateBtn.classList.add('editDeleteBtn');
 							editupdateBtn.setAttribute("thisRentalNo", `${item.itemNo}`);
 							editupdateBtn.setAttribute("onclick","deleteItem(this.getAttribute('thisRentalNo'))");
-							editupdateBtn.innerText = "삭제";
+							editupdateBtn.innerText = "DEL";
 							
 							editDeleteDetailSec2.append(editupdateBtn)
 

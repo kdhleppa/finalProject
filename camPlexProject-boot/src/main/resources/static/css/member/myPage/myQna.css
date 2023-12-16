@@ -7,24 +7,13 @@
     unicode-range: U+AC00-D7A3;
 }
 
-#qmodal_btn {
-	border-style: none;
-	background-color: transparent;
-	outline: none;
-	font-size: 24px;
-	cursor: pointer;
-	margin-top: 6.5rem;
-	font-weight: 700;
-	width: 200px;
-}
-
 .qnaTop {
 	font-size: 20px;
 	margin-left: 2rem;
 	margin-top: 2rem;
 }
 
-.qmodal_wrap {
+.openModalLink_wrap {
 	font-family: 'HakgyoansimSantteutdotumL';
     display: none;
     width: 700px;
@@ -38,7 +27,7 @@
     border-radius: 10px;
 }
 
-.qmodal_background {
+.openModalLink_background {
     display: none;
     position: fixed;
     width: 100%;
@@ -49,7 +38,7 @@
     z-index: 1;
 }
 
-.qmodal_close {
+.openModalLink_close {
     width: 18px;
     height: 18px;
     position: absolute;
@@ -58,7 +47,7 @@
     font-size: 1.3rem;
 }
 
-.qmodal_wrap .text {
+.openModalLink_wrap .text {
 	font-size: 18px;
     margin-top: 15px;
     margin-left: 15px;

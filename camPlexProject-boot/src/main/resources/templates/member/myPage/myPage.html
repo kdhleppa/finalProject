@@ -358,8 +358,8 @@
 
 					</div>
 					
-					<div class="moreBtnWrapper" th:if="${myPageInfo.qnaList.size > 5}">
-						<button type="button" class="moreBtn"></button>
+					<div class="moreBtnWrapper">
+						<button type="button" class="moreBtn"  th:if="${myPageInfo.qnaList.size > 5}"></button>
 					</div>
 
 				</section>
@@ -424,10 +424,10 @@
 	</main>
 
 	<div class="empty5"></div>
-
+	<th:block th:replace="~{qna/qnaAnswer}"></th:block>
 	<th:block th:replace="~{common/footer}"></th:block>
 	<script th:src="@{/js/member/myPage.js}"></script>
-
+	
 </body>
 
 </html>

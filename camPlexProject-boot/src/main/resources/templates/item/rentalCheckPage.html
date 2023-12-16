@@ -175,11 +175,11 @@
 					<section class="editDeleteSec" th:if="${session.loginMember?.memberType == 'M'}">
 						
 						<section class="editDeleteDetailSec">
-							<a class="editDeleteBtn" th:href="|@{/item2/editForward?itemNo=}${Item.itemNo}|">수정</a>
+							<a id="editBtn" class="editDeleteBtn" th:href="|@{/item2/editForward?itemNo=}${Item.itemNo}|">EDIT</a>
 						</section>
 						
 						<section class="editDeleteDetailSec">
-							<a class="editDeleteBtn" th:thisRentalNo="${Item.itemNo}" th:onclick="deleteItem(this.getAttribute('thisRentalNo'))">삭제</a>
+							<a id="delBtn" class="editDeleteBtn" th:thisRentalNo="${Item.itemNo}" th:onclick="deleteItem(this.getAttribute('thisRentalNo'))">DEL</a>
 						</section>
 						
 					</section>
