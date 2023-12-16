@@ -29,23 +29,6 @@ a {
 	font-size: 16px;
 }
 
-a:hover {
-	cursor: pointer;
-}
-  
-a:after {
-  display:block;
-  content: '';
-  border-bottom: solid 1px #000;
-  margin-top: 5px;
-  transform: scaleX(0);  
-  transition: transform 250ms ease-in-out;
-}
-
-a:hover:after { 
-	transform: scaleX(1);
-}
-
 button { 
   color: #000;
   display:inline-block; 
@@ -56,23 +39,6 @@ button {
   font-size: 16px;
 }
   
-button:after {
-  display:block;
-  content: '';
-  border-bottom: solid 1px #000;
-  margin-top: 5px;
-  transform: scaleX(0);  
-  transition: transform 250ms ease-in-out;
-}
-
-button:hover:after { 
-	transform: scaleX(1);
-}
-
-button:hover {
-    cursor: pointer;
-}
-
 main, div, section {
     /* border: 1px solid black; */
 }
@@ -216,7 +182,12 @@ main {
 .clickBtn {
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid black;
     font-size: 17px;
-    height: 100%;
+    transition: color 0.3s;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.clickBtn:hover {
+	color: #909090;
 }

@@ -37,16 +37,16 @@
 					<!-- 반복문 돌릴 블럭 -->
 					<th:block th:each="levelUpList : ${levelUpList}">
 
-						<!-- 내부공백 (우) -->
-						<section class="empty2"></section>
-
-						<!-- 캠핑장 정보 정보 -->
-						<section class="infoMain" th:id="'infoMain_' + ${levelUpList.memberNo}">
-
-							<section class="empty3"></section>
-
-							<!-- 캠핑장 명, 주소 입력 -->
-							<section class="placeInfo">
+						
+							<!-- 캠핑장 정보 정보 -->
+							<section class="infoMain" th:id="'infoMain_' + ${levelUpList.memberNo}">
+							
+								<!-- 내부공백 (우) -->
+								<section class="empty2"></section>
+							
+								<!-- 캠핑장 명, 주소 입력 -->
+								<section class="placeInfo">
+									
 								<!-- ajax시 삭제할 memberNo 숨기기 -->
 								<input th:id="memberNo" type="hidden" th:value="${levelUpList.memberNo}"></input>
 
@@ -57,13 +57,8 @@
 								<section class="inputInfo" id="inputAddress">
 									<p th:inline="text">캠핑장 주소 : [[${levelUpList.campAdress}]]</p>
 								</section>
-							</section>
-
-							<section class="empty3"></section>
-
-
-							<!-- 대표자 , 사업자 등록번호 -->
-							<section class="placeInfo">
+								
+								<!-- 대표자 , 사업자 등록번호 -->
 								<section class="inputInfo" id="inputCEO">
 									<p th:inline="text">대표자 : [[${levelUpList.ceoName}]]</p>
 								</section>
@@ -71,12 +66,8 @@
 								<section class="inputInfo" id="inputCEONumber">
 									<p th:inline="text" id="CEONumber">사업자 등록번호 : [[${levelUpList.businessLicense}]]</p>
 								</section>
-							</section>
 
-							<section class="empty3"></section>
-
-							<!-- 관광사업 등록증 사본 , 예금주 -->
-							<section class="placeInfo">
+								<!-- 관광사업 등록증 사본 , 예금주 -->
 								<section class="inputInfo" id="tourLicense">
 									<p th:inline="text">관광사업 등록증 사본 : [[${levelUpList.tourLicense}]]</p>
 								</section>
@@ -84,12 +75,8 @@
 								<section class="inputInfo" id="accountHolder">
 									<p th:inline="text">예금주 : [[${levelUpList.accountHolder}]]</p>
 								</section>
-							</section>
 
-							<section class="empty3"></section>
-
-							<!-- 은행 , 계좌번호 -->
-							<section class="placeInfo">
+								<!-- 은행 , 계좌번호 -->
 								<section class="inputInfo" id="bank">
 									<p th:inline="text">은행 : [[${levelUpList.bankName}]]</p>
 								</section>
@@ -97,23 +84,22 @@
 								<section class="inputInfo" id="accountNumber">
 									<p th:inline="text">계좌번호 : [[${levelUpList.ceoAccount}]]</p>
 								</section>
+								
 							</section>
 
-							<section class="empty3"></section>
-							<section class="empty3"></section>
-
-							<section id="btnSection">
-								<button type="button" th:id="'changeMember_' + ${levelUpList.memberNo}" th:attr="data-memberNo=${levelUpList.memberNo}" class="clickBtn">확인</button>
-								<button class="clickBtn">취소</button>
-							</section>
-
-							<section class="empty3"></section>
+							<!-- 내부공백 (좌) -->
+							<section class="empty2"></section>
 
 						</section>
+						
+						<section class="empty3"></section>
+						
+						<section id="btnSection">
+							<button type="button" th:id="'changeMember_' + ${levelUpList.memberNo}" th:attr="data-memberNo=${levelUpList.memberNo}" class="clickBtn">확인</button>
+						</section>
 
-
-						<!-- 내부공백 (좌) -->
-						<section class="empty2"></section>
+						<section class="empty3"></section>
+						<section class="empty3"></section>
 
 					</th:block>
 

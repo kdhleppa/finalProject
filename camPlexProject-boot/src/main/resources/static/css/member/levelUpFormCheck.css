@@ -30,23 +30,6 @@ button {
   margin:0;
   text-transform:uppercase; 
 }
-  
-button:after {
-  display:block;
-  content: '';
-  border-bottom: solid 2px #000;
-  margin-top: 5px;
-  transform: scaleX(0);  
-  transition: transform 250ms ease-in-out;
-}
-
-button:hover:after { 
-	transform: scaleX(1);
-}
-
-button:hover {
-    cursor: pointer;
-}
 
 input:focus {
 	outline: none;
@@ -94,16 +77,15 @@ main {
 #inputInfo {
     display: flex;
 	flex-direction: column;
+	flex-basis: 70%;
 }
 
 .empty2 {
-    flex-basis: 15%;
+    flex-basis: 23%;
 }
 
 .infoMain {
     display: flex;
-    flex-direction: column;
-    flex-basis: 70%;
 }
 
 .empty3 {
@@ -112,12 +94,15 @@ main {
 
 .placeInfo {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    flex-basis: 54%;
 }
 
 .inputInfo {
     font-size: 18px;
     border-bottom: 2px solid black;
+    margin-top: 15px;
 }
 
 #inputTitle input {
@@ -197,7 +182,7 @@ main {
 #formSendBtn {
     display: flex;
     justify-content: end;
-    margin-top: 100px;
+    margin-top: 35px;
 }
 
 #btnSection {
@@ -209,12 +194,14 @@ main {
 .clickBtn {
     background-color: transparent;
     border: none;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 17px;
+    transition: color 0.3s;
+    font-weight: 600;
+    cursor: pointer;
 }
 
-.clickBtn::after {
-    margin-top: 5px;
+.clickBtn:hover {
+	color: #909090;
 }
 
 /* ------------------------------ */

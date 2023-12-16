@@ -354,6 +354,8 @@ checkTel.addEventListener("click", () => {
 
         }, 1000)
 		
+	} else {
+		alert("인증번호를 받을 수 있는 번호를 입력 후 인증버튼을 눌러주세요.");
 	}
 	
 })

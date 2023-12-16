@@ -32,19 +32,6 @@ a:hover {
 	cursor: pointer;
 }
   
-a:after {
-  display:block;
-  content: '';
-  border-bottom: solid 1px #000;
-  margin-top: 5px;
-  transform: scaleX(0);  
-  transition: transform 250ms ease-in-out;
-}
-
-a:hover:after { 
-	transform: scaleX(1);
-}
-
 button { 
   color: #000;
   display:inline-block; 
@@ -54,23 +41,6 @@ button {
   font-size: 16px;
 }
   
-/*button:after {
-  display:block;
-  content: '';
-  border-bottom: solid 1px #000;
-  margin-top: 5px;
-  transform: scaleX(0);  
-  transition: transform 250ms ease-in-out;
-}
-
-button:hover:after { 
-	transform: scaleX(1);
-}
-
-button:hover {
-    cursor: pointer;
-}*/
-
 main, div, section {
     /* border: 1px solid black; */
 }
@@ -221,7 +191,7 @@ main {
 .buyHistoryInfo {
     display: flex;
     margin-top: 30px;
-	justify-content: space-between;
+	justify-content: space-around;
 }
 
 .imgSection {
@@ -244,7 +214,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    flex-basis: 50%;
+    flex-basis: 45%;
     
 }
 
