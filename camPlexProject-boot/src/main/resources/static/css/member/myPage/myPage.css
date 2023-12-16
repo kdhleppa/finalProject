@@ -178,7 +178,7 @@ main {
     margin-left: 20px;
     font-weight: 600;
     cursor: pointer;
-    width: 108px;
+    width: 100%;
 }
 #listTitle, #beforeListTitle{
 	display: flex;
@@ -204,6 +204,7 @@ main {
 	align-items: end;
 	font-weight: bold;
 	font-size: 17px;
+	width: 200px;
 }
 
 .shopingListInfo {
@@ -288,6 +289,7 @@ main {
 	align-items: end;
 	font-weight: bold;
 	font-size: 17px;
+	width: 200px;
 }
 
 #shopingListInfo {
