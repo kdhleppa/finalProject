@@ -129,6 +129,8 @@ public interface MemberService {
 	 */
 	List<Wishlist> selectItemWish(int memberNo);
 
+	Qna selectQnaOne(int qnaNo);
+
 
 
 

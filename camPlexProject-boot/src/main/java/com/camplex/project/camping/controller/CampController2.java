@@ -216,9 +216,6 @@ public class CampController2 {
 		String option = campList.getCampOption();
 		String aroundView = campList.getCampAroundView();
 		
-		System.out.println("option ::" + option);
-		System.out.println("aroundView ::" + aroundView);
-		
 		model.addAttribute("campList", campList);
 		model.addAttribute("campDeList", campDeList);
 		model.addAttribute("option", option);
