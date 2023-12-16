@@ -106,6 +106,12 @@ main {
 .clickBtn {
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid black;
     font-size: 17px;
+    transition: color 0.3s;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.clickBtn:hover {
+	color: #909090;
 }

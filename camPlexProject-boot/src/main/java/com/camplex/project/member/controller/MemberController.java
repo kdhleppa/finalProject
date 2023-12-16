@@ -655,6 +655,55 @@ public class MemberController {
 		return "member/campUpdate";
 	}
 	
+	// 관리자 예약 정보 확인 페이지 이동
+	@GetMapping("/reservationNManage")
+	public String reservationNManage(@SessionAttribute("loginMember") Member loginMember,
+										Model model) throws ParseException {
+					
+			int memberNo = loginMember.getMemberNo();
+			
+			MyPage myPageInfo = service.selectMyPageInfo(memberNo);
+			
+			List<Reservations> upcomingReservation = new ArrayList<>();
+			
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd (E)");
+			
+			Date today = new Date();
+			
+			for (int i = 0; i < myPageInfo.getResList().size(); i++) {
+			Date tempDate = format.parse(myPageInfo.getResList().get(i).getCampOutDate());
+			String tempEnt = format2.format(myPageInfo.getResList().get(i).getCampEntDate());
+			
+			if (today.before(tempDate)) {
+			
+			Reservations res = myPageInfo.getResList().get(i);
+			res.setCampEntDate2(tempEnt);
+			
+			int resNo = res.getReservationNo();
+			res.setItemList(service.selectItemListMypage(resNo));
+			
+			// 각 Reservations 객체의 itemList에 있는 ItemInfoMypage 객체들의 itemPrice를 더하여 총 금액 계산
+			int totalPrice = 0;
+			for (ItemInfoMypage item : res.getItemList()) {
+			totalPrice += item.getItemPrice();
+			}
+			
+			// 총 금액을 Reservations 객체에 추가
+			res.setTotalPrice(totalPrice);
+			
+			upcomingReservation.add(res);
+			
+			}
+			}
+			
+			
+			model.addAttribute("upcomingReservation", upcomingReservation);
+			model.addAttribute("myPageInfo", myPageInfo);
+			
+		return "member/reservationNManage";
+	}
+	
 	// 위시리스트 추가
 	@PostMapping("/wishlist/insert")
 	public String wishlistInsert(

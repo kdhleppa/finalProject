@@ -69,7 +69,7 @@
 
             <!-- 예약 정보 확인, 1대 1문의, 업데이트 요청 -->
             <section id="functionBtn">
-                <a class="clickBtn">예약 정보 확인<span>&nbsp;&nbsp;3</span></a>
+                <a class="clickBtn" th:href="@{/member/reservationNManage}">예약 정보 확인<span>&nbsp;&nbsp;3</span></a>
                 <a class="clickBtn">1대 1 문의<span>&nbsp;&nbsp;1</span></a>
                 <a class="clickBtn" th:href="@{/member/campUpdate}">업데이트 요청</a>
             </section>
@@ -79,7 +79,7 @@
 				<section class="empty2"></section>
 
 				<section class="textListSection">
-					<p class="subName" onclick="location.href='/board/B'">커뮤니티</p>
+					<p class="subName" id="clickBtn" onclick="location.href='/board/B'">커뮤니티</p>
 					<hr class="underLine2">
 
 					<section class="textItemSection">
@@ -90,8 +90,8 @@
 							<th:block th:if="${myPageInfo.boardList.size > 0}">
 
 								<section class="textList" th:each="board : ${myPageInfo.boardList}">
-									<a th:href="|/board/${board.boardType}/${board.boardNo}|" th:text="|${board.boardCreateDate} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${board.boardTitle} |"></a>
-									<a th:text="|( 댓글 수 : ${board.commentCount} )|">댓글</a>
+									<a class="clickBtn" th:href="|/board/${board.boardType}/${board.boardNo}|" th:text="|${board.boardCreateDate} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${board.boardTitle} |"></a>
+									<a class="clickBtn" th:text="|( 댓글 수 : ${board.commentCount} )|">댓글</a>
 								</section>
 
 							</th:block>

@@ -57,8 +57,8 @@
                     <section class="empty2"></section>
                     
                     <section class="btnSection">
-                        <a th:href="@{/member/infoModify}">프로필 관리</a>
-                        <a th:href="@{/member/memberWithdrawal1}">회원 탈퇴</a>
+                        <a class="clickBtn" th:href="@{/member/infoModify}">프로필 관리</a>
+                        <a class="clickBtn" th:href="@{/member/memberWithdrawal1}">회원 탈퇴</a>
                     </section>
                 </section>
                 
@@ -70,18 +70,18 @@
 
             <!-- 예약 정보 확인, 1대 1문의, 업데이트 요청 -->
             <section class="functionBtn">
-                <a>예약 정보 확인<span>&nbsp;&nbsp;3</span></a>
-                <a>1대 1 문의<span>&nbsp;&nbsp;1</span></a>
+                <a class="clickBtn">예약 정보 확인<span>&nbsp;&nbsp;3</span></a>
+                <a class="clickBtn">1대 1 문의<span>&nbsp;&nbsp;1</span></a>
                 
-                <section th:unless="${levelUpFormCount} == 0"><a th:href="@{/member/levelUpFormCheck}">업데이트 요청<span th:text="'&nbsp;&nbsp;' + ${levelUpFormCount}"></span></a></section>
-                <section th:if="${levelUpFormCount} == 0"><a th:href="@{/member/levelUpFormCheck}">업데이트 요청</a></section>
+                <section th:unless="${levelUpFormCount} == 0"><a class="clickBtn" th:href="@{/member/levelUpFormCheck}">등업신청 요청<span th:text="'&nbsp;&nbsp;' + ${levelUpFormCount}"></span></a></section>
+                <section th:if="${levelUpFormCount} == 0"><a class="clickBtn" th:href="@{/member/levelUpFormCheck}">등업신청 요청</a></section>
                 
             </section>
             
             <section class="functionBtn" id="functionBtn2">
-                <a th:href="@{/board/N}">공지사항</a>
-                <a th:href="@{/camp2/uploadCamp}">캠핑장 업로드</a>
-                <a th:href="@{/item2/uploadForward}">렌탈 상품 업로드</a>
+                <a class="clickBtn" th:href="@{/board/N}">공지사항</a>
+                <a class="clickBtn" th:href="@{/camp2/uploadCamp}">캠핑장 업로드</a>
+                <a class="clickBtn" th:href="@{/item2/uploadForward}">렌탈 상품 업로드</a>
             </section>
 
             <section class="functionBtn">

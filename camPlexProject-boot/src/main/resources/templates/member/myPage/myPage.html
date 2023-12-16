@@ -59,9 +59,9 @@
 					<section class="empty2"></section>
 
 					<section class="btnSection">
-						<a th:href="@{/member/infoModify}">프로필 관리</a>
-						<a th:href="@{/member/levelUpForm}">CEO 계정 신청</a>
-						<a th:href="@{/member/memberWithdrawal1}">회원 탈퇴</a>
+						<a class="clickBtn" th:href="@{/member/infoModify}">프로필 관리</a>
+						<a class="clickBtn" th:href="@{/member/levelUpForm}">CEO 계정 신청</a>
+						<a class="clickBtn" th:href="@{/member/memberWithdrawal1}">회원 탈퇴</a>
 					</section>
 				</section>
 
@@ -82,7 +82,7 @@
 							<p>예약 내역</p>
 							<p class="subListTitle">&nbsp;(최근 2개)</p>
 						</section>
-						<a th:href="@{/member/reservationDetails}" id="buyInfoListBtn">예약 내역 더보기</a>
+						<a class="clickBtn" th:href="@{/member/reservationDetails}" id="buyInfoListBtn">예약 내역 더보기</a>
 					</div>
 					
 					<hr class="underLine2">
@@ -103,7 +103,7 @@
 	
 									<section class="buyInfo">
 										<div>
-											<a th:text="|[${upcomingRes.campName}] ( ${upcomingRes.campDeName} )|">캠핑장 명</a>
+											<a class="clickBtn" th:onclick="|location.href='/camp/${upcomingRes.campNo}'|" th:text="|[${upcomingRes.campName}] ( ${upcomingRes.campDeName} )|">캠핑장 명</a>
 										</div>
 										<div>
 											<p th:text="|결제 수단&nbsp; :&nbsp; ${upcomingRes.paymentType} |"></p>
@@ -157,7 +157,7 @@
 							<p>이전구매 내역</p>
 							<p class="subListTitle">&nbsp;(최근 2개)</p>
 						</section>
-						<a th:href="@{/member/payHistory}" id="shoppingInfoListBtn">구매 내역 더보기</a>
+						<a class="clickBtn" th:href="@{/member/payHistory}" id="shoppingInfoListBtn">구매 내역 더보기</a>
 					</div>
 					<hr class="underLine2">
 
@@ -177,12 +177,12 @@
 	
 									<section class="buyInfo">
 										<div>
-											<a th:text="|[${oldRes.campName}] ( ${oldRes.campDeName} )|">캠핑장 명</a>
+											<a class="clickBtn" th:onclick="|location.href='/camp/${oldRes.campNo}'|" th:text="|[${oldRes.campName}] ( ${oldRes.campDeName} )|">캠핑장 명</a>
 										</div>
 										<div>
 											<p th:text="|결제 정보&nbsp; :&nbsp; ${oldRes.paymentType}|"></p>
-											<p th:text="|입실일 &nbsp; :&nbsp; ${oldRes.campEntDate2}|"></p>
 											<p th:text="|결제 금액&nbsp; :&nbsp; ￦ ${#numbers.formatInteger(oldRes.campPayment, 3, 'COMMA')}원|"></p>
+											<p th:text="|입실일 &nbsp; :&nbsp; ${oldRes.campEntDate2}|"></p>
 											<th:block th:if="${oldRes.itemList.size > 0}">
 												<p th:if="${oldRes.itemList.size == 1}" th:text="|렌탈 상품 &nbsp; :&nbsp; ${oldRes.itemList[0].itemName}|"></p>
 												<p th:if="${oldRes.itemList.size > 1}" th:text="|렌탈 상품 &nbsp; :&nbsp; ${oldRes.itemList[0].itemName} 외 ${#lists.size(oldRes.itemList)-1} 개 상품|"></p>
@@ -193,12 +193,6 @@
 										</div>
 									</section>
 									
-									<section id="reviewRebuyDeleteBtnSection">
-											<a>리뷰 작성</a>
-											<a>재구매</a>
-											<button>삭제</button>
-									</section>
-	
 								</section>
 								
 							</th:block>
@@ -232,9 +226,9 @@
 
 						<div class="radioArea">
 							<input type="radio" name="wish" value="item" id="item" class="clicked">
-							<label for="item">렌탈 상품</label>
+							<label class="clickBtn" for="item">렌탈 상품</label>
 							<input type="radio" name="wish" value="camp" id="camping" >
-							<label for="camping">캠핑장</label>
+							<label class="clickBtn" for="camping">캠핑장</label>
 						</div>
 						
 					</section>
@@ -278,7 +272,7 @@
 										
 										<section class="itemSection" th:each="wish : ${myPageInfo.wishList}">
 											<img th:onclick="|location.href='/item/itemDetail/${wish.itemNo}'|" class="wishItem" th:src="${wish.thumbnail}">
-											<a th:text="${wish.itemName}">밀크 소파 : 블랙</a>
+											<a class="clickBtn" th:text="${wish.itemName}">밀크 소파 : 블랙</a>
 										</section>
 										
 									</div>
@@ -314,9 +308,9 @@
 							
 							<div class="radioArea">
 								<input type="radio" name="askTo" value="admin" id="admin" class="clicked">
-								<label for="admin">관리자 문의</label>
+								<label class="clickBtn" for="admin">관리자 문의</label>
 								<input type="radio" name="askTo" value="ceo" id="ceo" >
-								<label for="ceo">캠핑장 문의</label>
+								<label class="clickBtn" for="ceo">캠핑장 문의</label>
 							</div>
 						</section>
 						
@@ -342,15 +336,15 @@
 
 								<section class="textList" th:each="qna : ${myPageInfo.qnaList}">
 
-									<a th:id="|qna${qna.QNANo}|"
+									<a class="clickBtn" th:id="|qna${qna.QNANo}|"
 										th:text="|${qna.QNACreateDate} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${qna.QNATitle}|"></a>
 
 									<th:blcok th:if="${qna.answerFlag == 'Y'}">
-										<a>답변 완료</a>
+										<a class="clickBtn">답변 완료</a>
 									</th:blcok>
 
 									<th:blcok th:if="${qna.answerFlag == 'N'}">
-										<a>답변 대기중</a>
+										<a class="clickBtn">답변 대기중</a>
 									</th:blcok>
 
 								</section>
@@ -389,8 +383,8 @@
 							<th:block th:if="${myPageInfo.boardList.size > 0}">
 
 								<section class="textList" th:each="board : ${myPageInfo.boardList}">
-									<a th:href="|/board/${board.boardType}/${board.boardNo}|" th:text="|${board.boardCreateDate} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${board.boardTitle} |"></a>
-									<a th:text="|( 댓글 수 : ${board.commentCount} )|">댓글</a>
+									<a class="clickBtn" th:href="|/board/${board.boardType}/${board.boardNo}|" th:text="|${board.boardCreateDate} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${board.boardTitle} |"></a>
+									<a class="clickBtn" th:text="|( 댓글 수 : ${board.commentCount} )|">댓글</a>
 								</section>
 
 							</th:block>

@@ -31,23 +31,6 @@ button {
   text-transform:uppercase; 
 }
   
-button:after {
-  display:block;
-  content: '';
-  border-bottom: solid 2px #000;
-  margin-top: 5px;
-  transform: scaleX(0);  
-  transition: transform 250ms ease-in-out;
-}
-
-button:hover:after { 
-	transform: scaleX(1);
-}
-
-button:hover {
-    cursor: pointer;
-}
-
 input:focus {
 	outline: none;
 }
@@ -157,3 +140,16 @@ main {
 /* 메세지 색상 지정 */
 .confirm{ color : green; }
 .error{ color : red; }
+
+.clickBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+    transition: color 0.3s;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.clickBtn:hover {
+	color: #909090;
+}
