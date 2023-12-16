@@ -260,7 +260,10 @@
 		CAMP_MAP = #{campMap},
 		MANNER_TIME = #{mannerTime},
 		CATEGORY = #{category},
-		CAMP_INFO = #{campInfo}
+		CAMP_INFO = #{campInfo},
+		INFORMATION = #{information},
+		CHECK_IN = #{checkIn},
+		CHECK_OUT = #{checkOut}
 		WHERE CAMP_NO = #{campNo}
 		
 	</update>

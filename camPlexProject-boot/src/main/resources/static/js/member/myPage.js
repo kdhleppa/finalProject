@@ -1,12 +1,3 @@
-let prev = document.getElementById('left');
-let next = document.getElementById('right');
-let itemWrapper = document.querySelector('.itemWrapper');
-let itemSection = document.querySelectorAll('.itemSection');
-let itemSectionlength = document.querySelector('.itemSection');
-let slideLength = itemSection.length
-let currentIndex = 0;
-
-
 move()
 
 function move(){
@@ -153,8 +144,9 @@ for(var i = 0 ; i < askTo.length ; i++){
 						textList.classList.add('textList');
 	
 						const a = document.createElement('a');
-						a.setAttribute("id", `qna${qna.qnano}`)
+						a.setAttribute("id", `qna_${qna.qnano}`)
 						a.innerHTML = `${qna.qnacreateDate} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${qna.qnatitle}`
+						a.classList.add('qnaBtn');
 
 						if(qna.answerFlag == 'Y'){
 							const done = document.createElement('a');
@@ -175,7 +167,11 @@ for(var i = 0 ; i < askTo.length ; i++){
 				textItemSection.append(textItmeList, empty2);
 				textItemSection.prepend(empty2);
 				more(data.length)
+				modal()
+				
 			})
+
+
 		}
 
 		if(e.target.value == 'ceo'){
@@ -517,63 +513,58 @@ for(var i = 0 ; i < wish.length ; i++){
 
 }
 
+modal()
 
-
-
-
-
-let textList = document.querySelectorAll('.textList')
-const contentLength = textList.length;
-const moreBtnWrapper = document.getElementsByClassName('moreBtnWrapper')
-const textItmeList = document.querySelector(".textItmeList")
-let contentCount = 5;
-
-more(contentLength)
-
-function more(contentLength){
-
-	moreBtnWrapper[0].innerHTML = "";
-
-	if(contentLength <= 5) {
-
-		return;
-
-	}else if(contentLength > contentCount){
-		
-		const btn = document.createElement('button');
-		btn.classList.add('moreBtn')
-		btn.setAttribute("type", "button")
-		btn.innerHTML = "더 보기<br>∨";
-		
-		moreBtnWrapper[0].append(btn)
-
-		btn.addEventListener("click", () => {
-				
-			textItmeList.style.height = textItmeList.offsetHeight+200+'px';
-			
-			contentCount += 5;
-			more(contentLength)
-		})
-
-
-	} else if(contentLength < contentCount && contentCount > 8) {
-
-		const btn = document.createElement('button');
-		btn.classList.add('moreBtn')
-		btn.setAttribute("type", "button")
-		btn.innerHTML = "접기<br>∧";
-		
-		moreBtnWrapper[0].append(btn)
-
-		btn.addEventListener("click", () => {
-				
-			textItmeList.style.height ='200px';
-			
-			contentCount = 5;
+function modal(){
+	let qnaBtn = document.querySelectorAll(".qnaBtn");
+	let modalContainerPopup = document.getElementById('modalContainerPopup');
+	let QNAAnswerTitle = document.getElementById('QNAAnswerTitle')
+	let QNAAnswerContent = document.getElementById('QNAAnswerContent')
+	let QNAAnswer = document.getElementById('QNAAnswer')
 	
-			more(contentLength)
-		})
-
-	} 
+	for(var i = 0 ; i <qnaBtn.length ; i++){
 	
+		qnaBtn[i].addEventListener("click", e => {
+	
+			modalContainerPopup.classList.remove('hidden');
+	
+			const qnaNo = (e.target.id).split("_")[1]
+			
+			fetch("/member/selectQnaOne?qnaNo=" + qnaNo)
+			.then(resp => resp.json())
+			.then(data => {
+	
+				QNAAnswerTitle.innerText=`${data.qnatitle}`
+				QNAAnswerContent.innerText = `${data.qnacontent}`
+	
+				if(data.qnaanswer == null){
+	
+					QNAAnswer.innerText = "답변 대기중"
+	
+				} else {
+	
+					QNAAnswer.innerText = `${data.qnaanswer}`
+	
+				}
+	
+	
+			})
+	
+	
+		})
+	
+		window.addEventListener('click', (e) => {
+		
+			e.target === modalContainerPopup ? modalContainerPopup.classList.add('hidden') : false
+			
+		});
+	
+	}
 }
+
+
+
+
+
+
+

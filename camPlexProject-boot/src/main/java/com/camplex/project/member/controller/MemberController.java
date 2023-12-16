@@ -890,5 +890,15 @@ public class MemberController {
 	}
 	
 	
+	@ResponseBody
+	@GetMapping("/selectQnaOne")
+	public Qna selectQnaOne(int qnaNo) {
+		
+		Qna qna = service.selectQnaOne(qnaNo);
+		
+		return qna;
+	}
+	
+	
 	
 }

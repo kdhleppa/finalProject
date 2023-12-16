@@ -302,6 +302,11 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.selectItemWish(memberNo);
 	}
 
+	@Override
+	public Qna selectQnaOne(int qnaNo) {
+		return mapper.selectQnaOne(qnaNo);
+	}
+
 
 
 
