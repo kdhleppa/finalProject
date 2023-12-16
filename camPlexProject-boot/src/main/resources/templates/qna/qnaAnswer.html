@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>1:1 문의 (관리자)</title>
+
+
+	<link rel="stylesheet" th:href="@{/css/member/myPage/myPage.css}">
+	<link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+	<link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+	<link
+		th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}"
+		rel="stylesheet">
+	<script th:src="@{https://kit.fontawesome.com/92fbd4b351.js}" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<div id="modalContainerPopup" class="hidden">
+
+		<div id="mainContainer">
+
+			<div id="main-content" class="container">
+
+				<section class="qnaTop">
+					<p>문의 사항</p>
+				</section>
+
+				<hr style="margin-top: 15px; width: 90%; margin-left: 20px; margin-bottom: 50px;">
+
+				<div class="qnaDetail">
+
+					<form th:action="@{/qna/qnaSubmit}" method="POST" id="qnaFrm" class="qnaSubmit"
+						enctype="multipart/form-data">
+
+						<div class="qnaTitle">
+							<p>제목</p>
+							<p id="QNAAnswerTitle" class="form-control" value="dd">ddd</p>
+						</div>
+
+						<div class="qnaContent">
+							<p>문의 내용</p>
+							<textarea id="QNAAnswerContent" class="form-control" readonly></textarea>
+						</div>
+
+						<div class="qnaAnswer">
+							<p>답변 내용</p>
+							<textarea id="QNAAnswer" class="form-control" readonly ></textarea>
+						</div>
+
+					</form>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
+
+</html>

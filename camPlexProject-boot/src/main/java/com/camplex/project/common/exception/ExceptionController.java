@@ -1,5 +1,6 @@
 package com.camplex.project.common.exception;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -7,9 +8,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ExceptionController {
 	
 	@ExceptionHandler(Exception.class)
-	public String exceptionHandler(Exception e) {
+	public String exceptionHandler(Exception e, Model model) {
 		e.printStackTrace(); // 에러 내용 콘솔에 출력
-		return "error/500";  // /teamplates/error/500.html
+		
+		model.addAttribute("e", e);
+		
+		return "error/error"; 
 	}
 	
 }

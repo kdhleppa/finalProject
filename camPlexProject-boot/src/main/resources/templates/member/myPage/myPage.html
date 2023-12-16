@@ -342,9 +342,10 @@
 
 								<section class="textList" th:each="qna : ${myPageInfo.qnaList}">
 
-									<a th:id="'qna' + ${qna.QNANo}" class="openModalLink" data-target="openModalLink" 
-   									th:text="|${qna.QNACreateDate} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${qna.QNATitle}&nbsp;${qna.QNAAnswer}|"></a>
 
+									<a th:id="|qna_${qna.QNANo}|" class="qnaBtn"
+										th:text="|${qna.QNACreateDate} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${qna.QNATitle}|"></a>
+                  
 									<th:blcok th:if="${qna.answerFlag == 'Y'}">
 										<a>답변 완료</a>
 									</th:blcok>
@@ -364,8 +365,8 @@
 
 					</div>
 					
-					<div class="moreBtnWrapper" th:if="${myPageInfo.qnaList.size > 5}">
-						<button type="button" class="moreBtn"></button>
+					<div class="moreBtnWrapper">
+						<button type="button" class="moreBtn"  th:if="${myPageInfo.qnaList.size > 5}"></button>
 					</div>
 
 				</section>
@@ -430,7 +431,7 @@
 	</main>
 
 	<div class="empty5"></div>
-
+	<th:block th:replace="~{qna/qnaAnswer}"></th:block>
 	<th:block th:replace="~{common/footer}"></th:block>
 	<script th:src="@{/js/member/myPage.js}"></script>
 	

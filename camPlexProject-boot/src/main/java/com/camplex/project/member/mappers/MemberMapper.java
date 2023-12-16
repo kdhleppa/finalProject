@@ -102,6 +102,8 @@ public interface MemberMapper {
 	 */
 	List<Wishlist> selectItemWish(int memberNo);
 
+	Qna selectQnaOne(int qnaNo);
+
 
 
 
