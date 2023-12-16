@@ -146,17 +146,17 @@ campingDetailUploadForm.addEventListener('submit', e => {
 		return;
 	}
 
-	// if(mannerTimeInput.value.trim() == "") {
-	// 	let mannerTimeInputSc = mannerTimeInputSc.offsetTop;
-	// 	alert("매너 타임을 입력해주세요.");
-	// 	mannerTimeInput.focus();
-	// 	window.scrollTo({top:mannerTimeInputSc - 320, behavior:'smooth'});
-	// 	e.preventDefault();
-	// 	return;
-	// }
+	if(mannerTimeInput.value.trim() == "") {
+		let mannerTimeInputSc = mannerTimeInput.offsetTop;
+		alert("매너 타임을 입력해주세요.");
+		mannerTimeInput.focus();
+		window.scrollTo({top:mannerTimeInputSc - 320, behavior:'smooth'});
+		e.preventDefault();
+		return;
+	}
 	
 	if(campAddress.value.trim() == "") {
-		let campAddressSc = campAddressSc.offsetTop;
+		let campAddressSc = campAddress.offsetTop;
 		alert("캠핑장 주소를 입력해주세요.");
 		campAddress.focus();
 		window.scrollTo({top:campAddressSc - 320, behavior:'smooth'});
@@ -165,56 +165,66 @@ campingDetailUploadForm.addEventListener('submit', e => {
 	}
 	
 	if(campPhone.value.trim() == "") {
-		let campPhone = campPhone.offsetTop;
-		alert("캠핑장 번호를 입력해주세요.");
+		let campPhoneSc = campPhone.offsetTop;
+		alert("캠핑장 전화 번호를 입력해주세요.");
 		campPhone.focus();
-		window.scrollTo({top:campPhone - 320, behavior:'smooth'});
+		window.scrollTo({top:campPhoneSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
 
 	const regEx = /^[0-9]+$/;
 	if(!regEx.test(campPhone.value)) {
-		let campPhone = campPhone.offsetTop;
+		let campPhoneSc = campPhone.offsetTop;
 		alert("전화 번호는 숫자만 입력해주세요.");
 		campPhone.focus();
-		window.scrollTo({top:campPhone - 320, behavior:'smooth'});
+		window.scrollTo({top:campPhoneSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
 	
 	if(checkIn.value.trim() == "") {
+		let checkInSc = checkIn.offsetTop;
 		alert("체크인 시간을 입력해주세요.");
 		checkIn.focus();
+		window.scrollTo({top:checkInSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
 	
 	if(checkOut.value.trim() == "") {
+		let checkOutSc = checkOut.offsetTop;
 		alert("체크아웃 시간을 입력해주세요.");
 		checkOut.focus();
+		window.scrollTo({top:checkOutSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
 
 	if(categorySelect.value == "noLoad") {
+		let categorySelectSc = categorySelect.offsetTop;
 		console.log(categorySelect.Value);
 		alert("카테고리를 선택해 주세요.");
 		categorySelect.focus();
+		window.scrollTo({top:categorySelectSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
 	
 	if(CEONum.value.trim() == "") {
+		let CEONumSc = CEONum.offsetTop;
 		alert("CEO회원 번호를 입력해주세요.");
 		CEONum.focus();
+		window.scrollTo({top:CEONumSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
 
 	if(!regEx.test(CEONum.value)) {
+		let CEONumSc = CEONum.offsetTop;
 		alert("CEO회원 번호는 숫자만 입력해주세요.");
 		CEONum.focus();
+		window.scrollTo({top:CEONumSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
@@ -247,8 +257,10 @@ campingDetailUploadForm.addEventListener('submit', e => {
 	
 	
 	if(etcInfoTextArea.value.trim() == "") {
+		let etcInfoTextAreaSc = etcInfoTextArea.offsetTop;
 		alert("캠핑장 Info를 입력해주세요.");
 		etcInfoTextArea.focus();
+		window.scrollTo({top:etcInfoTextAreaSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
