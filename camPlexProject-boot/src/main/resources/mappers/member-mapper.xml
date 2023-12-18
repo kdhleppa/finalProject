@@ -479,8 +479,8 @@
 		WHERE QNA_NO = #{qnaNo}
 	</select>
 	
-	<!-- qna -->
-	<select id="selectCeoQnaOne" resultMap="qna_rm">
+	<!-- ceoQna -->
+	<select id="selectCeoQnaOne" resultMap="ceoQna_rm">
 		SELECT *
 		FROM CEO_QNA
 		WHERE CEO_QNA_NO = #{ceoQnaNo}

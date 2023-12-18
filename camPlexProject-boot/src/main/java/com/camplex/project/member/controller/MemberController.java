@@ -953,9 +953,9 @@ public class MemberController {
 	 */
 	@ResponseBody
 	@GetMapping("/selectCeoQnaOne")
-	public Qna selectCeoQnaOne(int ceoQnaNo) {
+	public ceoQna selectCeoQnaOne(int ceoQnaNo) {
 		
-		Qna qna = service.selectCeoQnaOne(ceoQnaNo);
+		ceoQna qna = service.selectCeoQnaOne(ceoQnaNo);
 		
 		return qna;
 	}

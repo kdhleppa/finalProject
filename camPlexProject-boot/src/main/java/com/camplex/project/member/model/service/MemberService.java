@@ -139,7 +139,7 @@ public interface MemberService {
 	 * @param qnaNo
 	 * @return
 	 */
-	Qna selectCeoQnaOne(int ceoQnaNo);
+	ceoQna selectCeoQnaOne(int ceoQnaNo);
 
 
 

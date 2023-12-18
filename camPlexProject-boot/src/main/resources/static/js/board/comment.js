@@ -28,6 +28,9 @@ function selectCommentList(){
             // 답글일 경우 child-comment 클래스 추가
             if(comment.parentNo != 0)  commentRow.classList.add("child-comment");
 
+			const hrElement = document.createElement("hr");
+			hrElement.style.marginBottom = "1rem"; // 스타일 설정
+			commentRow.appendChild(hrElement);
 
             // 작성자
             const commentWriter = document.createElement("p");
@@ -58,7 +61,7 @@ function selectCommentList(){
             const commentContent = document.createElement("p");
             commentContent.classList.add("comment-content");
             commentContent.innerHTML = comment.commentContent;
-            commentContent.style.width = '52rem';
+            commentContent.style.width = '100%';
             commentContent.style.wordBreak = 'break-word';
 
             // 행에 작성자, 내용 추가
@@ -231,7 +234,7 @@ function showUpdateComment(commentNo, btn){
 
     // 3. 댓글에 작성되어 있던 내용만 얻어오기 -> 새롭게 생성된 textarea 추가될 예정
     
-    let beforeContent = commentRow.children[1].innerHTML;
+    let beforeContent = commentRow.children[2].innerHTML;
 
     // 이것도 가능!
     //let beforeContent = btn.parentElement.previousElementSibling.innerHTML;

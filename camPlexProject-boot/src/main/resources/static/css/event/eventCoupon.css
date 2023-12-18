@@ -92,5 +92,44 @@ button {
 	width: 309px;
 	height: 50px;
 	border-radius: 10px;
+	border: 1px solid black;
+	animation: pulse 1s linear infinite both;
 }
 
+
+@media (prefers-reduced-motion) {
+#canvas {
+    animation: dissolve 4s linear infinite both;
+    text-decoration: overline;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes dissolve {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
