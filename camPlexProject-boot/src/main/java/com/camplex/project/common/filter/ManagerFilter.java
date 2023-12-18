@@ -4,18 +4,19 @@ import java.io.IOException;
 
 import org.springframework.stereotype.Component;
 
+import com.camplex.project.member.model.dto.Member;
+
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
-import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 
-public class LoginFilter implements Filter{
+public class ManagerFilter implements Filter{
 
 
 	@Override
@@ -26,8 +27,10 @@ public class LoginFilter implements Filter{
 		
 		HttpSession session = req.getSession();
 		
-		if( session.getAttribute("loginMember") == null ) {
-			resp.sendRedirect("/loginError");
+		Member loginMember = (Member) session.getAttribute("loginMember");
+		
+		if( !loginMember.getMemberType().equals("C") ) {
+			resp.sendRedirect("/managerError");
 			
 		} else {
 			chain.doFilter(request, response);
