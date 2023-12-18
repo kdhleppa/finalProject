@@ -36,8 +36,7 @@ public class FilterConfig {
 		
 		resiRegistrationBean.setFilter(new LoginFilter());
 		
-		String[] url = {"/member/logout", "/member/myPage", "/member/CEOMyPage",
-						"/member/infoModify", "/member/updateMember",
+		String[] url = {"/member/logout", "/member/myPage", "/member/infoModify", "/member/updateMember",
 						"/member/memberWithdrawal1", "/member/deleteMember", "/member/levelUpForm",
 						"/member/levelUpFormCheck", "/member/phoneChange", "/member/reservationDetails",
 						"/member/payHistory", "/member/campUpdate", "/member/reservationNManage",
