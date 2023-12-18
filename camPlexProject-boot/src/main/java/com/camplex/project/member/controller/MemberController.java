@@ -754,59 +754,59 @@ public class MemberController {
 	}
 	
 	// 위시리스트 추가후 카트에서 제거
-		@PostMapping("/wishlist/insert2")
-		public String wishlistInsert2(
-				@SessionAttribute(value="loginMember", required = false)Member loginMember,
-				RedirectAttributes ra,
-				@RequestParam("reservationNo") int reservationNo,
-			    @RequestParam("cartItemNo") int cartItemNo,
-			    @RequestParam("itemNo") int itemNo,
-				HttpServletRequest request
-				) {
+	@PostMapping("/wishlist/insert2")
+	public String wishlistInsert2(
+			@SessionAttribute(value="loginMember", required = false)Member loginMember,
+			RedirectAttributes ra,
+			@RequestParam("reservationNo") int reservationNo,
+		    @RequestParam("cartItemNo") int cartItemNo,
+		    @RequestParam("itemNo") int itemNo,
+			HttpServletRequest request
+			) {
+		
+		int result = 0;
+		int searchResult = 0;
+		String referer = request.getHeader("Referer");
+		String path = "redirect:";
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("itemNo", itemNo);
+		map.put("reservationNo", reservationNo);
+		map.put("cartItemNo", cartItemNo);
+		
+		if(loginMember != null) {
 			
-			int result = 0;
-			int searchResult = 0;
-			String referer = request.getHeader("Referer");
-			String path = "redirect:";
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("itemNo", itemNo);
-			map.put("reservationNo", reservationNo);
-			map.put("cartItemNo", cartItemNo);
+			int memberNo = loginMember.getMemberNo();
+			searchResult = wishlistService.searchWishlist(memberNo, itemNo);
 			
-			if(loginMember != null) {
+			if (searchResult > 0) {
 				
-				int memberNo = loginMember.getMemberNo();
-				searchResult = wishlistService.searchWishlist(memberNo, itemNo);
+				ra.addFlashAttribute("message", "위시리스트에 추가된 상품 입니다.");
+				path += referer;
+				return path;
 				
-				if (searchResult > 0) {
-					
-					ra.addFlashAttribute("message", "위시리스트에 추가된 상품 입니다.");
+			} else {
+				result = wishlistService.wishlistInsert(memberNo, itemNo);
+				
+				if (result > 0) {
+					payService.deleteItemcart(map);
+					ra.addFlashAttribute("message", "상품이 위시리스트에 추가되었습니다.");
 					path += referer;
 					return path;
 					
 				} else {
-					result = wishlistService.wishlistInsert(memberNo, itemNo);
-					
-					if (result > 0) {
-						payService.deleteItemcart(map);
-						ra.addFlashAttribute("message", "상품이 위시리스트에 추가되었습니다.");
-						path += referer;
-						return path;
-						
-					} else {
-						ra.addFlashAttribute("message", "위시리스트 등록에 실패하였습니다.");
-						path += referer;
-						return path;
-					}
-					
+					ra.addFlashAttribute("message", "위시리스트 등록에 실패하였습니다.");
+					path += referer;
+					return path;
 				}
-			} else {
-				ra.addFlashAttribute("message", "로그인 후 이용해 주세요.");
-				path += "/member/login";
-				return path;
+				
 			}
-			
+		} else {
+			ra.addFlashAttribute("message", "로그인 후 이용해 주세요.");
+			path += "/member/login";
+			return path;
 		}
+		
+	}
 	
 	// 위시리스트로 이동~
 	@GetMapping("/wishlist")
@@ -854,7 +854,6 @@ public class MemberController {
 		
 	}
 	
-	
 	@ResponseBody
 	@DeleteMapping("/deleteItemWish/{itemNo}")
 	public ResponseEntity<?> deleteItemWish(
@@ -874,7 +873,6 @@ public class MemberController {
 		
 		
 	}
-	
 	
 	/** 마이페이지 관리자 qna 목록 불러오기
 	 * @param loginMember
@@ -905,7 +903,6 @@ public class MemberController {
 
 		return list;
 	}
-	
 	
 	/** 마이페이지 camping위시리스트 목록 불러오기
 	 * @param loginMember
