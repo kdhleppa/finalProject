@@ -378,7 +378,7 @@ main {
     display: flex;
     flex-direction: column;
     flex-basis: 80%;
-    height: 200px;
+    height: 190px;
     overflow: hidden;
 }
 

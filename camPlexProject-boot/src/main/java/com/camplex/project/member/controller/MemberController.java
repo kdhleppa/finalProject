@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -655,52 +656,41 @@ public class MemberController {
 		return "member/campUpdate";
 	}
 	
-	// 관리자 예약 정보 확인 페이지 이동
+	// CEO 예약 정보 확인 페이지 이동
 	@GetMapping("/reservationNManage")
 	public String reservationNManage(@SessionAttribute("loginMember") Member loginMember,
 										Model model) throws ParseException {
 					
-		int memberNo = loginMember.getMemberNo();
-
-		MyPage myPageInfo = service.selectMyPageInfo(memberNo);
-
-		List<Reservations> upcomingReservation = new ArrayList<>();
-
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd (E)");
-
-		Date today = new Date();
-
-		for (int i = 0; i < myPageInfo.getResList().size(); i++) {
-			Date tempDate = format.parse(myPageInfo.getResList().get(i).getCampOutDate());
-			String tempEnt = format2.format(myPageInfo.getResList().get(i).getCampEntDate());
-
-			if (today.before(tempDate)) {
-
-				Reservations res = myPageInfo.getResList().get(i);
-				res.setCampEntDate2(tempEnt);
-
-				int resNo = res.getReservationNo();
-				res.setItemList(service.selectItemListMypage(resNo));
-
-				// 각 Reservations 객체의 itemList에 있는 ItemInfoMypage 객체들의 itemPrice를 더하여 총 금액 계산
-				int totalPrice = 0;
-				for (ItemInfoMypage item : res.getItemList()) {
-					totalPrice += item.getItemPrice();
-				}
-
-				// 총 금액을 Reservations 객체에 추가
-				res.setTotalPrice(totalPrice);
-
-				upcomingReservation.add(res);
-
-			}
-		}
-
-		model.addAttribute("upcomingReservation", upcomingReservation);
-		model.addAttribute("myPageInfo", myPageInfo);
-			
-		return "member/reservationNManage";
+		Member member = new Member();
+        member.setMemberNo(loginMember.getMemberNo());
+        
+        List<Map<String, Object>> reservationList = service.selectReservationList(member);
+        List<ItemInfoMypage> itemList = new ArrayList<>();
+        
+        for(int i= 0; i < reservationList.size(); i++) {
+        	
+        	String resNo = String.valueOf(reservationList.get(i).get("RESERVATION_NO"));
+            int ss = Integer.parseInt(resNo);
+            
+            System.out.println("ss : " + ss);
+            
+            List<ItemInfoMypage> list = service.selectItemList(ss);
+            
+            System.out.println(list);
+            
+            if(list != null) {
+            	itemList.addAll(list);
+            	reservationList.get(i).put("itemList", list);
+            }
+            
+	    }
+        
+        System.out.println("itemList : " + itemList);
+        System.out.println("reservationList : " + reservationList);
+        
+        model.addAttribute("reservationList", reservationList);
+        
+        return "member/reservationNManage";
 	}
 	
 	// 위시리스트 추가
