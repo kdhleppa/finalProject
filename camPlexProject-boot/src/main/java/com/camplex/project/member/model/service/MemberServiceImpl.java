@@ -302,9 +302,21 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.selectItemWish(memberNo);
 	}
 
+	
+	/** 문의사항 관리자문의 답변보기
+	 * 
+	 */
 	@Override
 	public Qna selectQnaOne(int qnaNo) {
 		return mapper.selectQnaOne(qnaNo);
+	}
+
+	/** 문의사항 캠핑장문의 답변보기
+	 * 
+	 */
+	@Override
+	public Qna selectCeoQnaOne(int ceoQnaNo) {
+		return mapper.selectCeoQnaOne(ceoQnaNo);
 	}
 
 

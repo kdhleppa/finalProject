@@ -102,7 +102,17 @@ public interface MemberMapper {
 	 */
 	List<Wishlist> selectItemWish(int memberNo);
 
+	/** 문의사항 관리자문의 답변보기
+	 * @param qnaNo
+	 * @return
+	 */
 	Qna selectQnaOne(int qnaNo);
+
+	/** 문의사항 캠핑장문의 답변보기
+	 * @param qnaNo
+	 * @return
+	 */
+	Qna selectCeoQnaOne(int qnaNo);
 
 
 
