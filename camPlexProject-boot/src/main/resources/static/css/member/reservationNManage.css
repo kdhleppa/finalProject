@@ -51,6 +51,11 @@ main {
 
 /* --------------------------------- */
 /* 대제목 */
+#headerTitle {
+	display: flex;
+	justify-content: space-between;
+}
+
 #headerName {
     font-size: 30px;
     margin-left: 20px;
@@ -149,20 +154,29 @@ main {
 #itemCount {
     color: red;
 }
-/* ------------------------------ */
-/* 예약, 예약 불가 버튼 */
-#reservationBtnSection {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-}
-
-.empty6 {
-    flex-basis: 40%;
-}
 
 /* ------------------------------ */
 /* 풋터 위 공간 */
 .empty5 {
     height: 100px;
 }
+
+.clickBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+    transition: color 0.3s;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.clickBtn:hover {
+	color: #909090;
+}
+
+#backBtn {
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+}
+

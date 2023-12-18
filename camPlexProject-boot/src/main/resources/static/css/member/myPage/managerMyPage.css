@@ -123,6 +123,10 @@ main {
     margin-top: 50px;
 }
 
+.functionBtn > :nth-child(2) {
+	margin-left: 18px;
+}
+
 .functionBtn a {
     font-size: 17px;
 }

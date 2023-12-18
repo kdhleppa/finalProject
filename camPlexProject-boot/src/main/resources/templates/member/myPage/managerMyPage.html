@@ -70,7 +70,7 @@
 
             <!-- 예약 정보 확인, 1대 1문의, 업데이트 요청 -->
             <section class="functionBtn">
-                <a class="clickBtn">예약 정보 확인<span>&nbsp;&nbsp;3</span></a>
+                <a class="clickBtn" th:href="@{/member/reservationNManageAll}">예약 정보 확인</a>
                 <a class="clickBtn">1대 1 문의<span>&nbsp;&nbsp;1</span></a>
                 
                 <section th:unless="${levelUpFormCount} == 0"><a class="clickBtn" th:href="@{/member/levelUpFormCheck}">등업신청 요청<span th:text="'&nbsp;&nbsp;' + ${levelUpFormCount}"></span></a></section>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>예약 정보 확인</title>
+    <title>관리자용 예약 정보 확인</title>
 
     <link rel="stylesheet"  th:href="@{/css/member/reservationNManage.css}">
 
@@ -39,13 +39,11 @@
 						
 						<!-- 캠핑장 정보 -->
                         
-                        <!-- 관리자페이지에서 뿌림 ceo는 안뿌림
-							<section class="reservationInfo">
+						<section class="reservationInfo">
                             <img class="icon" th:src="@{/images/memberImg/carbon_map.png}">
                             <section class="empty4"></section>
-                            <a class="info">강원 양양군 손양면 선사유적로 316-54</a>
+                            <p th:text="|${reservationList.CAMP_ADDRESS}|" class="info"></p>
                         </section>
-                        -->
 
                         <section class="reservationInfo">
                             <img class="icon" th:src="@{/images/memberImg/Group.png}">
@@ -69,18 +67,18 @@
 
 					<!-- 렌탈 상품 정보 -->
 					
-					<th:block th:if="${reservationList.itemList.size > 0}">
+					<th:block>
 						
-	                    <section id="rentalObjList">
-	                        <section class="rentalObj"th:each="itemList : ${reservationList.itemList}">
+	                    <section id="rentalObjList" th:if="${reservationList.itemList.size > 0}">
+	                        <section class="rentalObj" th:each="itemList : ${reservationList.itemList}">
 	                            <span th:text="|${itemList.itemName}|"></span><span id="itemCount" th:text="|&nbsp;&nbsp; ${itemList.quantity}|"></span>
 	                        </section>
 	                    </section>
 	                    
 					</th:block>
 					
-					<th:block th:if="${reservationList.itemList.size == 0}">
-						<section id="rentalObjList">
+					<th:block>
+						<section id="rentalObjList" th:if="${reservationList.itemList.size == 0}">
 							<section class="rentalObj">
 								<p>렌탈 상품&nbsp; : 렌탈 상품이 없습니다.</p>
 	                        </section>
@@ -93,10 +91,9 @@
                 <section class="empty3"></section>
             </section>
             
-			<div id="backBtn">
+            <div id="backBtn">
     	        <button type="button" class="clickBtn" th:onclick="|javascript:history.back();|">이전으로</button>
 			</div>
-            
 
 
         </section>
