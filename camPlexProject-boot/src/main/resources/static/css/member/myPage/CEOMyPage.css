@@ -24,23 +24,8 @@ a {
   color: #000;
   display:inline-block; 
   margin:0;
-  text-transform:uppercase; }
+}
   
-a:after {
-  display:block;
-  content: '';
-  margin-top: 3px;
-  border-bottom: solid 1px #000;  
-  transform: scaleX(0);  
-  transition: transform 250ms ease-in-out;
-}
-
-a:hover:after { transform: scaleX(1); }
-
-a:hover {
-    cursor: pointer;
-}
-
 main, div, section {
     /* border: 1px solid black; */
 }
@@ -261,7 +246,7 @@ main {
     background-color: transparent;
     border: none;
     font-size: 17px;
-    transition: color 0.3s;
+    transition: color 0.2s;
     font-weight: 600;
     cursor: pointer;
 }
@@ -270,3 +255,11 @@ main {
 	color: #909090;
 }
 
+#clickBtn {
+	transition: color 0.2s;
+	cursor: pointer;
+}
+
+#clickBtn:hover {
+	color: #909090;
+}

@@ -126,7 +126,9 @@ sendAuthKeyBtn.addEventListener("click", function(){
 
         }, 1000)
 
-    }
+    } else {
+		alert("유효한 이메일을 입력한 후 인증버튼을 눌러주세요.");
+	}
 
 });
 

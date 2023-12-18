@@ -24,8 +24,8 @@ function mapModal() {
 	// 카카오 맵 api
 	var mapKko = document.getElementById('mapKko'), // 지도를 표시할 div 
 	mapOption = { 
-		center: new kakao.maps.LatLng(37.07, 127.8), // 지도의 중심좌표
-		level: 11 // 지도의 확대 레벨
+		center: new kakao.maps.LatLng(36.2, 127.8), // 지도의 중심좌표
+		level: 12 // 지도의 확대 레벨
 	};
 
 	// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
@@ -55,7 +55,7 @@ function mapModal() {
 
 					// 커스텀 오버레이에 표시할 내용입니다     
 					// HTML 문자열 또는 Dom Element 입니다 
-					var content = '<div class ="mapCampName" onclick="mapInfoClick(' + campList[i].campNo + ')">' + campList[i].campName +'</div>';
+					var content = '<div class ="mapCampName" onclick="mapInfoClick(' + campList[i].campNo + ')">' + "&nbsp;&nbsp;"+ campList[i].campName + "&nbsp;&nbsp;" + '</div>';
 
 					// 커스텀 오버레이가 표시될 위치입니다 
 					var position = new kakao.maps.LatLng(result[0].y, result[0].x);  
@@ -88,8 +88,8 @@ function campType(category) {
 	// 카카오 맵 api
 	var mapKko = document.getElementById('mapKko'), // 지도를 표시할 div 
 	mapOption = { 
-		center: new kakao.maps.LatLng(37.07, 127.8), // 지도의 중심좌표
-		level: 11 // 지도의 확대 레벨
+		center: new kakao.maps.LatLng(36.2, 127.8), // 지도의 중심좌표
+		level: 12 // 지도의 확대 레벨
 	};
 
 	// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
@@ -120,7 +120,7 @@ function campType(category) {
 
 					// 커스텀 오버레이에 표시할 내용입니다     
 					// HTML 문자열 또는 Dom Element 입니다 
-					var content = '<div class ="mapCampName" onclick="mapInfoClick(' + campList[i].campNo + ')">' + campList[i].campName +'</div>';
+					var content = '<div class ="mapCampName" onclick="mapInfoClick(' + campList[i].campNo + ')">' + "&nbsp;&nbsp;"+ campList[i].campName + "&nbsp;&nbsp;" + '</div>';
 
 					// 커스텀 오버레이가 표시될 위치입니다 
 					var position = new kakao.maps.LatLng(result[0].y, result[0].x);  

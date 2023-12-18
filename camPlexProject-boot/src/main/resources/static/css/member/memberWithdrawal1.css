@@ -29,23 +29,6 @@ a {
 	font-size: 16px;
 }
 
-a:hover {
-	cursor: pointer;
-}
-  
-a:after {
-  display:block;
-  content: '';
-  border-bottom: solid 1px #000;
-  margin-top: 5px;
-  transform: scaleX(0);  
-  transition: transform 250ms ease-in-out;
-}
-
-a:hover:after { 
-	transform: scaleX(1);
-}
-
 button { 
   color: #000;
   display:inline-block; 
@@ -56,23 +39,6 @@ button {
   font-size: 16px;
 }
   
-button:after {
-  display:block;
-  content: '';
-  border-bottom: solid 1px #000;
-  margin-top: 5px;
-  transform: scaleX(0);  
-  transition: transform 250ms ease-in-out;
-}
-
-button:hover:after { 
-	transform: scaleX(1);
-}
-
-button:hover {
-    cursor: pointer;
-}
-
 input:focus {
 	outline: none;
 }
@@ -175,12 +141,19 @@ main {
     height: 30px;
 }
 
+/* 메세지 색상 지정 */
+.confirm{ color : green; }
+.error{ color : red; }
+
 .clickBtn {
     background-color: transparent;
     border: none;
     font-size: 17px;
+    transition: color 0.3s;
+    font-weight: 600;
+    cursor: pointer;
 }
 
-/* 메세지 색상 지정 */
-.confirm{ color : green; }
-.error{ color : red; }
+.clickBtn:hover {
+	color: #909090;
+}

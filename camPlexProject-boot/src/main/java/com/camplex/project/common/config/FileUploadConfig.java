@@ -30,7 +30,7 @@ public class FileUploadConfig implements WebMvcConfigurer{
 	
 //	@Value("${camplex.images.resourcePath}")
 //	private String resourcePath;
-	
+//	
 	@Bean
 	public MultipartConfigElement configElement() {
 		

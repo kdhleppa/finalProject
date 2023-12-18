@@ -84,8 +84,10 @@ const campAroundView = document.querySelectorAll('input[name=campAroundView]');
 campingDetailUploadForm.addEventListener('submit', e => {
 	
 	if(inputCampingName.value.trim() == "") {
+		let inputCampingNameTop= inputCampingName.offsetTop;
 		alert("캠핑장 이름을 입력해주세요.");
 		inputCampingName.focus();
+		window.scrollTo({top:inputCampingName, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
@@ -93,16 +95,20 @@ campingDetailUploadForm.addEventListener('submit', e => {
 	for(var i = 0 ; i < preview.length - 1 ; i++){
 
 		if(preview[i].getAttribute('src') == "" || preview[i].getAttribute('src') == null){
+			let previewSc = preview[i].offsetTop;
 			alert(i+1 + "번째 사진을 입력해주세요");
 			preview[i].focus();
+			window.scrollTo({top:previewSc - 320, behavior:'smooth'});
 			e.preventDefault();
 			return;
 		}
 	}
 
 	if(introduceTextArea.value.trim() == "") {
+		let introduceTextAreaSc = introduceTextArea.offsetTop;
 		alert("캠핑장에 대한 설명을 입력해주세요. ");
 		introduceTextArea.focus();
+		window.scrollTo({top:introduceTextAreaSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
@@ -115,8 +121,11 @@ campingDetailUploadForm.addEventListener('submit', e => {
 			optionArr.push(campOption[i])
 		};
 	}
+
 	if(optionArr == ""){
+		let iputImgOfDetailMapSc = document.getElementById('iputImgOfDetailMap').offsetTop;
 		alert("한 개 이상의 부대 시설을 선택해주세요");
+		window.scrollTo({top:iputImgOfDetailMapSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
@@ -130,72 +139,92 @@ campingDetailUploadForm.addEventListener('submit', e => {
 		};
 	}
 	if(viewArr == ""){
+		let iputImgOfDetailMapSc = document.getElementById('iputImgOfDetailMap').offsetTop;
 		alert("한 개 이상의 주변 환경을 선택해주세요");
+		window.scrollTo({top:iputImgOfDetailMapSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
 
 	if(mannerTimeInput.value.trim() == "") {
+		let mannerTimeInputSc = mannerTimeInput.offsetTop;
 		alert("매너 타임을 입력해주세요.");
 		mannerTimeInput.focus();
+		window.scrollTo({top:mannerTimeInputSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
 	
 	if(campAddress.value.trim() == "") {
+		let campAddressSc = campAddress.offsetTop;
 		alert("캠핑장 주소를 입력해주세요.");
 		campAddress.focus();
+		window.scrollTo({top:campAddressSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
 	
 	if(campPhone.value.trim() == "") {
-		alert("캠핑장 번호를 입력해주세요.");
+		let campPhoneSc = campPhone.offsetTop;
+		alert("캠핑장 전화 번호를 입력해주세요.");
 		campPhone.focus();
+		window.scrollTo({top:campPhoneSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
 
 	const regEx = /^[0-9]+$/;
 	if(!regEx.test(campPhone.value)) {
+		let campPhoneSc = campPhone.offsetTop;
 		alert("전화 번호는 숫자만 입력해주세요.");
 		campPhone.focus();
+		window.scrollTo({top:campPhoneSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
 	
 	if(checkIn.value.trim() == "") {
+		let checkInSc = checkIn.offsetTop;
 		alert("체크인 시간을 입력해주세요.");
 		checkIn.focus();
+		window.scrollTo({top:checkInSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
 	
 	if(checkOut.value.trim() == "") {
+		let checkOutSc = checkOut.offsetTop;
 		alert("체크아웃 시간을 입력해주세요.");
 		checkOut.focus();
+		window.scrollTo({top:checkOutSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
 
 	if(categorySelect.value == "noLoad") {
+		let categorySelectSc = categorySelect.offsetTop;
 		console.log(categorySelect.Value);
 		alert("카테고리를 선택해 주세요.");
 		categorySelect.focus();
+		window.scrollTo({top:categorySelectSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
 	
 	if(CEONum.value.trim() == "") {
+		let CEONumSc = CEONum.offsetTop;
 		alert("CEO회원 번호를 입력해주세요.");
 		CEONum.focus();
+		window.scrollTo({top:CEONumSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
 
 	if(!regEx.test(CEONum.value)) {
+		let CEONumSc = CEONum.offsetTop;
 		alert("CEO회원 번호는 숫자만 입력해주세요.");
 		CEONum.focus();
+		window.scrollTo({top:CEONumSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}
@@ -228,8 +257,10 @@ campingDetailUploadForm.addEventListener('submit', e => {
 	
 	
 	if(etcInfoTextArea.value.trim() == "") {
+		let etcInfoTextAreaSc = etcInfoTextArea.offsetTop;
 		alert("캠핑장 Info를 입력해주세요.");
 		etcInfoTextArea.focus();
+		window.scrollTo({top:etcInfoTextAreaSc - 320, behavior:'smooth'});
 		e.preventDefault();
 		return;
 	}

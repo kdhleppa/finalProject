@@ -24,10 +24,6 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-	cursor: pointer;
-}
-
 button { 
   color: #000;
   display:inline-block; 
@@ -35,23 +31,6 @@ button {
   text-transform:uppercase; 
 }
   
-button:after {
-  display:block;
-  content: '';
-  border-bottom: solid 1px #000;
-  margin-top: 5px;
-  transform: scaleX(0);  
-  transition: transform 250ms ease-in-out;
-}
-
-button:hover:after { 
-	transform: scaleX(1);
-}
-
-button:hover {
-    cursor: pointer;
-}
-
 input:focus {
 	outline: none;
 }
@@ -172,13 +151,6 @@ main {
     flex-basis: 60%;
 }
 
-label {
-    text-decoration-line: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 5px;
-    font-size: 13px;
-}
-
 label:hover {
     cursor: pointer;
 }
@@ -225,27 +197,6 @@ label:hover {
     font-size: 17px;
 }
 
-.clickBtn {
-	font-size: 17px;
-	color: #000;
-	display:inline-block; 
-	margin:0;
-	text-transform:uppercase; 
-}
-
-.clickBtn::after {
-	display:block;
-	content: '';
-	border-bottom: solid 1px #000;
-	margin-top: 5px;
-	transform: scaleX(0);  
-	transition: transform 250ms ease-in-out;    
-}
-
-.clickBtn:hover:after { 
-	transform: scaleX(1);
-}
-
 /* --------------------------------- */
 /* 이메일 인증, 확인 버튼 */
 #telCheckBtnSection {
@@ -259,6 +210,13 @@ label:hover {
     border: none;
     font-size: 15px;
     margin-left: 10px;
+    transition: color 0.3s;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.telCheckBtn:hover{
+	color: #909090;
 }
 
 #checkTel {
@@ -266,7 +224,7 @@ label:hover {
 }
 
 #checkTelAuthkey {
-	margin-top: 66px;
+	margin-top: 72px;
 }
 
 /* 메세지 색상 지정 */
@@ -278,3 +236,17 @@ label:hover {
 footer {
     height: 100px;
 }
+
+.clickBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 12px;
+    transition: color 0.3s;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.clickBtn:hover {
+	color: #909090;
+}
+

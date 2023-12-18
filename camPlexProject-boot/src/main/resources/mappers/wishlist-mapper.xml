@@ -114,5 +114,6 @@
 		WHERE ITEM_NO = #{itemNo}
    		AND MEMBER_NO = #{memberNo}
 	</delete>
-	  	
+	
+	
 </mapper>
