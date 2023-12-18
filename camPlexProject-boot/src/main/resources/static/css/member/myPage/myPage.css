@@ -378,7 +378,7 @@ main {
     display: flex;
     flex-direction: column;
     flex-basis: 80%;
-    height: 200px;
+    height: 190px;
     overflow: hidden;
 }
 
@@ -597,4 +597,38 @@ main {
 	display: none;
 }
 
+#QNAAnswerTitle {
+	margin-left: 3rem;
+	width: 30rem;
+	height: 2rem;
+	outline: none;
+	font-size: 16px;
+	border-radius: 10px;
+	border: 1px solid #909090;
+	padding: 0.5rem;
+}
 
+#QNAAnswerContent {
+	margin-left: 1rem;
+	resize: none;
+	width: 30rem;
+	height: 12rem;
+	outline: none;
+	font-size: 16px;
+	border-radius: 10px;
+	border: 1px solid #909090;
+	padding: 0.5rem;
+}
+
+#QNAAnswer {
+	margin-left: 1rem;
+	resize: none;
+	width: 30rem;
+	height: 12rem;
+	outline: none;
+	font-size: 16px;
+	border-radius: 10px;
+	border: 1px solid #909090;
+	padding: 0.5rem;
+	margin-bottom: 2rem;
+}

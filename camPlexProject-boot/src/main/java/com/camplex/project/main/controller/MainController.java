@@ -19,6 +19,22 @@ public class MainController {
 		
 		ra.addFlashAttribute("message", "로그인 후 이용해주세요");
 		
+		return "redirect:/member/login";
+	}
+	
+	@GetMapping("/managerError")
+	public String managerError(RedirectAttributes ra) {
+		
+		ra.addFlashAttribute("message", "관리자만 접근이 가능합니다.");
+		
+		return "redirect:/";
+	}
+	
+	@GetMapping("/CEOError")
+	public String CEOError(RedirectAttributes ra) {
+		
+		ra.addFlashAttribute("message", "CEO만 접근이 가능합니다.");
+		
 		return "redirect:/";
 	}
 }

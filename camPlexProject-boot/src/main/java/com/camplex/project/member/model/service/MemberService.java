@@ -130,6 +130,10 @@ public interface MemberService {
 	 */
 	List<Wishlist> selectItemWish(int memberNo);
 
+	/** 문의사항 관리자문의 답변보기
+	 * @param qnaNo
+	 * @return
+	 */
 	Qna selectQnaOne(int qnaNo);
 
 	// 멤버 넘버로 예약 내역 관리 조회
@@ -137,6 +141,12 @@ public interface MemberService {
 
 	// 예약 내역 아이템 리스트 조회
 	List<ItemInfoMypage> selectItemList(int ss);
+  
+	/** 문의사항 캠핑장문의 답변보기
+	 * @param qnaNo
+	 * @return
+	 */
+	Qna selectCeoQnaOne(int ceoQnaNo);
 
 
 

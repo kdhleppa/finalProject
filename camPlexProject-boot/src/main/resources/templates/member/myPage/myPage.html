@@ -336,9 +336,9 @@
 
 								<section class="textList" th:each="qna : ${myPageInfo.qnaList}">
 
-									<a class="clickBtn" th:id="|qna${qna.QNANo}|"
+									<a th:id="|qna_${qna.QNANo}|" class="qnaBtn"
 										th:text="|${qna.QNACreateDate} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${qna.QNATitle}|"></a>
-
+                  			
 									<th:blcok th:if="${qna.answerFlag == 'Y'}">
 										<a class="clickBtn">답변 완료</a>
 									</th:blcok>

@@ -21,6 +21,16 @@
 
 	<main>
 
+		<div class="fixedDiv">
+			<section class="mapImageSec">
+				<img class="mapImage" th:src="@{/images/iconImg/mapImage.png}" onclick="mapModal()">
+			</section>
+
+			<section class="mapWriteSec">
+				<p class="mapWrite" onclick="mapModal()">Map</p>
+			</section>
+		</div>
+
 		<div id="leftBlank"></div>
 
 		<div id="mainContent">
@@ -339,6 +349,7 @@
 	<th:block th:replace="~{camp/ceoPicUpload}"></th:block>
 	<th:block th:replace="~{common/footer}"></th:block>
 	<th:block th:replace="~{qna/ceoQna}"></th:block>
+	<th:blcok th:replace="~{map/mapModal}"></th:blcok>
 
 	<script th:src="@{/js/camp/CampingDetail.js}"></script>
 </body>
