@@ -323,8 +323,8 @@ public class MemberServiceImpl implements MemberService {
 	public List<ItemInfoMypage> selectItemList(int ss) {
 		return mapper.selectItemList(ss);
 	}
-		
-	/** 문의사항 캠핑장문의 답변보기
+
+  /** 문의사항 캠핑장문의 답변보기
 	 * 
 	 */
 	@Override
