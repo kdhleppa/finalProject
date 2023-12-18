@@ -479,7 +479,37 @@
 		WHERE QNA_NO = #{qnaNo}
 	</select>
 	
+	<!-- 멤버넘버로 예약내약관리 조회 -->
+    <select id="selectReservationList" resultType="Map">
+            SELECT A.RESERVATION_NO
+                 , A.MEMBER_NO 
+                 , TO_CHAR(A.CAMP_ENTDATE, 'YYYY.MM.DD') AS CAMP_ENT_DATE
+                 , TO_CHAR(A.CAMP_OUTDATE, 'YYYY.MM.DD') AS CAMP_OUT_DATE
+                 , A.ADULT_COUNT 
+                 , A.KID_COUNT
+                 , C.CAMP_DE_NAME 
+              FROM RESERVATIONS A
+             INNER JOIN CAMPING_SITE B 
+                ON B.CAMP_NO = A.CAMP_NO
+             INNER JOIN CAMPING_DETAIL C 
+                ON C.CAMP_DE_NO = A.CAMP_DE_NO 
+             WHERE A.CAMP_NO = (SELECT A.CAMP_NO 
+                                      FROM CAMPING_SITE A
+                                     WHERE A.MEMBER_NO = #{memberNo}
+                               )
+			 ORDER BY A.CAMP_ENTDATE DESC
+    </select>
 	
+	<!-- 예약 내역 아이템 리스트 조회 -->
+	<select id="selectItemList" resultMap="itemInfoMypage_rm">
+		SELECT RESERVATION_NO,
+				RENTAL_ITEM_QUANTITY,
+				(SELECT ITEM_NAME
+				FROM ITEM
+				WHERE ITEM_NO = A.ITEM_NO) ITEM_NAME
+		FROM RENTAL_PAYMENT_ITEM A
+		WHERE RESERVATION_NO = #{resNo}
+	</select>
 	
 	
 </mapper>

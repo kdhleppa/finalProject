@@ -34,7 +34,7 @@ public class FilterConfig {
 		
 		resiRegistrationBean.setFilter(new LoginFilter());
 		
-		String[] url = {"/member/*", "/paysys/*"};
+		String[] url = {"/paysys/*"};
 		resiRegistrationBean.setUrlPatterns(Arrays.asList(url)); // url 패턴 여러 개 지정
 		resiRegistrationBean.setName("loginFilter"); // 이름
 		resiRegistrationBean.setOrder(1); // 여러 필터가 있을 때 순서
