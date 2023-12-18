@@ -1,4 +1,58 @@
 move()
+let textList = document.querySelectorAll('.textList')
+let contentLength = textList.length;
+let moreBtnWrapper = document.getElementsByClassName('moreBtnWrapper')
+let contentCount = 5;
+let textItmeList = document.querySelector('.textItmeList')
+
+function more(contentLength){
+
+	moreBtnWrapper[0].innerHTML = "";
+
+	if(contentLength <= 5) {
+
+		return;
+
+	}else if(contentLength > contentCount){
+		
+		const btn = document.createElement('button');
+		btn.classList.add('moreBtn')
+		btn.setAttribute("type", "button")
+		btn.innerHTML = "더 보기<br>∨";
+		
+		moreBtnWrapper[0].append(btn)
+
+		btn.addEventListener("click", () => {
+				
+			textItmeList.style.height = textItmeList.offsetHeight+200+'px';
+			
+			contentCount += 5;
+			more(contentLength)
+		})
+
+
+	} else if(contentLength < contentCount && contentCount > 8) {
+
+		const btn = document.createElement('button');
+		btn.classList.add('moreBtn')
+		btn.setAttribute("type", "button")
+		btn.innerHTML = "접기<br>∧";
+		
+		moreBtnWrapper[0].append(btn)
+
+		btn.addEventListener("click", () => {
+				
+			textItmeList.style.height ='190px';
+			
+			contentCount = 5;
+	
+			more(contentLength)
+		})
+
+	} 
+	
+}
+more(contentLength)
 
 function move(){
 
@@ -93,7 +147,7 @@ for(var i = 0 ; i < askTo.length ; i++){
 
 				btn.addEventListener("click", () => {
 						
-					textItmeList.style.height ='200px';
+					textItmeList.style.height ='190px';
 					
 					contentCount = 5;
 			
