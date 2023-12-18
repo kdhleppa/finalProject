@@ -266,12 +266,16 @@ modalUploadBtn.addEventListener('click', e => {
 			
 			const plusCampingSiteDivLeftSec = document.createElement('section');
 			plusCampingSiteDivLeftSec.classList.add('plusCampingSiteDivLeftSec');
+
+			const plusCampingSampleImgDiv = document.createElement('div');
+			plusCampingSampleImgDiv.classList.add('plusCampingSampleImgDiv');
 			
 			const plusCampingSampleImg = document.createElement('img');
 			plusCampingSampleImg.classList.add('plusCampingSampleImg');
 			plusCampingSampleImg.src = campDetailList[i].campDeThumbnail;
 			
-			plusCampingSiteDivLeftSec.append(plusCampingSampleImg);
+			plusCampingSampleImgDiv.append(plusCampingSampleImg);
+			plusCampingSiteDivLeftSec.append(plusCampingSampleImgDiv);
 			
 			const plusCampingSiteDivRightSec = document.createElement('section');
 			plusCampingSiteDivRightSec.classList.add('plusCampingSiteDivRightSec');

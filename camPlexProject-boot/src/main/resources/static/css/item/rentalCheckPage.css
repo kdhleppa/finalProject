@@ -116,10 +116,14 @@
     font-size: 1.7rem;
 }
 
+.itemInputDiv {
+    border-bottom: 1px solid #909090;
+}
+
 .itemInput{
 	height: 100%;
-    width: 28rem;
-    padding-left: 1rem;
+    width: 20rem;
+    padding-left: 0.5rem;
     border: none;
     border-radius: 20px;
     font-size: large;
