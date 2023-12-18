@@ -22,9 +22,52 @@
   <img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white">
   
 </p>
-<h1>팀원 소개</h1>
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=kdhleppa)](https://github.com/anuraghazra/github-readme-stats)
 
+>팀원 소개
 
+###팀장 김동현
+
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=kdhleppa)](https://github.com/anuraghazra/github-readme-stats)
+
+담당 구현 기능 : 렌탈상품 상세보기, 장바구니, 위시리스트, 결제
+
+<br><br>
+<p></p>
+
+###팀원 송원철
+
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=songt110)](https://github.com/anuraghazra/github-readme-stats)
+
+담당 구현 기능 : 
+
+<br><br>
+<p></p>
+
+###팀원 이재경
+
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Jakelee0424 )](https://github.com/anuraghazra/github-readme-stats)
+
+담당 구현 기능 : 
+
+<br><br>
+<p></p>
+
+###팀원 안재윤
+
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=ahnjaeyoun )](https://github.com/anuraghazra/github-readme-stats)
+
+담당 구현 기능 : 
+
+<br><br>
+<p></p>
+
+###팀원 최규연
+
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=rbdus0515 )](https://github.com/anuraghazra/github-readme-stats)
+
+담당 구현 기능 : 
+
+<br><br>
+<p></p>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=3CB371&height=150&section=footer&text='final'&fontSize=20" />
