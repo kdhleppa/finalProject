@@ -146,7 +146,7 @@ main {
     margin-block: 5px;
 }
 
-.rentalObj span {
+#itemCount {
     color: red;
 }
 /* ------------------------------ */

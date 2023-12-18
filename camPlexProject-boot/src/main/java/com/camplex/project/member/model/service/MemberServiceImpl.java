@@ -19,6 +19,7 @@ import com.camplex.project.member.model.dto.Member;
 import com.camplex.project.member.model.dto.MyPage;
 import com.camplex.project.member.model.dto.Wishlist;
 import com.camplex.project.paysys.model.dto.Payment;
+import com.camplex.project.paysys.model.dto.Reservations;
 import com.camplex.project.qna.model.dto.Qna;
 import com.camplex.project.qna.model.dto.ceoQna;
 
@@ -311,6 +312,17 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.selectQnaOne(qnaNo);
 	}
 
+	// 멤버 넘버로 예약 내역 관리 조회
+	@Override
+	public List<Map<String, Object>> selectReservationList(Member member) {
+		return mapper.selectReservationList(member);
+	}
+
+	// 예약 내역 아이템 리스트 조회
+	@Override
+	public List<ItemInfoMypage> selectItemList(int ss) {
+		return mapper.selectItemList(ss);
+    
 	/** 문의사항 캠핑장문의 답변보기
 	 * 
 	 */
