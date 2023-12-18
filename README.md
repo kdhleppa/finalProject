@@ -80,11 +80,29 @@
 -메인페이지(총 5개 페이지로 스크롤되는 메인페이지)-
 
 
-<img width="951" alt="image" src="https://github.com/kdhleppa/finalProject/assets/139315831/bd4a8abb-cfd8-4a34-aab7-ff7464b0a2b6">
+<img width="890" alt="image" src="https://github.com/kdhleppa/finalProject/assets/139315831/bd4a8abb-cfd8-4a34-aab7-ff7464b0a2b6">
+<br><br><p></p>
 
--캠핑장 목록조회, 검색페이지-
+-캠핑장 목록조회 & 검색페이지-
 
-<img width="946" alt="캠핑장 목록" src="https://github.com/kdhleppa/finalProject/assets/139315831/246e83ce-d1c8-4de3-9b7b-83bd40d44715">
+<img width="890" alt="캠핑장 목록" src="https://github.com/kdhleppa/finalProject/assets/139315831/246e83ce-d1c8-4de3-9b7b-83bd40d44715">
+<br><br><p></p>
+
+-캠핑장 상세보기 & 예약페이지-
+
+<img width="944" alt="캠팽장디테일" src="https://github.com/kdhleppa/finalProject/assets/139315831/65118f64-c62b-4371-85e7-5d0c61656c26">
+<br><br><p></p>
+
+-예약정보 입력페이지-
+
+<img width="944" alt="예약정보 입력" src="https://github.com/kdhleppa/finalProject/assets/139315831/986a2be8-8930-4279-890d-b1d03c827bce">
+<br><br><p></p>
+
+
+
+<img width="952" alt="image" src="https://github.com/kdhleppa/finalProject/assets/139315831/519cc936-8ab6-4de4-8aef-bcee39c42a6b">
+<br><br><p></p>
+
 
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=3CB371&height=150&section=footer&text='final'&fontSize=20" />
