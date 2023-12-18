@@ -206,8 +206,9 @@ for(var i = 0 ; i < askTo.length ; i++){
 						textList.classList.add('textList');
 	
 						const a = document.createElement('a');
-						a.setAttribute("id", `qna${qna.ceoQnaNo}`)
+						a.setAttribute("id", `qna_${qna.ceoQnaNo}`)
 						a.innerHTML = `${qna.ceoQnaCreateDate}&nbsp; (${qna.campName}) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${qna.ceoQnaTitle}`
+						a.classList.add('qnaBtn');
 	
 						if(qna.ceoAnswerFlag == 'Y'){
 							const done = document.createElement('a');
@@ -228,6 +229,7 @@ for(var i = 0 ; i < askTo.length ; i++){
 				textItemSection.append(textItmeList, empty2);
 				textItemSection.prepend(empty2);
 				more(data.length)
+				modalCeo()
 			})
 
 		}
@@ -562,6 +564,54 @@ function modal(){
 	}
 }
 
+modalCeo()
+
+function modalCeo(){
+	let qnaBtn = document.querySelectorAll(".qnaBtn");
+	let modalContainerPopup = document.getElementById('modalContainerPopup');
+	let QNAAnswerTitle = document.getElementById('QNAAnswerTitle')
+	let QNAAnswerContent = document.getElementById('QNAAnswerContent')
+	let QNAAnswer = document.getElementById('QNAAnswer')
+	
+	for(var i = 0 ; i <qnaBtn.length ; i++){
+	
+		qnaBtn[i].addEventListener("click", e => {
+	
+			modalContainerPopup.classList.remove('hidden');
+	
+			const ceoQnaNo = (e.target.id).split("_")[1]
+			
+			fetch("/member/selectCeoQnaOne?ceoQnaNo=" + ceoQnaNo)
+			.then(resp => resp.json())
+			.then(data => {
+	
+				QNAAnswerTitle.innerText=`${data.ceoQnaTitle}`
+				QNAAnswerContent.innerText = `${data.ceoQnaContent}`
+	
+				if(data.qnaanswer == null){
+	
+					QNAAnswer.innerText = "답변 대기중"
+	
+				} else {
+	
+					QNAAnswer.innerText = `${data.qnaanswer}`
+	
+				}
+	
+	
+			})
+	
+	
+		})
+	
+		window.addEventListener('click', (e) => {
+		
+			e.target === modalContainerPopup ? modalContainerPopup.classList.add('hidden') : false
+			
+		});
+	
+	}
+}
 
 
 

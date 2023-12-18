@@ -478,6 +478,13 @@
 		WHERE QNA_NO = #{qnaNo}
 	</select>
 	
+	<!-- qna -->
+	<select id="selectCeoQnaOne" resultMap="qna_rm">
+		SELECT *
+		FROM CEO_QNA
+		WHERE CEO_QNA_NO = #{ceoQnaNo}
+	</select>
+	
 	
 	
 	

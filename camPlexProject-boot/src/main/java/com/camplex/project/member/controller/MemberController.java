@@ -889,7 +889,10 @@ public class MemberController {
 		return list;
 	}
 	
-	
+	/** 문의사항 관리자문의 답변보기
+	 * @param qnaNo
+	 * @return
+	 */
 	@ResponseBody
 	@GetMapping("/selectQnaOne")
 	public Qna selectQnaOne(int qnaNo) {
@@ -899,6 +902,17 @@ public class MemberController {
 		return qna;
 	}
 	
-	
+	/** 문의사항 캠핑장문의 답변보기
+	 * @param qnaNo
+	 * @return
+	 */
+	@ResponseBody
+	@GetMapping("/selectCeoQnaOne")
+	public Qna selectCeoQnaOne(int ceoQnaNo) {
+		
+		Qna qna = service.selectCeoQnaOne(ceoQnaNo);
+		
+		return qna;
+	}
 	
 }
