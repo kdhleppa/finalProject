@@ -3,9 +3,12 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=3CB371&height=150&section=header&text='CamPlexProject'&fontSize=20" />
 
+<br><br><p></p>
+
 >프로젝트 소개
 <h3>파이날 프로젝트로서 캠핑장예약과 함께 간단한 장비 렌탈이 가능한 사이트를 만들고자 했습니다.</h3>
 
+<br><br><p></p>
 
 >사용된 기술 스택
 <p>
@@ -22,6 +25,8 @@
   <img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white">
   
 </p>
+
+<br><br><p></p>
 
 >팀원 소개
 
@@ -69,5 +74,17 @@
 
 <br><br>
 <p></p>
+
+>사이트 소개
+
+-메인페이지(총 5개 페이지로 스크롤되는 메인페이지)-
+
+
+<img width="951" alt="image" src="https://github.com/kdhleppa/finalProject/assets/139315831/bd4a8abb-cfd8-4a34-aab7-ff7464b0a2b6">
+
+-캠핑장 목록조회, 검색페이지-
+
+<img width="946" alt="캠핑장 목록" src="https://github.com/kdhleppa/finalProject/assets/139315831/246e83ce-d1c8-4de3-9b7b-83bd40d44715">
+
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=3CB371&height=150&section=footer&text='final'&fontSize=20" />
