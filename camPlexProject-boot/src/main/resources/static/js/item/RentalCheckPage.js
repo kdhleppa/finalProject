@@ -518,7 +518,16 @@ function deleteItem(itemNo) {
 
 };
 
+// 검색 focus, focusout
+const itemInputDiv = document.getElementById('itemInputDiv');
 
+itemInput.addEventListener('focus', (e) => {
+	itemInputDiv.style.borderBottom = "none";
+});
+
+itemInput.addEventListener('focusout', (e) => {
+	itemInputDiv.style.borderBottom = "1px solid #909090";
+})
 
 
 
