@@ -327,7 +327,7 @@ public class MemberServiceImpl implements MemberService {
 	 * 
 	 */
 	@Override
-	public Qna selectCeoQnaOne(int ceoQnaNo) {
+	public ceoQna selectCeoQnaOne(int ceoQnaNo) {
 		return mapper.selectCeoQnaOne(ceoQnaNo);
 	}
 

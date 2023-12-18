@@ -479,6 +479,13 @@
 		WHERE QNA_NO = #{qnaNo}
 	</select>
 	
+	<!-- ceoQna -->
+	<select id="selectCeoQnaOne" resultMap="ceoQna_rm">
+    SELECT *
+		FROM CEO_QNA
+		WHERE CEO_QNA_NO = #{ceoQnaNo}
+	</select>
+    
 	<!-- 멤버넘버로 예약내약관리 조회 -->
     <select id="selectReservationList" resultType="Map">
             SELECT A.RESERVATION_NO
@@ -510,15 +517,6 @@
 		FROM RENTAL_PAYMENT_ITEM A
 		WHERE RESERVATION_NO = #{resNo}
 	</select>
-  
-	<!-- qna -->
-	<select id="selectCeoQnaOne" resultMap="qna_rm">
-		SELECT *
-		FROM CEO_QNA
-		WHERE CEO_QNA_NO = #{ceoQnaNo}
-	</select>
-	
-	
 	
 	
 </mapper>

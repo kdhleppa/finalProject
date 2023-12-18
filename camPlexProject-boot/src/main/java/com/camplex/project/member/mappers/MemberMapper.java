@@ -119,7 +119,7 @@ public interface MemberMapper {
 	 * @param qnaNo
 	 * @return
 	 */
-	Qna selectCeoQnaOne(int qnaNo);
+	ceoQna selectCeoQnaOne(int qnaNo);
 
 
 

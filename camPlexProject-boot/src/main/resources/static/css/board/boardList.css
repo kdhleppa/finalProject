@@ -108,6 +108,7 @@ button {
 
 #boardSearch {
     display: flex;
+    width: 100%;
     background-color: transparent;
 }
 
@@ -118,14 +119,19 @@ button {
 
 #boardSearch > :nth-child(2) {
     border-style: 1px rgb(217, 212, 212);
-    margin-right: 152px;
+    margin-right: 10%;
+    height: 2.21rem;
+}
+
+#searchField {
+	width: 30%;
 }
 
 #searchQuery {
 	margin-top: 2px;
     border-style: none;
     outline: none;
-    width: 350px;
+    width: 90%;
     font-size: 18px;
     height: 25px;
     font-family: 'HakgyoansimSantteutdotumL';
@@ -135,7 +141,6 @@ button {
 #searchIcon {
     background-color: transparent;
     border-style: none;
-    margin-right: 1rem;
 }
 
 /* 게시판 리스트 */
