@@ -693,6 +693,43 @@ public class MemberController {
         return "member/reservationNManage";
 	}
 	
+	// 관리자 예약 정보 확인 페이지 이동
+	@GetMapping("/reservationNManageAll")
+	public String reservationNManageAll(@SessionAttribute("loginMember") Member loginMember,
+			Model model) throws ParseException {
+		
+		Member member = new Member();
+		member.setMemberNo(loginMember.getMemberNo());
+		
+		List<Map<String, Object>> reservationListAll = service.selectReservationListAll();
+		List<ItemInfoMypage> itemList = new ArrayList<>();
+		
+		for(int i= 0; i < reservationListAll.size(); i++) {
+			
+			String resNo = String.valueOf(reservationListAll.get(i).get("RESERVATION_NO"));
+			int ss = Integer.parseInt(resNo);
+			
+			System.out.println("ss : " + ss);
+			
+			List<ItemInfoMypage> list = service.selectItemList(ss);
+			
+			System.out.println(list);
+			
+			if(list != null) {
+				itemList.addAll(list);
+				reservationListAll.get(i).put("itemList", list);
+			}
+			
+		}
+		
+		System.out.println("itemList : " + itemList);
+		System.out.println("reservationListAll : " + reservationListAll);
+		
+		model.addAttribute("reservationList", reservationListAll);
+		
+		return "member/reservationNManageAll";
+	}
+	
 	// 위시리스트 추가
 	@PostMapping("/wishlist/insert")
 	public String wishlistInsert(

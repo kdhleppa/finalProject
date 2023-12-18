@@ -57,7 +57,7 @@ public class FilterConfig {
 		
 		resiRegistrationBean.setFilter(new ManagerFilter());
 		
-		String[] url = {"/member/managerMyPage"};
+		String[] url = {""};
 		resiRegistrationBean.setUrlPatterns(Arrays.asList(url)); // url 패턴 여러 개 지정
 		resiRegistrationBean.setName("managerFilter"); // 이름
 		resiRegistrationBean.setOrder(3); // 여러 필터가 있을 때 순서

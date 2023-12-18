@@ -322,13 +322,20 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<ItemInfoMypage> selectItemList(int ss) {
 		return mapper.selectItemList(ss);
-    
+	}
+		
 	/** 문의사항 캠핑장문의 답변보기
 	 * 
 	 */
 	@Override
 	public ceoQna selectCeoQnaOne(int ceoQnaNo) {
 		return mapper.selectCeoQnaOne(ceoQnaNo);
+	}
+
+	// 관리자 예약 정보 확인 페이지 이동
+	@Override
+	public List<Map<String, Object>> selectReservationListAll() {
+		return mapper.selectReservationListAll();
 	}
 
 
