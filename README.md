@@ -36,7 +36,7 @@
 
 ###팀원 송원철
 
-[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=songt110)](https://github.com/anuraghazra/github-readme-stats)
+[![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=songt1107)](https://github.com/anuraghazra/github-readme-stats)
 
 담당 구현 기능 : 
 
