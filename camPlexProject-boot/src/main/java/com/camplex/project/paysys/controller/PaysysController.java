@@ -171,7 +171,7 @@ public class PaysysController {
 		model.addAttribute("rsvInfo2", rsvInfo2);
 		model.addAttribute("wishlist", wishlist);
 		
-		return "/paysys/rentCart";
+		return "paysys/rentCart";
 	}
 	
 	@ResponseBody
