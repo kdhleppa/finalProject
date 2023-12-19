@@ -70,8 +70,8 @@
 
             <!-- 예약 정보 확인, 1대 1문의, 업데이트 요청 -->
             <section class="functionBtn">
-                <a class="clickBtn">예약 정보 확인<span>&nbsp;&nbsp;3</span></a>
-                <a class="clickBtn">1대 1 문의<span>&nbsp;&nbsp;1</span></a>
+                <a class="clickBtn" th:href="@{/member/reservationNManageAll}">예약 정보 확인</a>
+                <a class="clickBtn" th:href="@{/qna/qnaList}">1대 1 문의<span>&nbsp;&nbsp;</span></a>
                 
                 <section th:unless="${levelUpFormCount} == 0"><a class="clickBtn" th:href="@{/member/levelUpFormCheck}">등업신청 요청<span th:text="'&nbsp;&nbsp;' + ${levelUpFormCount}"></span></a></section>
                 <section th:if="${levelUpFormCount} == 0"><a class="clickBtn" th:href="@{/member/levelUpFormCheck}">등업신청 요청</a></section>
@@ -98,6 +98,9 @@
     <div class="empty5"></div>
     
 	<th:block th:replace="~{common/footer}"></th:block>
+	
+	<script th:src="@{/js/member/myPage.js}"></script>
+
 
 </body>
 </html>

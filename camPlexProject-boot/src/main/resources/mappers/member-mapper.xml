@@ -518,5 +518,22 @@
 		WHERE RESERVATION_NO = #{resNo}
 	</select>
 	
+	<!-- 관리자용 예약 내역 조회 -->
+	<select id="selectReservationListAll" resultType="Map">
+            SELECT A.RESERVATION_NO
+			     , A.MEMBER_NO 
+			     , TO_CHAR(A.CAMP_ENTDATE, 'YYYY.MM.DD') AS CAMP_ENT_DATE
+			     , TO_CHAR(A.CAMP_OUTDATE, 'YYYY.MM.DD') AS CAMP_OUT_DATE
+			     , A.ADULT_COUNT 
+			     , A.KID_COUNT
+			     , C.CAMP_DE_NAME
+			     , B.CAMP_ADDRESS 
+			  FROM RESERVATIONS A
+			 INNER JOIN CAMPING_SITE B 
+			    ON B.CAMP_NO = A.CAMP_NO
+			 INNER JOIN CAMPING_DETAIL C 
+			    ON C.CAMP_DE_NO = A.CAMP_DE_NO 
+			 ORDER BY A.CAMP_ENTDATE DESC
+    </select>
 	
 </mapper>

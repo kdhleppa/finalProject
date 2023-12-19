@@ -121,9 +121,6 @@ main {
 }
 
 #nameTel, #nicknameEmail > p {
-    text-decoration-line: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 5px;
     font-size: 15px;
 }
 
@@ -172,7 +169,7 @@ main {
 	align-items: end;
 	font-weight: bold;
 	font-size: 17px;
-	width: 200px;
+	width: 160px;
 }
 
 .shopingListInfo {
@@ -191,7 +188,6 @@ main {
 .buyHistoryInfo {
     display: flex;
     margin-top: 30px;
-	justify-content: space-around;
 }
 
 .imgSection {
@@ -257,7 +253,7 @@ main {
 	align-items: end;
 	font-weight: bold;
 	font-size: 17px;
-	width: 200px;
+	width: 160px;
 }
 
 #shopingListInfo {

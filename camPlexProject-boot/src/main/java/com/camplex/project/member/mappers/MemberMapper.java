@@ -121,6 +121,9 @@ public interface MemberMapper {
 	 */
 	ceoQna selectCeoQnaOne(int qnaNo);
 
+	// 관리자 예약 정보 확인 페이지 이동
+	List<Map<String, Object>> selectReservationListAll();
+
 
 
 

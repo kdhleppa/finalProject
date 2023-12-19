@@ -246,6 +246,7 @@ main {
     font-size: 1rem;
     border-radius: 5px;
     text-align: center;
+    cursor: pointer;
 }
 
 /* fixed map */
