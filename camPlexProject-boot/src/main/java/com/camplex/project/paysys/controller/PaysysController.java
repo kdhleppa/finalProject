@@ -195,6 +195,8 @@ public class PaysysController {
 	@PostMapping("/camp")
 	public String payCamp(InfoForReservation info, Model model) {
 		
+		System.out.println(info);
+		
 		model.addAttribute("info", info);
 		
 		return "paysys/campPay";
