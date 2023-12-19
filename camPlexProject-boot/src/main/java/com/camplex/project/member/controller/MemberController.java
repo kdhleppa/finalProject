@@ -92,19 +92,18 @@ public class MemberController {
 		Member loginMember = service.loginMember(inputMember);
 		
 		String path = "redirect:";
-		
+		String msg = "";
 		
 		if(loginMember != null) {
 			path += "/";
-			ra.addFlashAttribute("message", loginMember.getMemberNickname() + "님 환영합니다.");
-			
 			model.addAttribute("loginMember", loginMember);
+			msg = loginMember.getMemberNickname() + "님 환영합니다.";
 		} else {
 			path += referer;
-			
-			ra.addFlashAttribute("message", "아이디 또는 비밀번호 불일치");
+			msg = "아이디 또는 비밀번호 불일치";
 		}
 		
+		ra.addFlashAttribute("message", msg);
 		return path;
 	}
 	

@@ -100,7 +100,7 @@ public class ItemController2 {
 			path += referer;
 		}
 		
-		ra.addFlashAttribute(message);
+		ra.addFlashAttribute("message", message);
 		
 		
 		return path;
@@ -139,7 +139,7 @@ public class ItemController2 {
 			path += referer;
 		}
 		
-		ra.addAttribute("message", message);
+		ra.addFlashAttribute("message", message);
 		
 		return path;
 	}
