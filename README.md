@@ -12,6 +12,27 @@
 
 >사용된 기술 스택
 
+>OS
+<p>
+  
+</p>
+
+>Language & Framework
+<p>
+  
+</p>
+
+>Tools
+<p>
+  
+</p>
+
+
+>API
+<p>
+  
+</p>
+
 https://github.com/Envoy-VC/awesome-badges
 
 <p>
