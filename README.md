@@ -12,7 +12,7 @@
 
 >사용된 기술 스택
 
-<a href="https://github.com/Envoy-VC/awesome-badges">
+https://github.com/Envoy-VC/awesome-badges
 
 <p>
   <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
