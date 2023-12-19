@@ -224,8 +224,8 @@ public class PaysysController {
 		
 		switch(bank) {
 		
-			case "toss" : bank = "토스뱅크 100001065362 최규연"; break;
-			case "kb" : bank ="국민은행 00440204106870 이재경"; break;
+			case "toss" : bank = "토스뱅크 100001111111 최규연"; break;
+			case "kb" : bank ="국민은행 004402111111 이재경"; break;
 		
 		}
 		

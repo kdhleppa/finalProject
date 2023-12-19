@@ -144,10 +144,10 @@ function makeAccount() {
 
     const option = document.createElement('option');
     option.setAttribute("value", "kb")
-    option.innerText = "국민은행 00440204106870 이재경";
+    option.innerText = "국민은행 004402111111 이재경";
     const option2 = document.createElement('option');
     option2.setAttribute("value", "toss")
-    option2.innerText = "토스뱅크 100001065362 최규연";
+    option2.innerText = "토스뱅크 100001111111 최규연";
 
     select.append(option, option2)
 
