@@ -672,11 +672,7 @@ public class MemberController {
         	String resNo = String.valueOf(reservationList.get(i).get("RESERVATION_NO"));
             int ss = Integer.parseInt(resNo);
             
-            System.out.println("ss : " + ss);
-            
             List<ItemInfoMypage> list = service.selectItemList(ss);
-            
-            System.out.println(list);
             
             if(list != null) {
             	itemList.addAll(list);
@@ -684,9 +680,6 @@ public class MemberController {
             }
             
 	    }
-        
-        System.out.println("itemList : " + itemList);
-        System.out.println("reservationList : " + reservationList);
         
         model.addAttribute("reservationList", reservationList);
         
@@ -709,11 +702,7 @@ public class MemberController {
 			String resNo = String.valueOf(reservationListAll.get(i).get("RESERVATION_NO"));
 			int ss = Integer.parseInt(resNo);
 			
-			System.out.println("ss : " + ss);
-			
 			List<ItemInfoMypage> list = service.selectItemList(ss);
-			
-			System.out.println(list);
 			
 			if(list != null) {
 				itemList.addAll(list);
@@ -721,9 +710,6 @@ public class MemberController {
 			}
 			
 		}
-		
-		System.out.println("itemList : " + itemList);
-		System.out.println("reservationListAll : " + reservationListAll);
 		
 		model.addAttribute("reservationList", reservationListAll);
 		
