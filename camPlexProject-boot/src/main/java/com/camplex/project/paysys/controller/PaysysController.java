@@ -177,8 +177,7 @@ public class PaysysController {
 	@ResponseBody
 	@PostMapping("/quantityUpdateCart")
 	public ResponseEntity<?> quantityUpdateCart(@RequestBody CartItem cartItem) {
-	    int itemQuantity = cartItem.getItemQuantity();
-	    int cartItemNo = cartItem.getCartItemNo();
+	  
 	    int result = payService.quantityUpdateCart(cartItem);
 	    if (result > 0) {
 	        return ResponseEntity.ok().body(new ResponseMessage("성공"));
