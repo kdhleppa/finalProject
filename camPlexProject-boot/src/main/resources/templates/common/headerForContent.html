@@ -42,11 +42,18 @@
 
 
 
-<script th:inline="javascript">
-	
+	<script th:inline="javascript">
 
-	const message = /*[[${message}]]*/ "전달받은 메세지(보통은 에러메세지)";
-	console.log(message);
-	if(message != null) alert(message);
-
-</script> 
+		window.onpageshow = function(event) {
+			if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+			  console.log("test");
+				 location.reload();
+			} else {
+			  const message = /*[[${message}]]*/ "전달받은 메세지(보통은 에러메세지)";
+			  console.log(message);
+			  if(message != null) alert(message);
+			  
+		   }
+		}   
+	 
+	</script> 
