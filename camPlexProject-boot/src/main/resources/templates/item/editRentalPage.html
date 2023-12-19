@@ -42,18 +42,20 @@
 	                </div>
 	                
 	                <div class="detailBtn">
-	                    <label class="imgLabel" for="img1">
-							
+						<br><br>
+						<span>상품 설명 이미지</span><br><br>
+						<input type="file" name="itemImages" class="inputImage" id="img1" accept="image/*">
+						<label class="imgLabelInfoImg" for="img1">
+
 							<th:block th:if="${item.itemDeImg} != null">
 		                        <img class="preview" th:src="${item.itemDeImg}">					
 							</th:block>
-							
+
 							<th:block th:unless="${item.itemDeImg} != null">
 		                        <img class="preview">					
 							</th:block>
-							
+
 	                    </label>
-	                    <input type="file" name="itemImages" class="inputImage" id="img1" accept="image/*">
 	                </div>
 		                
 	

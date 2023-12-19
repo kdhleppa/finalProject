@@ -35,8 +35,7 @@ public class ItemController {
 	public String itemDetail(
 			@PathVariable("itemNo") int itemNo,
 			Model model,
-			@SessionAttribute(value="loginMember", required = false)Member loginMember,
-			RedirectAttributes ra
+			@SessionAttribute(value="loginMember", required = false)Member loginMember
 			) {
 		
 		Item item= service.selectDetail(itemNo);
