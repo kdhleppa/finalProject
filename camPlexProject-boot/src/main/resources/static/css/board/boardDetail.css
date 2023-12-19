@@ -90,13 +90,17 @@ button {
     text-align: center;
 }
 
+.boardDeTitle {
+	width: 60%;
+}
+
 .boardTitle {
 	font-size: 28px;
 }
 
 .boardImg {
 	display: flex;
-	width: 75rem;
+	width: 100%;
 }
 
 .boardDeRight {
@@ -146,7 +150,11 @@ img {
 
 .img-box > div {
 	margin-top: 3rem;
-	margin-left: 4rem;
+}
+
+.uploadImg {
+	margin-left: 3rem;
+	margin-right: 1rem;
 }
 
 
@@ -206,7 +214,7 @@ img {
     margin-right: 1rem;
 }
 
-#listBtn {
+#backBtn {
     font-family: 'HakgyoansimSantteutdotumL';
     width: 5rem;
     height: 2rem;
@@ -247,7 +255,6 @@ img {
 }
 
 #commentList{
-    margin-left: 35rem;
     margin-top: 2rem;
 	padding: 0;
 	list-style: none;
@@ -284,7 +291,6 @@ img {
 .comment-btn-area {
     display: flex;
     justify-content: flex-end;
-    margin-right: 28rem;
 }
 
 .comment-btn-area button{
@@ -297,7 +303,7 @@ img {
 }
 
 .update-textarea{
-	width: 66%;
+	width: 80%;
     height: 90px;
     resize: none;
     border-radius: 10px;
@@ -306,6 +312,8 @@ img {
 }
 
 .comment-row{
+	margin-left: 25%;
+	width: 50%;
 	padding : 15px 0;
 }
 
@@ -331,12 +339,12 @@ img {
 .comment-content {
 	font-family: 'HakgyoansimSantteutdotumL';
 	margin-top: 20px;
-	width: 65%;
+	width: 100%;
 	word-wrap: break-word;
 }
 
 .commentInsertContent{
-	width: 52rem;
+	width: 95%;
     height: 90px;
     resize: none;
     border-radius: 10px;

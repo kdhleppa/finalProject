@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>1:1 문의목록 (관리자) - 답변완료</title>
+
+	<link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+	<link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+	<link
+		th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}"
+		rel="stylesheet">
+	<script th:src="@{https://kit.fontawesome.com/92fbd4b351.js}" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" th:href="@{/css/qna/qnaList.css}">
+</head>
+
+<body>
+
+	<th:block th:replace="~{common/headerForContent}"></th:block>
+
+	<main>
+
+		<section class="qnaTop">
+			<p>1:1 문의목록 (관리자) - 답변완료</p>
+		</section>
+
+		<hr style="height: 0.2rem; background-color:black; margin-top: 1rem; margin-left: 8%; width: 84%; margin-right: 40%;">
+
+		<div class="qnaTypeDiv">
+			<a class="qnaType" th:href="@{/qna/qnaList}">미답변 문의</a>
+			<p class="qnaType">ㅣ</p>
+			<a class="qnaType" th:href="@{/qna/qnaYList}">답변완료 문의</a>
+		</div>
+
+		<section class="sectionList" th:if="${session.loginMember != null and session.loginMember.memberType == 'M'}">
+			<div class="form-container" id="formContainer" th:object="${qna}">
+
+				<div id="divListContainer">
+
+
+					<th:block class="thBlock" th:each="qna : ${list}">
+
+						<div class="divList">
+
+							<div class="qnaListHead">
+
+								<div class="qnaNo">
+									<p id="QNANo" name="QNANo" class="form-control" th:text="${qna.QNANo}">문의번호</p>
+								</div>
+
+								<div class="memberNickname">
+									<p id="memberNickname" name="memberNickname" class="form-control"
+										th:text="${qna.memberNickname}">
+								</div>
+
+								<div class="qnaTitle">
+									<p id="QNATitle" name="QNATitle" class="form-control" th:text="${qna.QNATitle}">
+								</div>
+							</div>
+
+							<div class="qnaContent">
+								<p id="QNAContent" name="QNAContent" class="form-control" th:text="${qna.QNAContent}">
+							</div>
+
+							<form class="qnaAnswer" th:action="@{qnaAnswer}" id="qnaAnswerFrm"
+								enctype="multipart/form-data">
+
+								<div class="qnaAnswer">
+									<textarea id="QNAAnswer" name="QNAAnswer" class="form-control"
+										th:text="${qna.QNAAnswer}"></textarea>
+								</div>
+
+								<div class="btnArea">
+									<button type="submit" class="writeBtn">답변수정하기</button>
+								</div>
+
+								<input type="hidden" name="qnaNo" th:value="${qna.QNANo}">
+
+							</form>
+
+						</div>
+
+					</th:block>
+
+				</div>
+
+			</div>
+		</section>
+
+		<div class="btnArea">
+			<button id="loadMoreBtn">더보기</button>
+
+			<button id="collapseBtn">접기</button>
+		</div>
+
+	</main>
+
+	<th:block th:replace="~{common/footer}"></th:block>
+
+
+</body>
+
+<script th:inline="javascript">
+	const memberType = /*[[${session.loginMember?.memberType}]]*/ "로그인 회원타입";
+	const loginMemberNo = /*[[${session.loginMember?.memberNo}]]*/ "로그인 회원번호";
+
+	if (loginMemberNo == null) loginMemberNo = "";
+
+	console.log(loginMemberNo);
+
+</script>
+
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
+<script th:src="@{https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js}"></script>
+
+<script th:src="@{/js/qna/qnaList.js}"></script>
+
+</html>

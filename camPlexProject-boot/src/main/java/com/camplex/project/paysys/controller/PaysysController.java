@@ -171,7 +171,7 @@ public class PaysysController {
 		model.addAttribute("rsvInfo2", rsvInfo2);
 		model.addAttribute("wishlist", wishlist);
 		
-		return "/paysys/rentCart";
+		return "paysys/rentCart";
 	}
 	
 	@ResponseBody
@@ -194,6 +194,8 @@ public class PaysysController {
 	 */
 	@PostMapping("/camp")
 	public String payCamp(InfoForReservation info, Model model) {
+		
+		System.out.println(info);
 		
 		model.addAttribute("info", info);
 		

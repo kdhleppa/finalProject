@@ -108,6 +108,22 @@ boardUpdateFrm.addEventListener('submit', e => {
         e.preventDefault(); // form 기본 이벤트 제거
         return;
     }
+    
+    var text = boardContent.value;
+
+    // 바이트 수 계산
+    var encoder = new TextEncoder('UTF-8');
+    var bytes = encoder.encode(text).length;
+
+    // 최대 바이트 수
+    var maxBytes = 4000;
+
+    if (bytes > maxBytes) {
+        alert("내용이 너무 깁니다.");
+        boardContent.focus();
+        e.preventDefault(); // form 기본 이벤트 제거
+        return;
+    }
 
 
     // input type="hidden" 태그에
@@ -142,23 +158,8 @@ function quilljsediterInit(){
 
     quill = new Quill('#editor', option);
     
-    quill.on('text-change', function (delta, oldDelta, source) {
-        // 현재 텍스트 가져오기
-        var text = quill.getText();
-        // 바이트 수 계산
-        var bytes = new TextEncoder('utf-8').encode(text).length;
-
-        // 최대 바이트 수
-        var maxBytes = 4000;
-
-        if (bytes > maxBytes) {
-            quill.deleteText(text.length - 1, 1);
-            // 알림 표시
-            alert("더 이상 입력할 수 없습니다.");
-        } else {
-            // 최대 바이트 수를 초과하지 않으면 입력 허용
-            document.getElementById("boardContent").value = text;
-        }
+    quill.on('text-change', function() {
+        document.getElementById("boardContent").value = quill.root.innerHTML;
     });
 
     quill.getModule('toolbar').addHandler('image', function () {

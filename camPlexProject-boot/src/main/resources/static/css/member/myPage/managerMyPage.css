@@ -103,9 +103,6 @@ main {
 }
 
 #nameTel, #nicknameEmail > p {
-    text-decoration-line: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 5px;
     font-size: 15px;
 }
 
@@ -121,6 +118,10 @@ main {
     display: flex;
     justify-content: space-evenly;
     margin-top: 50px;
+}
+
+.functionBtn > :nth-child(2) {
+	margin-left: 18px;
 }
 
 .functionBtn a {
