@@ -7,7 +7,7 @@
     unicode-range: U+AC00-D7A3;
 }
 
-.qnaTop > p {
+.ceoQnaTop > p {
 	font-size: 30px;
 	margin-top: 5rem;
 	margin-left: 10rem;
@@ -34,7 +34,7 @@
 	font-size: 16px;
 }
 
-.qnaListHead {
+.ceoQnaListHead {
 	display: flex;
 }
 
@@ -73,7 +73,7 @@ p {
 	justify-content: space-between;
 }
 
-.qnaNo > p {
+.ceoQnaNo > p {
 	width: 5rem;
 	height: 2rem;
 	text-align: center;
@@ -84,7 +84,7 @@ p {
 	border-radius: 10px;
 }
 
-.memberNickname > p {
+.memberNo > p {
 	width: 8rem;
 	height: 2rem;
 	text-align: center;
@@ -96,7 +96,7 @@ p {
 	border-radius: 10px;
 }
 
-.qnaTitle > p {
+.ceoQnaTitle > p {
 	width: 19rem;
 	height: 2rem;
 	text-align: start;
@@ -109,7 +109,7 @@ p {
 	border-radius: 10px;
 }
 
-.qnaContent > p {
+.ceoQnaContent > p {
 	width: 34rem;
 	height: 12rem;
 	margin-top: 1rem;
@@ -120,7 +120,7 @@ p {
 	border-radius: 10px;
 }
 
-.qnaAnswer > textarea {
+.ceoQnaAnswer > textarea {
 	font-family: 'HakgyoansimSantteutdotumL';
 	width: 34rem;
 	height: 12rem;

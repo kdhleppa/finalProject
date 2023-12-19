@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>1:1 문의목록 (관리자) - 미답변</title>
+	<title>1:1 문의목록 (관리자) - 답변완료</title>
 
 	<link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
 	<link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
@@ -23,7 +23,7 @@
 	<main>
 
 		<section class="qnaTop">
-			<p>1:1 문의목록 (관리자) - 미답변</p>
+			<p>1:1 문의목록 (관리자) - 답변완료</p>
 		</section>
 
 		<hr style="height: 0.2rem; background-color:black; margin-top: 1rem; margin-left: 8%; width: 84%; margin-right: 40%;">
@@ -69,11 +69,11 @@
 
 								<div class="qnaAnswer">
 									<textarea id="QNAAnswer" name="QNAAnswer" class="form-control"
-										placeholder="답변작성"></textarea>
+										th:text="${qna.QNAAnswer}"></textarea>
 								</div>
 
 								<div class="btnArea">
-									<button type="submit" class="writeBtn">답변하기</button>
+									<button type="submit" class="writeBtn">답변수정하기</button>
 								</div>
 
 								<input type="hidden" name="qnaNo" th:value="${qna.QNANo}">

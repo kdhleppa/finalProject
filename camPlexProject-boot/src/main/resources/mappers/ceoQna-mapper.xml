@@ -21,5 +21,40 @@
 		VALUES(SEQ_CEO_QNA_NO.NEXTVAL, #{memberNo}, #{campNo}, #{ceoQnaTitle}, #{ceoQnaContent}, NULL, DEFAULT, DEFAULT)
 	</insert>
 	
+	<select id="ceoQnaCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM CEO_QNA
+		WHERE ANSWER_FL = 'N'
+	</select>
+	
+	<select id="selectCeoQna" resultMap="ceoQna_rm">
+		SELECT CEO_QNA_NO, CEO_QNA_TITLE,
+		CEO_QNA_CONTENT, CEO_QNA_ANSWER, ANSWER_FL, Q_CREATE_DATE, MEMBER_NO, CAMP_NO
+		FROM CEO_QNA
+		WHERE ANSWER_FL = 'N'
+		ORDER BY 'CEO_QNA_NO' ASC
+	</select>
+	
+	<select id="selectCeoQnaY" resultMap="ceoQna_rm">
+		SELECT CEO_QNA_NO, CEO_QNA_TITLE,
+		CEO_QNA_CONTENT, CEO_QNA_ANSWER, ANSWER_FL, Q_CREATE_DATE, MEMBER_NO, CAMP_NO
+		FROM CEO_QNA
+		WHERE ANSWER_FL = 'Y'
+		ORDER BY 'QNA_NO' ASC
+	</select>
+	
+	<update id="insertCeoAnswer">
+		UPDATE CEO_QNA SET
+		CEO_QNA_ANSWER = #{ceoQnaAnswer},
+		ANSWER_FL = 'Y'
+		WHERE CEO_QNA_NO = #{ceoQnaNo}
+	</update>
+ 
+ 	<update id="updateCeoAnswer">
+		UPDATE CEO_QNA SET
+		CEO_QNA_ANSWER = #{ceoQnaAnswer}
+		WHERE CEO_QNA_NO = #{ceoQnaNo}
+	</update>
+	
 	
 </mapper>
