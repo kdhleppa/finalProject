@@ -166,7 +166,7 @@
 		INSERT INTO "PAYMENT"
 		VALUES (#{paymentNo}, #{memberNo}, #{campNo}, #{campDeNo},
 				#{price}, #{price}, '카카오페이', DEFAULT,
-				#{entDate}, #{outDate}, DEFAULT, #{senderName}, NULL)
+				TO_DATE(#{entDate}, 'YYYY-MM-DD'), TO_DATE(#{outDate}, 'YYYY-MM-DD'), DEFAULT, #{senderName}, NULL)
 	</insert>
 	
 	<!-- 렌탈 결제 내역 저장(카카오) -->
