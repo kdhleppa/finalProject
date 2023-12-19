@@ -41,7 +41,7 @@ public class QnaController {
 		
 		model.addAttribute("list", list);
 		
-		return "/qna/qnaList";
+		return "qna/qnaList";
 	}
 	
 	// 1:1 문의(CEO) 답변완료 리스트 이동
