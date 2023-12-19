@@ -23,6 +23,7 @@
   <img src="https://img.shields.io/badge/p5%20js-ED225D?style=for-the-badge&logo=p5dotjs&logoColor=white">
   <img src="https://img.shields.io/badge/Eclipse-2C2255?style=for-the-badge&logo=eclipse&logoColor=white">
   <img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white">
+  <img src="https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=black">
   
 </p>
 
@@ -79,29 +80,42 @@
 
 -메인페이지(총 5개 페이지로 스크롤되는 메인페이지)-
 
+![크기변환 mainpage](https://github.com/kdhleppa/finalProject/assets/139315831/0ad8ff18-0b49-4f4a-b634-47b83c00da40)
 
-<img width="890" alt="image" src="https://github.com/kdhleppa/finalProject/assets/139315831/bd4a8abb-cfd8-4a34-aab7-ff7464b0a2b6">
+
+
 <br><br><p></p>
 
--캠핑장 목록조회 & 검색페이지-
+-캠핑장 목록조회 & 검색페이지 & 지도API-
 
-<img width="890" alt="캠핑장 목록" src="https://github.com/kdhleppa/finalProject/assets/139315831/246e83ce-d1c8-4de3-9b7b-83bd40d44715">
+![camplist](https://github.com/kdhleppa/finalProject/assets/139315831/7d2a68d3-a5d7-4640-a3c9-c61d7cb558b0)
+
 <br><br><p></p>
 
 -캠핑장 상세보기 & 예약페이지-
 
-<img width="944" alt="캠팽장디테일" src="https://github.com/kdhleppa/finalProject/assets/139315831/65118f64-c62b-4371-85e7-5d0c61656c26">
+![camdetail](https://github.com/kdhleppa/finalProject/assets/139315831/ad3d1a9e-2b40-4a5f-93d9-140e6fad53a9)
+
 <br><br><p></p>
 
--예약정보 입력페이지-
+-렌탈상품 조회 페이지-
 
-<img width="944" alt="예약정보 입력" src="https://github.com/kdhleppa/finalProject/assets/139315831/986a2be8-8930-4279-890d-b1d03c827bce">
+![itemlist](https://github.com/kdhleppa/finalProject/assets/139315831/9e726f45-5072-4f40-b41d-bc8105a337b5)
+
 <br><br><p></p>
 
+-렌탈상품 자세히 보기-
 
+![itemdetail](https://github.com/kdhleppa/finalProject/assets/139315831/957eb198-5cc2-4cb8-874e-c274eaabc25e)
 
-<img width="952" alt="image" src="https://github.com/kdhleppa/finalProject/assets/139315831/519cc936-8ab6-4de4-8aef-bcee39c42a6b">
-<br><br><p></p>
+-장바구니 & 위시리스트 & 결제 페이지-
+
+![cartwish](https://github.com/kdhleppa/finalProject/assets/139315831/0611d7a5-b8e7-4fb5-ad5c-63d160cf8334)
+
+![wishlist](https://github.com/kdhleppa/finalProject/assets/139315831/72da39f2-0a34-40dc-b136-9d1dd1aee444)
+
+![itempay](https://github.com/kdhleppa/finalProject/assets/139315831/4dfd9a08-2178-44ed-a568-c54515b57488)
+
 
 
 

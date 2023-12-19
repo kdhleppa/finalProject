@@ -29,7 +29,7 @@ public class ManagerFilter implements Filter{
 		
 		Member loginMember = (Member) session.getAttribute("loginMember");
 		
-		if( !loginMember.getMemberType().equals("C") ) {
+		if( !loginMember.getMemberType().equals("M") ) {
 			resp.sendRedirect("/managerError");
 			
 		} else {

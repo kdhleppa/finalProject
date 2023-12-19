@@ -35,8 +35,7 @@ public class ItemController {
 	public String itemDetail(
 			@PathVariable("itemNo") int itemNo,
 			Model model,
-			@SessionAttribute(value="loginMember", required = false)Member loginMember,
-			RedirectAttributes ra
+			@SessionAttribute(value="loginMember", required = false)Member loginMember
 			) {
 		
 		Item item= service.selectDetail(itemNo);
@@ -44,7 +43,7 @@ public class ItemController {
 			
 			model.addAttribute("item", item);
 			
-			return "/item/itemDetail"; 	
+			return "item/itemDetail"; 	
 		} else {
 			
 			int memberNo = loginMember.getMemberNo();
@@ -65,7 +64,7 @@ public class ItemController {
 			
 			model.addAttribute("item", item);
 			model.addAttribute("rsvInfo", rsvInfo);
-			return "/item/itemDetail";
+			return "item/itemDetail";
 		}
 	}
 	
@@ -102,7 +101,6 @@ public class ItemController {
 		
 		return list;
 	}
-	
 	
 	/** 아이템 카테고리 분류
 	 * @param category

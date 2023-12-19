@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>예약 관리 페이지 (미승인)</title>
+    <title>예약 정보 확인</title>
 
     <link rel="stylesheet"  th:href="@{/css/member/reservationNManage.css}">
 
@@ -23,59 +23,79 @@
         <section id="signUpForm">
 
             <!-- 대제목 -->
-            <section id="headerName">예약 관리</section>
-            <hr id="underLine"/>
+            <div id="headerTitle">
+    	        <section id="headerName">관리자 예약 정보 확인</section>
+    	        <button type="button" class="clickBtn" th:onclick="|javascript:history.back();|">이전으로</button>
+			</div>
+	            <hr id="underLine"/>
             
-            <section id="reservationYNBtn">
-                <p id="reservationNBtn">예약 확인</p>
-                <section id="empty2"></section>
-                <a id="reservationYBtn">지난 예약</a>
-            </section>
 
-            <section id="objectSection" th:each="upcomingRes : ${upcomingReservation}">
+            <section id="objectSection" th:each="reservationList : ${reservationList}">
                 <section class="empty3"></section>
 
                 <section class="objectListSection">
 
                     <section id="objectList">
-
-                        <section class="reservationInfo">
+						
+						<!-- 캠핑장 정보 -->
+                        
+                        <!-- 관리자페이지에서 뿌림 ceo는 안뿌림
+							<section class="reservationInfo">
                             <img class="icon" th:src="@{/images/memberImg/carbon_map.png}">
                             <section class="empty4"></section>
-                            <p th:text="|[${upcomingRes.campAddress}] ( ${upcomingRes.campAddress} )|">캠핑장 주소</p>
+                            <a class="info">강원 양양군 손양면 선사유적로 316-54</a>
                         </section>
+                        -->
 
                         <section class="reservationInfo">
                             <img class="icon" th:src="@{/images/memberImg/Group.png}">
                             <section class="empty4"></section>
-                            <a class="info">Dates : Apr 20 - Apr 24</a>
+                            <p th:text="|Date&nbsp; :&nbsp; ${reservationList.CAMP_ENT_DATE} ~ ${reservationList.CAMP_OUT_DATE}|" class="info"></p>
                         </section>
 
                         <section class="reservationInfo">
                             <img class="icon" th:src="@{/images/memberImg/tdesign_member.png}">
                             <section class="empty4"></section>
-                            <a class="info">Guests : 홍길동 외 2인</a>
+                            <p th:text="|대인&nbsp; :&nbsp; ${reservationList.ADULT_COUNT} / 소인&nbsp; :&nbsp; ${reservationList.KID_COUNT}|" class="info"></p>
                         </section>
 
                         <section class="reservationInfo">
                             <img class="icon" th:src="@{/images/memberImg/material-symbols-light_deck.png}">
                             <section class="empty4"></section>
-                            <a class="info">예약 데크: B-1</a>
+                            <p th:text="|예약 호실&nbsp; :&nbsp; ${reservationList.CAMP_DE_NAME}|" class="info"></p>
                         </section>
 
                     </section>
 
-                    <section id="rentalObjList">
-                        <section class="rentalObj">
-                            <a>DoD 가바보꼬 텐트 2인<span>&nbsp;&nbsp;&nbsp;1</span></a>
+					<!-- 렌탈 상품 정보 -->
+					
+					<th:block th:if="${reservationList.itemList.size > 0}">
+						
+	                    <section id="rentalObjList">
+	                        <section class="rentalObj"th:each="itemList : ${reservationList.itemList}">
+	                            <span th:text="|${itemList.itemName}|"></span><span id="itemCount" th:text="|&nbsp;&nbsp; ${itemList.quantity}|"></span>
+	                        </section>
+	                    </section>
+	                    
+					</th:block>
+					
+					<th:block th:if="${reservationList.itemList.size == 0}">
+						<section id="rentalObjList">
+							<section class="rentalObj">
+								<p>렌탈 상품&nbsp; : 렌탈 상품이 없습니다.</p>
+	                        </section>
                         </section>
-                    </section>
+					</th:block>
 
                 </section>
 
               
                 <section class="empty3"></section>
             </section>
+            
+			<div id="backBtn">
+    	        <button type="button" class="clickBtn" th:onclick="|javascript:history.back();|">이전으로</button>
+			</div>
             
 
 

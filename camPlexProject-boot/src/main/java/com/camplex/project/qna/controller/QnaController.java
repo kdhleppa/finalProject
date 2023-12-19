@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.camplex.project.member.model.dto.Member;
 import com.camplex.project.qna.model.dto.Qna;
+import com.camplex.project.qna.model.dto.ceoQna;
 import com.camplex.project.qna.model.service.QnaService;
 
 @SessionAttributes({"loginMember"})
@@ -40,27 +41,20 @@ public class QnaController {
 		
 		model.addAttribute("list", list);
 		
-		return "/qna/qnaList";
+		return "qna/qnaList";
 	}
 	
-	// 1:1 문의(관리자) 조회
-	@GetMapping("/qnaCheck")
-	@ResponseBody
-	public List<Qna> qnaCheck(@RequestParam String answerFlag) {
+	// 1:1 문의(CEO) 답변완료 리스트 이동
+	@GetMapping("/qnaYList")
+	public String qnaYList(Model model) {
 		
 		List<Qna> list = new ArrayList<Qna>();
 		
-		if(answerFlag.equals("N")) {
-			
-			list = service.selectQna();
+		list = service.selectQnaY();
 		
-		} else {
-			
-			list = service.selectQnaY();
-		}
+		model.addAttribute("list", list);
 		
-		return list;
-		
+		return "/qna/qnaYList";
 	}
 	
 	// 1:1 문의(관리자) 답변

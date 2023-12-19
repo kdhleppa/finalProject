@@ -17,9 +17,17 @@
 	margin-left: 13rem;
 }
 
-.answerFlag {
-	margin-top : 1rem;
+.qnaTypeDiv{
+	display: flex;
+	margin-left: 10rem;
+}
+
+.qnaType {
+	color: black;
+	margin-top : 2rem;
 	margin-left: 3rem;
+	text-decoration: none;
+	font-size: 17px;
 }
 
 .askBtn {

@@ -49,7 +49,7 @@ public class KakaoContoller {
         	System.out.println("결제 정보 삭제");
         } 
     	
-    	return "/paysys/payCancel";
+    	return "paysys/payCancel";
     }
     
     @PostMapping("/paysys/kakao")
@@ -151,7 +151,7 @@ public class KakaoContoller {
         
         model.addAttribute("payInfo", kakaopay.kakaoPayInfo(pg_token));
         
-        return "/paysys/kakaoDone";
+        return "paysys/kakaoDone";
     }
     
     
@@ -166,7 +166,7 @@ public class KakaoContoller {
     	
     	model.addAttribute("payInfo", kakaopay.kakaoPayInfo(pg_token));
     	
-    	return "/paysys/kakaoDone";
+    	return "paysys/kakaoDone";
     }
 
 }

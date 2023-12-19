@@ -1,6 +1,6 @@
 // 목록으로 돌아가기
-document.getElementById("listBtn").addEventListener("click", () => {
-    location.href = `/board/${boardType}`
+document.getElementById("backBtn").addEventListener("click", () => {
+    window.history.back();
 });
 
 // 좋아요 버튼이 클릭 되었을 때

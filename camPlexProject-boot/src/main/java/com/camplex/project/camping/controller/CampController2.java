@@ -326,26 +326,27 @@ public class CampController2 {
 		return campList;
 	}
 	
-//	@GetMapping("/checkCeo")
-//	@ResponseBody
-//	public String checkCeo(int memberNo) {
-//		
-//		int ceoNum = memberNo;
-//		
-//		Member member = service.checkCEO(ceoNum);
-//		
-//		String checkFl = "";
-//		
-//		if(member == null) {
-//			checkFl = "false";
-//		}else {
-//			checkFl = "true";
-//		}
-//		
-//		System.out.println("checkFl ::" + checkFl);
-//		
-//		return checkFl;
-//	}
+	
+	@GetMapping("/checkCeo")
+	@ResponseBody
+	public String checkCeo(int memberNo) {
+		
+		int ceoNum = memberNo;
+		
+		Member member = service.checkCEO(ceoNum);
+		
+		String checkFl = "";
+		
+		if(member == null) {
+			checkFl = "false";
+		}else {
+			checkFl = "true";
+		}
+		
+		System.out.println("checkFl ::" + checkFl);
+		
+		return checkFl;
+	}
 	 
 	
 	

@@ -12,7 +12,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    /*border: 1px solid black;*/
+    /* border: 1px solid black; */
 }
 
 
@@ -614,6 +614,7 @@ label > img {
 	font-weight: bold;
 	font-size: 1.2rem;
 	border-radius: 10px;
+    cursor: pointer;
 }
 
 .etcInfoInputImg {
@@ -644,6 +645,23 @@ label > img {
 	font-size: 1.3rem;
 	text-align: center;
 	border: 1px solid #909090;
+}
+
+.checkCEOBtn {
+    height: 3rem;
+    width: 10rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    background-color: transparent;
+    margin-left: 2rem;
+    cursor: pointer;
+    border: 1px solid #909090;
+}
+
+.checkCEOBtn:hover {
+    background-color: black;
+    color: white;
+    font-weight: bold;
 }
 
 .etcInfoInputOneLineInfoSec {
@@ -740,8 +758,8 @@ label > img {
 }
 
 .plusCampingSampleImgDiv {
-    height: 15rem;
-	width: 23rem;
+    height: 12rem;
+	width: 20rem;
 	border-radius: 10px;
     display: flex;
     align-items: center;
@@ -875,5 +893,6 @@ label > img {
 }
 
 .campingUploadBtn:hover:after { transform: scaleX(1); }
+
 
 

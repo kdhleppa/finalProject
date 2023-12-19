@@ -76,7 +76,10 @@
 .detailBtn {
     width: 44.5rem;
     height: auto;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     position: relative;
 }
 
@@ -85,7 +88,8 @@
 }
 
 .preview {
-	width: 100%;
+    max-width: 100%;
+    width: 100%;
     height: 100%;
     object-fit: cover;
 }
@@ -111,6 +115,13 @@
 .imgLabel {
 	width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.imgLabelInfoImg {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -198,6 +209,7 @@
     text-align: center;
     outline: none;
     font-size: 1.2rem;
+    cursor: pointer;
 }
 
 .uploadSec {
@@ -212,6 +224,7 @@
     width: 5rem;
     height: 3rem;
     font-size: 1.3rem;
+    font-weight: bold;
     background-color: transparent;
     border: none;
     margin-right: 10rem;
@@ -230,4 +243,95 @@
 }
 
 .uploadBtn:hover:after { transform: scaleX(1); }
+
+
+@media all and (max-width:1500px) {
+
+    .thumbnailBtn {
+        width: 27rem;
+        height: 23rem;
+    }
+
+    .detailBtn {
+        width: 27rem;
+    }
+
+    .rentalDetailTitleSec {
+        font-size: 0.7rem;
+    }
+
+    .inputDetail {
+        height: 2rem;
+        width: 20rem;
+    }
+
+    .inputDetailSmall {
+        height: 2rem;
+        width: 10rem;
+    }
+
+    .rentalDetailInputSec {
+        height: 2rem;
+        width: 10rem;
+    }
+
+    .rentalDetailTitleSec {
+        width: 5rem;
+    }
+
+    .inputDetail {
+        margin-left: 0;
+    }
+
+    .inputDetailSmall {
+        margin-left: 0;
+    }
+
+    .countWord {
+        font-size: 1rem;
+    }
+
+    .discountWord {
+        font-size: 1rem;
+    }
+
+}
+
+@media all and (max-width:900px) {
+
+    .thumbnailBtn {
+        width: 15rem;
+        height: 10rem;
+    }
+
+    .detailBtn {
+        width: 15rem;
+    }
+
+    .detailBtn > span {
+        font-size: 0.8rem;
+    }
+
+    .inputDetailSec {
+        height: 2.5rem;
+    }
+
+    .inputWonImage {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .uploadBtn {
+        width: 3rem;
+        height: 1.7rem;
+        font-size: 1rem;
+    }
+
+    .category {
+        height: 1.8rem;
+        width: 5rem;
+        font-size: 0.9rem;
+    }
+}
+
 

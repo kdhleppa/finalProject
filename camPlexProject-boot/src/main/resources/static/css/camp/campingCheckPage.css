@@ -88,6 +88,10 @@ main {
     justify-content: end;
 }
 
+.searchCampDiv {
+    border-bottom: 1px solid #909090;
+}
+
 .checkBtnSec {
     flex-basis: 30%;
     height: 100%;
@@ -97,7 +101,7 @@ main {
 .inputCheck {
     height: 3rem;
     width: 28rem;
-    padding-left: 1rem;
+    padding-left: 0.5rem;
     border: none;
     border-radius: 20px;
     font-size: large;
@@ -242,6 +246,7 @@ main {
     font-size: 1rem;
     border-radius: 5px;
     text-align: center;
+    cursor: pointer;
 }
 
 /* fixed map */
@@ -528,4 +533,6 @@ main {
     }
    
 }
+
+
 

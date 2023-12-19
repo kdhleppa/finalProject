@@ -80,7 +80,6 @@ const categorySelect = document.getElementById('categorySelect');
 const campOption = document.querySelectorAll('input[name=campOption]');
 const campAroundView = document.querySelectorAll('input[name=campAroundView]');
 
-
 campingDetailUploadForm.addEventListener('submit', e => {
 	
 	if(inputCampingName.value.trim() == "") {
@@ -163,7 +162,19 @@ campingDetailUploadForm.addEventListener('submit', e => {
 		e.preventDefault();
 		return;
 	}
+
+	const addressRegex = /^(경기도|강원도|충청북도|충청남도|경상북도|경상남도|전라북도|전라남도|제주특별자치도|서울특별시|부산광역시|대구광역시|인천광역시|광주광역시|대전광역시|울산광역시)\s[가-힣]+(시|군|구)?/;
+
 	
+	if(!addressRegex.test(campAddress.value)) {
+		let campAddressSc = campAddress.offsetTop;
+		alert("캠핑장 주소가 잘못되었습니다.");
+		campAddress.focus();
+		window.scrollTo({top:campAddressSc - 320, behavior:'smooth'});
+		e.preventDefault();
+		return;
+	}
+
 	if(campPhone.value.trim() == "") {
 		let campPhoneSc = campPhone.offsetTop;
 		alert("캠핑장 전화 번호를 입력해주세요.");
@@ -229,6 +240,17 @@ campingDetailUploadForm.addEventListener('submit', e => {
 		return;
 	}
 
+	let ceoCheckFlag = document.getElementById('ceoCheckFlag');
+
+	if(ceoCheckFlag.value == "false") {
+		let CEONumSc = CEONum.offsetTop;
+		alert("CEO회원 번호를 확인해주세요");
+		CEONum.focus();
+		window.scrollTo({top:CEONumSc - 320, behavior:'smooth'});
+		e.preventDefault();
+		return;
+	}
+
 	// const checkCeo = "";
 
 	// fetch("/camp2/checkCeo?memberNo=" + CEONum.value)
@@ -270,6 +292,45 @@ campingDetailUploadForm.addEventListener('submit', e => {
 });
 
 
+function checkCeoF() {
+
+	console.log("CEONum ::"+ CEONum.value);
+
+	const ceoCheckFlag = document.getElementById('ceoCheckFlag');
+
+	if(CEONum.value == "") {
+		ceoCheckFlag.removeAttribute('value');
+		ceoCheckFlag.setAttribute('value', 'false');
+		alert("CEO회원의 번호를 입력해주세요.");
+		CEONum.focus();
+		return;
+	}
+
+	fetch("/camp2/checkCeo?memberNo=" + CEONum.value)
+	.then(resp => resp.text())
+	.then(checkFl => {
+
+		console.log("checkFl ::" + checkFl);
+
+		if(checkFl == "false") {
+			ceoCheckFlag.removeAttribute('value');
+			ceoCheckFlag.setAttribute('value', 'false');
+			alert("CEO회원의 번호가 아닙니다.");
+			CEONum.focus();
+			CEONum.value = "";
+			e.preventDefault();
+		}else {
+			console.log("ceoCheckFlag ::" + ceoCheckFlag.value);
+			ceoCheckFlag.removeAttribute('value');
+			ceoCheckFlag.setAttribute('value', 'true');
+			console.log("ceoCheckFlag ::" + ceoCheckFlag.value);
+			alert("CEO회원의 번호가 맞습니다.");
+		}
+
+	})
+	.catch(err => console.log(err));
+
+}
 
 
 

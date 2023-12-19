@@ -55,9 +55,10 @@ function scracth(_id, option = {}){
 
     ctx.save()
     ctx.beginPath()
-    ctx.fillStyle='lightgreen'
+    ctx.fillStyle='lightgreen';
     ctx.rect(0,0,width,height)
-    ctx.fill()
+    ctx.font = '24px Arial';
+    ctx.fill();
     ctx.closePath()
     ctx.restore()      
 

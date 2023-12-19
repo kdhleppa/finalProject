@@ -119,6 +119,10 @@
     border: 2px solid #EAEAEA;
 }
 
+.mapCampName:hover {
+    background-color: white;
+}
+
 .viewAllSec {
     width: 100%;
     height: 3rem;
@@ -148,7 +152,20 @@
 
 .viewAllBtn:hover:after { transform: scaleX(1); }
 
+.campTypeImages:hover {
+    width: 4.2rem;
+    height: 4.2rem;
+}
 
+.bagCampImg:hover {
+    width: 2.8rem;
+    height: 3.4rem;
+}
+
+.carCampImg:hover {
+    width: 4.2rem;
+    height: 3.2rem;
+}
 
 
 

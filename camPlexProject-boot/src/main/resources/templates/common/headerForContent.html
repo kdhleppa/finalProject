@@ -33,16 +33,27 @@
 
         <div class="bottomMenu">
             <a th:href="@{/camp/search}">CAMPING</a>
-            <a th:href="@{/item2/search}">RENTAL</a>
+            <a th:href="@{/item2/search}">RENTAL</a	>
             <a th:href="@{/board/{boardType}(boardType=B)}">BOARD</a>
             <a th:href="@{/event/eventList}">EVENT</a>
         </div>
 
     </header>
 
-<script th:inline="javascript">
-	
-	const message = /*[[${message}]]*/ "전달받은 메세지(보통은 에러메세지)";
-	if(message != null) alert(message);
-	
-</script> 
+
+
+	<script th:inline="javascript">
+
+		window.onpageshow = function(event) {
+			if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+			  console.log("test");
+				 location.reload();
+			} else {
+			  const message = /*[[${message}]]*/ "전달받은 메세지(보통은 에러메세지)";
+			  console.log(message);
+			  if(message != null) alert(message);
+			  
+		   }
+		}   
+	 
+	</script> 

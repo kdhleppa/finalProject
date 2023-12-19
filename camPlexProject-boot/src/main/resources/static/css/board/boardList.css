@@ -108,6 +108,7 @@ button {
 
 #boardSearch {
     display: flex;
+    width: 100%;
     background-color: transparent;
 }
 
@@ -118,14 +119,19 @@ button {
 
 #boardSearch > :nth-child(2) {
     border-style: 1px rgb(217, 212, 212);
-    margin-right: 152px;
+    margin-right: 10%;
+    height: 2.21rem;
+}
+
+#searchField {
+	width: 30%;
 }
 
 #searchQuery {
 	margin-top: 2px;
     border-style: none;
     outline: none;
-    width: 350px;
+    width: 90%;
     font-size: 18px;
     height: 25px;
     font-family: 'HakgyoansimSantteutdotumL';
@@ -135,7 +141,6 @@ button {
 #searchIcon {
     background-color: transparent;
     border-style: none;
-    margin-right: 1rem;
 }
 
 /* 게시판 리스트 */
@@ -144,26 +149,26 @@ button {
 	flex-direction: column;
 	align-items: center;
     font-family: 'HakgyoansimSantteutdotumL';
-    width: 100%;
-    height: 100%;
+    margin-left: 10%;
+    width: 80%;
 }
 
 table {
-	margin-top: 3rem;
+	margin-top: 2rem;
     width: 80%;
     border-collapse: collapse;
 }
 
 #tableTr {
-	height: 8rem;
+	height: 5rem;
     border-bottom: 3px solid rgb(206, 206, 206);
     text-align: center;
     font-size: 17px;
 }
 
 .list-thumbnail {
-	width: 75px;
-	height: 75px;
+	width: 50px;
+	height: 50px;
 	vertical-align: middle;
 	border-radius: 20px;
 	margin-right: 0.5rem;
@@ -175,11 +180,11 @@ table {
 }
 
 #blank {
-	width: 15%;
+	width: 10%;
 }
 
 #tdTitle {
-	width: 50%;
+	width: 42%;
 	text-align: left;
 }
 

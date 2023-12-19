@@ -31,23 +31,6 @@ button {
   text-transform:uppercase; 
 }
   
-button:after {
-  display:block;
-  content: '';
-  border-bottom: solid 1px #000;
-  margin-top: 5px;
-  transform: scaleX(0);  
-  transition: transform 250ms ease-in-out;
-}
-
-button:hover:after { 
-	transform: scaleX(1);
-}
-
-button:hover {
-    cursor: pointer;
-}
-
 input:focus {
 	outline: none;
 }
@@ -158,32 +141,11 @@ img {
     font-size: 17px;
 }
 
-.clickBtn {
-	font-size: 17px;
-	color: #000;
-	display:inline-block; 
-	margin:0;
-	text-transform:uppercase; 
-}
-
 #signUpBtn {
 }
 
 #searchIdBtn {
 	margin-inline: 21px;
-}
-
-.clickBtn::after {
-	display:block;
-	content: '';
-	border-bottom: solid 1px #000;
-	margin-top: 5px;
-	transform: scaleX(0);  
-	transition: transform 250ms ease-in-out;    
-}
-
-.clickBtn:hover:after { 
-	transform: scaleX(1);
 }
 
 /* ----------------------------- */
@@ -199,4 +161,17 @@ img {
     display: flex;
     justify-content: space-around;
     height: 35px;
+}
+  
+.clickBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+    transition: color 0.3s;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.clickBtn:hover {
+	color: #909090;
 }

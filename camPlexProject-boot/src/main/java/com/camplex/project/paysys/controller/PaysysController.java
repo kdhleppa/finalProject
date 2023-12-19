@@ -171,14 +171,13 @@ public class PaysysController {
 		model.addAttribute("rsvInfo2", rsvInfo2);
 		model.addAttribute("wishlist", wishlist);
 		
-		return "/paysys/rentCart";
+		return "paysys/rentCart";
 	}
 	
 	@ResponseBody
 	@PostMapping("/quantityUpdateCart")
 	public ResponseEntity<?> quantityUpdateCart(@RequestBody CartItem cartItem) {
-	    int itemQuantity = cartItem.getItemQuantity();
-	    int cartItemNo = cartItem.getCartItemNo();
+	  
 	    int result = payService.quantityUpdateCart(cartItem);
 	    if (result > 0) {
 	        return ResponseEntity.ok().body(new ResponseMessage("성공"));
@@ -194,6 +193,8 @@ public class PaysysController {
 	 */
 	@PostMapping("/camp")
 	public String payCamp(InfoForReservation info, Model model) {
+		
+		System.out.println(info);
 		
 		model.addAttribute("info", info);
 		

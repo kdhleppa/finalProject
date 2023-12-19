@@ -459,3 +459,15 @@ for(var i = 0 ; i <deleteCampFrm.length ; i++){
 	})
 	
 }
+
+// 검색 focus, focusout
+
+const searchCampDiv = document.getElementById('searchCampDiv');
+
+searchCamp.addEventListener('focus', () => {
+	searchCampDiv.style.borderBottom = "none";
+});
+
+searchCamp.addEventListener('focusout', () => {
+	searchCampDiv.style.borderBottom = "1px solid #909090";
+});

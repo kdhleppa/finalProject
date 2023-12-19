@@ -30,27 +30,10 @@
 			<section id="headerName">이전 구매 내역&nbsp;&nbsp;<span id="headerSubName">( 최근 1년 기록 )</span></section>
 			<hr id="underLine" />
 
-			<!-- 예약 내역 정보 -->
-			<section id="titleSection">
-
-				<section class="empty2"></section>
-
-				<section id="title">
-
-					<div class="campInfo" id="campInfoFont">캠핑장 정보</div>
-					<div class="rentalInfo" id="rentalInfoFont">렌탈 상품 정보</div>
-
-				</section>
-
-				<section class="empty2"></section>
-
-			</section>
 			<section class="buyListSection">
 
 
 				<th:block th:if="${upcomingReservation.size != 0}">
-
-
 
 
 					<div class="buyInfo" th:each="upcomingRes : ${upcomingReservation}">
