@@ -44,7 +44,7 @@ public class ItemController {
 			
 			model.addAttribute("item", item);
 			
-			return "/item/itemDetail"; 	
+			return "item/itemDetail"; 	
 		} else {
 			
 			int memberNo = loginMember.getMemberNo();
@@ -65,7 +65,7 @@ public class ItemController {
 			
 			model.addAttribute("item", item);
 			model.addAttribute("rsvInfo", rsvInfo);
-			return "/item/itemDetail";
+			return "item/itemDetail";
 		}
 	}
 	
