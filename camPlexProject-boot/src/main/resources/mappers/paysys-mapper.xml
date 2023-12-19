@@ -135,7 +135,7 @@
 		INSERT INTO "PAYMENT"
 		VALUES (SEQ_PAY_NO.NEXTVAL, #{memberNo}, #{campNo}, #{campDeNo},
 				#{price}, #{price}, #{payType}, DEFAULT,
-				#{entDate}, #{outDate}, DEFAULT, #{senderName}, #{bank})
+				TO_DATE(#{entDate}, 'YYYY-MM-DD'), TO_DATE(#{outDate}, 'YYYY-MM-DD'), DEFAULT, #{senderName}, #{bank})
 	</insert>
 	
 	<!-- 렌탈 결제 무통장 -->
@@ -198,7 +198,7 @@
 	<insert id="insertReservation">
 		INSERT INTO "RESERVATIONS"
 		VALUES (SEQ_RES_NO.NEXTVAL, #{paymentNo}, #{memberNo}, #{campNo},
-				#{campDeNo}, #{entDate}, #{outDate}, #{adultCount}, 
+				#{campDeNo}, TO_DATE(#{entDate}, 'YYYY-MM-DD'), TO_DATE(#{outDate}, 'YYYY-MM-DD'), #{adultCount}, 
 				#{kidCount}, #{demand})
 	</insert>
 
