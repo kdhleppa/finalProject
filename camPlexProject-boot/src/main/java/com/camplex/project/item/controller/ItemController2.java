@@ -84,8 +84,6 @@ public class ItemController2 {
 			, @RequestHeader("referer") String referer)
 			throws IllegalStateException, IOException {
 		
-		System.out.println("item ::" + item);
-		System.out.println("itemImages" + itemImages);
 		
 		int result = service.uploadItem(item, itemImages);
 		
@@ -111,7 +109,7 @@ public class ItemController2 {
 		
 		Item item = service.selectItemOfItemNo(itemNo);
 		
-		System.out.println("item ::" + item);
+		
 		
 		model.addAttribute("item", item);
 		
@@ -124,7 +122,7 @@ public class ItemController2 {
 			, RedirectAttributes ra
 			, @RequestHeader("referer") String referer) throws IllegalStateException, IOException {
 		
-		System.out.println("item ::" + item);
+		
 		
 		int result = service.editItem(item, images);
 		
