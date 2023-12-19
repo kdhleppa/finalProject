@@ -857,7 +857,7 @@ public class MemberController {
 		model.addAttribute("camp", camp);
 		model.addAttribute("item", item);
 		
-		return "/member/myPage/wishList";
+		return "member/myPage/wishList";
 		
 	}
 	

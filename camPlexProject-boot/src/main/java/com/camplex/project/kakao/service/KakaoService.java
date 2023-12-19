@@ -47,6 +47,16 @@ public class KakaoService {
 	@Value("${camplex.kakao.key}")
 	private String key;
 	
+	@Value("${kakao.pay.approval.url}")
+	private String approvalUrl;
+	
+	@Value("${kakao.pay.cancel.url}")
+	private String cancelUrl;
+	
+	@Value("${kakao.pay.fail.url}")
+	private String failUrl;
+	
+	
 	/** 카카오 페이
 	 * @param info
 	 * @return
@@ -69,9 +79,9 @@ public class KakaoService {
 	        params.add("quantity", "1");
 	        params.add("total_amount", info.getPrice());
 	        params.add("tax_free_amount", "100");
-	        params.add("approval_url","http://localhost/paysys/payDone");
-	        params.add("cancel_url", "http://localhost/paysys/payCancel");
-	        params.add("fail_url", "http://localhost/paysys/payFail");
+	        params.add("approval_url", approvalUrl);
+	        params.add("cancel_url", cancelUrl);
+	        params.add("fail_url", failUrl);
 		
 	        HttpEntity<MultiValueMap<String, Object>> body = new HttpEntity<MultiValueMap<String, Object>>(params, headers);
 		
@@ -119,9 +129,9 @@ public class KakaoService {
         params.add("quantity", "1");
         params.add("total_amount", info.getPrice());
         params.add("tax_free_amount", "100");
-        params.add("approval_url","http://localhost/paysys/payDoneRental");
-        params.add("cancel_url", "http://localhost/paysys/payCancel");
-        params.add("fail_url", "http://localhost/paysys/payFail");
+        params.add("approval_url", approvalUrl);
+        params.add("cancel_url", cancelUrl);
+        params.add("fail_url", failUrl);
         
         HttpEntity<MultiValueMap<String, Object>> body = new HttpEntity<MultiValueMap<String, Object>>(params, headers);
 		
