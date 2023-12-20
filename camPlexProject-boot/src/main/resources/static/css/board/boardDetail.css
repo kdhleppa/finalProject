@@ -21,14 +21,20 @@ button {
 	display: flex;
 	font-family: 'HakgyoansimSantteutdotumL';
     list-style: none;
-    font-size: 20px;
     margin-left: 10rem;
 }
 
 .boardTypeList > li > a {
 	text-decoration: none;
 	color: black;
-	margin-top: 3.8rem;
+	font-weight: 600;
+    transition: color 0.3s;
+    font-size: 20px;
+    margin-top: 3.8rem;
+}
+
+.boardTypeList > li > a:hover {
+	color: #909090;
 }
 
 .boardTypeList p {
@@ -53,7 +59,6 @@ button {
 
 #boardNo {
 	font-size: 20px;
-	margin-left: 2rem;
 	margin-top: 1rem;
 }
 
@@ -63,10 +68,12 @@ button {
 }
 
 #boardTypeName {
+	width: 200px;
 	margin-left: 10rem;
     font-family: 'HakgyoansimSantteutdotumL';
-    font-size: 30px;
+    font-size: 28px;
     color: black;
+    font-weight: 600;
 }
 
 /* 게시판 세부 내용 */
@@ -179,6 +186,7 @@ img {
     overflow: hidden;
     margin-left: -0.6rem;
     margin-top: 2rem;
+    border: 1px solid rgb(232, 232, 232);
 }
 
 #writerNick {
@@ -201,7 +209,13 @@ img {
     height: 2rem;
     background-color: transparent;
     border-style: none;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+#deleteBtn:hover {
+	color: #909090;
 }
 
 #updateBtn {
@@ -210,8 +224,14 @@ img {
     height: 2rem;
     background-color: transparent;
     border-style: none;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
     margin-right: 1rem;
+    transition: color 0.3s;
+}
+
+#updateBtn:hover {
+	color: #909090;
 }
 
 #backBtn {
@@ -223,6 +243,12 @@ img {
     font-size: 1.2rem;
     margin-bottom: 1rem;
     margin-left: 0.5rem;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+#backBtn:hover {
+	color: #909090;
 }
 
 
@@ -232,7 +258,6 @@ img {
 	justify-content: center;
 	align-items: center;
 	margin-top: 2rem;
-	margin-left: 6%;
 }
 
 .comment-write-area > textarea{
@@ -251,7 +276,6 @@ img {
     height: 2rem;
     border-style: none;
     font-size: 1.5rem;
-    margin-left: 1rem;
 }
 
 #commentList{
@@ -285,6 +309,7 @@ img {
     height: 3rem;
     border-radius: 50%;
     overflow: hidden;
+    border: 1px solid rgb(232, 232, 232);
 }
 
 /* 버튼 */
@@ -299,7 +324,13 @@ img {
     height: 4rem;
     background-color: transparent;
     border-style: none;
-    font-size: 1.2rem;
+    font-size: 15px;
+	font-weight: 600;
+	transition: color 0.3s;
+}
+
+.comment-btn-area button:hover{
+	color: #909090;
 }
 
 .update-textarea{
@@ -333,6 +364,16 @@ img {
 	top : 35px;
 }
 
+#addComment {
+	font-size: 16px;
+	font-weight: 600;
+	transition: color 0.3s;
+}
+
+#addComment:hover {
+	color: #909090;
+}
+
 
 /* 댓글 내용 */
 
@@ -350,10 +391,6 @@ img {
     border-radius: 10px;
     outline: none;
     padding: 0.7rem;
-}
-
-#addComment {
-	font-size: 1.2rem;
 }
 
 /* 좋아요 */

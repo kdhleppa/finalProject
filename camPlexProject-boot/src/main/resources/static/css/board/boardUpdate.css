@@ -21,14 +21,20 @@ button {
 	display: flex;
 	font-family: 'HakgyoansimSantteutdotumL';
     list-style: none;
-    font-size: 20px;
     margin-left: 10rem;
 }
 
 .boardTypeList > li > a {
 	text-decoration: none;
 	color: black;
-	margin-top: 3.8rem;
+	font-weight: 600;
+    transition: color 0.3s;
+    font-size: 20px;
+    margin-top: 3.8rem;
+}
+
+.boardTypeList > li > a:hover {
+	color: #909090;
 }
 
 .boardTypeList p {
@@ -61,8 +67,9 @@ button {
 	width: 200px;
 	margin-left: 10rem;
     font-family: 'HakgyoansimSantteutdotumL';
-    font-size: 30px;
+    font-size: 28px;
     color: black;
+    font-weight: 600;
 }
 
 .board-update {
