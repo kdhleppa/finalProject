@@ -101,6 +101,11 @@ main {
     margin-top: 50px;
 }
 
+.objectSection {
+    display: flex;
+    margin-top: 50px;
+}
+
 .empty3 {
     flex-basis: 20%;
 }

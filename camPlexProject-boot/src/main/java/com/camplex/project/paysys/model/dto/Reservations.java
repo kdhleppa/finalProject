@@ -34,6 +34,8 @@ public class Reservations {
 	
 	private int campPayment;
 	private String paymentType;
+	private String paymentStatusFlag;
+	private String bankAccount;
 
 	private String campAddress;
 	

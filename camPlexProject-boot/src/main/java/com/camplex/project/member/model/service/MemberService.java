@@ -151,6 +151,10 @@ public interface MemberService {
 	// 관리자 예약 정보 확인 페이지 이동
 	List<Map<String, Object>> selectReservationListAll();
 
+	List<Map<String, Object>> selectPaymentAll();
+
+	int confirmPay(int paymentNo);
+
 
 
 
