@@ -29,23 +29,6 @@ a {
 	font-size: 16px;
 }
 
-a:hover {
-	cursor: pointer;
-}
-  
-a:after {
-  display:block;
-  content: '';
-  border-bottom: solid 1px #000;
-  margin-top: 5px;
-  transform: scaleX(0);  
-  transition: transform 250ms ease-in-out;
-}
-
-a:hover:after { 
-	transform: scaleX(1);
-}
-
 button { 
   color: #000;
   display:inline-block; 
@@ -233,4 +216,17 @@ main {
 /* 풋터 위 공간 */
 .empty5 {
     height: 300px;
+}
+
+.clickBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+    transition: color 0.3s;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.clickBtn:hover {
+	color: #909090;
 }

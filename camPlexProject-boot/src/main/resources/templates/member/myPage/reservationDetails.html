@@ -54,7 +54,7 @@
 											<img th:src="${upcomingRes.thumbnail}" class="campImg">
 										</div>
 										<div class="campNameInfoPrice">
-											<a th:text="|[${upcomingRes.campName}] ( ${upcomingRes.campDeName} )|">캠핑장 명</a>
+											<a class="clickBtn" th:text="|[${upcomingRes.campName}] ( ${upcomingRes.campDeName} )|">캠핑장 명</a>
 											<p th:text="|[${upcomingRes.campAddress}] ( ${upcomingRes.campAddress} )|">캠핑장 주소</p>
 											<p th:text="|입실 일&nbsp; :&nbsp; ${upcomingRes.campEntDate2}|"></p>
 											<p th:text="|캠핑장 금액&nbsp; :&nbsp; ${#numbers.formatInteger(upcomingRes.campPayment, 3, 'COMMA')}￦|"></p>
