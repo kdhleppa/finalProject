@@ -104,7 +104,7 @@ https://github.com/Envoy-VC/awesome-badges
 
 ![크기변환 mainpage](https://github.com/kdhleppa/finalProject/assets/139315831/0ad8ff18-0b49-4f4a-b634-47b83c00da40)
 
-
+스크롤 한번에 다음화면으로 넘어가는 기능. 좌측 번호를통해 해당메인으로 바로이동할수있게 이동시켜주는 기능
 
 <br><br><p></p>
 
@@ -112,11 +112,17 @@ https://github.com/Envoy-VC/awesome-badges
 
 ![camplist](https://github.com/kdhleppa/finalProject/assets/139315831/7d2a68d3-a5d7-4640-a3c9-c61d7cb558b0)
 
+전체캠핑장과 각각의 카테고리에따른 필터기능과 서치기능구현 & 8개표현 후 더보기 기능을통해 확장기능 
+
+우측 지도 모달창을통해 카테고리별 필터기능과 연결기능
+
 <br><br><p></p>
 
 -캠핑장 상세보기 & 예약페이지-
 
 ![camdetail](https://github.com/kdhleppa/finalProject/assets/139315831/ad3d1a9e-2b40-4a5f-93d9-140e6fad53a9)
+
+
 
 <br><br><p></p>
 
@@ -130,13 +136,10 @@ https://github.com/Envoy-VC/awesome-badges
 
 ![itemdetail](https://github.com/kdhleppa/finalProject/assets/139315831/957eb198-5cc2-4cb8-874e-c274eaabc25e)
 
--장바구니 & 위시리스트 & 결제 페이지-
+로그인시와 로그인 아닐때의 분기를 줘서 렌탈기능은 로그인이후에 가능하도록 함
+장바구니와 결제기능은 예약한 캠핑장이 있어야 가능하도록 구현, 위시리스트는 모든 회원이 가능하도록 구현 
 
-![cartwish](https://github.com/kdhleppa/finalProject/assets/139315831/0611d7a5-b8e7-4fb5-ad5c-63d160cf8334)
-
-![wishlist](https://github.com/kdhleppa/finalProject/assets/139315831/72da39f2-0a34-40dc-b136-9d1dd1aee444)
-
-![itempay](https://github.com/kdhleppa/finalProject/assets/139315831/4dfd9a08-2178-44ed-a568-c54515b57488)
+-장바구니 &능
 
 
 
