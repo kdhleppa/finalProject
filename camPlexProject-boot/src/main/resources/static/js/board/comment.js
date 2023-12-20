@@ -299,7 +299,6 @@ function updateCancel(btn){
 // 댓글 수정(AJAX)
 function updateComment(commentNo, btn){
 	
-	
     // 새로 작성된 댓글 내용 얻어오기
     const commentContent = btn.parentElement.previousElementSibling.value;
     const data = {"commentContent" : commentContent,
