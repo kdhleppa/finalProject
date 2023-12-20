@@ -92,14 +92,9 @@
 
 						</section>
 						
-						<section class="empty3"></section>
-						
 						<section id="btnSection">
 							<button type="button" th:id="'changeMember_' + ${levelUpList.memberNo}" th:attr="data-memberNo=${levelUpList.memberNo}" class="clickBtn">확인</button>
 						</section>
-
-						<section class="empty3"></section>
-						<section class="empty3"></section>
 
 					</th:block>
 
@@ -133,49 +128,49 @@
 	<th:block th:replace="~{common/footer}"></th:block>
 
 	<script th:inline="javascript">
-		
-		 document.addEventListener("DOMContentLoaded", function () {
-        const changeMemberButtons = document.querySelectorAll("[id^='changeMember_']");
-
-        changeMemberButtons.forEach(function (button) {
-            button.addEventListener("click", function () {
-                var memberNo = button.getAttribute("data-memberNo");
-
-                if (confirm("CEO 계정으로 변경하시겠습니까?")) {
-                    console.log("test");
-                    console.log(memberNo);
-
-                    fetch("/changeMember/changeMember?memberNo=" + memberNo)
-                        .then(resp => resp.text())
-                        .then(result => {
-                            if (result > 0) {
-                                alert("변경 되었습니다.");
-                                
-                                // 변경이 성공했을 때 해당 블록을 삭제하거나 숨김
-	                            const blockId = 'infoMain_' + memberNo;
-	                            const blockToRemove = document.getElementById(blockId);
-	                            if (blockToRemove) {
-	                                blockToRemove.remove(); // 블록 삭제
+	    document.addEventListener("DOMContentLoaded", function () {
+	        const changeMemberButtons = document.querySelectorAll("[id^='changeMember_']");
+	
+	        changeMemberButtons.forEach(function (button) {
+	            button.addEventListener("click", function () {
+	                var memberNo = button.getAttribute("data-memberNo");
+	
+	                if (confirm("CEO 계정으로 변경하시겠습니까?")) {
+	                    console.log("test");
+	                    console.log(memberNo);
+	
+	                    fetch("/changeMember/changeMember?memberNo=" + memberNo)
+	                        .then(resp => resp.text())
+	                        .then(result => {
+	                            if (result > 0) {
+	                                alert("변경 되었습니다.");
+	
+	                                // Remove both th:block content and the button
+	                                const blockId = 'infoMain_' + memberNo;
+	                                const blockToRemove = document.getElementById(blockId);
+	                                if (blockToRemove) {
+	                                    blockToRemove.remove(); // Remove th:block content
+	                                    button.remove(); // Remove the button
+	                                } else {
+	                                    console.error("Unable to find the block with id: " + blockId);
+	                                }
+	
 	                            } else {
-	                                console.error("Unable to find the block with id: " + blockId);
+	                                alert("변경을 실패했습니다.");
 	                            }
-                                
-                            } else {
-                                alert("변경을 실패했습니다.");
-                            }
-                        })
-                        .catch(err => {
-                            console.log("계정 변경 중 에러 발생");
-                            console.log(err);
-                        });
-                } else {
-                    alert("취소했습니다.");
-                }
-            });
-        });
-    });
-
+	                        })
+	                        .catch(err => {
+	                            console.log("계정 변경 중 에러 발생");
+	                            console.log(err);
+	                        });
+	                } else {
+	                    alert("취소했습니다.");
+	                }
+	            });
+	        });
+	    });
 	</script>
+
 
 </body>
 

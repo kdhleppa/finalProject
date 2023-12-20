@@ -188,6 +188,7 @@ main {
 	flex-basis: 70%;
 	display: flex;
 	justify-content: space-evenly;
+	margin-bottom: 50px;
 }
 
 .clickBtn {

@@ -69,21 +69,31 @@
             
 
             <!-- 예약 정보 확인, 1대 1문의, 업데이트 요청 -->
-            <section class="functionBtn">
-                <a class="clickBtn" th:href="@{/member/reservationNManageAll}">예약 정보 확인</a>
-                <a class="clickBtn" th:href="@{/qna/qnaList}">1대 1 문의<span>&nbsp;&nbsp;</span></a>
-                
-                <section th:unless="${levelUpFormCount} == 0"><a class="clickBtn" th:href="@{/member/levelUpFormCheck}">등업신청 요청<span th:text="'&nbsp;&nbsp;' + ${levelUpFormCount}"></span></a></section>
-                <section th:if="${levelUpFormCount} == 0"><a class="clickBtn" th:href="@{/member/levelUpFormCheck}">등업신청 요청</a></section>
-                
-            </section>
             
-            <section class="functionBtn" id="functionBtn2">
-                <a class="clickBtn" th:href="@{/member/paymentManageAll}">대기중인 결제 확인</a>
-                <a class="clickBtn" th:href="@{/camp2/uploadCamp}">캠핑장 업로드</a>
-                <a class="clickBtn" th:href="@{/item2/uploadForward}">렌탈 상품 업로드</a>
-            </section>
-
+            <div id="btnDiv">
+				<section class="empty4"></section>
+				
+				<div id="allBtnDiv">
+					
+		            <section class="functionBtn" id="functionBtn1">
+		                <a class="clickBtn" th:href="@{/member/reservationNManageAll}">예약 정보 확인</a>
+		                <a class="clickBtn" th:href="@{/qna/qnaList}">1대 1 문의</a>
+		                
+		                <section th:unless="${levelUpFormCount} == 0"><a class="clickBtn" th:href="@{/member/levelUpFormCheck}">등업신청 요청<span th:text="'&nbsp;&nbsp;' + ${levelUpFormCount}"></span></a></section>
+		                <section th:if="${levelUpFormCount} == 0"><a class="clickBtn" th:href="@{/member/levelUpFormCheck}">등업신청 요청</a></section>
+		                
+		            </section>
+		            
+		            <section class="functionBtn" id="functionBtn2">
+		                <a class="clickBtn" th:href="@{/member/paymentManageAll}">대기중인 결제 확인</a>
+		                <a class="clickBtn" th:href="@{/camp2/uploadCamp}">캠핑장 업로드</a>
+		                <a class="clickBtn" th:href="@{/item2/uploadForward}">렌탈 상품 업로드</a>
+		            </section>
+		            
+				</div>
+	            
+	            <section class="empty4"></section>
+			</div>
             
         </section>
         

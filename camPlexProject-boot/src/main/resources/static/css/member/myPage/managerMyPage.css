@@ -117,15 +117,18 @@ main {
 /* 예약 정보 확인, 1대 1 문의, 업데이트 요청 */
 .functionBtn {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: 50px ;
+}
+
+#functionBtn1 :nth-child(2){
+	margin-left: 32px;
 }
 
 #functionBtn2{
 	margin-bottom: 200px;
 }
 
-*/
 
 /* ------------------------------ */
 /* 풋터 위 공간 */
@@ -196,4 +199,16 @@ main {
 
 .clickBtn:hover {
 	color: #909090;
+}
+
+#btnDiv {
+	display: flex;
+}
+
+.empty4 {
+	flex-basis: 25%;
+}
+
+#allBtnDiv {
+	flex-basis: 50%;
 }
