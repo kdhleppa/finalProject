@@ -97,7 +97,7 @@
 
 [![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=ahnjaeyoun )](https://github.com/anuraghazra/github-readme-stats)
 
-담당 구현 기능 : 
+담당 구현 기능 : 렌탈 상품 CRUD, 캠핑장 CRUD, 캠핑장 맵
 
 <br><br>
 <p></p>
@@ -125,9 +125,9 @@
 
 ![camplist](https://github.com/kdhleppa/finalProject/assets/139315831/7d2a68d3-a5d7-4640-a3c9-c61d7cb558b0)
 
-전체캠핑장과 각각의 카테고리에따른 필터기능과 서치기능구현 & 8개표현 후 더보기 기능을통해 확장되는 기능을 구현하였습니다.
+전체캠핑장과 각각의 카테고리에따른 필터기능과 서치기능구현 & 더 보기 기능을통해 확장되는 기능을 구현하였습니다.
 
-우측 지도 모달창을통해 카테고리별 필터기능과 각각 이름클릭시 캠핑장과 연결되는 기능을 넣었습니다.
+우측 지도 모달창을통해 카테고리별 필터기능과 각각의 캠핑장 이름 클릭 시 캠핑장 상세페이지로 이동하는 기능을 넣었습니다.
 
 <br><br><p></p>
 
@@ -143,7 +143,9 @@
 
 ![campupload1](https://github.com/kdhleppa/finalProject/assets/139315831/d201dcdc-dcb8-4320-a7e8-f0f98c28ca78)
 
-내용추가
+캠핑장에 대한 모든 정보를 업로드하고 캠핑장 객실에 대한 정보를 입력하는 모달창을 구현 하였습니다.
+
+입력된 모든 정보는 유효성 검사를 통과해야 업로드될 수 있습니다.
 
 <br><br><p></p>
 
