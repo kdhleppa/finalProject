@@ -136,10 +136,19 @@ https://github.com/Envoy-VC/awesome-badges
 
 ![itemdetail](https://github.com/kdhleppa/finalProject/assets/139315831/957eb198-5cc2-4cb8-874e-c274eaabc25e)
 
-로그인시와 로그인 아닐때의 분기를 줘서 렌탈기능은 로그인이후에 가능하도록 함
-장바구니와 결제기능은 예약한 캠핑장이 있어야 가능하도록 구현, 위시리스트는 모든 회원이 가능하도록 구현 
+비회원도 조회가 가능하지만 렌탈과 카트, 위시리스트 추가는 회원만 가능하며 사이트 특성상 예약된 캠핑장이 있어야 렌탈과 카트등록이 가능합니다.
 
--장바구니 &능
+-장바구니 & 위시리스트 & 결제 페이지-
+
+![cartwish](https://github.com/kdhleppa/finalProject/assets/139315831/0611d7a5-b8e7-4fb5-ad5c-63d160cf8334)
+
+체크박스를 통한 선택상품주문과 전체상품 주문이 가능하며 캠핑장별 상품이동과 위시리스트에서의 카트등록이 가능합니다.
+
+또한 비동기통신을 이용한 수량변경저장기능과 장바구니 전체 비우기, 각각의삭제 기능이 있습니다. 
+
+![wishlist](https://github.com/kdhleppa/finalProject/assets/139315831/72da39f2-0a34-40dc-b136-9d1dd1aee444)
+
+![itempay](https://github.com/kdhleppa/finalProject/assets/139315831/4dfd9a08-2178-44ed-a568-c54515b57488)
 
 
 
