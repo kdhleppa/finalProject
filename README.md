@@ -116,7 +116,7 @@
 
 ![크기변환 mainpage](https://github.com/kdhleppa/finalProject/assets/139315831/0ad8ff18-0b49-4f4a-b634-47b83c00da40)
 
-스크롤 한번에 다음화면으로 넘어가는 기능. 좌측 번호를통해 해당메인으로 바로이동할수있게 이동시켜주는 기능
+스크롤한번에 한페이지씩 이동하는 기능과 좌측 네비바를 통해 한번에 이동하는 기능을 구현하였습니다.
 
 <br><br><p></p>
 
@@ -124,9 +124,9 @@
 
 ![camplist](https://github.com/kdhleppa/finalProject/assets/139315831/7d2a68d3-a5d7-4640-a3c9-c61d7cb558b0)
 
-전체캠핑장과 각각의 카테고리에따른 필터기능과 서치기능구현 & 8개표현 후 더보기 기능을통해 확장기능 
+전체캠핑장과 각각의 카테고리에따른 필터기능과 서치기능구현 & 8개표현 후 더보기 기능을통해 확장되는 기능을 구현하였습니다.
 
-우측 지도 모달창을통해 카테고리별 필터기능과 연결기능
+우측 지도 모달창을통해 카테고리별 필터기능과 각각 이름클릭시 캠핑장과 연결되는 기능을 넣었습니다.
 
 <br><br><p></p>
 
@@ -142,13 +142,15 @@
 
 ![itemlist](https://github.com/kdhleppa/finalProject/assets/139315831/9e726f45-5072-4f40-b41d-bc8105a337b5)
 
+캠핑장조회와 마찬가지로 카테고리별 필터기능과 서치기능, 더보기를통한 확장기능을 구현하였습니다.
+
 <br><br><p></p>
 
 -렌탈상품 자세히 보기-
 
 ![itemdetail](https://github.com/kdhleppa/finalProject/assets/139315831/957eb198-5cc2-4cb8-874e-c274eaabc25e)
 
-비회원도 조회가 가능하지만 렌탈과 카트, 위시리스트 추가는 회원만 가능하며 사이트 특성상 예약된 캠핑장이 있어야 렌탈과 카트등록이 가능합니다.
+비회원도 보는것이 가능하지만 렌탈과 카트, 위시리스트 추가는 회원만 가능하며 사이트 특성상 예약된 캠핑장이 있어야 렌탈과 카트등록이 가능합니다.
 
 -장바구니 & 위시리스트 & 결제 페이지-
 
@@ -160,9 +162,11 @@
 
 ![wishlist](https://github.com/kdhleppa/finalProject/assets/139315831/72da39f2-0a34-40dc-b136-9d1dd1aee444)
 
+회원이 추가한 위시리스트를 관리하며 선택삭제기능이 있습니다.
+
 ![itempay](https://github.com/kdhleppa/finalProject/assets/139315831/4dfd9a08-2178-44ed-a568-c54515b57488)
 
-
+카트에서 주문한상품은 결제시 삭제되는기능과 각각의 삭제기능, 카카오페이 api를 통한 결제기능이 있습니다.
 
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=3CB371&height=150&section=footer&text='final'&fontSize=20" />
