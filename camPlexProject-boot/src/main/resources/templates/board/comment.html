@@ -10,7 +10,7 @@
 					th:classappend="${comment.parentNo} != 0 ? child-comment"
 					th:object="${comment}"
 				>
-	                <hr style="margin-bottom: 1rem;">
+	                <hr style="margin-top: -4.083rem; margin-bottom: 2rem;">
 	                
 	                <p class="comment-writer">
 	
@@ -35,7 +35,7 @@
 					
 	
 	                <!-- 버튼 영역 -->
-	                <div class="comment-btn-area">
+	                <div class="comment-btn-area" style="margin-bottom: 3rem;">
 						<th:block th:if="${session.loginMember?.memberNo != null}">
 	                    	<button id="answerBtn" th:onclick="|showInsertComment(*{commentNo}, this)|">답글</button>   
 	                    </th:block>

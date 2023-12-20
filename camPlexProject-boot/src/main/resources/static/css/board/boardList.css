@@ -21,30 +21,20 @@ button {
 	display: flex;
 	font-family: 'HakgyoansimSantteutdotumL';
     list-style: none;
-    font-size: 20px;
     margin-left: 10rem;
 }
-
-.boardViewList {
-	display: flex;
-	font-family: 'HakgyoansimSantteutdotumL';
-    list-style: none;
-    font-size: 20px;
-    margin-left: 8rem;
-}
-
-.boardViewList > a {
-	text-decoration: none;
-	color: black;
-	margin-top: 1rem;
-	margin-left: 2rem;
-}
-
 
 .boardTypeList > li > a {
 	text-decoration: none;
 	color: black;
-	margin-top: 3.8rem;
+	font-weight: 600;
+    transition: color 0.3s;
+    font-size: 20px;
+    margin-top: 3.8rem;
+}
+
+.boardTypeList > li > a:hover {
+	color: #909090;
 }
 
 .boardTypeList p {
@@ -53,6 +43,27 @@ button {
     margin-top: 4rem;
     margin-right: 5rem;
     margin-left: 5rem;
+}
+
+.boardViewList {
+	display: flex;
+	font-family: 'HakgyoansimSantteutdotumL';
+    list-style: none;
+    font-size: 16px;
+    margin-left: 8rem;
+    font-weight: 600;
+}
+
+.boardViewList > a {
+	text-decoration: none;
+	color: black;
+	margin-top: 1rem;
+	margin-left: 2rem;
+    transition: color 0.3s;
+}
+
+.boardViewList > a:hover {
+	color: #909090;
 }
 
 .col-auto {
@@ -94,8 +105,9 @@ button {
 	margin-left: 10rem;
 	margin-top: 7rem;
     font-family: 'HakgyoansimSantteutdotumL';
-    font-size: 30px;
+    font-size: 28px;
     color: black;
+    font-weight: 600;
 }
 
 /* 검색창 */
@@ -163,7 +175,7 @@ table {
 	height: 5rem;
     border-bottom: 3px solid rgb(206, 206, 206);
     text-align: center;
-    font-size: 17px;
+    font-size: 15px;
 }
 
 .list-thumbnail {
@@ -174,9 +186,14 @@ table {
 	margin-right: 0.5rem;
 }
 
+.listTHead {
+	font-size: 13px;
+}
+
 #listTitle {
 	text-decoration: none;
 	color: black;
+	font-size: 17px;
 }
 
 #blank {
@@ -190,13 +207,18 @@ table {
 
 #insertBtn {
     font-family: 'HakgyoansimSantteutdotumL';
-    margin-top: 1.8rem;
-    margin-left: 63%;
+    margin-top: 1.2rem;
+    margin-left: 70%;
     width: 4rem;
     background-color: transparent;
     border-style: none;
-    font-size: 1.3rem;
-    
+    font-size: 20px;
+    font-weight: 600;
+    transition: color 0.3s;    
+}
+
+#insertBtn:hover {
+	color: #909090;
 }
 
 .pagination {
@@ -220,6 +242,11 @@ table {
     height: 100%;
     text-decoration: none;
     color: black;
+    transition: color 0.3s;
+}
+
+.pagination a:hover {
+	color: #909090;
 }
 
 #currentPa {
