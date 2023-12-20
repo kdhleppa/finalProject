@@ -87,7 +87,8 @@
 
 [![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Jakelee0424 )](https://github.com/anuraghazra/github-readme-stats)
 
-담당 구현 기능 : 
+담당 구현 기능 :  DB 구축, 캠핑장 예약, 캠핑장 결제
+
 
 <br><br>
 <p></p>
