@@ -338,6 +338,16 @@ public class MemberServiceImpl implements MemberService {
 		return mapper.selectReservationListAll();
 	}
 
+	@Override
+	public List<Map<String, Object>> selectPaymentAll() {
+		return mapper.selectPaymentAll();
+	}
+
+	@Override
+	public int confirmPay(int paymentNo) {
+		return mapper.confirmPay(paymentNo);
+	}
+
 
 
 

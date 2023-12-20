@@ -287,6 +287,27 @@ public class MemberController {
 				res = myPageInfo.getResList().get(i);
 				res.setCampEntDate2(tempEnt);
 				
+				String paymentFl = res.getPaymentStatusFlag();
+				String bank = "";
+				if(res.getBankAccount() != null) {
+					bank = res.getBankAccount();
+				}
+				
+				
+				switch(paymentFl) {
+				case "Y" : res.setPaymentStatusFlag("결제 완료"); break;
+				case "N" : res.setPaymentStatusFlag("입금 확인 중"); break;
+				}
+				
+				switch(bank) {
+				case "kb" : res.setBankAccount("국민은행 00440211111111 이재경"); break;
+				case "toss" : res.setBankAccount("토스뱅크 100011111111 최규연"); break;
+				default : res.setBankAccount("");
+				}
+				
+				
+				
+				
 				int resNo = res.getReservationNo();
 				res.setItemList(service.selectItemListMypage(resNo));
 				
@@ -298,6 +319,23 @@ public class MemberController {
 				Reservations res = new Reservations();
 				res = myPageInfo.getResList().get(i);
 				res.setCampEntDate2(tempEnt);
+				
+				String paymentFl = res.getPaymentStatusFlag();
+				String bank = "";
+				if(res.getBankAccount() != null) {
+					bank = res.getBankAccount();
+				}
+				
+				switch(paymentFl) {
+				case "Y" : res.setPaymentStatusFlag("결제 완료"); break;
+				case "N" : res.setPaymentStatusFlag("입금 확인 중"); break;
+				}
+				
+				switch(bank) {
+				case "kb" : res.setBankAccount("국민은행 00440211111111 이재경"); break;
+				case "toss" : res.setBankAccount("토스뱅크 100011111111 최규연"); break;
+				default : res.setBankAccount("");
+				}
 				
 				int resNo = res.getReservationNo();
 				res.setItemList(service.selectItemListMypage(resNo));
@@ -714,6 +752,30 @@ public class MemberController {
 		
 		return "member/reservationNManageAll";
 	}
+	
+	// 관리자 결제 정보 확인 페이지 이동
+	@GetMapping("/paymentManageAll")
+	public String paymentManageAll(@SessionAttribute("loginMember") Member loginMember,
+				Model model) throws ParseException {
+			
+			List<Map<String, Object>> list = service.selectPaymentAll();
+			
+			model.addAttribute("list", list);
+			
+			return "member/paymentManageAll";
+	}
+	
+	// 무통장 입금 승인
+	@ResponseBody
+	@GetMapping("/confirmPay")
+	public List<Map<String, Object>> confirmPay(int paymentNo, RedirectAttributes ra) {
+		int result = service.confirmPay(paymentNo);
+		
+		List<Map<String, Object>> list = service.selectPaymentAll();
+		
+		return list;
+	}
+	
 	
 	// 위시리스트 추가
 	@PostMapping("/wishlist/insert")

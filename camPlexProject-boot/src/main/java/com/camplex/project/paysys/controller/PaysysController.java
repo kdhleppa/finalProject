@@ -60,6 +60,10 @@ public class PaysysController {
 	
 	@Autowired
 	private WishlistService wishService;
+
+	private InfoForReservation tempInfo;
+	
+	private int tempPaymentNo;
 	
 	@PostMapping("/rentCart/insert")
 	public String rentCartInsert(int itemNo, int reservationNo, int quantity,
@@ -220,6 +224,7 @@ public class PaysysController {
 						 ) {
 		
 		int result = 0;
+		int resResult = 0;
 		String bank = info.getBank();
 		
 		switch(bank) {
@@ -234,12 +239,8 @@ public class PaysysController {
 		info.setPayType("무통장입금");
 		
 		result = payService.insertPayCamp(info);
-		
-		if(result > 0) {
-			ra.addFlashAttribute("message", "결제 신청이 완료되었습니다.");
-		} else {
-			ra.addFlashAttribute("message", "결제 진행 중 오류가 발생했습니다.");
-		}
+		resResult = payService.insertReservation(info);
+        
 		
 		model.addAttribute("info", info);
 		model.addAttribute("bank", bank);

@@ -116,35 +116,15 @@ main {
 /* 예약 정보 확인, 1대 1 문의, 업데이트 요청 */
 .functionBtn {
     display: flex;
-    justify-content: space-evenly;
-    margin-top: 50px;
+    justify-content: space-around;
+    margin-top: 50px ;
 }
 
-.functionBtn > :nth-child(2) {
-	margin-left: 18px;
+#functionBtn2{
+	margin-bottom: 200px;
 }
 
-.functionBtn a {
-    font-size: 17px;
-}
-
-.functionBtn span {
-    color: red;
-}
-
-#functionBtn2 > :nth-child(1){
-    margin-left: 3px;
-}
-
-#functionBtn2 > :nth-child(2){
-    margin-left: 55px;
-}
-
-#functionBtn2 > :nth-child(3){
-    margin-right: 4px;
-}
-
-
+*/
 
 /* ------------------------------ */
 /* 풋터 위 공간 */

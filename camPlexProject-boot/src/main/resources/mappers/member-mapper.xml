@@ -45,6 +45,8 @@
 		<result property="campPayment" column="CAMP_PAYMENT"/>
 		<result property="paymentType" column="PAYMENT_TYPE"/>
 		<result property="campAddress" column="CAMP_ADDRESS"/>
+		<result property="paymentStatusFlag" column="PAYMENT_STATUS_FL"/>
+		<result property="bankAccount" column="BANK_ACCOUNT"/>
 	</resultMap>
 	
 	<resultMap type="Wishlist" id="wishlist_rm">
@@ -166,7 +168,15 @@
 
 					(SELECT PAYMENT_TYPE
 					FROM PAYMENT
-					WHERE PAYMENT_NO = A.PAYMENT_NO) PAYMENT_TYPE
+					WHERE PAYMENT_NO = A.PAYMENT_NO) PAYMENT_TYPE,
+					
+					(SELECT PAYMENT_STATUS_FL
+					FROM PAYMENT
+					WHERE PAYMENT_NO = A.PAYMENT_NO) PAYMENT_STATUS_FL,
+					
+					(SELECT BANK_ACCOUNT
+					FROM PAYMENT
+					WHERE PAYMENT_NO = A.PAYMENT_NO) BANK_ACCOUNT
 			       	
 		FROM RESERVATIONS A 
 		WHERE MEMBER_NO = #{memberNo}
@@ -535,5 +545,26 @@
 			    ON C.CAMP_DE_NO = A.CAMP_DE_NO 
 			 ORDER BY A.CAMP_ENTDATE DESC
     </select>
+    
+    <!-- 관리자용  미결제 내역 조회 -->
+	<select id="selectPaymentAll" resultType="Map">
+            SELECT CAMP_NAME, CAMP_DE_NAME, TO_CHAR(CHECKIN_DATE, 'YYYY.MM.DD') CHECKIN_DATE,
+            	   TO_CHAR(CHECKOUT_DATE, 'YYYY.MM.DD') CHECKOUT_DATE, SENDER_NAME, BANK_ACCOUNT,
+            	   CAMP_PAYMENT, PAYMENT_NO
+			  FROM PAYMENT
+			  JOIN CAMPING_SITE USING(CAMP_NO)
+			  JOIN CAMPING_DETAIL USING(CAMP_DE_NO)
+			  WHERE PAYMENT_STATUS_FL = 'N'
+			  AND PAYMENT_TYPE = '무통장입금'
+    </select>
+    
+    <!-- 회원 탈퇴 -->
+	<update id="confirmPay" parameterType="_int">
+		UPDATE "PAYMENT" SET
+		PAYMENT_STATUS_FL = 'Y'
+		WHERE PAYMENT_NO = #{paymentNo}
+	</update>
+    
+    
 	
 </mapper>
