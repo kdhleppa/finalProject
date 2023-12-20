@@ -3,47 +3,59 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=3CB371&height=150&section=header&text='CamPlexProject'&fontSize=20" />
 
-<br><br><p></p>
+<br>
 
 >프로젝트 소개
 <h3>파이날 프로젝트로서 캠핑장예약과 함께 간단한 장비 렌탈이 가능한 사이트를 만들고자 했습니다.</h3>
 
-<br><br><p></p>
+<br><br>
 
 >기술 스택
 
+<br>
+
 >OS
 <p>
-  <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white">
+  <img width="170px" src="https://github.com/kdhleppa/finalProject/assets/139316047/2fe586a8-e027-4e3c-bbd4-174103342829">
 </p>
+
+<br>
 
 >Language & Framework
 <p>
-  <img alt="HTML5" src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
-  <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
-  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white">
-  <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
-  [ AJAX ] , [ XML ]
+  <img width="75px" src="https://github.com/kdhleppa/finalProject/assets/139316047/ddc4b631-cd89-4305-b5f9-a94c759b5cc9">&nbsp;&nbsp;&nbsp;
+  <img width="72px" src="https://github.com/kdhleppa/finalProject/assets/139316047/d09762e0-0973-4e6c-ba81-525898aee795">&nbsp;&nbsp;&nbsp;
+  <img width="79px" src="https://github.com/kdhleppa/finalProject/assets/139316047/24306b97-7998-4b45-95a8-220449a0dcc1">&nbsp;&nbsp;&nbsp;
+  <img width="75px" src="https://github.com/kdhleppa/finalProject/assets/139316047/8ca3f900-50ec-4820-b9b3-80012a70d980">&nbsp;&nbsp;&nbsp;
+  <img width="120px" src="https://github.com/kdhleppa/finalProject/assets/139316047/c10f6454-5e2a-44f7-b3dc-172d5edb90a4">&nbsp;&nbsp;&nbsp;
+  <img width="75px" src="https://github.com/kdhleppa/finalProject/assets/139316047/7bf50e52-dbb7-4e1d-9cb2-e9d431329a5f">&nbsp;&nbsp;&nbsp;
+  <img width="75px" src="https://github.com/kdhleppa/finalProject/assets/139316047/3dfe7530-7c5b-468d-9daa-ac92b3d70622">&nbsp;&nbsp;&nbsp;
 </p>
+
+<br>
 
 >Tools
 <p>
-  <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white">
-  <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white">
-  <img src="https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white">
-  <img src="https://img.shields.io/badge/Oracle-F80000?style=for-the-badge&logo=oracle&logoColor=black">
-  <img src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white">
-  [ Tomcat ] , [ DBeaver ] , [ FileZila ]
+  <img width="75px" src="https://github.com/kdhleppa/finalProject/assets/139316047/404401a9-11ec-4c3c-8a84-9028e3b95d82">&nbsp;&nbsp;&nbsp;
+  <img width="75px" src="https://github.com/kdhleppa/finalProject/assets/139316047/633efc8e-8c90-42bf-9cda-2c4defb33a4c">&nbsp;&nbsp;&nbsp;
+  <img width="130px" src="https://github.com/kdhleppa/finalProject/assets/139316047/282b8fc0-024d-40b6-8423-a537c02e44b5">&nbsp;&nbsp;&nbsp;
+  <img width="75px" src="https://github.com/kdhleppa/finalProject/assets/139316047/dc2bb3c4-7c32-4962-bbae-45067b5274b4">&nbsp;&nbsp;&nbsp;
+  <img width="130px" src="https://github.com/kdhleppa/finalProject/assets/139316047/50ea0208-dfc3-407c-8413-cab62cbaa4ac">&nbsp;&nbsp;&nbsp;
+  <img width="150px" margin-bottom="30px" src="https://github.com/kdhleppa/finalProject/assets/139316047/aa55fb3c-7dd8-4e8f-a2b6-9e6232a7e832">&nbsp;&nbsp;&nbsp;
+  <img width="75px" src="https://github.com/kdhleppa/finalProject/assets/139316047/d48367f5-2c94-4eb5-8ded-f92f0123df6f">&nbsp;&nbsp;&nbsp;
 </p>
 
+<br>
 
 >API
 <p>
-  [ kakao pay ] , [ kakao login ] , [ kakao map ] , [ naver login ] , [ coolsms ]
+  <img width="100px" src="https://github.com/kdhleppa/finalProject/assets/139316047/a2cd2ac7-ba56-4adb-a314-e0673735e955">&nbsp;&nbsp;&nbsp;
+  <img width="85px" src="https://github.com/kdhleppa/finalProject/assets/139316047/9f3f81bc-0038-4c70-acad-e56b4985c38b">&nbsp;&nbsp;&nbsp;
+  <img width="110px" src="https://github.com/kdhleppa/finalProject/assets/139316047/fd22ac85-775b-49b1-bca1-b5f4255c1e87">&nbsp;&nbsp;&nbsp;
+  <img width="60px" src="https://github.com/kdhleppa/finalProject/assets/139316047/155b5a0e-af92-403f-843b-005f8e7d1da5">&nbsp;&nbsp;&nbsp;
+  <img width="120px" src="https://github.com/kdhleppa/finalProject/assets/139316047/4e51ef93-2143-4b1b-8c20-d06ddc5b6efd">&nbsp;&nbsp;&nbsp;
 </p>
 
-https://github.com/Envoy-VC/awesome-badges
 
 <p>
 
@@ -93,7 +105,7 @@ https://github.com/Envoy-VC/awesome-badges
 
 [![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=rbdus0515 )](https://github.com/anuraghazra/github-readme-stats)
 
-담당 구현 기능 : 
+담당 구현 기능 : 회원가입, 로그인, 마이페이지, 프로필 관리 및 정보 수정
 
 <br><br>
 <p></p>
