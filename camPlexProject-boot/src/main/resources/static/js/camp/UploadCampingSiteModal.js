@@ -3,7 +3,6 @@ window.addEventListener('unload', () => {
 	
 	console.log("unload이벤트 발생");
 	
-	/*location.href = "/camp2/deleteCampNoZ";*/
 	
 	fetch("/camp2/deleteCampNoZ")
 	.then(resp => resp.text())
