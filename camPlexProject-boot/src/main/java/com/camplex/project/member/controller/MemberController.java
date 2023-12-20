@@ -336,6 +336,8 @@ public class MemberController {
 		// 등업 신청 카운트
 		int levelUpFormCount = service.levelUpFormCount();
 		
+		System.out.println(levelUpFormCount);
+		
 		model.addAttribute("levelUpFormCount", levelUpFormCount);
 		
 		return "member/myPage/managerMyPage";
@@ -493,6 +495,8 @@ public class MemberController {
 	public String levelUpFormCheck(Model model) {
 		
 		List<CEOMember> levelUpList = service.levelUpList();
+		
+		System.out.println(levelUpList);
 		
 		model.addAttribute("levelUpList", levelUpList);
 		
