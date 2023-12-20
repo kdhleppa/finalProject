@@ -59,6 +59,8 @@ public class FileUploadConfig implements WebMvcConfigurer{
 		
 		String webPath = "/images/**"; // /images/로 시작되는 모든 요청
 		
+		
+		
 
 		// /images/로 시작되는 모든 요청을 resoucePath로 연결
 		registry.addResourceHandler(webPath).addResourceLocations(resourcePath);
