@@ -69,7 +69,7 @@
 
 [![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=kdhleppa)](https://github.com/anuraghazra/github-readme-stats)
 
-담당 구현 기능 : 렌탈상품 상세보기, 장바구니, 위시리스트, 결제, 오라클클라우드 DB구축
+담당 구현 기능 : 렌탈상품 상세보기, 장바구니, 위시리스트, 렌탈 상품 결제, 오라클클라우드 DB구축
 
 <br><br>
 <p></p>
