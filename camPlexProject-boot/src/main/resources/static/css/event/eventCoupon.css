@@ -71,9 +71,6 @@ button {
 	position: absolute; 
 	width: 310px;
 	height: 50px;
-	margin-left: 41.5%;
-	margin-right: 42%;
-	margin-top: 30rem;
 	z-index: 1;
 }
 
@@ -81,11 +78,10 @@ button {
 	position: absolute; 
 	width: 300px;
 	height: 50px;
-	margin-left: 42%;
-	margin-right: 41.5%;
-	margin-top: 30rem;
 	z-index: 0;
-	font-size: 33px;
+	margin-top: -0.8rem;
+	margin-left: 3rem;
+	font-size: 25px;
 }
 
 #canvas {
@@ -93,15 +89,24 @@ button {
 	height: 50px;
 	border-radius: 10px;
 	border: 1px solid black;
+}
+
+.pulseSec {
+	margin-left: -0.5rem;
 	animation: pulse 1s linear infinite both;
+}
+
+.eventP {
+	margin-left: 2rem;
 }
 
 
 @media (prefers-reduced-motion) {
-#canvas {
+.pulseSec {
     animation: dissolve 4s linear infinite both;
     text-decoration: overline;
   }
+  
 }
 
 @keyframes pulse {
