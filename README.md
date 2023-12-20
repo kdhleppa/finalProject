@@ -134,7 +134,23 @@
 
 ![camdetail](https://github.com/kdhleppa/finalProject/assets/139315831/ad3d1a9e-2b40-4a5f-93d9-140e6fad53a9)
 
+내용추가
 
+<br><br><p></p>
+
+-캠핑장 업로드-
+
+![campupload1](https://github.com/kdhleppa/finalProject/assets/139315831/d201dcdc-dcb8-4320-a7e8-f0f98c28ca78)
+
+내용추가
+
+<br><br><p></p>
+
+-캠핑장 수정&삭제-
+
+![campupdate](https://github.com/kdhleppa/finalProject/assets/139315831/92c5c89e-8c01-43db-b426-e72129889829)
+
+내용추가
 
 <br><br><p></p>
 
@@ -146,13 +162,23 @@
 
 <br><br><p></p>
 
+-렌탈상품 입력&수정&삭제-
+
+![retalUpdateTest1](https://github.com/kdhleppa/finalProject/assets/139315831/b33dc1c4-f87c-47a0-921d-3cf5c2c60a45)
+
+내용추가
+
+<br><br><p></p>
+
 -렌탈상품 자세히 보기-
 
 ![itemdetail](https://github.com/kdhleppa/finalProject/assets/139315831/957eb198-5cc2-4cb8-874e-c274eaabc25e)
 
 비회원도 보는것이 가능하지만 렌탈과 카트, 위시리스트 추가는 회원만 가능하며 사이트 특성상 예약된 캠핑장이 있어야 렌탈과 카트등록이 가능합니다.
 
--장바구니 & 위시리스트 & 결제 페이지-
+<br><br><p></p>
+
+-장바구니-
 
 ![cartwish](https://github.com/kdhleppa/finalProject/assets/139315831/0611d7a5-b8e7-4fb5-ad5c-63d160cf8334)
 
@@ -160,13 +186,22 @@
 
 또한 비동기통신을 이용한 수량변경저장기능과 장바구니 전체 비우기, 각각의삭제 기능이 있습니다. 
 
+<br><br><p></p>
+
+-위시리스트-
+
 ![wishlist](https://github.com/kdhleppa/finalProject/assets/139315831/72da39f2-0a34-40dc-b136-9d1dd1aee444)
 
 회원이 추가한 위시리스트를 관리하며 선택삭제기능이 있습니다.
+
+<br><br><p></p>
+
+-렌탈상품 결제-
 
 ![itempay](https://github.com/kdhleppa/finalProject/assets/139315831/4dfd9a08-2178-44ed-a568-c54515b57488)
 
 카트에서 주문한상품은 결제시 삭제되는기능과 각각의 삭제기능, 카카오페이 api를 통한 결제기능이 있습니다.
 
+<br><br><p></p>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=3CB371&height=150&section=footer&text='final'&fontSize=20" />
