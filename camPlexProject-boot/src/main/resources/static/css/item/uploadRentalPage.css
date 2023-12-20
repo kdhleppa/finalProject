@@ -263,16 +263,17 @@
     .inputDetail {
         height: 2rem;
         width: 20rem;
+        font-size: 0.7rem;
     }
-
+    
     .inputDetailSmall {
         height: 2rem;
         width: 10rem;
+        font-size: 0.7rem;
     }
 
     .rentalDetailInputSec {
-        height: 2rem;
-        width: 10rem;
+        height: 2rem; 
     }
 
     .rentalDetailTitleSec {
