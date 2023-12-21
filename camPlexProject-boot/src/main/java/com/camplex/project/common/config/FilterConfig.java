@@ -2,10 +2,12 @@ package com.camplex.project.common.config;
 
 import java.util.Arrays;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.camplex.project.board.controller.BoardController2;
 import com.camplex.project.common.filter.BoardFilter;
 import com.camplex.project.common.filter.CeoFilter;
 import com.camplex.project.common.filter.LoginFilter;
@@ -13,7 +15,8 @@ import com.camplex.project.common.filter.ManagerFilter;
 
 @Configuration
 public class FilterConfig {
-	
+
+
 	@Bean
 	public FilterRegistrationBean<BoardFilter> boardFilter(){
 		
@@ -57,7 +60,11 @@ public class FilterConfig {
 		
 		resiRegistrationBean.setFilter(new ManagerFilter());
 		
-		String[] url = {""};
+		
+		
+		String[] url = {"/member/managerMyPage", "/member/levelUpFormCheck", "/qna/qnaList", "/qna/qnaYList", "/member/reservationNManageAll",
+						"/camp2/uploadCamp", "/camp2/editCampForward/*", "/item2/uploadForward", "/item2/editForward/*",
+						"/board2/N/*" };
 		resiRegistrationBean.setUrlPatterns(Arrays.asList(url)); // url 패턴 여러 개 지정
 		resiRegistrationBean.setName("managerFilter"); // 이름
 		resiRegistrationBean.setOrder(3); // 여러 필터가 있을 때 순서
@@ -71,7 +78,7 @@ public class FilterConfig {
 		
 		resiRegistrationBean.setFilter(new CeoFilter());
 		
-		String[] url = {"/member/CEOMyPage"};
+		String[] url = {"/member/CEOMyPage", "/member/reservationNManage", "/ceoQna/ceoQnaList", "/ceoQna/ceoQnaYList"};
 		resiRegistrationBean.setUrlPatterns(Arrays.asList(url)); // url 패턴 여러 개 지정
 		resiRegistrationBean.setName("CeoFilter"); // 이름
 		resiRegistrationBean.setOrder(4); // 여러 필터가 있을 때 순서

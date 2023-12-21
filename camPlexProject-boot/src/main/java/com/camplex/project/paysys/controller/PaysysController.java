@@ -531,7 +531,7 @@ public class PaysysController {
 			
 			
 			
-			return "/paysys/rentalPay";
+			return "paysys/rentalPay";
 		}
 	}
 	

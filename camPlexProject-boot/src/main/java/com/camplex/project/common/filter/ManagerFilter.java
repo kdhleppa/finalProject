@@ -27,12 +27,23 @@ public class ManagerFilter implements Filter{
 		
 		HttpSession session = req.getSession();
 		
-		Member loginMember = (Member) session.getAttribute("loginMember");
 		
-		if( !loginMember.getMemberType().equals("M") ) {
-			resp.sendRedirect("/managerError");
+		Member loginMember = (Member) session.getAttribute("loginMember");
+
+		if(loginMember == null) {
 			
-		} else {
-			chain.doFilter(request, response);
-		}		
+			resp.sendRedirect("/loginError");
+			
+		}else {
+			
+			if( !loginMember.getMemberType().equals("M") ) {
+				resp.sendRedirect("/managerError");
+				
+			} else {
+				chain.doFilter(request, response);
+			}
+		}
+		
+		
+				
 	}}
