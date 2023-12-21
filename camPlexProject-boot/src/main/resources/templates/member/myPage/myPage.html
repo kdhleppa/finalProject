@@ -335,14 +335,14 @@
 						<section class="textItmeList">
 
 							<th:blcok th:if="${myPageInfo.qnaList.size == 0}">
-								<section class="textList">
+								<section class="textList countQna">
 									<p>문의한 내역이 없습니다.</p>
 								</section>
 							</th:blcok>
 
 							<th:blcok th:if="${myPageInfo.qnaList.size > 0}">
 
-								<section class="textList" th:each="qna : ${myPageInfo.qnaList}">
+								<section class="textList countQna" th:each="qna : ${myPageInfo.qnaList}">
 
 									<a th:id="|qna_${qna.QNANo}|" class="qnaBtn"
 										th:text="|${qna.QNACreateDate} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${qna.QNATitle}|"></a>
