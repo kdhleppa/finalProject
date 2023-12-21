@@ -54,7 +54,7 @@ public class QnaController {
 		
 		model.addAttribute("list", list);
 		
-		return "/qna/qnaYList";
+		return "qna/qnaYList";
 	}
 	
 	// 1:1 문의(관리자) 답변
