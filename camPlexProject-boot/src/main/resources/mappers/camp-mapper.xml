@@ -195,6 +195,7 @@
 		FROM "CAMPING_SITE" A
 		WHERE CAMP_DEL_FL = 'N'
 		AND A.CAMP_ADDRESS || A.CATEGORY || A.CAMP_NAME LIKE '%' || #{input} || '%'
+		ORDER BY CAMP_NO DESC
 	</select>
 	
 	<!-- 캠핑장 상세 조회 -->
@@ -332,6 +333,7 @@
 		FROM "CAMPING_SITE" A
 		WHERE CAMP_DEL_FL = 'N'
 		AND CATEGORY = #{category}
+		ORDER BY CAMP_NO DESC
 	</select>
 	
 	
