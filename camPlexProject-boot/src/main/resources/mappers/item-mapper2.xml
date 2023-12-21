@@ -54,7 +54,7 @@
 		ITEM_STATUS, DISCOUNT_RATE, (SELECT ITEM_IMG_PATH || ITEM_IMG_RENAME FROM ITEM_IMG WHERE ITEM_IMG_ORDER=0 AND ITEM_NO = A.ITEM_NO) THUMBNAIL
 		FROM "ITEM" A 
 		WHERE ITEM_STATUS = 'Y'
-		ORDER BY "ITEM_NO"
+		ORDER BY "ITEM_NO" DESC
 	</select>
 	
 	<!-- 아이템 최신순 조회(item 넘버 역순) -->
@@ -120,6 +120,7 @@
 		FROM "ITEM" A
 		WHERE ITEM_NAME || ITEM_DESCRIPTION LIKE '%' || #{input} || '%'
 		AND ITEM_STATUS = 'Y'
+		ORDER BY "ITEM_NO" DESC
 	</select>
 	
 	<select id="selectfurnitureItemList" resultMap="item_rm">
@@ -138,6 +139,7 @@
 		OR ITEM_TYPE = 'HT'
 		OR ITEM_TYPE = 'TB')
 		AND ITEM_STATUS = 'Y'
+		ORDER BY "ITEM_NO" DESC
 	</select>
 	
 	<select id="selectTentItemList" resultMap="item_rm">
@@ -150,6 +152,7 @@
 		FROM "ITEM" A
 		WHERE (ITEM_TYPE = 'TT' 
 		OR ITEM_TYPE = 'TP') AND ITEM_STATUS = 'Y'
+		ORDER BY "ITEM_NO" DESC
 	</select>
 	
 	<select id="selectBagItemList" resultMap="item_rm">
@@ -162,6 +165,7 @@
 		FROM "ITEM" A
 		WHERE (ITEM_TYPE = 'BG' 
 		OR ITEM_TYPE = 'AC') AND ITEM_STATUS = 'Y'
+		ORDER BY "ITEM_NO" DESC
 	</select>
 	
 	<select id="selectKitchenItemList" resultMap="item_rm">
@@ -176,6 +180,7 @@
 		OR ITEM_TYPE = 'IB'
 		OR ITEM_TYPE = 'CU'
 		OR ITEM_TYPE = 'FI') AND ITEM_STATUS = 'Y'
+		ORDER BY "ITEM_NO" DESC
 	</select>
 	
 	<!-- 상품 삭제(업뎃) -->
