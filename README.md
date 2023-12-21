@@ -358,6 +358,7 @@ CEO 타입의 회원의 마이페이지에서 일반 회원의 1:1 문의에 대
 <br><br><p></p>
 
 >트러블슈팅
+
 - 동현
 <img src="https://github.com/kdhleppa/finalProject/assets/139316047/a53facd4-c950-4b10-b688-1dc2751013ff">&nbsp;&nbsp;&nbsp;
   
@@ -365,12 +366,12 @@ CEO 타입의 회원의 마이페이지에서 일반 회원의 1:1 문의에 대
 <img src="https://github.com/kdhleppa/finalProject/assets/139316047/500e47c4-7b0d-4943-8f91-fec17da008e1">&nbsp;&nbsp;&nbsp;
   
 - 재경
-<img src="https://github.com/kdhleppa/finalProject/assets/139316047/69c946f2-9fb5-497e-87b2-bf5e28a8c6ee">
+<img src="https://github.com/kdhleppa/finalProject/assets/139316047/69c946f2-9fb5-497e-87b2-bf5e28a8c6ee">&nbsp;
 <img src="https://github.com/kdhleppa/finalProject/assets/139316047/7b8ddda1-147f-4936-ac7a-3acaad63ef3f">&nbsp;&nbsp;&nbsp;
   
 - 재윤
-<img src="https://github.com/kdhleppa/finalProject/assets/139316047/cafedbb2-e3c3-4a2d-9b40-99a9e3cb752d">
-<img src="https://github.com/kdhleppa/finalProject/assets/139316047/ca01ddbc-d13d-4224-8da7-dfeaed13c524">
+<img src="https://github.com/kdhleppa/finalProject/assets/139316047/cafedbb2-e3c3-4a2d-9b40-99a9e3cb752d">&nbsp;
+<img src="https://github.com/kdhleppa/finalProject/assets/139316047/ca01ddbc-d13d-4224-8da7-dfeaed13c524">&nbsp;
 <img src="https://github.com/kdhleppa/finalProject/assets/139316047/84aa4f3c-b3f4-450e-a350-a60fd6e319c0">&nbsp;&nbsp;&nbsp;
   
 - 규연
