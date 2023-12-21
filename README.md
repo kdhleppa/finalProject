@@ -230,7 +230,9 @@
 
 ![loginSingup](https://github.com/kdhleppa/finalProject/assets/139316047/eec6cfe2-def0-4a1d-a2e1-0aba7fd87b01)
 
-중복
+회원가입 시 필요한 정보들에 대한 유효성, 중복 검사를 하였고 문자 전송 API인 coolsms를 활용해 전화번호 인증 로직을 구현하였습니다.
+
+네이버와 카카오 간편 로그인 API를 사용해 처음 로그인을 하게 되면 회원가입과 로그인을, DB에 저장된 값이 있다면 로그인이 되도록 하였습니다.
 
 <br><br><p></p>
 
@@ -238,15 +240,16 @@
 
 ![searchId](https://github.com/kdhleppa/finalProject/assets/139316047/f61b8ae2-ad4b-4b4d-b0f2-c673e81d4348)
 
-
+아이디 찾기 기능은 회원가입에서 사용한 전화번호 인증을 통해 DB에 있는 전화번호와 대조하여 아이디 정보를 보여주는 로직이며
+보안을 높이기 위해 회원의 이름을 추가로 받아 이름과 전화번호가 일치할 시 아이디를 보여주도록 하였습니다.
 
 <br><br><p></p>
 
-- PW 찾기
+- PW 찾기 (PW 재설정)
 
 ![searchPw](https://github.com/kdhleppa/finalProject/assets/139316047/44d63b70-5b64-4f6b-91ae-5a0b84f644f7)
 
-
+PW 찾기는 아이디에 사용된 이메일로 실제로 인증코드를 보내고 확인이 된다면 기존 PW를 새로운 PW로 업데이트하는 로직입니다.
 
 <br><br><p></p>
 
@@ -254,7 +257,7 @@
 
 ![myPage](https://github.com/kdhleppa/finalProject/assets/139316047/f7f1fee1-ed44-4644-8fca-109ea66099d2)
 
-
+마이페이지는 시퀀스 넘버인 MEMBER NO를 DB에서 마이페이지에서 필요한 정보들을 조회 후 각각 부분에 맞는 위치에 노출시키도록 구현했습니다.
 
 <br><br><p></p>
 
@@ -262,16 +265,23 @@
 
 ![changeProfile](https://github.com/kdhleppa/finalProject/assets/139316047/17ad9d00-bbd0-4bb0-9e92-74436de66397)
 
+프로필 관리에서 이미지와 닉네임을 변경 가능하며 프로필 이미지는 변경, 삭제, 기존 이미지 사용이 가능하며
+기존 이미지를 유지하기 위해 input type hidden으로 기존 이미지에 대한 값을 저장해 변경이 이루어지지 않아도 기존 이미지를 사용할 수 있도록 했습니다.
 
+닉네임은 중복이 불가능하지만 기존에 사용했던 본인 닉네임이라면 그대로 사용 가능하도록 구현을 했습니다.
 
 <br><br><p></p>
 
 - (회원) CEO 등업 신청, (관리자) 등업 신청 확인
 
 ![levelUpForm](https://github.com/kdhleppa/finalProject/assets/139316047/5ad5415c-0655-4c84-a7e3-a10ad7717aa0)
+
+일반 회원인 경우 자신이 운영 중인 캠핑장이 있을 경우 CEO 계정으로 변환을 신청하는 페이지입니다.
+모든 값이 필수이며 신청한 폼은 관리자 계정에서 확인이 가능합니다.
+
 ![levelUpFormCheck](https://github.com/kdhleppa/finalProject/assets/139316047/5517bad4-e0b5-4b99-9e76-058021625931)
 
-
+관리자 계정으로 로그인해 확인하면 신청을 보낸 오래된 순으로 값을 불러오며 확인 버튼을 누를 시 confirm을 활용해 확인, 취소를 하도록 로직을 구현했습니다.
 
 <br><br><p></p>
 
@@ -279,7 +289,7 @@
 
 ![checkRes](https://github.com/kdhleppa/finalProject/assets/139316047/2ae15b09-e406-4a08-9274-2ddf1bffcf01)
 
-
+CEO 예약 확인은 자신의 캠핑장에 대한 예약 정보를 불러와 값을 노출시키며 최신 예약부터 과거에 대한 예약을 보여주는 페이지입니다.
 
 <br><br><p></p>
 
@@ -287,7 +297,7 @@
 
 ![payCheck](https://github.com/kdhleppa/finalProject/assets/139316047/ada7d44a-ea1a-4762-a4d2-0462a2a3dabb)
 
-
+캠핑장과 렌탈 상품에 무통장 입금에 대한 확인이 필요했기에 관리자가 입금을 확인하고 입금 대기를 입금 확인으로 변경하는 로직을 구현한 페이지입니다.
 
 <br><br><p></p>
 
@@ -295,7 +305,7 @@
 
 ![deleteMember](https://github.com/kdhleppa/finalProject/assets/139316047/68afb36e-64f6-43b1-99c9-6dcd8d4c9b70)
 
-
+멤버와 관련된 정보는 사후 관리의 필요성을 느끼고 DB에 탈퇴에 대한 Y, N 플래그를 넣었고 멤버가 탈퇴를 하게 된다면 플래그를 Y로 업데이트하는 로직을 구현했습니다.
 
 <br><br><p></p>
 
