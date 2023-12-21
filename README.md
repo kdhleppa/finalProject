@@ -79,7 +79,7 @@
 
 [![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=songt1107)](https://github.com/anuraghazra/github-readme-stats)
 
-담당 구현 기능 : 
+담당 구현 기능 : 게시판, 채팅봇 API, 1:1문의
 
 <br><br>
 <p></p>
