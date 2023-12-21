@@ -50,6 +50,9 @@ public class KakaoService {
 	@Value("${kakao.pay.approval.url}")
 	private String approvalUrl;
 	
+	@Value("${kakao.pay.approval.url2}")
+	private String approvalUrl2;
+	
 	@Value("${kakao.pay.cancel.url}")
 	private String cancelUrl;
 	
@@ -129,7 +132,7 @@ public class KakaoService {
         params.add("quantity", "1");
         params.add("total_amount", info.getPrice());
         params.add("tax_free_amount", "100");
-        params.add("approval_url", approvalUrl);
+        params.add("approval_url", approvalUrl2);
         params.add("cancel_url", cancelUrl);
         params.add("fail_url", failUrl);
         
