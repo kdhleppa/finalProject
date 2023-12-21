@@ -162,13 +162,13 @@ public class AjaxServiceImpl implements AjaxService {
 		DefaultMessageService messageService =  NurigoApp.INSTANCE.initialize(apiKey, apiSecret, "https://api.coolsms.co.kr");
 		// 주석 풀면 api 사용가능
 		
-//		net.nurigo.sdk.message.model.Message message = new net.nurigo.sdk.message.model.Message();
-//		message.setFrom("01062701594");
-//		message.setTo(phone);
-//		message.setText("camPlex 인증번호는 " + randomNumber + "입니다.");
-//		
-//		SingleMessageSentResponse response = messageService.sendOne(new SingleMessageSendingRequest(message));
-//		System.out.println(response);
+		net.nurigo.sdk.message.model.Message message = new net.nurigo.sdk.message.model.Message();
+		message.setFrom("01062701594");
+		message.setTo(phone);
+		message.setText("camPlex 인증번호는 " + randomNumber + "입니다.");
+		
+		SingleMessageSentResponse response = messageService.sendOne(new SingleMessageSendingRequest(message));
+		System.out.println(response);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("randomNumber", randomNumber);
