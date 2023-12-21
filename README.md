@@ -310,6 +310,7 @@ CEO 예약 확인은 자신의 캠핑장에 대한 예약 정보를 불러와 �
 <br><br><p></p>
 
 - 게시판 리스트
+
 ![boardMain](https://github.com/kdhleppa/finalProject/assets/139315798/c4d21c44-790a-45a4-aa28-42770cd132c5)
 
 게시판 메인 화면에서 회원이 조회하고자 하는 게시글을 조건에 맞게 검색할 수 있는 페이지입니다.
