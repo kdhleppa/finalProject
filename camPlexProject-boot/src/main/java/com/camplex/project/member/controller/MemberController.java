@@ -211,7 +211,7 @@ public class MemberController {
 		
 		if(result > 0) {
 			model.addAttribute("memberEmail", memberEmail);
-			path = "/member/idPw/pwReset2";
+			path = "member/idPw/pwReset2";
 		} else {
 			message = "일치하는 회원 정보가 없습니다.";
 			path = "redirect:" + referer;
