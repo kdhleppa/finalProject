@@ -1,0 +1,631 @@
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    unicode-range: U+AC00-D7A3
+}
+
+*{
+    font-family: 'HakgyoansimSantteutdotumL', 'Montserrat';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    color: #000;
+	display:inline-block; 
+	margin:0;
+	font-size: 16px;
+}
+
+a:hover {
+	cursor: pointer;
+}
+  
+button { 
+  color: #000;
+  display:inline-block; 
+  margin:0;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+}
+  
+main, div, section {
+    /* border: 1px solid black; */
+}
+
+/* ------------------------------- */
+/* 메인 틀 */
+main {
+    display: flex;
+    margin-top: 50px;
+}
+
+.empty1 {
+    flex-basis: 15%;
+}
+
+#myPageSection {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 70%;
+}
+
+/* --------------------------------- */
+/* 대제목 */
+#headerName {
+    font-size: 30px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+#underLine {
+    border: 2px solid black;
+    margin-bottom: 50px;
+}
+
+/* ------------------------------- */
+/* 정보 */
+
+/* 내 정보 */
+#myInfo {
+    display: flex;
+}
+
+.empty2 {
+    flex-basis: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#infoMain {
+    flex-basis: 80%;
+    display: flex;
+}
+
+.empty3 {
+    flex-basis: 5%;
+}
+
+#profileImgSection {
+	width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid rgb(232, 232, 232);
+}
+
+#profileImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#nameTel, #nicknameEmail {
+    flex-basis: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#nameTel, #nicknameEmail > p {
+    font-size: 15px;
+}
+
+.btnSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+/* ---------------------------- */
+/* 구매 내역 정보 */
+#buyListSection {
+    display: flex;
+}
+
+.subName {
+	display: flex;
+    margin-top: 100px;
+    font-size: 30px;
+    margin-left: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+}
+#listTitle, #beforeListTitle{
+	display: flex;
+}
+
+.subListTitle{
+	display: flex;
+	align-items: center;
+	font-size: 15px;
+}
+
+.underLine2 {
+    border: 2px solid black;
+    margin-bottom: 10px;
+}
+
+.shopingList {
+    flex-basis: 80%;
+}
+
+#buyInfoListBtn {
+	display: flex;
+	align-items: end;
+	font-weight: bold;
+	font-size: 17px;
+	width: 160px;
+}
+
+.shopingListInfo {
+    display: flex;
+}
+
+.contentWrapper{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	overflow: hidden;
+	height: 330px;
+	
+}
+
+.buyHistoryInfo {
+    display: flex;
+    margin-top: 30px;
+}
+
+.imgSection {
+	display: flex;
+	justify-content: center;
+	width: 250px;
+    height: 120px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-right: 40px;
+}
+
+.shoppingImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.buyInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-basis: 45%;
+    
+}
+
+.buyInfo a {
+    display: inline-block;
+}
+
+.buyInfo p{
+	
+	margin-bottom: 4px;
+	
+}
+
+#payStateSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-basis: 20%;
+}
+
+
+/* ---------------------------- */
+/* 쇼핑 정보 */
+#shopingListSection {
+    display: flex;
+}
+
+.underLine2 {
+    border: 2px solid black;
+    margin-bottom: 10px;
+}
+
+.shopingList {
+    flex-basis: 80%;
+}
+
+#shoppingInfoListBtn {
+	display: flex;
+	align-items: end;
+	font-weight: bold;
+	font-size: 17px;
+	width: 160px;
+}
+
+#shopingListInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+#shopingHistoryInfo {
+    display: flex;
+    margin-top: 30px;
+}
+
+.imgSection {
+	display: flex;
+	justify-content: center;
+	width: 250px;
+    height: 120px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.shoppingImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#shopingInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-basis: 60%;
+}
+
+#shopingInfo a {
+    display: inline-block;
+}
+
+#reviewRebuyDeleteBtnSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-basis: 10%;
+}
+
+/* ------------------------------ */
+/* 관심 상품 */
+#wishListSection {
+    display: flex;
+}
+
+#wishList {
+    flex-basis: 80%;
+}
+
+#wishListItems {
+    display: flex;
+    flex-basis: 80%;
+    height: 200px;
+}
+
+.itemSection {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-right: 40px;
+    min-height: 200px;
+}
+
+.itemWrapper{
+	display: flex;
+	width: 80px;
+	transition: 0.5s;
+    text-align: center;
+}
+
+.item{
+	flex-basis: 80%;
+	overflow: hidden;
+}
+
+.itemSection  a {
+	margin-top: 10px;
+    font-size: 0.8rem;
+}
+
+.wishItem {
+    width: 190px;
+    height: 140px;
+    object-fit: contain;
+    cursor: pointer;
+    border-radius: 5px;
+    
+}
+
+.empty4 {
+    flex-basis: 3%;
+}
+
+
+/* ------------------------------------ */
+/* 문의사항, 커뮤니티 공통사항 */
+.textSection {
+    display: flex;
+}
+
+.textListSection {
+    flex-basis: 80%;
+}
+
+.textItemSection {
+    display: flex;
+    min-height: 200px;
+}
+
+.textItmeList {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 80%;
+    height: 190px;
+    overflow: hidden;
+}
+
+.textListSecDiv {
+	display: flex;
+	justify-content: space-between;
+}
+
+.textList {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.textList {
+    font-size: 15px;
+}
+
+/* ------------------------------ */
+/* 풋터 위 공간 */
+.empty5 {
+    height: 300px;
+}
+
+
+/* --------------------------------- */
+/* 풋터 */
+.bottomBar { 
+    margin: 25px 0 25px 25px ;
+    font-family: 'HakgyoansimSantteutdotumL';
+    font-weight: 900;
+    line-height: 30px;
+    
+}
+
+.footerTitle {
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 2rem;
+    font-weight: 1000;
+
+    height: 60px;
+    line-height: 60px;
+    color: #333;
+    letter-spacing: 3px;
+}
+
+.footerMenu {
+    display: flex;
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 900;
+
+    color: #333;
+    letter-spacing: 1px;
+}
+
+.footerMenu a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 100;
+}
+
+.menuDiv {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.footerContent {
+    width: 100%;
+    letter-spacing: 1px;
+    font-weight: 100;
+}
+
+.arrow {
+	flex-basis: 10%;
+	background-color: transparent;
+	border: transparent;
+	font-size: 1rem;
+}
+
+.arrow img {
+	width: 50px;
+	cursor: pointer;
+}
+
+.radioArea{
+	font-size: 1rem;
+	display: flex;
+	align-items: center;
+	margin-left: 20px;	
+}
+.radioArea > input{
+	margin: 0 10px;
+	visibility: hidden;
+}
+
+.radioArea > label{
+	cursor: pointer;
+	padding: 5px 10px;
+	border-radius: 10px;
+}
+
+.clicked + label {
+	color: #d4a373;
+}
+
+.moreBtnWrapper { 
+    display: flex;
+    justify-content: center;
+}
+
+.moreBtn{
+    padding-top: 50px;
+	width: 100%;
+	background-color: transparent;
+	border: none;
+	font-size: 1rem;
+	color: #909090;
+	cursor: pointer;
+	transition-duration: .5s;	
+
+}
+
+.moreBtn:hover{
+	transform: translateY(-1rem);
+	
+}
+
+.overlayScreen, .overlayScreenWish{
+    bottom: 0;
+    background-color: rgb(255, 255, 255);
+    animation-duration: .3s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    width: 100%;
+  }
+  
+.play {
+    animation-name: overlay-screen-transition;
+  }
+  
+  @keyframes overlay-screen-transition {
+      0% {
+          width: 100%;
+          opacity: 0%;
+          top: 0;
+        }
+        
+        100% {
+            width: 100%;
+            opacity: 100%;
+      }
+  }
+  
+  .element-fadeIn {
+    animation-name: element-fadeIn;
+    animation-duration: 0.25s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes element-fadeIn {
+    0% {
+      opacity: 0%;
+    }
+    100% {
+      opacity: 100%;
+    }
+  }
+  
+  
+.clickBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+    transition: color 0.3s;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.clickBtn:hover {
+	color: #909090;
+}
+
+
+
+
+
+#mainContainer, #collectPersonalInfoModal, #collectInfoModal{
+	background-color: #fff;
+	padding: 10px;
+	border-radius: 10px;
+	padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#modalContainerPopup {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba(0, 0, 0, 0.5);
+    z-index: 90000;
+}
+
+
+#modalContainerPopup.hidden {
+	display: none;
+}
+
+#QNAAnswerTitle {
+	margin-left: 3rem;
+	width: 30rem;
+	height: 2rem;
+	outline: none;
+	font-size: 16px;
+	border-radius: 10px;
+	border: 1px solid #909090;
+	padding: 0.5rem;
+}
+
+#QNAAnswerContent {
+	margin-left: 1rem;
+	resize: none;
+	width: 30rem;
+	height: 12rem;
+	outline: none;
+	font-size: 16px;
+	border-radius: 10px;
+	border: 1px solid #909090;
+	padding: 0.5rem;
+}
+
+#QNAAnswer {
+	margin-left: 1rem;
+	resize: none;
+	width: 30rem;
+	height: 12rem;
+	outline: none;
+	font-size: 16px;
+	border-radius: 10px;
+	border: 1px solid #909090;
+	padding: 0.5rem;
+	margin-bottom: 2rem;
+}

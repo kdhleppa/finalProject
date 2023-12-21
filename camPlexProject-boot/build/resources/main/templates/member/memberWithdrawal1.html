@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원탈퇴</title>
+
+    <link rel="stylesheet" th:href="@{/css/member/memberWithdrawal1.css}">
+
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+	<th:block th:replace="~{common/headerForContent}"></th:block>
+
+    <main>
+        <!-- 공백 (우) -->
+        <section class="empty1"></section>
+        
+        <section id="searchIdInfoSection">
+
+		<form th:action="@{/member/deleteMember}" method="post" id="deleteMember">
+			
+            <!-- 대제목 -->
+            <section id="headerName">회원탈퇴</section>
+            <hr id="underLine"/>
+            
+            <section id="inputInfo">
+
+                <!-- 탈퇴 질문 -->
+                <section id="withdrawalQuestionSection">
+                    
+                    <p id="withdrawalQuestion">탈퇴 하시겠습니까 ?</p>
+                    <p id="withdrawalQuestion">탈퇴 하시려면 비밀번호를 입력해주세요.</p>
+                    
+                    <input class="inputSignUpInfo" id="inputPw" name="memberPw" type="password" placeholder="비밀번호">
+	                    
+                    <input class="inputSignUpInfo" id="inputPwRe" type="password" placeholder="비밀번호 확인">
+                    <p class="sendMassage" id="pwMessage"></p>
+
+                </section>
+
+                <section id="selectBtnSection">
+                    
+                    <!-- 탈퇴, 취소 버튼 -->
+                    <section id="selectBtn">
+                        <button class="clickBtn">탈퇴하기</button>
+                        <a class="clickBtn" th:onclick="|window.history.back()|">취소</a>
+                    </section>
+                    
+                </section>
+
+            </section>
+
+		</form>
+
+        </section>
+        
+        <!-- 공백 (좌) -->
+        <section class="empty1"></section>
+
+    </main>
+
+	<script th:src="@{/js/member/memberWithdrawal.js}"></script>
+    
+</body>
+</html>

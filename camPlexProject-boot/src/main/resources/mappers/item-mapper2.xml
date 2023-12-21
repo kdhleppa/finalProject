@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.camplex.project.item.mappers.ItemMapper2">
+
+
+	<resultMap type="Item" id="item_rm">
+	  	
+	  	<id property="itemNo" column="ITEM_NO"/>
+	  	  	
+		<result property="itemType" column="ITEM_TYPE"/>
+		<result property="inStoreCount" column="IN_STORE_COUNT"/>
+		<result property="loanCount" column="LOAN_COUNT"/>
+		<result property="itemPrice" column="ITEM_PRICE"/>
+		<result property="itemName" column="ITEM_NAME"/>
+		<result property="itemDescription" column="ITEM_DESCRIPTION"/>
+		<result property="itemStatus" column="ITEM_STATUS"/>
+		<result property="discountRate" column="DISCOUNT_RATE"/>
+		<result property="itemDeImg" column="ITEM_DETAIL_IMG"/>
+	    
+	    
+	    <collection property="imageList"
+					select="selectImageList"
+					column="ITEM_NO"
+					javaType="java.util.ArrayList"
+					ofType="ItemImg"
+		 />
+	    
+	</resultMap>
+	
+	
+	
+	<resultMap type="ItemImg" id="itemImg_rm">
+		
+		<id property="itemImgNo" column="ITEM_IMG_NO"/>
+		
+		<result property="itemNo" column="ITEM_NO" />
+		<result property="itemImgPath" column="ITEM_IMG_PATH" />
+		<result property="itemImgRename" column="ITEM_IMG_RENAME" />
+		<result property="itemImgOriginal" column="ITEM_IMG_ORIGINAL"/>
+		<result property="itemImgOrder" column="ITEM_IMG_ORDER" />
+	
+	</resultMap>
+	
+	<!-- collection 상품 이미지-->
+	<select id="selectImageList" resultMap="itemImg_rm">
+		SELECT ITEM_IMG_NO, ITEM_NO, ITEM_IMG_PATH
+		FROM ITEM_IMG
+	 	WHERE ITEM_NO = #{itemNo}
+	</select>
+	
+	<!-- 상품 조회-->
+	<select id="searchItems" resultMap="item_rm">
+		SELECT ITEM_NO, ITEM_TYPE, IN_STORE_COUNT, ITEM_PRICE, ITEM_NAME, ITEM_DESCRIPTION,
+		ITEM_STATUS, DISCOUNT_RATE, (SELECT ITEM_IMG_PATH || ITEM_IMG_RENAME FROM ITEM_IMG WHERE ITEM_IMG_ORDER=0 AND ITEM_NO = A.ITEM_NO) THUMBNAIL
+		FROM "ITEM" A 
+		WHERE ITEM_STATUS = 'Y'
+		ORDER BY "ITEM_NO" DESC
+	</select>
+	
+	<!-- 아이템 최신순 조회(item 넘버 역순) -->
+	<select id="selectItemList" resultMap="item_rm">
+		SELECT ITEM_NO, ITEM_TYPE, ITEM_PRICE, ITEM_NAME, ITEM_DESCRIPTION, 
+		ITEM_STATUS, DISCOUNT_RATE,
+		(SELECT ITEM_IMG_PATH || ITEM_IMG_RENAME FROM ITEM_IMG WHERE ITEM_IMG_ORDER=0 AND ITEM_NO = A.ITEM_NO) THUMBNAIL
+		FROM "ITEM" A
+		WHERE ITEM_STATUS = 'Y'
+		ORDER BY "ITEM_NO" DESC
+	</select>
+	
+	<!-- 아이템 주문많은 순 조회-->
+	<select id="selectItemListOrder" resultMap="item_rm">
+		SELECT ITEM_NO, ITEM_TYPE, ITEM_PRICE, ITEM_NAME, ITEM_DESCRIPTION, 
+		ITEM_STATUS, DISCOUNT_RATE,
+			(SELECT ITEM_IMG_PATH || ITEM_IMG_RENAME 
+			FROM ITEM_IMG 
+			WHERE ITEM_IMG_ORDER=0 
+			AND ITEM_NO = A.ITEM_NO) THUMBNAIL,
+			(SELECT COUNT(*)
+			FROM RENTAL_PAYMENT_ITEM B
+			WHERE B.ITEM_NO = A.ITEM_NO ) ORDER_COUNT
+		FROM "ITEM" A
+		WHERE ITEM_STATUS = 'Y'
+		ORDER BY ORDER_COUNT DESC
+	</select>
+	
+	<!-- 아이템 가격 낮은 순 조회 -->
+	<select id="selectItemListPriceLow" resultMap="item_rm">
+		SELECT ITEM_NO, ITEM_TYPE, ITEM_PRICE, ITEM_NAME, ITEM_DESCRIPTION, 
+		ITEM_STATUS, DISCOUNT_RATE, 
+			(SELECT ITEM_IMG_PATH || ITEM_IMG_RENAME 
+			FROM ITEM_IMG 
+			WHERE ITEM_IMG_ORDER=0 
+			AND ITEM_NO = A.ITEM_NO) THUMBNAIL
+		FROM "ITEM" A
+		WHERE ITEM_STATUS = 'Y'
+		ORDER BY "ITEM_PRICE" ASC
+	</select>
+	
+	<!-- 아이템 가격 높은 순 조회 -->
+	<select id="selectItemListPricehigh" resultMap="item_rm">
+		SELECT ITEM_NO, ITEM_TYPE, ITEM_PRICE, ITEM_NAME, ITEM_DESCRIPTION, 
+		ITEM_STATUS, DISCOUNT_RATE,
+			(SELECT ITEM_IMG_PATH || ITEM_IMG_RENAME 
+			FROM ITEM_IMG 
+			WHERE ITEM_IMG_ORDER=0 
+			AND ITEM_NO = A.ITEM_NO) THUMBNAIL
+		FROM "ITEM" A
+		WHERE ITEM_STATUS = 'Y'
+		ORDER BY "ITEM_PRICE" DESC
+	</select>
+	
+	<!-- 아이템 검색-->
+	<select id="searchItem" resultMap="item_rm">
+		SELECT ITEM_NO, ITEM_TYPE, ITEM_PRICE, ITEM_NAME, ITEM_DESCRIPTION, 
+		ITEM_STATUS, DISCOUNT_RATE,
+			(SELECT ITEM_IMG_PATH || ITEM_IMG_RENAME 
+			FROM ITEM_IMG 
+			WHERE ITEM_IMG_ORDER=0 
+			AND ITEM_NO = A.ITEM_NO) THUMBNAIL
+		FROM "ITEM" A
+		WHERE ITEM_NAME || ITEM_DESCRIPTION LIKE '%' || #{input} || '%'
+		AND ITEM_STATUS = 'Y'
+		ORDER BY "ITEM_NO" DESC
+	</select>
+	
+	<select id="selectfurnitureItemList" resultMap="item_rm">
+		SELECT ITEM_NO, ITEM_TYPE, ITEM_PRICE, ITEM_NAME, ITEM_DESCRIPTION, 
+		ITEM_STATUS, DISCOUNT_RATE,
+			(SELECT ITEM_IMG_PATH || ITEM_IMG_RENAME 
+			FROM ITEM_IMG 
+			WHERE ITEM_IMG_ORDER=0 
+			AND ITEM_NO = A.ITEM_NO) THUMBNAIL
+		FROM "ITEM" A
+		WHERE (ITEM_TYPE = 'CH' 
+		OR ITEM_TYPE = 'FC'
+		OR ITEM_TYPE = 'BX'
+		OR ITEM_TYPE = 'SB'
+		OR ITEM_TYPE = 'WD'
+		OR ITEM_TYPE = 'HT'
+		OR ITEM_TYPE = 'TB')
+		AND ITEM_STATUS = 'Y'
+		ORDER BY "ITEM_NO" DESC
+	</select>
+	
+	<select id="selectTentItemList" resultMap="item_rm">
+		SELECT ITEM_NO, ITEM_TYPE, ITEM_PRICE, ITEM_NAME, ITEM_DESCRIPTION, 
+		ITEM_STATUS, DISCOUNT_RATE,
+			(SELECT ITEM_IMG_PATH || ITEM_IMG_RENAME 
+			FROM ITEM_IMG 
+			WHERE ITEM_IMG_ORDER=0 
+			AND ITEM_NO = A.ITEM_NO) THUMBNAIL
+		FROM "ITEM" A
+		WHERE (ITEM_TYPE = 'TT' 
+		OR ITEM_TYPE = 'TP') AND ITEM_STATUS = 'Y'
+		ORDER BY "ITEM_NO" DESC
+	</select>
+	
+	<select id="selectBagItemList" resultMap="item_rm">
+		SELECT ITEM_NO, ITEM_TYPE, ITEM_PRICE, ITEM_NAME, ITEM_DESCRIPTION, 
+		ITEM_STATUS, DISCOUNT_RATE,
+			(SELECT ITEM_IMG_PATH || ITEM_IMG_RENAME 
+			FROM ITEM_IMG 
+			WHERE ITEM_IMG_ORDER=0 
+			AND ITEM_NO = A.ITEM_NO) THUMBNAIL
+		FROM "ITEM" A
+		WHERE (ITEM_TYPE = 'BG' 
+		OR ITEM_TYPE = 'AC') AND ITEM_STATUS = 'Y'
+		ORDER BY "ITEM_NO" DESC
+	</select>
+	
+	<select id="selectKitchenItemList" resultMap="item_rm">
+		SELECT ITEM_NO, ITEM_TYPE, ITEM_PRICE, ITEM_NAME, ITEM_DESCRIPTION, 
+		ITEM_STATUS, DISCOUNT_RATE,
+			(SELECT ITEM_IMG_PATH || ITEM_IMG_RENAME 
+			FROM ITEM_IMG 
+			WHERE ITEM_IMG_ORDER=0 
+			AND ITEM_NO = A.ITEM_NO) THUMBNAIL
+		FROM "ITEM" A
+		WHERE (ITEM_TYPE = 'KC' 
+		OR ITEM_TYPE = 'IB'
+		OR ITEM_TYPE = 'CU'
+		OR ITEM_TYPE = 'FI') AND ITEM_STATUS = 'Y'
+		ORDER BY "ITEM_NO" DESC
+	</select>
+	
+	<!-- 상품 삭제(업뎃) -->
+	<update id="deleteItem">
+		UPDATE "ITEM" SET
+		ITEM_STATUS = 'N'
+		WHERE ITEM_NO = #{itemNo}
+	</update>
+	
+	<!-- 상품 삽입-->
+	<insert id="itemInsert" parameterType="Item" useGeneratedKeys="true">
+		
+		<selectKey order="BEFORE" resultType="_int" keyProperty="itemNo">
+  			SELECT SEQ_ITEM_NUM.NEXTVAL FROM DUAL
+  		</selectKey>
+  	
+  			INSERT INTO "ITEM"
+  			VALUES( #{itemNo},
+  					#{itemType},
+  					#{inStoreCount},
+  					DEFAULT,
+  					#{itemPrice},
+  					#{itemName},
+  					#{itemDescription},
+  					DEFAULT,
+  					#{discountRate}
+  					)
+	</insert>
+	
+	<!-- 상품 이미지 리스트(여러개)삽입 -->
+  	<insert id="insertItemImageList" parameterType="list">
+  		INSERT INTO "ITEM_IMG"
+  		SELECT SEQ_ITEM_IMG_NUM.NEXTVAL, A.*
+  		FROM (
+  			
+  			<foreach collection="list" item="img" separator=" UNION ALL ">
+				SELECT #{img.itemNo} ITEM_NO,
+					#{img.itemImgPath} ITEM_IMG_PATH,
+  					#{img.itemImgRename} ITEM_IMG_RENAME,
+  					#{img.itemImgOriginal} ITEM_IMG_ORIGINAL,
+  					#{img.itemImgOrder} ITEM_IMG_ORDER			
+  				FROM DUAL
+  			</foreach>
+  		) A
+  	</insert>
+  	
+  	<!-- 상품 넘버에 따른 상품 조회-->
+  	<select id="selectItemOfItemNo" resultMap="item_rm">
+		SELECT ITEM_NO, ITEM_TYPE, IN_STORE_COUNT, ITEM_PRICE, ITEM_NAME, ITEM_DESCRIPTION,
+		ITEM_STATUS, DISCOUNT_RATE, 
+		(SELECT ITEM_IMG_PATH || ITEM_IMG_RENAME FROM ITEM_IMG WHERE ITEM_IMG_ORDER=0 AND ITEM_NO = A.ITEM_NO) THUMBNAIL,
+		(SELECT ITEM_IMG_PATH || ITEM_IMG_RENAME FROM ITEM_IMG WHERE ITEM_IMG_ORDER=1 AND ITEM_NO = A.ITEM_NO) ITEM_DETAIL_IMG
+		FROM "ITEM" A
+		WHERE ITEM_NO = #{itemNo}
+	</select>
+	
+	<!-- 상품 수정-->
+	<update id="itemUpdate">
+  		UPDATE "ITEM" SET
+  		ITEM_TYPE = #{itemType},
+  		IN_STORE_COUNT = #{inStoreCount},
+  		ITEM_PRICE = #{itemPrice},
+  		ITEM_NAME = #{itemName},
+  		ITEM_DESCRIPTION = #{itemDescription},
+  		DISCOUNT_RATE = #{discountRate}
+  		WHERE ITEM_NO = #{itemNo}
+  	</update>
+  	
+  	<!-- 상품 이미지 수정-->
+  	<update id="itemImageUpdate">
+		UPDATE "ITEM_IMG" SET
+		ITEM_IMG_PATH = #{itemImgPath},
+		ITEM_IMG_ORIGINAL = #{itemImgOriginal},
+		ITEM_IMG_RENAME = #{itemImgRename}
+		WHERE ITEM_NO = #{itemNo}
+		AND ITEM_IMG_ORDER = #{itemImgOrder}
+	</update>
+	
+	<!-- 상품 이미지 삽입 -->
+	<insert id="itemImageInsert">
+		INSERT INTO "ITEM_IMG"
+		VALUES(SEQ_ITEM_IMG_NUM.NEXTVAL, #{itemNo}, #{itemImgPath}, #{itemImgRename},
+			#{itemImgOriginal}, #{itemImgOrder}
+		)
+	</insert>
+	
+	  	
+</mapper>

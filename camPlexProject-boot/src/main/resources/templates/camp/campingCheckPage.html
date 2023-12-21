@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>캠핑장 조회 페이지</title>
+	<link rel="stylesheet" th:href="@{/css/camp/campingCheckPage.css}">
+	<link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+	<link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+	<link
+		th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}"
+		rel="stylesheet">
+	<link rel="icon" th:href="@{/images/iconImg/favicon.png}">
+</head>
+
+<body>
+
+
+
+	<th:block th:replace="~{common/headerForContent}"></th:block>
+
+	<!-- 메인 -->
+	<main>
+
+		<!-- fixed map -->
+		
+		<div class="fixedDiv">
+			<section class="mapImageSec">
+				<img class="mapImage" th:src="@{/images/iconImg/mapImage.png}" onclick="mapModal()">
+			</section>
+
+			<section class="mapWriteSec">
+				<p class="mapWrite" onclick="mapModal()">Map</p>
+			</section>
+		</div>
+		
+
+		<div id="content">
+
+			<div class="blank"></div>
+
+			<div class="mainContent">
+
+				<p class="campTitle">CAMPING</p>
+				<br>
+
+				<section class="categorySec">
+
+					<button type="button" class="categoryBtn" value="all">All</button>
+
+					<button type="button" class="categoryBtn" value="GLAM">Glamping</button>
+
+					<button type="button" class="categoryBtn" value="AUTO">Auto-Camping</button>
+
+					<button type="button" class="categoryBtn" value="BACK">Backpacking</button>
+
+					<button type="button" class="categoryBtn" value="CAR">Car</button>
+
+				</section>
+
+				<!-- 검색 sec -->
+				<section class="checkCalenderSec">
+
+					<section class="checkSec">
+
+						<section id="checkDetailSec" class="checkDetailSec">
+
+							<div id="searchCampDiv" class="searchCampDiv">
+								<input id="searchCamp" class="inputCheck" type="text" placeholder="지역명, 캠핑장을 입력해주세요.">
+							</div>
+
+						</section>
+
+						<section class="checkBtnSec">
+
+							<div class="checkBtnDiv">
+								<img class="magnifyImg" th:src="@{/images/iconImg/mdi_magnify.png}">
+							</div>
+
+						</section>
+
+					</section>
+
+					<section class="chooseClassificationDetailSec">
+						<select id="classification" class="classificationBtn" name="classification">
+							<option selected value="current">최신순</option>
+							<option value="old">오래된순</option>
+							<option value="recommend">추천순</option>
+							<option value="popular">인기순</option>
+						</select>
+					</section>
+
+				</section>
+
+				<!-- 정렬 선택 sec -->
+
+				<th:block th:if="${session.loginMember?.memberType == 'M'}">
+					<!-- 검색 언더바 sec -->
+
+					<section class="campUploadBtnSec">
+
+						<a th:href="@{/camp2/uploadCamp}" class="campUploadBtnA">
+							<div class="campUploadBtn">
+								Camp Upload
+							</div>
+						</a>
+
+
+					</section>
+
+				</th:block>
+
+
+				<!-- 컨텐츠 -->
+				<div class="overlayScreen">
+
+					<section class="contentSec">
+
+							<section th:each="camp : ${campList}" class="contentDetailSec">
+								
+								<div class="contentImageDiv">
+									<img class="contentImage" th:src="${camp.thumbnail}"
+									th:onclick="|location.href = '@{/camp/{campNo}(campNo = ${camp.campNo})}'|">
+								</div>
+								
+								<a th:href="@{/camp/{campNo}(campNo = ${camp.campNo})}" class="contentDetailWriteSec">
+									<section class="contentDetailWriteSecCenterSec">
+										<div>
+											<p th:text="${camp.campName}"></p>
+											<p id="address" th:text="${camp.campAddress}"></p>											
+										</div>
+										
+										<th:block th:if="${session.loginMember?.memberType == 'C'} or ${session.loginMember?.memberType == 'M'}">
+											
+											<form th:action="@{/camp2/deleteCamp}" class="deleteCampFrm">
+												<button class="campDelete" href="">DEL</button>
+												<input type="hidden" name="campNo" id="" th:value="${camp.campNo}">
+											</form>
+											
+										</th:block>
+										
+										<div class="star">
+											<img th:src="@{/images/iconImg/marsh3.png}" alt="">
+											<span th:text="${camp.campingStar}">0</span>
+										</div>
+									</section>
+								</a>
+								
+							</section>
+							
+					</section>
+
+				</div>
+
+			</div>
+
+			<div class="blank"></div>
+
+		</div>
+		<div class="bBlank"></div>
+
+	</main>
+	
+
+	<th:block th:replace="~{common/footer}"></th:block>
+	<th:blcok th:replace="~{map/mapModal}"></th:blcok>
+
+	<script th:inline="javascript">
+
+		const memberType = /*[[${session.loginMember?.memberType}]]*/ "멤버 타입";
+
+	</script>
+
+	<script th:src="@{/js/camp/CampingCheckPage.js}"></script>
+
+</body>
+
+</html>

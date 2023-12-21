@@ -1,0 +1,241 @@
+* {
+    margin: 0;
+    /* border: 1px solid black; */
+}
+
+button {
+    cursor: pointer;
+}
+
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: 1% 500%;
+    unicode-range: U+AC00-D7A3;
+}
+
+/* 게시판 상단 메뉴 */
+.boardTypeList {
+	display: flex;
+	font-family: 'HakgyoansimSantteutdotumL';
+    list-style: none;
+    font-size: 20px;
+    margin-left: 10rem;
+}
+
+.boardTypeList > li > a {
+	text-decoration: none;
+	color: black;
+	margin-top: 3.8rem;
+}
+
+.boardTypeList p {
+    font-size: 17px;
+    font-weight: 600;
+    margin-top: 4rem;
+    margin-right: 5rem;
+    margin-left: 5rem;
+}
+
+.col-auto {
+	margin-left: 10rem;
+}
+
+.btn-primary {
+	text-decoration: none;
+	color: black;
+	margin-top: 1rem;
+	margin-left: 3rem;
+	font-size: 17px;
+}
+
+#listCount1 {
+	margin-left: 12rem;
+}
+
+#listCount1, #listCount2, #listCount3 {
+	background-color: transparent;
+	border: none;
+	width: 5rem;
+	height: 2rem;
+}
+
+#boardSearch {
+    margin-top: 120px;
+    display: flex;
+    justify-content: end;
+}
+
+.boardHead {
+	display: flex;
+	justify-content: space-between;
+}
+
+#boardTypeName {
+	width: 200px;
+	margin-left: 10rem;
+	margin-top: 7rem;
+    font-family: 'HakgyoansimSantteutdotumL';
+    font-size: 30px;
+    color: black;
+}
+
+/* 정렬 선택 */
+.boardSortSec {
+    height: 2rem;
+    margin-top: 20px;
+}
+
+.radioArea {
+    width: 35rem;
+    height: 2rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: 3rem;
+}
+
+.radioArea > input {
+	margin-left: 3rem;
+}
+
+/* 검색창 */
+#searchKey {
+    font-family: 'HakgyoansimSantteutdotumL';
+    width: 90px;
+    font-size: 20px;
+    height: 35px;
+}
+
+#boardSearch {
+    display: flex;
+    background-color: transparent;
+}
+
+#boardSearch > :nth-child(1) {
+    background-color: transparent;
+    border-style: 1px rgb(217, 212, 212);
+}
+
+#boardSearch > :nth-child(2) {
+    border-style: 1px rgb(217, 212, 212);
+    margin-right: 152px;
+}
+
+#searchQuery {
+	margin-top: 2px;
+    border-style: none;
+    outline: none;
+    width: 350px;
+    font-size: 18px;
+    height: 25px;
+    font-family: 'HakgyoansimSantteutdotumL';
+    padding: 0.5rem;
+}
+
+#searchIcon {
+    background-color: transparent;
+    border-style: none;
+    margin-right: 1rem;
+}
+
+.chkRadio {
+    font-family: 'HakgyoansimSantteutdotumL';
+    margin-top: 10px;
+    margin-left: 12%;
+}
+
+.chkRadio > input {
+    margin-left: 20px;
+}
+
+/* 게시판 리스트 */
+.listWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+    font-family: 'HakgyoansimSantteutdotumL';
+    width: 100%;
+    height: 100%;
+}
+
+table {
+	margin-top: 3rem;
+    width: 80%;
+    border-collapse: collapse;
+}
+
+#tableTr {
+	height: 8rem;
+    border-bottom: 3px solid rgb(206, 206, 206);
+    text-align: center;
+    font-size: 17px;
+}
+
+.list-thumbnail {
+	width: 75px;
+	height: 75px;
+	vertical-align: middle;
+	border-radius: 20px;
+	margin-right: 0.5rem;
+}
+
+#listTitle {
+	text-decoration: none;
+	color: black;
+}
+
+#tdTitle {
+	width: 55%;
+}
+
+#insertBtn {
+    font-family: 'HakgyoansimSantteutdotumL';
+    margin-top: 1.8rem;
+    margin-left: 63%;
+    width: 4rem;
+    background-color: transparent;
+    border-style: none;
+    font-size: 1.3rem;
+    
+}
+
+.pagination {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+}
+
+.pagination li {
+    width: 20px;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.pagination a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: black;
+}
+
+#currentPa {
+	color: limegreen;
+	text-decoration: overline;
+}
+
+/* 좋아요 */
+.like-area{
+    margin-left: 30px;
+}
+
+#boardLike{
+    font-size: 1.2rem;
+    color: red;
+}

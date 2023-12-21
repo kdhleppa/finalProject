@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAMPLEX메인</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/common/main.css}">
+    <link rel="icon" th:href="@{/images/iconImg/favicon.png}">
+</head>
+<body style="overflow-x: hidden;">
+    
+     <th:block th:replace="~{common/header}"></th:block>
+    
+    <main>
+
+        <ul id="mainImageNum">
+
+            <li data-menumain="main1" class="Btn">
+                <a id="main1Btn" href="#main1">1</a>
+            </li>
+
+            <p>ㅡ</p>
+
+            <li data-menumain="main2" class="Btn">
+                <a id="main2Btn" href="#main2">2</a>
+            </li>
+
+            <p>ㅡ</p>
+
+            <li data-menumain="main3" class="Btn">
+                <a id="main3Btn" href="#main3">3</a>
+            </li>
+
+            <p>ㅡ</p>
+
+            <li data-menumain="main4" class="Btn">
+                <a id="main4Btn" href="#main4">4</a>
+            </li>
+
+            <p>ㅡ</p>
+
+            <li data-menumain="main5" class="Btn">
+                <a id="main5Btn" href="#main5">5</a>
+            </li>
+            
+        </ul>
+
+
+        <section class="mainImage" id="image-slider">
+            
+            <div class="mainContent" id="main1">
+                <img th:src="@{/images/campingImg/main.jpg}">
+                <p class="p1">CAMPING X RENTAL <br>
+                	<p class="p2">별 좋은 어느 겨울날의 편안한 캠핑</p>
+                	<button class="mainbutton" onclick="location.href='/camp/search'">캠핑장 보러가기</button>
+                </p>
+            </div>
+            
+            <div class="mainContent" id="main2">
+                <img th:src="@{/images/campingImg/main2.jpg}">
+                <p class="p1">CAMPING X RENTAL <br>
+                	<p class="p2">별 좋은 어느 겨울날의 편안한 캠핑</p>
+                	<button class="mainbutton" onclick="location.href='/item2/search'">캠핑 용품 렌탈하기</button>
+                </p>
+            </div>
+
+            <div class="mainContent" id="main3">
+                <img th:src="@{/images/campingImg/main3.jpg}">
+                <p class="p1">CAMPING X RENTAL <br>
+                	<p class="p2">별 좋은 어느 겨울날의 편안한 캠핑</p>
+                	<button class="mainbutton" onclick="location.href='/board/B'">게시판 보러가기</button>
+                </p>
+            </div>
+
+            <div class="mainContent" id="main4">
+                <img th:src="@{/images/campingImg/main4.jpg}">
+                <p class="p1">CAMPING X RENTAL <br>
+                	<p class="p2">별 좋은 어느 겨울날의 편안한 캠핑</p>
+                	<button class="mainbutton" onclick="location.href='/camp/search'">캠핑장 보러가기</button>
+                </p>
+            </div>
+
+            <div class="mainContent" id="main5">
+                <th:block th:replace="~{common/footerForMain}"></th:block>
+            </div>
+            
+            
+        </section>
+
+    </main>
+    
+
+  <script th:src="@{/js/main.js}"></script>
+
+</body>
+</html>

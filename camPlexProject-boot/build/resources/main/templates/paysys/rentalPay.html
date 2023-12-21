@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>렌탈결제</title>
+    <link rel="stylesheet" th:href="@{/css/paysys/rentalPay.css}">
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap}" rel="stylesheet">
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}" rel="stylesheet">
+</head>
+<body>
+    <th:block th:replace="~{common/headerForContent}"></th:block>
+
+    <section class="container">
+        <div class="emptySpace"></div>
+        <form class="midContainer" th:action="@{/paysys/payDoneRental}" method="post" id="payFrm">
+            <div class="rentalText"><p>Rental List</p></div>
+                <table class="itemListTB">
+                    <tr>
+                        <th>상품번호</th>
+                        <th>사진</th>
+                        <th>상품명</th>
+                        <th>예약정보</th>
+                        <th>수량</th>
+                        <th>금액</th>
+                        <th>취소</th>
+                    </tr>
+                    <th:block th:each="rent, i : ${rentPayList}">
+	                    <tr th:id="'tr'+${i.index}">
+	                        <td>
+								[[${rent.itemNo}]]
+								<input type="hidden" name="itemNo" th:value="${rent.itemNo}"}>
+								<input type="hidden" name="reservationNo" th:value="${rent.reservationNo}">
+								<input type="hidden" name="cartItemNo" th:value="${rent.cartItemNo}">
+								<input type="hidden" name="itemName" th:value="${rent.itemName}">
+								<input type="hidden" th:id="'discountRate'+${i.index}" name="discountRate" th:value="${rent.discountRate}">
+								<input type="hidden" class="index-input" th:id="'index'+${i.index}" th:value="${i.index}">
+								<input th:if="${rent.itemQuantity}" type="hidden" th:id="'rentalItemQuantity'+${i.index}" name="rentalItemQuantity" th:value="${rent.itemQuantity}">
+							</td>
+	                        <td><img th:src="${rent.thumbnail}"></td>
+	                        <td>[[${rent.itemName}]]</td>
+	                        <td th:text="${rent.campName} + ' (' + ${rent.campEntdate} + ' ~ ' + ${rent.campOutdate} + ')'">예약지</td>
+	                        <td>
+								<button type="button" class="qBtn minusBtn" th:data-index="${i.index}" th:data-price="${rent.itemPrice}">-</button>
+					            &nbsp;&nbsp;<span th:id="'quantity'+${i.index}" th:text="${rent.itemQuantity}" ></span>&nbsp;&nbsp;
+					            <button type="button" class="qBtn plusBtn" th:data-index="${i.index}" th:data-price="${rent.itemPrice}">+</button>
+		                    </td>
+		                    <th:block th:if="${rent.discountRate == 0}">
+		                    	<td th:id="'totalPrice'+${i.index}">₩[[${#numbers.formatInteger(rent.itemPrice * rent.itemQuantity, 3, 'COMMA')}]]원</td>
+		                    </th:block>
+		                    <th:block th:unless="${rent.discountRate == 0}">
+								<td th:id="'totalPrice'+${i.index}">₩[[${#numbers.formatInteger((rent.itemPrice * (100 - rent.discountRate) / 100) * rent.itemQuantity, 3, 'COMMA')}]]원</td>
+							</th:block>
+	                        <td><button type="button" th:id="'deleteBtn' + ${i.index}" onclick="deleteBtn(this)" th:data-index="${i.index}" class = "grayBtn">DELETE</button></td>
+	                        
+	                    </tr>
+                    </th:block>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><input type="hidden" name="price" id="price" value=""></td>
+                        <td>총 금액</td>
+                        <td id="overallTotal"> 0원</td>
+                        <td></td>
+                    </tr>
+                    
+                </table>
+                <div>
+                    <div class="payType">
+                        <p>결제 수단</p>
+                    </div>
+                    <div class="payContainer">
+                        <div class="payInputContainer">
+                            <input type="radio" class="payBy" name="payBy" value="b">&nbsp;&nbsp;&nbsp;무통장 입금
+                        </div>
+                        <div class="payInputContainer">
+                            <input type="radio" class="payBy" name="payBy" value="n">
+                            &nbsp;&nbsp;&nbsp;<img th:src="@{/images/iconImg/npaylogo.png}" alt="" class="nPayLogo" >
+                        </div>
+                        <div class="payInputContainer">
+                            <input type="radio" class="payBy" name="payBy" value="k">
+                             &nbsp;&nbsp;&nbsp;<img th:src="@{/images/iconImg/kpaylogo.png}" alt="" class="kPayLogo" >
+                        </div>
+                    </div>
+                </div>
+				<div id="bankAccountContainer">
+					
+					
+				</div>
+                <div class="buttonList">
+                    <button class="Btn" id="payBtn">결제하기</button>
+                    
+                    <button type="button" class="Btn backBtn" onclick="history.back()">돌아가기</button>
+                </div>
+            </form>
+            
+        </div>
+        
+        <div class="emptySpace"></div>
+    </section>
+    <th:block th:replace="~{common/footer}"></th:block>
+    <script th:src="@{/js/paysys/rentalPay.js}"></script>
+    
+   
+</body>
+</html>

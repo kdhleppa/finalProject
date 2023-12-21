@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캠핑결제</title>
+    <link rel="stylesheet" th:href="@{/css/paysys/campPay.css}">
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap}" rel="stylesheet">
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link
+        th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}"
+        rel="stylesheet">
+    <link rel="icon" th:href="@{/images/iconImg/favicon.png}">
+</head>
+
+<body>
+    <th:block th:replace="~{common/headerForContent}"></th:block>
+    <th:block th:replace="~{paysys/cancelInfo}"></th:block>
+    <th:block th:replace="~{paysys/collectInfo}"></th:block>
+    <th:block th:replace="~{paysys/collectPersonalInfo}"></th:block>
+
+    <section class="container">
+        <div class="emptySpace"></div>
+
+        <form th:action="@{payDone}" class="midContainer" id="payFrm" method="post">
+            <div class="reservationText">
+                <p>Reservation</p>
+            </div>
+            <div class="campNameContainer">
+                <h1 th:text="${info.campName}">캠핑장 이름</h1>
+                <p th:text="'( ' + ${info.campDeName} + ' )'">호실</p>
+                <input type="hidden" name="campName" th:value="${info.campName}">
+                <input type="hidden" name="campDeName" th:value="${info.campDeName}">
+                <input type="hidden" name="campDeNo" th:value="${info.campDeNo}">
+                <input type="hidden" name="campNo" th:value="${info.campNo}">
+            </div>
+            <table class="reservationSite">
+                <tr>
+                    <td>이름</td>
+                    <td>
+                        <input type="text" name="customerName" id="customerName" th:value="${info.customerName}"
+                            readonly>
+                    </td>
+                    <td>요청사항</td>
+                </tr>
+                <tr>
+                    <td>연락처</td>
+                    <td>
+                        <input type="tel" name="customerTel" id="customerTel" th:value="${info.customerTel}" readonly>
+                    </td>
+                    <td rowspan="4">
+                        <textarea name="demand" id="demand" cols="50" rows="10" style="resize: none;"
+                            th:utext="${info.demand}" readonly></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td>숙박 인원</td>
+                    <td class="humanCountContainer">
+                        <img th:src="@{/images/iconImg/adult.png}" alt="" class="adultImg">
+                        <input type="number" name="adultCount" id="adultCount" class="humanCount"
+                            th:value="${info.adultCount}" readonly></input>
+                        <img th:src="@{/images/iconImg/adult.png}" class="childImg">
+                        <input type="number" name="kidCount" id="kidCount" class="humanCount"
+                            th:value="${info.kidCount}" readonly></input>
+                        <p>
+                            추가인원
+                            <input type="number" name="additionalCount" id="additionalCount" class="humanCount"
+                                th:value="${info.additionalCount}" readonly></input>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>예약 날짜</td>
+                    <td class="dateContainer">
+                        <input type="text" name="entDate" id="" class="date" th:value="${info.entDate}" readonly>
+                        &nbsp;&nbsp;&nbsp;~&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="text" name="outDate" id="" class="date" th:value="${info.outDate}" readonly>
+                        <p th:text="'('+ ${info.stayDay}
+                                + ' 박)'">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>이메일</td>
+                    <td>
+                        <input type="email" name="customerEmail" id="customerEmail" th:value="${info.customerEmail}"
+                            readonly>
+                    </td>
+                </tr>
+                <!-- <tr>
+                    <td class="demandContainer">요청사항</td>
+                    <td>
+                        <textarea name="demand" id="demand" cols="50" rows="10" style="resize: none;" th:utext="${info.demand}" readonly></textarea>
+					</td>
+                </tr> -->
+
+
+            </table>
+
+            <div class="payMent">
+                <p>결제 금액</p>
+            </div>
+            <table class="reservationSite">
+                <tr>
+                    <td>객실 요금</td>
+                    <td>
+                        <p id="price" th:text="${#numbers.formatInteger(info.price, 3, 'COMMA')} 
+                                + '원 '
+                                + '(1박 : '
+                                + ${#numbers.formatInteger(info.priceOneDay, 3, 'COMMA')}
+                                + '원)'
+                                "></p>
+                        <input type="hidden" name="price" th:value="${info.price}">
+
+                    </td>
+                    <td></td>
+                </tr>
+
+            </table>
+
+            <div>
+                <div class="payType">
+                    <p>결제 수단</p>
+                </div>
+                <div class="payContainer">
+                    <div class="payInputContainer">
+                        <input type="radio" class="payBy" name="payBy" value="b" id="bank">&nbsp;&nbsp;&nbsp;
+                        <label for="bank">무통장 입금</label>
+                    </div>
+                    <div class="payInputContainer">
+                        <input type="radio" class="payBy" name="payBy" value="n" id="naver">&nbsp;&nbsp;&nbsp;
+                        <label for="naver">
+                            <img th:src="@{/images/iconImg/npaylogo.png}" alt="" class="nPayLogo">
+                        </label>
+                    </div>
+                    <div class="payInputContainer">
+                        <input type="radio" class="payBy" name="payBy" value="k" id="kakao">&nbsp;&nbsp;&nbsp;
+                        <label for="kakao">
+                            <img th:src="@{/images/iconImg/kpaylogo.png}" alt="" class="kPayLogo">
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div id="bankAccountContainer">
+
+            </div>
+
+            <div id="checkboxContainer">
+                    
+                <div class="cancelInfo">
+                    
+                    <label for="cancelCheckbox">
+                        <input type="checkbox" name="" id="cancelCheckbox" class="checkbox" value="check1">
+                        (필수)취소 및 환불 수수료에 동의합니다.
+                    </label>
+                    <button type="button" id="cancelInfoBtn">약관 보기</button>
+                </div>
+                <div class="collectInfo">
+                    <label for="collectInfoCheckbox">
+                        <input type="checkbox" name="" id="collectInfoCheckbox" class="checkbox" value="check2">
+                        (필수)개인 정보 수집 및 이용에 동의합니다.
+                    </label>
+                    <button type="button" id="collectInfoBtn">약관 보기</button>
+                </div>
+                <div class="collectPersonalInfo">
+                    <label for="collectPersonalInfoCheckbox">
+                        <input type="checkbox" name="" id="collectPersonalInfoCheckbox" class="checkbox" value="check3">
+                        (필수)개인 정보 제 3자 제공에 동의합니다.
+                    </label>
+                    <button type="button" id="collectPersonalInfoBtn">약관 보기</button>
+                </div>
+
+            </div>
+
+
+
+            <div class="buttonList">
+                <button class="Btn" id="payBtn">결제하기</button>
+                <button type="button" class="Btn backBtn" onclick="history.back()">돌아가기</button>
+            </div>
+
+
+        </form>
+
+        </div>
+
+        <div class="emptySpace"></div>
+    </section>
+
+    <th:block th:replace="~{common/footer}"></th:block>
+
+    <script th:src="@{/js/paysys/campPay.js}"></script>
+
+    <script th:inline="javascript">
+
+        const memberNo = /*[[${session.loginMember.memberNo}]]*/ "로그인 멤버";
+        const campNo = /*[[${info.campNo}]]*/ "캠핑장번호";
+        const campDeNo = /*[[${info.campDeNo}]]*/ "호실번호";
+        const entDate = /*[[${info.entDate}]]*/ "입실일";
+        const outDate = /*[[${info.outDate}]]*/ "퇴실일";
+        const price = /*[[${info.price}]]*/ "퇴실일";
+
+    </script>
+</body>
+
+</html>

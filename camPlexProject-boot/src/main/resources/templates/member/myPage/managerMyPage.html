@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지 (관리자)</title>
+
+    <link rel="stylesheet" th:href="@{/css/member/myPage/managerMyPage.css}">
+
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+	<th:block th:replace="~{common/headerForContent}"></th:block>
+
+    <main>
+        <!-- 공백 (우) -->
+        <section class="empty1"></section>
+        
+        <section id="myPageSection">
+            
+            <!-- 대제목 -->
+            <section id="headerName">관리자 마이페이지</section>
+            <hr id="underLine"/>
+            
+            <!-- 정보 -->
+            <section id="myInfo">
+                <!-- 내부공백 (우) -->
+                <section class="empty2"></section>
+                
+                <!-- 내 정보 -->
+                <section id="infoMain">
+                    <section id="profileImgSection">
+						
+	                    <img th:unless="${session.loginMember.memberProfileImg}" id="profileImg"
+							th:src="@{/images/memberImg/gg_profile.png}">
+
+						<img th:if="${session.loginMember.memberProfileImg}" id="profileImg"
+							th:src="${session.loginMember.memberProfileImg}">
+
+					</section>
+                    
+                    <section class="empty2"></section>
+                    <section id="nameTel">
+                        <p th:inline="text">이름 : [[${session.loginMember.memberName}]]</p>
+                        <p th:inline="text">전화번호 : [[${session.loginMember.memberPhone}]]</p>
+                    </section>
+                    <section class="empty3"></section>
+                    
+                    <section id="nicknameEmail">
+                        <p th:inline="text">닉네임 : [[${session.loginMember.memberNickname}]]</p>
+                        <p th:inline="text">Email : [[${session.loginMember.memberEmail}]]</p>
+                    </section>
+                    <section class="empty2"></section>
+                    
+                    <section class="btnSection">
+                        <a class="clickBtn" th:href="@{/member/infoModify}">프로필 관리</a>
+                        <a class="clickBtn" th:href="@{/member/memberWithdrawal1}">회원 탈퇴</a>
+                    </section>
+                </section>
+                
+                
+                <!-- 내부공백 (좌) -->
+                <section class="empty2"></section>
+            </section>
+            
+
+            <!-- 예약 정보 확인, 1대 1문의, 업데이트 요청 -->
+            
+            <div id="btnDiv">
+				<section class="empty4"></section>
+				
+				<div id="allBtnDiv">
+					
+		            <section class="functionBtn" id="functionBtn1">
+		                <a class="clickBtn" th:href="@{/member/reservationNManageAll}">예약 정보 확인</a>
+		                <a class="clickBtn" th:href="@{/qna/qnaList}">1대 1 문의</a>
+		                
+		                <section th:unless="${levelUpFormCount} == 0"><a class="clickBtn" th:href="@{/member/levelUpFormCheck}">등업신청 요청<span th:text="'&nbsp;&nbsp;' + ${levelUpFormCount}"></span></a></section>
+		                <section th:if="${levelUpFormCount} == 0"><a class="clickBtn" th:href="@{/member/levelUpFormCheck}">등업신청 요청</a></section>
+		                
+		            </section>
+		            
+		            <section class="functionBtn" id="functionBtn2">
+		                <a class="clickBtn" th:href="@{/member/paymentManageAll}">대기중인 결제 확인</a>
+		                <a class="clickBtn" th:href="@{/camp2/uploadCamp}">캠핑장 업로드</a>
+		                <a class="clickBtn" th:href="@{/item2/uploadForward}">렌탈 상품 업로드</a>
+		            </section>
+		            
+				</div>
+	            
+	            <section class="empty4"></section>
+			</div>
+            
+        </section>
+        
+        <!-- 공백 (좌) -->
+        <section class="empty1"></section>
+
+    </main>
+
+    <div class="empty5"></div>
+    
+	<th:block th:replace="~{common/footer}"></th:block>
+	
+	<script th:src="@{/js/member/myPage.js}"></script>
+
+
+</body>
+</html>

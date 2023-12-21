@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.camplex.project.member.mappers.WishlistMapper">
+
+
+	<resultMap type="Wishlist" id="wishlist_rm">
+	  	
+	  	<id property="wishlistNo" column="WISHLIST_NO"/>
+	  	  	
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="campNo" column="CAMP_NO"/>
+		<result property="itemNo" column="ITEM_NO"/>
+	    
+
+	</resultMap>
+	
+	<resultMap type="Camp" id="camp_rm">
+		<id property="campNo" column="CAMP_NO" />
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="campAddress" column="CAMP_ADDRESS" />
+		<result property="campPhone" column="CAMP_PHONE" />
+		<result property="campName" column="CAMP_NAME" />
+		<result property="campOption" column="CAMP_OPTION" />
+		<result property="campAroundView" column="CAMP_AROUND_VIEW" />
+		<result property="campMap" column="CAMP_MAP" />
+		<result property="mannerTime" column="MANNER_TIME" />
+		<result property="category" column="CATEGORY" />
+		<result property="campDeleteFlag" column="CAMP_DEL_FL" />
+		<result property="campInfo" column="CAMP_INFO" />
+		<result property="thumbnail" column="THUMBNAIL" />
+		<result property="checkIn" column="CHECK_IN" />
+		<result property="checkOut" column="CHECK_OUT" />
+		
+		
+		<collection property="campSiteImageList"
+				select="selectCampSiteImageList"
+				column="CAMP_NO"
+				javaType="java.util.ArrayList"
+				ofType="CampSiteImage"
+		/>
+		
+
+	</resultMap>
+	
+	<resultMap type="CampSiteImage" id="camp_image_rm">
+		<id property="campImageNo" column="CAMP_IMG_NO" />
+		<result property="campNo" column="CAMP_NO" />
+		<result property="campImagePath" column="CAMP_IMG_PATH" />
+		<result property="campImageReName" column="CAMP_IMG_RENAME" />
+		<result property="campImageOriginal" column="CAMP_IMG_ORIGINAL" />
+		<result property="campImageOrder" column="CAMP_IMG_ORDER" />
+	</resultMap>
+	
+	<!-- collection 중 이미지 리스트 조회 -->
+	<select id="selectCampSiteImageList" resultMap="camp_image_rm">
+		SELECT CAMP_IMG_NO, CAMP_NO, CAMP_IMG_PATH, CAMP_IMG_RENAME, CAMP_IMG_ORIGINAL, CAMP_IMG_ORDER
+		FROM "CAMPING_SITE_IMG"
+		WHERE CAMP_NO = #{campNo}
+	</select>
+	
+	
+	<!-- 위시리스트 인서트 -->	
+	<insert id="wishlistInsert">		
+	INSERT INTO "WISH_LIST"
+	VALUES (SEQ_WISH_NO.NEXTVAL, #{memberNo}, NULL, #{itemNo})
+	</insert> 
+		
+	<!-- 이미 있는 위시리스트인가 -->	 
+	<select id="searchWishlist" resultType="_int">
+		SELECT COUNT(*) FROM WISH_LIST
+		WHERE MEMBER_NO = #{memberNo}
+		AND ITEM_NO = #{itemNo}
+	</select>
+	
+	<!-- 위시리스트에 들어갈 캠핑장 정보 -->
+	<select id="selectCampWish" resultMap="camp_rm">
+			SELECT 
+		        cs.CAMP_NO, cs.MEMBER_NO, cs.CAMP_ADDRESS, cs.CAMP_PHONE,
+		        cs.CAMP_NAME, cs.CAMP_OPTION, cs.CAMP_AROUND_VIEW, cs.CAMP_MAP,
+		        cs.MANNER_TIME, cs.CATEGORY, cs.CAMP_INFO, 
+		        (csi.CAMP_IMG_PATH || csi.CAMP_IMG_RENAME) AS THUMBNAIL
+		    FROM 
+		        "CAMPING_SITE" cs
+		    JOIN 
+		        CAMPING_SITE_IMG csi
+		        ON cs.CAMP_NO = csi.CAMP_NO
+		    JOIN 
+		        WISH_LIST w
+		        ON cs.CAMP_NO = w.CAMP_NO
+		    WHERE 
+		        cs.CAMP_DEL_FL = 'N' AND csi.CAMP_IMG_ORDER = 0
+		        AND w.MEMBER_NO = #{memberNo}
+		    ORDER BY 
+		        cs.CAMP_NO
+	</select>
+	
+	<!-- 위시리스트에서 캠핑장 삭제-->
+	<delete id="deleteCampWish">
+    DELETE FROM WISH_LIST
+    WHERE CAMP_NO = #{campNo}
+    AND MEMBER_NO = #{memberNo}
+	</delete>
+
+	<!-- 위시리스트에서 아이템 삭제-->
+	<delete id="deleteItemWish">
+    DELETE FROM WISH_LIST
+    WHERE ITEM_NO = #{itemNo}
+    AND MEMBER_NO = #{memberNo}
+	</delete>
+	
+	<!-- 카트에서 위시삭제-->
+	<delete id="wishDelete">
+		DELETE FROM WISH_LIST
+		WHERE ITEM_NO = #{itemNo}
+   		AND MEMBER_NO = #{memberNo}
+	</delete>
+	
+	
+</mapper>

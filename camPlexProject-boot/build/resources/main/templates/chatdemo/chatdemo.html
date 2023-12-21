@@ -1,0 +1,71 @@
+<link rel="stylesheet" th:href="@{/css/chatdemo/chatdemo.css}">
+
+<button type='button' id="modal_btn"><img th:src="@{/images/iconImg/chatbot.png}"></button>
+
+<div class="modal_background" id="modalBack"></div>
+
+<div class="modal_wrap" id="modalContainer">
+
+	<div class="modal_close" style="cursor: pointer;">x</div>
+	
+    	<div class="text">
+			
+        <noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+	    enabled. Please enable
+	    Javascript and reload this page!</h2></noscript>
+	    
+		<div id="main-content" class="container">
+		    <div class="row">
+		        <div style="display: none;" class="col-md-6">
+		            <form class="form-inline">
+		                <div class="form-group">
+		                    <label for="connect">채팅봇 연결하기 </label>
+		                    <button id="connect" class="btn btn-default" type="submit">연결</button>
+		                    <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">해제
+		                    </button>
+		                </div><br>
+		            </form>
+		        </div>
+		        <div class="col-md-6">
+		            <form class="form-inline">
+		                <div class="form-group" id="sendMessage">
+		                    <label for="msg">안녕하세요 CAMPLEX입니다. 무엇을 도와드릴까요?<br>
+											보기에서 문의사항에 해당하는 내용을 선택해주세요.<br><br>
+											<button type="button" class="noBtn" value="1">1. 캠핑장</button>
+											<button type="button" class="noBtn" value="2">2. 캠핑물품</button>
+											<button type="button" class="noBtn" value="3">3. 게시판</button>
+											<button type="button" class="noBtn" value="4">4. 이벤트</button>
+											<button type="button" class="noBtn" value="5">5. 1:1문의</button>
+											</label>
+		                </div>
+		                
+		                <input type="text" id="msg" class="form-control" placeholder="내용을 입력하세요">
+		                <button id="send" class="btn btn-default" disabled type="submit">보내기</button>
+		            </form>
+		        </div>
+		    </div>
+		    
+		    <div class="row">
+		        <div class="col-md-12">
+		            <table id="conversation" class="table table-striped">
+		                <thead>
+		                </thead>
+		                <tbody id="communicate">
+		                </tbody>
+		            </table>
+		        </div>
+		    </div>
+		    
+		</div>
+		
+    </div>
+    
+</div>
+
+<script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
+<script th:src="@{https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js}"></script>
+	
+<script th:src="@{/js/chatdemo/chatdemo.js}"></script>
+	
+	    

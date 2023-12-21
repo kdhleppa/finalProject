@@ -1,0 +1,251 @@
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    unicode-range: U+AC00-D7A3
+}
+
+*{
+    font-family: 'HakgyoansimSantteutdotumL', 'Montserrat';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+button { 
+  color: #000;
+  display:inline-block; 
+  margin:0;
+  text-transform:uppercase; 
+}
+  
+input:focus {
+	outline: none;
+}
+
+main, div, section {
+    /* border: 1px solid black; */
+}
+
+/* -------------------------- */
+/* 헤더바 */
+.topBar{
+    width: 100%;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+    border-radius: 0 0 10px 10px;
+
+    transition-duration: 0.3s;
+
+    position: sticky;
+    top: 0;
+}
+
+.topBar:hover{
+    background-color: rgba(204, 213, 174, 0.5);
+}
+
+.topMenu{
+    width: 100%;
+
+    flex-basis: 5%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.topMenu a{
+    color: #000;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.7rem;
+
+    
+}
+
+.mainTitle{
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 3rem;
+    font-weight: 900;
+
+    margin: 20px 0;
+
+    height: 60px;
+    line-height: 60px;
+    color: #333;
+    letter-spacing: 5px;
+}
+
+.bottomMenu{
+    flex-basis: 45%;
+    display: flex;
+    align-self: center;
+}
+
+.bottomMenu a {
+    color: #000;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 600;
+}
+
+/* ------------------------------- */
+/* 메인 틀 */
+main {
+    display: flex;
+    margin-top: 50px;
+}
+
+.empty1 {
+    flex-basis: 15%;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 70%;
+}
+
+/* --------------------------------- */
+/* 대제목 */
+#headerName {
+    font-size: 30px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+#underLine {
+    border: 2px solid black;
+    margin-bottom: 83px;
+}
+
+/* ------------------------------ */
+/* 이메일, 인증번호 입력 */
+#inputInfo {
+    display: flex;
+    justify-content: center;
+}
+
+.empty2 {
+    flex-basis: 30%;
+}
+
+#inputEmailAuthekey {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 40%;
+}
+
+#inputEmail::placeholder {
+    font-size: 11px;
+}
+#inputAuthkey::placeholder {
+    font-size: 11px;
+}
+
+#inputEmail, #inputAuthkey {
+    height: 30px;
+    border: none;
+    border-bottom: 2px solid black;
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+#inputAuthkey {
+    margin-top: 50px;
+}
+
+.authkeySendMassage {
+    font-size: 13px;
+    margin-top: 5px;
+    margin-left: 8px;
+}
+
+/* ------------------------------------ */
+/* PW 변경, 이전 페이지로 이동 버튼 */
+#searchIdBtnSection {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.empty3 {
+    flex-basis: 20%;
+}
+
+#changePwBtn {
+    flex-basis: 60%;
+    display: flex;
+    justify-content: space-around;
+    height: 30px;
+}
+
+.clickBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+}
+
+/* --------------------------------- */
+/* 이메일 인증, 확인 버튼 */
+#emailCheckBtnSection {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.emailCheckBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+    margin-left: 10px;
+    transition: color 0.3s;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.emailCheckBtn:hover{
+	color: #909090;
+}
+    
+#sendAuthkey {
+	margin-top: 3px;
+}
+
+#checkEmail {
+    margin-top: 81px;
+}
+
+/* 메세지 색상 지정 */
+.confirm{ color : green; }
+.error{ color : red; }
+
+.clickBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+    transition: color 0.3s;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.clickBtn:hover {
+	color: #909090;
+}

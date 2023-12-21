@@ -1,0 +1,263 @@
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    unicode-range: U+AC00-D7A3
+}
+
+*{
+    font-family: 'HakgyoansimSantteutdotumL', 'Montserrat';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  display:inline-block; 
+  margin:0;
+}
+  
+main, div, section {
+    /* border: 1px solid black; */
+}
+
+/* ------------------------------- */
+/* 메인 틀 */
+main {
+    display: flex;
+    margin-top: 50px;
+}
+
+.empty1 {
+    flex-basis: 15%;
+}
+
+#myPageSection {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 70%;
+}
+
+/* --------------------------------- */
+/* 대제목 */
+#headerName {
+    font-size: 30px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+#underLine {
+    border: 2px solid black;
+    margin-bottom: 50px;
+}
+
+/* ------------------------------- */
+/* 정보 */
+
+/* 내 정보 */
+#myInfo {
+    display: flex;
+}
+
+.empty2 {
+    flex-basis: 10%;
+}
+
+#infoMain {
+    flex-basis: 80%;
+    display: flex;
+}
+
+.empty3 {
+    flex-basis: 5%;
+}
+
+#profileImgSection {
+	width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid rgb(232, 232, 232);
+}
+
+#profileImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#nameTel, #nicknameEmail {
+    flex-basis: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+#nameTel, #nicknameEmail > p {
+    font-size: 15px;
+}
+
+.btnSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+/* --------------------------- */
+/* 예약 정보 확인, 1대 1 문의, 업데이트 요청 */
+#functionBtn {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+
+#functionBtn a {
+    font-size: 17px;
+}
+
+#functionBtn span {
+    color: red;
+}
+
+/* ------------------------------------ */
+/* 문의사항, 커뮤니티 공통사항 */
+.textSection {
+    display: flex;
+}
+
+.textListSection {
+    flex-basis: 80%;
+}
+
+.textItemSection {
+    display: flex;
+    min-height: 200px;
+}
+
+.textItmeList {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 80%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.textListSecDiv {
+	display: flex;
+	justify-content: space-between;
+}
+
+.textList {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.textList {
+    font-size: 15px;
+}
+
+.subName {
+	display: flex;
+    margin-top: 60px;
+    font-size: 30px;
+    margin-left: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 108px;
+}
+
+.underLine2 {
+    border: 2px solid black;
+    margin-bottom: 10px;
+}
+
+/* ------------------------------ */
+/* 풋터 위 공간 */
+.empty5 {
+    height: 300px;
+}
+
+
+/* --------------------------------- */
+/* 풋터 */
+.bottomBar { 
+    margin: 25px 0 25px 25px ;
+    font-family: 'HakgyoansimSantteutdotumL';
+    font-weight: 900;
+    line-height: 30px;
+    
+}
+
+.footerTitle {
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 2rem;
+    font-weight: 1000;
+
+    height: 60px;
+    line-height: 60px;
+    color: #333;
+    letter-spacing: 3px;
+}
+
+.footerMenu {
+    display: flex;
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 900;
+
+    color: #333;
+    letter-spacing: 1px;
+}
+
+.footerMenu a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 100;
+}
+
+.menuDiv {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.footerContent {
+    width: 100%;
+    letter-spacing: 1px;
+    font-weight: 100;
+}
+/* --------------------------------- */
+
+.clickBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+    transition: color 0.2s;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.clickBtn:hover {
+	color: #909090;
+}
+
+#clickBtn {
+	transition: color 0.2s;
+	cursor: pointer;
+}
+
+#clickBtn:hover {
+	color: #909090;
+}

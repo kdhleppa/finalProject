@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.camplex.project.camping.mappers.CampMapper">
+	
+	<resultMap type="Camp" id="camp_rm">
+		<id property="campNo" column="CAMP_NO" />
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="campAddress" column="CAMP_ADDRESS" />
+		<result property="campPhone" column="CAMP_PHONE" />
+		<result property="campName" column="CAMP_NAME" />
+		<result property="campOption" column="CAMP_OPTION" />
+		<result property="campAroundView" column="CAMP_AROUND_VIEW" />
+		<result property="campMap" column="CAMP_MAP" />
+		<result property="mannerTime" column="MANNER_TIME" />
+		<result property="category" column="CATEGORY" />
+		<result property="campDeleteFlag" column="CAMP_DEL_FL" />
+		<result property="campInfo" column="CAMP_INFO" />
+		<result property="thumbnail" column="THUMBNAIL" />
+		<result property="checkIn" column="CHECK_IN" />
+		<result property="checkOut" column="CHECK_OUT" />
+		<result property="campingStar" column="CAMPING_STAR" />
+	
+		<collection property="campDetailList"
+				select="selectCampDetailList"
+				column="CAMP_NO"
+				javaType="java.util.ArrayList"
+				ofType="CampDetail"
+		/>
+		
+		<collection property="campSiteImageList"
+				select="selectCampSiteImageList"
+				column="CAMP_NO"
+				javaType="java.util.ArrayList"
+				ofType="CampSiteImage"
+		/>
+		
+		<collection property="campCeoImageList"
+				select="selectCampCeoImageList"
+				column="CAMP_NO"
+				javaType="java.util.ArrayList"
+				ofType="CampCeoImage"
+		/>
+	
+	</resultMap>
+	
+	<resultMap type="CampDetail" id="camp_detail_rm">
+		<id property="campDeNo" column="CAMP_DE_NO" />
+		<result property="campNo" column="CAMP_NO" />
+		<result property="campDeName" column="CAMP_DE_NAME" />
+		<result property="campDePrice" column="CAMP_DE_PRICE" />
+		<result property="capacity" column="CAPACITY" />
+		<result property="fullCapacity" column="FULL_CAPACITY" />
+		<result property="campDeThumbnail" column="CAMP_DETAIL_THUMBNAIL" />
+		<result property="campName" column="CAMP_NAME" />
+		<result property="mannerTime" column="MANNER_TIME" />
+		<result property="checkIn" column="CHECK_IN" />
+		<result property="checkOut" column="CHECK_OUT" />
+		<result property="category" column="CATEGORY" />
+		<result property="information" column="INFORMATION" />
+	</resultMap>
+	
+	<resultMap type="CampSiteImage" id="camp_image_rm">
+		<id property="campImageNo" column="CAMP_IMG_NO" />
+		<result property="campNo" column="CAMP_NO" />
+		<result property="campImagePath" column="CAMP_IMG_PATH" />
+		<result property="campImageReName" column="CAMP_IMG_RENAME" />
+		<result property="campImageOriginal" column="CAMP_IMG_ORIGINAL" />
+		<result property="campImageOrder" column="CAMP_IMG_ORDER" />
+	</resultMap>
+	
+	<resultMap type="CampCeoImage" id="camp_ceoImage_rm">
+		<id property="campCeoImageNo" column="CAMP_CEO_IMG_NO" />
+		<result property="campNo" column="CAMP_NO" />
+		<result property="campCeoImagePath" column="CAMP_CEO_IMG_PATH" />
+		<result property="campCeoImageReName" column="CAMP_CEO_IMG_RENAME" />
+		<result property="campCeoImageOriginal" column="CAMP_CEO_IMG_ORIGINAL" />
+	</resultMap>
+	
+	<resultMap type="CampDetailImage" id="camp_detailImage_rm">
+		<id property="campDeImageNo" column="CAMPDE__IMG_NO" />
+		<result property="campDeNo" column="CAMP_DE_NO" />
+		<result property="campDeImagePath" column="CAMP_DE_IMG_PATH" />
+		<result property="campDeImageReName" column="CAMP_DE_IMG_RENAME" />
+		<result property="campDeImageOriginal" column="CAMP_DE_IMG_ORIGINAL" />
+		<result property="campDeImageOrder" column="CAMP_DE_IMG_ORDER" />
+	</resultMap>
+	
+	<!-- collection 중 호실 정보 조회 -->
+	<select id="selectCampDetailList" resultMap="camp_detail_rm">
+		SELECT CAMP_DE_NO, CAMP_NO, CAMP_DE_NAME, CAMP_DE_PRICE, CAPACITY, FULL_CAPACITY,
+			(SELECT (CAMP_DE_IMG_PATH || CAMP_DE_IMG_RENAME) 
+			 FROM CAMPING_DETAIL_IMG B
+			 WHERE  A.CAMP_DE_NO = B.CAMP_DE_NO 
+			 AND CAMP_DE_IMG_ORDER = 0) CAMP_DETAIL_THUMBNAIL
+		FROM "CAMPING_DETAIL" A
+		WHERE CAMP_NO = #{campNo}
+	</select>
+	
+	<!-- collection 중 이미지 리스트 조회 -->
+	<select id="selectCampSiteImageList" resultMap="camp_image_rm">
+		SELECT CAMP_IMG_NO, CAMP_NO, CAMP_IMG_PATH, CAMP_IMG_RENAME, CAMP_IMG_ORIGINAL, CAMP_IMG_ORDER
+		FROM "CAMPING_SITE_IMG"
+		WHERE CAMP_NO = #{campNo}
+	</select>
+	
+	<!-- collection 중 CEO 이미지 리스트 조회 -->
+	<select id="selectCampCeoImageList" resultMap="camp_ceoImage_rm">
+		SELECT CAMP_CEO_IMG_NO, CAMP_NO, CAMP_CEO_IMG_PATH, CAMP_CEO_IMG_RENAME, CAMP_CEO_IMG_ORIGINAL
+		FROM "CAMPING_CEO_IMG"
+		WHERE CAMP_NO = #{campNo}
+	</select>
+	
+	<!-- 캠핑장 목록 조회 -->
+	<select id="selectCampList" resultMap="camp_rm">
+		SELECT CAMP_NO, MEMBER_NO, CAMP_ADDRESS, CAMP_PHONE,
+		CAMP_NAME, CAMP_OPTION, CAMP_AROUND_VIEW, CAMP_MAP,
+		MANNER_TIME,CATEGORY, CAMP_INFO, 
+			(SELECT (CAMP_IMG_PATH || CAMP_IMG_RENAME) 
+			FROM CAMPING_SITE_IMG B
+			WHERE B.CAMP_NO = A.CAMP_NO
+			AND CAMP_IMG_ORDER = 0) THUMBNAIL,
+			(SELECT ROUND(AVG(COUNTING_STAR), 1)
+			FROM CAMPING_STAR C
+			WHERE C.CAMP_NO = A.CAMP_NO) CAMPING_STAR
+		FROM "CAMPING_SITE" A
+		WHERE CAMP_DEL_FL = 'N'
+		ORDER BY CAMP_NO DESC
+	</select>
+	
+	<!-- 캠핑장 정렬(오래된 순)-->
+	<select id="selectCampListOld" resultMap="camp_rm">
+		SELECT CAMP_NO, MEMBER_NO, CAMP_ADDRESS, CAMP_PHONE,
+		CAMP_NAME, CAMP_OPTION, CAMP_AROUND_VIEW, CAMP_MAP,
+		MANNER_TIME,CATEGORY, CAMP_INFO, 
+			(SELECT (CAMP_IMG_PATH || CAMP_IMG_RENAME) 
+			FROM CAMPING_SITE_IMG B
+			WHERE B.CAMP_NO = A.CAMP_NO
+			AND CAMP_IMG_ORDER = 0) THUMBNAIL,
+			(SELECT ROUND(AVG(COUNTING_STAR), 1)
+			FROM CAMPING_STAR C
+			WHERE C.CAMP_NO = A.CAMP_NO) CAMPING_STAR
+		FROM "CAMPING_SITE" A
+		WHERE CAMP_DEL_FL = 'N'
+		ORDER BY CAMP_NO ASC
+	</select>
+	
+	<!-- 캠핑장 정렬(추천순 : 별점 높은 순) -->
+	<select id="selectCampListReccomend" resultMap="camp_rm">
+		SELECT CAMP_NO, MEMBER_NO, CAMP_ADDRESS, CAMP_PHONE,
+		CAMP_NAME, CAMP_OPTION, CAMP_AROUND_VIEW, CAMP_MAP,
+		MANNER_TIME,CATEGORY, CAMP_INFO, 
+			(SELECT (CAMP_IMG_PATH || CAMP_IMG_RENAME) 
+			FROM CAMPING_SITE_IMG B
+			WHERE B.CAMP_NO = A.CAMP_NO
+			AND CAMP_IMG_ORDER = 0) THUMBNAIL,
+			(SELECT NVL(ROUND(AVG(COUNTING_STAR), 1), 0)
+			FROM CAMPING_STAR C
+			WHERE C.CAMP_NO = A.CAMP_NO) CAMPING_STAR
+		FROM "CAMPING_SITE" A
+		WHERE CAMP_DEL_FL = 'N'
+		ORDER BY CAMPING_STAR DESC
+	</select>
+	
+	<!-- 캠핑장 정렬(인기순 : 별점 카운트 높은 순) -->
+	<select id="selectCampListPopular" resultMap="camp_rm">
+		SELECT CAMP_NO, MEMBER_NO, CAMP_ADDRESS, CAMP_PHONE,
+		CAMP_NAME, CAMP_OPTION, CAMP_AROUND_VIEW, CAMP_MAP,
+		MANNER_TIME,CATEGORY, CAMP_INFO, 
+			(SELECT (CAMP_IMG_PATH || CAMP_IMG_RENAME) 
+			FROM CAMPING_SITE_IMG B
+			WHERE B.CAMP_NO = A.CAMP_NO
+			AND CAMP_IMG_ORDER = 0) THUMBNAIL,
+			(SELECT NVL(ROUND(AVG(COUNTING_STAR), 1), 0)
+			FROM CAMPING_STAR C
+			WHERE C.CAMP_NO = A.CAMP_NO) CAMPING_STAR
+		FROM "CAMPING_SITE" A
+		WHERE CAMP_DEL_FL = 'N'
+		ORDER BY (SELECT COUNT(*)
+				  FROM CAMPING_STAR D
+			      WHERE D.CAMP_NO = A.CAMP_NO) DESC
+	</select>
+	
+	<!-- 캠핑장 검색 -->
+	<select id="searchCampList" resultMap="camp_rm">
+		SELECT CAMP_NO, MEMBER_NO, CAMP_ADDRESS, CAMP_PHONE,
+		CAMP_NAME, CAMP_OPTION, CAMP_AROUND_VIEW, CAMP_MAP,
+		MANNER_TIME,CATEGORY, CAMP_INFO, 
+			(SELECT (CAMP_IMG_PATH || CAMP_IMG_RENAME) 
+			FROM CAMPING_SITE_IMG B
+			WHERE B.CAMP_NO = A.CAMP_NO
+			AND CAMP_IMG_ORDER = 0) THUMBNAIL,
+			(SELECT ROUND(AVG(COUNTING_STAR), 1)
+			FROM CAMPING_STAR C
+			WHERE C.CAMP_NO = A.CAMP_NO) CAMPING_STAR
+		FROM "CAMPING_SITE" A
+		WHERE CAMP_DEL_FL = 'N'
+		AND A.CAMP_ADDRESS || A.CATEGORY || A.CAMP_NAME LIKE '%' || #{input} || '%'
+		ORDER BY CAMP_NO DESC
+	</select>
+	
+	<!-- 캠핑장 상세 조회 -->
+	<select id="selectCampOne" resultMap="camp_rm">
+		SELECT CAMP_NO, MEMBER_NO, CAMP_ADDRESS, CAMP_PHONE,
+		CAMP_NAME, CAMP_OPTION, CAMP_AROUND_VIEW, CAMP_MAP,
+		MANNER_TIME,CATEGORY, CAMP_INFO, (CAMP_IMG_PATH || CAMP_IMG_RENAME) THUMBNAIL, 
+		CHECK_IN, CHECK_OUT, INFORMATION
+		FROM "CAMPING_SITE"
+		JOIN CAMPING_SITE_IMG USING(CAMP_NO)
+		WHERE CAMP_NO = #{campNo}
+		AND CAMP_DEL_FL = 'N'
+		AND CAMP_IMG_ORDER = 0
+	</select>
+	
+	<!-- 별점 눌렀는지 여부 조회 -->
+	<select id="checkStar" resultType="_int">
+		SELECT COUNT(*)
+		FROM CAMPING_STAR
+		WHERE CAMP_NO = #{campNo}
+		AND MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- 별점 개수 조회 -->
+	<select id="selectStar" resultType="_int">
+		SELECT COUNTING_STAR
+		FROM CAMPING_STAR
+		WHERE CAMP_NO = #{campNo}
+		AND MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- 별점 업데이트 -->
+	<update id="updateStar">
+		UPDATE CAMPING_STAR SET COUNTING_STAR = #{starNo}
+		WHERE CAMP_NO = #{campNo}
+		AND MEMBER_NO = #{memberNo}
+	</update>
+	
+	<!-- 별점 추가 -->
+	<insert id="insertStar">
+		INSERT INTO CAMPING_STAR VALUES(#{campNo}, #{memberNo}, #{starNo})
+	</insert >
+	
+	
+	<!-- 캠핑장 예약 이동하면서 보여줄 정보 조회 -->
+	<select id="selectCampDetail" resultMap="camp_detail_rm">
+		SELECT CAMP_DE_NO, CAMP_NO, CAMP_NAME, CAMP_DE_NAME, CAMP_DE_PRICE, CAPACITY, MANNER_TIME, 
+		CHECK_IN, CHECK_OUT, FULL_CAPACITY, INFORMATION,
+		(SELECT CATEGORY_NAME 
+		FROM CAMPING_CATEGORY 
+		WHERE CATEGORY= (SELECT CATEGORY 
+						 FROM CAMPING_SITE 
+						 WHERE CAMP_NO = (SELECT CAMP_NO 
+						 				  FROM CAMPING_DETAIL
+						 				  WHERE CAMP_DE_NO = #{campDeNo}))		
+		) CATEGORY
+		FROM "CAMPING_DETAIL"
+		JOIN CAMPING_SITE USING(CAMP_NO)
+		WHERE CAMP_DE_NO = #{campDeNo}
+	</select>
+	
+	<!-- 캠핑장 예약 이동하면서 보여줄 이미지 정보 조회 -->
+	<select id="selectCampDetailImageList" resultMap="camp_detailImage_rm">
+		SELECT CAMP_DE_IMG_NO, CAMP_DE_NO, CAMP_DE_IMG_PATH, CAMP_DE_IMG_RENAME, 
+		CAMP_DE_IMG_ORIGINAL, CAMP_DE_IMG_ORDER
+		FROM "CAMPING_DETAIL_IMG"
+		WHERE CAMP_DE_NO = #{campDeNo}
+	</select>
+	
+	<!-- 캠핑장 예약 이동하면서 보여줄 이미지 정보 조회 -->
+	<select id="checkDupCampWish" resultType="_int">
+		SELECT COUNT(*)
+		FROM "WISH_LIST"
+		WHERE CAMP_NO = #{campNo}
+		AND MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- 위시리스트 입력 -->
+	<insert id="insertWishlist">
+		INSERT INTO WISH_LIST 
+		VALUES(SEQ_WISH_NO.NEXTVAL, #{memberNo}, #{campNo}, NULL)
+	</insert>
+	
+	<!-- ceo사진 업로드 -->
+	<insert id="insertImages" parameterType="list">
+		INSERT INTO "CAMPING_CEO_IMG"
+		SELECT SEQ_CAMP_CEO_IMG_NO.NEXTVAL, A.*
+		FROM(
+			<foreach collection="list" item="img" separator=" UNION ALL ">
+				SELECT #{img.campNo} CAMP_NO,
+					   #{img.campCeoImagePath} CAMP_CEO_IMG_PATH,
+					   #{img.campCeoImageReName} CAMP_CEO_IMG_RENAME,
+					   #{img.campCeoImageOriginal} CAMP_CEO_IMG_ORIGINAL
+				FROM DUAL
+			</foreach>	
+		) A
+	</insert>
+	
+	<!-- ceo사진 지우기 -->
+	<delete id="ceoPicDelete">
+		DELETE FROM CAMPING_CEO_IMG
+		WHERE CAMP_CEO_IMG_NO = #{imgNo}
+	</delete>
+	
+	<!-- 예약안된 호실 정보 조회 -->
+	<select id="selectCampDetailListNotRes" resultMap="camp_detail_rm">
+		SELECT CAMP_DE_NO, CAMP_NO, CAMP_DE_NAME, CAMP_DE_PRICE, CAPACITY, CHECK_IN, 
+			   CHECK_OUT, CAMP_NAME, MANNER_TIME, FULL_CAPACITY,
+      		   (SELECT (CAMP_DE_IMG_PATH || CAMP_DE_IMG_RENAME) 
+       			FROM CAMPING_DETAIL_IMG B
+        		WHERE A.CAMP_DE_NO = B.CAMP_DE_NO 
+       			AND CAMP_DE_IMG_ORDER = 0) AS CAMP_DETAIL_THUMBNAIL
+		FROM "CAMPING_DETAIL" A
+		JOIN CAMPING_SITE USING(CAMP_NO)
+		WHERE CAMP_NO = #{campNo}
+		AND CAMP_DE_NO NOT IN (
+		    SELECT CAMP_DE_NO 
+		    FROM RESERVATIONS
+		    WHERE CAMP_ENTDATE &lt; TO_DATE(#{outDate}, 'YYYY-MM-DD')
+		    AND CAMP_OUTDATE &gt; TO_DATE(#{entDate}, 'YYYY-MM-DD'))
+	</select>
+	
+	<!-- 캠핑장 카테고리별 조회 -->
+	<select id="selectCampListCategory" resultMap="camp_rm">
+		SELECT CAMP_NO, MEMBER_NO, CAMP_ADDRESS, CAMP_PHONE,
+		CAMP_NAME, CAMP_OPTION, CAMP_AROUND_VIEW, CAMP_MAP,
+		MANNER_TIME,CATEGORY, CAMP_INFO, 
+			(SELECT (CAMP_IMG_PATH || CAMP_IMG_RENAME) 
+			FROM CAMPING_SITE_IMG B
+			WHERE B.CAMP_NO = A.CAMP_NO
+			AND CAMP_IMG_ORDER = 0) THUMBNAIL,
+			(SELECT ROUND(AVG(COUNTING_STAR), 1)
+			FROM CAMPING_STAR C
+			WHERE C.CAMP_NO = A.CAMP_NO) CAMPING_STAR
+		FROM "CAMPING_SITE" A
+		WHERE CAMP_DEL_FL = 'N'
+		AND CATEGORY = #{category}
+		ORDER BY CAMP_NO DESC
+	</select>
+	
+	
+</mapper>

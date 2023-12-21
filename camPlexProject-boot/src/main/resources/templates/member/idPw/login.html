@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+
+    <link rel="stylesheet" th:href="@{/css/member/idPw/login.css}">
+	<link rel="icon" th:href="@{/images/iconImg/favicon.png}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    
+	<th:block th:replace="~{common/headerForContent}"></th:block>
+
+
+    <main>
+        <!-- 공백 (우) -->
+        <section class="empty1"></section>
+        
+        <section id="loginForm">
+			
+			<form th:action="@{/member/login}" method="post" name="login-form" id="loginFrm">
+	
+	            <section id="headerName">로그인</section>
+	            <hr id="underLine"/>
+	            
+	            <section id="inputInfo">
+	
+	                <section class="empty2"></section>
+	                <!-- 아이디, 비번 입력 -->
+	                <section id="inputIdPw">
+						
+	                    <input id="inputId" name="memberEmail" type="email" placeholder="아이디 (이메일)">
+	                    <input id="inputPw" name="memberPw" type="password" placeholder="비밀번호">
+	
+	                    <section id="loginBtnSection">
+	                        <section class="empty3"></section>
+	                        
+	                        <!-- 간편로그인, 로그인버튼 -->
+	                        <section id="easyLoginBtn">
+	                            <a th:href="@{|${naverUrl}|}"><img th:src="@{/images/memberImg/naverIMG.png}"></a>
+	                            <a th:href="@{${kakaoUrl}}"><img id="kakaoLoginImg" th:src="@{/images/iconImg/kakao_login_small.png}"></a>
+	                            <button class="clickBtn" type="submit" id="loginBtn">로그인</button>
+	                        </section>
+	                        
+	                        
+	                        <section class="empty3"></section>
+	                    </section>
+	                    
+	                    <section id="signUpIdPwSection">
+	                        <section class="empty3"></section>
+	                        
+	                        <section id="signUpIdPwBtn">
+	                            <a class="clickBtn" id="signUpBtn" th:href="@{/member/signUp}">회원가입</a>
+	                            <a class="clickBtn" id="searchIdBtn" th:href="@{/member/searchId}">ID 찾기</a>
+	                            <a class="clickBtn" th:href="@{/member/searchPw}">PW 찾기</a>
+	                        </section>
+	
+	                        <section class="empty3"></section>
+	                    </section>
+	
+	                </section>
+	                <section class="empty2"></section>
+	                
+	
+	            </section>
+	
+			</form>
+			
+        </section>
+        
+        <!-- 공백 (좌) -->
+        <section class="empty1"></section>
+    </main>
+    
+    
+	<script th:src="@{/js/member/login.js}"></script>
+	
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+
+	<link rel="stylesheet" th:href="@{/css/camp/campingDetail.css}">
+
+	<link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+	<link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+	<link
+		th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}"
+		rel="stylesheet">
+	<link rel="icon" th:href="@{/images/iconImg/favicon.png}">
+</head>
+
+<body id="body">
+
+	<th:block th:replace="~{common/headerForContent}"></th:block>
+
+	<main>
+
+		<div id="leftBlank"></div>
+
+		<div id="mainContent">
+
+			<section class="header">
+				<p class="headerTitle">Information</p>
+				<div class="headerMenu">
+					<a th:href="|/camp/wishlist?campNo=${camp.campNo}|" id="wishListBtn">WISH LIST</a>
+					<button type="button" id="cqmodal_btn" data-target="modal2">1:1 문의</button>
+				</div>
+			</section>
+
+			<hr>
+
+			<section class="mainPicArea">
+
+				<div class="campingTitle">
+					<div class="titleContainer">
+						<p th:text="${camp.campName}">캠핑장 명</p>
+
+						<th:block th:if="${session.loginMember?.memberType == 'C'} or ${session.loginMember?.memberType == 'M'}">
+
+							<a id="campUpdate" th:href="|@{/camp2/editCampForward?campNo=}${camp.campNo}|">수정</a>
+
+							<form th:action="@{/camp2/deleteCamp}" id="deleteCampFrm">
+								<button id="campDelete" href="">삭제</button>
+								<input type="hidden" name="campNo" id="" th:value="${camp.campNo}">
+							</form>
+							
+						</th:block>
+					</div>
+
+					<th:block th:if="${starCount}">
+						
+						<div class="starContainer">
+								<img th:id="star_+${numStat.count}"  th:src="@{/images/iconImg/marsh3.png}"
+								th:each="num : ${#numbers.sequence(1,starCount)}" class="starBtn">
+								
+							<th:block th:if="${starCount &lt; 5}">
+
+								<img th:id="star_+(${numStat.count}+${starCount})" th:src="@{/images/iconImg/marsh1.png}"
+								th:each="num : ${#numbers.sequence(1,5-starCount)}" class="starBtn">
+							
+							</th:block>
+						</div>
+					
+					</th:block>
+					
+					<th:block th:unless="${starCount}">
+						
+						<div class="starContainer">
+								<img th:id="star_+${numStat.count}" th:src="@{/images/iconImg/marsh1.png}" alt=""
+								th:each="num : ${#numbers.sequence(1,5)}" class="starBtn">
+						</div>
+					
+					</th:block>
+					
+				</div>
+
+				<div class="pictureContainer">
+
+					<div class="thumbsnail">
+						<div class="thumbsnailContainer">
+							<img class="img" th:src="${camp.thumbnail}" alt="">
+						</div>
+					</div>
+
+					<div class="campImg">
+						<div class="campImgContainer"
+							th:each="i : ${#numbers.sequence(1, #lists.size(camp.campSiteImageList)-1, 1)}">
+							<img class="img" th:src="|${camp.campSiteImageList[i].campImagePath}${camp.campSiteImageList[i].campImageReName}|">
+						</div>
+					</div>
+
+				</div>
+
+			</section>
+
+
+			<!-- 로그인 멤버가 관리자나 ceo일 때 -->
+			<section class="ceoPic">
+
+				<p>CEO's PIC
+					<button type="button" id="ceoPicUploadBtn"></button>
+					<th:block th:if="${session.loginMember?.memberType == 'C'} or ${session.loginMember?.memberType == 'M'}">
+						<label for="ceoPicUploadBtn" id="ceoPicUploadBtnLabel">+</label>
+					</th:block>
+				</p>
+
+				<div class="ceoPicSlide">
+
+					<button type="button" class="arrow" id="left">
+						<img th:src="@{/images/iconImg/left.png}">
+					</button>
+
+					<div class="ceoPicture">
+						<div class="ceoPicSlideBox">
+
+							<div class="ceoPicContent" th:id="|img[${camp.campCeoImageList[i].campCeoImageNo}]|" th:each="i : ${#numbers.sequence(0, #lists.size(camp.campCeoImageList)-1, 1)}">
+								<input type="hidden" class="imgNo" th:value="${camp.campCeoImageList[i].campCeoImageNo}">
+								<div class="ceoPictureWrapper">
+									<img class="img" th:src="|${camp.campCeoImageList[i].campCeoImagePath}${camp.campCeoImageList[i].campCeoImageReName}|">
+								</div>
+								<th:block th:if="${session.loginMember?.memberType == 'C'} or ${session.loginMember?.memberType == 'M'}">
+									<button type="button" class="ceoPicDeleteBtn">삭제</button>
+								</th:block>
+							</div>
+
+
+						</div>
+					</div>
+
+					<button type="button" class="arrow" id="right">
+						<img th:src="@{/images/iconImg/right.png}">
+					</button>
+
+				</div>
+
+			</section>		
+
+
+			<section class="introductionArea">
+
+				<p class="introductionTitle">Introduction</p>
+
+				<hr>
+
+				<p class="introductionContent" th:utext="${camp.campInfo}">캠핑장 정보</p>
+
+			</section>
+
+			<section class="detailsArea">
+
+				<p class="detailsTitle">
+					Details
+				</p>
+
+				<hr>
+
+				<div class="details">
+
+					<div class="campMap">
+						<img th:if="${camp.campMap}" th:src="${camp.campMap}" alt="">
+						<img th:unless="${camp.campMap}" th:src="@{/images/iconImg/noImage.png}" alt="">
+					</div>
+
+					<div class="campDetails">
+
+						<div>
+							<p>부대시설</p>
+							<hr>
+							<div class="facilityArea">
+
+								<div th:each="option : ${option}" class="facilityIcon">
+									<div class="iconWrapper">
+										<img th:src="@{/images/iconImg/}+${option.key}+.png" alt="">
+									</div>
+									<p th:text="${option.value}">부대시설 명</p>
+								</div>
+
+							</div>
+						</div>
+
+
+						<div>
+							<p>주변 환경</p>
+							<hr>
+							<div class="aruondViewArea">
+								<div th:each="aroundView : ${aroundView}" class="arouundViewIcon">
+									<div class="iconWrapper">
+										<img th:src="@{/images/iconImg/}+${aroundView.key}+.png" alt="">
+									</div>
+									<p th:text="${aroundView.value}">주변 환경 명</p>
+								</div>
+							</div>
+
+						</div>
+
+
+						<div>
+							<p>매너타임</p>
+							<hr>
+							<div class="mannerTime">
+								<div class="iconWrapper">
+									<img th:src="@{/images/iconImg/clock.png}" alt="">
+								</div>
+								<p th:text="${camp.mannerTime}">22:00 ~ 07:00</p>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+
+			</section>
+
+			<section class="reservationArea">
+
+				<p class="reservationTitle">
+					Reservation
+				</p>
+
+				<hr>
+
+				
+
+				<!--*********************************** 달력 ************************************************-->
+				<div class="calenderWrapper">
+				  <div class="calendar-container">
+			        <button id="prev-month"><</button>
+			        <div class="calendar" id="calendar-next"></div> 
+			        <button id="next-month">></button>
+    			</div>
+    			
+    			<div class="travelDate">
+
+					<div id="stayDate">
+							<input type="radio" name="stayDate" id="oneDay" value="1" checked>
+								<label class="dayBtn"  for="oneDay">1박</label>
+							<input type="radio" name="stayDate"  id="twoDay" value="2" >
+								<label class="dayBtn"  for="twoDay">2박</label>
+							<input type="radio" name="stayDate" id="threeDay" value="3">
+								<label class="dayBtn"  for="threeDay" >3박</label>
+					</div>
+					<div class="enterDate">
+						<p>입실일 :</p>
+						<span id="checkInDate" class="date"></span>
+					</div>
+					<div class="exitDate">
+						<p>퇴실일 : </p>
+						<span id="checkOutDate" class="date"></span>
+					</div>
+
+				</div>
+				</div>
+				
+				
+				<!--*********************************** 달력 끝************************************************-->
+
+			</section>
+
+			<hr>
+
+			<section>
+
+				<form th:action="@{reservation}" class="campSiteFrm" id="reservationFrm">
+
+					<div id="campDetailContainer">
+					
+						<input type="hidden" name="entDate" id="entDate">
+						<input type="hidden" name="outDate">
+						<input type="hidden" name="stayDay">
+						
+
+						<div class="campSite" th:each="campDetail : ${camp.campDetailList}">
+							
+							<input type="radio" name="campDeNo" class="campStieRadio"
+									th:id="campNo+${campDetail.campDeNo}" th:value="${campDetail.campDeNo}">
+							</input>
+							<label th:for="campNo+${campDetail.campDeNo}" class="campSiteBox" onclick="">
+
+								<div class="campSiteImgWrapper">
+									<img th:src="${campDetail.campDeThumbnail}" alt="">
+								</div>
+								
+								<div class="campSiteInfoContainer">
+									<p th:text="${campDetail.campDeName}"></p>
+									
+									<div class="campSiteInfo">
+										<div class="campSiteInfoDetail">
+											<p>수용 인원 
+												<input type="text" th:value="${campDetail.capacity}+명" disabled class="capacity">
+											</p>
+										</div>
+										<input class="campSitePrice" th:value="|${#numbers.formatInteger(campDetail.campDePrice, 3, 'COMMA')}원 (1박)|" disabled></input>
+									</div>
+											
+								</div>
+								
+							</label>
+						</div>
+						
+						
+					</div>
+						
+					<div class="btnArea">
+
+						<button class="btn">다음으로</button>
+						<button type="button" class="btn" onclick="history.back()">목록으로</button>
+
+					</div>
+
+				</form>
+
+			</section>
+
+		</div>
+		<div id="rightBlank"></div>
+
+
+	</main>
+
+	<script th:inline="javascript">
+
+		const campNo = /*[[${camp.campNo}]]*/ "캠핑장 번호";
+		const checkIn = /*[[${camp.checkIn}]]*/ "체크인 시간";
+		const checkOut = /*[[${camp.checkOut}]]*/ "체크아웃 시간";
+		const loginMember = /*[[${session.loginMember}]]*/ "로그인 멤버";
+		
+	</script>
+
+	<th:block th:replace="~{camp/onclickCeoPicModal}"></th:block>
+	<th:block th:replace="~{camp/ceoPicUpload}"></th:block>
+	<th:block th:replace="~{common/footer}"></th:block>
+	<th:block th:replace="~{qna/ceoQna}"></th:block>
+
+	<script th:src="@{/js/camp/CampingDetail.js}"></script>
+</body>
+
+</html>

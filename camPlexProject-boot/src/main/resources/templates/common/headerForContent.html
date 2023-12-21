@@ -1,0 +1,58 @@
+<link rel="stylesheet" th:href="@{/css/common/headerForContent.css}">
+
+	<header class="topBar">
+
+        <div class="topMenu">
+
+            <div class="rightOfTopMenu">
+                <a th:unless="${session.loginMember}" th:href="@{/member/login}">LOGIN</a>
+				<th:block th:if="${session.loginMember}">
+	                <a class="hideMenu" th:href="@{/paysys/rentCart}">CART</a>
+	                <a class="hideMenu" th:href="@{/member/wishlist}">WISH LIST</a>
+
+					<th:block th:if="${session.loginMember.memberType == 'U'}">
+			            <a th:href="@{/member/myPage}">MY PAGE</a>
+			        </th:block>
+			
+			        <th:block th:if="${session.loginMember.memberType == 'C'}">
+			            <a th:href="@{/member/CEOMyPage}">MY PAGE</a>
+			        </th:block>
+			
+			        <th:block th:if="${session.loginMember.memberType == 'M'}">
+			            <a th:href="@{/member/managerMyPage}">MY PAGE</a>
+			        </th:block>	                
+
+	                <a th:href="@{/member/logout}">LOGOUT</a>
+			    </th:block>
+                <a class="hideMenu" href="#">TOP</a>
+            </div>
+
+        </div>
+
+        <button id="mainTitle" class="mainTitle" onclick="location.href='/'">C A M P L E X </button>
+
+        <div class="bottomMenu">
+            <a th:href="@{/camp/search}">CAMPING</a>
+            <a th:href="@{/item2/search}">RENTAL</a	>
+            <a th:href="@{/board/{boardType}(boardType=B)}">BOARD</a>
+        </div>
+
+    </header>
+
+
+
+	<script th:inline="javascript">
+
+		window.onpageshow = function(event) {
+			if ( event.persisted || (window.performance && window.performance.navigation.type == 2)) {
+			  console.log("test");
+				 location.reload();
+			} else {
+			  const message = /*[[${message}]]*/ "전달받은 메세지(보통은 에러메세지)";
+			  console.log(message);
+			  if(message != null) alert(message);
+			  
+		   }
+		}   
+	 
+	</script> 

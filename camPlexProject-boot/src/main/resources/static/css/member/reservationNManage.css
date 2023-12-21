@@ -1,0 +1,187 @@
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    unicode-range: U+AC00-D7A3
+}
+
+*{
+    font-family: 'HakgyoansimSantteutdotumL', 'Montserrat';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+main, div, section, a, span{
+    /* border: 1px solid black; */
+}
+
+/* ------------------------------- */
+/* 메인 틀 */
+main {
+    display: flex;
+    margin-top: 50px;
+}
+
+.empty1 {
+    flex-basis: 15%;
+}
+
+#signUpForm {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 70%;
+}
+
+/* --------------------------------- */
+/* 대제목 */
+#headerTitle {
+	display: flex;
+	justify-content: space-between;
+}
+
+#headerName {
+    font-size: 30px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+#underLine {
+    border: 2px solid black;
+    margin-bottom: 50px;
+}
+/* ------------------------------ */
+/* 미승인, 승인 부분 */
+#reservationYNBtn {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#reservationNBtn {
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: underline 1px;
+    text-underline-offset: 10px;
+}
+
+#reservationYNBtn a {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#reservationYBtn::after {
+    margin-top: 5px;
+}
+
+#empty2 {
+    flex-basis: 3%;
+}
+
+/* ------------------------------ */
+/* 예약 내용 부분 */
+#objectSection {
+    display: flex;
+    margin-top: 50px;
+}
+
+.objectSection {
+    display: flex;
+    margin-top: 50px;
+}
+
+.empty3 {
+    flex-basis: 20%;
+}
+
+.objectListSection {
+    flex-basis: 80%;
+    display: flex;
+    /* border: 3px solid gray;
+    border-radius: 10px; */
+}
+
+#objectList {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    justify-content: space-around;
+}
+
+.reservationInfo {
+    display: flex;
+    margin-block: 5px;
+    align-items: center;
+}
+
+.icon {
+    width: 45px;
+}
+
+.empty4 {
+    flex-basis: 5%;
+}
+
+.info {
+    font-size: 18px;
+}
+
+#rentalObjList {
+    margin-left: 50px;
+    flex-basis: 45%;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.rentalObj {
+    font-size: 18px;
+    margin-block: 5px;
+}
+
+#itemCount {
+    color: red;
+}
+
+/* ------------------------------ */
+/* 풋터 위 공간 */
+.empty5 {
+    height: 100px;
+}
+
+.clickBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+    transition: color 0.3s;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.clickBtn:hover {
+	color: #909090;
+}
+
+#backBtn {
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+}
+

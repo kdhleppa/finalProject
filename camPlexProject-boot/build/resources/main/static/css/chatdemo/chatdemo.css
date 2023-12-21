@@ -1,0 +1,121 @@
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: 1% 500%;
+    unicode-range: U+AC00-D7A3;
+}
+
+#modal_btn {
+	border-style: none;
+	background-color: transparent;
+	outline: none;
+	position: sticky;
+	bottom: 30px;
+	left: 30px;
+}
+
+.form-group > label {
+	font-size: 20px;
+}
+
+#send {
+	border-style: none;
+	background-color: transparent;
+	font-size: 15px;
+}
+
+#modal_btn > img {
+	width: 100px;
+	height: 100px;
+}
+
+.modal_wrap {
+	font-family: 'HakgyoansimSantteutdotumL';
+    display: none;
+    width: 500px;
+    height: 500px;
+    position: fixed;
+    border: none;
+    top: 25%;
+    left: 38%;
+    background:rgb(249, 249, 234);
+    z-index: 2;
+    border-radius: 10px;
+}
+
+.modal_background {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0, 0, 0, 0.2);
+    top:0;
+    left: 0;
+    z-index: 1;
+}
+
+.modal_close {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.modal_wrap .text {
+	font-size: 18px;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.noBtn {
+	background-color: rgb(242, 226, 206);
+	border: 1px solid #909090;
+	border-radius: 10px;
+	width: 80px;
+	height: 30px;
+	margin-left: 7px;
+	margin-bottom: 30px;
+}
+
+.col-md-12 {
+	margin-top: 20px;
+}
+
+#msg {
+	font-size: 16px;
+	width: 20rem;
+	height: 2rem;
+	outline: none;
+	border-radius: 10px;
+	border: 1px solid #909090;
+	padding: 0.5rem;
+	margin-left: 3rem;
+	margin-bottom: 0.5rem;
+}
+
+#conversation {
+	margin-top: 20px;
+	margin-left: 40px;
+}
+
+#communicate > * {
+	font-size: 16px;
+	font-weight: 800;
+	height: 40px;
+}
+
+.col-md-12 {
+	width: 28rem;
+	height: 15rem;
+	overflow-x: auto;
+	overflow-y: auto;
+}
+
+#campingLink, #itemLink, #boardLink, #eventLink, #loginLink, #myPageLink {
+	text-decoration: none;
+	color: rgb(0, 128, 255);
+}
+

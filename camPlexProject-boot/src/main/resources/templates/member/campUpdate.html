@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>업데이트 요청</title>
+
+	<link rel="stylesheet" th:href="@{/css/member/campUpdate.css}">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap"
+		rel="stylesheet">
+
+</head>
+
+<body>
+
+	<th:block th:replace="~{common/headerForContent}"></th:block>
+
+	<main>
+		<section class="empty1"></section>
+
+		<section id="searchIdInfoSection">
+
+			<section id="headerName">캠핑장 정보 업데이트</section>
+			<hr id="underLine"/>
+
+			<section id="inputInfo">
+
+				<section id="searchIdConfirm">
+
+					<p>캠핑장 정보 업데이트는</p>
+					<p>camPlex@gmail.com / 02-5438-1773</p>
+					<p>로 직접 문의 바랍니다.</p>
+
+				</section>
+
+				<section id="goLoginPagedBtnSection">
+
+					<section id="goLoginPageBtn">
+						<a class="clickBtn" th:onclick="|javascript:history.back();|">이전으로</a>
+					</section>
+
+				</section>
+
+			</section>
+
+
+		</section>
+
+		<section class="empty1"></section>
+
+	</main>
+
+
+</body>
+
+</html>

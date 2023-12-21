@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>위시리스트</title>
+    <link rel="stylesheet" th:href="@{/css/member/myPage/wishList.css}">
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap}" rel="stylesheet">
+    <link th:href="@{https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap}" rel="stylesheet">
+</head>
+<body>
+    
+    <th:block th:replace="~{common/headerForContent}"></th:block>
+    
+    <div class="mainContainer">
+        <!--레프트빈공간-->
+        <div class="emptyContainer"></div>
+        
+        <!--메인공간-->
+        <div class="midContainer">
+            
+            <h2 class="heading">CAMPING WISHLIST</h2>
+
+            <table class="campingListTB">
+                <tr>
+                    <th><input type="checkbox" id="selectAllCampcb" th:onclick="selectAll('campcb')"></th>
+                    <th>캠핑장 번호</th>
+                    <th>사진</th>
+                    <th>캠핑장 명</th>
+                    <th></th>
+                    <th></th>
+                    <th>취소</th>
+                </tr>
+                <tr th:if="${camp == null || camp.empty}">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>등록된 캠핑장이 없습니다.</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+                <th:block th:unless="${camp == null}" th:each="camp, iterStat : ${camp}" id="campcb">
+	                <tr th:id="'tr'+${camp.campNo}">
+	                    <!-- 개별선택체크박스-->
+	                    <td><input type="checkbox" class="campcb-item" th:data-ccn="${camp.campNo}"></td>
+	                    <td th:text="${camp.campNo}">넘버</td>
+	                    <td><img th:src="${camp.thumbnail}" th:onclick="|location.href = '@{/camp/{campNo}(campNo = ${camp.campNo})}'|"></td>
+	                    <td>[[${camp.campName}]]<a th:href="|/camp/${camp.campNo}|" class = "grayBtn rsvBtn" th:text="예약하기">예약하기</a></td>
+	                    <td></td>
+	                    <td></td>
+	                    <td><button class="grayBtn" th:onclick="'deleteCampWish(' + ${camp.campNo} + ');'" th:text="DELETE">DELETE</button></td>
+	                </tr>
+                </th:block>
+               
+            </table>
+
+
+            <h2 class="heading heading2">ITEM WISHLIST</h2>
+
+            <table class="itemListTB">
+                <tr>
+                    <th><input type="checkbox" id="selectAllItemcb" onclick="selectAll('itemcb');"></th>
+                    <th>상품 번호</th>
+                    <th>사진</th>
+                    <th>상품명</th>
+                    <th></th>
+                    <th>금액</th>
+                    <th>취소</th>
+                </tr>
+                   <tr th:if="${item == null || item.empty}">
+					<td></td>
+					<td></td>
+					<td></td>
+					<td>등록된 상품이 없습니다.</td>
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+                <th:block th:unless="${item == null}" th:each="item, iterStat : ${item}" id="itemcb">
+	                <tr th:id="'tr'+${item.itemNo}">
+	                    <!-- 개별선택체크박스-->
+	                    <td><input type="checkbox" class="itemcb-item" th:data-icn="${item.itemNo}"></td>
+	                    <td th:text="${item.itemNo}">넘버</td>
+	                    <td>
+							<a th:href="@{/item/itemDetail/{itemNo}(itemNo = ${item.itemNo})}">							 
+		                    	<img th:src="${item.thumbnail}">
+						 	</a>
+						 </td>
+	                    <td><a class="nameAtag" th:href="@{/item/itemDetail/{itemNo}(itemNo = ${item.itemNo})}">[[${item.itemName}]]</a></td>
+	                    <td></td>
+	                    <th:block th:if="${item.discountRate} != 0">
+							
+                        	<td>
+								<div id="beforeDiscount" >
+									<del th:text="|￦ ${#numbers.formatInteger(item.itemPrice, 3, 'COMMA')}|">상품 가격</del>
+									<p style="color: red;" th:text="|(${item.discountRate}%↓)|">(13%↓)</p>
+								</div>
+								<p id="itemPrice" th:text="|￦ ${#numbers.formatInteger(((item.itemPrice)*(100-(item.discountRate))/100), 3, 'COMMA')}|"></p>
+							</td>
+
+						</th:block>
+						<th:block th:if="${item.discountRate} == 0">
+
+                            	<td id="itemPrice" th:text="|￦ ${#numbers.formatInteger(item.itemPrice, 3, 'COMMA')}|" >아이템가격</td>
+
+						</th:block>
+	                    <td><button class="grayBtn" th:onclick="'deleteItemWish(' + ${item.itemNo} + ');'" th:text="DELETE">DELETE</button></td>
+	                </tr>
+                </th:block>
+               
+            </table>
+            <div class="buttonList">
+                <button class="Btn" th:onclick="deleteSelectedItems()">선택삭제</button>
+                <a th:href="@{/paysys/rentCart}" class="Btn">장바구니</a>
+                <a href="javascript:history.back()" class="Btn backBtn">돌아가기</a>
+            </div>
+        </div>
+        
+        <!--라이트빈공간-->
+        <div class="emptyContainer"></div>
+    </div>
+
+    <th:block th:replace="~{common/footer}"></th:block>
+    <script th:src="@{/js/member/wishlist.js}"></script>
+
+</body>
+</html>

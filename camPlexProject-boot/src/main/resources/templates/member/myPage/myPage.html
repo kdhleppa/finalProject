@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>마이페이지</title>
+
+	<link rel="stylesheet" th:href="@{/css/member/myPage/myPage.css}">
+	<link rel="icon" th:href="@{/images/iconImg/favicon.png}">
+	<link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+	<link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap"
+		rel="stylesheet">
+
+</head>
+
+<body>
+
+	<th:block th:replace="~{common/headerForContent}"></th:block>
+
+	<main>
+		<!-- 공백 (우) -->
+		<section class="empty1"></section>
+
+		<section id="myPageSection">
+
+			<!-- 대제목 -->
+			<section id="headerName">마이페이지</section>
+			<hr id="underLine" />
+
+			<!-- 정보 -->
+			<section id="myInfo">
+				<!-- 내부공백 (우) -->
+				<section class="empty2"></section>
+
+				<!-- 내 정보 -->
+				<section id="infoMain">
+					<section id="profileImgSection">
+
+						<img th:unless="${session.loginMember.memberProfileImg}" id="profileImg" th:src="@{/images/memberImg/gg_profile.png}">
+
+						<img th:if="${session.loginMember.memberProfileImg}" id="profileImg" th:src="${session.loginMember.memberProfileImg}">
+
+					</section>
+
+					<section class="empty2"></section>
+					<section id="nameTel">
+						<p th:inline="text">이름 : [[${session.loginMember.memberName}]]</p>
+						<p th:inline="text">전화번호 : [[${session.loginMember.memberPhone}]]</p>
+					</section>
+					<section class="empty3"></section>
+
+					<section id="nicknameEmail">
+						<p th:inline="text">닉네임 : [[${session.loginMember.memberNickname}]]</p>
+						<p th:inline="text">Email : [[${session.loginMember.memberEmail}]]</p>
+					</section>
+					<section class="empty2"></section>
+
+					<section class="btnSection">
+						<a class="clickBtn" th:href="@{/member/infoModify}">프로필 관리</a>
+						<a class="clickBtn" th:href="@{/member/levelUpForm}">CEO 계정 신청</a>
+						<a class="clickBtn" th:href="@{/member/memberWithdrawal1}">회원 탈퇴</a>
+					</section>
+				</section>
+
+
+				<!-- 내부공백 (좌) -->
+				<section class="empty2"></section>
+			</section>
+
+			<!-- 구매 내역 정보 -->
+			<section id="buyListSection">
+
+				<section class="empty2"></section>
+
+				<section class="shopingList">
+					
+					<div class="textListSecDiv">
+						<section class="subName" id="listTitle">
+							<p>예약 내역</p>
+							<p class="subListTitle">&nbsp;(최근 2개)</p>
+						</section>
+						<a class="clickBtn" th:href="@{/member/reservationDetails}" id="buyInfoListBtn">예약 내역 더보기</a>
+					</div>
+					
+					<hr class="underLine2">
+
+					<section class="shopingListInfo">
+						
+						<section class="empty2"></section>
+						
+						<div class="contentWrapper">
+	
+							<th:block th:if="${upcomingReservation.size != 0}">
+	
+								<section class="buyHistoryInfo" th:each="upcomingRes : ${upcomingReservation}">
+	
+									<section class="imgSection">
+										<img class="shoppingImg" th:src="${upcomingRes.thumbnail}">
+									</section>
+	
+									<section class="buyInfo">
+										<div>
+											<a class="clickBtn" th:onclick="|location.href='/camp/${upcomingRes.campNo}'|" th:text="|[${upcomingRes.campName}] ( ${upcomingRes.campDeName} )|">캠핑장 명</a>
+										</div>
+										<div>
+											<p th:text="|결제 수단&nbsp; :&nbsp; ${upcomingRes.paymentType} ( ${upcomingRes.paymentStatusFlag} ) |"></p>
+											<p th:text="|입실 일&nbsp;&nbsp; &nbsp; :&nbsp; ${upcomingRes.campEntDate2}|"></p>
+											<p th:text="|결제 금액&nbsp; :&nbsp; ￦ ${#numbers.formatInteger(upcomingRes.campPayment, 3, 'COMMA')}원|"></p>
+											
+											<th:block th:unless="${upcomingRes.bankAccount == ''}">
+												<p th:text="|입금 계좌&nbsp; :&nbsp; ${upcomingRes.bankAccount}|"></p>
+											</th:block>
+											
+											<th:block th:if="${upcomingRes.itemList.size > 0}">
+												<p th:if="${upcomingRes.itemList.size == 1}" th:text="|렌탈 상품 &nbsp; :&nbsp; ${upcomingRes.itemList[0].itemName}|"></p>
+												<p th:if="${upcomingRes.itemList.size > 1}" th:text="|렌탈 상품 &nbsp; :&nbsp; ${upcomingRes.itemList[0].itemName} 외 ${#lists.size(upcomingRes.itemList)-1} 개 상품|"></p>
+											</th:block>
+											<th:block th:if="${upcomingRes.itemList.size == 0}">
+												<p>렌탈 상품&nbsp; : 이용하신 렌탈 상품이 없습니다.</p>
+											</th:block>
+											
+										</div>
+										
+									</section>
+									
+								</section>
+	
+							</th:block>
+	
+							<th:block th:if="${upcomingReservation.size == 0}">
+	
+								<section class="buyHistoryInfo">
+									<section class="buyInfo">
+										<p>내역이 존재하지 않습니다.</p>
+									</section>
+								</section>
+	
+							</th:block>
+							
+							</div>
+							
+						<section class="empty2"></section>
+
+					</section>
+
+				</section>
+
+			</section>
+
+			<!-- 쇼핑 정보 -->
+			<section id="shopingListSection">
+
+				<section class="empty2"></section>
+
+				<section class="shopingList">
+					<div class="textListSecDiv">
+						<section class="subName" id="beforeListTitle">
+							<p>이전구매 내역</p>
+							<p class="subListTitle">&nbsp;(최근 2개)</p>
+						</section>
+						<a class="clickBtn" th:href="@{/member/payHistory}" id="shoppingInfoListBtn">구매 내역 더보기</a>
+					</div>
+					<hr class="underLine2">
+
+					<section class="shopingListInfo">
+						
+						<section class="empty2"></section>
+
+						<div class="contentWrapper">
+							
+							<th:block th:if="${olderReservation.size != 0}">
+	
+								<section class="buyHistoryInfo" th:each="oldRes : ${olderReservation}">
+	
+									<section class="imgSection">
+										<img class="shoppingImg" th:src="${oldRes.thumbnail}">
+									</section>
+	
+									<section class="buyInfo">
+										<div>
+											<a class="clickBtn" th:onclick="|location.href='/camp/${oldRes.campNo}'|" th:text="|[${oldRes.campName}] ( ${oldRes.campDeName} )|">캠핑장 명</a>
+										</div>
+										<div>
+											<p th:text="|결제 정보&nbsp; :&nbsp; ${oldRes.paymentType} ( ${oldRes.paymentStatusFlag} ) |"></p>
+											<p th:text="|결제 금액&nbsp; :&nbsp; ￦ ${#numbers.formatInteger(oldRes.campPayment, 3, 'COMMA')}원|"></p>
+											<p th:text="|입실일 &nbsp; :&nbsp; ${oldRes.campEntDate2}|"></p>
+											<th:block th:unless="${oldRes.bankAccount == ''}">
+												<p th:text="|입금 계좌&nbsp; :&nbsp; ${oldRes.bankAccount}|"></p>
+											</th:block>
+											
+											<th:block th:if="${oldRes.itemList.size > 0}">
+												<p th:if="${oldRes.itemList.size == 1}" th:text="|렌탈 상품 &nbsp; :&nbsp; ${oldRes.itemList[0].itemName}|"></p>
+												<p th:if="${oldRes.itemList.size > 1}" th:text="|렌탈 상품 &nbsp; :&nbsp; ${oldRes.itemList[0].itemName} 외 ${#lists.size(oldRes.itemList)-1} 개 상품|"></p>
+											</th:block>
+											<th:block th:if="${oldRes.itemList.size == 0}">
+												<p>렌탈 상품&nbsp; : 이용하신 렌탈 상품이 없습니다.</p>
+											</th:block>
+										</div>
+									</section>
+									
+								</section>
+								
+							</th:block>
+	
+							<th:block th:if="${olderReservation.size == 0}">
+								<section class="buyHistoryInfo">
+									<section class="buyInfo">
+										<p>내역이 존재하지 않습니다.</p>
+									</section>
+								</section>
+	
+							</th:block>
+
+						</div>
+						
+						<section class="empty2"></section>
+						
+						<!-- 내부공백 (좌) -->
+					</section>
+
+				</section>
+
+			</section>
+
+			<!-- 관심 상품 -->
+			<section id="wishListSection">
+				<section class="empty2"></section>
+				<section id="wishList">
+					<section class="subName">
+						<p onclick="location.href='/member/wishlist'">관심 상품</p>
+
+						<div class="radioArea">
+							<input type="radio" name="wish" value="item" id="item" class="clicked">
+							<label class="clickBtn" for="item">렌탈 상품</label>
+							<input type="radio" name="wish" value="camp" id="camping" >
+							<label class="clickBtn" for="camping">캠핑장</label>
+						</div>
+						
+					</section>
+					<hr class="underLine2">
+
+					<th:block th:if="${myPageInfo.wishList.size == 0}">
+						<section id="wishListItems">
+							<section class="empty2">				
+								<button type="button" class="arrow" id="left"></button>
+							</section>
+							
+							<div class="overlayScreenWish">
+
+								<section class="itemSection">
+									<p>관심 상품이 없습니다.</p>
+								</section>
+
+							</div>
+
+							<section class="empty2">
+								<button type="button" class="arrow" id="right" ></button>
+							</section>
+						</section>
+					</th:block>
+
+					<th:block th:if="${myPageInfo.wishList.size > 0}">
+
+						<section id="wishListItems">
+
+							<section class="empty2">
+								<button type="button" class="arrow" id="left">
+									<img th:if="${myPageInfo.wishList.size > 4}" th:src="@{/images/iconImg/left.png}">
+								</button>
+							</section>
+							
+							<div class="overlayScreenWish">
+
+								<div class="item">
+									
+									<div class="itemWrapper">
+										
+										<section class="itemSection" th:each="wish : ${myPageInfo.wishList}">
+											<img th:onclick="|location.href='/item/itemDetail/${wish.itemNo}'|" class="wishItem" th:src="${wish.thumbnail}">
+											<a class="clickBtn" th:text="${wish.itemName}">밀크 소파 : 블랙</a>
+										</section>
+										
+									</div>
+									
+								</div>
+								
+							</div>
+
+							<section class="empty2">
+								<button type="button" class="arrow" id="right" >
+									<img th:if="${myPageInfo.wishList.size > 4}" th:src="@{/images/iconImg/right.png}">
+								</button>
+							</section>
+
+						</section>
+
+					</th:block>
+
+
+				</section>
+
+				<section class="empty2"></section>
+			</section>
+
+
+			<!-- 문의사항 -->
+			<section class="textSection">
+				<section class="empty2"></section>
+				<section class="textListSection">
+					<div class="textListSecDiv">
+						<section class="subName">
+							<p>문의사항</p>
+							
+							<div class="radioArea">
+								<input type="radio" name="askTo" value="admin" id="admin" class="clicked">
+								<label class="clickBtn" for="admin">관리자 문의</label>
+								<input type="radio" name="askTo" value="ceo" id="ceo" >
+								<label class="clickBtn" for="ceo">캠핑장 문의</label>
+							</div>
+						</section>
+						
+						<th:block th:replace="~{qna/qna}"></th:block>
+					</div>
+					<hr class="underLine2">
+					
+					<div class="overlayScreen">
+
+					<section class="textItemSection">
+
+						<section class="empty2"></section>
+
+						<section class="textItmeList">
+
+							<th:blcok th:if="${myPageInfo.qnaList.size == 0}">
+								<section class="textList countQna">
+									<p>문의한 내역이 없습니다.</p>
+								</section>
+							</th:blcok>
+
+							<th:blcok th:if="${myPageInfo.qnaList.size > 0}">
+
+								<section class="textList countQna" th:each="qna : ${myPageInfo.qnaList}">
+
+									<a th:id="|qna_${qna.QNANo}|" class="qnaBtn"
+										th:text="|${qna.QNACreateDate} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${qna.QNATitle}|"></a>
+                  			
+									<th:blcok th:if="${qna.answerFlag == 'Y'}">
+										<a class="clickBtn">답변 완료</a>
+									</th:blcok>
+
+									<th:blcok th:if="${qna.answerFlag == 'N'}">
+										<a class="clickBtn">답변 대기중</a>
+									</th:blcok>
+
+								</section>
+							</th:blcok>
+
+						</section>
+
+						<section class="empty2"></section>
+					</section>
+
+
+					</div>
+					
+					<div class="moreBtnWrapper">
+						<button type="button" class="moreBtn"  th:if="${myPageInfo.qnaList.size > 5}"></button>
+					</div>
+
+				</section>
+				<section class="empty2"></section>
+			</section>
+
+
+			<!-- 커뮤니티 -->
+			<section class="textSection">
+				<section class="empty2"></section>
+
+				<section class="textListSection">
+					<section class="subName" onclick="location.href='/board/B'">커뮤니티</section>
+					<hr class="underLine2">
+
+					<section class="textItemSection">
+						<section class="empty2"></section>
+
+						<section class="textItmeList">
+
+							<th:block th:if="${myPageInfo.boardList.size > 0}">
+
+								<section class="textList" th:each="board : ${myPageInfo.boardList}">
+									<a class="clickBtn" th:href="|/board/${board.boardType}/${board.boardNo}|" th:text="|${board.boardCreateDate} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${board.boardTitle} |"></a>
+									<a class="clickBtn" th:text="|( 댓글 수 : ${board.commentCount} )|">댓글</a>
+								</section>
+
+							</th:block>
+
+							<th:block th:if="${myPageInfo.boardList.size == 0}">
+
+								<section class="textList">
+									<p> 게시판 내역이 없습니다.</p>
+								</section>
+
+							</th:block>
+
+						</section>
+
+
+
+
+						<section class="empty2"></section>
+					</section>
+
+				</section>
+
+				<section class="empty2"></section>
+			</section>
+
+
+
+		</section>
+
+
+
+		</section>
+
+		<!-- 공백 (좌) -->
+		<section class="empty1"></section>
+
+	</main>
+
+	<div class="empty5"></div>
+	<th:block th:replace="~{qna/qnaAnswer}"></th:block>
+	<th:block th:replace="~{common/footer}"></th:block>
+	<script th:src="@{/js/member/myPage.js}"></script>
+	
+</body>
+
+</html>

@@ -1,0 +1,538 @@
+*{
+    font-family: 'HakgyoansimSantteutdotumL', 'Montserrat';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    /*border: 1px solid black; */
+}
+
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: 1% 500%;
+    unicode-range: U+AC00-D7A3;
+}
+
+
+/* main */
+main {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.campTitle{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.categorySec{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+
+.categoryBtn{
+    background-color: transparent;
+    border: none;
+    margin: 0 20px;
+    cursor: pointer;
+    transition-duration: .2s;
+    transition-timing-function: ease-in-out;
+}
+
+.clicked{
+    color: #d4a373 ;
+}
+
+.categoryBtn:hover{
+    color: #d4a373;
+}
+
+.contentSecCenterSec{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+
+}
+/* 검색 일자 검색 sec */
+.checkCalenderSec {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.checkSec {
+    flex-basis: 50%;
+    display: flex;
+    
+}
+
+.checkDetailSec {
+    flex-basis: 70%;
+    display: flex;
+    justify-content: end;
+}
+
+.searchCampDiv {
+    border-bottom: 1px solid #909090;
+}
+
+.checkBtnSec {
+    flex-basis: 30%;
+    height: 100%;
+    display: flex;
+}
+
+.inputCheck {
+    height: 3rem;
+    width: 28rem;
+    padding-left: 0.5rem;
+    border: none;
+    border-radius: 20px;
+    font-size: large;
+}
+
+.inputCheck:focus {
+    outline-color: #909090;
+    
+}
+
+.submitInputCheck {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.checkBtnDiv {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.magnifyImg {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+/* 달력 sec */
+.celenderDiv {
+    width: 35rem;
+    height: 3.2rem;
+    display: flex;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 10px;
+    justify-content: center;
+}
+
+.calImgSec {
+    flex-basis: 11%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inputCalSec {
+    flex-basis: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tildeSec {
+    flex-basis: 9%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calenderImg {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.inputCal {
+    height: 2.5rem;
+    width: 12rem;
+    font-size: 1.3rem;
+    border: none;
+}
+
+.inputCal:focus {
+    
+    outline: none;
+}
+
+/* 정렬 선택 sec */
+.checkLineSec {
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    
+}
+
+.checkLine {
+    width: 30%;
+    height: 1px;
+    border: 1px solid #909090;
+    margin-left: 7%;
+}
+
+.campUploadBtnSec {
+    margin-right: 30px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+}
+
+.campUploadBtnA {
+	text-decoration: none;
+}
+
+.campUploadBtn {
+	height: 3rem;
+	width: 12rem;
+	border-radius: 10px;
+	background-color: transparent;
+	cursor: pointer;
+	font-size: 1.2rem;
+	border: 1px solid #909090;
+	color: #000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.campUploadBtn:hover {
+	background-color: #000;
+	color: white;
+}
+
+/* 정렬 선택 */
+.chooseClassificationSec {
+    height: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin-top: 40px;
+}
+
+.chooseClassificationDetailSec {
+    width: 10%;
+    margin-right: 25px;
+}
+
+.classificationBtn {
+    width: 7rem;
+    height: 2rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* fixed map */
+.fixedMapA {
+    cursor: pointer;
+}
+
+.fixedDiv {
+    width: 8rem;
+    height: 8rem;
+    position: fixed;
+    top: 80%;
+    left: 90%;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.mapImageSec {
+    flex-basis: 60%;
+    display: flex;
+    justify-content: center;
+}
+
+.mapImage {
+    width: 4rem;
+    height: 4rem;
+    cursor: pointer;
+}
+
+.mapWriteSec {
+    flex-basis: 25%;
+    display: flex;
+    justify-content: center;
+}
+
+.mapWrite {
+    border-bottom: 1px solid black;
+    color: black;
+}
+
+.mapWriteSec > p {
+    cursor: pointer;
+}
+
+/* 컨텐츠 sec */
+.contentSec {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contentDetailSec {
+    width: calc(100%/3);
+    height: 22rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.contentImageDiv {
+    display: flex;
+    width: 100%;
+    flex-basis: 85%;
+    align-items: end;
+    justify-content: center;
+}
+
+.contentImageDiv img{
+    border-radius: 10px;
+    transition-duration: .3s;
+}
+
+.contentImageDiv img:hover{
+	opacity: 0.8;
+	transform: scale(1.02);
+}
+
+.contentImage {
+    width: 22rem;
+    height: 14rem;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.contentDetailWriteSec {
+    display: flex;
+    flex-basis: 15%;
+    width: 100%;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.contentDetailWriteSecCenterSec {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    color: #000;
+}
+
+.contentDetailWriteSecCenterSec img {
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+}
+
+.star{
+	display: flex;
+	align-items: center;
+}
+
+#address{
+	font-size: 0.8rem;
+	opacity: 0.8;
+	margin-top: 4px;
+	
+}
+
+.star span{
+	font-size: 1rem;
+}
+
+.contentBlanksec {
+    width: 100%;
+    height: 5rem;
+}
+
+.footBlankSec {
+    width: 100%;
+    height: 5rem;
+    margin-top: 200px;
+}
+
+
+#content{
+	display: flex;
+}
+
+.blank{
+	flex-basis: 15%;
+}
+
+.bBlank{
+	height: 300px;
+	display: flex;
+	justify-content: center;
+}
+
+.moreBtn{
+	padding-bottom: 50px;
+	width: 100%;
+	background-color: transparent;
+	border: none;
+	font-size: 1.3rem;
+	color: #909090;
+	cursor: pointer;
+	transition-duration: .5s;	
+}
+
+.moreBtn:hover{
+	transform: translateY(-1rem);
+	
+}
+
+.mainContent{
+	flex-basis: 70%;
+	height: 1000px;
+	overflow-y: clip;
+}
+
+
+.overlayScreen{
+    height: 100%;
+    z-index: 9999;
+    bottom: 0;
+    background-color: rgb(255, 255, 255);
+    animation-duration: .5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+  }
+  
+.play {
+    animation-name: overlay-screen-transition;
+  }
+  
+  @keyframes overlay-screen-transition {
+      0% {
+          width: 100%;
+          height: 50%;
+          opacity: 0%;
+          bottom: 0;
+        }
+        
+        100% {
+            width: 100%;
+            height: 50%;
+            opacity: 100%;
+      }
+  }
+  
+  .element-fadeIn {
+    animation-name: element-fadeIn;
+    animation-duration: 0.25s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes element-fadeIn {
+    0% {
+      opacity: 0%;
+    }
+    100% {
+      opacity: 100%;
+    }
+  }
+
+
+  .campDelete{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #000;
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: red;
+  }
+
+ .campDelete:hover{
+    font-weight: bold;
+  }
+
+  @media all and (max-width:1600px) {
+
+    .contentDetailSec{
+        height: 22rem;
+        display: flex;
+        flex-direction: column;
+        margin: 0 20px;
+    }
+    #content{
+        display: block;
+    }
+
+    .contentSec{
+        height: auto;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+}
+
+@media all and (max-width:886px) {
+
+    .checkCalenderSec{
+        display: none;
+    }
+   
+}
+
+@media all and (max-width:840px) {
+
+    .checkCalenderSec{
+        display: none;
+    }
+   
+}
+
+@media all and (max-width:630px) {
+
+    .contentDetailSec{
+        width: auto;
+    }
+   
+}
+
+@media all and (max-width:459px) {
+
+    .categorySec button{
+        font-size: 0.6rem
+    }
+   
+}
+
+
+

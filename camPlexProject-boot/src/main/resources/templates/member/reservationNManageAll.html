@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자용 예약 정보 확인</title>
+
+    <link rel="stylesheet"  th:href="@{/css/member/reservationNManage.css}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+	<th:block th:replace="~{common/headerForContent}"></th:block>
+
+    <main>
+        <!-- 공백 (우) -->
+        <section class="empty1"></section>
+        
+        <section id="signUpForm">
+
+            <!-- 대제목 -->
+            <div id="headerTitle">
+    	        <section id="headerName">관리자 예약 정보 확인</section>
+    	        <button type="button" class="clickBtn" th:onclick="|javascript:history.back();|">이전으로</button>
+			</div>
+	            <hr id="underLine"/>
+            
+
+            <section id="objectSection" th:each="reservationList : ${reservationList}">
+                <section class="empty3"></section>
+
+                <section class="objectListSection">
+
+                    <section id="objectList">
+						
+						<!-- 캠핑장 정보 -->
+                        
+						<section class="reservationInfo">
+                            <img class="icon" th:src="@{/images/memberImg/carbon_map.png}">
+                            <section class="empty4"></section>
+                            <p th:text="|${reservationList.CAMP_ADDRESS}|" class="info"></p>
+                        </section>
+
+                        <section class="reservationInfo">
+                            <img class="icon" th:src="@{/images/memberImg/Group.png}">
+                            <section class="empty4"></section>
+                            <p th:text="|Date&nbsp; :&nbsp; ${reservationList.CAMP_ENT_DATE} ~ ${reservationList.CAMP_OUT_DATE}|" class="info"></p>
+                        </section>
+
+                        <section class="reservationInfo">
+                            <img class="icon" th:src="@{/images/memberImg/tdesign_member.png}">
+                            <section class="empty4"></section>
+                            <p th:text="|대인&nbsp; :&nbsp; ${reservationList.ADULT_COUNT} / 소인&nbsp; :&nbsp; ${reservationList.KID_COUNT}|" class="info"></p>
+                        </section>
+
+                        <section class="reservationInfo">
+                            <img class="icon" th:src="@{/images/memberImg/material-symbols-light_deck.png}">
+                            <section class="empty4"></section>
+                            <p th:text="|예약 호실&nbsp; :&nbsp; ${reservationList.CAMP_DE_NAME}|" class="info"></p>
+                        </section>
+
+                    </section>
+
+					<!-- 렌탈 상품 정보 -->
+					
+					<th:block>
+						
+	                    <section id="rentalObjList" th:if="${reservationList.itemList.size > 0}">
+	                        <section class="rentalObj" th:each="itemList : ${reservationList.itemList}">
+	                            <span th:text="|${itemList.itemName}|"></span><span id="itemCount" th:text="|&nbsp;&nbsp; ${itemList.quantity}|"></span>
+	                        </section>
+	                    </section>
+	                    
+					</th:block>
+					
+					<th:block>
+						<section id="rentalObjList" th:if="${reservationList.itemList.size == 0}">
+							<section class="rentalObj">
+								<p>렌탈 상품&nbsp; : 렌탈 상품이 없습니다.</p>
+	                        </section>
+                        </section>
+					</th:block>
+
+                </section>
+
+              
+                <section class="empty3"></section>
+            </section>
+            
+            <div id="backBtn">
+    	        <button type="button" class="clickBtn" th:onclick="|javascript:history.back();|">이전으로</button>
+			</div>
+
+
+        </section>
+        
+        <!-- 공백 (좌) -->
+        <section class="empty1"></section>
+
+    </main>
+
+
+    <div class="empty5"></div>
+    
+	<th:block th:replace="~{common/footer}"></th:block>
+
+</body>
+</html>

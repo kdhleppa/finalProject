@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.camplex.project.member.mappers.AjaxMapper">
+
+	<!-- 이메일 중복 검사 -->
+	<select id="checkEmail" resultType="_int">
+		SELECT COUNT(*) FROM "MEMBER"
+		WHERE MEMBER_EMAIL = #{email}
+		AND MEMBER_DEL_FL = 'N'
+	</select>
+		
+	<!-- 닉네임 중복 검사 -->
+	<select id="checkNickname" resultType="_int">
+		SELECT COUNT(*) FROM "MEMBER"
+		WHERE MEMBER_NICKNAME = #{nickname}
+		AND MEMBER_DEL_FL = 'N'
+	</select>
+	
+	<!-- 업데이트 인증번호 -->
+	<update id="updateAuthKey">
+		UPDATE "AUTH_KEY" SET
+		AUTH_CODE = #{authKey},
+		CREATE_DATE = SYSDATE
+		WHERE EMAIL = #{email}
+	</update>
+	
+	<!-- 인서트 인증번호 -->
+	<insert id="insertAuthKey">
+		INSERT INTO "AUTH_KEY" VALUES(SEQ_AUTH_KEY_NO.NEXTVAL, #{authKey}, #{email}, DEFAULT, NULL)
+	</insert>
+
+	<!-- 인증번호 확인 -->
+	<select id="checkAuthKey" resultType="_int">
+		SELECT COUNT(*) FROM "AUTH_KEY"
+		WHERE EMAIL = #{email}
+		AND AUTH_CODE = #{inputKey}
+	</select>
+	
+	<!-- 전화번호 중복 검사 -->
+	<select id="checkPhone" resultType="_int">
+		SELECT COUNT(*) FROM "MEMBER"
+		WHERE MEMBER_PHONE = #{phone}
+		AND MEMBER_DEL_FL = 'N'
+	</select>
+	
+	<!-- 전화번호 인증번호 업데이트 -->
+	<update id="updateTelAuthKey">
+		UPDATE "AUTH_KEY" SET
+		AUTH_CODE = #{randomNumber},
+		CREATE_DATE = SYSDATE
+		WHERE PHONE = #{phone}
+	</update>
+	
+	<!-- 전화번호 인증번호 전송 -->
+	<insert id="insertTelAuthKey">
+		INSERT INTO "AUTH_KEY" VALUES(SEQ_AUTH_KEY_NO.NEXTVAL, #{randomNumber}, NULL, DEFAULT, #{phone})
+	</insert>
+
+	<!-- 전화번호 인증번호 확인 -->
+	<select id="checkTelAuthkey" resultType="_int">
+		SELECT COUNT(*) FROM "AUTH_KEY"
+		WHERE PHONE = #{phone}
+		AND AUTH_CODE = #{inputKey}
+	</select>
+
+	<!-- 등업 신청 확인 -->
+	<update id="changeMember">
+		UPDATE "MEMBER"
+		SET MEMBER_TYPE = 'C'
+		WHERE MEMBER_NO IN (
+		    SELECT MEMBER_NO
+		    FROM CEO_MEMBER
+		    WHERE MEMBER_NO = #{memberNo}
+		)
+	</update>
+
+
+
+</mapper>

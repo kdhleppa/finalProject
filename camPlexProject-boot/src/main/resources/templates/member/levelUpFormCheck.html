@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>관리자 등업신청 확인</title>
+
+	<link rel="stylesheet" th:href="@{/css/member/levelUpFormCheck.css}">
+
+	<link rel="preconnect" th:href="@{https://fonts.googleapis.com}">
+	<link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:ital,wght@1,600&family=Exo+2:wght@600&family=Exo:wght@700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,600;0,900;1,200&family=Qwitcher+Grypen:wght@400;700&family=Source+Code+Pro:ital,wght@1,900&display=swap"
+		rel="stylesheet">
+
+</head>
+
+<body>
+
+	<th:block th:replace="~{common/headerForContent}"></th:block>
+
+	<main>
+		<!-- 공백 (우) -->
+		<section class="empty1"></section>
+
+		<section id="myPageSection">
+
+
+				<!-- 대제목 -->
+				<section id="headerName">등업신청 관리</section>
+				<hr id="underLine" />
+
+				<!-- 정보 -->
+				<section id="inputInfo">
+
+					<!-- 반복문 돌릴 블럭 -->
+					<th:block th:each="levelUpList : ${levelUpList}">
+
+						
+							<!-- 캠핑장 정보 정보 -->
+							<section class="infoMain" th:id="'infoMain_' + ${levelUpList.memberNo}">
+							
+								<!-- 내부공백 (우) -->
+								<section class="empty2"></section>
+							
+								<!-- 캠핑장 명, 주소 입력 -->
+								<section class="placeInfo">
+									
+								<!-- ajax시 삭제할 memberNo 숨기기 -->
+								<input th:id="memberNo" type="hidden" th:value="${levelUpList.memberNo}"></input>
+
+								<section class="inputInfo" id="inputTitle">
+									<p th:inline="text">캠핑장 명 : [[${levelUpList.campName}]]</p>
+								</section>
+
+								<section class="inputInfo" id="inputAddress">
+									<p th:inline="text">캠핑장 주소 : [[${levelUpList.campAdress}]]</p>
+								</section>
+								
+								<!-- 대표자 , 사업자 등록번호 -->
+								<section class="inputInfo" id="inputCEO">
+									<p th:inline="text">대표자 : [[${levelUpList.ceoName}]]</p>
+								</section>
+
+								<section class="inputInfo" id="inputCEONumber">
+									<p th:inline="text" id="CEONumber">사업자 등록번호 : [[${levelUpList.businessLicense}]]</p>
+								</section>
+
+								<!-- 관광사업 등록증 사본 , 예금주 -->
+								<section class="inputInfo" id="tourLicense">
+									<p th:inline="text">관광사업 등록증 사본 : [[${levelUpList.tourLicense}]]</p>
+								</section>
+
+								<section class="inputInfo" id="accountHolder">
+									<p th:inline="text">예금주 : [[${levelUpList.accountHolder}]]</p>
+								</section>
+
+								<!-- 은행 , 계좌번호 -->
+								<section class="inputInfo" id="bank">
+									<p th:inline="text">은행 : [[${levelUpList.bankName}]]</p>
+								</section>
+
+								<section class="inputInfo" id="accountNumber">
+									<p th:inline="text">계좌번호 : [[${levelUpList.ceoAccount}]]</p>
+								</section>
+								
+							</section>
+
+							<!-- 내부공백 (좌) -->
+							<section class="empty2"></section>
+
+						</section>
+						
+						<section id="btnSection">
+							<button type="button" th:id="'changeMember_' + ${levelUpList.memberNo}" th:attr="data-memberNo=${levelUpList.memberNo}" class="clickBtn">확인</button>
+						</section>
+
+					</th:block>
+
+				</section>
+
+
+			<!-- 서식 전송 버튼 -->
+			<section id="formSendBtn">
+				<section class="empty2"></section>
+
+				<section id="btnSection">
+					<button type="button" class="clickBtn" th:onclick="|javascript:history.back();|">이전으로</button>
+				</section>
+
+				<section class="empty2"></section>
+			</section>
+
+			<section class="empty2"></section>
+
+
+		</section>
+
+
+		<!-- 공백 (좌) -->
+		<section class="empty1"></section>
+
+	</main>
+
+	<div class="empty5"></div>
+
+	<th:block th:replace="~{common/footer}"></th:block>
+
+	<script th:inline="javascript">
+	    document.addEventListener("DOMContentLoaded", function () {
+	        const changeMemberButtons = document.querySelectorAll("[id^='changeMember_']");
+	
+	        changeMemberButtons.forEach(function (button) {
+	            button.addEventListener("click", function () {
+	                var memberNo = button.getAttribute("data-memberNo");
+	
+	                if (confirm("CEO 계정으로 변경하시겠습니까?")) {
+	                    console.log("test");
+	                    console.log(memberNo);
+	
+	                    fetch("/changeMember/changeMember?memberNo=" + memberNo)
+	                        .then(resp => resp.text())
+	                        .then(result => {
+	                            if (result > 0) {
+	                                alert("변경 되었습니다.");
+	
+	                                // Remove both th:block content and the button
+	                                const blockId = 'infoMain_' + memberNo;
+	                                const blockToRemove = document.getElementById(blockId);
+	                                if (blockToRemove) {
+	                                    blockToRemove.remove(); // Remove th:block content
+	                                    button.remove(); // Remove the button
+	                                } else {
+	                                    console.error("Unable to find the block with id: " + blockId);
+	                                }
+	
+	                            } else {
+	                                alert("변경을 실패했습니다.");
+	                            }
+	                        })
+	                        .catch(err => {
+	                            console.log("계정 변경 중 에러 발생");
+	                            console.log(err);
+	                        });
+	                } else {
+	                    alert("취소했습니다.");
+	                }
+	            });
+	        });
+	    });
+	</script>
+
+
+</body>
+
+</html>

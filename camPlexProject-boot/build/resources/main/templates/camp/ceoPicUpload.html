@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>콘텐츠 팝업창</title>
+    <link rel="stylesheet" th:href="@{/css/camp/ceoPicUpload.css}" type="text/css">
+
+</head>
+
+<body>
+
+    <div id="modalContainerPopup" class="hidden">
+
+        <div id="mainContainer">
+
+            <!-- X버튼 -->
+            <button type="button" id="closeBtnPopup">
+                <img th:src="@{/images/iconImg/X버튼.png}" alt="">
+            </button>
+            
+            <form th:action="@{ceoPicUpload}" method="POST" class="" id="" enctype="multipart/form-data">
+                <input type="hidden" name="campNo" id="campNoHidden">
+                <div class="btnArea">
+                    <p>* 한 번에 최대 2개의 이미지만 업로드 가능합니다.</p>
+                    <button type="submit" id="uploadBtn">올리기</button>
+                </div>
+                <!-- 사진 -->
+
+                
+                
+                <div class="container">
+
+                    <section class="photoSection">
+
+
+                        <div class="img-box">
+
+                            <div class="boardImg">
+                                <label for="img1">
+                                    <img class="preview" src="">
+                                </label>
+                                <input type="file" name="images" class="inputImage" id="img1" accept="image/*">
+                                <span class="delete-image">&times;</span>
+                            </div>
+
+                            <div class="boardImg">
+                                <label for="img2">
+                                    <img class="preview" src="">
+                                </label>
+                                <input type="file" name="images" class="inputImage" id="img2" accept="image/*">
+                                <span class="delete-image">&times;</span>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+
+        // const memberNo = "${loginMember.memberNo}";
+
+    </script>
+
+</body>
+
+</html>

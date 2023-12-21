@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    /* border: 1px solid black; */
+}
+
+button {
+    cursor: pointer;
+}
+
+@font-face {
+    font-family: 'HakgyoansimSantteutdotumL';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimSantteutdotumL.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: 1% 500%;
+    unicode-range: U+AC00-D7A3;
+}
+
+/* header 부분 */
+.topBar{
+    width: 100%;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 25px;
+    border-radius: 0 0 10px 10px;
+
+    transition-duration: 0.3s;
+
+    position: sticky;
+    top: 0;
+}
+
+.topBar:hover{
+    background-color: rgba(204, 213, 174, 0.5);
+}
+
+.topMenu{
+    width: 100%;
+
+    flex-basis: 5%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.topMenu a{
+    color: #000;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.7rem;
+
+    
+}
+
+.mainTitle{
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 3rem;
+    font-weight: 900;
+
+    margin: 20px 0;
+
+    height: 60px;
+    line-height: 60px;
+    color: #333;
+    letter-spacing: 5px;
+}
+
+.bottomMenu{
+    flex-basis: 45%;
+    display: flex;
+    align-self: center;
+}
+
+.bottomMenu a {
+    color: #000;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 600;
+}
+
+/* 공지 상단 메뉴 */
+.noticeClass {
+    display: flex;
+    list-style: none;
+    margin-top: 40px;
+}
+
+.noticeClass p {
+    font-size: 15px;
+    font-weight: 900;
+    margin-top: 4px;
+}
+
+.noticeClass > li > a {
+    font-family: 'HakgyoansimSantteutdotumL';
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    margin-right: 70px;
+    margin-left: 70px;
+}
+
+.noticeTitle p {
+    font-family: 'HakgyoansimSantteutdotumL';
+    font-size: 30px;
+    margin-left: 12%;
+}
+
+.noticeTitle {
+    margin-top: 120px;
+    margin-right: 13%;
+    width: 100%;
+}
+
+/* 공지 세부 내용 */
+.noticeDetail {
+    font-family: 'HakgyoansimSantteutdotumL';
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    height: 50rem;
+}
+
+.notiDeLeft {
+    margin-top: 30px;
+    margin-left: 2rem;
+    border: 1px solid rgb(161, 161, 161);
+    border-radius: 20px;
+    font-size: 22px;
+    width: 5rem;
+    height: 2rem;
+    text-align: center;
+}
+
+.notiDeTitle {
+    margin-left: -20rem;
+    font-size: 30px;
+
+}
+
+.notiDeRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top : 40px;
+    margin-left: -20rem;
+}
+
+#createDate {
+    margin-top: 30px;
+    font-size: 22px;
+}
+
+.notiContent {
+    margin-left: 0rem;
+    width: 80%;
+    font-size: 22px;
+}
+
+
+
+/* 수정 삭제 버튼 부분 */
+.btnArea {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#deleteBtn {
+    font-family: 'HakgyoansimSantteutdotumL';
+    margin-right: 150px;
+    width: 8rem;
+    height: 4rem;
+    background-color: transparent;
+    border-style: none;
+    font-size: 1.5rem;
+}
+
+#updateBtn {
+    font-family: 'HakgyoansimSantteutdotumL';
+    width: 8rem;
+    height: 4rem;
+    background-color: transparent;
+    border-style: none;
+    font-size: 1.5rem;
+}
+
+#listBtn {
+    font-family: 'HakgyoansimSantteutdotumL';
+    width: 8rem;
+    height: 4rem;
+    background-color: transparent;
+    border-style: none;
+    font-size: 1.5rem;
+}
+
+
+/* footer 부분 */
+.bottomBar { 
+    width: 100%;
+    margin-top: 120px;
+    margin-bottom: 120px;
+    font-family: 'HakgyoansimSantteutdotumL';
+    font-weight: 900;
+    line-height: 30px;
+    
+}
+
+.bottomBar > a, .bottomBar > div {
+    margin-left: 120px;
+}
+
+.footerTitle {
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 2rem;
+    font-weight: 1000;
+
+    height: 60px;
+    line-height: 60px;
+    color: #333;
+    letter-spacing: 3px;
+}
+
+.footerMenu {
+    display: flex;
+    flex-basis: 50%;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 900;
+
+    color: #333;
+    letter-spacing: 1px;
+}
+
+.footerMenu a {
+    text-decoration: none;
+}
+
+.menuDiv {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.footerContent {
+    letter-spacing: 1px;
+}
