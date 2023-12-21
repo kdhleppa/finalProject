@@ -29,23 +29,6 @@ a {
 	font-size: 16px;
 }
 
-a:hover {
-	cursor: pointer;
-}
-  
-a:after {
-  display:block;
-  content: '';
-  border-bottom: solid 1px #000;
-  margin-top: 5px;
-  transform: scaleX(0);  
-  transition: transform 250ms ease-in-out;
-}
-
-a:hover:after { 
-	transform: scaleX(1);
-}
-
 button { 
   color: #000;
   display:inline-block; 
@@ -86,20 +69,15 @@ main {
     font-weight: 600;
 }
 
-#headerSubName {
-	font-size: 20px;
-    font-weight: 600;
-}
-
 #underLine {
     border: 2px solid black;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 /* ------------------------------- */
 /* 정보 */
 .empty2 {
-    flex-basis: 5%;
+    flex-basis: 15%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -119,22 +97,21 @@ main {
 
 .buyPayInfo {
 	display: flex;
-	flex-basis: 90%;
 }
 
 #title {
-    flex-basis: 90%;
+    flex-basis: 70%;
 	display: flex;
 }
 
 .buyInfo {
 	display: flex;
 	flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .shopingList {
-    flex-basis: 90%;
+    flex-basis: 70%;
     display: flex;
     flex-direction: column;
 }
@@ -147,17 +124,31 @@ main {
 	display: flex;
 }
 
-.campInfo, .rentalInfo {
-	flex-basis: 50%;
+#campInfoFont {
+	flex-basis: 60%;
+}
+
+#rentalInfoFont {
+	flex-basis: 40%;
 }
 
 .campInfo {
 	display: flex;
 	flex-direction: column;
+	flex-basis: 60%;
 }
 
-.campInfo img {
-	width: 400px;
+.campImgDiv {
+	width: 95%;
+    height: 250px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.campImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .campNameInfoPrice {
@@ -169,11 +160,11 @@ main {
 
 .rentalInfo {
 	display: flex;
+	flex-basis: 40%;
 }
 
 .rentalSection {
 	display: flex;
-	margin-block: 10px;
 }
 
 .rentalSection img {
@@ -184,15 +175,27 @@ main {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+	margin-left: 10px;
 }
 
 .itemList {
 	display: flex;
 }
 
-.itemList > img{
-	height: 80px;
-	object-fit: cover;
+.itemImgDiv {
+	width: 90px;
+    height: 90px;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.itemImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .itemName{
@@ -201,7 +204,11 @@ main {
 	justify-content: space-evenly;
 }
 
-
+.totalPrice {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
 
 
 
@@ -209,4 +216,17 @@ main {
 /* 풋터 위 공간 */
 .empty5 {
     height: 300px;
+}
+
+.clickBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 17px;
+    transition: color 0.3s;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.clickBtn:hover {
+	color: #909090;
 }
