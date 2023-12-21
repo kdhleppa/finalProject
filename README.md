@@ -309,6 +309,51 @@ CEO 예약 확인은 자신의 캠핑장에 대한 예약 정보를 불러와 �
 
 <br><br><p></p>
 
+- 게시판 리스트
+![boardMain](https://github.com/kdhleppa/finalProject/assets/139315798/c4d21c44-790a-45a4-aa28-42770cd132c5)
 
+게시판 메인 화면에서 회원이 조회하고자 하는 게시글을 조건에 맞게 검색할 수 있는 페이지입니다.
+
+<br><br><p></p>
+
+- 게시판 CRUD
+
+![boardCRUD](https://github.com/kdhleppa/finalProject/assets/139315798/2a734605-5e51-44ff-b8bc-843908a4697b)
+
+회원이 커뮤니티로 사용할 만한 게시판 내에서 회원의 타입별로 이용이 가능한 CRUD를 구현했습니다.
+
+<br><br><p></p>
+
+- CLOVA CHATBOT
+
+![chatBot](https://github.com/kdhleppa/finalProject/assets/139315798/f683cdfb-3a74-4c16-8a83-99b87e989c65)
+
+CLOVA 챗봇을 활용하여 웹페이지에서 이용가능한 전반적인 기능들에 대해 파악할 수 있는 기능을 구현했습니다.
+
+<br><br><p></p>
+
+- 1:1 문의 (일반 회원)
+
+![qnaUser](https://github.com/kdhleppa/finalProject/assets/139315798/d34fc3c9-1906-4e48-9d80-0a5164004f30)
+
+일반 회원의 마이페이지에서 관리자에게 1:1 문의를 작성하고 내역을 확인할 수 있는 페이지입니다.
+
+<br><br><p></p>
+
+- 1:1 문의 (CEO 회원)
+
+![qnaCeo](https://github.com/kdhleppa/finalProject/assets/139315798/7d47c3e8-e1b6-4d06-b81a-07b9df4e8c20)
+
+CEO 타입의 회원의 마이페이지에서 일반 회원의 1:1 문의에 대해 답변할 수 있고, 내역을 조회하고 수정할 수 있는 페이지입니다.
+
+<br><br><p></p>
+
+- 1:1 문의 (관리자)
+
+![qnaManager](https://github.com/kdhleppa/finalProject/assets/139315798/ceaaee54-2fc7-4c37-a841-7c547dcd270c)
+
+관리자의 마이페이지에서 모든 회원의 1:1 문의에 대해 답변할 수 있고, 내역을 조회하고 수정할 수 있는 페이지입니다.
+
+<br><br><p></p>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=3CB371&height=150&section=footer&text='finish'&fontSize=20" />
