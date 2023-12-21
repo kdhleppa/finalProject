@@ -1,6 +1,6 @@
 move()
-let textList = document.querySelectorAll('.textList')
-let contentLength = textList.length;
+let countQna = document.querySelectorAll('.countQna')
+let contentLength = countQna.length;
 let moreBtnWrapper = document.getElementsByClassName('moreBtnWrapper')
 let contentCount = 5;
 let textItmeList = document.querySelector('.textItmeList')
@@ -17,6 +17,7 @@ function more(contentLength){
 		
 		const btn = document.createElement('button');
 		btn.classList.add('moreBtn')
+		btn.classList.add('countQna')
 		btn.setAttribute("type", "button")
 		btn.innerHTML = "더 보기<br>∨";
 		
@@ -35,6 +36,7 @@ function more(contentLength){
 
 		const btn = document.createElement('button');
 		btn.classList.add('moreBtn')
+		btn.classList.add('countQna')
 		btn.setAttribute("type", "button")
 		btn.innerHTML = "접기<br>∧";
 		
@@ -182,6 +184,7 @@ for(var i = 0 ; i < askTo.length ; i++){
 				if(data.length == 0){
 					const textList = document.createElement('section');
 					textList.classList.add('textList');
+					textList.classList.add('countQna');
 					
 					const p = document.createElement('p');
 					p.innerText = "문의 내역이 없습니다.";
@@ -196,6 +199,7 @@ for(var i = 0 ; i < askTo.length ; i++){
 
 						const textList = document.createElement('section');
 						textList.classList.add('textList');
+						textList.classList.add('countQna');
 	
 						const a = document.createElement('a');
 						a.setAttribute("id", `qna_${qna.qnano}`)
@@ -244,6 +248,7 @@ for(var i = 0 ; i < askTo.length ; i++){
 
 					const textList = document.createElement('section');
 					textList.classList.add('textList');
+					textList.classList.add('countQna');
 
 					const p = document.createElement('p');
 					p.innerText = "문의 내역이 없습니다.";
@@ -258,6 +263,7 @@ for(var i = 0 ; i < askTo.length ; i++){
 	
 						const textList = document.createElement('section');
 						textList.classList.add('textList');
+						textList.classList.add('countQna');
 	
 						const a = document.createElement('a');
 						a.setAttribute("id", `qna_${qna.ceoQnaNo}`)
