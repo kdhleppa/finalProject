@@ -311,4 +311,4 @@ CEO 예약 확인은 자신의 캠핑장에 대한 예약 정보를 불러와 �
 
 
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=3CB371&height=150&section=footer&text='final'&fontSize=20" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=3CB371&height=150&section=footer&text='finish'&fontSize=20" />
