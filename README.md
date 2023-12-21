@@ -53,7 +53,8 @@
   <img width="85px" src="https://github.com/kdhleppa/finalProject/assets/139316047/9f3f81bc-0038-4c70-acad-e56b4985c38b">&nbsp;&nbsp;&nbsp;
   <img width="110px" src="https://github.com/kdhleppa/finalProject/assets/139316047/fd22ac85-775b-49b1-bca1-b5f4255c1e87">&nbsp;&nbsp;&nbsp;
   <img width="60px" src="https://github.com/kdhleppa/finalProject/assets/139316047/155b5a0e-af92-403f-843b-005f8e7d1da5">&nbsp;&nbsp;&nbsp;
-  <img width="120px" src="https://github.com/kdhleppa/finalProject/assets/139316047/4e51ef93-2143-4b1b-8c20-d06ddc5b6efd">&nbsp;&nbsp;&nbsp;
+  <img width="60px" src="https://github.com/kdhleppa/finalProject/assets/139316047/d5b7729a-00df-4551-b673-43f1856a32d9">&nbsp;&nbsp;&nbsp;
+  <img width="120px" src="https://github.com/kdhleppa/finalProject/assets/139316047/4e51ef93-2143-4b1b-8c20-d06ddc5b6efd">
 </p>
 
 
@@ -87,7 +88,7 @@
 
 [![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=Jakelee0424 )](https://github.com/anuraghazra/github-readme-stats)
 
-담당 구현 기능 :  DB 구축, 캠핑장 상세보기, 캠핑장 예약, 캠핑장 결제
+담당 구현 기능 :  DB 구축, 캠핑장 예약, 캠핑장 결제
 
 
 <br><br>
@@ -113,7 +114,7 @@
 
 >사이트 소개
 
--메인페이지(총 5개 페이지로 스크롤되는 메인페이지)-
+- 메인페이지(총 5개 페이지로 스크롤되는 메인페이지)
 
 ![크기변환 mainpage](https://github.com/kdhleppa/finalProject/assets/139315831/0ad8ff18-0b49-4f4a-b634-47b83c00da40)
 
@@ -121,7 +122,7 @@
 
 <br><br><p></p>
 
--캠핑장 목록조회 & 검색페이지 & 지도API-
+- 캠핑장 목록조회 & 검색페이지 & 지도API
 
 ![camplist](https://github.com/kdhleppa/finalProject/assets/139315831/7d2a68d3-a5d7-4640-a3c9-c61d7cb558b0)
 
@@ -131,7 +132,7 @@
 
 <br><br><p></p>
 
--캠핑장 상세보기 & 예약페이지-
+- 캠핑장 상세보기 & 예약페이지
 
 ![camdetail](https://github.com/kdhleppa/finalProject/assets/139315831/ad3d1a9e-2b40-4a5f-93d9-140e6fad53a9)
 
@@ -139,7 +140,7 @@
 
 <br><br><p></p>
 
--캠핑장 업로드-
+- 캠핑장 업로드
 
 ![campupload1](https://github.com/kdhleppa/finalProject/assets/139315831/d201dcdc-dcb8-4320-a7e8-f0f98c28ca78)
 
@@ -151,7 +152,7 @@
 
 <br><br><p></p>
 
--캠핑장 수정&삭제-
+- 캠핑장 수정&삭제
 
 ![campupdate](https://github.com/kdhleppa/finalProject/assets/139315831/92c5c89e-8c01-43db-b426-e72129889829)
 
@@ -163,7 +164,7 @@
 
 <br><br><p></p>
 
--렌탈상품 조회 페이지-
+- 렌탈상품 조회 페이지
 
 ![itemlist](https://github.com/kdhleppa/finalProject/assets/139315831/9e726f45-5072-4f40-b41d-bc8105a337b5)
 
@@ -171,7 +172,7 @@
 
 <br><br><p></p>
 
--렌탈상품 업로드&수정&삭제-
+- 렌탈상품 업로드&수정&삭제
 
 ![retalUpdateTest1](https://github.com/kdhleppa/finalProject/assets/139315831/b33dc1c4-f87c-47a0-921d-3cf5c2c60a45)
 
@@ -183,7 +184,7 @@
 
 <br><br><p></p>
 
--렌탈상품 자세히 보기-
+- 렌탈상품 자세히 보기
 
 ![itemdetail](https://github.com/kdhleppa/finalProject/assets/139315831/957eb198-5cc2-4cb8-874e-c274eaabc25e)
 
@@ -191,7 +192,7 @@
 
 <br><br><p></p>
 
--장바구니-
+- 장바구니
 
 ![cartwish](https://github.com/kdhleppa/finalProject/assets/139315831/0611d7a5-b8e7-4fb5-ad5c-63d160cf8334)
 
@@ -201,7 +202,7 @@
 
 <br><br><p></p>
 
--위시리스트-
+- 위시리스트
 
 ![wishlist](https://github.com/kdhleppa/finalProject/assets/139315831/72da39f2-0a34-40dc-b136-9d1dd1aee444)
 
@@ -209,12 +210,87 @@
 
 <br><br><p></p>
 
--렌탈상품 결제-
+- 렌탈상품 결제
 
 ![itempay](https://github.com/kdhleppa/finalProject/assets/139315831/4dfd9a08-2178-44ed-a568-c54515b57488)
 
 카트에서 주문한상품은 결제시 삭제되는기능과 각각의 삭제기능, 카카오페이 api를 통한 결제기능이 있습니다.
 
 <br><br><p></p>
+
+- 회원가입, 로그인
+
+![loginSingup](https://github.com/kdhleppa/finalProject/assets/139316047/eec6cfe2-def0-4a1d-a2e1-0aba7fd87b01)
+
+중복
+
+<br><br><p></p>
+
+- ID 찾기
+
+![searchId](https://github.com/kdhleppa/finalProject/assets/139316047/f61b8ae2-ad4b-4b4d-b0f2-c673e81d4348)
+
+
+
+<br><br><p></p>
+
+- PW 찾기
+
+![searchPw](https://github.com/kdhleppa/finalProject/assets/139316047/44d63b70-5b64-4f6b-91ae-5a0b84f644f7)
+
+
+
+<br><br><p></p>
+
+- 마이페이지
+
+![myPage](https://github.com/kdhleppa/finalProject/assets/139316047/f7f1fee1-ed44-4644-8fca-109ea66099d2)
+
+
+
+<br><br><p></p>
+
+- 프로필 관리
+
+![changeProfile](https://github.com/kdhleppa/finalProject/assets/139316047/17ad9d00-bbd0-4bb0-9e92-74436de66397)
+
+
+
+<br><br><p></p>
+
+- (회원) CEO 등업 신청, (관리자) 등업 신청 확인
+
+![levelUpForm](https://github.com/kdhleppa/finalProject/assets/139316047/5ad5415c-0655-4c84-a7e3-a10ad7717aa0)
+![levelUpFormCheck](https://github.com/kdhleppa/finalProject/assets/139316047/5517bad4-e0b5-4b99-9e76-058021625931)
+
+
+
+<br><br><p></p>
+
+- (CEO) 예약 확인
+
+![checkRes](https://github.com/kdhleppa/finalProject/assets/139316047/2ae15b09-e406-4a08-9274-2ddf1bffcf01)
+
+
+
+<br><br><p></p>
+
+- (관리자) 무통장 입금 확인
+
+![payCheck](https://github.com/kdhleppa/finalProject/assets/139316047/ada7d44a-ea1a-4762-a4d2-0462a2a3dabb)
+
+
+
+<br><br><p></p>
+
+- 회원 탈퇴
+
+![deleteMember](https://github.com/kdhleppa/finalProject/assets/139316047/68afb36e-64f6-43b1-99c9-6dcd8d4c9b70)
+
+
+
+<br><br><p></p>
+
+
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=3CB371&height=150&section=footer&text='final'&fontSize=20" />
