@@ -97,7 +97,7 @@
 
 [![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=ahnjaeyoun )](https://github.com/anuraghazra/github-readme-stats)
 
-담당 구현 기능 : 렌탈 상품 CRUD, 캠핑장 CRUD, 캠핑장 맵
+담당 구현 기능 : 렌탈 상품 조회/업로드/수정/삭제, 캠핑장 조회/업로드/수정/삭제, 캠핑장 맵 구현
 
 <br><br>
 <p></p>
@@ -143,9 +143,11 @@
 
 ![campupload1](https://github.com/kdhleppa/finalProject/assets/139315831/d201dcdc-dcb8-4320-a7e8-f0f98c28ca78)
 
-캠핑장에 대한 모든 정보를 업로드하고 캠핑장 객실에 대한 정보를 입력하는 모달창을 구현 하였습니다.
+관리자만 캠핑장에 대한 모든 정보를 업로드할 수 있고 캠핑장 객실에 대한 정보를 입력할 수 있도록 모달창을 구현 하였습니다.
 
 입력된 모든 정보는 유효성 검사를 통과해야 업로드될 수 있습니다.
+
+필터를 통해 관리자 외는 업로드 페이지로 이동할 수 없습니다.
 
 <br><br><p></p>
 
@@ -153,7 +155,11 @@
 
 ![campupdate](https://github.com/kdhleppa/finalProject/assets/139315831/92c5c89e-8c01-43db-b426-e72129889829)
 
-내용추가
+등록된 캠핑장은 관리자만 수정/삭제할 수 있도록 구현했습니다. 또한 캠핑장 객실 또한 수정 페이지에서 삭제/등록할 수 있습니다.
+
+입력된 모든 정보는 유효성 검사를 통과해야 업로드될 수 있습니다.
+
+필터를 통해 관리자 외는 수정 페이지로 이동할 수 없고 삭제 또한 할 수 없습니다.
 
 <br><br><p></p>
 
@@ -161,15 +167,19 @@
 
 ![itemlist](https://github.com/kdhleppa/finalProject/assets/139315831/9e726f45-5072-4f40-b41d-bc8105a337b5)
 
-캠핑장조회와 마찬가지로 카테고리별 필터기능과 서치기능, 더보기를통한 확장기능을 구현하였습니다.
+캠핑장조회와 마찬가지로 카테고리별 필터기능과 서치기능, 더 보기를 통한 확장기능을 구현하였습니다.
 
 <br><br><p></p>
 
--렌탈상품 입력&수정&삭제-
+-렌탈상품 업로드&수정&삭제-
 
 ![retalUpdateTest1](https://github.com/kdhleppa/finalProject/assets/139315831/b33dc1c4-f87c-47a0-921d-3cf5c2c60a45)
 
-내용추가
+관리자만 렌탈 상품에 대한 모든 정보를 업로드/수정/삭제할 수 있도록 구현했습니다.
+
+입력된 모든 정보는 유효성 검사를 통과해야 업로드될 수 있습니다.
+
+필터를 통해 관리자 외는 수정 페이지로 이동할 수 없고 삭제 또한 할 수 없습니다.
 
 <br><br><p></p>
 
