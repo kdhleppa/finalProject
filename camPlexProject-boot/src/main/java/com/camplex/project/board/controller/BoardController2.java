@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +44,6 @@ public class BoardController2 {
 	
 	@Autowired
 	private BoardService boardService; // 목록, 상세 조회
-	
 	
 	// 게시글 작성 화면 전환
 	@GetMapping("/{boardType:[A-Z]+}/insert")
@@ -164,7 +164,6 @@ public class BoardController2 {
 		// 4) 결과에 따라 message, path 설정
 		String message = null;
 		String path = "redirect:";
-		
 		
 		if(rowCount > 0) {
 			message = "게시글이 수정되었습니다";

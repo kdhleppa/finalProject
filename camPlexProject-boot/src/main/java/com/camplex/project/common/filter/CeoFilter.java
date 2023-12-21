@@ -24,15 +24,24 @@ public class CeoFilter implements Filter{
 			throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest)request;
 		HttpServletResponse resp = (HttpServletResponse)response;
-		
+
 		HttpSession session = req.getSession();
-		
+
 		Member loginMember = (Member) session.getAttribute("loginMember");
-		
-		if( !loginMember.getMemberType().equals("C") ) {
-			resp.sendRedirect("/CEOError");
+
+		if(loginMember == null) {
+
+			resp.sendRedirect("/loginError");
+
+		}else {
+
+			if( !loginMember.getMemberType().equals("C") ) {
+				resp.sendRedirect("/CEOError");
+
+			} else {
+				chain.doFilter(request, response);
+			}
 			
-		} else {
-			chain.doFilter(request, response);
-		}		
+			
+		}
 	}}
